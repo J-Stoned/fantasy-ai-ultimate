@@ -14,6 +14,19 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 );
 
+// Define the player type
+interface PlayerInsert {
+  firstName: string;
+  lastName: string;
+  position: string[];
+  team_id: string;
+  jersey_number: number;
+  sport_id: string;
+  status: string;
+  heightInches: number;
+  weightLbs: number;
+}
+
 console.log(chalk.red.bold('\n🚀 LOADING 1000+ PLAYERS!'));
 console.log(chalk.red('========================\n'));
 
@@ -55,7 +68,7 @@ async function loadMassivePlayers() {
   
   let totalCreated = 0;
   const batchSize = 100;
-  let batch = [];
+  let batch: PlayerInsert[] = [];
   
   // For each team, create a full roster
   for (const team of teams) {
