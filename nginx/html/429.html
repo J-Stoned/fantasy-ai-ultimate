@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Limit Exceeded - Fantasy AI Ultimate</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 4rem;
+            margin: 0 0 1rem;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .emoji {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 0 0 2rem;
+            opacity: 0.9;
+        }
+        .message {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        .tips {
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+        .tips h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .tips ul {
+            margin: 0;
+            padding-left: 1.5rem;
+            opacity: 0.8;
+        }
+        .tips li {
+            margin-bottom: 0.5rem;
+        }
+        .retry-info {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+        .upgrade {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji">🚦</div>
+        <h1>429</h1>
+        <h2>Whoa There, Speed Racer!</h2>
+        
+        <div class="message">
+            <p>You've exceeded the rate limit for Fantasy AI Ultimate. This protection helps ensure fair access for all users and maintains optimal performance during peak times.</p>
+            
+            <div class="tips">
+                <h3>What can you do?</h3>
+                <ul>
+                    <li>Wait a moment before retrying your request</li>
+                    <li>Reduce the frequency of your API calls</li>
+                    <li>Use batch operations when available</li>
+                    <li>Consider upgrading to a higher tier for increased limits</li>
+                </ul>
+            </div>
+            
+            <div class="retry-info">
+                <strong>Retry After:</strong> <span id="retry-time">60 seconds</span>
+            </div>
+        </div>
+        
+        <div class="upgrade">
+            <p><strong>Need higher limits?</strong></p>
+            <p>Upgrade to Pro or Enterprise for:</p>
+            <ul style="display: inline-block; text-align: left;">
+                <li>10x more API requests</li>
+                <li>Priority access during NFL Sundays</li>
+                <li>Dedicated support</li>
+            </ul>
+            <a href="/pricing" class="btn">View Upgrade Options</a>
+        </div>
+    </div>
+    
+    <script>
+        // Countdown timer
+        let seconds = 60;
+        const retryElement = document.getElementById('retry-time');
+        
+        const countdown = setInterval(() => {
+            seconds--;
+            if (seconds <= 0) {
+                clearInterval(countdown);
+                retryElement.textContent = 'You can retry now';
+            } else {
+                retryElement.textContent = seconds + ' seconds';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

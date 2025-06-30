@@ -1,0 +1,89 @@
+{
+  "appStore": {
+    "name": "Fantasy AI Ultimate",
+    "subtitle": "AI-Powered Fantasy Sports Revolution",
+    "primaryCategory": "SPORTS",
+    "secondaryCategory": "ENTERTAINMENT",
+    "keywords": [
+      "fantasy sports",
+      "fantasy football",
+      "AI lineup optimizer",
+      "DFS",
+      "daily fantasy",
+      "sports betting",
+      "NFL fantasy",
+      "voice control sports",
+      "AR sports stats",
+      "fantasy basketball"
+    ],
+    "description": {
+      "short": "Transform your fantasy sports experience with AI-powered insights, voice commands, and revolutionary 3D lineup visualization.",
+      "full": "Fantasy AI Ultimate is the most advanced fantasy sports platform ever created, featuring:\n\n🎤 VOICE CONTROL\nJust say \"Hey Fantasy, optimize my lineup\" and watch the magic happen. Our AI assistant understands natural language and helps you make winning decisions.\n\n🧠 GPU-POWERED OPTIMIZATION\nOur revolutionary lineup optimizer processes millions of combinations in seconds, finding the perfect balance of upside and safety for your contests.\n\n🎮 3D LINEUP VISUALIZATION\nWatch your players come to life in our stunning 3D stadium view. See real-time scoring animations and correlation patterns between your players.\n\n📊 ADVANCED ANALYTICS\n• Player projections powered by machine learning\n• Ownership projections for tournaments\n• Weather and injury impact analysis\n• Correlation-based stacking recommendations\n\n🏆 MULTI-PLATFORM SUPPORT\n• Import leagues from Yahoo, ESPN, Sleeper, and more\n• Daily Fantasy Sports optimization for DraftKings and FanDuel\n• Season-long and dynasty league tools\n• Auction draft assistance\n\n💡 SMART FEATURES\n• Tilt detection and bankroll management\n• Emotional support during losing streaks\n• Late swap optimization\n• Push notifications for lineup alerts\n\n🔒 SECURE & PRIVATE\nYour data is encrypted and never shared. We use bank-level security to protect your information.\n\nWhether you're a casual player or a DFS shark, Fantasy AI Ultimate gives you the edge you need to dominate your leagues.\n\nSubscription Options:\n• Free: Basic features with 5 lineups/week\n• Pro ($9.99/month): Unlimited lineups + advanced analytics\n• Elite ($29.99/month): All features + premium support\n\nTerms of Use: https://fantasyai.app/terms\nPrivacy Policy: https://fantasyai.app/privacy"
+    },
+    "whatsNew": "Version 1.0 - Initial Release\n• Revolutionary voice control with \"Hey Fantasy\"\n• GPU-accelerated lineup optimization\n• 3D lineup visualization\n• Multi-platform league import\n• AR player stats overlay\n• Emotional AI assistant\n• And much more!",
+    "supportUrl": "https://fantasyai.app/support",
+    "marketingUrl": "https://fantasyai.app",
+    "privacyPolicyUrl": "https://fantasyai.app/privacy",
+    "screenshots": {
+      "iphone65": [
+        "3d-lineup-visualization.png",
+        "voice-control-demo.png",
+        "lineup-optimizer.png",
+        "player-analysis.png",
+        "live-scoring.png"
+      ],
+      "iphone55": [
+        "3d-lineup-visualization-small.png",
+        "voice-control-demo-small.png",
+        "lineup-optimizer-small.png",
+        "player-analysis-small.png",
+        "live-scoring-small.png"
+      ],
+      "ipad": [
+        "3d-lineup-visualization-ipad.png",
+        "multi-league-dashboard-ipad.png",
+        "lineup-builder-ipad.png"
+      ]
+    },
+    "appPreviewVideo": "fantasy-ai-ultimate-preview.mp4"
+  },
+  "playStore": {
+    "title": "Fantasy AI Ultimate - Voice DFS",
+    "shortDescription": "AI-powered fantasy sports with voice control and 3D lineup visualization",
+    "fullDescription": "Transform your fantasy sports experience with the most advanced platform ever created!\n\n🎤 <b>VOICE CONTROL</b>\nJust say \"Hey Fantasy, optimize my lineup\" and watch the magic happen. Our AI assistant understands natural language and helps you make winning decisions.\n\n🧠 <b>GPU-POWERED OPTIMIZATION</b>\nOur revolutionary lineup optimizer processes millions of combinations in seconds using your device's GPU, finding the perfect balance of upside and safety.\n\n🎮 <b>3D LINEUP VISUALIZATION</b>\nWatch your players come to life in our stunning 3D stadium view with real-time scoring animations.\n\n<b>KEY FEATURES:</b>\n✓ Import leagues from Yahoo, ESPN, Sleeper, CBS, NFL.com\n✓ DFS optimization for DraftKings and FanDuel\n✓ Advanced correlation and stacking analysis\n✓ Ownership projections for GPPs\n✓ Weather and injury impact analysis\n✓ Bankroll management with tilt detection\n✓ Push notifications for lineup alerts\n✓ AR camera overlay for live games\n✓ Offline mode support\n\n<b>SMART AI FEATURES:</b>\n• Natural language voice commands\n• Emotional support during losing streaks\n• Personalized lineup recommendations\n• Late swap optimization\n• Predictive analytics using machine learning\n\n<b>SUBSCRIPTION OPTIONS:</b>\n• Free: 5 lineups per week\n• Pro ($9.99/month): Unlimited lineups\n• Elite ($29.99/month): All premium features\n\n<b>SECURITY:</b>\nBank-level encryption protects your data. We never share your information.\n\nDominate your fantasy leagues with Fantasy AI Ultimate!",
+    "category": "SPORTS",
+    "contentRating": "PEGI 3",
+    "tags": [
+      "fantasy sports",
+      "fantasy football",
+      "DFS",
+      "sports",
+      "AI"
+    ],
+    "graphics": {
+      "icon": "512x512.png",
+      "featureGraphic": "1024x500.png",
+      "promoGraphic": "180x120.png",
+      "tvBanner": "1280x720.png",
+      "screenshots": {
+        "phone": [
+          "screenshot-1.png",
+          "screenshot-2.png",
+          "screenshot-3.png",
+          "screenshot-4.png",
+          "screenshot-5.png",
+          "screenshot-6.png",
+          "screenshot-7.png",
+          "screenshot-8.png"
+        ],
+        "tablet": [
+          "tablet-screenshot-1.png",
+          "tablet-screenshot-2.png"
+        ]
+      }
+    },
+    "contactEmail": "support@fantasyai.app",
+    "contactWebsite": "https://fantasyai.app",
+    "privacyPolicyUrl": "https://fantasyai.app/privacy"
+  }
+}

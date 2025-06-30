@@ -1,0 +1,361 @@
+// Revolutionary Features Database Schema Extensions
+// Add these models to the main schema.prisma file
+
+// Quantum Correlations
+model QuantumCorrelation {
+  id                String    @id @default(uuid())
+  correlationType   String    // 'chaos_game', 'entanglement', 'uncertainty', 'smart_money'
+  entityId1         String?   // Player, team, or game ID
+  entityId2         String?   // Related entity
+  correlation       Float
+  confidence        Float
+  magnitude         Float
+  quantumState      Json?     // Complex quantum state representation
+  observedAt        DateTime  @default(now())
+  expiresAt         DateTime?
+  metadata          Json?
+  
+  @@index([correlationType, observedAt])
+  @@index([entityId1, entityId2])
+  @@map("quantum_correlations")
+}
+
+model ChaosGamePrediction {
+  id               String    @id @default(uuid())
+  gameId           String?
+  week             Int
+  chaosScore       Float
+  predictedUpset   Boolean
+  confidence       Float
+  quantumFactors   Json      // Quantum factors contributing to chaos
+  actualOutcome    Json?     // Filled after game completes
+  createdAt        DateTime  @default(now())
+  
+  @@index([week, chaosScore])
+  @@map("chaos_game_predictions")
+}
+
+// Biometric Intelligence
+model BiometricAnalysis {
+  id                  String    @id @default(uuid())
+  playerId            String
+  analysisType        String    // 'fatigue', 'stress', 'injury_risk', 'performance'
+  timestamp           DateTime  @default(now())
+  
+  // Fatigue metrics
+  fatigueScore        Float?
+  fatigueFactors      Json?
+  recoveryTime        Int?      // Hours needed
+  
+  // Stress indicators
+  stressLevel         Float?
+  stressors           Json?
+  psychologicalState  Json?
+  
+  // Injury risk
+  injuryRisk          Float?
+  riskFactors         Json?
+  vulnerableAreas     String[]
+  
+  // Performance capacity
+  performanceCapacity Float?
+  peakWindow          Json?     // Optimal performance times
+  limitations         Json?
+  
+  confidence          Float
+  dataQuality         Float
+  sources             String[]
+  
+  @@index([playerId, analysisType, timestamp])
+  @@map("biometric_analyses")
+}
+
+model SleepAnalysis {
+  id             String    @id @default(uuid())
+  playerId       String
+  date           DateTime
+  sleepQuality   Float
+  sleepDuration  Float     // Hours
+  remCycles      Int?
+  deepSleepRatio Float?
+  disruptions    Int?
+  recoveryScore  Float
+  impact         Json?     // Impact on performance
+  createdAt      DateTime  @default(now())
+  
+  @@unique([playerId, date])
+  @@map("sleep_analyses")
+}
+
+// Neural Mesh Network
+model NeuralNode {
+  id             String    @id @default(uuid())
+  serverId       String
+  nodeType       String    // 'data', 'processing', 'ml', 'decision'
+  capabilities   String[]
+  confidence     Float
+  expertise      Json      // Map of domain -> expertise level
+  performance    Json      // Accuracy, speed, reliability metrics
+  state          Json?     // Current node state
+  lastActive     DateTime  @default(now())
+  createdAt      DateTime  @default(now())
+  
+  connections    NeuralConnection[] @relation("FromNode")
+  toConnections  NeuralConnection[] @relation("ToNode")
+  predictions    SwarmPrediction[]  @relation("ContributingNodes")
+  
+  @@index([nodeType, lastActive])
+  @@map("neural_nodes")
+}
+
+model NeuralConnection {
+  id          String    @id @default(uuid())
+  fromNodeId  String
+  toNodeId    String
+  weight      Float
+  type        String    // 'data', 'signal', 'feedback'
+  strength    Float
+  lastActive  DateTime  @default(now())
+  createdAt   DateTime  @default(now())
+  
+  fromNode    NeuralNode @relation("FromNode", fields: [fromNodeId], references: [id])
+  toNode      NeuralNode @relation("ToNode", fields: [toNodeId], references: [id])
+  
+  @@unique([fromNodeId, toNodeId])
+  @@map("neural_connections")
+}
+
+model SwarmPrediction {
+  id              String    @id @default(uuid())
+  query           String
+  domain          String
+  prediction      Json
+  consensus       Float
+  confidence      Float
+  reasoning       String[]
+  dissent         Json?     // Dissenting opinions
+  participantIds  String[]
+  createdAt       DateTime  @default(now())
+  
+  participants    NeuralNode[] @relation("ContributingNodes")
+  
+  @@index([domain, createdAt])
+  @@map("swarm_predictions")
+}
+
+model EmergentInsight {
+  id                 String    @id @default(uuid())
+  insightType        String    // 'pattern', 'anomaly', 'correlation', 'prediction'
+  description        String
+  confidence         Float
+  contributingNodes  String[]
+  evidence           Json
+  impact             Float?
+  actionable         Boolean   @default(false)
+  expiresAt          DateTime?
+  createdAt          DateTime  @default(now())
+  
+  @@index([insightType, confidence])
+  @@map("emergent_insights")
+}
+
+// Conversational Memory
+model ConversationSession {
+  id              String    @id @default(uuid())
+  userId          String
+  sessionId       String    @unique
+  startedAt       DateTime  @default(now())
+  endedAt         DateTime?
+  mood            Json?     // Energy, confidence, frustration levels
+  currentTopic    String?
+  satisfaction    Float?
+  
+  interactions    ConversationTurn[]
+  
+  @@index([userId, startedAt])
+  @@map("conversation_sessions")
+}
+
+model ConversationTurn {
+  id                String    @id @default(uuid())
+  sessionId         String
+  userInput         String
+  assistantResponse String    @db.Text
+  intent            String?
+  entities          Json?
+  emotion           String?
+  satisfaction      Float?
+  timestamp         DateTime  @default(now())
+  
+  session           ConversationSession @relation(fields: [sessionId], references: [sessionId])
+  
+  @@index([sessionId, timestamp])
+  @@map("conversation_turns")
+}
+
+model UserVoicePreferences {
+  id                  String    @id @default(uuid())
+  userId              String    @unique
+  communicationStyle  String    // 'casual', 'formal', 'technical', 'humorous'
+  verbosity           String    // 'brief', 'normal', 'detailed'
+  preferredFormats    String[]
+  dataPreferences     Json      // Show stats, predictions, news, analysis
+  notificationSettings Json     // Injuries, trades, lineup alerts, breaking news
+  updatedAt           DateTime  @updatedAt
+  
+  @@map("user_voice_preferences")
+}
+
+model ConversationMemory {
+  id              String    @id @default(uuid())
+  userId          String
+  memoryType      String    // 'preference', 'knowledge', 'relationship', 'strategy'
+  category        String
+  key             String
+  value           Json
+  confidence      Float
+  lastAccessed    DateTime  @default(now())
+  createdAt       DateTime  @default(now())
+  
+  @@unique([userId, memoryType, key])
+  @@index([userId, category])
+  @@map("conversation_memories")
+}
+
+// Data Fusion Engine
+model DataFusionResult {
+  id                  String    @id @default(uuid())
+  fusionId            String    @unique
+  query               String
+  context             Json
+  fusedInsight        Json
+  confidence          Float
+  contributingSources String[]
+  emergentPatterns    Json?
+  recommendations     String[]
+  processingTime      Int       // milliseconds
+  createdAt           DateTime  @default(now())
+  
+  butterflyEffects    ButterflyEffect[]
+  blackSwanAlerts     BlackSwanAlert[]
+  
+  @@index([createdAt])
+  @@map("data_fusion_results")
+}
+
+model ButterflyEffect {
+  id               String    @id @default(uuid())
+  fusionResultId   String?
+  triggerEvent     Json      // Type, magnitude, source, timestamp
+  cascadeChain     Json      // Array of cascade links
+  impactRadius     Float
+  predictedOutcomes Json     // Array of outcomes with probabilities
+  confidence       Float
+  detectedAt       DateTime  @default(now())
+  
+  fusionResult     DataFusionResult? @relation(fields: [fusionResultId], references: [id])
+  
+  @@index([confidence, detectedAt])
+  @@map("butterfly_effects")
+}
+
+model BlackSwanAlert {
+  id             String    @id @default(uuid())
+  fusionResultId String?
+  alertType      String    // 'market', 'performance', 'injury', 'weather', 'social', 'regulatory'
+  probability    Float
+  impact         Float
+  indicators     Json      // Array of indicator objects
+  earlyWarnings  String[]
+  confidence     Float
+  timeToEvent    Int?      // Estimated hours
+  createdAt      DateTime  @default(now())
+  
+  fusionResult   DataFusionResult? @relation(fields: [fusionResultId], references: [id])
+  
+  @@index([alertType, probability])
+  @@map("black_swan_alerts")
+}
+
+model NarrativeIntelligence {
+  id                String    @id @default(uuid())
+  topic             String
+  storyArcs         Json      // Array of story arc objects
+  mediaInfluence    Json      // Media influence map
+  publicPerception  Json      // Perception metrics
+  narrativeMomentum Float
+  keyNarratives     String[]
+  analyzedAt        DateTime  @default(now())
+  
+  @@index([topic, analyzedAt])
+  @@map("narrative_intelligence")
+}
+
+// Worker Pool Management
+model WorkerJob {
+  id          String    @id @default(uuid())
+  poolName    String
+  taskType    String    // 'statistical', 'ml', 'prediction', 'correlation'
+  priority    Int
+  status      String    // 'pending', 'processing', 'completed', 'failed'
+  data        Json
+  result      Json?
+  error       String?
+  workerId    String?
+  startedAt   DateTime?
+  completedAt DateTime?
+  createdAt   DateTime  @default(now())
+  
+  @@index([poolName, status, priority])
+  @@index([createdAt])
+  @@map("worker_jobs")
+}
+
+model WorkerMetrics {
+  id              String    @id @default(uuid())
+  poolName        String
+  workerId        String
+  tasksCompleted  Int
+  tasksFailed     Int
+  avgProcessTime  Float     // milliseconds
+  cpuUsage        Float
+  memoryUsage     Float
+  gpuUsage        Float?
+  timestamp       DateTime  @default(now())
+  
+  @@index([poolName, workerId, timestamp])
+  @@map("worker_metrics")
+}
+
+// Ultimate Integration Results
+model UltimateQueryResult {
+  id                   String    @id @default(uuid())
+  userId               String
+  query                String
+  mode                 String    // 'voice', 'text', 'multimodal'
+  answer               String    @db.Text
+  confidence           Float
+  innovationIndex      Float
+  processingTime       Int       // milliseconds
+  sourcesUsed          String[]
+  
+  // Revolutionary insights
+  quantumCorrelations  Json?
+  biometricInsights    Json?
+  neuralConsensus      Json?
+  butterflyEffects     Json?
+  narrativeIntelligence Json?
+  blackSwanAlerts      Json?
+  
+  // Actionable intelligence
+  recommendations      String[]
+  urgentAlerts         String[]
+  optimizedLineups     Json?
+  tradeSuggestions     Json?
+  waiverTargets        Json?
+  
+  createdAt            DateTime  @default(now())
+  
+  @@index([userId, createdAt])
+  @@map("ultimate_query_results")
+}

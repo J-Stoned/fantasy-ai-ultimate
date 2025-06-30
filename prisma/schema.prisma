@@ -1,0 +1,1192 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums
+enum SportType {
+  football
+  basketball
+  baseball
+  hockey
+  soccer
+  golf
+  tennis
+  racing
+  mma
+  boxing
+  olympics
+  cricket
+  rugby
+  volleyball
+  track_field
+  other
+}
+
+enum LeagueLevel {
+  professional
+  college
+  high_school
+  youth
+  minor_league
+  international
+  olympic
+}
+
+enum PlatformType {
+  yahoo
+  espn
+  draftkings
+  fanduel
+  sleeper
+  cbs
+  nfl
+  custom
+}
+
+enum InjuryStatus {
+  healthy
+  questionable
+  doubtful
+  out
+  ir
+  day_to_day
+}
+
+// User Profile
+model UserProfile {
+  id              String   @id @default(uuid())
+  userId          String   @unique
+  username        String?  @unique
+  displayName     String?
+  avatarUrl       String?
+  bio             String?
+  favoriteTeams   String[]
+  favoritePlayers String[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("user_profiles")
+}
+
+// Sports Hierarchy
+model Sport {
+  id          String    @id @default(uuid())
+  name        String
+  sportType   SportType
+  description String?
+  rulesUrl    String?
+  createdAt   DateTime  @default(now())
+  
+  leagues     League[]
+  players     Player[]
+
+  @@map("sports")
+}
+
+model League {
+  id           String      @id @default(uuid())
+  sportId      String
+  name         String
+  abbreviation String?
+  level        LeagueLevel
+  country      String?
+  foundedYear  Int?
+  website      String?
+  logoUrl      String?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  
+  sport        Sport       @relation(fields: [sportId], references: [id])
+  teams        TeamMaster[]
+  players      Player[]
+
+  @@map("leagues")
+}
+
+model TeamMaster {
+  id             String   @id @default(uuid())
+  leagueId       String
+  name           String
+  city           String?
+  abbreviation   String?
+  foundedYear    Int?
+  homeVenue      String?
+  logoUrl        String?
+  primaryColor   String?
+  secondaryColor String?
+  website        String?
+  socialMedia    Json?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  
+  league         League   @relation(fields: [leagueId], references: [id])
+  currentPlayers Player[] @relation("CurrentTeam")
+  draftedPlayers Player[] @relation("DraftTeam")
+
+  @@map("teams_master")
+}
+
+// Educational Institutions
+model School {
+  id                String   @id @default(uuid())
+  name              String
+  type              String
+  city              String?
+  state             String?
+  country           String?
+  enrollment        Int?
+  athleticsWebsite  String?
+  mascot            String?
+  colors            String[]
+  conferenceId      String?
+  createdAt         DateTime @default(now())
+  
+  players           Player[]
+  recruitingProfiles RecruitingProfile[] @relation("CommittedSchool")
+
+  @@map("schools")
+}
+
+// Comprehensive Player Model
+model Player {
+  id                String    @id @default(uuid())
+  firstName         String
+  lastName          String
+  fullName          String?
+  nickname          String?
+  dateOfBirth       DateTime?
+  placeOfBirth      String?
+  nationality       String[]
+  
+  // Physical Attributes
+  heightInches      Int?
+  weightLbs         Int?
+  wingspanInches    Int?
+  handSizeInches    Float?
+  
+  // Career Information
+  sportId           String?
+  position          String[]
+  jerseyNumber      String?
+  yearsPro          Int?
+  draftYear         Int?
+  draftRound        Int?
+  draftPick         Int?
+  draftTeamId       String?
+  
+  // Current Status
+  currentTeamId     String?
+  currentLeagueId   String?
+  schoolId          String?
+  status            String?
+  
+  // Media
+  headshotUrl       String?
+  actionPhotoUrl    String?
+  socialMedia       Json?
+  
+  // Search
+  searchVector      String?
+  alternateNames    String[]
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  // Relations
+  sport             Sport?    @relation(fields: [sportId], references: [id])
+  currentTeam       TeamMaster? @relation("CurrentTeam", fields: [currentTeamId], references: [id])
+  draftTeam         TeamMaster? @relation("DraftTeam", fields: [draftTeamId], references: [id])
+  currentLeague     League?   @relation(fields: [currentLeagueId], references: [id])
+  school            School?   @relation(fields: [schoolId], references: [id])
+  
+  stats             PlayerStats[]
+  gameLogs          PlayerGameLog[]
+  injuries          PlayerInjury[]
+  equipment         PlayerEquipment[]
+  contracts         PlayerContract[]
+  nilDeals          NilDeal[]
+  platformMappings  PlayerPlatformMapping[]
+  trends            PlayerTrend[]
+  matchupHistory    MatchupHistory[]
+  recruitingProfile RecruitingProfile?
+  combineResults    CombineResult[]
+
+  @@unique([firstName, lastName, dateOfBirth])
+  @@index([sportId])
+  @@index([currentTeamId])
+  @@index([currentLeagueId])
+  @@index([position]) // GIN index for array field
+  @@map("players")
+}
+
+// Player Statistics
+model PlayerStats {
+  id         String   @id @default(uuid())
+  playerId   String
+  season     Int
+  seasonType String?
+  teamId     String?
+  leagueId   String?
+  gamesPlayed Int     @default(0)
+  stats      Json
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  
+  player     Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@unique([playerId, season, seasonType, teamId])
+  @@index([playerId, season])
+  @@map("player_stats")
+}
+
+model PlayerGameLog {
+  id            String   @id @default(uuid())
+  playerId      String
+  gameId        String?
+  gameDate      DateTime
+  opponentId    String?
+  isHome        Boolean?
+  stats         Json
+  fantasyPoints Float?
+  createdAt     DateTime @default(now())
+  
+  player        Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@index([playerId, gameDate])
+  @@map("player_game_logs")
+}
+
+// Health and Equipment
+model PlayerInjury {
+  id             String       @id @default(uuid())
+  playerId       String
+  injuryDate     DateTime
+  injuryType     String
+  bodyPart       String?
+  severity       Int?
+  status         InjuryStatus?
+  expectedReturn DateTime?
+  actualReturn   DateTime?
+  gamesMissed    Int?
+  description    String?
+  source         String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  
+  player         Player       @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@index([playerId])
+  @@index([injuryDate])
+  @@map("player_injuries")
+}
+
+model EquipmentBrand {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  category  String[]
+  website   String?
+  createdAt DateTime @default(now())
+  
+  models    EquipmentModel[]
+
+  @@map("equipment_brands")
+}
+
+model EquipmentModel {
+  id           String   @id @default(uuid())
+  brandId      String
+  modelName    String
+  category     String
+  releaseYear  Int?
+  safetyRating Float?
+  features     Json?
+  createdAt    DateTime @default(now())
+  
+  brand        EquipmentBrand @relation(fields: [brandId], references: [id])
+  playerUsage  PlayerEquipment[]
+
+  @@map("equipment_models")
+}
+
+model PlayerEquipment {
+  id          String    @id @default(uuid())
+  playerId    String
+  equipmentId String
+  startDate   DateTime?
+  endDate     DateTime?
+  notes       String?
+  createdAt   DateTime  @default(now())
+  
+  player      Player    @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  equipment   EquipmentModel @relation(fields: [equipmentId], references: [id])
+
+  @@map("player_equipment")
+}
+
+// Financial Data
+model PlayerContract {
+  id              String   @id @default(uuid())
+  playerId        String
+  teamId          String?
+  startDate       DateTime
+  endDate         DateTime
+  totalValue      Float?
+  guaranteedMoney Float?
+  signingBonus    Float?
+  annualSalary    Float?
+  incentives      Json?
+  contractType    String?
+  createdAt       DateTime @default(now())
+  
+  player          Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@map("player_contracts")
+}
+
+model NilDeal {
+  id                 String    @id @default(uuid())
+  playerId           String
+  companyName        String
+  dealValue          Float?
+  startDate          DateTime?
+  endDate            DateTime?
+  dealType           String?
+  socialRequirements Json?
+  createdAt          DateTime  @default(now())
+  
+  player             Player    @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@map("nil_deals")
+}
+
+// Fantasy Platform Integration
+model PlatformConnection {
+  id              String       @id @default(uuid())
+  userId          String
+  platform        PlatformType
+  platformUserId  String?
+  accessToken     String?
+  refreshToken    String?
+  tokenExpiresAt  DateTime?
+  isActive        Boolean      @default(true)
+  lastSyncAt      DateTime?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  @@unique([userId, platform])
+  @@map("platform_connections")
+}
+
+model FantasyLeague {
+  id               String       @id @default(uuid())
+  platform         PlatformType
+  platformLeagueId String
+  userId           String
+  name             String
+  sportId          String?
+  season           Int?
+  leagueSettings   Json?
+  scoringSettings  Json?
+  rosterSettings   Json?
+  isActive         Boolean      @default(true)
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+  
+  teams            FantasyTeam[]
+
+  @@map("fantasy_leagues")
+}
+
+model FantasyTeam {
+  id             String   @id @default(uuid())
+  leagueId       String
+  userId         String
+  teamName       String
+  platformTeamId String?
+  roster         Json?
+  standings      Json?
+  stats          Json?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  
+  league         FantasyLeague @relation(fields: [leagueId], references: [id], onDelete: Cascade)
+
+  @@map("fantasy_teams")
+}
+
+// Player Platform Mapping
+model PlayerPlatformMapping {
+  id               String       @id @default(uuid())
+  playerId         String
+  platform         PlatformType
+  platformPlayerId String
+  platformData     Json?
+  confidenceScore  Float?
+  verified         Boolean      @default(false)
+  createdAt        DateTime     @default(now())
+  
+  player           Player       @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@unique([platform, platformPlayerId])
+  @@map("player_platform_mapping")
+}
+
+// Analytics
+model PlayerTrend {
+  id             String   @id @default(uuid())
+  playerId       String
+  metricName     String
+  timePeriod     String?
+  trendValue     Float?
+  trendDirection String?
+  confidence     Float?
+  calculatedAt   DateTime @default(now())
+  
+  player         Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@map("player_trends")
+}
+
+model MatchupHistory {
+  id               String   @id @default(uuid())
+  playerId         String
+  opponentTeamId   String?
+  gamesPlayed      Int?
+  avgFantasyPoints Float?
+  bestPerformance  Json?
+  worstPerformance Json?
+  updatedAt        DateTime @updatedAt
+  
+  player           Player   @relation(fields: [playerId], references: [id])
+
+  @@map("matchup_history")
+}
+
+// Youth and Recruiting
+model RecruitingProfile {
+  id                String    @id @default(uuid())
+  playerId          String    @unique
+  graduationYear    Int?
+  gpa               Float?
+  satScore          Int?
+  actScore          Int?
+  starRating        Int?
+  nationalRank      Int?
+  positionRank      Int?
+  stateRank         Int?
+  committedSchoolId String?
+  commitmentDate    DateTime?
+  otherOffers       String[]
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  player            Player    @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  committedSchool   School?   @relation("CommittedSchool", fields: [committedSchoolId], references: [id])
+
+  @@map("recruiting_profiles")
+}
+
+model CombineResult {
+  id             String    @id @default(uuid())
+  playerId       String
+  eventName      String?
+  eventDate      DateTime?
+  fortyYardDash  Float?
+  verticalJump   Float?
+  broadJump      Int?
+  benchPressReps Int?
+  threeConeDrill Float?
+  shuttleRun     Float?
+  measurements   Json?
+  createdAt      DateTime  @default(now())
+  
+  player         Player    @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@map("combine_results")
+}
+
+// Game and Venue Data
+model Game {
+  id               String    @id @default(uuid())
+  sportId          String?
+  leagueId         String?
+  homeTeamId       String?
+  awayTeamId       String?
+  gameDate         DateTime
+  venueId          String?
+  attendance       Int?
+  broadcastInfo    Json?
+  officials        Json?
+  finalScoreHome   Int?
+  finalScoreAway   Int?
+  overtimePeriods  Int?
+  gameStatus       String?
+  weatherId        String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@index([gameDate])
+  @@index([homeTeamId, awayTeamId])
+  @@map("games")
+}
+
+model Venue {
+  id             String   @id @default(uuid())
+  name           String
+  city           String?
+  state          String?
+  country        String?
+  capacity       Int?
+  surfaceType    String?
+  roofType       String?
+  elevationFeet  Int?
+  yearBuilt      Int?
+  coordinates    Json?
+  timezone       String?
+  createdAt      DateTime @default(now())
+
+  @@map("venues")
+}
+
+// Officials
+model Official {
+  id              String   @id @default(uuid())
+  firstName       String
+  lastName        String
+  sportId         String?
+  yearsExperience Int?
+  crewChief       Boolean  @default(false)
+  stats           Json?
+  tendencies      Json?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("officials")
+}
+
+// Betting Data
+model BettingLine {
+  id         String   @id @default(uuid())
+  gameId     String?
+  sportsbook String
+  lineType   String?
+  homeLine   Float?
+  awayLine   Float?
+  overUnder  Float?
+  homeOdds   Int?
+  awayOdds   Int?
+  timestamp  DateTime
+  createdAt  DateTime @default(now())
+
+  @@index([gameId])
+  @@map("betting_lines")
+}
+
+model PropBet {
+  id         String    @id @default(uuid())
+  gameId     String?
+  playerId   String?
+  propType   String
+  line       Float?
+  overOdds   Int?
+  underOdds  Int?
+  sportsbook String?
+  timestamp  DateTime?
+  createdAt  DateTime  @default(now())
+
+  @@index([playerId])
+  @@map("prop_bets")
+}
+
+// Media Content
+model NewsArticle {
+  id               String    @id @default(uuid())
+  title            String
+  content          String?
+  summary          String?
+  source           String?
+  author           String?
+  publishedAt      DateTime?
+  url              String?   @unique
+  playersMentioned String[]
+  teamsMentioned   String[]
+  sentimentScore   Float?
+  categories       String[]
+  createdAt        DateTime  @default(now())
+
+  @@index([publishedAt])
+  @@map("news_articles")
+}
+
+model SocialMention {
+  id              String    @id @default(uuid())
+  platform        String
+  postId          String?
+  playerId        String?
+  content         String?
+  author          String?
+  postedAt        DateTime?
+  engagementScore Int?
+  sentiment       Float?
+  createdAt       DateTime  @default(now())
+
+  @@index([playerId])
+  @@map("social_mentions")
+}
+
+// Weather Data
+model WeatherCondition {
+  id                  String    @id @default(uuid())
+  gameId              String?
+  venue               String?
+  gameTime            DateTime?
+  temperatureF        Int?
+  windMph             Int?
+  windDirection       String?
+  precipitationType   String?
+  precipitationChance Int?
+  humidityPercent     Int?
+  conditions          String?
+  createdAt           DateTime  @default(now())
+
+  @@map("weather_conditions")
+}
+
+// Training and Development
+model TrainingFacility {
+  id              String   @id @default(uuid())
+  name            String
+  type            String?
+  city            String?
+  state           String?
+  features        Json?
+  notableTrainers String[]
+  createdAt       DateTime @default(now())
+
+  @@map("training_facilities")
+}
+
+model PlayerTraining {
+  id           String    @id @default(uuid())
+  playerId     String
+  facilityId   String?
+  trainerName  String?
+  trainingType String?
+  startDate    DateTime?
+  endDate      DateTime?
+  focusAreas   String[]
+  notes        String?
+  createdAt    DateTime  @default(now())
+
+  @@map("player_training")
+}
+
+// Scouting
+model ScoutingReport {
+  id                String    @id @default(uuid())
+  playerId          String
+  scoutName         String?
+  organization      String?
+  reportDate        DateTime?
+  strengths         String[]
+  weaknesses        String[]
+  overallGrade      String?
+  positionGrade     String?
+  athleticismScore  Int?
+  skillScores       Json?
+  projection        String?
+  comparisonPlayers String[]
+  detailedNotes     String?
+  createdAt         DateTime  @default(now())
+
+  @@index([playerId])
+  @@map("scouting_reports")
+}
+
+// Youth Sports
+model HighSchoolLeague {
+  id             String   @id @default(uuid())
+  name           String
+  state          String?
+  classification String?
+  memberSchools  String[]
+  sportId        String?
+  createdAt      DateTime @default(now())
+
+  @@map("high_school_leagues")
+}
+
+model AAUTeam {
+  id            String   @id @default(uuid())
+  name          String
+  sportId       String?
+  circuit       String?
+  homeCity      String?
+  homeState     String?
+  foundedYear   Int?
+  notableAlumni String[]
+  createdAt     DateTime @default(now())
+
+  @@map("aau_teams")
+}
+
+// Analytics
+model PlayerAdvancedMetric {
+  id            String   @id @default(uuid())
+  playerId      String
+  season        Int?
+  metricType    String?
+  value         Float?
+  percentile    Int?
+  leagueAverage Float?
+  calculatedAt  DateTime @default(now())
+
+  @@index([playerId, season])
+  @@map("player_advanced_metrics")
+}
+
+model FantasyProjection {
+  id               String   @id @default(uuid())
+  playerId         String
+  gameId           String?
+  projectionSource String?
+  projectedPoints  Float?
+  floorPoints      Float?
+  ceilingPoints    Float?
+  confidenceRating Float?
+  createdAt        DateTime @default(now())
+
+  @@index([playerId, gameId])
+  @@map("fantasy_projections")
+}
+
+model DFSOwnershipProjection {
+  id                 String       @id @default(uuid())
+  playerId           String
+  platform           PlatformType?
+  contestType        String?
+  projectedOwnership Float?
+  actualOwnership    Float?
+  gameDate           DateTime?
+  createdAt          DateTime     @default(now())
+
+  @@map("dfs_ownership_projections")
+}
+
+// Social Media
+model SocialMediaAccount {
+  id             String    @id @default(uuid())
+  entityType     String?
+  entityId       String?
+  platform       String?
+  handle         String?
+  verified       Boolean   @default(false)
+  followersCount Int?
+  followingCount Int?
+  postsCount     Int?
+  engagementRate Float?
+  lastUpdated    DateTime?
+  createdAt      DateTime  @default(now())
+
+  @@map("social_media_accounts")
+}
+
+// Import and Sync
+model ImportHistory {
+  id              String    @id @default(uuid())
+  userId          String?
+  platform        PlatformType
+  importType      String?
+  status          String?
+  startedAt       DateTime  @default(now())
+  completedAt     DateTime?
+  recordsImported Int?
+  errorMessage    String?
+  metadata        Json?
+
+  @@map("import_history")
+}
+
+model SyncLog {
+  id         String    @id @default(uuid())
+  entityType String
+  entityId   String?
+  syncSource String?
+  syncStatus String?
+  lastSyncAt DateTime  @default(now())
+  nextSyncAt DateTime?
+  syncData   Json?
+
+  @@map("sync_logs")
+}
+
+// ==========================================
+// REVOLUTIONARY FEATURES DATABASE MODELS
+// ==========================================
+
+// Quantum Correlations
+model QuantumCorrelation {
+  id                String    @id @default(uuid())
+  correlationType   String    // 'chaos_game', 'entanglement', 'uncertainty', 'smart_money'
+  entityId1         String?   // Player, team, or game ID
+  entityId2         String?   // Related entity
+  correlation       Float
+  confidence        Float
+  magnitude         Float
+  quantumState      Json?     // Complex quantum state representation
+  observedAt        DateTime  @default(now())
+  expiresAt         DateTime?
+  metadata          Json?
+  
+  @@index([correlationType, observedAt])
+  @@index([entityId1, entityId2])
+  @@map("quantum_correlations")
+}
+
+model ChaosGamePrediction {
+  id               String    @id @default(uuid())
+  gameId           String?
+  week             Int
+  chaosScore       Float
+  predictedUpset   Boolean
+  confidence       Float
+  quantumFactors   Json      // Quantum factors contributing to chaos
+  actualOutcome    Json?     // Filled after game completes
+  createdAt        DateTime  @default(now())
+  
+  @@index([week, chaosScore])
+  @@map("chaos_game_predictions")
+}
+
+// Biometric Intelligence
+model BiometricAnalysis {
+  id                  String    @id @default(uuid())
+  playerId            String
+  analysisType        String    // 'fatigue', 'stress', 'injury_risk', 'performance'
+  timestamp           DateTime  @default(now())
+  
+  // Fatigue metrics
+  fatigueScore        Float?
+  fatigueFactors      Json?
+  recoveryTime        Int?      // Hours needed
+  
+  // Stress indicators
+  stressLevel         Float?
+  stressors           Json?
+  psychologicalState  Json?
+  
+  // Injury risk
+  injuryRisk          Float?
+  riskFactors         Json?
+  vulnerableAreas     String[]
+  
+  // Performance capacity
+  performanceCapacity Float?
+  peakWindow          Json?     // Optimal performance times
+  limitations         Json?
+  
+  confidence          Float
+  dataQuality         Float
+  sources             String[]
+  
+  @@index([playerId, analysisType, timestamp])
+  @@map("biometric_analyses")
+}
+
+model SleepAnalysis {
+  id             String    @id @default(uuid())
+  playerId       String
+  date           DateTime
+  sleepQuality   Float
+  sleepDuration  Float     // Hours
+  remCycles      Int?
+  deepSleepRatio Float?
+  disruptions    Int?
+  recoveryScore  Float
+  impact         Json?     // Impact on performance
+  createdAt      DateTime  @default(now())
+  
+  @@unique([playerId, date])
+  @@map("sleep_analyses")
+}
+
+// Neural Mesh Network
+model NeuralNode {
+  id             String    @id @default(uuid())
+  serverId       String
+  nodeType       String    // 'data', 'processing', 'ml', 'decision'
+  capabilities   String[]
+  confidence     Float
+  expertise      Json      // Map of domain -> expertise level
+  performance    Json      // Accuracy, speed, reliability metrics
+  state          Json?     // Current node state
+  lastActive     DateTime  @default(now())
+  createdAt      DateTime  @default(now())
+  
+  connections    NeuralConnection[] @relation("FromNode")
+  toConnections  NeuralConnection[] @relation("ToNode")
+  predictions    SwarmPrediction[]  @relation("ContributingNodes")
+  
+  @@index([nodeType, lastActive])
+  @@map("neural_nodes")
+}
+
+model NeuralConnection {
+  id          String    @id @default(uuid())
+  fromNodeId  String
+  toNodeId    String
+  weight      Float
+  type        String    // 'data', 'signal', 'feedback'
+  strength    Float
+  lastActive  DateTime  @default(now())
+  createdAt   DateTime  @default(now())
+  
+  fromNode    NeuralNode @relation("FromNode", fields: [fromNodeId], references: [id])
+  toNode      NeuralNode @relation("ToNode", fields: [toNodeId], references: [id])
+  
+  @@unique([fromNodeId, toNodeId])
+  @@map("neural_connections")
+}
+
+model SwarmPrediction {
+  id              String    @id @default(uuid())
+  query           String
+  domain          String
+  prediction      Json
+  consensus       Float
+  confidence      Float
+  reasoning       String[]
+  dissent         Json?     // Dissenting opinions
+  participantIds  String[]
+  createdAt       DateTime  @default(now())
+  
+  participants    NeuralNode[] @relation("ContributingNodes")
+  
+  @@index([domain, createdAt])
+  @@map("swarm_predictions")
+}
+
+model EmergentInsight {
+  id                 String    @id @default(uuid())
+  insightType        String    // 'pattern', 'anomaly', 'correlation', 'prediction'
+  description        String
+  confidence         Float
+  contributingNodes  String[]
+  evidence           Json
+  impact             Float?
+  actionable         Boolean   @default(false)
+  expiresAt          DateTime?
+  createdAt          DateTime  @default(now())
+  
+  @@index([insightType, confidence])
+  @@map("emergent_insights")
+}
+
+// Conversational Memory
+model ConversationSession {
+  id              String    @id @default(uuid())
+  userId          String
+  sessionId       String    @unique
+  startedAt       DateTime  @default(now())
+  endedAt         DateTime?
+  mood            Json?     // Energy, confidence, frustration levels
+  currentTopic    String?
+  satisfaction    Float?
+  
+  interactions    ConversationTurn[]
+  
+  @@index([userId, startedAt])
+  @@map("conversation_sessions")
+}
+
+model ConversationTurn {
+  id                String    @id @default(uuid())
+  sessionId         String
+  userInput         String
+  assistantResponse String    @db.Text
+  intent            String?
+  entities          Json?
+  emotion           String?
+  satisfaction      Float?
+  timestamp         DateTime  @default(now())
+  
+  session           ConversationSession @relation(fields: [sessionId], references: [sessionId])
+  
+  @@index([sessionId, timestamp])
+  @@map("conversation_turns")
+}
+
+model UserVoicePreferences {
+  id                  String    @id @default(uuid())
+  userId              String    @unique
+  communicationStyle  String    // 'casual', 'formal', 'technical', 'humorous'
+  verbosity           String    // 'brief', 'normal', 'detailed'
+  preferredFormats    String[]
+  dataPreferences     Json      // Show stats, predictions, news, analysis
+  notificationSettings Json     // Injuries, trades, lineup alerts, breaking news
+  updatedAt           DateTime  @updatedAt
+  
+  @@map("user_voice_preferences")
+}
+
+model ConversationMemory {
+  id              String    @id @default(uuid())
+  userId          String
+  memoryType      String    // 'preference', 'knowledge', 'relationship', 'strategy'
+  category        String
+  key             String
+  value           Json
+  confidence      Float
+  lastAccessed    DateTime  @default(now())
+  createdAt       DateTime  @default(now())
+  
+  @@unique([userId, memoryType, key])
+  @@index([userId, category])
+  @@map("conversation_memories")
+}
+
+// Data Fusion Engine
+model DataFusionResult {
+  id                  String    @id @default(uuid())
+  fusionId            String    @unique
+  query               String
+  context             Json
+  fusedInsight        Json
+  confidence          Float
+  contributingSources String[]
+  emergentPatterns    Json?
+  recommendations     String[]
+  processingTime      Int       // milliseconds
+  createdAt           DateTime  @default(now())
+  
+  butterflyEffects    ButterflyEffect[]
+  blackSwanAlerts     BlackSwanAlert[]
+  
+  @@index([createdAt])
+  @@map("data_fusion_results")
+}
+
+model ButterflyEffect {
+  id               String    @id @default(uuid())
+  fusionResultId   String?
+  triggerEvent     Json      // Type, magnitude, source, timestamp
+  cascadeChain     Json      // Array of cascade links
+  impactRadius     Float
+  predictedOutcomes Json     // Array of outcomes with probabilities
+  confidence       Float
+  detectedAt       DateTime  @default(now())
+  
+  fusionResult     DataFusionResult? @relation(fields: [fusionResultId], references: [id])
+  
+  @@index([confidence, detectedAt])
+  @@map("butterfly_effects")
+}
+
+model BlackSwanAlert {
+  id             String    @id @default(uuid())
+  fusionResultId String?
+  alertType      String    // 'market', 'performance', 'injury', 'weather', 'social', 'regulatory'
+  probability    Float
+  impact         Float
+  indicators     Json      // Array of indicator objects
+  earlyWarnings  String[]
+  confidence     Float
+  timeToEvent    Int?      // Estimated hours
+  createdAt      DateTime  @default(now())
+  
+  fusionResult   DataFusionResult? @relation(fields: [fusionResultId], references: [id])
+  
+  @@index([alertType, probability])
+  @@map("black_swan_alerts")
+}
+
+model NarrativeIntelligence {
+  id                String    @id @default(uuid())
+  topic             String
+  storyArcs         Json      // Array of story arc objects
+  mediaInfluence    Json      // Media influence map
+  publicPerception  Json      // Perception metrics
+  narrativeMomentum Float
+  keyNarratives     String[]
+  analyzedAt        DateTime  @default(now())
+  
+  @@index([topic, analyzedAt])
+  @@map("narrative_intelligence")
+}
+
+// Worker Pool Management
+model WorkerJob {
+  id          String    @id @default(uuid())
+  poolName    String
+  taskType    String    // 'statistical', 'ml', 'prediction', 'correlation'
+  priority    Int
+  status      String    // 'pending', 'processing', 'completed', 'failed'
+  data        Json
+  result      Json?
+  error       String?
+  workerId    String?
+  startedAt   DateTime?
+  completedAt DateTime?
+  createdAt   DateTime  @default(now())
+  
+  @@index([poolName, status, priority])
+  @@index([createdAt])
+  @@map("worker_jobs")
+}
+
+model WorkerMetrics {
+  id              String    @id @default(uuid())
+  poolName        String
+  workerId        String
+  tasksCompleted  Int
+  tasksFailed     Int
+  avgProcessTime  Float     // milliseconds
+  cpuUsage        Float
+  memoryUsage     Float
+  gpuUsage        Float?
+  timestamp       DateTime  @default(now())
+  
+  @@index([poolName, workerId, timestamp])
+  @@map("worker_metrics")
+}
+
+// Ultimate Integration Results
+model UltimateQueryResult {
+  id                   String    @id @default(uuid())
+  userId               String
+  query                String
+  mode                 String    // 'voice', 'text', 'multimodal'
+  answer               String    @db.Text
+  confidence           Float
+  innovationIndex      Float
+  processingTime       Int       // milliseconds
+  sourcesUsed          String[]
+  
+  // Revolutionary insights
+  quantumCorrelations  Json?
+  biometricInsights    Json?
+  neuralConsensus      Json?
+  butterflyEffects     Json?
+  narrativeIntelligence Json?
+  blackSwanAlerts      Json?
+  
+  // Actionable intelligence
+  recommendations      String[]
+  urgentAlerts         String[]
+  optimizedLineups     Json?
+  tradeSuggestions     Json?
+  waiverTargets        Json?
+  
+  createdAt            DateTime  @default(now())
+  
+  @@index([userId, createdAt])
+  @@map("ultimate_query_results")
+}

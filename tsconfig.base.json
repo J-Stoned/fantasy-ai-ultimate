@@ -1,0 +1,45 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@fantasy-ai-ultimate/shared-ui": [
+        "libs/shared-ui/src/index.ts"
+      ],
+      "@fantasy-ai-ultimate/voice": [
+        "lib/voice/index.ts"
+      ],
+      "@fantasy-ai-ultimate/dfs": [
+        "lib/dfs/index.ts"
+      ],
+      "@fantasy-ai-ultimate/api": [
+        "lib/api/index.ts"
+      ],
+      "@fantasy-ai-ultimate/types": [
+        "lib/types/index.ts"
+      ],
+      "@fantasy-ai-ultimate/components": [
+        "lib/components/index.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}

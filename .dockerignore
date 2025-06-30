@@ -1,0 +1,81 @@
+# MARCUS "THE FIXER" RODRIGUEZ - DOCKER IGNORE
+# 
+# Keep your Docker context clean and builds fast.
+# Dont send unnecessary files to the Docker daemon.
+
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+.pnp
+.pnp.js
+
+# Testing
+coverage
+.nyc_output
+*.test.*
+*.spec.*
+__tests__
+e2e
+web-e2e
+jest.config.*
+cypress
+cypress.json
+
+# Next.js
+.next
+out
+build
+dist
+
+# Development
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local.EXPOSED_DO_NOT_USE
+*.log
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*.swn
+*.DS_Store
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+docs
+*.md
+LICENSE
+
+# Mobile app (not needed for web Docker)
+mobile
+apps/mobile
+ios
+android
+.expo
+.expo-shared
+
+# Misc
+.dockerignore
+Dockerfile
+docker-compose.yml
+.github
+.husky
+.eslintrc.*
+.prettierrc
+.editorconfig
+
+# Build artifacts
+*.map
+*.tsbuildinfo
+
+# OS
+Thumbs.db

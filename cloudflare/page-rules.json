@@ -1,0 +1,101 @@
+{
+  "ddos_protection": {
+    "sensitivity_level": "high",
+    "action": "challenge",
+    "threshold": {
+      "requests_per_second": 100,
+      "requests_per_minute": 1000
+    }
+  },
+  "rate_limiting_rules": [
+    {
+      "name": "API Rate Limiting",
+      "expression": "(http.request.uri.path matches \"^/api/\")",
+      "action": "challenge",
+      "characteristics": ["ip.src"],
+      "period": 60,
+      "requests_per_period": 100,
+      "mitigation_timeout": 600
+    },
+    {
+      "name": "Auth Endpoint Protection",
+      "expression": "(http.request.uri.path matches \"^/api/auth/\")",
+      "action": "block",
+      "characteristics": ["ip.src"],
+      "period": 900,
+      "requests_per_period": 5,
+      "mitigation_timeout": 3600
+    },
+    {
+      "name": "NFL Sunday Surge Allowance",
+      "expression": "(http.request.uri.path matches \"^/api/\" and http.request.headers[\"x-nfl-sunday\"][0] eq \"true\")",
+      "action": "challenge",
+      "characteristics": ["ip.src"],
+      "period": 60,
+      "requests_per_period": 300,
+      "mitigation_timeout": 300
+    }
+  ],
+  "firewall_rules": [
+    {
+      "name": "Block Common Attacks",
+      "expression": "(http.request.uri.query contains \"<script\" or http.request.uri.query contains \"SELECT\" or http.request.uri.query contains \"UNION\" or http.request.uri.query contains \"../../\")",
+      "action": "block"
+    },
+    {
+      "name": "Block Bad Bots",
+      "expression": "(http.user_agent contains \"bot\" and not http.user_agent contains \"googlebot\" and not http.user_agent contains \"bingbot\")",
+      "action": "challenge"
+    },
+    {
+      "name": "Geo-blocking High Risk Countries",
+      "expression": "(ip.geoip.country in {\"CN\" \"RU\" \"KP\"})",
+      "action": "challenge"
+    }
+  ],
+  "page_rules": [
+    {
+      "url": "*.fantasy-ai-ultimate.com/api/*",
+      "actions": {
+        "security_level": "high",
+        "cache_level": "bypass",
+        "disable_apps": true
+      }
+    },
+    {
+      "url": "*.fantasy-ai-ultimate.com/static/*",
+      "actions": {
+        "cache_level": "cache_everything",
+        "edge_cache_ttl": 2592000,
+        "browser_cache_ttl": 2592000
+      }
+    },
+    {
+      "url": "*.fantasy-ai-ultimate.com/_next/static/*",
+      "actions": {
+        "cache_level": "cache_everything",
+        "edge_cache_ttl": 31536000,
+        "browser_cache_ttl": 31536000
+      }
+    }
+  ],
+  "waf_rules": {
+    "owasp_rules": "enabled",
+    "managed_rules": {
+      "cloudflare": "enabled",
+      "owasp": "enabled"
+    },
+    "custom_rules": [
+      {
+        "name": "Block SQL Injection Attempts",
+        "expression": "(http.request.body.raw contains \"' OR '1'='1\" or http.request.body.raw contains \"DROP TABLE\" or http.request.body.raw contains \"<script>\")",
+        "action": "block"
+      }
+    ]
+  },
+  "bot_management": {
+    "verified_bots": "allow",
+    "likely_automated": "challenge",
+    "score_threshold": 30
+  }
+}
