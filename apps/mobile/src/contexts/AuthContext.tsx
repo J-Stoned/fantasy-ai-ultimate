@@ -27,7 +27,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // Check initial session
-    auth.getSession().then((session) => {
+    auth.getSession().then(({ session }) => {
       setSession(session);
       setUser(session?.user ?? null);
       setLoading(false);
@@ -46,8 +46,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signIn = async (email: string, password: string) => {
     try {
-      const { user } = await auth.signIn(email, password);
+      const data = await auth.signIn(email, password);
+      const { user, session } = data;
       setUser(user);
+      setSession(session);
     } catch (error: any) {
       Alert.alert('Sign In Failed', error.message);
       throw error;
@@ -56,7 +58,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signUp = async (email: string, password: string) => {
     try {
-      const { user } = await auth.signUp(email, password);
+      const data = await auth.signUp(email, password);
+      const { user, session } = data;
       if (user) {
         Alert.alert(
           'Success!',

@@ -20,15 +20,18 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function LoginScreen() {
   const navigation = useNavigation();
+  const { signIn, signUp } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
 
-  const handleLogin = async () => {
+  const handleAuth = async () => {
     if (!email || !password) {
       Alert.alert('Error', 'Please fill in all fields');
       return;
@@ -36,15 +39,17 @@ export default function LoginScreen() {
 
     setLoading(true);
     try {
-      // TODO: Implement real authentication
-      setTimeout(() => {
-        setLoading(false);
-        // Navigate to main app
-        navigation.navigate('Main' as never);
-      }, 1500);
+      if (isSignUp) {
+        await signUp(email, password);
+        setIsSignUp(false); // Switch back to login after signup
+      } else {
+        await signIn(email, password);
+        // Navigation will happen automatically via auth state change
+      }
     } catch (error) {
+      // Error alert already shown by AuthContext
+    } finally {
       setLoading(false);
-      Alert.alert('Error', 'Failed to login. Please try again.');
     }
   };
 
@@ -106,13 +111,13 @@ export default function LoginScreen() {
 
           <TouchableOpacity
             style={[styles.loginButton, loading && styles.loginButtonDisabled]}
-            onPress={handleLogin}
+            onPress={handleAuth}
             disabled={loading}
           >
             {loading ? (
               <ActivityIndicator color="white" />
             ) : (
-              <Text style={styles.loginButtonText}>Login</Text>
+              <Text style={styles.loginButtonText}>{isSignUp ? 'Sign Up' : 'Login'}</Text>
             )}
           </TouchableOpacity>
 
@@ -146,9 +151,11 @@ export default function LoginScreen() {
         </View>
 
         <View style={styles.signupContainer}>
-          <Text style={styles.signupText}>Don't have an account? </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Onboarding' as never)}>
-            <Text style={styles.signupLink}>Sign Up</Text>
+          <Text style={styles.signupText}>
+            {isSignUp ? 'Already have an account? ' : "Don't have an account? "}
+          </Text>
+          <TouchableOpacity onPress={() => setIsSignUp(!isSignUp)}>
+            <Text style={styles.signupLink}>{isSignUp ? 'Login' : 'Sign Up'}</Text>
           </TouchableOpacity>
         </View>
       </LinearGradient>
