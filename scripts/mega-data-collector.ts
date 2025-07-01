@@ -300,10 +300,19 @@ async function collectWeather() {
 async function collectNBA() {
   console.log(chalk.yellow('🏀 NBA Data Collector starting...'));
   
+  if (!process.env.BALLDONTLIE_API_KEY) {
+    console.log(chalk.gray('No BallDontLie API key, skipping...'));
+    return;
+  }
+  
   try {
     // Get all NBA players
     await limits.nba(async () => {
-      const { data } = await axios.get('https://www.balldontlie.io/api/v1/players?per_page=100');
+      const { data } = await axios.get('https://www.balldontlie.io/api/v1/players?per_page=100', {
+        headers: {
+          'Authorization': process.env.BALLDONTLIE_API_KEY
+        }
+      });
       
       for (const player of data.data) {
         await supabase.from('players').upsert({
@@ -322,7 +331,11 @@ async function collectNBA() {
       // Get more pages
       for (let page = 2; page <= 10; page++) {
         await limits.nba(async () => {
-          const { data } = await axios.get(`https://www.balldontlie.io/api/v1/players?per_page=100&page=${page}`);
+          const { data } = await axios.get(`https://www.balldontlie.io/api/v1/players?per_page=100&page=${page}`, {
+            headers: {
+              'Authorization': process.env.BALLDONTLIE_API_KEY
+            }
+          });
           
           for (const player of data.data) {
             await supabase.from('players').upsert({
