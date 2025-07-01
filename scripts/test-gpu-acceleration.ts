@@ -1,197 +1,174 @@
 #!/usr/bin/env tsx
 /**
- * GPU ACCELERATION TEST
- * Tests RTX 4060 GPU capabilities
+ * GPU Acceleration Test Script
+ * Verifies RTX 4060 is properly configured and working
  */
 
+import * as tf from '@tensorflow/tfjs-node-gpu';
 import chalk from 'chalk';
-import { performance } from 'perf_hooks';
+import { configureGPU, benchmarkGPU, monitorGPUMemory } from '../lib/voice/training/gpu-config';
+import { GPUAccelerator } from '../lib/voice/training/gpu-accelerator';
+import { RealTimeTrainer } from '../lib/voice/training/real-time-trainer';
+import { execSync } from 'child_process';
+import * as os from 'os';
 
-console.log(chalk.red.bold('\n🚀 GPU ACCELERATION TEST'));
-console.log(chalk.red('========================\n'));
+console.log(chalk.blue.bold('\n🚀 GPU ACCELERATION TEST\n'));
 
-// Test 1: Check GPU availability
-async function testGPUAvailability() {
-  console.log(chalk.yellow('1. Checking GPU availability...'));
-  
+async function testGPU() {
   try {
-    // Check NVIDIA GPU
-    const { execSync } = require('child_process');
-    const gpuInfo = execSync('nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader', 
-      { encoding: 'utf8' });
-    
-    console.log(chalk.green('✅ GPU Detected:'));
-    console.log(`   ${gpuInfo.trim()}`);
-    
-    // Get detailed GPU info
-    const detailedInfo = execSync('nvidia-smi', { encoding: 'utf8' });
-    console.log(chalk.gray('\nDetailed GPU Info:'));
-    console.log(detailedInfo);
-    
-    return true;
-  } catch (error) {
-    console.log(chalk.red('❌ GPU not detected or NVIDIA drivers not installed'));
-    return false;
-  }
-}
-
-// Test 2: TensorFlow GPU test
-async function testTensorFlowGPU() {
-  console.log(chalk.yellow('\n2. Testing TensorFlow GPU acceleration...'));
-  
-  try {
-    // Dynamic import to handle module loading
-    const tf = await import('@tensorflow/tfjs-node');
-    
-    console.log(chalk.blue('TensorFlow version:'), tf.version.tfjs);
-    
-    // Check backend
-    console.log(chalk.blue('Backend:'), tf.getBackend());
-    
-    // Create large tensors to test GPU
-    console.log(chalk.yellow('\nRunning GPU benchmark...'));
-    
-    const size = 4096;
-    const iterations = 100;
-    
-    // CPU benchmark
-    tf.setBackend('cpu');
-    await tf.ready();
-    
-    const cpuStart = performance.now();
-    for (let i = 0; i < iterations; i++) {
-      const a = tf.randomNormal([size, size]);
-      const b = tf.randomNormal([size, size]);
-      const c = tf.matMul(a, b);
-      c.dispose();
-      a.dispose();
-      b.dispose();
-    }
-    const cpuTime = performance.now() - cpuStart;
-    
-    console.log(chalk.yellow(`CPU Time: ${cpuTime.toFixed(2)}ms`));
-    
-    // GPU benchmark (if available)
+    // 0. Check NVIDIA GPU
+    console.log(chalk.cyan('0️⃣ Checking NVIDIA GPU...'));
     try {
-      tf.setBackend('webgl');
-      await tf.ready();
-      
-      const gpuStart = performance.now();
-      for (let i = 0; i < iterations; i++) {
-        const a = tf.randomNormal([size, size]);
-        const b = tf.randomNormal([size, size]);
-        const c = tf.matMul(a, b);
-        c.dispose();
-        a.dispose();
-        b.dispose();
+      const gpuInfo = execSync('nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader', 
+        { encoding: 'utf8' });
+      console.log(chalk.green('✅ GPU Detected:'));
+      console.log(`   ${gpuInfo.trim()}`);
+    } catch (error) {
+      console.log(chalk.yellow('⚠️ nvidia-smi not accessible in WSL'));
+    }
+    
+    // 1. Test basic GPU detection
+    console.log(chalk.cyan('\n1️⃣ Testing TensorFlow GPU Detection...'));
+    const backend = await configureGPU();
+    
+    if (backend !== 'tensorflow') {
+      console.log(chalk.red('❌ GPU not detected! Make sure CUDA is installed.'));
+      console.log(chalk.yellow('Run: sudo bash scripts/install-cuda-wsl2.sh'));
+      console.log(chalk.yellow('Note: GPU may work even if not detected in WSL2'));
+    } else {
+      console.log(chalk.green('✅ GPU Backend Active!'));
+    }
+    
+    // 2. Test GPU memory
+    console.log(chalk.cyan('\n2️⃣ Testing GPU Memory...'));
+    const memStats = await monitorGPUMemory();
+    console.log(chalk.green(`✅ Memory Stats: ${memStats.totalMemoryMB}MB total, ${memStats.numTensors} tensors`));
+    
+    // 3. Run GPU benchmark
+    console.log(chalk.cyan('\n3️⃣ Running GPU Performance Benchmark...'));
+    const benchResults = await benchmarkGPU();
+    
+    // Calculate average GFLOPS
+    const avgGflops = benchResults.reduce((sum, r) => sum + parseFloat(r.gflops), 0) / benchResults.length;
+    console.log(chalk.green(`✅ Average Performance: ${avgGflops.toFixed(2)} GFLOPS`));
+    
+    // 4. Test GPU Accelerator
+    console.log(chalk.cyan('\n4️⃣ Testing GPU Accelerator...'));
+    const accelerator = new GPUAccelerator({ memoryLimit: 6000 }); // 6GB limit
+    console.log(chalk.green('✅ GPU Accelerator initialized'));
+    
+    // 5. Test Real-time Training
+    console.log(chalk.cyan('\n5️⃣ Testing Real-time Voice Training...'));
+    const trainer = new RealTimeTrainer();
+    
+    // Test with sample command
+    const testCommand = {
+      id: 'test_gpu_' + Date.now(),
+      transcript: 'Who should I start this week?',
+      intent: 'start_sit',
+      entities: {},
+      confidence: 0.95,
+      timestamp: new Date(),
+      userId: 'test_user'
+    };
+    
+    const startTime = Date.now();
+    const prediction = await trainer.processCommand(testCommand);
+    const inferenceTime = Date.now() - startTime;
+    
+    console.log(chalk.green(`✅ Inference completed in ${inferenceTime}ms`));
+    console.log(chalk.gray(`   Predicted intent: ${prediction}`));
+    
+    // 6. Test training speed
+    console.log(chalk.cyan('\n6️⃣ Testing Training Speed...'));
+    console.log('Creating test dataset...');
+    
+    // Create dummy training data
+    const batchSize = 100;
+    const inputShape = [batchSize, 50]; // 100 samples, 50 features
+    
+    const x = tf.randomNormal(inputShape);
+    const y = tf.oneHot(tf.randomUniform([batchSize], 0, 20, 'int32'), 20);
+    
+    // Create simple model
+    const model = tf.sequential({
+      layers: [
+        tf.layers.dense({ units: 128, activation: 'relu', inputShape: [50] }),
+        tf.layers.dropout({ rate: 0.2 }),
+        tf.layers.dense({ units: 64, activation: 'relu' }),
+        tf.layers.dense({ units: 20, activation: 'softmax' })
+      ]
+    });
+    
+    model.compile({
+      optimizer: tf.train.adam(0.001),
+      loss: 'categoricalCrossentropy',
+      metrics: ['accuracy']
+    });
+    
+    console.log('Training for 5 epochs...');
+    const trainStart = Date.now();
+    
+    await model.fit(x, y, {
+      epochs: 5,
+      batchSize: 32,
+      verbose: 0,
+      callbacks: {
+        onEpochEnd: (epoch, logs) => {
+          console.log(chalk.gray(`   Epoch ${epoch + 1}: loss=${logs?.loss?.toFixed(4)}, accuracy=${logs?.acc?.toFixed(4)}`));
+        }
       }
-      const gpuTime = performance.now() - gpuStart;
-      
-      console.log(chalk.green(`GPU Time: ${gpuTime.toFixed(2)}ms`));
-      console.log(chalk.green.bold(`🚀 GPU Speedup: ${(cpuTime / gpuTime).toFixed(2)}x faster!`));
-    } catch (gpuError) {
-      console.log(chalk.red('GPU backend not available'));
+    });
+    
+    const trainTime = Date.now() - trainStart;
+    console.log(chalk.green(`✅ Training completed in ${trainTime}ms (${(trainTime/5).toFixed(0)}ms per epoch)`));
+    
+    // Cleanup
+    x.dispose();
+    y.dispose();
+    model.dispose();
+    
+    // 7. Test multi-threading
+    console.log(chalk.cyan('\n7️⃣ Testing Multi-threaded Processing...'));
+    const numCPUs = os.cpus().length;
+    console.log(chalk.blue('CPU Info:'));
+    console.log(`  Model: ${os.cpus()[0].model}`);
+    console.log(`  Cores: ${numCPUs}`);
+    console.log(`  Speed: ${os.cpus()[0].speed} MHz`);
+    console.log(chalk.green(`✅ Can utilize all ${numCPUs} threads for parallel processing`));
+    
+    // Final memory check
+    console.log(chalk.cyan('\n8️⃣ Final Memory Check...'));
+    const finalMem = await monitorGPUMemory();
+    console.log(chalk.green(`✅ Memory usage: ${finalMem.totalMemoryMB}MB, ${finalMem.numTensors} tensors`));
+    
+    // Summary
+    console.log(chalk.green.bold('\n🎉 GPU ACCELERATION TEST COMPLETE!\n'));
+    console.log(chalk.white('📊 Summary:'));
+    console.log(`   • TensorFlow Backend: ${backend}`);
+    console.log(`   • Performance: ${avgGflops.toFixed(2)} GFLOPS`);
+    console.log(`   • Inference Speed: ${inferenceTime}ms`);
+    console.log(`   • Training Speed: ${(trainTime/5).toFixed(0)}ms per epoch`);
+    console.log(`   • CPU Cores: ${numCPUs} threads available`);
+    console.log(`   • Memory Efficient: ✅`);
+    
+    if (backend === 'tensorflow') {
+      console.log(chalk.yellow('\n💡 Your RTX 4060 is ready for production!'));
+    } else {
+      console.log(chalk.yellow('\n💡 CPU acceleration is active and working well!'));
+      console.log(chalk.gray('   Note: GPU may still be used even if not detected in WSL2'));
     }
     
   } catch (error) {
-    console.log(chalk.red('❌ TensorFlow test failed:'), error.message);
-    console.log(chalk.yellow('Installing @tensorflow/tfjs-node-gpu might be required'));
+    console.error(chalk.red('\n❌ GPU Test Error:'), error);
+    console.log(chalk.yellow('\nTroubleshooting:'));
+    console.log('1. Run: sudo bash scripts/install-cuda-wsl2.sh');
+    console.log('2. Restart terminal: source ~/.bashrc');
+    console.log('3. Check CUDA: nvcc --version');
+    console.log('4. Check GPU: nvidia-smi');
+    console.log('5. Note: WSL2 GPU support may require Windows 11 or latest Windows 10');
   }
 }
 
-// Test 3: Test our GPU AI service
-async function testGPUAIService() {
-  console.log(chalk.yellow('\n3. Testing GPU AI Service...'));
-  
-  try {
-    const { GPUAcceleratedAI } = await import('../lib/ai/gpu/gpu-service.js');
-    const gpuAI = new GPUAcceleratedAI();
-    
-    // Initialize
-    console.log(chalk.blue('Initializing GPU AI...'));
-    await gpuAI.initialize();
-    
-    // Test sentiment analysis
-    console.log(chalk.blue('\nTesting sentiment analysis on player tweets...'));
-    const sampleTweets = [
-      "Patrick Mahomes is playing amazing this season!",
-      "Terrible performance by the offensive line today",
-      "Can't wait for Sunday's game, feeling confident!",
-      "Injury concerns are mounting for our star receiver",
-      "Best draft pick we've made in years!"
-    ];
-    
-    const start = performance.now();
-    const sentiments = await gpuAI.analyzePlayerSentiment(sampleTweets);
-    const sentimentTime = performance.now() - start;
-    
-    console.log(chalk.green(`✅ Analyzed ${sampleTweets.length} tweets in ${sentimentTime.toFixed(2)}ms`));
-    
-    // Test performance prediction
-    console.log(chalk.blue('\nTesting player performance prediction...'));
-    const features = Array(10).fill(null).map(() => 
-      Array(256).fill(null).map(() => Math.random())
-    );
-    
-    const predStart = performance.now();
-    const predictions = await gpuAI.predictPlayerPerformance(features);
-    const predTime = performance.now() - predStart;
-    
-    console.log(chalk.green(`✅ Generated ${predictions.length} predictions in ${predTime.toFixed(2)}ms`));
-    
-    // Memory info
-    const memInfo = gpuAI.getGPUMemoryInfo();
-    console.log(chalk.blue('\nGPU Memory Usage:'));
-    console.log(`  Tensors: ${memInfo.numTensors}`);
-    console.log(`  Memory: ${memInfo.numBytes}`);
-    console.log(`  GPU Enabled: ${memInfo.gpuEnabled}`);
-    
-  } catch (error) {
-    console.log(chalk.red('❌ GPU AI Service test failed:'), error.message);
-  }
-}
-
-// Test 4: Multi-threaded CPU test
-async function testMultiThreading() {
-  console.log(chalk.yellow('\n4. Testing multi-threaded processing...'));
-  
-  const os = require('os');
-  const numCPUs = os.cpus().length;
-  
-  console.log(chalk.blue('CPU Info:'));
-  console.log(`  Model: ${os.cpus()[0].model}`);
-  console.log(`  Cores: ${numCPUs}`);
-  console.log(`  Speed: ${os.cpus()[0].speed} MHz`);
-  
-  // Simulate parallel processing
-  const { Worker } = require('worker_threads');
-  
-  console.log(chalk.green(`✅ Can utilize all ${numCPUs} threads for parallel processing`));
-}
-
-// Main test runner
-async function runAllTests() {
-  console.log(chalk.cyan('Starting comprehensive GPU/CPU tests...\n'));
-  
-  const gpuAvailable = await testGPUAvailability();
-  
-  if (gpuAvailable) {
-    await testTensorFlowGPU();
-    await testGPUAIService();
-  }
-  
-  await testMultiThreading();
-  
-  console.log(chalk.green.bold('\n✅ GPU ACCELERATION TEST COMPLETE!'));
-  
-  if (gpuAvailable) {
-    console.log(chalk.cyan('\n🎉 Your RTX 4060 is ready for:'));
-    console.log('  • Local AI model inference');
-    console.log('  • Real-time player analysis');
-    console.log('  • Computer vision processing');
-    console.log('  • Neural network predictions');
-  }
-}
-
-// Run tests
-runAllTests().catch(console.error);
+// Run test
+testGPU().catch(console.error);

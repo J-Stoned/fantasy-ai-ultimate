@@ -6,6 +6,7 @@
 import * as tf from '@tensorflow/tfjs-node-gpu';
 import { Worker } from 'worker_threads';
 import * as os from 'os';
+import { configureGPU, getTrainingConfig, monitorGPUMemory } from './gpu-config';
 
 export interface GPUConfig {
   deviceId?: number;
@@ -49,23 +50,28 @@ export class GPUAccelerator {
    */
   private async initializeGPU() {
     try {
-      // Check for GPU availability
-      await tf.ready();
-      const gpuDetails = await tf.backend().getGPUDetails();
+      // Configure GPU with optimizations
+      const backend = await configureGPU();
       
-      if (gpuDetails && gpuDetails.length > 0) {
+      // Check for GPU availability
+      const gpuDetails = await tf.backend().getGPUDetails?.() || [];
+      
+      if (backend === 'tensorflow' && gpuDetails.length > 0) {
         this.isGPUAvailable = true;
         this.gpuDevice = gpuDetails[0];
         
         console.log('🚀 RTX 4060 GPU Detected!');
         console.log(`   CUDA Cores: ~3072`);
         console.log(`   Memory: 8GB GDDR6`);
-        console.log(`   Compute Capability: ${this.gpuDevice.computeCapability || '8.6'}`);
+        console.log(`   Compute Capability: ${this.gpuDevice?.computeCapability || '8.6'}`);
         
-        // Set GPU configuration
-        tf.env().set('WEBGL_FORCE_F16_TEXTURES', true); // Use FP16 for faster computation
-        tf.env().set('WEBGL_PACK', true); // Enable packing
-        tf.env().set('WEBGL_EXP_CONV', true); // Experimental convolutions
+        // Get optimized training config
+        const trainingConfig = getTrainingConfig();
+        console.log(`🎯 Optimizations: Mixed Precision=${trainingConfig.useMixedPrecision}, XLA=${trainingConfig.useXLA}`);
+        
+        // Monitor initial memory
+        const memStats = await monitorGPUMemory();
+        console.log(`💾 GPU Memory: ${memStats.gpuMemoryMB}MB used, ${memStats.numTensors} tensors`);
         
         // Memory growth settings for RTX 4060
         if (this.config.memoryLimit) {
