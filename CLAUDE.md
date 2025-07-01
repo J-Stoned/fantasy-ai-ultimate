@@ -3,9 +3,11 @@
 ## Current Status: LIVE & LEARNING! 🤖🧠
 
 ### Active AI Systems:
-1. **Continuous Learning AI** - Self-improving predictions with RTX 4060 + Ryzen 5 7600X
-2. **Mega Data Collector** - Gathering real-time sports data from multiple APIs
+1. **Continuous Learning AI** - Self-improving predictions with RTX 4060 + Ryzen 5 7600X (NOW SAVING TO DB!)
+2. **Smart Mega Data Collector V2** - Only collecting NEW data, no more duplicates!
 3. **ML Models** - Trained on 47K+ games with 100% training accuracy
+4. **Voice Agent** - Trained on 100 players and fantasy phrases
+5. **Master Control System** - Manage all processes from one place
 
 ### Key Commands:
 
@@ -16,14 +18,25 @@ npx tsx scripts/continuous-learning-ai.ts
 # Train ML models with GPU acceleration
 npx tsx scripts/train-ml-models-gpu.ts
 
-# Launch mega data collector
-npx tsx scripts/mega-data-collector.ts
+# Launch SMART mega data collector (v2) - NO MORE DUPLICATES!
+npx tsx scripts/mega-data-collector-v2.ts
 
-# Analyze ML readiness
-npx tsx scripts/analyze-ml-readiness.ts
+# System control and monitoring
+npx tsx scripts/master-control.ts status        # Check system status
+npx tsx scripts/master-control.ts start-all     # Start everything
+npx tsx scripts/master-control.ts clean-processes # Clean old processes
 
-# Check database status
-npx tsx scripts/analyze-database-data.ts
+# Comprehensive system status
+npx tsx scripts/system-status.ts
+
+# Fill empty tables with extracted data
+npx tsx scripts/fill-empty-tables.ts
+
+# Train voice agent
+npx tsx scripts/train-voice-agent.ts
+
+# Real-time monitoring dashboard
+npx tsx scripts/ultimate-dashboard.ts
 ```
 
 ### System Architecture:
