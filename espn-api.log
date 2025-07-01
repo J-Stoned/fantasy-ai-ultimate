@@ -1,0 +1,486 @@
+🚀 Starting ESPN API collection...
+ESPN NBA scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NBA news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 4s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 2
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN NFL scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NFL news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 8s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 4
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN MLB scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN MLB news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 12s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 6
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN NHL scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NHL news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 16s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 8
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN SOCCER scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN SOCCER news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 18s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 10
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+
+⏳ Waiting 2 minutes before next cycle...
+ESPN NBA scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NBA news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 2m 14s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 12
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN NFL scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NFL news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 2m 18s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 14
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN MLB scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN MLB news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 2m 22s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 16
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN NHL scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NHL news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 2m 26s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 18
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN SOCCER scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN SOCCER news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 2m 30s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 20
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+
+⏳ Waiting 2 minutes before next cycle...
+ESPN NBA scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NBA news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 4m 26s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 22
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN NFL scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NFL news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 4m 28s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 24
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN MLB scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN MLB news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 4m 32s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 26
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN NHL scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NHL news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 4m 36s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 28
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN SOCCER scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN SOCCER news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 4m 40s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 30
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+
+⏳ Waiting 2 minutes before next cycle...
+ESPN NBA scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NBA news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 6m 36s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 32
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN NFL scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NFL news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 6m 40s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 34
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN MLB scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN MLB news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 6m 44s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 36
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN NHL scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NHL news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 6m 48s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 38
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN SOCCER scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN SOCCER news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 6m 50s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 40
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+
+⏳ Waiting 2 minutes before next cycle...
+ESPN NBA scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NBA news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 8m 46s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 42
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN NFL scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NFL news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 8m 50s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 44
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN MLB scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN MLB news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 8m 54s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 46
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN NHL scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN NHL news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 8m 58s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 48
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+ESPN SOCCER scores error: Could not find the 'away_team' column of 'games' in the schema cache
+ESPN SOCCER news error: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+📺 ESPN API COLLECTOR
+==============================
+
+⏱️  Runtime: 9m 2s
+⚡ Speed: 0 records/sec
+
+📊 Collection Progress:
+  🏈 Games: 0
+  🏢 Teams: 0
+  📰 News: 0
+  💡 Insights: 0
+  ❌ Errors: 50
+
+🔥 Total Records: 0
+
+📡 Collecting from ESPN API...
+
+⏳ Waiting 2 minutes before next cycle...

@@ -1,0 +1,823 @@
+🚀 Starting Reddit sports collection...
+Error collecting from r/nba: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 3s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 1
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/nfl: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 4s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 2
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/baseball: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 8s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 3
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/hockey: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 11s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 4
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/soccer: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 14s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 5
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/mma: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 18s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 6
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/boxing: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 22s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 7
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/tennis: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 25s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 8
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/golf: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 29s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 9
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/olympics: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 33s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 10
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/sports: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 34s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 11
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/fantasyfootball: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 37s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 12
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/fantasybball: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 41s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 13
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/fantasybaseball: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 44s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 14
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/sportsbook: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 48s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 15
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/sportsbetting: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 51s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 16
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+
+⏳ Waiting 5 minutes before next cycle...
+Error collecting from r/nba: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 5m 35s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 17
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/nfl: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 5m 38s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 18
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/baseball: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 5m 42s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 19
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/hockey: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 5m 43s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 20
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/soccer: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 5m 46s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 21
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/mma: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 5m 50s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 22
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/boxing: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 5m 53s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 23
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/tennis: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 5m 57s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 24
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/golf: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 6m 1s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 25
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/olympics: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 6m 4s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 26
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/sports: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 6m 7s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 27
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/fantasyfootball: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 6m 9s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 28
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/fantasybball: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 6m 13s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 29
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/fantasybaseball: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 6m 16s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 30
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/sportsbook: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 6m 20s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 31
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/sportsbetting: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 6m 23s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 32
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+
+⏳ Waiting 5 minutes before next cycle...
+Error collecting from r/nba: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 7s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 33
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/nfl: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 10s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 34
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/baseball: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 14s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 35
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/hockey: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 17s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 36
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/soccer: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 18s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 37
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/mma: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 21s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 38
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/boxing: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 25s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 39
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/tennis: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 28s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 40
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/golf: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 32s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 41
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/olympics: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 36s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 42
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/sports: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 39s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 43
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/fantasyfootball: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 43s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 44
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/fantasybball: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 45s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 45
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/fantasybaseball: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 47s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 46
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/sportsbook: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 50s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 47
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+Error collecting from r/sportsbetting: Could not find the 'external_id' column of 'news_articles' in the schema cache
+
+🌐 REDDIT SPORTS COLLECTOR
+==============================
+
+⏱️  Runtime: 11m 54s
+📊 Collection rate: 0 posts/sec
+
+📈 Stats:
+  📝 Posts: 0
+  💬 Comments: 0
+  💡 Insights: 0
+  ❌ Errors: 48
+
+🔥 Total collected: 0
+
+📡 Monitoring Reddit for sports content...
+
+⏳ Waiting 5 minutes before next cycle...

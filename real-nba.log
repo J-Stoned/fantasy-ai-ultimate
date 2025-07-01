@@ -1,0 +1,44 @@
+🚀 Starting REAL NBA collection...
+🔑 API Key: 59de4292...
+Collecting NBA teams...
+✅ Collected 45 NBA teams
+Collecting NBA players...
+  Page 1: 100 players
+  Page 2: 100 players
+  Page 3: 100 players
+  Page 4: 100 players
+Players error: Request failed with status code 429
+Collecting NBA games...
+Games error: Request failed with status code 429
+
+🏀 REAL NBA COLLECTOR
+==============================
+
+⏱️  Runtime: 0m 40s
+⚡ Rate: 11 records/sec
+
+📊 Real NBA Data:
+  🏀 Teams: 45
+  🏃 Players: 400
+  🏈 Games: 0
+  ❌ Errors: 2
+
+🔥 Total: 445 real records
+
+✅ Using BallDontLie API...
+
+🏀 REAL NBA COLLECTOR
+==============================
+
+⏱️  Runtime: 1m 37s
+⚡ Rate: 4 records/sec
+
+📊 Real NBA Data:
+  🏀 Teams: 45
+  🏃 Players: 400
+  🏈 Games: 0
+  ❌ Errors: 2
+
+🔥 Total: 445 real records
+
+✅ Using BallDontLie API...
