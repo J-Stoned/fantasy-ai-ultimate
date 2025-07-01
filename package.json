@@ -38,6 +38,7 @@
     "data:monitor": "tsx scripts/monitor-data-growth.ts",
     "data:check": "tsx scripts/check-all-tables.ts",
     "turbo": "tsx scripts/turbo-loader.ts",
+    "turbo:fantasy": "tsx scripts/fantasy-turbo-loader.ts",
     "clean": "nx reset && rm -rf dist .next node_modules/.cache",
     "load-test": "tsx lib/testing/load-test.ts",
     "load-test:k6": "k6 run lib/testing/k6-nfl-sunday.js",
