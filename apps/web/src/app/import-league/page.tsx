@@ -61,10 +61,43 @@ export default function ImportLeaguePage() {
     setImportStatus(null)
 
     try {
-      // Handle OAuth flow for platforms that support it
-      if (platformId === 'yahoo' || platformId === 'espn') {
-        // Redirect to OAuth flow
-        window.location.href = `/api/auth/${platformId}/connect`
+      // Handle different platform authentication methods
+      if (platformId === 'yahoo') {
+        // Yahoo uses OAuth
+        alert('Yahoo import requires OAuth setup. For MVP, please use ESPN or Sleeper.')
+        setIsImporting(false)
+        return
+      } else if (platformId === 'espn') {
+        // ESPN uses cookie-based auth
+        const espnS2 = prompt('Enter your ESPN espn_s2 cookie value:')
+        if (!espnS2) {
+          setIsImporting(false)
+          return
+        }
+        
+        const swid = prompt('Enter your ESPN SWID cookie value:')
+        if (!swid) {
+          setIsImporting(false)
+          return
+        }
+
+        const response = await fetch('/api/import/espn', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ espnS2, swid }),
+        })
+
+        const result = await response.json()
+        
+        if (result.success) {
+          setImportStatus({
+            type: 'success',
+            message: `Successfully imported ${result.leaguesImported} ESPN leagues!`
+          })
+          setTimeout(() => router.push('/dashboard'), 2000)
+        } else {
+          throw new Error(result.error || 'Import failed')
+        }
       } else if (platformId === 'sleeper') {
         // Sleeper uses username-based API
         const username = prompt('Enter your Sleeper username:')
@@ -197,6 +230,28 @@ export default function ImportLeaguePage() {
           <p className="text-sm text-gray-400 mt-2">
             Your data is encrypted and secure. We never share your information.
           </p>
+        </div>
+
+        {/* Platform-specific instructions */}
+        <div className="mt-8 bg-white/10 backdrop-blur-lg rounded-xl p-6">
+          <h3 className="text-xl font-bold text-white mb-4">Platform Instructions</h3>
+          <div className="space-y-4">
+            <div>
+              <h4 className="font-semibold text-yellow-400">Sleeper</h4>
+              <p className="text-gray-300">Simply enter your Sleeper username when prompted.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-red-400">ESPN</h4>
+              <p className="text-gray-300">1. Log into ESPN Fantasy in your browser</p>
+              <p className="text-gray-300">2. Open Developer Tools (F12)</p>
+              <p className="text-gray-300">3. Go to Application > Cookies</p>
+              <p className="text-gray-300">4. Find and copy 'espn_s2' and 'SWID' values</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-purple-400">Yahoo</h4>
+              <p className="text-gray-300">OAuth integration coming soon!</p>
+            </div>
+          </div>
         </div>
       </main>
     </div>
