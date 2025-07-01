@@ -1,13 +1,9 @@
 import { NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
+import { database } from '@/lib/services/database'
+import { cache } from '@/lib/services/cache'
+import { services } from '@/lib/services/init'
 
 export const dynamic = 'force-dynamic'
-
-// Create a simple Supabase client without auth
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-)
 
 interface HealthStatus {
   status: 'healthy' | 'degraded' | 'unhealthy'
@@ -20,35 +16,44 @@ interface HealthStatus {
     news: number
     total: number
   }
+  services: any[]
+  database: any
+  cache: any
   version: string
 }
 
 async function getStats() {
   try {
-    const [
-      { count: playersCount },
-      { count: teamsCount },
-      { count: gamesCount },
-      { count: newsCount }
-    ] = await Promise.all([
-      supabase.from('players').select('*', { count: 'exact', head: true }),
-      supabase.from('teams_master').select('*', { count: 'exact', head: true }),
-      supabase.from('games').select('*', { count: 'exact', head: true }),
-      supabase.from('news_articles').select('*', { count: 'exact', head: true })
-    ])
+    // Use cache for health check stats (1 minute TTL)
+    const stats = await cache.getOrSet('health:stats', async () => {
+      // Use production database pool for optimized queries
+      const [
+        playersResult,
+        teamsResult,
+        gamesResult,
+        newsResult
+      ] = await Promise.all([
+        database.query('SELECT COUNT(*) as count FROM players', [], 'read'),
+        database.query('SELECT COUNT(*) as count FROM teams_master', [], 'read'),
+        database.query('SELECT COUNT(*) as count FROM games', [], 'read'),
+        database.query('SELECT COUNT(*) as count FROM news_articles', [], 'read')
+      ])
 
-    const players = playersCount || 0
-    const teams = teamsCount || 0
-    const games = gamesCount || 0
-    const news = newsCount || 0
+      const players = parseInt(playersResult[0]?.count || '0')
+      const teams = parseInt(teamsResult[0]?.count || '0')
+      const games = parseInt(gamesResult[0]?.count || '0')
+      const news = parseInt(newsResult[0]?.count || '0')
 
-    return {
-      players,
-      teams,
-      games,
-      news,
-      total: players + teams + games + news
-    }
+      return {
+        players,
+        teams,
+        games,
+        news,
+        total: players + teams + games + news
+      }
+    }, { ttl: 60 }) // Cache for 1 minute
+
+    return stats
   } catch (error) {
     console.error('Error fetching stats:', error)
     return {
@@ -62,14 +67,31 @@ async function getStats() {
 }
 
 export async function GET() {
+  // Get comprehensive health check from all services
+  const healthCheck = await services.getHealthCheck()
   const stats = await getStats()
   
+  // Determine overall health status
+  let overallStatus: 'healthy' | 'degraded' | 'unhealthy' = 'healthy'
+  
+  if (!healthCheck.database || !healthCheck.cache) {
+    overallStatus = 'unhealthy'
+  } else if (healthCheck.services.some(s => s.status === 'error')) {
+    overallStatus = 'degraded'
+  }
+  
   const status: HealthStatus = {
-    status: 'healthy',
+    status: overallStatus,
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
     stats,
-    version: '1.0.0'
+    services: healthCheck.services,
+    database: healthCheck.database,
+    cache: {
+      connected: healthCheck.cache,
+      stats: cache.getStats()
+    },
+    version: '2.0.0' // Upgraded with production infrastructure!
   }
   
   return NextResponse.json(status, {
