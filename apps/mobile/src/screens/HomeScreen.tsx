@@ -110,6 +110,12 @@ export default function HomeScreen() {
 
   const quickActions: QuickAction[] = [
     {
+      icon: 'mic',
+      label: 'Hey Fantasy',
+      action: () => navigation.navigate('VoiceAssistant' as never),
+      color: '#ef4444',
+    },
+    {
       icon: 'swap-horizontal',
       label: 'Trade',
       action: () => navigation.navigate('Trade' as never),
@@ -126,12 +132,6 @@ export default function HomeScreen() {
       label: 'Set Lineup',
       action: () => navigation.navigate('Lineup' as never),
       color: '#f59e0b',
-    },
-    {
-      icon: 'camera',
-      label: 'AR Stats',
-      action: () => navigation.navigate('ARStats' as never),
-      color: '#8b5cf6',
     },
   ];
 

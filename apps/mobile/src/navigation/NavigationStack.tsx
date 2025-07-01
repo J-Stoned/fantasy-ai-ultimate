@@ -30,6 +30,7 @@ import WaiverScreen from '../screens/WaiverScreen';
 import ARStatsScreen from '../screens/ARStatsScreen';
 import ContestsScreen from '../screens/ContestsScreen';
 import PredictionsScreen from '../screens/PredictionsScreen';
+import VoiceAssistantScreen from '../screens/VoiceAssistantScreen';
 
 // Auth Screens
 import LoginScreen from '../screens/LoginScreen';
@@ -45,6 +46,7 @@ export type RootStackParamList = {
   Trade: { leagueId: string };
   Waiver: { leagueId: string };
   ARStats: undefined;
+  VoiceAssistant: undefined;
 };
 
 export type MainTabParamList = {
@@ -194,6 +196,11 @@ export function NavigationStack() {
               name="ARStats" 
               component={ARStatsScreen}
               options={{ title: 'AR Player Stats' }}
+            />
+            <Stack.Screen 
+              name="VoiceAssistant" 
+              component={VoiceAssistantScreen}
+              options={{ title: 'Hey Fantasy' }}
             />
           </>
         )}
