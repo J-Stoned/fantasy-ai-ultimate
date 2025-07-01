@@ -32,6 +32,9 @@ export default async function DashboardPage() {
           <div className="flex justify-between h-16 items-center">
             <h1 className="text-2xl font-bold text-white">Fantasy.AI Ultimate</h1>
             <div className="flex items-center gap-4">
+              <Link href="/pricing" className="text-yellow-400 hover:text-yellow-300 transition-colors">
+                ⚡ Upgrade
+              </Link>
               <span className="text-gray-300">Welcome, {profile?.username || user.email}</span>
               <form action="/auth/signout" method="post">
                 <button className="text-gray-300 hover:text-white transition-colors">
