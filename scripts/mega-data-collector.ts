@@ -27,6 +27,10 @@ const limits = {
   odds: pLimit(5),       // 500/month, be very conservative
   weather: pLimit(10),   // 1000/day = ~40/hour
   nba: pLimit(20),       // 60/min = 1/sec
+  nfl: pLimit(100),      // NFL official - no rate limit
+  espnFantasy: pLimit(50), // ESPN fantasy - no limit but be nice
+  twitter: pLimit(10),   // Twitter - 500k/month
+  sportsdata: pLimit(1), // SportsData.io - 1000/month, very conservative
 };
 
 // Stats tracking
@@ -401,6 +405,219 @@ async function collectOdds() {
   }
 }
 
+// NFL OFFICIAL DATA COLLECTOR
+async function collectNFLOfficial() {
+  console.log(chalk.yellow('🏈 NFL Official Data Collector starting...'));
+  
+  try {
+    // Get current week scores
+    await limits.nfl(async () => {
+      const { data } = await axios.get('https://www.nfl.com/feeds-rs/scores/');
+      
+      if (data.games) {
+        for (const game of data.games) {
+          await supabase.from('games').upsert({
+            home_team_id: game.homeTeamAbbr,
+            away_team_id: game.awayTeamAbbr,
+            home_team_score: game.homeTeamScore || 0,
+            away_team_score: game.awayTeamScore || 0,
+            game_date: game.gameDate,
+            week: game.week,
+            status: game.phase,
+            external_id: `nfl_${game.gameId}`
+          }, { onConflict: 'external_id' });
+          
+          stats.games++;
+        }
+      }
+    });
+    
+    // Get team rosters for popular teams
+    const teams = ['KC', 'BUF', 'PHI', 'DAL', 'SF', 'GB'];
+    for (const team of teams) {
+      await limits.nfl(async () => {
+        try {
+          const { data } = await axios.get(`https://www.nfl.com/feeds-rs/teams/${team}/roster`);
+          
+          if (data.players) {
+            for (const player of data.players) {
+              await supabase.from('players').upsert({
+                firstname: player.firstName,
+                lastname: player.lastName,
+                position: [player.position],
+                jersey_number: player.jerseyNumber,
+                sport_id: 'nfl',
+                team_abbreviation: team,
+                external_id: `nfl_${player.playerId}`
+              }, { onConflict: 'external_id' });
+              
+              stats.players++;
+            }
+          }
+        } catch (err) {
+          console.error(`NFL roster ${team} error:`, err.message);
+        }
+      });
+    }
+  } catch (error) {
+    stats.errors++;
+    console.error(chalk.red('NFL Official error:', error.message));
+  }
+}
+
+// ESPN FANTASY COLLECTOR
+async function collectESPNFantasy() {
+  console.log(chalk.yellow('🎮 ESPN Fantasy Collector starting...'));
+  
+  try {
+    // Get player rankings
+    await limits.espnFantasy(async () => {
+      const { data } = await axios.get(
+        'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leaguedefaults/3?view=kona_player_info'
+      );
+      
+      if (data.players) {
+        for (const playerData of data.players.slice(0, 200)) { // Top 200 players
+          const player = playerData.player;
+          
+          await supabase.from('fantasy_rankings').upsert({
+            player_name: player.fullName,
+            player_id: player.id,
+            position: player.defaultPositionId,
+            team_id: player.proTeamId,
+            ownership_pct: player.ownership?.percentOwned || 0,
+            adp: player.ownership?.averageDraftPosition || 999,
+            platform: 'espn',
+            external_id: `espn_fantasy_${player.id}`
+          }, { onConflict: 'external_id' });
+          
+          stats.players++;
+        }
+      }
+    });
+    
+    // Get trending players
+    await limits.espnFantasy(async () => {
+      const { data } = await axios.get(
+        'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leaguedefaults/3?view=kona_player_info&filter=' +
+        encodeURIComponent(JSON.stringify({
+          players: {
+            filterStatsForMostRecentScoringPeriod: { value: true },
+            limit: 50,
+            sortDraftPercentChange: { sortPriority: 1, sortAsc: false }
+          }
+        }))
+      );
+      
+      if (data.players) {
+        for (const playerData of data.players) {
+          const player = playerData.player;
+          
+          await supabase.from('trending_players').upsert({
+            player_name: player.fullName,
+            player_id: player.id,
+            trend_type: 'most_added',
+            platform: 'espn',
+            ownership_change: player.ownership?.percentChange || 0,
+            created_at: new Date().toISOString(),
+            external_id: `espn_trend_${player.id}_${new Date().toISOString().split('T')[0]}`
+          }, { onConflict: 'external_id' });
+        }
+      }
+    });
+  } catch (error) {
+    stats.errors++;
+    console.error(chalk.red('ESPN Fantasy error:', error.message));
+  }
+}
+
+// TWITTER COLLECTOR (if configured)
+async function collectTwitter() {
+  if (!process.env.TWITTER_BEARER_TOKEN || process.env.TWITTER_BEARER_TOKEN === 'your-twitter-bearer-token') {
+    console.log(chalk.gray('No Twitter API token, skipping...'));
+    return;
+  }
+  
+  console.log(chalk.yellow('🐦 Twitter Collector starting...'));
+  
+  try {
+    // Search for NFL injury news
+    await limits.twitter(async () => {
+      const { data } = await axios.get(
+        'https://api.twitter.com/2/tweets/search/recent?query=' +
+        encodeURIComponent('"injury" OR "injured" (NFL OR football) -is:retweet lang:en') +
+        '&max_results=50&tweet.fields=created_at,public_metrics',
+        {
+          headers: {
+            'Authorization': `Bearer ${process.env.TWITTER_BEARER_TOKEN}`
+          }
+        }
+      );
+      
+      if (data.data) {
+        for (const tweet of data.data) {
+          await supabase.from('social_sentiment').upsert({
+            platform: 'twitter',
+            content: tweet.text,
+            url: `https://twitter.com/i/status/${tweet.id}`,
+            engagement_score: (tweet.public_metrics?.retweet_count || 0) + 
+                            (tweet.public_metrics?.like_count || 0),
+            sport_id: 'nfl',
+            created_at: tweet.created_at,
+            external_id: `twitter_${tweet.id}`
+          }, { onConflict: 'external_id' });
+          
+          stats.sentiment++;
+        }
+      }
+    });
+  } catch (error) {
+    stats.errors++;
+    console.error(chalk.red('Twitter error:', error.message));
+  }
+}
+
+// SPORTSDATA.IO COLLECTOR (if configured)
+async function collectSportsDataIO() {
+  if (!process.env.SPORTSDATA_IO_KEY || process.env.SPORTSDATA_IO_KEY === 'your-sportsdata-key') {
+    console.log(chalk.gray('No SportsData.io API key, skipping...'));
+    return;
+  }
+  
+  console.log(chalk.yellow('📊 SportsData.io Collector starting...'));
+  
+  try {
+    // Get weekly projections (uses 1 API call)
+    await limits.sportsdata(async () => {
+      const week = Math.min(Math.max(1, Math.floor((Date.now() - new Date(2024, 8, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))), 18);
+      const { data } = await axios.get(
+        `https://api.sportsdata.io/v3/nfl/json/PlayerGameProjectionStatsByWeek/2024/${week}?key=${process.env.SPORTSDATA_IO_KEY}`
+      );
+      
+      if (data) {
+        for (const projection of data.slice(0, 50)) { // Top 50 projections
+          await supabase.from('player_projections').upsert({
+            player_name: projection.Name,
+            player_id: projection.PlayerID,
+            team: projection.Team,
+            position: projection.Position,
+            week: week,
+            projected_points: projection.FantasyPoints,
+            projected_points_ppr: projection.FantasyPointsPPR,
+            platform: 'sportsdata_io',
+            external_id: `sportsdata_${projection.PlayerID}_week${week}`
+          }, { onConflict: 'external_id' });
+          
+          stats.players++;
+        }
+      }
+    });
+  } catch (error) {
+    stats.errors++;
+    console.error(chalk.red('SportsData.io error:', error.message));
+  }
+}
+
 // MONITORING
 function showStats() {
   const runtime = Math.floor((Date.now() - stats.startTime) / 1000);
@@ -461,6 +678,10 @@ async function startMegaCollection() {
     collectWeather(),
     collectNBA(),
     collectOdds(),
+    collectNFLOfficial(),
+    collectESPNFantasy(),
+    collectTwitter(),
+    collectSportsDataIO(),
   ]);
   
   // Schedule recurring collections
@@ -470,6 +691,10 @@ async function startMegaCollection() {
   cron.schedule('0 * * * *', () => collectWeather());          // Every hour
   cron.schedule('*/2 * * * *', () => collectNBA());            // Every 2 minutes
   cron.schedule('*/5 * * * *', () => collectOdds());           // Every 5 minutes
+  cron.schedule('*/2 * * * *', () => collectNFLOfficial());    // Every 2 minutes
+  cron.schedule('*/5 * * * *', () => collectESPNFantasy());   // Every 5 minutes
+  cron.schedule('*/10 * * * *', () => collectTwitter());      // Every 10 minutes (conservative)
+  cron.schedule('0 */12 * * *', () => collectSportsDataIO());  // Twice daily (very conservative)
   
   // Show stats every 5 seconds
   setInterval(showStats, 5000);
