@@ -1,0 +1,148 @@
+{
+  "samples": [
+    {
+      "text": "Your lineup is looking strong this week",
+      "type": "fantasy_advice",
+      "metadata": {
+        "category": "general"
+      }
+    },
+    {
+      "text": "Consider benching injured players",
+      "type": "fantasy_advice",
+      "metadata": {
+        "category": "general"
+      }
+    },
+    {
+      "text": "The waiver wire has some great pickups",
+      "type": "fantasy_advice",
+      "metadata": {
+        "category": "general"
+      }
+    },
+    {
+      "text": "Your opponent has a tough matchup",
+      "type": "fantasy_advice",
+      "metadata": {
+        "category": "general"
+      }
+    },
+    {
+      "text": "Trade deadline is approaching fast",
+      "type": "fantasy_advice",
+      "metadata": {
+        "category": "general"
+      }
+    },
+    {
+      "text": "Check the weather for outdoor games",
+      "type": "fantasy_advice",
+      "metadata": {
+        "category": "general"
+      }
+    },
+    {
+      "text": "Start your studs, sit your duds",
+      "type": "fantasy_advice",
+      "metadata": {
+        "category": "general"
+      }
+    },
+    {
+      "text": "Thursday night football alert",
+      "type": "fantasy_advice",
+      "metadata": {
+        "category": "general"
+      }
+    },
+    {
+      "text": "Red zone targets are crucial",
+      "type": "fantasy_advice",
+      "metadata": {
+        "category": "general"
+      }
+    },
+    {
+      "text": "Monitor the injury report closely",
+      "type": "fantasy_advice",
+      "metadata": {
+        "category": "general"
+      }
+    }
+  ],
+  "vocabulary": {
+    "players": [],
+    "teams": [
+      "Arizona Cardinals",
+      "Atlanta Falcons",
+      "Baltimore Ravens",
+      "Buffalo Bills",
+      "Carolina Panthers",
+      "Chicago Bears",
+      "Cincinnati Bengals",
+      "Cleveland Browns",
+      "Dallas Cowboys",
+      "Denver Broncos",
+      "Detroit Lions",
+      "Green Bay Packers",
+      "Houston Texans",
+      "Indianapolis Colts",
+      "Jacksonville Jaguars",
+      "Kansas City Chiefs",
+      "Las Vegas Raiders",
+      "Los Angeles Chargers",
+      "Los Angeles Rams",
+      "Miami Dolphins",
+      "Minnesota Vikings",
+      "New England Patriots",
+      "New Orleans Saints",
+      "New York Giants",
+      "New York Jets",
+      "Philadelphia Eagles",
+      "Pittsburgh Steelers",
+      "San Francisco 49ers",
+      "Seattle Seahawks",
+      "Tampa Bay Buccaneers",
+      "Tennessee Titans",
+      "Washington Commanders"
+    ],
+    "positions": [
+      "QB",
+      "RB",
+      "WR",
+      "TE",
+      "K",
+      "DEF",
+      "FLEX"
+    ],
+    "stats": [
+      "touchdowns",
+      "yards",
+      "receptions",
+      "targets",
+      "carries"
+    ]
+  },
+  "commands": {
+    "lineup": [
+      "start",
+      "bench",
+      "swap",
+      "optimize"
+    ],
+    "analysis": [
+      "analyze",
+      "compare",
+      "project",
+      "evaluate"
+    ],
+    "info": [
+      "tell me about",
+      "what about",
+      "how is",
+      "status of"
+    ]
+  },
+  "timestamp": "2025-07-01T17:50:14.780Z"
+}

@@ -448,6 +448,37 @@ class ContinuousLearningAI {
       console.log(chalk.white(`   Prediction: ${(prediction * 100).toFixed(1)}% home win`));
       console.log(chalk.white(`   Confidence: ${(confidence * 100).toFixed(1)}%`));
       
+      // Save prediction to database
+      try {
+        await supabase.from('ml_predictions').insert({
+          model_name: 'game_predictor',
+          model_version: this.model.version,
+          prediction_type: 'game_winner',
+          game_id: game.id,
+          prediction: prediction > 0.5 ? 'home_win' : 'away_win',
+          confidence: confidence,
+          features: features,
+          created_at: new Date().toISOString()
+        });
+      } catch (error) {
+        console.log(chalk.gray('   Could not save prediction'));
+      }
+      
+      // Save model to ml_models table periodically
+      if (this.model.experience.total_predictions % 10 === 0) {
+        try {
+          await supabase.from('ml_models').insert({
+            name: 'game_predictor',
+            version: this.model.version,
+            accuracy: this.model.accuracy / 100, // Convert to 0-1 range
+            model_data: this.model,
+            created_at: new Date().toISOString()
+          });
+        } catch (error) {
+          // Ignore duplicate errors
+        }
+      }
+      
       // If game is completed, learn from result
       if (game.status === 'completed' && game.home_score !== null && game.away_score !== null) {
         const actual = game.home_score > game.away_score ? 1 : 0;
@@ -455,6 +486,19 @@ class ContinuousLearningAI {
         
         const wasCorrect = Math.abs(prediction - actual) < 0.5;
         console.log(chalk[wasCorrect ? 'green' : 'red'](`   Result: ${wasCorrect ? '✅ Correct' : '❌ Wrong'} (actual: ${actual})`));
+        
+        // Update prediction result
+        try {
+          await supabase
+            .from('ml_predictions')
+            .update({ 
+              correct: wasCorrect,
+              actual_result: actual > 0.5 ? 'home_win' : 'away_win'
+            })
+            .eq('game_id', game.id);
+        } catch (error) {
+          // Ignore update errors
+        }
       }
       
       console.log(); // Empty line
