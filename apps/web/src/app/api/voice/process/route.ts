@@ -5,11 +5,19 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { RealTimeVoiceTrainer } from '../../../../../../lib/voice/training/real-time-trainer';
+import { FeedbackLoop } from '../../../../../../lib/voice/training/feedback-loop';
+import { GPUAccelerator } from '../../../../../../lib/voice/training/gpu-accelerator';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
+
+// Initialize training system
+const trainer = new RealTimeVoiceTrainer();
+const feedbackLoop = new FeedbackLoop(trainer);
+const gpuAccelerator = new GPUAccelerator();
 
 // Voice command processing patterns
 const COMMAND_PATTERNS = {
@@ -25,6 +33,8 @@ const COMMAND_PATTERNS = {
 export async function POST(request: NextRequest) {
   try {
     const { transcript, context } = await request.json();
+    const sessionId = context?.sessionId || `session_${Date.now()}`;
+    const userId = context?.userId;
     
     if (!transcript) {
       return NextResponse.json(
@@ -34,6 +44,18 @@ export async function POST(request: NextRequest) {
     }
 
     console.log('Processing voice command:', transcript);
+    
+    // Process with ML trainer for intent detection
+    const commandId = `cmd_${Date.now()}_${Math.random()}`;
+    const mlIntent = await trainer.processCommand({
+      id: commandId,
+      transcript,
+      intent: 'unknown', // Will be set by trainer
+      entities: {},
+      confidence: 0,
+      timestamp: new Date(),
+      userId
+    });
 
     // Process the command
     let response = '';
@@ -96,13 +118,28 @@ export async function POST(request: NextRequest) {
       console.error('TTS generation failed:', error);
     }
 
+    // Track in feedback loop
+    feedbackLoop.captureFeedback({
+      commandId,
+      transcript,
+      response,
+      intent: mlIntent,
+      feedback: 'neutral', // Will be updated by user
+      timestamp: new Date(),
+      userId,
+      sessionId
+    });
+    
     return NextResponse.json({
       success: true,
       result: {
+        commandId,
         transcript,
         response,
         audioUrl,
         data,
+        intent: mlIntent,
+        needsFeedback: true
       }
     });
   } catch (error: any) {

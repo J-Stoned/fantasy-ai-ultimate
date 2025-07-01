@@ -18,6 +18,8 @@ export function VoiceInterface({ fantasyTeamId, leagueId }: VoiceInterfaceProps)
   const [response, setResponse] = useState('');
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [wakeWordEnabled, setWakeWordEnabled] = useState(false);
+  const [lastCommandId, setLastCommandId] = useState<string | null>(null);
+  const [showFeedback, setShowFeedback] = useState(false);
   
   const voiceServiceRef = useRef<ClientVoiceService | null>(null);
   const recorderRef = useRef<RecordRTC | null>(null);
@@ -81,6 +83,8 @@ export function VoiceInterface({ fantasyTeamId, leagueId }: VoiceInterfaceProps)
       );
 
       setResponse(result.response);
+      setLastCommandId(result.commandId);
+      setShowFeedback(true);
       
       if (result.audioUrl) {
         setAudioUrl(result.audioUrl);
@@ -122,6 +126,30 @@ export function VoiceInterface({ fantasyTeamId, leagueId }: VoiceInterfaceProps)
       setTranscript(input.value);
       handleVoiceCommand(input.value);
       input.value = '';
+    }
+  };
+
+  const provideFeedback = async (feedback: 'positive' | 'negative') => {
+    if (!lastCommandId) return;
+    
+    setShowFeedback(false);
+    
+    try {
+      const response = await fetch('/api/voice/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          commandId: lastCommandId,
+          feedback,
+          sessionId: `session_${Date.now()}`,
+          userId: user?.id
+        })
+      });
+      
+      const data = await response.json();
+      console.log('Feedback sent:', data.message);
+    } catch (error) {
+      console.error('Failed to send feedback:', error);
     }
   };
 
@@ -213,6 +241,27 @@ export function VoiceInterface({ fantasyTeamId, leagueId }: VoiceInterfaceProps)
           <div className="text-gray-800 dark:text-gray-200 whitespace-pre-wrap">
             {response}
           </div>
+          
+          {/* Feedback buttons */}
+          {showFeedback && lastCommandId && (
+            <div className="mt-3 flex items-center gap-2">
+              <span className="text-sm text-gray-600 dark:text-gray-400">Was this helpful?</span>
+              <button
+                onClick={() => provideFeedback('positive')}
+                className="p-2 rounded-lg bg-green-100 dark:bg-green-900/20 hover:bg-green-200 dark:hover:bg-green-900/30 transition-colors"
+                title="Yes, this was helpful"
+              >
+                👍
+              </button>
+              <button
+                onClick={() => provideFeedback('negative')}
+                className="p-2 rounded-lg bg-red-100 dark:bg-red-900/20 hover:bg-red-200 dark:hover:bg-red-900/30 transition-colors"
+                title="No, this wasn't helpful"
+              >
+                👎
+              </button>
+            </div>
+          )}
         </div>
       )}
 
