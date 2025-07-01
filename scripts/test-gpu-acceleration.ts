@@ -4,6 +4,9 @@
  * Verifies RTX 4060 is properly configured and working
  */
 
+import * as dotenv from 'dotenv';
+dotenv.config({ path: '.env.local' });
+
 import * as tf from '@tensorflow/tfjs-node-gpu';
 import chalk from 'chalk';
 import { configureGPU, benchmarkGPU, monitorGPUMemory } from '../lib/voice/training/gpu-config';

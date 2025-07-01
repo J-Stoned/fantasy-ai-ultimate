@@ -220,12 +220,13 @@ async function runMigrations() {
 
 // Check if exec_sql function exists, if not create it
 async function createExecSqlFunction() {
-  const { error } = await supabase.rpc('exec_sql', { sql: 'SELECT 1' }).catch(() => ({ error: true }));
-  
-  if (error) {
-    console.log('Creating exec_sql function...');
-    // This would need to be run directly in Supabase SQL editor
-    console.log(chalk.yellow(`
+  try {
+    const { data, error } = await supabase.rpc('exec_sql', { sql: 'SELECT 1' });
+    
+    if (error) {
+      console.log('Creating exec_sql function...');
+      // This would need to be run directly in Supabase SQL editor
+      console.log(chalk.yellow(`
 ⚠️  Please run this in your Supabase SQL editor first:
 
 CREATE OR REPLACE FUNCTION exec_sql(sql text)
@@ -237,9 +238,25 @@ BEGIN
   EXECUTE sql;
 END;
 $$;
-    `));
-    
-    console.log(chalk.yellow('\n❌ Migration requires exec_sql function. Please create it first.'));
+      `));
+      
+      console.log(chalk.yellow('\n❌ Migration requires exec_sql function. Please create it first.'));
+      process.exit(1);
+    }
+  } catch (err) {
+    // Function doesn't exist, show instructions
+    console.log(chalk.yellow('\n⚠️  Database migrations require the exec_sql function.'));
+    console.log(chalk.yellow('Please run this in your Supabase SQL editor first:\n'));
+    console.log(chalk.cyan(`CREATE OR REPLACE FUNCTION exec_sql(sql text)
+RETURNS void
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+  EXECUTE sql;
+END;
+$$;`));
+    console.log(chalk.yellow('\nThen run migrations again: npm run migrate'));
     process.exit(1);
   }
 }

@@ -83,7 +83,7 @@ async function seedDatabase() {
         }
       });
 
-    if (modelError && !modelError.message.includes('duplicate')) {
+    if (modelError && modelError.message && !modelError.message.includes('duplicate')) {
       console.error('Error creating model deployment:', modelError);
     } else {
       console.log(chalk.green('✅ AI model metadata initialized'));
@@ -161,7 +161,7 @@ async function seedDatabase() {
         .from('voice_commands')
         .insert(cmd);
       
-      if (error && !error.message.includes('duplicate')) {
+      if (error && error.message && !error.message.includes('duplicate')) {
         console.error('Error inserting sample command:', error);
       }
     }

@@ -7,10 +7,18 @@ import * as tf from '@tensorflow/tfjs-node-gpu';
 import { EventEmitter } from 'events';
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+// Create supabase client lazily to ensure env vars are loaded
+let supabase: any = null;
+
+function getSupabase() {
+  if (!supabase) {
+    supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
+  }
+  return supabase;
+}
 
 export interface VoiceCommand {
   id: string;
@@ -324,7 +332,7 @@ export class RealTimeVoiceTrainer extends EventEmitter {
    */
   private async storeCommand(command: VoiceCommand) {
     try {
-      await supabase.from('voice_training_data').insert({
+      await getSupabase().from('voice_training_data').insert({
         transcript: command.transcript,
         intent: command.intent,
         confidence: command.confidence,
