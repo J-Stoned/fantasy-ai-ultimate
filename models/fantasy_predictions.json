@@ -1,0 +1,37 @@
+[
+  {
+    "game": "Lakers vs Warriors",
+    "homeWinProb": null,
+    "awayWinProb": null,
+    "confidence": "Medium",
+    "fantasyScore": null
+  },
+  {
+    "game": "Celtics vs Heat",
+    "homeWinProb": null,
+    "awayWinProb": null,
+    "confidence": "Medium",
+    "fantasyScore": null
+  },
+  {
+    "game": "Nuggets vs Suns",
+    "homeWinProb": null,
+    "awayWinProb": null,
+    "confidence": "Medium",
+    "fantasyScore": null
+  },
+  {
+    "game": "Bucks vs Nets",
+    "homeWinProb": null,
+    "awayWinProb": null,
+    "confidence": "Medium",
+    "fantasyScore": null
+  },
+  {
+    "game": "Mavericks vs Clippers",
+    "homeWinProb": null,
+    "awayWinProb": null,
+    "confidence": "Medium",
+    "fantasyScore": null
+  }
+]

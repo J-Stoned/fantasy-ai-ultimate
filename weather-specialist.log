@@ -36,3 +36,35 @@
 📅 Scheduling hourly weather updates...
 ✅ Weather collector running! Press Ctrl+C to stop
 
+🌤️ Collecting weather data for NFL cities...
+  ✓ Buffalo: 72.63°F, Clouds
+  ✓ Miami: 79.41°F, Clouds
+  ✓ Foxborough: 69.35°F, Clear
+  ✓ East Rutherford: 76.64°F, Clear
+  ✓ Baltimore: 83.62°F, Clouds
+  ✓ Cincinnati: 72.25°F, Clouds
+  ✓ Cleveland: 73.74°F, Clouds
+  ✓ Pittsburgh: 74.14°F, Clear
+  ✓ Houston: 77.83°F, Clouds
+  ✓ Indianapolis: 77.36°F, Clouds
+  ✓ Jacksonville: 75.4°F, Clouds
+  ✓ Nashville: 78.28°F, Clear
+  ✓ Denver: 69.58°F, Clouds
+  ✓ Kansas City: 70.18°F, Clear
+  ✓ Las Vegas: 98.65°F, Clear
+  ✓ Los Angeles: 67.71°F, Clouds
+  ✓ Dallas: 80.19°F, Clouds
+  ✓ Philadelphia: 75.11°F, Clouds
+  ✓ Landover: 83.77°F, Clouds
+  ✓ Chicago: 80.04°F, Clouds
+  ✓ Detroit: 77.54°F, Clouds
+  ✓ Green Bay: 66.43°F, Clear
+  ✓ Minneapolis: 66.61°F, Clear
+  ✓ Atlanta: 75.24°F, Clear
+  ✓ Charlotte: 76.37°F, Clouds
+  ✓ New Orleans: 78.67°F, Clear
+  ✓ Tampa: 77.13°F, Clouds
+  ✓ Glendale: 102.45°F, Clear
+  ✓ Santa Clara: 78.46°F, Clouds
+  ✓ Seattle: 68.45°F, Clear
+✅ Weather collected for 30 cities, 1 alerts created
