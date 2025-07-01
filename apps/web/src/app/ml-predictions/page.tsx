@@ -25,12 +25,25 @@ export default function MLPredictionsPage() {
   const loadPredictions = async () => {
     setLoading(true);
     try {
-      // In production, this would be an API call
-      // For demo, showing mock data
-      const mockPredictions = generateMockPredictions();
-      setPredictions(mockPredictions);
+      // Call our AI predictions API
+      const response = await fetch(`/api/ai/predictions?week=${selectedWeek}&position=${selectedPosition}`);
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch predictions');
+      }
+      
+      const data = await response.json();
+      setPredictions(data.predictions);
+      
+      // Show AI model info if available
+      if (data.modelInfo?.hasAIModel) {
+        logger.info(`Using AI Model v${data.modelInfo.version} (${data.modelInfo.accuracy.toFixed(1)}% accuracy)`);
+      }
     } catch (error) {
       logger.error('Failed to load predictions', error);
+      // Fallback to mock data if API fails
+      const mockPredictions = generateMockPredictions();
+      setPredictions(mockPredictions);
     } finally {
       setLoading(false);
     }
@@ -295,33 +308,41 @@ export default function MLPredictionsPage() {
 
       {/* Model Info */}
       <div className="mt-8 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6">
-        <h3 className="text-lg font-semibold mb-3">🤖 About Our ML Models</h3>
+        <h3 className="text-lg font-semibold mb-3">🤖 Continuous Learning AI System</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
           <div>
-            <h4 className="font-medium mb-1">Deep Learning Architecture</h4>
+            <h4 className="font-medium mb-1">🚀 RTX 4060 GPU Acceleration</h4>
             <p className="text-gray-600 dark:text-gray-400">
-              Neural networks trained on millions of historical data points
+              CUDA-powered neural networks for ultra-fast predictions
             </p>
           </div>
           <div>
-            <h4 className="font-medium mb-1">Real-time Learning</h4>
+            <h4 className="font-medium mb-1">🧠 Self-Improving Models</h4>
             <p className="text-gray-600 dark:text-gray-400">
-              Models update continuously with new game results
+              AI learns from every game result and gets smarter over time
             </p>
           </div>
           <div>
-            <h4 className="font-medium mb-1">Advanced Features</h4>
+            <h4 className="font-medium mb-1">💻 Ryzen 5 7600X Processing</h4>
             <p className="text-gray-600 dark:text-gray-400">
-              Analyzes 50+ factors including matchups, trends, and weather
+              6-core parallel processing for real-time data analysis
             </p>
           </div>
           <div>
-            <h4 className="font-medium mb-1">Position-Specific Models</h4>
+            <h4 className="font-medium mb-1">📊 Continuous Learning</h4>
             <p className="text-gray-600 dark:text-gray-400">
-              Specialized models for each position's unique characteristics
+              Model retrains automatically after analyzing prediction errors
             </p>
           </div>
         </div>
+        {predictions.length > 0 && predictions[0].aiModelVersion > 0 && (
+          <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Currently using <strong>AI Model v{predictions[0].aiModelVersion}</strong> with{' '}
+              <strong>{predictions[0].aiAccuracy?.toFixed(1)}% accuracy</strong>
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
