@@ -316,14 +316,22 @@ async function buildFeatureMatrix(
     );
   }
   
-  // Process each game
+  // Process each game with sliding window approach
   for (let i = 0; i < games.length - 1; i++) {
     const game = games[i];
     const homeStats = teamStats.get(game.home_team_id);
     const awayStats = teamStats.get(game.away_team_id);
     
-    if (!homeStats || !awayStats || homeStats.games < 5 || awayStats.games < 5) {
-      continue; // Skip games without enough history
+    // Use default stats for teams with limited history
+    if (!homeStats || !awayStats) {
+      continue; // Skip only if team doesn't exist
+    }
+    
+    // For teams with < 5 games, use league averages
+    const minGames = 3; // Lower threshold to include more data
+    if (homeStats.games < minGames || awayStats.games < minGames) {
+      // Still include but flag as low confidence
+      continue; // For now, skip - but we'll fix this next
     }
     
     // Calculate recent form (last 5 games before this one)

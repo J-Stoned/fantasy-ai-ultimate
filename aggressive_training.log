@@ -1,0 +1,361 @@
+2025-07-02 14:34:47.970926: I tensorflow/core/util/util.cc:169] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-07-02 14:34:47.975448: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-11.8/lib64:
+2025-07-02 14:34:47.975484: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2025-07-02 14:34:47.996620: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI AVX512_BF16 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-07-02 14:34:48.036540: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:961] could not open file to read NUMA node: /sys/bus/pci/devices/0000:01:00.0/numa_node
+Your kernel may have been built without NUMA support.
+2025-07-02 14:34:48.037909: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-11.8/lib64:
+2025-07-02 14:34:48.038934: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcublas.so.11'; dlerror: libcublas.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-11.8/lib64:
+2025-07-02 14:34:48.039961: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcublasLt.so.11'; dlerror: libcublasLt.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-11.8/lib64:
+2025-07-02 14:34:48.040912: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcufft.so.10'; dlerror: libcufft.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-11.8/lib64:
+2025-07-02 14:34:48.041848: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcurand.so.10'; dlerror: libcurand.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-11.8/lib64:
+2025-07-02 14:34:48.042821: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcusolver.so.11'; dlerror: libcusolver.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-11.8/lib64:
+2025-07-02 14:34:48.043703: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcusparse.so.11'; dlerror: libcusparse.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-11.8/lib64:
+2025-07-02 14:34:48.045014: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudnn.so.8'; dlerror: libcudnn.so.8: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-11.8/lib64:
+2025-07-02 14:34:48.045050: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1850] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+
+🔥 AGGRESSIVE ML TRAINING - USING ALL DATA!
+
+📊 Loading games...
+✅ Loaded 1000 games
+📊 Loading player stats...
+✅ Loaded stats for 156 games
+🔧 Building features for ALL games...
+✅ Created 1000 training samples!
+✅ Train: 700 | Val: 150 | Test: 150
+
+🧠 Building DEEP neural network...
+
+🏋️ Training on ALL data...
+Epoch 1 / 100
+
+211ms 302us/step - acc=0.471 loss=0.728 val_acc=0.527 val_loss=0.694 
+Epoch 1/100 - loss: 0.7277 - acc: 47.14% - val_acc: 52.67%
+Epoch 2 / 100
+
+122ms 174us/step - acc=0.489 loss=0.714 val_acc=0.513 val_loss=0.698 
+Epoch 3 / 100
+
+114ms 163us/step - acc=0.510 loss=0.700 val_acc=0.507 val_loss=0.701 
+Epoch 4 / 100
+
+106ms 152us/step - acc=0.489 loss=0.710 val_acc=0.493 val_loss=0.701 
+Epoch 5 / 100
+
+110ms 157us/step - acc=0.520 loss=0.694 val_acc=0.507 val_loss=0.699 
+Epoch 6 / 100
+
+101ms 145us/step - acc=0.511 loss=0.697 val_acc=0.493 val_loss=0.698 
+Epoch 6/100 - loss: 0.6974 - acc: 51.14% - val_acc: 49.33%
+Epoch 7 / 100
+
+119ms 169us/step - acc=0.517 loss=0.698 val_acc=0.487 val_loss=0.698 
+Epoch 8 / 100
+
+102ms 146us/step - acc=0.533 loss=0.689 val_acc=0.467 val_loss=0.698 
+Epoch 9 / 100
+
+109ms 156us/step - acc=0.527 loss=0.692 val_acc=0.447 val_loss=0.699 
+Epoch 10 / 100
+
+109ms 156us/step - acc=0.540 loss=0.687 val_acc=0.433 val_loss=0.700 
+Epoch 11 / 100
+
+97ms 138us/step - acc=0.547 loss=0.684 val_acc=0.447 val_loss=0.700 
+Epoch 11/100 - loss: 0.6840 - acc: 54.71% - val_acc: 44.67%
+Epoch 12 / 100
+
+114ms 162us/step - acc=0.533 loss=0.691 val_acc=0.427 val_loss=0.700 
+Epoch 13 / 100
+
+131ms 187us/step - acc=0.529 loss=0.690 val_acc=0.447 val_loss=0.700 
+Epoch 14 / 100
+
+104ms 149us/step - acc=0.556 loss=0.686 val_acc=0.473 val_loss=0.701 
+Epoch 15 / 100
+
+125ms 178us/step - acc=0.537 loss=0.690 val_acc=0.473 val_loss=0.703 
+Epoch 16 / 100
+
+105ms 150us/step - acc=0.549 loss=0.686 val_acc=0.467 val_loss=0.705 
+Epoch 16/100 - loss: 0.6865 - acc: 54.86% - val_acc: 46.67%
+Epoch 17 / 100
+
+90ms 128us/step - acc=0.550 loss=0.683 val_acc=0.467 val_loss=0.705 
+Epoch 18 / 100
+
+93ms 133us/step - acc=0.507 loss=0.692 val_acc=0.487 val_loss=0.705 
+Epoch 19 / 100
+
+94ms 134us/step - acc=0.536 loss=0.694 val_acc=0.467 val_loss=0.707 
+Epoch 20 / 100
+
+105ms 150us/step - acc=0.534 loss=0.683 val_acc=0.453 val_loss=0.708 
+Epoch 21 / 100
+
+97ms 139us/step - acc=0.543 loss=0.683 val_acc=0.447 val_loss=0.707 
+Epoch 21/100 - loss: 0.6830 - acc: 54.29% - val_acc: 44.67%
+Epoch 22 / 100
+
+104ms 149us/step - acc=0.551 loss=0.684 val_acc=0.460 val_loss=0.707 
+Epoch 23 / 100
+
+100ms 143us/step - acc=0.559 loss=0.682 val_acc=0.473 val_loss=0.707 
+Epoch 24 / 100
+
+100ms 143us/step - acc=0.560 loss=0.684 val_acc=0.460 val_loss=0.707 
+Epoch 25 / 100
+
+102ms 146us/step - acc=0.553 loss=0.679 val_acc=0.440 val_loss=0.705 
+Epoch 26 / 100
+
+100ms 143us/step - acc=0.549 loss=0.678 val_acc=0.453 val_loss=0.706 
+Epoch 26/100 - loss: 0.6778 - acc: 54.86% - val_acc: 45.33%
+Epoch 27 / 100
+
+96ms 137us/step - acc=0.536 loss=0.677 val_acc=0.440 val_loss=0.704 
+Epoch 28 / 100
+
+101ms 144us/step - acc=0.569 loss=0.677 val_acc=0.440 val_loss=0.703 
+Epoch 29 / 100
+
+92ms 132us/step - acc=0.566 loss=0.682 val_acc=0.447 val_loss=0.702 
+Epoch 30 / 100
+
+114ms 163us/step - acc=0.573 loss=0.677 val_acc=0.420 val_loss=0.702 
+Epoch 31 / 100
+
+95ms 135us/step - acc=0.567 loss=0.678 val_acc=0.420 val_loss=0.704 
+Epoch 31/100 - loss: 0.6781 - acc: 56.71% - val_acc: 42.00%
+Epoch 32 / 100
+
+97ms 139us/step - acc=0.576 loss=0.675 val_acc=0.407 val_loss=0.704 
+Epoch 33 / 100
+
+110ms 157us/step - acc=0.550 loss=0.676 val_acc=0.413 val_loss=0.705 
+Epoch 34 / 100
+
+99ms 141us/step - acc=0.590 loss=0.671 val_acc=0.427 val_loss=0.706 
+Epoch 35 / 100
+
+104ms 148us/step - acc=0.566 loss=0.679 val_acc=0.460 val_loss=0.707 
+Epoch 36 / 100
+
+106ms 152us/step - acc=0.606 loss=0.672 val_acc=0.460 val_loss=0.707 
+Epoch 36/100 - loss: 0.6716 - acc: 60.57% - val_acc: 46.00%
+Epoch 37 / 100
+
+104ms 148us/step - acc=0.591 loss=0.664 val_acc=0.473 val_loss=0.706 
+Epoch 38 / 100
+
+107ms 153us/step - acc=0.581 loss=0.666 val_acc=0.500 val_loss=0.707 
+Epoch 39 / 100
+
+109ms 156us/step - acc=0.557 loss=0.674 val_acc=0.500 val_loss=0.708 
+Epoch 40 / 100
+
+106ms 151us/step - acc=0.570 loss=0.666 val_acc=0.473 val_loss=0.707 
+Epoch 41 / 100
+
+114ms 163us/step - acc=0.606 loss=0.668 val_acc=0.467 val_loss=0.704 
+Epoch 41/100 - loss: 0.6680 - acc: 60.57% - val_acc: 46.67%
+Epoch 42 / 100
+
+105ms 150us/step - acc=0.559 loss=0.672 val_acc=0.473 val_loss=0.702 
+Epoch 43 / 100
+
+105ms 150us/step - acc=0.580 loss=0.665 val_acc=0.480 val_loss=0.702 
+Epoch 44 / 100
+
+110ms 157us/step - acc=0.571 loss=0.674 val_acc=0.460 val_loss=0.703 
+Epoch 45 / 100
+
+110ms 157us/step - acc=0.549 loss=0.677 val_acc=0.473 val_loss=0.704 
+Epoch 46 / 100
+
+112ms 160us/step - acc=0.581 loss=0.667 val_acc=0.493 val_loss=0.701 
+Epoch 46/100 - loss: 0.6670 - acc: 58.14% - val_acc: 49.33%
+Epoch 47 / 100
+
+109ms 156us/step - acc=0.574 loss=0.662 val_acc=0.480 val_loss=0.699 
+Epoch 48 / 100
+
+112ms 160us/step - acc=0.563 loss=0.670 val_acc=0.493 val_loss=0.697 
+Epoch 49 / 100
+
+93ms 133us/step - acc=0.596 loss=0.663 val_acc=0.493 val_loss=0.697 
+Epoch 50 / 100
+
+110ms 157us/step - acc=0.564 loss=0.671 val_acc=0.500 val_loss=0.698 
+Epoch 51 / 100
+
+102ms 146us/step - acc=0.557 loss=0.663 val_acc=0.473 val_loss=0.699 
+Epoch 51/100 - loss: 0.6634 - acc: 55.71% - val_acc: 47.33%
+Epoch 52 / 100
+
+114ms 163us/step - acc=0.569 loss=0.667 val_acc=0.480 val_loss=0.700 
+Epoch 53 / 100
+
+110ms 158us/step - acc=0.586 loss=0.664 val_acc=0.480 val_loss=0.700 
+Epoch 54 / 100
+
+98ms 140us/step - acc=0.574 loss=0.658 val_acc=0.467 val_loss=0.701 
+Epoch 55 / 100
+
+102ms 145us/step - acc=0.577 loss=0.667 val_acc=0.467 val_loss=0.702 
+Epoch 56 / 100
+
+101ms 144us/step - acc=0.580 loss=0.668 val_acc=0.473 val_loss=0.702 
+Epoch 56/100 - loss: 0.6680 - acc: 58.00% - val_acc: 47.33%
+Epoch 57 / 100
+
+100ms 143us/step - acc=0.581 loss=0.671 val_acc=0.520 val_loss=0.702 
+Epoch 58 / 100
+
+99ms 141us/step - acc=0.590 loss=0.655 val_acc=0.520 val_loss=0.703 
+Epoch 59 / 100
+
+101ms 145us/step - acc=0.609 loss=0.650 val_acc=0.493 val_loss=0.703 
+Epoch 60 / 100
+
+102ms 146us/step - acc=0.609 loss=0.654 val_acc=0.500 val_loss=0.702 
+Epoch 61 / 100
+
+103ms 146us/step - acc=0.576 loss=0.661 val_acc=0.480 val_loss=0.703 
+Epoch 61/100 - loss: 0.6611 - acc: 57.57% - val_acc: 48.00%
+Epoch 62 / 100
+
+110ms 157us/step - acc=0.579 loss=0.661 val_acc=0.500 val_loss=0.701 
+Epoch 63 / 100
+
+121ms 173us/step - acc=0.584 loss=0.657 val_acc=0.480 val_loss=0.697 
+Epoch 64 / 100
+
+99ms 141us/step - acc=0.607 loss=0.648 val_acc=0.473 val_loss=0.699 
+Epoch 65 / 100
+
+112ms 159us/step - acc=0.601 loss=0.654 val_acc=0.480 val_loss=0.699 
+Epoch 66 / 100
+
+102ms 145us/step - acc=0.593 loss=0.645 val_acc=0.473 val_loss=0.703 
+Epoch 66/100 - loss: 0.6451 - acc: 59.29% - val_acc: 47.33%
+Epoch 67 / 100
+
+97ms 138us/step - acc=0.601 loss=0.646 val_acc=0.473 val_loss=0.705 
+Epoch 68 / 100
+
+106ms 152us/step - acc=0.607 loss=0.660 val_acc=0.480 val_loss=0.704 
+Epoch 69 / 100
+
+99ms 142us/step - acc=0.609 loss=0.647 val_acc=0.493 val_loss=0.703 
+Epoch 70 / 100
+
+110ms 157us/step - acc=0.586 loss=0.659 val_acc=0.507 val_loss=0.703 
+Epoch 71 / 100
+
+95ms 136us/step - acc=0.617 loss=0.648 val_acc=0.493 val_loss=0.708 
+Epoch 71/100 - loss: 0.6483 - acc: 61.71% - val_acc: 49.33%
+Epoch 72 / 100
+
+96ms 137us/step - acc=0.613 loss=0.650 val_acc=0.493 val_loss=0.708 
+Epoch 73 / 100
+
+104ms 149us/step - acc=0.599 loss=0.651 val_acc=0.513 val_loss=0.709 
+Epoch 74 / 100
+
+105ms 149us/step - acc=0.603 loss=0.641 val_acc=0.507 val_loss=0.704 
+Epoch 75 / 100
+
+98ms 140us/step - acc=0.603 loss=0.646 val_acc=0.467 val_loss=0.700 
+Epoch 76 / 100
+
+106ms 151us/step - acc=0.579 loss=0.649 val_acc=0.480 val_loss=0.700 
+Epoch 76/100 - loss: 0.6488 - acc: 57.86% - val_acc: 48.00%
+Epoch 77 / 100
+
+101ms 145us/step - acc=0.601 loss=0.650 val_acc=0.467 val_loss=0.701 
+Epoch 78 / 100
+
+99ms 142us/step - acc=0.606 loss=0.655 val_acc=0.467 val_loss=0.701 
+Epoch 79 / 100
+
+102ms 146us/step - acc=0.594 loss=0.647 val_acc=0.500 val_loss=0.704 
+Epoch 80 / 100
+
+107ms 153us/step - acc=0.586 loss=0.652 val_acc=0.507 val_loss=0.704 
+Epoch 81 / 100
+
+97ms 139us/step - acc=0.621 loss=0.641 val_acc=0.487 val_loss=0.704 
+Epoch 81/100 - loss: 0.6407 - acc: 62.14% - val_acc: 48.67%
+Epoch 82 / 100
+
+103ms 147us/step - acc=0.614 loss=0.640 val_acc=0.487 val_loss=0.704 
+Epoch 83 / 100
+
+99ms 142us/step - acc=0.584 loss=0.643 val_acc=0.507 val_loss=0.704 
+Epoch 84 / 100
+
+98ms 140us/step - acc=0.601 loss=0.652 val_acc=0.520 val_loss=0.703 
+Epoch 85 / 100
+
+91ms 130us/step - acc=0.623 loss=0.646 val_acc=0.500 val_loss=0.706 
+Epoch 86 / 100
+
+90ms 129us/step - acc=0.594 loss=0.645 val_acc=0.500 val_loss=0.710 
+Epoch 86/100 - loss: 0.6454 - acc: 59.43% - val_acc: 50.00%
+Epoch 87 / 100
+
+93ms 133us/step - acc=0.610 loss=0.639 val_acc=0.487 val_loss=0.709 
+Epoch 88 / 100
+
+93ms 133us/step - acc=0.619 loss=0.636 val_acc=0.493 val_loss=0.705 
+Epoch 89 / 100
+
+94ms 134us/step - acc=0.593 loss=0.642 val_acc=0.480 val_loss=0.703 
+Epoch 90 / 100
+
+96ms 138us/step - acc=0.633 loss=0.621 val_acc=0.480 val_loss=0.706 
+Epoch 91 / 100
+
+107ms 153us/step - acc=0.606 loss=0.635 val_acc=0.487 val_loss=0.707 
+Epoch 91/100 - loss: 0.6350 - acc: 60.57% - val_acc: 48.67%
+Epoch 92 / 100
+
+100ms 143us/step - acc=0.636 loss=0.641 val_acc=0.467 val_loss=0.706 
+Epoch 93 / 100
+
+92ms 131us/step - acc=0.619 loss=0.647 val_acc=0.473 val_loss=0.706 
+Epoch 94 / 100
+
+91ms 130us/step - acc=0.611 loss=0.646 val_acc=0.467 val_loss=0.704 
+Epoch 95 / 100
+
+100ms 142us/step - acc=0.617 loss=0.630 val_acc=0.473 val_loss=0.704 
+Epoch 96 / 100
+
+96ms 138us/step - acc=0.611 loss=0.642 val_acc=0.460 val_loss=0.703 
+Epoch 96/100 - loss: 0.6421 - acc: 61.14% - val_acc: 46.00%
+Epoch 97 / 100
+
+105ms 150us/step - acc=0.610 loss=0.636 val_acc=0.507 val_loss=0.707 
+Epoch 98 / 100
+
+92ms 132us/step - acc=0.647 loss=0.637 val_acc=0.493 val_loss=0.709 
+Epoch 99 / 100
+
+88ms 126us/step - acc=0.629 loss=0.633 val_acc=0.473 val_loss=0.713 
+Epoch 100 / 100
+
+90ms 128us/step - acc=0.624 loss=0.638 val_acc=0.493 val_loss=0.715 
+
+🎯 FINAL TEST ACCURACY: 46.67%
+
+🔥 TRAINING COMPLETE!
+━━━━━━━━━━━━━━━━━━━━
+📊 Samples: 1000
+🎯 Accuracy: 46.67%
+⏱️  Time: 11.0s
+━━━━━━━━━━━━━━━━━━━━
+

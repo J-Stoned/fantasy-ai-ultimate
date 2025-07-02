@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: continuous-learning
+  namespace: fantasy-ai
+  labels:
+    app: continuous-learning
+    component: ai
+spec:
+  replicas: 1  # Only one instance to avoid conflicts
+  selector:
+    matchLabels:
+      app: continuous-learning
+  template:
+    metadata:
+      labels:
+        app: continuous-learning
+        component: ai
+    spec:
+      containers:
+      - name: continuous-learning
+        image: fantasy-ai/continuous-learning:latest
+        imagePullPolicy: Always
+        command: ["node", "scripts/continuous-learning-ai.js"]
+        envFrom:
+        - configMapRef:
+            name: fantasy-ai-config
+        - secretRef:
+            name: fantasy-ai-secrets
+        env:
+        - name: ENABLE_CONTINUOUS_LEARNING
+          value: "true"
+        - name: LEARNING_INTERVAL
+          value: "300000"  # 5 minutes
+        - name: ACCURACY_THRESHOLD
+          value: "0.75"
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1"
+        volumeMounts:
+        - name: ml-models
+          mountPath: /models
+        - name: learning-data
+          mountPath: /data
+      volumes:
+      - name: ml-models
+        persistentVolumeClaim:
+          claimName: ml-models-pvc
+      - name: learning-data
+        persistentVolumeClaim:
+          claimName: learning-data-pvc
+
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: model-backup
+  namespace: fantasy-ai
+spec:
+  schedule: "0 */6 * * *"  # Every 6 hours
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: backup
+            image: fantasy-ai/ml-backup:latest
+            command:
+            - /bin/sh
+            - -c
+            - |
+              timestamp=$(date +%Y%m%d_%H%M%S)
+              cp -r /models/* /backup/models_${timestamp}/
+              # Keep only last 7 days of backups
+              find /backup -name "models_*" -mtime +7 -exec rm -rf {} \;
+            volumeMounts:
+            - name: ml-models
+              mountPath: /models
+              readOnly: true
+            - name: backup-storage
+              mountPath: /backup
+          volumes:
+          - name: ml-models
+            persistentVolumeClaim:
+              claimName: ml-models-pvc
+          - name: backup-storage
+            persistentVolumeClaim:
+              claimName: ml-backup-pvc
+          restartPolicy: OnFailure

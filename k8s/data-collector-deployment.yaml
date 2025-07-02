@@ -1,0 +1,80 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: data-collector
+  namespace: fantasy-ai
+spec:
+  schedule: "*/15 * * * *"  # Every 15 minutes
+  concurrencyPolicy: Forbid  # Don't run if previous job is still running
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: data-collector
+            component: data
+        spec:
+          containers:
+          - name: data-collector
+            image: fantasy-ai/data-collector:latest
+            imagePullPolicy: Always
+            command: ["node", "scripts/mega-data-collector-v3.js"]
+            envFrom:
+            - configMapRef:
+                name: fantasy-ai-config
+            - secretRef:
+                name: fantasy-ai-secrets
+            resources:
+              requests:
+                memory: "512Mi"
+                cpu: "250m"
+              limits:
+                memory: "1Gi"
+                cpu: "500m"
+          restartPolicy: OnFailure
+          activeDeadlineSeconds: 600  # 10 minute timeout
+
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ml-retrainer
+  namespace: fantasy-ai
+spec:
+  schedule: "0 2 * * *"  # Daily at 2 AM
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: ml-retrainer
+            component: ai
+        spec:
+          nodeSelector:
+            gpu: "true"
+          containers:
+          - name: retrainer
+            image: fantasy-ai/ml-retrainer:latest
+            command: ["node", "scripts/train-production-ml-all-data.js"]
+            envFrom:
+            - configMapRef:
+                name: fantasy-ai-config
+            - secretRef:
+                name: fantasy-ai-secrets
+            resources:
+              requests:
+                memory: "4Gi"
+                cpu: "2"
+                nvidia.com/gpu: 1
+              limits:
+                memory: "8Gi"
+                cpu: "4"
+                nvidia.com/gpu: 1
+            volumeMounts:
+            - name: ml-models
+              mountPath: /models
+          volumes:
+          - name: ml-models
+            persistentVolumeClaim:
+              claimName: ml-models-pvc
+          restartPolicy: OnFailure

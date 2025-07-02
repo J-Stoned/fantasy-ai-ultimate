@@ -1,0 +1,191 @@
+apiVersion: v1
+kind: ServiceMonitor
+metadata:
+  name: fantasy-ai-metrics
+  namespace: fantasy-ai
+  labels:
+    app: fantasy-ai
+    prometheus: kube-prometheus
+spec:
+  selector:
+    matchLabels:
+      app: fantasy-ai
+  endpoints:
+  - port: metrics
+    interval: 30s
+    path: /metrics
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: fantasy-ai
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 15s
+    
+    scrape_configs:
+    - job_name: 'fantasy-ai-web'
+      static_configs:
+      - targets: ['web-service:3000']
+      metrics_path: '/api/metrics'
+    
+    - job_name: 'fantasy-ai-ml'
+      static_configs:
+      - targets: ['ml-engine-service:9090']
+    
+    - job_name: 'fantasy-ai-websocket'
+      static_configs:
+      - targets: ['websocket-service:9090']
+    
+    - job_name: 'node-exporter'
+      static_configs:
+      - targets: ['node-exporter:9100']
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboards
+  namespace: fantasy-ai
+data:
+  fantasy-ai-dashboard.json: |
+    {
+      "dashboard": {
+        "title": "Fantasy AI Production Dashboard",
+        "panels": [
+          {
+            "title": "ML Prediction Accuracy",
+            "targets": [
+              {
+                "expr": "ml_accuracy_rate",
+                "legendFormat": "Accuracy %"
+              }
+            ],
+            "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 }
+          },
+          {
+            "title": "Predictions per Minute",
+            "targets": [
+              {
+                "expr": "rate(ml_predictions_total[1m])",
+                "legendFormat": "Predictions/min"
+              }
+            ],
+            "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 }
+          },
+          {
+            "title": "API Response Time",
+            "targets": [
+              {
+                "expr": "histogram_quantile(0.95, api_response_duration_seconds_bucket)",
+                "legendFormat": "95th percentile"
+              }
+            ],
+            "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 }
+          },
+          {
+            "title": "WebSocket Connections",
+            "targets": [
+              {
+                "expr": "websocket_active_connections",
+                "legendFormat": "Active Connections"
+              }
+            ],
+            "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 }
+          },
+          {
+            "title": "GPU Utilization",
+            "targets": [
+              {
+                "expr": "gpu_utilization_percent",
+                "legendFormat": "GPU {{gpu_index}}"
+              }
+            ],
+            "gridPos": { "h": 8, "w": 12, "x": 0, "y": 16 }
+          },
+          {
+            "title": "Data Collection Rate",
+            "targets": [
+              {
+                "expr": "rate(data_collected_total[5m])",
+                "legendFormat": "{{data_type}}"
+              }
+            ],
+            "gridPos": { "h": 8, "w": 12, "x": 12, "y": 16 }
+          }
+        ]
+      }
+    }
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: fantasy-ai-alerts
+  namespace: fantasy-ai
+spec:
+  groups:
+  - name: ml-alerts
+    interval: 30s
+    rules:
+    - alert: MLAccuracyLow
+      expr: ml_accuracy_rate < 0.7
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "ML accuracy below threshold"
+        description: "ML accuracy is {{ $value }}%, below 70% threshold"
+    
+    - alert: MLPredictionLatencyHigh
+      expr: histogram_quantile(0.95, ml_prediction_duration_seconds_bucket) > 1
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "ML prediction latency high"
+        description: "95th percentile latency is {{ $value }}s"
+    
+  - name: api-alerts
+    rules:
+    - alert: APIErrorRateHigh
+      expr: rate(api_errors_total[5m]) > 0.05
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        summary: "High API error rate"
+        description: "Error rate is {{ $value }} errors/sec"
+    
+    - alert: APIResponseTimeSlow
+      expr: histogram_quantile(0.95, api_response_duration_seconds_bucket) > 2
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "API response time slow"
+        description: "95th percentile response time is {{ $value }}s"
+    
+  - name: infrastructure-alerts
+    rules:
+    - alert: PodCrashLooping
+      expr: rate(kube_pod_container_status_restarts_total[15m]) > 0
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        summary: "Pod {{ $labels.pod }} crash looping"
+        description: "Pod has restarted {{ $value }} times in 15 minutes"
+    
+    - alert: HighMemoryUsage
+      expr: container_memory_usage_bytes / container_spec_memory_limit_bytes > 0.9
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "High memory usage in {{ $labels.pod }}"
+        description: "Memory usage is {{ $value }}% of limit"
