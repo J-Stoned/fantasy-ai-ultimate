@@ -1,7 +1,7 @@
 {
-  "accuracy": 0.5076280236244202,
-  "trainingSamples": 47841,
+  "accuracy": 0.5074189901351929,
+  "trainingSamples": 47843,
   "features": 17,
-  "trainTime": 64.017,
-  "timestamp": "2025-07-02T18:40:06.692Z"
+  "trainTime": 54.797,
+  "timestamp": "2025-07-02T19:18:29.478Z"
 }

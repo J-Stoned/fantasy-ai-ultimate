@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  ml-trainer:
+    build:
+      context: .
+      dockerfile: Dockerfile.ml-gpu
+    image: fantasy-ai/ml-gpu:latest
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - CUDA_VISIBLE_DEVICES=0
+      - TF_FORCE_GPU_ALLOW_GROWTH=true
+    volumes:
+      - ./models:/app/models
+      - ./logs:/app/logs
+      - ./.env.local:/app/.env.local:ro
+    command: npx tsx scripts/train-ml-ultimate.ts
+    
+  ml-trainer-aggressive:
+    extends: ml-trainer
+    command: npx tsx scripts/train-ml-aggressive.ts
+    
+  ml-trainer-supreme:
+    extends: ml-trainer
+    command: npx tsx scripts/train-ml-supreme.ts

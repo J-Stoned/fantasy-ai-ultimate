@@ -10,7 +10,7 @@ import { createClient } from '@supabase/supabase-js';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
-import * as tf from '@tensorflow/tfjs-node-gpu';
+import * as tf from '@tensorflow/tfjs-node';
 import { productionML } from '../lib/ml/ProductionMLEngine';
 import { performance } from 'perf_hooks';
 
