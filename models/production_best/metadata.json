@@ -1,0 +1,14 @@
+{
+  "accuracy": 0.5139899253845215,
+  "trainingSamples": 47648,
+  "features": 36,
+  "trainTime": 174.509,
+  "timestamp": "2025-07-02T21:07:37.555Z",
+  "dataStats": {
+    "totalGames": 47843,
+    "playerStats": 1000,
+    "injuries": 129,
+    "weather": 800,
+    "sentiment": 1000
+  }
+}
