@@ -1,0 +1,14 @@
+{
+  "featureCount": 50,
+  "accuracy": 0.3,
+  "models": [
+    "neural_network",
+    "gradient_boosting",
+    "random_forest"
+  ],
+  "weights": {
+    "nn": 0.4,
+    "gb": 0.35,
+    "rf": 0.25
+  }
+}
