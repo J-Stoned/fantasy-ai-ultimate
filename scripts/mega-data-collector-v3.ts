@@ -509,7 +509,7 @@ async function extractInjuriesFromNews(article: any, sport: string) {
             else if (content.includes('doubtful')) status = 'doubtful';
             else if (content.includes('day-to-day')) status = 'day-to-day';
             
-            await supabase.from('injuries').upsert({
+            await supabase.from('player_injuries').upsert({
               player_id: player.id,
               status: status,
               description: article.headline,

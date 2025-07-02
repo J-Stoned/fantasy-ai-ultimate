@@ -1,0 +1,11 @@
+{
+  "totalGames": 47837,
+  "totalNews": 213851,
+  "totalPlayers": 846724,
+  "trainingSize": 791,
+  "testSize": 198,
+  "features": 36,
+  "trainAccuracy": 0.5935302376747131,
+  "testAccuracy": 0.5909090638160706,
+  "trainTime": 4.699
+}

@@ -8,6 +8,7 @@ import { voiceAssistant } from '../../../../../../lib/voice/RealVoiceAssistant';
 import { writeFile } from 'fs/promises';
 import { join } from 'path';
 import { tmpdir } from 'os';
+import { supabase } from '../../../../../../lib/supabase/client';
 
 // Initialize voice assistant on first use
 let assistantInitialized = false;
@@ -32,6 +33,17 @@ export async function POST(request: NextRequest) {
     }
     
     const body = await request.json();
+    
+    // Check for Anthropic API key
+    if (!process.env.ANTHROPIC_API_KEY && !process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY) {
+      return NextResponse.json(
+        { 
+          error: 'Anthropic API key not configured',
+          message: 'Please add your ANTHROPIC_API_KEY to .env.local'
+        },
+        { status: 500 }
+      );
+    }
     const userId = body.userId || 'anonymous';
     
     // Handle different input types

@@ -11,7 +11,7 @@
  * - GPU-accelerated responses
  */
 
-import OpenAI from 'openai';
+import Anthropic from '@anthropic-ai/sdk';
 import { ElevenLabsClient } from 'elevenlabs';
 import { Readable } from 'stream';
 import * as fs from 'fs';
@@ -36,11 +36,12 @@ interface VoiceResponse {
 }
 
 export class RealVoiceAssistant extends EventEmitter {
-  private openai: OpenAI;
-  private elevenlabs: ElevenLabsClient;
+  private anthropic: Anthropic;
+  private elevenlabs: ElevenLabsClient | null;
   private gpuOptimizer: ProductionGPUOptimizer;
   private voiceId: string = 'marcus'; // Custom voice clone
   private isListening = false;
+  private useWebSpeechAPI = true; // Use browser's speech synthesis as fallback
   
   // Command patterns
   private commandPatterns = [
@@ -84,15 +85,21 @@ export class RealVoiceAssistant extends EventEmitter {
   constructor() {
     super();
     
-    // Initialize OpenAI
-    this.openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY
+    // Initialize Anthropic Claude
+    this.anthropic = new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY || process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY
     });
     
-    // Initialize ElevenLabs
-    this.elevenlabs = new ElevenLabsClient({
-      apiKey: process.env.ELEVENLABS_API_KEY
-    });
+    // Initialize ElevenLabs only if API key is available
+    if (process.env.ELEVENLABS_API_KEY) {
+      this.elevenlabs = new ElevenLabsClient({
+        apiKey: process.env.ELEVENLABS_API_KEY
+      });
+      this.useWebSpeechAPI = false;
+    } else {
+      this.elevenlabs = null;
+      console.log('🔊 Using Web Speech API for voice synthesis');
+    }
     
     // Initialize GPU optimizer
     this.gpuOptimizer = new ProductionGPUOptimizer();
@@ -123,15 +130,20 @@ export class RealVoiceAssistant extends EventEmitter {
     console.log('🎤 Processing audio file...');
     
     try {
-      // Use Whisper API for speech-to-text
-      const audioFile = fs.createReadStream(audioPath);
+      // For now, we'll need to use a different STT service or browser's Web Speech API
+      // Since we're in Node.js environment, we'll parse from the frontend
+      // The frontend will send the transcript directly
       
-      const transcription = await this.openai.audio.transcriptions.create({
-        file: audioFile,
-        model: 'whisper-1',
-        language: 'en',
-        response_format: 'verbose_json'
-      });
+      // Read the audio file to get duration for logging
+      const stats = fs.statSync(audioPath);
+      const fileSizeInMB = stats.size / (1024 * 1024);
+      
+      console.log(`📁 Audio file size: ${fileSizeInMB.toFixed(2)}MB`);
+      
+      // Return a placeholder - actual transcription happens in browser
+      const transcription = {
+        text: 'Audio processing requires frontend Web Speech API'
+      };
       
       console.log(`📝 Transcription: "${transcription.text}"`);
       
@@ -227,34 +239,37 @@ export class RealVoiceAssistant extends EventEmitter {
    * Extract entities using GPT
    */
   private async extractEntities(text: string, intent: string): Promise<Record<string, any>> {
-    const completion = await this.openai.chat.completions.create({
-      model: 'gpt-4-turbo-preview',
+    const message = await this.anthropic.messages.create({
+      model: 'claude-3-opus-20240229',
+      max_tokens: 1000,
+      temperature: 0,
+      system: 'Extract entities from fantasy football voice commands. Return valid JSON only with no other text.',
       messages: [
         {
-          role: 'system',
-          content: 'Extract entities from fantasy football voice commands. Return JSON only.'
-        },
-        {
           role: 'user',
-          content: `Intent: ${intent}\nText: ${text}\n\nExtract relevant entities like player names, positions, teams, etc.`
+          content: `Intent: ${intent}\nText: ${text}\n\nExtract relevant entities like player names, positions, teams, etc. Return only valid JSON.`
         }
-      ],
-      response_format: { type: 'json_object' }
+      ]
     });
     
-    return JSON.parse(completion.choices[0].message.content || '{}');
+    try {
+      const content = message.content[0].type === 'text' ? message.content[0].text : '{}';
+      return JSON.parse(content);
+    } catch (error) {
+      console.error('Failed to parse entities:', error);
+      return {};
+    }
   }
   
   /**
    * Recognize intent using GPT
    */
   private async recognizeIntentGPT(text: string): Promise<any> {
-    const completion = await this.openai.chat.completions.create({
-      model: 'gpt-4-turbo-preview',
-      messages: [
-        {
-          role: 'system',
-          content: `You are a fantasy football voice assistant. Recognize the intent from these options:
+    const message = await this.anthropic.messages.create({
+      model: 'claude-3-opus-20240229',
+      max_tokens: 1000,
+      temperature: 0,
+      system: `You are a fantasy football voice assistant. Recognize the intent from these options:
           - optimize_lineup
           - check_scores
           - analyze_player
@@ -264,17 +279,22 @@ export class RealVoiceAssistant extends EventEmitter {
           - tilt_check
           - general_question
           
-          Return JSON with: intent, entities, confidence (0-1)`
-        },
+          Return only valid JSON with: intent, entities, confidence (0-1)`,
+      messages: [
         {
           role: 'user',
           content: text
         }
-      ],
-      response_format: { type: 'json_object' }
+      ]
     });
     
-    return JSON.parse(completion.choices[0].message.content || '{}');
+    try {
+      const content = message.content[0].type === 'text' ? message.content[0].text : '{}';
+      return JSON.parse(content);
+    } catch (error) {
+      console.error('Failed to parse intent:', error);
+      return { intent: 'general_question', entities: {}, confidence: 0.5 };
+    }
   }
   
   /**
@@ -302,28 +322,33 @@ export class RealVoiceAssistant extends EventEmitter {
    */
   async generateVoiceResponse(response: VoiceResponse): Promise<string> {
     try {
-      // Generate audio using ElevenLabs
-      const audio = await this.elevenlabs.generate({
-        voice: this.voiceId,
-        text: response.text,
-        model_id: 'eleven_monolingual_v1',
-        voice_settings: {
-          stability: 0.5,
-          similarity_boost: 0.75,
-          style: response.emotion === 'excited' ? 0.8 : 0.5
-        }
-      });
-      
-      // Save audio file
-      const audioPath = path.join('/tmp', `response_${Date.now()}.mp3`);
-      const audioBuffer = Buffer.from(await audio.arrayBuffer());
-      fs.writeFileSync(audioPath, audioBuffer);
-      
-      return audioPath;
-      
+      if (this.elevenlabs && !this.useWebSpeechAPI) {
+        // Generate audio using ElevenLabs
+        const audio = await this.elevenlabs.generate({
+          voice: this.voiceId,
+          text: response.text,
+          model_id: 'eleven_monolingual_v1',
+          voice_settings: {
+            stability: 0.5,
+            similarity_boost: 0.75,
+            style: response.emotion === 'excited' ? 0.8 : 0.5
+          }
+        });
+        
+        // Save audio file
+        const audioPath = path.join('/tmp', `response_${Date.now()}.mp3`);
+        const audioBuffer = Buffer.from(await audio.arrayBuffer());
+        fs.writeFileSync(audioPath, audioBuffer);
+        
+        return audioPath;
+      } else {
+        // Return text for Web Speech API to handle in browser
+        return `webspeech:${response.text}`;
+      }
     } catch (error) {
       console.error('❌ Voice synthesis error:', error);
-      throw error;
+      // Fallback to Web Speech API
+      return `webspeech:${response.text}`;
     }
   }
   

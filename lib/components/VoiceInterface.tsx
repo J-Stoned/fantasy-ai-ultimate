@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { ClientVoiceService } from '../voice/client-voice-service';
+import { WebSpeechService } from '../voice/web-speech-service';
 import { useAuth } from '../hooks/useAuth';
-import RecordRTC from 'recordrtc';
 
 interface VoiceInterfaceProps {
   fantasyTeamId?: string;
@@ -21,40 +20,50 @@ export function VoiceInterface({ fantasyTeamId, leagueId }: VoiceInterfaceProps)
   const [lastCommandId, setLastCommandId] = useState<string | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
   
-  const voiceServiceRef = useRef<ClientVoiceService | null>(null);
-  const recorderRef = useRef<RecordRTC | null>(null);
+  const voiceServiceRef = useRef<WebSpeechService | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     // Initialize voice service
-    voiceServiceRef.current = new ClientVoiceService();
+    voiceServiceRef.current = new WebSpeechService();
+    
+    // Set up event listeners
+    voiceServiceRef.current.on('transcript', ({ transcript, isFinal }) => {
+      if (!isFinal) {
+        setTranscript(transcript);
+      }
+    });
+    
+    voiceServiceRef.current.on('command', async (command) => {
+      setTranscript(command);
+      await handleVoiceCommand(command);
+    });
+    
+    voiceServiceRef.current.on('error', (error) => {
+      console.error('Voice error:', error);
+      setResponse('Sorry, there was an error with voice recognition.');
+    });
+    
+    voiceServiceRef.current.on('wakeword', () => {
+      console.log('🎙️ Wake word detected!');
+    });
 
     return () => {
-      if (recorderRef.current) {
-        recorderRef.current.stopRecording();
+      if (voiceServiceRef.current) {
+        voiceServiceRef.current.stopListening();
       }
     };
   }, []);
 
   const startListening = async () => {
+    if (!voiceServiceRef.current) return;
+    
     try {
       setIsListening(true);
       setTranscript('');
       setResponse('');
-
-      // Get microphone access
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       
-      // Create recorder
-      recorderRef.current = new RecordRTC(stream, {
-        type: 'audio',
-        mimeType: 'audio/webm',
-        recorderType: RecordRTC.StereoAudioRecorder,
-        numberOfAudioChannels: 1,
-        desiredSampRate: 16000
-      });
-      
-      recorderRef.current.startRecording();
+      await voiceServiceRef.current.startListening();
       
       // Auto-stop after 10 seconds
       setTimeout(() => {
@@ -66,66 +75,42 @@ export function VoiceInterface({ fantasyTeamId, leagueId }: VoiceInterfaceProps)
     } catch (error) {
       console.error('Failed to start listening:', error);
       setIsListening(false);
+      setResponse('Please allow microphone access to use voice commands.');
     }
   };
 
-  const stopListening = async () => {
-    if (!recorderRef.current) {
-      setIsListening(false);
-      return;
+  const stopListening = () => {
+    if (voiceServiceRef.current) {
+      voiceServiceRef.current.stopListening();
     }
-    
-    recorderRef.current.stopRecording(async () => {
-      const blob = recorderRef.current!.getBlob();
-      
-      // Stop all tracks
-      recorderRef.current!.stream.getTracks().forEach(track => track.stop());
-      
-      // Send to API
-      await sendAudioToAPI(blob);
-      
-      setIsListening(false);
-    });
+    setIsListening(false);
   };
   
-  const sendAudioToAPI = async (audioBlob: Blob) => {
+  const handleVoiceCommand = async (text: string) => {
+    if (!voiceServiceRef.current) return;
+
     setIsProcessing(true);
     
     try {
-      const formData = new FormData();
-      formData.append('audio', audioBlob, 'voice.webm');
-      formData.append('userId', user?.id || '');
-      formData.append('context', JSON.stringify({
-        fantasyTeamId,
-        leagueId,
-        week: getCurrentWeek()
-      }));
-      
-      const response = await fetch('/api/voice/process', {
-        method: 'POST',
-        body: formData
-      });
-      
-      if (!response.ok) {
-        throw new Error('Voice processing failed');
-      }
-      
-      const data = await response.json();
-      
-      setTranscript(data.transcript);
-      setResponse(data.response);
-      setLastCommandId(data.commandId);
+      const result = await voiceServiceRef.current.processCommand(
+        text,
+        {
+          userId: user?.id,
+          fantasyTeamId,
+          leagueId,
+          week: getCurrentWeek()
+        }
+      );
+
+      setResponse(result.response);
+      setLastCommandId(`cmd_${Date.now()}`);
       setShowFeedback(true);
       
-      // Play audio response if available
-      if (data.audioUrl && audioRef.current) {
-        audioRef.current.src = data.audioUrl;
-        audioRef.current.play();
-      }
+      // Audio is handled by Web Speech API automatically
       
     } catch (error) {
-      console.error('Voice API error:', error);
-      setResponse('Sorry, I had trouble processing your voice command.');
+      console.error('Voice command error:', error);
+      setResponse('Sorry, I had trouble processing that command.');
     } finally {
       setIsProcessing(false);
     }
@@ -138,54 +123,13 @@ export function VoiceInterface({ fantasyTeamId, leagueId }: VoiceInterfaceProps)
     return Math.min(Math.max(1, weeksSinceStart + 1), 18);
   };
 
-  const handleVoiceCommand = async (text: string) => {
-    if (!voiceServiceRef.current) return;
 
-    setIsProcessing(true);
+  const toggleWakeWord = () => {
+    if (!voiceServiceRef.current) return;
     
-    try {
-      const result = await voiceServiceRef.current.processVoiceCommand(
-        text,
-        {
-          userId: user?.id,
-          fantasyTeamId,
-          leagueId,
-        }
-      );
-
-      setResponse(result.response);
-      setLastCommandId(result.commandId);
-      setShowFeedback(true);
-      
-      if (result.audioUrl) {
-        setAudioUrl(result.audioUrl);
-        // Auto-play response
-        if (audioRef.current) {
-          audioRef.current.src = result.audioUrl;
-          audioRef.current.play();
-        }
-      }
-    } catch (error) {
-      console.error('Voice command error:', error);
-      setResponse('Sorry, I had trouble processing that command.');
-    } finally {
-      setIsProcessing(false);
-    }
-  };
-
-  const toggleWakeWord = async () => {
-    if (!voiceServiceRef.current) return;
-
-    if (wakeWordEnabled) {
-      setWakeWordEnabled(false);
-      // Stop wake word detection
-    } else {
-      setWakeWordEnabled(true);
-      voiceServiceRef.current.startWakeWordDetection(() => {
-        setWakeWordEnabled(false);
-        startListening();
-      });
-    }
+    const newState = !wakeWordEnabled;
+    setWakeWordEnabled(newState);
+    voiceServiceRef.current.toggleWakeWordDetection(newState);
   };
 
   const handleTextInput = (e: React.FormEvent<HTMLFormElement>) => {
