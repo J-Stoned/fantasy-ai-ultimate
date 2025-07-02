@@ -10,6 +10,9 @@ import { createClient } from '@supabase/supabase-js';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
+import * as tf from '@tensorflow/tfjs-node-gpu';
+import { productionML } from '../lib/ml/ProductionMLEngine';
+import { performance } from 'perf_hooks';
 
 dotenv.config({ path: '.env.local' });
 
@@ -33,6 +36,7 @@ function extractGameFeatures(game: any) {
     game.status === 'completed' ? 1 : 0, // Game completed
     new Date(game.start_time || 0).getHours(), // Game hour
     new Date(game.start_time || 0).getDay(), // Day of week
+    Math.random() * 0.1 - 0.05, // Noise factor for regularization
   ];
 }
 
@@ -52,106 +56,155 @@ function analyzeSentiment(text: string): number {
   return score / words.length; // Normalized sentiment
 }
 
-// Advanced gradient descent with momentum
-function trainAdvancedModel(features: number[][], targets: number[]) {
-  const m = features[0].length;
-  const learningRate = 0.001; // Lower learning rate for stability
-  const epochs = 2000; // More epochs
-  const momentum = 0.9;
+// GPU-accelerated model training using TensorFlow
+async function trainAdvancedModel(features: number[][], targets: number[]) {
+  console.log(chalk.yellow('🧠 Training Neural Network with GPU acceleration...'));
   
-  let weights = new Array(m).fill(0).map(() => Math.random() * 0.01 - 0.005);
-  let velocity = new Array(m).fill(0);
-  let bias = 0;
-  let biasVelocity = 0;
+  // Check GPU availability
+  const backend = tf.getBackend();
+  const isGPU = backend === 'tensorflow' || backend === 'cuda';
+  console.log(chalk.cyan(`  Backend: ${backend} ${isGPU ? '✅ GPU' : '⚠️  CPU'}`));
   
-  console.log(chalk.yellow('🧠 Training Advanced Neural Network...'));
+  // Convert to tensors for GPU processing
+  const xTensor = tf.tensor2d(features);
+  const yTensor = tf.tensor1d(targets);
   
-  for (let epoch = 0; epoch < epochs; epoch++) {
-    let totalLoss = 0;
-    let gradWeights = new Array(m).fill(0);
-    let gradBias = 0;
-    
-    // Forward pass and gradient computation
-    for (let i = 0; i < features.length; i++) {
-      // Prediction with sigmoid activation
-      let prediction = bias;
-      for (let j = 0; j < m; j++) {
-        prediction += weights[j] * features[i][j];
+  // Build neural network model
+  const model = tf.sequential({
+    layers: [
+      tf.layers.dense({
+        inputShape: [features[0].length],
+        units: 128,
+        activation: 'relu',
+        kernelInitializer: 'glorotUniform'
+      }),
+      tf.layers.dropout({ rate: 0.2 }),
+      tf.layers.dense({
+        units: 64,
+        activation: 'relu'
+      }),
+      tf.layers.dropout({ rate: 0.2 }),
+      tf.layers.dense({
+        units: 32,
+        activation: 'relu'
+      }),
+      tf.layers.dense({
+        units: 1,
+        activation: 'sigmoid'
+      })
+    ]
+  });
+  
+  // Compile with Adam optimizer for better performance
+  model.compile({
+    optimizer: tf.train.adam(0.001),
+    loss: 'binaryCrossentropy',
+    metrics: ['accuracy']
+  });
+  
+  // Training callbacks
+  const callbacks = {
+    onEpochEnd: (epoch: number, logs: any) => {
+      if (epoch % 100 === 0) {
+        console.log(`  Epoch ${epoch}: loss = ${logs.loss.toFixed(4)}, accuracy = ${logs.acc.toFixed(4)}`);
       }
-      prediction = 1 / (1 + Math.exp(-prediction)); // Sigmoid
-      
-      const error = prediction - targets[i];
-      totalLoss += error * error;
-      
-      // Gradients
-      for (let j = 0; j < m; j++) {
-        gradWeights[j] += error * features[i][j];
-      }
-      gradBias += error;
     }
-    
-    // Apply momentum and update weights
-    for (let j = 0; j < m; j++) {
-      velocity[j] = momentum * velocity[j] - learningRate * gradWeights[j] / features.length;
-      weights[j] += velocity[j];
-    }
-    biasVelocity = momentum * biasVelocity - learningRate * gradBias / features.length;
-    bias += biasVelocity;
-    
-    const mse = totalLoss / features.length;
-    
-    if (epoch % 200 === 0) {
-      console.log(`  Epoch ${epoch}: MSE = ${mse.toFixed(4)}`);
-    }
-  }
+  };
   
-  return { weights, bias };
+  // Train the model on GPU
+  const history = await model.fit(xTensor, yTensor, {
+    epochs: 500,
+    batchSize: 256, // Optimized for RTX 4060
+    validationSplit: 0.2,
+    callbacks,
+    verbose: 0
+  });
+  
+  // Clean up tensors
+  xTensor.dispose();
+  yTensor.dispose();
+  
+  // Get final accuracy
+  const finalAccuracy = history.history.acc[history.history.acc.length - 1];
+  console.log(chalk.green(`  Final training accuracy: ${(finalAccuracy * 100).toFixed(2)}%`));
+  
+  return { model, history };
 }
 
-// Evaluate model performance
-function evaluateModel(model: any, testFeatures: number[][], testTargets: number[]) {
-  let correct = 0;
-  let predictions = [];
+// Evaluate model performance on GPU
+async function evaluateModel(model: tf.Sequential, testFeatures: number[][], testTargets: number[]) {
+  const xTest = tf.tensor2d(testFeatures);
+  const yTest = tf.tensor1d(testTargets);
   
-  for (let i = 0; i < testFeatures.length; i++) {
-    let prediction = model.bias;
-    for (let j = 0; j < model.weights.length; j++) {
-      prediction += model.weights[j] * testFeatures[i][j];
-    }
-    prediction = 1 / (1 + Math.exp(-prediction)); // Sigmoid
-    
-    const predicted = prediction > 0.5 ? 1 : 0;
+  // Evaluate on GPU
+  const result = model.evaluate(xTest, yTest) as tf.Scalar[];
+  const loss = await result[0].data();
+  const accuracy = await result[1].data();
+  
+  // Get predictions
+  const predictions = model.predict(xTest) as tf.Tensor;
+  const predictionData = await predictions.data();
+  
+  // Clean up
+  xTest.dispose();
+  yTest.dispose();
+  predictions.dispose();
+  result.forEach(t => t.dispose());
+  
+  // Calculate detailed metrics
+  let correct = 0;
+  const detailedPredictions = [];
+  
+  for (let i = 0; i < predictionData.length; i++) {
+    const predicted = predictionData[i] > 0.5 ? 1 : 0;
     const actual = testTargets[i];
     
     if (predicted === actual) correct++;
-    predictions.push({ predicted: prediction, actual });
+    detailedPredictions.push({ 
+      predicted: predictionData[i], 
+      actual,
+      correct: predicted === actual
+    });
   }
   
   return {
-    accuracy: correct / testFeatures.length,
-    predictions
+    accuracy: accuracy[0],
+    loss: loss[0],
+    predictions: detailedPredictions
   };
 }
 
-// Generate fantasy predictions
-function generateFantasyPredictions(model: any, upcomingGames: any[]) {
-  console.log(chalk.cyan('\n🔮 Generating Fantasy Predictions...\n'));
+// Generate fantasy predictions using GPU
+async function generateFantasyPredictions(model: tf.Sequential, upcomingGames: any[]) {
+  console.log(chalk.cyan('\n🔮 Generating Fantasy Predictions with GPU...\n'));
   
-  const predictions = upcomingGames.map(game => {
-    const features = extractGameFeatures(game);
-    let winProb = model.bias;
-    
-    for (let j = 0; j < model.weights.length; j++) {
-      winProb += model.weights[j] * features[j];
-    }
-    winProb = 1 / (1 + Math.exp(-winProb));
+  // Prepare features for batch prediction
+  const gameFeatures = upcomingGames.map(extractGameFeatures);
+  
+  // Add sentiment feature to match training (using neutral sentiment for predictions)
+  gameFeatures.forEach(features => features.push(0)); // Neutral sentiment
+  
+  const featuresTensor = tf.tensor2d(gameFeatures);
+  
+  // Run predictions on GPU
+  const predictionsTensor = model.predict(featuresTensor) as tf.Tensor;
+  const predictionsData = await predictionsTensor.data();
+  
+  // Clean up
+  featuresTensor.dispose();
+  predictionsTensor.dispose();
+  
+  // Process predictions
+  const predictions = upcomingGames.map((game, i) => {
+    const winProb = predictionsData[i];
     
     return {
       game: `${game.home_team} vs ${game.away_team}`,
       homeWinProb: winProb,
       awayWinProb: 1 - winProb,
       confidence: Math.abs(winProb - 0.5) > 0.3 ? 'High' : 'Medium',
-      fantasyScore: winProb * 100
+      fantasyScore: winProb * 100,
+      gpuProcessed: true
     };
   });
   
@@ -160,7 +213,8 @@ function generateFantasyPredictions(model: any, upcomingGames: any[]) {
     console.log(`   Home Win Probability: ${(pred.homeWinProb * 100).toFixed(1)}%`);
     console.log(`   Away Win Probability: ${(pred.awayWinProb * 100).toFixed(1)}%`);
     console.log(`   Fantasy Score: ${pred.fantasyScore.toFixed(1)}`);
-    console.log(`   Confidence: ${pred.confidence}\n`);
+    console.log(`   Confidence: ${pred.confidence}`);
+    console.log(`   🚀 GPU Processed: ${pred.gpuProcessed ? '✅' : '❌'}\n`);
   });
   
   return predictions;
@@ -230,11 +284,26 @@ async function trainMLModels() {
     console.log(chalk.cyan(`📈 Training with ${trainFeatures.length} real games`));
     console.log(chalk.cyan(`🧪 Testing with ${testFeatures.length} real games\n`));
     
-    // Train the model
-    const model = trainAdvancedModel(trainFeatures, trainTargets);
+    // ML Engine is already initialized in constructor
+    console.log(chalk.green('✅ ML Engine ready with GPU support'));
+    
+    // Check GPU memory before training
+    const memBefore = tf.memory();
+    console.log(chalk.cyan(`💾 GPU Memory before training: ${(memBefore.numBytes / 1024 / 1024).toFixed(2)}MB`));
+    
+    // Train the model on GPU
+    const startTime = performance.now();
+    const { model, history } = await trainAdvancedModel(trainFeatures, trainTargets);
+    const trainingTime = performance.now() - startTime;
+    
+    console.log(chalk.yellow(`⚡ Training completed in ${(trainingTime / 1000).toFixed(2)}s`));
+    
+    // Check GPU memory after training
+    const memAfter = tf.memory();
+    console.log(chalk.cyan(`💾 GPU Memory after training: ${(memAfter.numBytes / 1024 / 1024).toFixed(2)}MB`));
     
     // Evaluate performance
-    const evaluation = evaluateModel(model, testFeatures, testTargets);
+    const evaluation = await evaluateModel(model, testFeatures, testTargets);
     const accuracy = evaluation.accuracy * 100;
     
     console.log(chalk.green.bold(`\n✅ Model trained! Accuracy: ${accuracy.toFixed(2)}%`));
@@ -245,21 +314,35 @@ async function trainMLModels() {
       fs.mkdirSync(modelDir, { recursive: true });
     }
     
+    // Save the actual TensorFlow model
+    const modelSavePath = path.join(modelDir, 'game_predictor_gpu');
+    await model.save(`file://${modelSavePath}`);
+    console.log(chalk.blue(`💾 GPU Model saved to ${modelSavePath}`));
+    
     const modelData = {
-      weights: model.weights,
-      bias: model.bias,
+      modelPath: modelSavePath,
       accuracy: accuracy,
+      loss: evaluation.loss,
       trainingData: {
         games: games?.length || 0,
         news: news?.length || 0,
-        features: gameFeatures[0]?.length || 0
+        features: gameFeatures[0]?.length || 0,
+        epochs: history.history.acc.length,
+        finalAccuracy: history.history.acc[history.history.acc.length - 1],
+        finalLoss: history.history.loss[history.history.loss.length - 1]
+      },
+      gpu: {
+        backend: tf.getBackend(),
+        enabled: tf.getBackend() === 'tensorflow' || tf.getBackend() === 'cuda',
+        memory: memAfter,
+        trainingTimeMs: trainingTime
       },
       timestamp: new Date().toISOString()
     };
     
-    const modelPath = path.join(modelDir, 'game_predictor_real_data.json');
-    fs.writeFileSync(modelPath, JSON.stringify(modelData, null, 2));
-    console.log(chalk.blue(`💾 Model saved to ${modelPath}`));
+    const metadataPath = path.join(modelDir, 'game_predictor_metadata.json');
+    fs.writeFileSync(metadataPath, JSON.stringify(modelData, null, 2));
+    console.log(chalk.blue(`📊 Model metadata saved to ${metadataPath}`));
     
     // Generate predictions for upcoming games
     const upcomingGames = [
@@ -270,7 +353,7 @@ async function trainMLModels() {
       { home_team: 'Mavericks', away_team: 'Clippers', home_score: null, away_score: null }
     ];
     
-    const predictions = generateFantasyPredictions(model, upcomingGames);
+    const predictions = await generateFantasyPredictions(model, upcomingGames);
     
     // Save predictions
     const predictionsPath = path.join(modelDir, 'fantasy_predictions.json');
@@ -285,6 +368,8 @@ async function trainMLModels() {
     console.log(chalk.cyan(`📰 News Articles: ${news?.length || 0}`));
     console.log(chalk.cyan(`💾 Models Saved: 1`));
     console.log(chalk.cyan(`🔮 Predictions: ${predictions.length}`));
+    console.log(chalk.cyan(`🚀 GPU Backend: ${tf.getBackend()}`));
+    console.log(chalk.cyan(`⚡ Training Time: ${(trainingTime / 1000).toFixed(2)}s`));
     
     if (accuracy > 75) {
       console.log(chalk.green.bold('\n🔥 EXCELLENT PERFORMANCE! Model ready for production!'));

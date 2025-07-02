@@ -71,6 +71,17 @@ export async function GET(request: NextRequest) {
     const { ml } = services.getServices()
     const hasGPU = ml !== undefined
 
+    // Require ML service for predictions
+    if (!hasGPU || !ml) {
+      return NextResponse.json(
+        { 
+          error: 'ML service unavailable', 
+          message: 'GPU-accelerated predictions are currently offline. Please try again later.'
+        },
+        { status: 503 }
+      )
+    }
+
     // Generate predictions for each player
     const predictions: PlayerPrediction[] = await Promise.all(
       players.map(async (player) => {
@@ -81,50 +92,35 @@ export async function GET(request: NextRequest) {
         let modelType: 'micro' | 'macro' | 'ensemble' = 'ensemble'
         let insights: string[] = []
 
-        if (hasGPU && ml) {
-          try {
-            // Use GPU-accelerated ML prediction
-            const features = {
-              avgPoints: player.avg_points || 0,
-              medianPoints: player.median_points || 0,
-              gamesPlayed: player.games_played || 0,
-              position: player.position,
-              week,
-              // Add more features as needed
-            }
-
-            const prediction = await ml.predict(features)
-            predictedPoints = prediction.value
-            confidence = prediction.confidence
-            floor = prediction.floor || predictedPoints * 0.7
-            ceiling = prediction.ceiling || predictedPoints * 1.3
-            modelType = prediction.modelType
-
-            // Generate insights based on ML analysis
-            if (confidence > 0.85) {
-              insights.push('🔥 High confidence GPU prediction')
-            }
-            if (predictedPoints > player.avg_points * 1.2) {
-              insights.push('📈 Breakout performance expected')
-            }
-            insights.push(`🤖 ${modelType} model with ${confidence.toFixed(0)}% confidence`)
-          } catch (error) {
-            console.error('ML prediction error:', error)
-            // Fallback to statistical prediction
-            predictedPoints = player.avg_points || 15
-            confidence = 0.7
-            floor = predictedPoints * 0.7
-            ceiling = predictedPoints * 1.3
-            insights.push('Using statistical projections')
+        try {
+          // Use GPU-accelerated ML prediction
+          const features = {
+            avgPoints: player.avg_points || 0,
+            medianPoints: player.median_points || 0,
+            gamesPlayed: player.games_played || 0,
+            position: player.position,
+            week,
+            // Add more features as needed
           }
-        } else {
-          // Fallback to database statistics
-          const basePoints = player.avg_points || 15
-          predictedPoints = basePoints + (Math.random() * 4 - 2)
-          confidence = 0.65
-          floor = predictedPoints * 0.8
-          ceiling = predictedPoints * 1.2
-          insights.push('Statistical projection (GPU offline)')
+
+          const prediction = await ml.predict(features)
+          predictedPoints = prediction.value
+          confidence = prediction.confidence
+          floor = prediction.floor || predictedPoints * 0.7
+          ceiling = prediction.ceiling || predictedPoints * 1.3
+          modelType = prediction.modelType
+
+          // Generate insights based on ML analysis
+          if (confidence > 0.85) {
+            insights.push('🔥 High confidence GPU prediction')
+          }
+          if (predictedPoints > player.avg_points * 1.2) {
+            insights.push('📈 Breakout performance expected')
+          }
+          insights.push(`🤖 ${modelType} model with ${confidence.toFixed(0)}% confidence`)
+        } catch (error) {
+          console.error('ML prediction error:', error)
+          throw error // Fail fast - no fake fallbacks
         }
 
         // Add position-specific insights

@@ -132,12 +132,14 @@ class ServicesManager {
     this.updateStatus('gpu', 'initializing');
     
     try {
-      // Check if GPU is available
+      // Check if GPU is available - proper Node.js GPU detection
       const tf = require('@tensorflow/tfjs-node-gpu');
-      const gpuAvailable = tf.env().get('WEBGL_VERSION') > 0 || tf.backend().getBackend() === 'tensorflow';
+      const backend = tf.getBackend();
+      const gpuAvailable = backend === 'tensorflow' || backend === 'cuda';
       
       if (!gpuAvailable) {
         console.warn('⚠️  GPU not available, skipping GPU services');
+        console.warn(`   Current backend: ${backend} (expected 'tensorflow' or 'cuda')`);
         this.updateStatus('gpu', 'ready', 'No GPU detected');
         return;
       }

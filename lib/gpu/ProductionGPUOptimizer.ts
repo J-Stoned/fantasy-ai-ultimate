@@ -59,8 +59,8 @@ export class ProductionGPUOptimizer {
       throw new Error(`Expected GPU backend, got: ${backend}`);
     }
     
-    // Configure GPU memory growth
-    tf.env().set('WEBGL_DELETE_TEXTURE_THRESHOLD', 0);
+    // Configure GPU memory for CUDA (WebGL settings don't apply to Node.js)
+    // TensorFlow Node GPU backend handles memory management automatically
     
     // Warm up GPU with test operations
     await this.warmupGPU();

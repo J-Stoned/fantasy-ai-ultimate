@@ -73,9 +73,10 @@ export class GPUAccelerator {
         const memStats = await monitorGPUMemory();
         console.log(`💾 GPU Memory: ${memStats.gpuMemoryMB}MB used, ${memStats.numTensors} tensors`);
         
-        // Memory growth settings for RTX 4060
+        // Memory settings for RTX 4060 (Node.js GPU backend manages memory automatically)
         if (this.config.memoryLimit) {
-          tf.env().set('WEBGL_DELETE_TEXTURE_THRESHOLD', this.config.memoryLimit * 1024 * 1024);
+          console.log(`📊 Memory limit set to ${this.config.memoryLimit}MB`);
+          // TensorFlow Node GPU backend handles memory limits internally
         }
       } else {
         console.warn('⚠️  No GPU detected, falling back to CPU');

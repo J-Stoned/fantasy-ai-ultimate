@@ -6,9 +6,8 @@
  * By Marcus "The Fixer" Rodriguez
  */
 
-import * as tf from '@tensorflow/tfjs';
-import '@tensorflow/tfjs-backend-webgpu';
-import { GPU } from 'gpu.js';
+import * as tf from '@tensorflow/tfjs-node-gpu';
+import { ProductionGPUOptimizer } from '../gpu/ProductionGPUOptimizer';
 
 export interface DFSPlayer {
   id: string;
@@ -54,27 +53,32 @@ export interface OptimizationSettings {
   globalExposure: Map<string, number>;
 }
 
+export interface DFSLineup {
+  players: DFSPlayer[];
+  totalSalary: number;
+  totalProjected: number;
+  totalOwnership: number;
+  score: number;
+}
+
 export class GPULineupOptimizer {
-  private gpu: GPU;
+  private gpuOptimizer: ProductionGPUOptimizer;
   private tensorflowReady = false;
   private playerCache: Map<string, DFSPlayer> = new Map();
   
   constructor() {
-    // Initialize GPU.js for parallel computation
-    this.gpu = new GPU({
-      mode: 'gpu' // Force GPU mode
-    });
-    
+    // Use REAL GPU acceleration with RTX 4060 CUDA cores
+    this.gpuOptimizer = new ProductionGPUOptimizer();
     this.initializeTensorFlow();
   }
   
   /**
-   * Initialize TensorFlow with WebGPU backend
+   * Initialize TensorFlow with GPU backend (CUDA for Node.js)
    */
   private async initializeTensorFlow() {
     try {
-      // Set WebGPU as backend for maximum performance
-      await tf.setBackend('webgpu');
+      // Initialize real GPU backend
+      await this.gpuOptimizer.initialize();
       await tf.ready();
       
       // Warm up the GPU
@@ -144,57 +148,40 @@ export class GPULineupOptimizer {
     contest: DFSContest,
     settings: OptimizationSettings
   ): Promise<string[][]> {
-    // Group players by position
-    const playersByPosition = this.groupByPosition(players);
+    // Use the Production GPU Optimizer for REAL CUDA acceleration
+    const formattedPlayers = players.map(p => ({
+      id: p.id,
+      name: p.name,
+      position: p.position,
+      team: p.team,
+      salary: p.salary,
+      projectedPoints: p.projectedPoints,
+      ownership: p.ownership,
+      ceiling: p.ceiling,
+      floor: p.floor
+    }));
+
+    // Generate lineups using RTX 4060 CUDA cores
+    const optimizedLineups = await this.gpuOptimizer.optimizeLineups({
+      players: formattedPlayers,
+      salaryCap: contest.salaryCap,
+      rosterPositions: Object.entries(contest.rosterRequirements).flatMap(
+        ([pos, count]) => Array(count).fill(pos)
+      ),
+      constraints: {
+        minSalary: settings.minSalaryUsed,
+        maxExposure: settings.globalExposure.size > 0 ? 
+          Math.max(...settings.globalExposure.values()) : 1.0,
+        lockPlayers: settings.lockedPlayers,
+        excludePlayers: settings.excludedPlayers
+      },
+      numLineups: settings.uniqueLineups * 2 // Generate extra for filtering
+    });
     
-    // Create GPU kernel for combination generation
-    const combinationKernel = this.gpu.createKernel(function(
-      positions: number[][],
-      requirements: number[],
-      salaryCap: number,
-      salaries: number[]
-    ) {
-      // This runs on GPU for each thread
-      let totalSalary = 0;
-      const lineup: number[] = [];
-      
-      // For each position requirement
-      for (let p = 0; p < requirements.length; p++) {
-        const needed = requirements[p];
-        const positionPlayers = positions[p];
-        
-        // Select players for this position
-        for (let i = 0; i < needed; i++) {
-          const playerIdx = Math.floor(this.thread.x * positionPlayers.length) % positionPlayers.length;
-          const playerId = positionPlayers[playerIdx];
-          lineup.push(playerId);
-          totalSalary += salaries[playerId];
-        }
-      }
-      
-      // Return lineup if valid, empty if not
-      return totalSalary <= salaryCap ? lineup : [];
-    }).setOutput([settings.uniqueLineups * 10]); // Generate extra for filtering
-    
-    // Prepare data for GPU
-    const positionArrays = Object.values(playersByPosition).map(
-      players => players.map(p => this.getPlayerIndex(p.id))
+    // Convert back to player ID arrays
+    return optimizedLineups.map(lineup => 
+      lineup.players.map(p => p.id)
     );
-    const requirements = Object.values(contest.rosterRequirements);
-    const salaries = players.map(p => p.salary);
-    
-    // Run on GPU
-    const results = combinationKernel(
-      positionArrays,
-      requirements,
-      contest.salaryCap,
-      salaries
-    ) as number[][];
-    
-    // Convert back to player IDs
-    return results
-      .filter(lineup => lineup.length > 0)
-      .map(lineup => lineup.map(idx => players[idx].id));
   }
   
   /**

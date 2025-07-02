@@ -4,20 +4,13 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-import { RealTimeVoiceTrainer } from '../../../../../../lib/voice/training/real-time-trainer';
-import { FeedbackLoop } from '../../../../../../lib/voice/training/feedback-loop';
-import { GPUAccelerator } from '../../../../../../lib/voice/training/gpu-accelerator';
+import { voiceAssistant } from '../../../../../../lib/voice/RealVoiceAssistant';
+import { writeFile } from 'fs/promises';
+import { join } from 'path';
+import { tmpdir } from 'os';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
-
-// Initialize training system
-const trainer = new RealTimeVoiceTrainer();
-const feedbackLoop = new FeedbackLoop(trainer);
-const gpuAccelerator = new GPUAccelerator();
+// Initialize voice assistant on first use
+let assistantInitialized = false;
 
 // Voice command processing patterns
 const COMMAND_PATTERNS = {
@@ -32,116 +25,71 @@ const COMMAND_PATTERNS = {
 
 export async function POST(request: NextRequest) {
   try {
-    const { transcript, context } = await request.json();
-    const sessionId = context?.sessionId || `session_${Date.now()}`;
-    const userId = context?.userId;
+    // Initialize voice assistant if needed
+    if (!assistantInitialized) {
+      await voiceAssistant.initialize();
+      assistantInitialized = true;
+    }
     
-    if (!transcript) {
+    const body = await request.json();
+    const userId = body.userId || 'anonymous';
+    
+    // Handle different input types
+    let command;
+    
+    if (body.audio) {
+      // Base64 audio data
+      const audioBuffer = Buffer.from(body.audio, 'base64');
+      const tempPath = join(tmpdir(), `audio_${Date.now()}.wav`);
+      await writeFile(tempPath, audioBuffer);
+      
+      command = await voiceAssistant.processAudioFile(tempPath);
+      
+    } else if (body.transcript) {
+      // Text input (for testing or fallback)
+      command = await voiceAssistant.parseCommand(body.transcript);
+      
+    } else {
       return NextResponse.json(
-        { error: 'Transcript is required' },
+        { error: 'Either audio or transcript is required' },
         { status: 400 }
       );
     }
-
-    console.log('Processing voice command:', transcript);
     
-    // Process with ML trainer for intent detection
-    const commandId = `cmd_${Date.now()}_${Math.random()}`;
-    const mlIntent = await trainer.processCommand({
-      id: commandId,
-      transcript,
-      intent: 'unknown', // Will be set by trainer
-      entities: {},
-      confidence: 0,
-      timestamp: new Date(),
-      userId
-    });
-
-    // Process the command
-    let response = '';
-    let data: any = null;
-
-    // Check for start/sit questions
-    if (COMMAND_PATTERNS.START_SIT.test(transcript)) {
-      const match = transcript.match(COMMAND_PATTERNS.START_SIT);
-      const player1 = match?.[1];
-      const player2 = match?.[2];
-      
-      response = await getStartSitAdvice(player1, player2);
-    }
-    // Check for waiver wire questions
-    else if (COMMAND_PATTERNS.WAIVER.test(transcript)) {
-      const match = transcript.match(COMMAND_PATTERNS.WAIVER);
-      const position = match?.[1] || 'all';
-      
-      response = await getWaiverSuggestions(position);
-    }
-    // Check for trade questions
-    else if (COMMAND_PATTERNS.TRADE.test(transcript)) {
-      const match = transcript.match(COMMAND_PATTERNS.TRADE);
-      const player1 = match?.[1];
-      const player2 = match?.[2];
-      
-      response = await getTradeAdvice(player1, player2);
-    }
-    // Check for injury questions
-    else if (COMMAND_PATTERNS.INJURY.test(transcript)) {
-      const match = transcript.match(COMMAND_PATTERNS.INJURY);
-      const player = match?.[1];
-      
-      response = await getInjuryStatus(player);
-    }
-    // Check for projection questions
-    else if (COMMAND_PATTERNS.PROJECTION.test(transcript)) {
-      const match = transcript.match(COMMAND_PATTERNS.PROJECTION);
-      const player = match?.[1];
-      
-      response = await getPlayerProjection(player);
-    }
-    // Default helpful response
-    else {
-      response = getHelpfulResponse(transcript);
-    }
-
-    // Get text-to-speech audio if 11Labs is configured
+    // Add user context
+    command.entities.userId = userId;
+    
+    // Execute the command
+    const response = await voiceAssistant.executeCommand(command);
+    
+    // Generate voice response
     let audioUrl = null;
-    try {
-      const ttsResponse = await fetch(`${request.nextUrl.origin}/api/voice/text-to-speech`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: response }),
-      });
-      
-      const ttsData = await ttsResponse.json();
-      audioUrl = ttsData.audioUrl;
-    } catch (error) {
-      console.error('TTS generation failed:', error);
+    if (body.includeAudio !== false) {
+      try {
+        const audioPath = await voiceAssistant.generateVoiceResponse(response);
+        // In production, upload to CDN and return URL
+        // For now, return local path
+        audioUrl = audioPath;
+      } catch (error) {
+        console.error('Voice generation failed:', error);
+      }
     }
-
-    // Track in feedback loop
-    feedbackLoop.captureFeedback({
-      commandId,
-      transcript,
-      response,
-      intent: mlIntent,
-      feedback: 'neutral', // Will be updated by user
-      timestamp: new Date(),
-      userId,
-      sessionId
-    });
     
     return NextResponse.json({
       success: true,
-      result: {
-        commandId,
-        transcript,
-        response,
+      command: {
+        text: command.text,
+        intent: command.intent,
+        confidence: command.confidence
+      },
+      response: {
+        text: response.text,
         audioUrl,
-        data,
-        intent: mlIntent,
-        needsFeedback: true
+        actions: response.actions,
+        emotion: response.emotion
       }
     });
+    
   } catch (error: any) {
     console.error('Voice processing error:', error);
     return NextResponse.json(

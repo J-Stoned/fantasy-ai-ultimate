@@ -1,0 +1,19 @@
+{
+  "trainedAt": "2025-07-02T14:56:30.475Z",
+  "trainSamples": 800,
+  "testSamples": 200,
+  "testAccuracy": 0.5649999976158142,
+  "features": [
+    "home_win_rate",
+    "away_win_rate",
+    "win_rate_differential",
+    "home_avg_points_for",
+    "away_avg_points_for",
+    "home_avg_points_against",
+    "away_avg_points_against",
+    "home_last_5_form",
+    "away_last_5_form",
+    "home_home_win_rate",
+    "away_away_win_rate"
+  ]
+}

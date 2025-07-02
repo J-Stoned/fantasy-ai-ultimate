@@ -197,6 +197,25 @@ export class ProductionMLEngine {
     this.initialized = true;
   }
   
+  /**
+   * Batch prediction for real-time event processing
+   */
+  predictBatch(inputTensor: tf.Tensor2D): tf.Tensor {
+    return tf.tidy(() => {
+      // Use micro model for real-time predictions
+      const microPredictions = this.microModel.model.predict(inputTensor) as tf.Tensor;
+      
+      // Stack predictions: [playerImpact, gameImpact, fantasyPoints, confidence]
+      const playerImpact = tf.slice(microPredictions, [0, 0], [-1, 1]);
+      const gameImpact = tf.mul(playerImpact, 0.8); // Game impact is 80% of player impact
+      const fantasyPoints = tf.mul(playerImpact, 2.5); // Scale to fantasy points
+      const confidence = tf.sigmoid(playerImpact); // Convert to confidence 0-1
+      
+      // Combine all predictions
+      return tf.concat([playerImpact, gameImpact, fantasyPoints, confidence], 1);
+    });
+  }
+
   async predictWithConfidence(
     playerId: string,
     contextWindow: TimeWindow,

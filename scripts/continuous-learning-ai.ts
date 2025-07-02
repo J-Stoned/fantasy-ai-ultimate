@@ -2,22 +2,19 @@
 /**
  * 🧠 CONTINUOUS LEARNING AI SYSTEM 🧠
  * 
- * RTX 4060 + RYZEN 5 7600X OPTIMIZED!
- * 
  * SELF-IMPROVING FANTASY AI:
- * 1. Makes predictions (GPU-accelerated)
+ * 1. Makes predictions (GPU-accelerated if available)
  * 2. Tracks actual results
- * 3. Learns from mistakes (Parallel processing)
- * 4. Retrains automatically (Multi-threaded)
+ * 3. Learns from mistakes
+ * 4. Retrains automatically
  * 5. Gets smarter over time!
  * 
- * Hardware Acceleration:
- * - RTX 4060: CUDA cores for matrix operations
- * - Ryzen 5 7600X: 6 cores for parallel data processing
+ * Uses TensorFlow.js with GPU support when available
  */
 
 import chalk from 'chalk';
 import { createClient } from '@supabase/supabase-js';
+import * as tf from '@tensorflow/tfjs-node-gpu';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
@@ -149,14 +146,11 @@ class ContinuousLearningAI {
   }
 
   /**
-   * Make prediction using current model
+   * Make prediction using current model with REAL GPU acceleration
    */
-  predict(features: number[]): { prediction: number; confidence: number } {
-    let rawPrediction = this.model.bias;
-    
-    for (let i = 0; i < this.model.weights.length && i < features.length; i++) {
-      rawPrediction += this.model.weights[i] * features[i];
-    }
+  async predict(features: number[]): Promise<{ prediction: number; confidence: number }> {
+    // Use RTX 4060 GPU for prediction
+    const rawPrediction = this.model.bias + await this.gpuMatrixMultiply(this.model.weights, features);
     
     const prediction = 1 / (1 + Math.exp(-rawPrediction)); // Sigmoid
     const confidence = Math.abs(prediction - 0.5) * 2; // 0 to 1
@@ -167,7 +161,7 @@ class ContinuousLearningAI {
   /**
    * Learn from a prediction result
    */
-  learnFromResult(features: number[], prediction: number, actual: number, confidence: number) {
+  async learnFromResult(features: number[], prediction: number, actual: number, confidence: number) {
     this.model.experience.total_predictions++;
     
     const error = prediction - actual;
@@ -200,7 +194,7 @@ class ContinuousLearningAI {
     
     // Check if we need to retrain
     if (this.model.mistakes.length >= this.mistakesThreshold) {
-      this.retrain();
+      await this.retrain();
     }
     
     this.saveModel();
@@ -219,25 +213,25 @@ class ContinuousLearningAI {
   }
 
   /**
-   * GPU-accelerated matrix operations
+   * GPU-accelerated matrix operations using TensorFlow
    */
-  private gpuMatrixMultiply(weights: number[], features: number[]): number {
-    // Simulate GPU-accelerated computation for RTX 4060
-    let result = 0;
-    const batchSize = 256; // Optimal for RTX 4060 CUDA cores
+  private async gpuMatrixMultiply(weights: number[], features: number[]): Promise<number> {
+    // Use TensorFlow for acceleration (GPU if available)
+    const weightsTensor = tf.tensor1d(weights);
+    const featuresTensor = tf.tensor1d(features);
+    const dotProduct = tf.dot(weightsTensor, featuresTensor);
+    const result = await dotProduct.array();
     
-    for (let i = 0; i < weights.length; i += batchSize) {
-      const end = Math.min(i + batchSize, weights.length);
-      // Parallel computation across CUDA cores
-      for (let j = i; j < end; j++) {
-        result += weights[j] * (features[j] || 0);
-      }
-    }
-    return result;
+    // Clean up tensors
+    weightsTensor.dispose();
+    featuresTensor.dispose();
+    dotProduct.dispose();
+    
+    return result as number;
   }
 
   /**
-   * Parallel training worker for Ryzen 5 7600X
+   * Parallel training worker
    */
   private async createTrainingWorker(data: any): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -334,7 +328,7 @@ class ContinuousLearningAI {
         // GPU-accelerated forward pass
         for (let i = 0; i < chunk.features.length; i++) {
           // Use RTX 4060 for matrix multiplication
-          const rawPrediction = this.model.bias + this.gpuMatrixMultiply(this.model.weights, chunk.features[i]);
+          const rawPrediction = this.model.bias + await this.gpuMatrixMultiply(this.model.weights, chunk.features[i]);
           const prediction = 1 / (1 + Math.exp(-rawPrediction));
           const error = prediction - chunk.targets[i];
           
@@ -381,10 +375,10 @@ class ContinuousLearningAI {
     const testTargets = allTargets.slice(-200);
     let correct = 0;
     
-    testFeatures.forEach((features, i) => {
-      const { prediction } = this.predict(features);
+    for (let i = 0; i < testFeatures.length; i++) {
+      const { prediction } = await this.predict(testFeatures[i]);
       if (Math.abs(prediction - testTargets[i]) < 0.5) correct++;
-    });
+    }
     
     const newAccuracy = (correct / testFeatures.length) * 100;
     const improvementPct = ((newAccuracy - this.model.accuracy) / this.model.accuracy * 100);
@@ -442,7 +436,7 @@ class ContinuousLearningAI {
     
     for (const game of upcomingGames) {
       const features = this.extractFeatures(game);
-      const { prediction, confidence } = this.predict(features);
+      const { prediction, confidence } = await this.predict(features);
       
       console.log(chalk.cyan(`🎯 Game: ${game.home_team_id} vs ${game.away_team_id}`));
       console.log(chalk.white(`   Prediction: ${(prediction * 100).toFixed(1)}% home win`));
@@ -482,7 +476,7 @@ class ContinuousLearningAI {
       // If game is completed, learn from result
       if (game.status === 'completed' && game.home_score !== null && game.away_score !== null) {
         const actual = game.home_score > game.away_score ? 1 : 0;
-        this.learnFromResult(features, prediction, actual, confidence);
+        await this.learnFromResult(features, prediction, actual, confidence);
         
         const wasCorrect = Math.abs(prediction - actual) < 0.5;
         console.log(chalk[wasCorrect ? 'green' : 'red'](`   Result: ${wasCorrect ? '✅ Correct' : '❌ Wrong'} (actual: ${actual})`));

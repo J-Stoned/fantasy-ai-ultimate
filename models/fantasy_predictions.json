@@ -1,37 +1,42 @@
 [
   {
     "game": "Lakers vs Warriors",
-    "homeWinProb": null,
-    "awayWinProb": null,
-    "confidence": "Medium",
-    "fantasyScore": null
+    "homeWinProb": 0.0008491785265505314,
+    "awayWinProb": 0.9991508214734495,
+    "confidence": "High",
+    "fantasyScore": 0.08491785265505314,
+    "gpuProcessed": true
   },
   {
     "game": "Celtics vs Heat",
-    "homeWinProb": null,
-    "awayWinProb": null,
-    "confidence": "Medium",
-    "fantasyScore": null
+    "homeWinProb": 0.0008233406115323305,
+    "awayWinProb": 0.9991766593884677,
+    "confidence": "High",
+    "fantasyScore": 0.08233406115323305,
+    "gpuProcessed": true
   },
   {
     "game": "Nuggets vs Suns",
-    "homeWinProb": null,
-    "awayWinProb": null,
-    "confidence": "Medium",
-    "fantasyScore": null
+    "homeWinProb": 0.0008417945355176926,
+    "awayWinProb": 0.9991582054644823,
+    "confidence": "High",
+    "fantasyScore": 0.08417945355176926,
+    "gpuProcessed": true
   },
   {
     "game": "Bucks vs Nets",
-    "homeWinProb": null,
-    "awayWinProb": null,
-    "confidence": "Medium",
-    "fantasyScore": null
+    "homeWinProb": 0.0008582824957557023,
+    "awayWinProb": 0.9991417175042443,
+    "confidence": "High",
+    "fantasyScore": 0.08582824957557023,
+    "gpuProcessed": true
   },
   {
     "game": "Mavericks vs Clippers",
-    "homeWinProb": null,
-    "awayWinProb": null,
-    "confidence": "Medium",
-    "fantasyScore": null
+    "homeWinProb": 0.000893157091923058,
+    "awayWinProb": 0.9991068429080769,
+    "confidence": "High",
+    "fantasyScore": 0.0893157091923058,
+    "gpuProcessed": true
   }
 ]

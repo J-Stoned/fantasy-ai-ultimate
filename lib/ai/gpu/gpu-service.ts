@@ -1,9 +1,8 @@
 import * as tf from '@tensorflow/tfjs-node-gpu';
 import { pipeline } from '@xenova/transformers';
 
-// Enable GPU
-tf.env().set('WEBGL_FORCE_F16_TEXTURES', true);
-tf.env().set('WEBGL_PACK', true);
+// GPU settings for Node.js (WebGL settings don't apply here)
+// TensorFlow Node GPU backend uses CUDA directly
 
 export class GPUAcceleratedAI {
   private classifier: any;
@@ -15,9 +14,10 @@ export class GPUAcceleratedAI {
     // Load sentiment analysis on GPU
     this.classifier = await pipeline('sentiment-analysis', 'Xenova/distilbert-base-uncased-finetuned-sst-2-english');
     
-    // Check GPU availability
-    const gpuDevice = await tf.device('gpu');
-    console.log('GPU Device:', gpuDevice);
+    // Check GPU availability using proper Node.js method
+    const backend = tf.getBackend();
+    const gpuAvailable = backend === 'tensorflow' || backend === 'cuda';
+    console.log('GPU Backend:', backend, 'Available:', gpuAvailable);
     
     console.log('✅ AI models loaded on GPU');
   }
@@ -62,7 +62,7 @@ export class GPUAcceleratedAI {
     return {
       numTensors: memoryInfo.numTensors,
       numBytes: (memoryInfo.numBytes / 1024 / 1024).toFixed(2) + ' MB',
-      gpuEnabled: tf.env().get('WEBGL_VERSION') > 0
+      gpuEnabled: tf.getBackend() === 'tensorflow' || tf.getBackend() === 'cuda'
     };
   }
 }

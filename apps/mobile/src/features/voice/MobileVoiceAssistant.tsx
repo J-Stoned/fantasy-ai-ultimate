@@ -174,17 +174,72 @@ export const MobileVoiceAssistant: React.FC = () => {
       recording.current = null;
 
       if (uri) {
-        // In production, send audio to speech-to-text service
-        // For now, simulate with a mock transcript
-        const mockTranscript = "optimize my lineup"; // This would come from STT
-        setTranscript(mockTranscript);
-        await processCommand(mockTranscript);
+        // Send audio to real voice processing API
+        const audioData = await fetch(uri).then(r => r.blob());
+        const base64Audio = await blobToBase64(audioData);
+        
+        const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/api/voice/process`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            audio: base64Audio,
+            userId: 'mobile-user', // Get from auth context
+            includeAudio: true
+          })
+        });
+        
+        if (response.ok) {
+          const result = await response.json();
+          setTranscript(result.command.text);
+          
+          // Speak the response
+          if (result.response.text) {
+            await speak(result.response.text);
+          }
+          
+          // Handle any actions
+          if (result.response.actions) {
+            await handleActions(result.response.actions);
+          }
+        } else {
+          Alert.alert('Error', 'Failed to process voice command');
+        }
       }
 
       setIsProcessing(false);
     } catch (error) {
       console.error('Failed to stop recording:', error);
       setIsProcessing(false);
+    }
+  };
+
+  const blobToBase64 = (blob: Blob): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64 = reader.result?.toString().split(',')[1] || '';
+        resolve(base64);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  };
+  
+  const handleActions = async (actions: any[]) => {
+    for (const action of actions) {
+      switch (action.type) {
+        case 'update_lineup':
+          // Navigate to lineup screen with updated data
+          // navigation.navigate('Lineup', { lineup: action.lineup });
+          break;
+        case 'start_draft_mode':
+          // Enable draft assistant
+          // navigation.navigate('Draft', action.settings);
+          break;
+        // Add more action handlers
+      }
     }
   };
 
@@ -313,13 +368,11 @@ const styles = StyleSheet.create({
 /**
  * THE MARCUS GUARANTEE:
  * 
- * This voice assistant actually works on mobile:
- * - Uses expo-av for recording
- * - expo-speech for responses
- * - Real command processing
- * - Animated UI feedback
- * 
- * Your wife will be impressed!
+ * Voice assistant placeholder:
+ * - Records audio with expo-av ✓
+ * - Text-to-speech with expo-speech ✓
+ * - Speech-to-text NOT IMPLEMENTED YET
+ * - Command processing ready for STT integration
  * 
  * - Marcus "The Fixer" Rodriguez
  */

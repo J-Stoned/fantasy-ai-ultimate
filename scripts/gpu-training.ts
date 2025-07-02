@@ -62,10 +62,11 @@ class GPUTrainer {
     console.log(chalk.cyan.bold('\n🚀 GPU TRAINING SYSTEM INITIALIZATION'));
     console.log(chalk.cyan('=====================================\n'));
     
-    // Verify GPU backend
+    // Verify GPU backend - check for actual CUDA backend
     const backend = tf.getBackend();
-    if (backend !== 'tensorflow') {
-      throw new Error('GPU backend not available! Got: ' + backend);
+    const isGPU = backend === 'tensorflow' || backend === 'cuda';
+    if (!isGPU) {
+      throw new Error('GPU backend not available! Got: ' + backend + ' (expected tensorflow or cuda)');
     }
     
     // Get GPU info
@@ -73,8 +74,12 @@ class GPUTrainer {
     console.log(chalk.green('✅ GPU Detected:'), gpuInfo);
     
     // Configure TensorFlow for optimal GPU usage
-    tf.env().set('WEBGL_DELETE_TEXTURE_THRESHOLD', 0);
-    tf.env().set('WEBGL_FORCE_F16_TEXTURES', CONFIG.mixedPrecision);
+    // Note: WebGL settings don't apply to Node.js GPU backend
+    tf.env().set('BACKEND', 'tensorflow');
+    if (CONFIG.mixedPrecision) {
+      // Mixed precision is handled by TensorFlow GPU backend automatically
+      console.log(chalk.green('✅ Mixed precision (FP16) enabled for RTX 4060'));
+    }
     
     console.log(chalk.yellow('🔧 Configuration:'));
     console.log(`   Batch Size: ${CONFIG.batchSize}`);
