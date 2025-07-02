@@ -28,10 +28,10 @@ interface Service {
 
 const services: Service[] = [
   {
-    name: 'WebSocket Server',
-    script: 'lib/streaming/start-websocket-server.ts',
+    name: 'Real-Time Server',
+    script: 'scripts/start-realtime-server.ts',
     color: 'blue',
-    port: 3001
+    port: 8080
   },
   {
     name: 'Continuous Learning AI',
@@ -44,8 +44,8 @@ const services: Service[] = [
     color: 'yellow'
   },
   {
-    name: 'Mega Data Collector',
-    script: 'scripts/mega-data-collector.ts',
+    name: 'Data Collector V3',
+    script: 'scripts/mega-data-collector-v3.ts',
     color: 'magenta'
   }
 ];
@@ -137,9 +137,10 @@ console.log(chalk.green.bold(`
 ✅ Service manager started!
 
 Services will be available at:
-- WebSocket: ws://localhost:3001
+- Real-Time WebSocket: ws://localhost:8080
 - Next.js App: http://localhost:3000
 - Voice Assistant: Available through the app
+- ML Predictions: Updated every 30 seconds
 
 Press Ctrl+C to stop all services.
 `));
