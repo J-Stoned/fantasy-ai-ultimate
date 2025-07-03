@@ -1,0 +1,21 @@
+-- Part 1: Add missing columns to existing tables
+-- Run this first
+
+-- Add columns to players table
+ALTER TABLE players ADD COLUMN IF NOT EXISTS external_id VARCHAR(255) UNIQUE;
+ALTER TABLE players ADD COLUMN IF NOT EXISTS metadata JSONB DEFAULT '{}';
+ALTER TABLE players ADD COLUMN IF NOT EXISTS search_vector tsvector;
+ALTER TABLE players ADD COLUMN IF NOT EXISTS team VARCHAR(100);
+ALTER TABLE players ADD COLUMN IF NOT EXISTS sport VARCHAR(50);
+ALTER TABLE players ADD COLUMN IF NOT EXISTS college VARCHAR(100);
+
+-- Add columns to games table
+ALTER TABLE games ADD COLUMN IF NOT EXISTS external_id VARCHAR(255) UNIQUE;
+ALTER TABLE games ADD COLUMN IF NOT EXISTS metadata JSONB DEFAULT '{}';
+ALTER TABLE games ADD COLUMN IF NOT EXISTS sport VARCHAR(50);
+ALTER TABLE games ADD COLUMN IF NOT EXISTS league VARCHAR(50);
+
+-- Add columns to teams table
+ALTER TABLE teams ADD COLUMN IF NOT EXISTS external_id VARCHAR(255) UNIQUE;
+ALTER TABLE teams ADD COLUMN IF NOT EXISTS metadata JSONB DEFAULT '{}';
+ALTER TABLE teams ADD COLUMN IF NOT EXISTS sport VARCHAR(50);
