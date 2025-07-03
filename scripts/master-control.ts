@@ -80,6 +80,7 @@ async function startAll() {
     await execAsync('pkill -f mega-data-collector.ts');
     await execAsync('pkill -f continuous-learning-ai.ts');
     await execAsync('pkill -f ultimate-dashboard.ts');
+    await execAsync('pkill -f production-prediction-service.ts');
   } catch (e) {
     // Ignore if no processes to kill
   }
@@ -98,7 +99,13 @@ async function startAll() {
   
   await new Promise(resolve => setTimeout(resolve, 1000));
   
-  // 3. Start dashboard
+  // 3. Start production prediction service
+  console.log('Starting prediction service...');
+  execAsync('nohup npx tsx scripts/production-prediction-service.ts > logs/prediction-service.log 2>&1 &');
+  
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  
+  // 4. Start dashboard
   console.log('Starting dashboard...');
   execAsync('nohup npx tsx scripts/ultimate-dashboard.ts > logs/dashboard.log 2>&1 &');
   

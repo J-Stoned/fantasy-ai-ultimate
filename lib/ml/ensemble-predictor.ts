@@ -11,6 +11,8 @@
 
 import * as tf from '@tensorflow/tfjs-node';
 import { RandomForestClassifier } from 'ml-random-forest';
+import { SimpleRandomForest } from './simple-random-forest';
+import * as fs from 'fs';
 import chalk from 'chalk';
 
 export interface GameFeatures {
@@ -66,7 +68,7 @@ export interface PredictionResult {
 
 export class EnsemblePredictor {
   private neuralNetwork?: tf.LayersModel;
-  private randomForest?: RandomForestClassifier;
+  private randomForest?: RandomForestClassifier | SimpleRandomForest;
   private featureNames: string[];
   private isLoaded = false;
   
@@ -96,17 +98,50 @@ export class EnsemblePredictor {
     console.log(chalk.cyan('Loading ensemble models...'));
     
     try {
-      // Load neural network
-      this.neuralNetwork = await tf.loadLayersModel(`file://${modelPath}/enhanced-v2/model.json`);
-      console.log(chalk.green('✅ Neural network loaded'));
+      // Try multiple paths for neural network
+      const possiblePaths = [
+        `${modelPath}/enhanced-v2/model.json`,
+        `${modelPath}/production_ensemble_v2/neural_network/model.json`,
+        `${modelPath}/production_ultimate/model.json`
+      ];
+      
+      let modelLoaded = false;
+      for (const path of possiblePaths) {
+        try {
+          this.neuralNetwork = await tf.loadLayersModel(`file://${path}`);
+          console.log(chalk.green(`✅ Neural network loaded from ${path}`));
+          modelLoaded = true;
+          break;
+        } catch (e) {
+          // Try next path
+        }
+      }
+      
+      if (!modelLoaded) {
+        throw new Error('Could not find neural network model');
+      }
       
       // Load random forest (if exists)
-      try {
-        const rfData = require(`${modelPath}/random-forest.json`);
-        this.randomForest = RandomForestClassifier.load(rfData);
-        console.log(chalk.green('✅ Random forest loaded'));
-      } catch (e) {
-        console.log(chalk.yellow('⚠️  Random forest not found, will train on demand'));
+      const rfPaths = [
+        `${modelPath}/random-forest.json`,
+        `${modelPath}/production_ensemble_v2/random_forest.json`
+      ];
+      
+      for (const path of rfPaths) {
+        try {
+          const fs = require('fs');
+          const rfData = JSON.parse(fs.readFileSync(path, 'utf8'));
+          // Use SimpleRandomForest for our custom format
+          this.randomForest = SimpleRandomForest.load(rfData);
+          console.log(chalk.green(`✅ Random forest loaded from ${path}`));
+          break;
+        } catch (e) {
+          // Try next path
+        }
+      }
+      
+      if (!this.randomForest) {
+        console.log(chalk.yellow('⚠️  Random forest not found, will use neural network only'));
       }
       
       this.isLoaded = true;
@@ -365,7 +400,7 @@ export class EnsemblePredictor {
    * Convert features object to array
    */
   private featuresToArray(features: GameFeatures): number[] {
-    return [
+    const baseFeatures = [
       features.homeWinRate,
       features.awayWinRate,
       features.winRateDiff,
@@ -397,6 +432,13 @@ export class EnsemblePredictor {
       features.homeStreak,
       features.awayStreak
     ];
+    
+    // Pad to 50 features if needed (for compatibility with older models)
+    while (baseFeatures.length < 50) {
+      baseFeatures.push(0);
+    }
+    
+    return baseFeatures;
   }
   
   /**
@@ -457,7 +499,10 @@ export class EnsemblePredictor {
    * Predict using random forest
    */
   private predictRandomForest(features: number[]): number {
-    if (!this.randomForest) return 0.5;
+    if (!this.randomForest) {
+      // If no random forest, return neural network prediction as fallback
+      return 0.5;
+    }
     
     const prediction = this.randomForest.predict([features]);
     return prediction[0];
