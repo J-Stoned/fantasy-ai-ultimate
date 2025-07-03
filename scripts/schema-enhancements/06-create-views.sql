@@ -39,13 +39,13 @@ FROM players p
 INNER JOIN player_game_logs pgl ON p.id::INTEGER = pgl.player_id
 CROSS JOIN LATERAL jsonb_each(pgl.stats) as stat(key, value);
 
--- Simple search function
+-- Simple search function (fixed reserved keyword)
 CREATE OR REPLACE FUNCTION search_players_simple(search_term TEXT)
 RETURNS TABLE(
   player_id INTEGER,
   player_name TEXT,
   team VARCHAR,
-  position TEXT
+  player_position TEXT  -- Changed from 'position' to avoid reserved keyword
 ) AS $$
 BEGIN
   RETURN QUERY
@@ -56,7 +56,7 @@ BEGIN
     CASE 
       WHEN array_length(p.position, 1) > 0 THEN p.position[1]
       ELSE NULL
-    END
+    END AS player_position  -- Added alias
   FROM players p
   WHERE 
     CONCAT(p.firstname, ' ', p.lastname) ILIKE '%' || search_term || '%'
