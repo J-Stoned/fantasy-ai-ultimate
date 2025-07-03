@@ -1,0 +1,135 @@
+{
+  "timestamp": "2025-07-03T15:42:25.673Z",
+  "tables": [
+    {
+      "table": "player_stats",
+      "count": 8858,
+      "filename": "backups/player_stats_2025-07-03T15-42-24-144Z.json",
+      "sample": {
+        "id": 2,
+        "player_id": 211,
+        "game_id": 3105025,
+        "stat_type": "receiving",
+        "stat_value": 112,
+        "fantasy_points": 11.2,
+        "created_at": "2025-07-01T18:48:39.870534+00:00"
+      }
+    },
+    {
+      "table": "players",
+      "count": 10000,
+      "filename": "backups/players_2025-07-03T15-42-24-144Z.json",
+      "sample": {
+        "id": 24,
+        "firstname": "Patrick",
+        "lastname": "Mahomes",
+        "position": [
+          "QB"
+        ],
+        "team_id": 16,
+        "jersey_number": 15,
+        "heightinches": null,
+        "weightlbs": null,
+        "birthdate": null,
+        "status": "active",
+        "sport_id": "nfl",
+        "external_id": null,
+        "photo_url": null,
+        "created_at": "2025-06-30T22:38:50.984682+00:00",
+        "updated_at": "2025-06-30T22:38:50.984682+00:00",
+        "team_abbreviation": null
+      }
+    },
+    {
+      "table": "games",
+      "count": 10000,
+      "filename": "backups/games_2025-07-03T15-42-24-144Z.json",
+      "sample": {
+        "id": 1,
+        "home_team_id": 1,
+        "away_team_id": 2,
+        "sport_id": "nfl",
+        "start_time": "2025-06-30T22:41:02.156+00:00",
+        "venue": "Stadium",
+        "home_score": null,
+        "away_score": null,
+        "status": "In Progress",
+        "external_id": null,
+        "created_at": "2025-06-30T22:41:01.962604+00:00",
+        "updated_at": "2025-06-30T22:41:01.962604+00:00"
+      }
+    },
+    {
+      "table": "teams",
+      "count": 224,
+      "filename": "backups/teams_2025-07-03T15-42-24-144Z.json",
+      "sample": {
+        "id": 1,
+        "name": "Arizona Cardinals",
+        "city": "Arizona",
+        "abbreviation": "ARI",
+        "sport_id": "nfl",
+        "league_id": "NFL",
+        "logo_url": "https://a.espncdn.com/i/teamlogos/nfl/500/ari.png",
+        "created_at": "2025-06-30T22:25:45.020375+00:00",
+        "updated_at": "2025-06-30T22:25:45.020375+00:00",
+        "external_id": null
+      }
+    },
+    {
+      "table": "teams_master",
+      "count": 8,
+      "filename": "backups/teams_master_2025-07-03T15-42-24-144Z.json",
+      "sample": {
+        "id": "06b206f4-8c80-472e-953e-6915cfc1232c",
+        "league_id": "9e97bcde-5868-4438-bd00-dccf112193e4",
+        "name": "Warriors",
+        "city": "Golden State",
+        "abbreviation": "GSW",
+        "founded_year": null,
+        "home_venue": null,
+        "logo_url": null,
+        "primary_color": null,
+        "secondary_color": null,
+        "website": null,
+        "social_media": null,
+        "created_at": "2025-06-27T18:35:07.265828+00:00",
+        "updated_at": "2025-06-27T18:35:07.265828+00:00"
+      }
+    },
+    {
+      "table": "player_injuries",
+      "count": 129,
+      "filename": "backups/player_injuries_2025-07-03T15-42-24-144Z.json",
+      "sample": {
+        "id": 3,
+        "player_id": 5102327,
+        "injury_type": "groin",
+        "body_part": "groin",
+        "status": "doubtful",
+        "return_date": "2025-07-13",
+        "notes": "Russell Allen_10_29_1751332513422_2338 unlikely to play due to groin injury",
+        "reported_at": "2025-06-22T16:59:46.082+00:00",
+        "created_at": "2025-07-02T16:59:44.893601+00:00",
+        "updated_at": "2025-07-02T16:59:44.893601+00:00"
+      }
+    },
+    {
+      "table": "weather_data",
+      "count": 800,
+      "filename": "backups/weather_data_2025-07-03T15-42-24-144Z.json",
+      "sample": {
+        "id": 1,
+        "game_id": 3105047,
+        "temperature": 83,
+        "wind_speed": 8,
+        "wind_direction": null,
+        "precipitation": null,
+        "humidity": 47,
+        "conditions": "Clear",
+        "created_at": "2025-07-02T16:50:00.139+00:00"
+      }
+    }
+  ],
+  "totalRecords": 30019
+}
