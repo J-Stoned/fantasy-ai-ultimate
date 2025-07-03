@@ -73,11 +73,18 @@ export class SchemaAdapter {
       }
       
       // Prepare player data for simple schema
+      // Split name into firstname/lastname
+      const nameParts = data.name.split(' ');
+      const firstname = nameParts[0] || '';
+      const lastname = nameParts.slice(1).join(' ') || '';
+      
       const playerData: any = {
-        name: data.name,
-        position: data.position || 'Unknown',
+        firstname: firstname,
+        lastname: lastname,
+        position: data.position ? [data.position] : ['Unknown'], // position is an array
         team: data.team || 'Free Agent',
-        sport: data.sport || 'football'
+        sport: data.sport || 'football',
+        sport_id: data.sport === 'football' ? 'nfl' : data.sport === 'basketball' ? 'nba' : data.sport || 'nfl'
       };
       
       // If external_id column exists, use it
@@ -89,7 +96,7 @@ export class SchemaAdapter {
       const { data: player, error } = await getSupabase()
         .from('players')
         .upsert(playerData, { 
-          onConflict: data.external_id ? 'external_id' : 'name',
+          onConflict: data.external_id ? 'external_id' : 'firstname,lastname',
           ignoreDuplicates: false 
         })
         .select()
