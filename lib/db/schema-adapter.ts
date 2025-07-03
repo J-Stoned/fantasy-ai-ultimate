@@ -31,6 +31,7 @@ export interface PlayerData {
   position?: string;
   team?: string;
   sport?: string;
+  jersey_number?: string;
   metadata?: Record<string, any>;
 }
 
@@ -46,6 +47,8 @@ export interface GameData {
   game_date?: string;
   sport?: string;
   status?: string;
+  venue?: string;
+  attendance?: number;
   metadata?: Record<string, any>;
 }
 
@@ -84,8 +87,13 @@ export class SchemaAdapter {
         position: data.position ? [data.position] : ['Unknown'], // position is an array
         team: data.team || 'Free Agent',
         sport: data.sport || 'football',
-        sport_id: data.sport === 'football' ? 'nfl' : data.sport === 'basketball' ? 'nba' : data.sport || 'nfl'
+        sport_id: this.getSportId(data.sport)
       };
+      
+      // Add jersey number if provided
+      if (data.jersey_number) {
+        playerData.jersey_number = data.jersey_number;
+      }
       
       // If external_id column exists, use it
       if (data.external_id) {
@@ -386,6 +394,24 @@ export class SchemaAdapter {
         .single();
       
       return data;
+    }
+  }
+
+  /**
+   * Get sport ID from sport name
+   */
+  private getSportId(sport?: string): string {
+    switch (sport?.toLowerCase()) {
+      case 'football':
+        return 'nfl';
+      case 'basketball':
+        return 'nba';
+      case 'baseball':
+        return 'mlb';
+      case 'hockey':
+        return 'nhl';
+      default:
+        return sport || 'nfl';
     }
   }
 }

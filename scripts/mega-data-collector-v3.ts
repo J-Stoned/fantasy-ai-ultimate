@@ -16,6 +16,7 @@ import * as crypto from 'crypto';
 import * as cron from 'node-cron';
 import pLimit from 'p-limit';
 import * as dotenv from 'dotenv';
+import { UniversalSportsCollector } from './universal-sports-collector';
 
 dotenv.config({ path: '.env.local' });
 
@@ -121,24 +122,42 @@ async function shouldCollect(type: string, id: string, hash: string): Promise<bo
   return true;
 }
 
-// ESPN COLLECTOR - Enhanced with smarter queries
+// Universal Sports Collector instance
+const universalCollector = new UniversalSportsCollector();
+
+// ESPN COLLECTOR - Now uses Universal Collector for major sports
 async function collectESPNEnhanced() {
   console.log(chalk.yellow('📡 ESPN Enhanced Collector starting...'));
   
-  // Get wider date range for more data
+  // Use universal collector for NFL, NBA, MLB
+  try {
+    await universalCollector.collectAll();
+    
+    // Update our stats with universal collector results
+    const collectorStats = universalCollector.getStats();
+    for (const [sport, sportStats] of Object.entries(collectorStats)) {
+      stats.players += sportStats.players;
+      stats.games += sportStats.games;
+      stats.newRecords += sportStats.players + sportStats.games + sportStats.stats;
+      stats.errors += sportStats.errors;
+    }
+  } catch (error) {
+    console.error(chalk.red('Universal collector error:', error.message));
+    stats.errors++;
+  }
+  
+  // Continue with NHL and other ESPN-specific collection
+  const sports = [
+    { id: 'hockey', league: 'nhl', name: 'NHL' }
+  ];
+  
+  // Get date range for NHL
   const dates = [];
   for (let i = -7; i <= 7; i++) {
     const date = new Date();
     date.setDate(date.getDate() + i);
     dates.push(date.toISOString().split('T')[0].replace(/-/g, ''));
   }
-  
-  const sports = [
-    { id: 'football', league: 'nfl', name: 'NFL' },
-    { id: 'basketball', league: 'nba', name: 'NBA' },
-    { id: 'baseball', league: 'mlb', name: 'MLB' },
-    { id: 'hockey', league: 'nhl', name: 'NHL' }
-  ];
   
   let newItems = 0;
   
