@@ -162,7 +162,7 @@ RETURNS TABLE(
   id INTEGER,
   name TEXT,
   team TEXT,
-  position TEXT,
+  player_position TEXT,
   external_id VARCHAR
 ) AS $$
 BEGIN
@@ -171,7 +171,7 @@ BEGIN
     p.id,
     p.name,
     p.team,
-    p.position,
+    p.position AS player_position,
     p.external_id
   FROM players p
   WHERE 

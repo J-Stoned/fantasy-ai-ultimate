@@ -33,7 +33,7 @@ async function testConnection() {
 async function applyEnhancements() {
   console.log(chalk.yellow('\n📝 Reading enhancement SQL...'));
   
-  const sqlContent = fs.readFileSync('./scripts/enhance-schema-for-complex-features.sql', 'utf-8');
+  const sqlContent = fs.readFileSync('./scripts/enhance-schema-for-complex-features-v2.sql', 'utf-8');
   
   console.log(chalk.blue('\n🚀 Enhancement Summary:'));
   console.log('  1. Add external_id columns for API mappings');
@@ -53,7 +53,7 @@ async function applyEnhancements() {
   console.log(chalk.red('\n⚠️  Manual Step Required:'));
   console.log('  Due to Supabase restrictions, you need to run the SQL manually:');
   console.log('  1. Go to Supabase Dashboard > SQL Editor');
-  console.log('  2. Copy the contents of: scripts/enhance-schema-for-complex-features.sql');
+  console.log('  2. Copy the contents of: scripts/enhance-schema-for-complex-features-v2.sql');
   console.log('  3. Run the SQL in the editor');
   console.log('  4. Come back and run the verification script');
   
@@ -174,7 +174,7 @@ async function main() {
   
   console.log(chalk.bold.green('\n✨ Schema enhancement preparation complete!'));
   console.log(chalk.yellow('\n📋 Next Steps:'));
-  console.log('1. Copy scripts/enhance-schema-for-complex-features.sql');
+  console.log('1. Copy scripts/enhance-schema-for-complex-features-v2.sql');
   console.log('2. Run it in Supabase SQL Editor');
   console.log('3. Run: npx tsx scripts/verify-enhancements.ts');
   console.log('4. Update collectors to use enhanced schema');
