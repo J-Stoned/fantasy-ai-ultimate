@@ -32,19 +32,19 @@ const SPORTS_TO_FETCH: SportConfig[] = [
   {
     sport: 'football',
     league: 'nfl',
-    seasons: [2023, 2024], // Last 2 seasons
+    seasons: [2024], // Current season only for now
     seasonType: 2
   },
   {
     sport: 'basketball',
     league: 'nba',
-    seasons: [2023, 2024],
+    seasons: [2024], // Current season only
     seasonType: 2
   },
   {
     sport: 'baseball',
     league: 'mlb',
-    seasons: [2023, 2024],
+    seasons: [2024], // Current season only
     seasonType: 2
   }
 ];
@@ -152,13 +152,17 @@ async function fetchAndStoreBoxScore(espnGameId: string, gameId: number, sport: 
           if (Object.keys(stats).length > 0) {
             const fantasyPoints = calculateFantasyPoints(league, stats);
             
-            await schemaAdapter.upsertPlayerStats({
+            const stored = await schemaAdapter.upsertPlayerStats({
               player_id: playerId,
               game_id: gameId,
               stats: stats,
               fantasy_points: fantasyPoints,
-              game_date: new Date().toISOString() // Will be overridden by game date
+              game_date: response.data.gameInfo?.datetime?.dateTime || new Date().toISOString()
             });
+            
+            if (!stored) {
+              console.log(chalk.yellow(`      ⚠️ Failed to store stats for ${athlete.athlete.displayName}`));
+            }
             
             playerCount++;
           }
@@ -297,9 +301,13 @@ async function fetchHistoricalGames() {
       if (games.length > 0) {
         console.log(chalk.cyan(`  📦 Processing ${games.length} games...`));
         
+        // Process only completed games (first 50 for testing)
+        const completedGames = games.filter(g => g.status?.type?.completed).slice(0, 50);
+        console.log(chalk.cyan(`  📊 Processing ${completedGames.length} completed games...`));
+        
         // Process games with rate limiting
         const results = await Promise.all(
-          games.map(game => 
+          completedGames.map(game => 
             limit(() => processGame(game, sportConfig.sport, sportConfig.league))
           )
         );
