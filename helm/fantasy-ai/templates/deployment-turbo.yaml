@@ -1,0 +1,138 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "fantasy-ai.fullname" . }}-turbo-predictions
+  labels:
+    {{- include "fantasy-ai.labels" . | nindent 4 }}
+    app.kubernetes.io/component: turbo-predictions
+spec:
+  {{- if not .Values.turboPredictions.autoscaling.enabled }}
+  replicas: {{ .Values.turboPredictions.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "fantasy-ai.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: turbo-predictions
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+      labels:
+        {{- include "fantasy-ai.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: turbo-predictions
+    spec:
+      {{- with .Values.global.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "fantasy-ai.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      nodeSelector:
+        {{- toYaml .Values.gpuNodeSelector | nindent 8 }}
+      containers:
+        - name: turbo-predictions
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.global.imageRegistry }}/{{ .Values.turboPredictions.image.repository }}:{{ .Values.turboPredictions.image.tag }}"
+          imagePullPolicy: {{ .Values.turboPredictions.image.pullPolicy }}
+          ports:
+            - name: metrics
+              containerPort: 9090
+              protocol: TCP
+          env:
+            {{- toYaml .Values.turboPredictions.env | nindent 12 }}
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "fantasy-ai.fullname" . }}-secrets
+                  key: database-url
+            - name: REDIS_URL
+              value: "redis://{{ .Release.Name }}-redis-master:6379"
+            - name: KAFKA_BROKERS
+              value: "{{ .Release.Name }}-kafka:9092"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: metrics
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: metrics
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          resources:
+            {{- toYaml .Values.turboPredictions.resources | nindent 12 }}
+          volumeMounts:
+            - name: models
+              mountPath: /app/models
+            - name: gpu-drivers
+              mountPath: /usr/local/nvidia
+      volumes:
+        - name: models
+          persistentVolumeClaim:
+            claimName: {{ include "fantasy-ai.fullname" . }}-models
+        - name: gpu-drivers
+          hostPath:
+            path: /usr/local/nvidia
+            type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "fantasy-ai.fullname" . }}-turbo-predictions
+  labels:
+    {{- include "fantasy-ai.labels" . | nindent 4 }}
+    app.kubernetes.io/component: turbo-predictions
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9090
+      targetPort: metrics
+      protocol: TCP
+      name: metrics
+  selector:
+    {{- include "fantasy-ai.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: turbo-predictions
+---
+{{- if .Values.turboPredictions.autoscaling.enabled }}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "fantasy-ai.fullname" . }}-turbo-predictions
+  labels:
+    {{- include "fantasy-ai.labels" . | nindent 4 }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "fantasy-ai.fullname" . }}-turbo-predictions
+  minReplicas: {{ .Values.turboPredictions.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.turboPredictions.autoscaling.maxReplicas }}
+  metrics:
+    {{- if .Values.turboPredictions.autoscaling.targetCPUUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.turboPredictions.autoscaling.targetCPUUtilizationPercentage }}
+    {{- end }}
+    {{- if .Values.turboPredictions.autoscaling.targetMemoryUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.turboPredictions.autoscaling.targetMemoryUtilizationPercentage }}
+    {{- end }}
+    - type: Pods
+      pods:
+        metric:
+          name: predictions_per_second
+        target:
+          type: AverageValue
+          averageValue: "2000"
+{{- end }}

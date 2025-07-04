@@ -1,0 +1,36 @@
+apiVersion: v2
+name: fantasy-ai
+description: Production-grade Fantasy AI Sports Prediction Platform
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords:
+  - ai
+  - ml
+  - sports
+  - predictions
+  - websocket
+  - gpu
+home: https://fantasy-ai.com
+sources:
+  - https://github.com/yourusername/fantasy-ai-ultimate
+maintainers:
+  - name: Fantasy AI Team
+    email: team@fantasy-ai.com
+dependencies:
+  - name: redis
+    version: 18.4.0
+    repository: https://charts.bitnami.com/bitnami
+    condition: redis.enabled
+  - name: kafka
+    version: 26.4.0
+    repository: https://charts.bitnami.com/bitnami
+    condition: kafka.enabled
+  - name: prometheus
+    version: 25.3.1
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: monitoring.enabled
+  - name: grafana
+    version: 7.0.8
+    repository: https://grafana.github.io/helm-charts
+    condition: monitoring.enabled

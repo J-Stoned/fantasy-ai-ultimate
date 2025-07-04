@@ -1,0 +1,234 @@
+# Fantasy AI Helm Chart Values
+# Production-ready configuration for 70M+ predictions/hour
+
+global:
+  environment: production
+  domain: fantasy-ai.com
+  imageRegistry: ghcr.io
+  imagePullSecrets:
+    - name: regcred
+
+# Turbo Predictions Service (GPU-enabled)
+turboPredictions:
+  enabled: true
+  replicaCount: 10
+  image:
+    repository: fantasy-ai/turbo-predictions
+    tag: latest
+    pullPolicy: Always
+  
+  resources:
+    limits:
+      memory: 4Gi
+      nvidia.com/gpu: 1
+    requests:
+      memory: 2Gi
+      cpu: 2000m
+  
+  autoscaling:
+    enabled: true
+    minReplicas: 10
+    maxReplicas: 50
+    targetCPUUtilizationPercentage: 70
+    targetMemoryUtilizationPercentage: 80
+  
+  env:
+    - name: NODE_ENV
+      value: production
+    - name: BATCH_SIZE
+      value: "1000"
+    - name: CONCURRENCY
+      value: "100"
+    - name: TF_FORCE_GPU_ALLOW_GROWTH
+      value: "true"
+
+# WebSocket Cluster
+websocket:
+  enabled: true
+  replicaCount: 5
+  image:
+    repository: fantasy-ai/websocket
+    tag: latest
+    pullPolicy: Always
+  
+  service:
+    type: LoadBalancer
+    port: 8080
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+  
+  resources:
+    limits:
+      memory: 1Gi
+      cpu: 1000m
+    requests:
+      memory: 512Mi
+      cpu: 500m
+  
+  autoscaling:
+    enabled: true
+    minReplicas: 5
+    maxReplicas: 20
+    targetCPUUtilizationPercentage: 60
+
+# Continuous Learning Service
+continuousLearning:
+  enabled: true
+  replicaCount: 2
+  image:
+    repository: fantasy-ai/ml-learning
+    tag: latest
+  
+  resources:
+    limits:
+      memory: 8Gi
+      nvidia.com/gpu: 1
+    requests:
+      memory: 4Gi
+      cpu: 4000m
+  
+  schedule: "*/30 * * * *"  # Every 30 minutes
+
+# Data Collector
+dataCollector:
+  enabled: true
+  replicaCount: 3
+  image:
+    repository: fantasy-ai/data-collector
+    tag: latest
+  
+  resources:
+    limits:
+      memory: 2Gi
+      cpu: 2000m
+    requests:
+      memory: 1Gi
+      cpu: 1000m
+
+# Web Frontend
+web:
+  enabled: true
+  replicaCount: 3
+  image:
+    repository: fantasy-ai/web
+    tag: latest
+  
+  service:
+    type: ClusterIP
+    port: 3000
+  
+  ingress:
+    enabled: true
+    className: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    hosts:
+      - host: fantasy-ai.com
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: fantasy-ai-tls
+        hosts:
+          - fantasy-ai.com
+
+# Redis Cache
+redis:
+  enabled: true
+  architecture: standalone
+  auth:
+    enabled: false
+  master:
+    persistence:
+      enabled: true
+      size: 10Gi
+    resources:
+      limits:
+        memory: 2Gi
+        cpu: 2000m
+      requests:
+        memory: 1Gi
+        cpu: 1000m
+
+# Kafka Event Streaming
+kafka:
+  enabled: true
+  replicaCount: 3
+  persistence:
+    enabled: true
+    size: 50Gi
+  resources:
+    limits:
+      memory: 4Gi
+      cpu: 2000m
+    requests:
+      memory: 2Gi
+      cpu: 1000m
+  
+  topics:
+    - name: predictions
+      partitions: 16
+      replicationFactor: 3
+    - name: game-updates
+      partitions: 8
+      replicationFactor: 3
+    - name: ml-metrics
+      partitions: 4
+      replicationFactor: 3
+
+# Database Configuration
+database:
+  host: your-database-host
+  port: 5432
+  name: fantasy_ai_production
+  sslMode: require
+  poolSize: 100
+
+# GPU Node Selector
+gpuNodeSelector:
+  node.kubernetes.io/instance-type: g4dn.xlarge
+  kubernetes.io/accelerator: nvidia-tesla-t4
+
+# Monitoring Stack
+monitoring:
+  enabled: true
+  prometheus:
+    retention: 30d
+    storageSize: 100Gi
+    resources:
+      limits:
+        memory: 4Gi
+        cpu: 2000m
+  
+  grafana:
+    adminPassword: changeme
+    persistence:
+      enabled: true
+      size: 10Gi
+    dashboards:
+      default:
+        fantasy-ai:
+          file: dashboards/fantasy-ai-dashboard.json
+
+# Security
+security:
+  podSecurityPolicy:
+    enabled: true
+  networkPolicy:
+    enabled: true
+  serviceAccount:
+    create: true
+
+# Backup Configuration
+backup:
+  enabled: true
+  schedule: "0 2 * * *"  # Daily at 2 AM
+  retention: 30  # days
+
+# Performance Targets
+performance:
+  predictionsPerHour: 70000000
+  maxWebSocketConnections: 50000
+  targetLatency: 100  # milliseconds
+  cacheHitRate: 99.6  # percentage
