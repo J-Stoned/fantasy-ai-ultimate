@@ -10,10 +10,8 @@ import * as tf from '@tensorflow/tfjs-node-gpu';
 import * as ss from 'simple-statistics';
 import chalk from 'chalk';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+// Delay supabase creation until runtime
+let supabase: any;
 
 export interface EnhancedFeatures {
   basic: number[];
@@ -27,6 +25,16 @@ export interface EnhancedFeatures {
 export class AdvancedFeatureEngineering {
   private featureCache = new Map<string, any>();
   private emaCalculators = new Map<string, number>();
+  
+  constructor() {
+    // Initialize supabase if env vars are available
+    if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+      supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL,
+        process.env.SUPABASE_SERVICE_ROLE_KEY
+      );
+    }
+  }
   
   /**
    * Extract comprehensive features for maximum accuracy

@@ -1,8 +1,8 @@
 {
-  "trainedAt": "2025-07-02T14:56:30.475Z",
+  "trainedAt": "2025-07-04T19:23:01.243Z",
   "trainSamples": 800,
   "testSamples": 200,
-  "testAccuracy": 0.5649999976158142,
+  "testAccuracy": 0.5400000214576721,
   "features": [
     "home_win_rate",
     "away_win_rate",
