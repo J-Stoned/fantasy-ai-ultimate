@@ -323,15 +323,19 @@ class TurboPredictionService {
     } else {
       console.log(chalk.green(`✅ Stored ${predictions.length} predictions`));
       
-      // Broadcast batch
-      for (const pred of predictions.slice(0, 10)) { // Broadcast first 10
+      // Broadcast batch (sample to avoid overwhelming)
+      const broadcastSample = predictions
+        .filter(() => Math.random() < 0.01) // Broadcast 1% of predictions
+        .slice(0, 50); // Max 50 per batch
+        
+      for (const pred of broadcastSample) {
         predictionBroadcaster.broadcastPrediction({
           gameId: pred.game_id,
           prediction: {
-            winner: pred.prediction,
-            homeWinProbability: pred.probability,
-            confidence: pred.confidence,
-            models: { turbo: pred.probability }
+            winner: pred.metadata.predicted_winner,
+            homeWinProbability: parseFloat(pred.prediction),
+            confidence: pred.confidence * 100,
+            models: { turbo: parseFloat(pred.prediction) }
           },
           game: pred.game_info,
           timestamp: Date.now()
