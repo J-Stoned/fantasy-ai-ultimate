@@ -60,3 +60,5 @@ Logs for your project will appear below.
 [1mWeb[22m [0m[2m./[22m[0m[1mindex.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 98.8% [22m[2m(164/165)[22m
 [1mWeb[22m [0m[2m./[22m[0m[1mindex.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 99.9% [22m[2m(165/165)[22m
 [32m[1mWeb[22m Bundled [39m[2m36478ms[22m[0m[2m index.js (165 modules)[22m[0m
+[1m[31mWatch error: Daemon closed the connection[39m[22m
+Warning: command "vite" exited with non-zero status code
