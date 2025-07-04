@@ -11,20 +11,39 @@ const supabase = createClient(
 (async () => {
   const { count, data } = await supabase
     .from('ml_predictions')
-    .select('*', { count: 'exact' })
+    .select(`
+      *,
+      games!inner(
+        id,
+        status,
+        home_score,
+        away_score,
+        home_team_id,
+        away_team_id
+      )
+    `, { count: 'exact' })
     .eq('model_name', 'ensemble_v2')
     .order('created_at', { ascending: false })
-    .limit(5);
+    .limit(10);
   
   console.log('Total ensemble predictions:', count);
   console.log('Latest predictions:', data?.length || 0);
   
   if (data && data.length > 0) {
-    console.log('Sample prediction:', {
-      game_id: data[0].game_id,
-      confidence: data[0].confidence,
-      predicted_winner: data[0].predicted_winner,
-      home_win_probability: data[0].home_win_probability
+    console.log('\nPredictions with game status:');
+    data.forEach(pred => {
+      const game = pred.games;
+      console.log(`  Game ${pred.game_id}: status=${game?.status || 'unknown'}, scores=${game?.home_score || 'null'}-${game?.away_score || 'null'}`);
     });
+    
+    // Count by status
+    const completed = data.filter(p => p.games?.status === 'completed').length;
+    const scheduled = data.filter(p => p.games?.status === 'scheduled').length;
+    const inProgress = data.filter(p => p.games?.status === 'in_progress').length;
+    
+    console.log('\nStatus breakdown:');
+    console.log(`  Completed: ${completed}`);
+    console.log(`  Scheduled: ${scheduled}`);
+    console.log(`  In Progress: ${inProgress}`);
   }
 })().catch(console.error);
