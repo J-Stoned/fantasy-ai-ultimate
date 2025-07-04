@@ -1,0 +1,62 @@
+
+> @fantasy-ai-ultimate/source@0.0.0 dev
+> node --max-old-space-size=4096 node_modules/.bin/nx run-many --target=serve --all
+
+Calculating the project graph on the Nx Daemon
+
+ NX   Running target serve for 2 projects:
+
+- shared-ui
+- mobile
+
+
+
+> nx run mobile:serve
+
+> expo start --web --clear
+
+
+> nx run shared-ui:serve
+
+> vite
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+[90mStarting project at /mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/apps/mobile[39m
+[90mUsing src/app as the root directory for Expo Router.[39m
+
+  [32m[1mVITE[22m v6.3.5[39m  [2mready in [0m[1m33837[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2mStarting Metro Bundler[22m
+[33mwarning[39m: Bundler cache is empty, rebuilding [2m(this may take a minute)[22m
+[33mThe following packages should be updated for best compatibility with the installed [1mexpo[22m version:[39m
+[33m  [1m@react-native-async-storage/async-storage[22m[36m@[39m[33m[31m2.0.0[39m[33m - expected version: [32m2.1.2[39m[33m[39m
+[33m  [1mexpo[22m[36m@[39m[33m[31m53.0.13[39m[33m - expected version: [32m53.0.16[39m[33m[39m
+[33m  [1mexpo-av[22m[36m@[39m[33m[31m14.0.7[39m[33m - expected version: [32m~15.1.7[39m[33m[39m
+[33m  [1mexpo-build-properties[22m[36m@[39m[33m[31m0.14.6[39m[33m - expected version: [32m~0.14.8[39m[33m[39m
+[33m  [1mexpo-camera[22m[36m@[39m[33m[31m15.0.16[39m[33m - expected version: [32m~16.1.10[39m[33m[39m
+[33m  [1mexpo-haptics[22m[36m@[39m[33m[31m14.0.1[39m[33m - expected version: [32m~14.1.4[39m[33m[39m
+[33m  [1mexpo-location[22m[36m@[39m[33m[31m18.0.10[39m[33m - expected version: [32m~18.1.6[39m[33m[39m
+[33m  [1mexpo-notifications[22m[36m@[39m[33m[31m0.29.14[39m[33m - expected version: [32m~0.31.3[39m[33m[39m
+[33m  [1mexpo-speech[22m[36m@[39m[33m[31m13.0.1[39m[33m - expected version: [32m~13.1.7[39m[33m[39m
+[33m  [1mreact[22m[36m@[39m[33m[31m19.1.0[39m[33m - expected version: [32m19.0.0[39m[33m[39m
+[33m  [1mreact-dom[22m[36m@[39m[33m[31m19.1.0[39m[33m - expected version: [32m19.0.0[39m[33m[39m
+[33m  [1mreact-native[22m[36m@[39m[33m[31m0.80.0[39m[33m - expected version: [32m0.79.5[39m[33m[39m
+[33m  [1mreact-native-gesture-handler[22m[36m@[39m[33m[31m2.26.0[39m[33m - expected version: [32m~2.24.0[39m[33m[39m
+[33m  [1mreact-native-reanimated[22m[36m@[39m[33m[31m3.18.0[39m[33m - expected version: [32m~3.17.4[39m[33m[39m
+[33m  [1mreact-native-safe-area-context[22m[36m@[39m[33m[31m5.5.0[39m[33m - expected version: [32m5.4.0[39m[33m[39m
+[33m  [1mreact-native-svg[22m[36m@[39m[33m[31m15.12.0[39m[33m - expected version: [32m15.11.2[39m[33m[39m
+[33mYour project may not work correctly until you install the expected versions of the packages.[39m
+Waiting on [4mhttp://localhost:8081[24m
+Logs for your project will appear below.
+[1mWeb[22m [0m[2m./[22m[0m[1mindex.js[22m [47m[37m░░░░░░░░░░░░░░░░[39m[49m[1m  0.0% [22m[2m(0/1)[22m
+[1mWeb[22m [0m[2m./[22m[0m[1mindex.js[22m [47m[37m░░░░░░░░░░░░░░░░[39m[49m[1m  1.0% [22m[2m(1/1)[22m
+[1mWeb[22m [0m[2m./[22m[0m[1mindex.js[22m [47m[37m░░░░░░░░░░░░░░░░[39m[49m[1m  4.0% [22m[2m(2/4)[22m
+[1mWeb[22m [0m[2m./[22m[0m[1mindex.js[22m [32m[42m▓[49m[39m[47m[37m░░░░░░░░░░░░░░░[39m[49m[1m  9.0% [22m[2m(3/4)[22m
+[1mWeb[22m [0m[2m./[22m[0m[1mindex.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░[39m[49m[1m 83.0% [22m[2m( 92/112)[22m
+[1mWeb[22m [0m[2m./[22m[0m[1mindex.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░[39m[49m[1m 91.3% [22m[2m(108/113)[22m
+[1mWeb[22m [0m[2m./[22m[0m[1mindex.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░[39m[49m[1m 93.0% [22m[2m(109/113)[22m
+[1mWeb[22m [0m[2m./[22m[0m[1mindex.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 98.8% [22m[2m(164/165)[22m
+[1mWeb[22m [0m[2m./[22m[0m[1mindex.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 99.9% [22m[2m(165/165)[22m
+[32m[1mWeb[22m Bundled [39m[2m36478ms[22m[0m[2m index.js (165 modules)[22m[0m

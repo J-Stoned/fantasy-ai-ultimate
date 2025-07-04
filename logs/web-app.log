@@ -1,0 +1,14 @@
+
+> @fantasy-ai-ultimate/source@0.0.0 dev
+> node --max-old-space-size=4096 node_modules/.bin/nx run-many --target=serve --all
+
+Calculating the project graph on the Nx Daemon
+
+ NX   Running target serve for 2 projects:
+
+- shared-ui
+- mobile
+
+
+Waiting for mobile:serve in another nx process
+Waiting for shared-ui:serve in another nx process

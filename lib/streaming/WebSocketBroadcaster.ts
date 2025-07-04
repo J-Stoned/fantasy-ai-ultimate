@@ -138,6 +138,13 @@ export class WebSocketBroadcaster extends EventEmitter {
         case 'ping':
           this.sendToClient(client, { type: 'pong' });
           break;
+          
+        case 'broadcast':
+          // Allow trusted clients to broadcast messages
+          if (msg.channel && msg.data) {
+            this.broadcast(msg.channel, msg.data, msg.priority || 5);
+          }
+          break;
       }
     } catch (error) {
       console.error('Invalid client message:', error);

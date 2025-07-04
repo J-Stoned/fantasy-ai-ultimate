@@ -10,6 +10,7 @@ import chalk from 'chalk';
 import { config } from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
 import { ensemblePredictor, GameFeatures } from '../lib/ml/ensemble-predictor';
+import { predictionBroadcaster } from '../lib/realtime/prediction-broadcaster';
 import * as cron from 'node-cron';
 import * as path from 'path';
 
@@ -58,6 +59,16 @@ class ProductionPredictionService {
         console.log(chalk.red('❌ No models available:', err.message));
         throw new Error('Cannot start prediction service without models');
       }
+    }
+    
+    // Initialize WebSocket broadcaster
+    console.log(chalk.yellow('Connecting to WebSocket broadcaster...'));
+    await predictionBroadcaster.initialize();
+    
+    if (predictionBroadcaster.isAvailable()) {
+      console.log(chalk.green('✅ WebSocket broadcaster connected'));
+    } else {
+      console.log(chalk.yellow('⚠️  Running without real-time broadcasts'));
     }
     
     this.isRunning = true;
@@ -394,6 +405,24 @@ class ProductionPredictionService {
           if (prediction.topFactors.length > 0) {
             console.log(chalk.gray(`     Key factors: ${prediction.topFactors.join(', ')}`));
           }
+          
+          // Broadcast prediction in real-time
+          predictionBroadcaster.broadcastPrediction({
+            gameId: game.id,
+            prediction: {
+              winner: prediction.homeWinProbability > 0.5 ? 'home' : 'away',
+              homeWinProbability: prediction.homeWinProbability,
+              confidence: prediction.confidence,
+              models: prediction.modelPredictions
+            },
+            game: {
+              homeTeam: homeTeam?.name || 'Unknown',
+              awayTeam: awayTeam?.name || 'Unknown',
+              startTime: game.start_time,
+              sport: game.sport_id || 'unknown'
+            },
+            timestamp: Date.now()
+          });
         }
       } catch (error) {
         console.error(chalk.red(`  ❌ Error predicting game ${game.id}:`), error);
@@ -402,6 +431,9 @@ class ProductionPredictionService {
     
     if (predictions.length > 0) {
       console.log(chalk.bold.green(`\n✨ Made ${predictions.length} new predictions!`));
+      
+      // Broadcast batch complete
+      predictionBroadcaster.broadcastBatchComplete(predictions.length);
     }
   }
   
