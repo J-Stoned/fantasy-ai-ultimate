@@ -230,7 +230,7 @@ class KafkaIntegrationTest {
     } else {
       console.log(chalk.bold.red('\n⚠️  Some tests failed. Check Kafka setup.'));
       console.log(chalk.yellow('\nTo start Kafka:'));
-      console.log('   docker-compose -f docker-compose.kafka.yml up -d'));
+      console.log('   docker-compose -f docker-compose.kafka.yml up -d');
       console.log('   ./scripts/kafka-setup.sh');
     }
     
