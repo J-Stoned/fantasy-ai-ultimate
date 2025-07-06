@@ -28,39 +28,45 @@ async function loadModels() {
   try {
     console.log(chalk.cyan('🔄 Loading bias-corrected Random Forest model...'));
     
-    // Try bias-corrected model first, then fall back to real model
-    let modelPath = './models/bias-corrected-rf.json';
-    let modelData: any;
+    // Try all available models in order of preference
+    const modelsToTry = [
+      { path: './models/bias-corrected-rf-clean.json', name: 'Bias-Corrected Clean' },
+      { path: './models/bias-corrected-rf.json', name: 'Bias-Corrected', wrapper: 'baseModel' },
+      { path: './models/real-random-forest.json', name: 'Real Random Forest' }
+    ];
     
-    if (fs.existsSync(modelPath)) {
-      try {
-        modelData = JSON.parse(fs.readFileSync(modelPath, 'utf8'));
-        if (modelData.baseModel) {
-          biasCorrectModel = RandomForestClassifier.load(modelData.baseModel);
-          console.log(chalk.green('✅ Bias-corrected model loaded (86% accuracy)'));
-          console.log(chalk.green(`   Home accuracy: ${(modelData.homeAccuracy * 100).toFixed(1)}%`));
-          console.log(chalk.green(`   Away accuracy: ${(modelData.awayAccuracy * 100).toFixed(1)}%`));
+    for (const modelInfo of modelsToTry) {
+      if (fs.existsSync(modelInfo.path)) {
+        try {
+          console.log(chalk.yellow(`⏳ Trying ${modelInfo.name} model...`));
+          const modelData = JSON.parse(fs.readFileSync(modelInfo.path, 'utf8'));
+          
+          // Handle different model formats
+          let modelJSON = modelData;
+          if (modelInfo.wrapper && modelData[modelInfo.wrapper]) {
+            modelJSON = modelData[modelInfo.wrapper];
+          }
+          
+          biasCorrectModel = RandomForestClassifier.load(modelJSON);
+          
+          console.log(chalk.green(`✅ ${modelInfo.name} model loaded!`));
+          
+          // Show stats if available
+          if (modelData.metadata) {
+            console.log(chalk.green(`   Accuracy: ${((modelData.metadata.accuracy || 0.5) * 100).toFixed(1)}%`));
+            console.log(chalk.green(`   Home: ${((modelData.metadata.homeAccuracy || 0.5) * 100).toFixed(1)}%`));
+            console.log(chalk.green(`   Away: ${((modelData.metadata.awayAccuracy || 0.5) * 100).toFixed(1)}%`));
+          }
+          
           return true;
+        } catch (e) {
+          console.log(chalk.yellow(`⚠️ ${modelInfo.name} failed: ${e.message}`));
         }
-      } catch (e) {
-        console.log(chalk.yellow('⚠️ Bias-corrected model format issue, trying real model...'));
       }
     }
     
-    // Fall back to real Random Forest model
-    modelPath = './models/real-random-forest.json';
-    if (fs.existsSync(modelPath)) {
-      modelData = JSON.parse(fs.readFileSync(modelPath, 'utf8'));
-      biasCorrectModel = RandomForestClassifier.load(modelData);
-      console.log(chalk.green('✅ Real Random Forest model loaded'));
-      console.log(chalk.green(`   Accuracy: ${(modelData.metadata.accuracy * 100).toFixed(1)}%`));
-      console.log(chalk.green(`   Home accuracy: ${(modelData.metadata.homeAccuracy * 100).toFixed(1)}%`));
-      console.log(chalk.green(`   Away accuracy: ${(modelData.metadata.awayAccuracy * 100).toFixed(1)}%`));
-      return true;
-    } else {
-      console.log(chalk.red('❌ Bias-corrected model not found'));
-      return false;
-    }
+    console.log(chalk.red('❌ No working models found'));
+    return false;
   } catch (error) {
     console.error(chalk.red('❌ Error loading models:'), error);
     return false;
@@ -70,19 +76,47 @@ async function loadModels() {
 // Extract real features from teams
 async function extractFeatures(homeTeamId: string, awayTeamId: string) {
   try {
-    // Demo mode - use realistic team stats based on team ID
-    const teamStats: Record<string, any> = {
-      'lakers': { win_rate: 0.65, avg_points_for: 115, avg_points_against: 110 },
-      'celtics': { win_rate: 0.70, avg_points_for: 118, avg_points_against: 108 },
-      'warriors': { win_rate: 0.60, avg_points_for: 112, avg_points_against: 109 },
-      'nets': { win_rate: 0.45, avg_points_for: 108, avg_points_against: 112 },
-      'heat': { win_rate: 0.55, avg_points_for: 110, avg_points_against: 107 },
-      'bucks': { win_rate: 0.68, avg_points_for: 119, avg_points_against: 111 }
-    };
+    // Try to get real team stats from database first
+    let homeStats: any = null;
+    let awayStats: any = null;
     
-    // Get stats for teams (use demo data for now)
-    const homeStats = teamStats[homeTeamId] || { win_rate: 0.5, avg_points_for: 110, avg_points_against: 110 };
-    const awayStats = teamStats[awayTeamId] || { win_rate: 0.5, avg_points_for: 110, avg_points_against: 110 };
+    try {
+      const { data: homeTeamStats } = await supabase
+        .from('team_stats')
+        .select('*')
+        .eq('team_id', homeTeamId)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .single();
+      
+      const { data: awayTeamStats } = await supabase
+        .from('team_stats')
+        .select('*')
+        .eq('team_id', awayTeamId)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .single();
+      
+      if (homeTeamStats) homeStats = homeTeamStats;
+      if (awayTeamStats) awayStats = awayTeamStats;
+    } catch (dbError) {
+      console.log(chalk.yellow('⚠️ Using demo mode - database query failed'));
+    }
+    
+    // Fallback to demo data if needed
+    if (!homeStats || !awayStats) {
+      const teamStats: Record<string, any> = {
+        'lakers': { win_rate: 0.65, avg_points_for: 115, avg_points_against: 110 },
+        'celtics': { win_rate: 0.70, avg_points_for: 118, avg_points_against: 108 },
+        'warriors': { win_rate: 0.60, avg_points_for: 112, avg_points_against: 109 },
+        'nets': { win_rate: 0.45, avg_points_for: 108, avg_points_against: 112 },
+        'heat': { win_rate: 0.55, avg_points_for: 110, avg_points_against: 107 },
+        'bucks': { win_rate: 0.68, avg_points_for: 119, avg_points_against: 111 }
+      };
+      
+      if (!homeStats) homeStats = teamStats[homeTeamId] || { win_rate: 0.5, avg_points_for: 110, avg_points_against: 110 };
+      if (!awayStats) awayStats = teamStats[awayTeamId] || { win_rate: 0.5, avg_points_for: 110, avg_points_against: 110 };
+    }
     
     // Default values if no stats found
     const homeWinRate = homeStats.win_rate;
@@ -92,28 +126,29 @@ async function extractFeatures(homeTeamId: string, awayTeamId: string) {
     const homeAllowedAvg = homeStats.avg_points_against;
     const awayAllowedAvg = awayStats.avg_points_against;
     
-    // Create difference-based features (what made the model work)
+    // Create features EXACTLY as trained model expects
+    // Based on fix-home-bias.ts feature order
     return [
-      homeWinRate - awayWinRate,          // Win rate difference
-      homeScoreAvg - awayScoreAvg,        // Scoring difference
-      homeAllowedAvg - awayAllowedAvg,    // Defense difference
-      (homeWinRate + 0.1) - awayWinRate,  // Home advantage adjusted
-      homeScoreAvg / Math.max(awayAllowedAvg, 1), // Offensive matchup
-      awayScoreAvg / Math.max(homeAllowedAvg, 1), // Defensive matchup
-      homeWinRate * 1.1,                  // Home form boost
-      awayWinRate * 0.9,                  // Away form penalty
-      1.0,                                // Home field advantage
-      (homeScoreAvg - homeAllowedAvg) - (awayScoreAvg - awayAllowedAvg), // Net rating diff
-      Math.random() * 0.2 + 0.9,          // Momentum factor
-      0.5,                                // H2H history (neutral)
-      1.0,                                // Rest days
-      homeWinRate > 0.6 ? 1 : 0,         // Favorite indicator
-      Math.abs(homeWinRate - awayWinRate) // Mismatch factor
+      homeWinRate - awayWinRate,                    // 0. Win rate difference
+      (homeScoreAvg - awayScoreAvg) / 10,          // 1. Scoring difference (normalized)
+      (awayAllowedAvg - homeAllowedAvg) / 10,      // 2. Defensive difference (normalized)
+      0.1,                                          // 3. Recent form difference (placeholder)
+      0.0,                                          // 4. Consistency difference
+      0.0,                                          // 5. Strength of schedule
+      0.0,                                          // 6. Head to head record
+      0.05,                                         // 7. Momentum difference
+      0.0,                                          // 8. Experience difference
+      homeScoreAvg / Math.max(awayAllowedAvg, 1),  // 9. Offensive efficiency
+      awayScoreAvg / Math.max(homeAllowedAvg, 1),  // 10. Defensive efficiency
+      0.03,                                         // 11. Home field factor (small)
+      0.5,                                          // 12. Season progress
+      Math.abs(homeWinRate - 0.5) - Math.abs(awayWinRate - 0.5), // 13. How far from .500
+      0.0                                           // 14. Scoring trend
     ];
   } catch (error) {
     console.error('Feature extraction error:', error);
     // Return default features on error
-    return Array(15).fill(0).map((_, i) => i === 8 ? 1.0 : Math.random());
+    return Array(15).fill(0).map((_, i) => i === 11 ? 0.03 : 0);
   }
 }
 
@@ -126,12 +161,23 @@ async function makePrediction(homeTeamId: string, awayTeamId: string, homeTeamNa
   const features = await extractFeatures(homeTeamId, awayTeamId);
   const prediction = biasCorrectModel.predict([features])[0];
   
-  // Apply bias correction logic
-  const homeWinProb = prediction;
-  const awayWinProb = 1 - prediction;
+  // The model outputs 0 or 1, not probability
+  // We need to use the Random Forest's decision confidence
+  const predictedHomeWin = prediction === 1;
   
-  const winner = homeWinProb > 0.5 ? homeTeamName : awayTeamName;
-  const confidence = Math.abs(homeWinProb - 0.5) * 2;
+  // Extract confidence from feature differences
+  const winRateDiff = Math.abs(features[0]);
+  const scoringDiff = Math.abs(features[1]);
+  const defensiveDiff = Math.abs(features[2]);
+  
+  // Calculate confidence based on feature strength
+  const featureStrength = (winRateDiff + scoringDiff / 10 + defensiveDiff / 10) / 3;
+  const confidence = Math.min(0.95, 0.5 + featureStrength);
+  
+  const homeWinProb = predictedHomeWin ? confidence : 1 - confidence;
+  const awayWinProb = 1 - homeWinProb;
+  
+  const winner = predictedHomeWin ? homeTeamName : awayTeamName;
   
   predictionCount++;
   
@@ -188,38 +234,9 @@ async function startProductionAPI() {
   // Get predictions for upcoming games
   app.get('/api/v2/predictions', async (req, res) => {
     try {
-      // Demo mode - create mock games when database is down
-      const demoGames = [
-        {
-          id: 'demo-1',
-          home_team_id: 'lakers',
-          away_team_id: 'celtics',
-          home_team: { id: 'lakers', name: 'Los Angeles Lakers' },
-          away_team: { id: 'celtics', name: 'Boston Celtics' },
-          start_time: new Date(Date.now() + 3600000).toISOString()
-        },
-        {
-          id: 'demo-2',
-          home_team_id: 'warriors',
-          away_team_id: 'nets',
-          home_team: { id: 'warriors', name: 'Golden State Warriors' },
-          away_team: { id: 'nets', name: 'Brooklyn Nets' },
-          start_time: new Date(Date.now() + 7200000).toISOString()
-        },
-        {
-          id: 'demo-3',
-          home_team_id: 'heat',
-          away_team_id: 'bucks',
-          home_team: { id: 'heat', name: 'Miami Heat' },
-          away_team: { id: 'bucks', name: 'Milwaukee Bucks' },
-          start_time: new Date(Date.now() + 10800000).toISOString()
-        }
-      ];
+      let games = [];
       
-      let games = demoGames;
-      
-      // Try database first (commented out due to 503 error)
-      /*
+      // Try to get real games from database
       try {
         const { data, error } = await supabase
           .from('games')
@@ -238,11 +255,62 @@ async function startProductionAPI() {
         
         if (data && data.length > 0) {
           games = data;
+          console.log(chalk.green(`✅ Found ${data.length} upcoming games`));
+        } else {
+          // Try recent games if no upcoming
+          const { data: recentGames } = await supabase
+            .from('games')
+            .select(`
+              id,
+              home_team_id,
+              away_team_id,
+              home_team:teams!games_home_team_id_fkey(id, name),
+              away_team:teams!games_away_team_id_fkey(id, name),
+              start_time
+            `)
+            .not('home_score', 'is', null)
+            .order('start_time', { ascending: false })
+            .limit(5);
+          
+          if (recentGames && recentGames.length > 0) {
+            games = recentGames;
+            console.log(chalk.yellow(`⚠️ No upcoming games, using ${recentGames.length} recent games`));
+          }
         }
       } catch (dbError) {
-        console.log(chalk.yellow('⚠️ Using demo mode - database unavailable'));
+        console.log(chalk.yellow('⚠️ Database error, using demo mode'));
       }
-      */
+      
+      // Fallback to demo games
+      if (games.length === 0) {
+        games = [
+          {
+            id: 'demo-1',
+            home_team_id: 'lakers',
+            away_team_id: 'celtics',
+            home_team: { id: 'lakers', name: 'Los Angeles Lakers' },
+            away_team: { id: 'celtics', name: 'Boston Celtics' },
+            start_time: new Date(Date.now() + 3600000).toISOString()
+          },
+          {
+            id: 'demo-2',
+            home_team_id: 'warriors',
+            away_team_id: 'nets',
+            home_team: { id: 'warriors', name: 'Golden State Warriors' },
+            away_team: { id: 'nets', name: 'Brooklyn Nets' },
+            start_time: new Date(Date.now() + 7200000).toISOString()
+          },
+          {
+            id: 'demo-3',
+            home_team_id: 'heat',
+            away_team_id: 'bucks',
+            home_team: { id: 'heat', name: 'Miami Heat' },
+            away_team: { id: 'bucks', name: 'Milwaukee Bucks' },
+            start_time: new Date(Date.now() + 10800000).toISOString()
+          }
+        ];
+        console.log(chalk.yellow('⚠️ Using demo games'));
+      }
       
       const predictions = [];
       for (const game of games || []) {

@@ -1,0 +1,28 @@
+🚀 PRODUCTION API V3 - BIAS-CORRECTED MODEL
+════════════════════════════════════════════════════════════
+🔄 Loading bias-corrected Random Forest model...
+⏳ Trying Bias-Corrected Clean model...
+✅ Bias-Corrected Clean model loaded!
+node:events:495
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::3333
+    at __node_internal_captureLargerStackTrace (node:internal/errors:496:5)
+    at __node_internal_uvExceptionWithHostPort (node:internal/errors:593:12)
+    at Server.setupListenHandle [as _listen2] (node:net:1811:16)
+    at listenInCluster (node:net:1859:12)
+    at Server.listen (node:net:1947:7)
+    at Function.listen (/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/node_modules/express/lib/application.js:635:24)
+    at startProductionAPI (/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/scripts/production-api-v3.ts:393:7)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1838:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3333
+}
+
+Node.js v18.19.1

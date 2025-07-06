@@ -18,6 +18,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Picker } from '@react-native-picker/picker';
 import { supabase } from '../api/supabase';
+import { fantasyAPI } from '../services/api';
 
 interface Prediction {
   id: string;

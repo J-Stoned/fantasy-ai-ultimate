@@ -250,6 +250,27 @@ export const fantasyAPI = {
     check: () => api.get('/api/health'),
     ready: () => api.get('/api/ready'),
   },
+
+  // ML Predictions (NEW!)
+  predictions: {
+    // Get predictions for upcoming games
+    getUpcoming: () => api.get('/api/v2/predictions'),
+    // Get single prediction
+    predict: (homeTeamId: string, awayTeamId: string, homeTeamName: string, awayTeamName: string) =>
+      api.post('/api/v2/predictions', { 
+        homeTeamId, 
+        awayTeamId,
+        homeTeamName,
+        awayTeamName 
+      }),
+    // Get model statistics
+    getStats: () => api.get('/api/v2/stats'),
+    // Get live WebSocket info
+    getLiveInfo: () => api.get('/api/v2/live'),
+    // Get historical predictions
+    getHistory: (limit?: number) => 
+      api.get(`/api/v2/predictions/history${limit ? `?limit=${limit}` : ''}`),
+  },
 };
 
 /**

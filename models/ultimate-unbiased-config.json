@@ -1,0 +1,14 @@
+{
+  "type": "ultimate_unbiased",
+  "weights": [
+    0.3,
+    0.2,
+    0.15,
+    0.1,
+    0.05
+  ],
+  "biasCorrection": 0.04999999999999999,
+  "randomnessFactor": 0.4,
+  "historyWindow": 10,
+  "version": "1.0"
+}

@@ -32,7 +32,7 @@ async function fixHomeBias() {
       .gt('home_score', 0)
       .gt('away_score', 0)
       .order('start_time', { ascending: true })
-      .limit(3000);
+      .limit(30000);  // Get 30K games for MAXIMUM accuracy
     
     if (!games || games.length < 100) {
       throw new Error('Not enough games for training');
@@ -64,10 +64,10 @@ async function fixHomeBias() {
     // Model 1: Standard Random Forest on balanced data
     console.log(chalk.gray('Training balanced Random Forest...'));
     const balancedRF = new RandomForestClassifier({
-      nEstimators: 100,
+      nEstimators: 200,  // More trees for 30K games
       maxDepth: 10,
       minSamplesLeaf: 5,
-      maxFeatures: 0.6, // Reduce overfitting
+      maxFeatures: 1.0, // Use ALL features for maximum accuracy
       seed: 42
     });
     balancedRF.train(xTrain, yTrain);
@@ -75,10 +75,10 @@ async function fixHomeBias() {
     // Model 2: Feature-importance focused model
     console.log(chalk.gray('Training feature-focused model...'));
     const focusedRF = new RandomForestClassifier({
-      nEstimators: 150,
+      nEstimators: 250,  // Even more trees
       maxDepth: 8,
       minSamplesLeaf: 8,
-      maxFeatures: 0.5, // Even more focused
+      maxFeatures: 1.0, // Use ALL features
       seed: 123
     });
     focusedRF.train(xTrain, yTrain);
@@ -134,8 +134,14 @@ async function fixHomeBias() {
     const bestName = realFocusedMetrics.homeAwayBalance > realBalancedMetrics.homeAwayBalance ? 
       'focused' : 'balanced';
     
+    const modelJSON = bestModel.toJSON();
+    
+    // Save the model directly (loadable format)
+    require('fs').writeFileSync('./models/bias-corrected-rf-clean.json', JSON.stringify(modelJSON, null, 2));
+    
+    // Also save with metadata
     const modelData = {
-      ...bestModel.toJSON(),
+      baseModel: modelJSON,
       metadata: {
         type: `bias-corrected-${bestName}`,
         trainedOn: new Date().toISOString(),
@@ -267,34 +273,69 @@ function updateTeamStats(stats: any, game: any, isHome: boolean) {
 
 function calculateRecentForm(games: any[]): number {
   if (games.length === 0) return 0.5;
-  // Implementation would calculate recent win percentage
-  return Math.random() * 0.4 + 0.3; // Placeholder
+  const recent = games.slice(-5);
+  let wins = 0;
+  recent.forEach(game => {
+    const teamScore = game.home_score || game.away_score;
+    const oppScore = game.away_score || game.home_score;
+    if (teamScore > oppScore) wins++;
+  });
+  return wins / recent.length;
 }
 
 function calculateConsistency(games: any[]): number {
   if (games.length < 3) return 0;
-  // Calculate scoring consistency (lower variance = higher consistency)
-  return Math.random() * 0.5; // Placeholder
+  const scores = games.map(g => g.home_score || g.away_score || 0);
+  const mean = scores.reduce((a, b) => a + b, 0) / scores.length;
+  const variance = scores.reduce((sum, score) => sum + Math.pow(score - mean, 2), 0) / scores.length;
+  const stdDev = Math.sqrt(variance);
+  return 1 / (1 + stdDev / mean); // Higher consistency = lower std dev relative to mean
 }
 
 function calculateStrengthOfSchedule(opponents: number[]): number {
-  // Would calculate average opponent strength
-  return Math.random() * 0.3; // Placeholder
+  // Simple SOS based on opponent diversity (facing many different teams = harder)
+  const uniqueOpponents = new Set(opponents).size;
+  return uniqueOpponents / Math.max(opponents.length, 1);
 }
 
 function calculateHeadToHead(homeId: number, awayId: number, allGames: any[]): number {
-  // Calculate historical head-to-head record
-  return Math.random() * 0.6 - 0.3; // Placeholder: -0.3 to +0.3
+  const h2hGames = allGames.filter(g => 
+    (g.home_team_id === homeId && g.away_team_id === awayId) ||
+    (g.home_team_id === awayId && g.away_team_id === homeId)
+  );
+  if (h2hGames.length === 0) return 0;
+  
+  let homeWins = 0;
+  h2hGames.forEach(g => {
+    if ((g.home_team_id === homeId && g.home_score > g.away_score) ||
+        (g.away_team_id === homeId && g.away_score > g.home_score)) {
+      homeWins++;
+    }
+  });
+  return (homeWins / h2hGames.length) - 0.5; // -0.5 to +0.5
 }
 
 function calculateMomentum(games: any[]): number {
-  // Calculate recent performance trend
-  return Math.random() * 0.4 - 0.2; // Placeholder
+  if (games.length < 5) return 0;
+  const recent = games.slice(-5);
+  let trend = 0;
+  for (let i = 1; i < recent.length; i++) {
+    const prevScore = recent[i-1].home_score || recent[i-1].away_score || 0;
+    const currScore = recent[i].home_score || recent[i].away_score || 0;
+    trend += (currScore - prevScore) / prevScore;
+  }
+  return trend / (recent.length - 1);
 }
 
 function calculateScoringTrend(games: any[]): number {
-  // Calculate if team is scoring more/less recently
-  return Math.random() * 0.3 - 0.15; // Placeholder
+  if (games.length < 5) return 0;
+  const oldGames = games.slice(0, Math.floor(games.length / 2));
+  const newGames = games.slice(Math.floor(games.length / 2));
+  
+  const oldAvg = oldGames.reduce((sum, g) => sum + (g.home_score || g.away_score || 0), 0) / oldGames.length;
+  const newAvg = newGames.reduce((sum, g) => sum + (g.home_score || g.away_score || 0), 0) / newGames.length;
+  
+  return (newAvg - oldAvg) / Math.max(oldAvg, 1);
 }
 
 function balanceDataset(features: number[][], labels: number[]) {

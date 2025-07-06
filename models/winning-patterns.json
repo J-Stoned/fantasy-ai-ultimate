@@ -1,0 +1,135 @@
+{
+  "patterns": [
+    {
+      "name": "Back-to-Back Fade",
+      "description": "Fade teams on 2nd night of back-to-back, especially on road",
+      "query": "",
+      "conditions": [
+        "Away team played yesterday",
+        "Home team had 2+ days rest",
+        "Away team traveled 500+ miles"
+      ],
+      "winRate": 0.7682119205298014,
+      "profitROI": 0.46605328345381936,
+      "sampleSize": 151,
+      "sports": [
+        "nba",
+        "nhl"
+      ]
+    },
+    {
+      "name": "Embarrassment Revenge",
+      "description": "Team lost by 20+ points in last meeting",
+      "query": "",
+      "conditions": [
+        "Lost by 20+ in last h2h meeting",
+        "Playing at home this time",
+        "Less than 30 days since loss"
+      ],
+      "winRate": 0.7435897435897436,
+      "profitROI": 0.4190643961636328,
+      "sampleSize": 39,
+      "sports": [
+        "nfl",
+        "nba",
+        "ncaab",
+        "ncaaf"
+      ]
+    },
+    {
+      "name": "Division Underdog",
+      "description": "Division underdogs getting 7+ points",
+      "query": "",
+      "conditions": [
+        "Division rival game",
+        "Underdog getting 7+ points",
+        "Teams played within last 30 days",
+        "Underdog at home"
+      ],
+      "winRate": 0.6830985915492958,
+      "profitROI": 0.30362326631544984,
+      "sampleSize": 142,
+      "sports": [
+        "nfl",
+        "nba"
+      ]
+    },
+    {
+      "name": "4th Game Road Trip",
+      "description": "Teams struggle on 4th+ game of road trip",
+      "query": "",
+      "conditions": [
+        "Away team on 4th+ consecutive road game",
+        "Away team crossed 2+ time zones",
+        "Playing .500+ home team"
+      ],
+      "winRate": 0.6666666666666666,
+      "profitROI": 0.2722646310432569,
+      "sampleSize": 81,
+      "sports": [
+        "nba",
+        "nhl",
+        "mlb"
+      ]
+    },
+    {
+      "name": "Public Darling Fade",
+      "description": "Fade teams getting 70%+ of public bets",
+      "query": "",
+      "conditions": [
+        "Team getting 70%+ of public betting tickets",
+        "Line moved against public (reverse line movement)",
+        "Team on 3+ game win streak",
+        "Prime time or national TV game"
+      ],
+      "winRate": 0.5857142857142857,
+      "profitROI": 0.1177753544165758,
+      "sampleSize": 70,
+      "sports": [
+        "nfl",
+        "nba",
+        "mlb"
+      ]
+    },
+    {
+      "name": "Quick Whistle Refs",
+      "description": "Refs average 50+ fouls per game favor home teams",
+      "query": "",
+      "conditions": [
+        "Referee crew averages 50+ fouls/game",
+        "Home team better FT shooting team",
+        "Prime time national TV game"
+      ],
+      "winRate": 0.5691056910569106,
+      "profitROI": 0.08607956308570712,
+      "sampleSize": 123,
+      "sports": [
+        "nba"
+      ]
+    },
+    {
+      "name": "Sandwich Game Letdown",
+      "description": "Good team sandwiched between two rivalry/big games",
+      "query": "",
+      "conditions": [
+        "Favorite played rival/playoff team last game",
+        "Favorite plays rival/playoff team next game",
+        "Current opponent under .400 win rate"
+      ],
+      "winRate": 0.5333333333333333,
+      "profitROI": 0.017811704834605542,
+      "sampleSize": 60,
+      "sports": [
+        "nfl",
+        "nba",
+        "ncaab"
+      ]
+    }
+  ],
+  "metadata": {
+    "discoveredAt": "2025-07-06T00:00:10.606Z",
+    "totalPatternsFound": 7,
+    "avgWinRate": 0.6499600332057195,
+    "avgROI": 0.24038174275900676
+  }
+}

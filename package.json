@@ -167,6 +167,7 @@
     "kafkajs": "^2.2.4",
     "ml-random-forest": "^2.1.0",
     "ml-xgboost": "^1.1.2",
+    "munkres-js": "^1.2.2",
     "next": "~15.2.4",
     "node-cron": "^4.1.1",
     "onnxruntime-node": "latest",
