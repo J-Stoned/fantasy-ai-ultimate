@@ -1,0 +1,174 @@
+name: Deploy Fantasy AI Pattern System
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+        - staging
+        - production
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run tests
+      run: npm test
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+        SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+    
+    - name: Build TypeScript
+      run: npm run build
+
+  build-and-push:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    
+    - name: Extract metadata
+      id: meta
+      uses: docker/metadata-action@v4
+      with:
+        images: |
+          fantasyai/pattern-api
+          fantasyai/pattern-stream
+          fantasyai/game-tracker
+          fantasyai/trade-assistant
+        tags: |
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+    
+    - name: Build and push Pattern API
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        file: ./Dockerfile.pattern-api
+        push: true
+        tags: fantasyai/pattern-api:latest,fantasyai/pattern-api:${{ github.sha }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+    
+    - name: Build and push Pattern Stream
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        file: ./Dockerfile.pattern-stream
+        push: true
+        tags: fantasyai/pattern-stream:latest,fantasyai/pattern-stream:${{ github.sha }}
+    
+    - name: Build and push Game Tracker
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        file: ./Dockerfile.game-tracker
+        push: true
+        tags: fantasyai/game-tracker:latest,fantasyai/game-tracker:${{ github.sha }}
+    
+    - name: Build and push Trade Assistant
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        file: ./Dockerfile.trade-assistant
+        push: true
+        tags: fantasyai/trade-assistant:latest,fantasyai/trade-assistant:${{ github.sha }}
+
+  deploy-staging:
+    if: github.ref == 'refs/heads/main'
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+    
+    - name: Update kubeconfig
+      run: |
+        aws eks update-kubeconfig --name fantasy-ai-staging --region us-east-1
+    
+    - name: Deploy to staging
+      run: |
+        kubectl apply -f deploy/kubernetes/namespace.yaml
+        kubectl apply -f deploy/kubernetes/pattern-deployment.yaml
+        kubectl set image deployment/fantasy-ai-pattern-system \
+          pattern-api=fantasyai/pattern-api:${{ github.sha }} \
+          -n fantasy-ai
+        kubectl rollout status deployment/fantasy-ai-pattern-system -n fantasy-ai
+    
+    - name: Run smoke tests
+      run: |
+        sleep 30
+        curl -f https://staging-api.fantasyai.com/api/unified/stats
+
+  deploy-production:
+    if: startsWith(github.ref, 'refs/tags/v') || github.event.inputs.environment == 'production'
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+    
+    - name: Update kubeconfig
+      run: |
+        aws eks update-kubeconfig --name fantasy-ai-production --region us-east-1
+    
+    - name: Deploy to production
+      run: |
+        kubectl apply -f deploy/kubernetes/namespace.yaml
+        kubectl apply -f deploy/kubernetes/pattern-deployment.yaml
+        kubectl set image deployment/fantasy-ai-pattern-system \
+          pattern-api=fantasyai/pattern-api:${{ github.sha }} \
+          -n fantasy-ai
+        kubectl rollout status deployment/fantasy-ai-pattern-system -n fantasy-ai
+    
+    - name: Notify deployment
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        text: 'Production deployment completed for version ${{ github.ref }}'
+        webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+      if: always()

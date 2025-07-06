@@ -290,12 +290,14 @@ export function VoiceInterface({ fantasyTeamId, leagueId }: VoiceInterfaceProps)
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {[
+            "Hey Fantasy, show me sleeper picks",
+            "Hey Fantasy, daily fantasy lineup",
+            "Hey Fantasy, give me hot takes", 
+            "Hey Fantasy, pattern analysis",
+            "Hey Fantasy, value plays this week",
+            "Hey Fantasy, DFS stacking advice",
             "Who should I start this week?",
             "Show me the best waiver wire RBs",
-            "Should I trade Mahomes for Lamar?",
-            "Is Derrick Henry injured?",
-            "What's my team's projected score?",
-            "Find me a replacement for my injured TE",
           ].map((example, index) => (
             <button
               key={index}

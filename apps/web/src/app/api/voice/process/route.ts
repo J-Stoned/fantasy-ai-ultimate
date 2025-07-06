@@ -10,10 +10,49 @@ import { join } from 'path';
 import { tmpdir } from 'os';
 import { supabase } from '../../../../../../lib/supabase/client';
 
+// Pattern API integration
+const PATTERN_API_URL = 'http://localhost:3338';
+
+interface PatternResponse {
+  success: boolean;
+  pattern?: {
+    bettingAdvice: {
+      recommendation: string;
+      confidence: number;
+      roi: number;
+    };
+    fantasyAdvice: {
+      playersToStart: Array<{
+        name: string;
+        position: string;
+        points: number;
+        reason: string;
+      }>;
+      playersToFade: Array<{
+        name: string;
+        position: string;
+        reason: string;
+      }>;
+      waiver: Array<{
+        name: string;
+        position: string;
+        points: number;
+        reason: string;
+      }>;
+    };
+    dailyFantasyAdvice: {
+      contestTypes: string[];
+      salaryCapImpact: number;
+      stackingAdvice: string;
+    };
+  };
+  message?: string;
+}
+
 // Initialize voice assistant on first use
 let assistantInitialized = false;
 
-// Voice command processing patterns
+// Enhanced voice command processing patterns with pattern integration
 const COMMAND_PATTERNS = {
   START_SIT: /(?:who should i|should i) (?:start|sit|bench|play)\s+(.+?)(?:\s+or\s+(.+?))?/i,
   WAIVER: /(?:best|top|good) (?:waiver|free agent|pickup)\s*(?:wire)?\s*(.+)?/i,
@@ -22,6 +61,11 @@ const COMMAND_PATTERNS = {
   PROJECTION: /(?:projected|expected)\s+(?:points|score)\s+(?:for\s+)?(.+)/i,
   LINEUP: /(?:my|show|what's)\s+(?:lineup|team|roster)/i,
   SCORE: /(?:my|what's)\s+(?:score|points|total)/i,
+  PATTERN_ANALYSIS: /(?:pattern|analysis|insight|edge|prediction).*(?:for|on)\s+(.+)/i,
+  DAILY_FANTASY: /(?:daily|dfs|draftkings|fanduel|super draft)\s*(?:lineup|picks|plays)?/i,
+  HOT_TAKES: /(?:hot|spicy|bold)\s+(?:takes|picks|plays)/i,
+  SLEEPERS: /(?:sleeper|breakout|value)\s+(?:picks|plays|players)/i,
+  STACKS: /(?:stack|correlated|same game)\s+(?:plays|picks)/i,
 };
 
 export async function POST(request: NextRequest) {
@@ -71,8 +115,11 @@ export async function POST(request: NextRequest) {
     // Add user context
     command.entities.userId = userId;
     
+    // Enhance command with pattern analysis if applicable
+    const enhancedResponse = await enhanceWithPatternAnalysis(command, body.transcript || '');
+    
     // Execute the command
-    const response = await voiceAssistant.executeCommand(command);
+    const response = enhancedResponse || await voiceAssistant.executeCommand(command);
     
     // Generate voice response
     let audioUrl = null;
@@ -109,6 +156,88 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+// Pattern integration function
+async function enhanceWithPatternAnalysis(command: any, transcript: string): Promise<any> {
+  const lowerTranscript = transcript.toLowerCase();
+  
+  // Check if this needs pattern analysis
+  const needsPattern = 
+    COMMAND_PATTERNS.PATTERN_ANALYSIS.test(transcript) ||
+    COMMAND_PATTERNS.DAILY_FANTASY.test(transcript) ||
+    COMMAND_PATTERNS.HOT_TAKES.test(transcript) ||
+    COMMAND_PATTERNS.SLEEPERS.test(transcript) ||
+    COMMAND_PATTERNS.STACKS.test(transcript) ||
+    lowerTranscript.includes('pattern') ||
+    lowerTranscript.includes('edge') ||
+    lowerTranscript.includes('dfs') ||
+    lowerTranscript.includes('daily fantasy') ||
+    lowerTranscript.includes('sleeper') ||
+    lowerTranscript.includes('value play');
+    
+  if (!needsPattern) return null;
+  
+  try {
+    // Determine format based on command
+    let format = 'voice';
+    if (COMMAND_PATTERNS.DAILY_FANTASY.test(transcript)) format = 'daily_fantasy';
+    
+    const patternResponse = await fetch(`${PATTERN_API_URL}/api/unified/voice-command`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        command: transcript,
+        sport: 'nfl'
+      })
+    });
+    
+    if (!patternResponse.ok) {
+      console.error('Pattern API failed:', patternResponse.status);
+      return null;
+    }
+    
+    const patternData = await patternResponse.json();
+    
+    if (!patternData.success) {
+      return null;
+    }
+    
+    // Use the response text from the unified API or generate enhanced response
+    let voiceText = patternData.response?.text || 'I can help with fantasy analysis.';
+    
+    // Enhance response for specific command types
+    if (COMMAND_PATTERNS.SLEEPERS.test(transcript)) {
+      voiceText = enhanceSleeperResponse(voiceText);
+    } else if (COMMAND_PATTERNS.DAILY_FANTASY.test(transcript)) {
+      voiceText = enhanceDFSResponse(voiceText);
+    } else if (COMMAND_PATTERNS.HOT_TAKES.test(transcript)) {
+      voiceText = enhanceHotTakesResponse(voiceText);
+    }
+    
+    return {
+      text: voiceText,
+      actions: ['pattern-analysis'],
+      emotion: 'confident',
+      data: patternData.response?.data
+    };
+    
+  } catch (error) {
+    console.error('Pattern enhancement error:', error);
+    return null;
+  }
+}
+
+function enhanceSleeperResponse(baseResponse: string): string {
+  return baseResponse + " These are under-the-radar picks that the public is sleeping on. Perfect for GPP tournaments where you need differentiation.";
+}
+
+function enhanceDFSResponse(baseResponse: string): string {
+  return baseResponse + " Remember, DraftKings and FanDuel pricing doesn't always reflect true value. Stack correlation is key for GPP upside.";
+}
+
+function enhanceHotTakesResponse(baseResponse: string): string {
+  return baseResponse + " This is a contrarian take that goes against consensus. Use these sparingly but they can be tournament winners.";
 }
 
 // Helper functions for different command types

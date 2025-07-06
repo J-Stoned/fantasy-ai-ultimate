@@ -25,28 +25,36 @@ export default function VoiceAssistantPage() {
         />
 
         {/* Features */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
           <div className="text-center">
             <div className="text-4xl mb-4">🎯</div>
-            <h3 className="text-lg font-semibold mb-2">Smart Responses</h3>
+            <h3 className="text-lg font-semibold mb-2">Pattern Analysis</h3>
             <p className="text-gray-600 dark:text-gray-400">
-              20 specialized AI agents provide expert fantasy advice
+              65.2% accuracy pattern engine integration
             </p>
           </div>
           
           <div className="text-center">
             <div className="text-4xl mb-4">⚡</div>
-            <h3 className="text-lg font-semibold mb-2">Real-time Data</h3>
+            <h3 className="text-lg font-semibold mb-2">Daily Fantasy</h3>
             <p className="text-gray-600 dark:text-gray-400">
-              Always up-to-date with live scores and player stats
+              DraftKings & FanDuel optimized lineups
             </p>
           </div>
           
           <div className="text-center">
             <div className="text-4xl mb-4">🗣️</div>
-            <h3 className="text-lg font-semibold mb-2">Natural Voice</h3>
+            <h3 className="text-lg font-semibold mb-2">Voice Commands</h3>
             <p className="text-gray-600 dark:text-gray-400">
-              Powered by ElevenLabs for natural speech synthesis
+              Web Speech API with "Hey Fantasy" wake word
+            </p>
+          </div>
+          
+          <div className="text-center">
+            <div className="text-4xl mb-4">💎</div>
+            <h3 className="text-lg font-semibold mb-2">Value Plays</h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              Sleeper picks & contrarian strategies
             </p>
           </div>
         </div>

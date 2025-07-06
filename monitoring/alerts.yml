@@ -1,0 +1,62 @@
+groups:
+- name: pattern_system_alerts
+  rules:
+  # High CPU usage
+  - alert: HighCPUUsage
+    expr: rate(process_cpu_seconds_total[5m]) * 100 > 80
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High CPU usage detected"
+      description: "{{ $labels.job }} has CPU usage above 80% (current: {{ $value }}%)"
+  
+  # Pattern API down
+  - alert: PatternAPIDown
+    expr: up{job="pattern-api"} == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Pattern API is down"
+      description: "Pattern API has been down for more than 1 minute"
+  
+  # Low pattern accuracy
+  - alert: LowPatternAccuracy
+    expr: pattern_accuracy < 60
+    for: 10m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Pattern accuracy below threshold"
+      description: "Pattern accuracy is {{ $value }}%, below 60% threshold"
+  
+  # High WebSocket connections
+  - alert: HighWebSocketConnections
+    expr: websocket_connections > 5000
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High number of WebSocket connections"
+      description: "{{ $labels.job }} has {{ $value }} WebSocket connections"
+  
+  # Database connection errors
+  - alert: DatabaseConnectionErrors
+    expr: rate(database_errors_total[5m]) > 0.1
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Database connection errors"
+      description: "{{ $labels.job }} is experiencing database errors"
+  
+  # High memory usage
+  - alert: HighMemoryUsage
+    expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100 > 90
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High memory usage"
+      description: "Memory usage is above 90% (current: {{ $value }}%)"

@@ -31,6 +31,7 @@ import ARStatsScreen from '../screens/ARStatsScreen';
 import ContestsScreen from '../screens/ContestsScreen';
 import PredictionsScreen from '../screens/PredictionsScreen';
 import VoiceAssistantScreen from '../screens/VoiceAssistantScreen';
+import { PatternScreen } from '../screens/PatternScreen';
 
 // Auth Screens
 import LoginScreen from '../screens/LoginScreen';
@@ -54,6 +55,7 @@ export type MainTabParamList = {
   MyLeagues: undefined;
   Lineup: undefined;
   Players: undefined;
+  Patterns: undefined;
   Predictions: undefined;
   Matchups: undefined;
   Contests: undefined;
@@ -84,6 +86,9 @@ function MainTabs() {
               break;
             case 'Players':
               iconName = focused ? 'person' : 'person-outline';
+              break;
+            case 'Patterns':
+              iconName = focused ? 'analytics' : 'analytics-outline';
               break;
             case 'Predictions':
               iconName = focused ? 'bulb' : 'bulb-outline';
@@ -116,6 +121,7 @@ function MainTabs() {
       <Tab.Screen name="MyLeagues" component={MyLeaguesScreen} options={{ title: 'Leagues' }} />
       <Tab.Screen name="Lineup" component={LineupScreen} />
       <Tab.Screen name="Players" component={PlayersScreen} />
+      <Tab.Screen name="Patterns" component={PatternScreen} />
       <Tab.Screen name="Predictions" component={PredictionsScreen} options={{ title: 'AI' }} />
       <Tab.Screen name="Matchups" component={MatchupsScreen} />
       <Tab.Screen name="Contests" component={ContestsScreen} />
