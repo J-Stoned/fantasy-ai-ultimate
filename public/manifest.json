@@ -1,0 +1,152 @@
+{
+  "name": "Fantasy AI Ultimate - Pattern Empire",
+  "short_name": "Fantasy AI",
+  "description": "Revolutionary sports betting platform with 65.2% pattern detection accuracy",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#10B981",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["sports", "finance", "entertainment"],
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/dashboard.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "Pattern Detection Dashboard"
+    },
+    {
+      "src": "/screenshots/predictions.png",
+      "sizes": "1280x720", 
+      "type": "image/png",
+      "label": "AI Predictions with 65.2% Accuracy"
+    },
+    {
+      "src": "/screenshots/mobile.png",
+      "sizes": "375x812",
+      "type": "image/png",
+      "label": "Mobile Experience"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Today's Predictions",
+      "short_name": "Predictions",
+      "description": "View today's AI-powered betting predictions",
+      "url": "/predictions",
+      "icons": [
+        {
+          "src": "/icons/predictions-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Pattern Analysis",
+      "short_name": "Patterns",
+      "description": "Analyze betting patterns with 65.2% accuracy",
+      "url": "/patterns",
+      "icons": [
+        {
+          "src": "/icons/patterns-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Live Games",
+      "short_name": "Live",
+      "description": "Real-time game tracking and predictions",
+      "url": "/live",
+      "icons": [
+        {
+          "src": "/icons/live-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+fantasy",
+      "url": "/handle-protocol?url=%s"
+    }
+  ],
+  "related_applications": [],
+  "features": [
+    "Cross Platform",
+    "Fast",
+    "Offline Capable",
+    "Push Notifications",
+    "Background Sync",
+    "Voice Assistant",
+    "WebSocket Real-time Updates"
+  ]
+}

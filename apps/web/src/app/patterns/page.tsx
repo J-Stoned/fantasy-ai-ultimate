@@ -1,148 +1,333 @@
-'use client';
+'use client'
 
-import { PatternDashboard } from '../../../../lib/components/PatternDashboard';
-import { VoiceInterface } from '../../../../lib/components/VoiceInterface';
-import { PatternStream } from '../../../../lib/components/PatternStream';
-import { useState } from 'react';
+import { useState, useEffect } from 'react'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui'
+import { PatternCard } from '../../components/ui/pattern-card'
+import { Button } from '../../components/ui'
+import { Select } from '../../components/ui/select'
+import { Input } from '../../components/ui'
+import { patternAPI, Pattern } from '../../services/pattern-api'
+import { useWebSocket, useWebSocketStatus } from '../../hooks/useWebSocket'
+import { WS_CHANNELS } from '../../services/websocket-service'
+
+const sports = ['all', 'football', 'basketball', 'baseball', 'hockey']
+const sortOptions = [
+  { value: 'accuracy', label: 'Accuracy' },
+  { value: 'roi', label: 'ROI' },
+  { value: 'occurrences', label: 'Occurrences' },
+  { value: 'recent', label: 'Recently Triggered' },
+]
 
 export default function PatternsPage() {
-  const [showVoicePanel, setShowVoicePanel] = useState(false);
+  const [patterns, setPatterns] = useState<Pattern[]>([])
+  const [filteredPatterns, setFilteredPatterns] = useState<Pattern[]>([])
+  const [selectedSport, setSelectedSport] = useState('all')
+  const [sortBy, setSortBy] = useState('accuracy')
+  const [searchQuery, setSearchQuery] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
+  const [stats, setStats] = useState<any>(null)
+  const isWebSocketConnected = useWebSocketStatus()
+  
+  // Subscribe to real-time pattern alerts
+  useWebSocket(WS_CHANNELS.PATTERN_ALERTS, (alert) => {
+    console.log('New pattern alert:', alert)
+    // You could show a toast notification here
+  })
+  
+  // Load patterns from API
+  useEffect(() => {
+    loadPatterns()
+    loadStats()
+  }, [])
+  
+  const loadPatterns = async () => {
+    setIsLoading(true)
+    try {
+      const data = await patternAPI.getPatterns()
+      setPatterns(data)
+    } catch (error) {
+      console.error('Failed to load patterns:', error)
+      // Fallback to mock data if API is not available
+      setPatterns([
+        {
+          id: '1',
+          name: 'Back-to-Back Fade',
+          description: 'Teams on second game of back-to-back underperform',
+          accuracy: 76.8,
+          roi: 46.6,
+          occurrences: 8234,
+          sport: 'NBA' as any,
+          conditions: {},
+        },
+        {
+          id: '2',
+          name: 'Embarrassment Revenge',
+          description: 'Teams bounce back after 20+ point losses',
+          accuracy: 74.4,
+          roi: 41.9,
+          occurrences: 5421,
+          sport: 'NFL' as any,
+          conditions: {},
+        },
+        {
+          id: '3',
+          name: 'Altitude Advantage',
+          description: 'Home teams at high altitude dominate',
+          accuracy: 68.3,
+          roi: 36.3,
+          occurrences: 3156,
+          sport: 'NFL' as any,
+          conditions: {},
+        },
+        {
+          id: '4',
+          name: 'Perfect Storm',
+          description: 'Multiple factors align for upset potential',
+          accuracy: 67.0,
+          roi: 35.9,
+          occurrences: 2847,
+          sport: 'NFL' as any,
+          conditions: {},
+        },
+        {
+          id: '5',
+          name: 'Division Dog Bite',
+          description: 'Division underdogs cover at high rate',
+          accuracy: 58.6,
+          roi: 32.9,
+          occurrences: 9876,
+          sport: 'NFL' as any,
+          conditions: {},
+        },
+      ])
+    } finally {
+      setIsLoading(false)
+    }
+  }
+  
+  const loadStats = async () => {
+    try {
+      const data = await patternAPI.getStats()
+      setStats(data)
+    } catch (error) {
+      console.error('Failed to load stats:', error)
+    }
+  }
+
+  // Filter and sort patterns
+  useEffect(() => {
+    let filtered = patterns
+
+    // Filter by sport
+    if (selectedSport !== 'all') {
+      filtered = filtered.filter(p => 
+        p.sport?.toLowerCase() === selectedSport || 
+        p.sport === 'all'
+      )
+    }
+
+    // Filter by search query
+    if (searchQuery) {
+      filtered = filtered.filter(p => 
+        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.description.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    }
+
+    // Sort patterns
+    filtered.sort((a, b) => {
+      switch (sortBy) {
+        case 'accuracy':
+          return b.accuracy - a.accuracy
+        case 'roi':
+          return b.roi - a.roi
+        case 'occurrences':
+          return b.occurrences - a.occurrences
+        case 'recent':
+          return (b.lastTriggered ? new Date(b.lastTriggered).getTime() : 0) - 
+                 (a.lastTriggered ? new Date(a.lastTriggered).getTime() : 0)
+        default:
+          return 0
+      }
+    })
+
+    setFilteredPatterns(filtered)
+  }, [patterns, selectedSport, sortBy, searchQuery])
+
+  // Calculate totals
+  const totalProfit = filteredPatterns.reduce((sum, p) => sum + (p.occurrences * p.roi * 10), 0)
+  const avgAccuracy = filteredPatterns.reduce((sum, p) => sum + p.accuracy, 0) / filteredPatterns.length || 0
+  const totalOccurrences = filteredPatterns.reduce((sum, p) => sum + p.occurrences, 0)
+
+  const handlePatternClick = (pattern: Pattern) => {
+    // Navigate to pattern detail page
+    window.location.href = `/patterns/${pattern.id}`
+  }
+
+  const handleRefresh = async () => {
+    await loadPatterns()
+    await loadStats()
+  }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">
-            📊 Fantasy AI Pattern Analytics
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 mb-6">
-            65.2% accuracy pattern engine with real-time voice integration
-          </p>
-          
-          <div className="flex justify-center gap-4 mb-8">
-            <button
-              onClick={() => setShowVoicePanel(!showVoicePanel)}
-              className={`px-6 py-3 rounded-lg font-medium transition-colors ${
-                showVoicePanel
-                  ? 'bg-blue-500 text-white hover:bg-blue-600'
-                  : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-              }`}
-            >
-              {showVoicePanel ? '🎤 Hide Voice Panel' : '🎤 Show Voice Panel'}
-            </button>
-            
-            <a
-              href="/voice-assistant"
-              className="px-6 py-3 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors"
-            >
-              🗣️ Full Voice Assistant
-            </a>
-          </div>
-        </div>
-
-        {/* Voice Panel */}
-        {showVoicePanel && (
-          <div className="mb-8">
-            <VoiceInterface />
-          </div>
-        )}
-
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Pattern Dashboard - Takes 2 columns */}
-          <div className="lg:col-span-2">
-            <PatternDashboard showVoiceIntegration={true} />
-          </div>
-          
-          {/* Live Pattern Stream - Takes 1 column */}
-          <div className="lg:col-span-1">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 sticky top-8">
-              <PatternStream 
-                maxAlerts={5} 
-                autoSpeak={false}
-                onAlertClick={(alert) => {
-                  console.log('Alert clicked:', alert);
-                  // Could open voice panel with alert context
-                }}
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Technical Details */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 text-center">
-            <div className="text-3xl mb-2">🎯</div>
-            <h3 className="font-semibold mb-1">Pattern Engine</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Unified betting + fantasy analysis
+    <div className="min-h-screen bg-gray-950 p-4 md:p-8">
+      {/* Header */}
+      <div className="mb-8">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Pattern Detection <span className="gradient-text">Dashboard</span>
+            </h1>
+            <p className="text-xl text-gray-400">
+              Real-time pattern analysis from {stats?.totalGamesAnalyzed?.toLocaleString() || '48,863'} games
             </p>
           </div>
-          
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 text-center">
-            <div className="text-3xl mb-2">📈</div>
-            <h3 className="font-semibold mb-1">Live Performance</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Real-time accuracy tracking
-            </p>
-          </div>
-          
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 text-center">
-            <div className="text-3xl mb-2">🎤</div>
-            <h3 className="font-semibold mb-1">Voice Commands</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              "Hey Fantasy" activation
-            </p>
-          </div>
-          
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 text-center">
-            <div className="text-3xl mb-2">⚡</div>
-            <h3 className="font-semibold mb-1">Multi-Format</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Fantasy, DFS, betting output
-            </p>
-          </div>
-        </div>
-
-        {/* API Information */}
-        <div className="mt-12 bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-          <h2 className="text-2xl font-bold mb-4">🔌 API Integration</h2>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div>
-              <h3 className="font-semibold mb-3">Pattern API Endpoints</h3>
-              <div className="space-y-2 text-sm font-mono bg-gray-100 dark:bg-gray-700 p-4 rounded">
-                <div>POST /api/patterns (format: fantasy)</div>
-                <div>POST /api/patterns (format: betting)</div>
-                <div>POST /api/patterns (format: daily_fantasy)</div>
-                <div>POST /api/patterns (format: voice)</div>
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-3">Voice Commands</h3>
-              <div className="space-y-2 text-sm bg-gray-100 dark:bg-gray-700 p-4 rounded">
-                <div>"Hey Fantasy, show me sleeper picks"</div>
-                <div>"Hey Fantasy, daily fantasy lineup"</div>
-                <div>"Hey Fantasy, give me hot takes"</div>
-                <div>"Hey Fantasy, pattern analysis for Chiefs"</div>
-                <div>"Hey Fantasy, value plays this week"</div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <h4 className="font-semibold text-blue-700 dark:text-blue-300 mb-2">
-              🚀 Getting Started
-            </h4>
-            <ol className="text-sm text-blue-600 dark:text-blue-400 space-y-1">
-              <li>1. Start the pattern API: <code>npx tsx scripts/unified-fantasy-pattern-api.ts</code></li>
-              <li>2. Enable voice commands or use the dashboard above</li>
-              <li>3. Get real-time fantasy insights with 65.2% accuracy</li>
-            </ol>
-          </div>
+          <Button
+            onClick={() => window.location.href = '/patterns/analytics'}
+            variant="outline"
+            className="w-full md:w-auto"
+          >
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            View Analytics
+          </Button>
         </div>
       </div>
+
+      {/* Stats Overview */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <Card variant="gradient">
+          <CardContent className="p-6">
+            <div className="text-3xl font-bold gradient-text">
+              {filteredPatterns.length}
+            </div>
+            <div className="text-sm text-gray-400 mt-1">Active Patterns</div>
+          </CardContent>
+        </Card>
+        
+        <Card variant="gradient">
+          <CardContent className="p-6">
+            <div className="text-3xl font-bold text-green-400">
+              {avgAccuracy.toFixed(1)}%
+            </div>
+            <div className="text-sm text-gray-400 mt-1">Avg Accuracy</div>
+          </CardContent>
+        </Card>
+        
+        <Card variant="gradient">
+          <CardContent className="p-6">
+            <div className="text-3xl font-bold text-pattern-gold">
+              ${(totalProfit / 1000000).toFixed(2)}M
+            </div>
+            <div className="text-sm text-gray-400 mt-1">Profit Potential</div>
+          </CardContent>
+        </Card>
+        
+        <Card variant="gradient">
+          <CardContent className="p-6">
+            <div className="text-3xl font-bold text-blue-400">
+              {totalOccurrences.toLocaleString()}
+            </div>
+            <div className="text-sm text-gray-400 mt-1">Total Occurrences</div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Filters and Controls */}
+      <Card className="mb-8">
+        <CardContent className="p-6">
+          <div className="flex flex-col md:flex-row gap-4">
+            <Input
+              placeholder="Search patterns..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              icon={
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              }
+              className="flex-1"
+            />
+            
+            <Select
+              value={selectedSport}
+              onChange={(e) => setSelectedSport(e.target.value)}
+              className="w-full md:w-48"
+            >
+              {sports.map(sport => (
+                <option key={sport} value={sport}>
+                  {sport.charAt(0).toUpperCase() + sport.slice(1)}
+                </option>
+              ))}
+            </Select>
+            
+            <Select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="w-full md:w-48"
+            >
+              {sortOptions.map(option => (
+                <option key={option.value} value={option.value}>
+                  Sort by {option.label}
+                </option>
+              ))}
+            </Select>
+            
+            <Button
+              onClick={handleRefresh}
+              loading={isLoading}
+              variant="secondary"
+              className="w-full md:w-auto"
+            >
+              Refresh
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Pattern Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredPatterns.map((pattern) => (
+          <PatternCard
+            key={pattern.id}
+            pattern={{
+              ...pattern,
+              confidence: pattern.accuracy > 70 ? 'high' : pattern.accuracy > 60 ? 'medium' : 'low',
+              sport: pattern.sport?.toLowerCase() || 'all',
+              lastTriggered: pattern.lastTriggered || new Date().toISOString(),
+            }}
+            onClick={() => handlePatternClick(pattern)}
+          />
+        ))}
+      </div>
+
+      {/* Empty State */}
+      {filteredPatterns.length === 0 && (
+        <Card className="text-center py-12">
+          <CardContent>
+            <p className="text-gray-400 text-lg">No patterns found matching your criteria</p>
+            <Button
+              onClick={() => {
+                setSearchQuery('')
+                setSelectedSport('all')
+              }}
+              variant="ghost"
+              className="mt-4"
+            >
+              Clear Filters
+            </Button>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Live Updates Indicator */}
+      <div className="fixed bottom-4 right-4 flex items-center space-x-2 glass-card px-4 py-2 rounded-full">
+        <div className={`w-2 h-2 ${isWebSocketConnected ? 'bg-green-500' : 'bg-red-500'} rounded-full animate-pulse`}></div>
+        <span className="text-sm text-gray-300">
+          {isWebSocketConnected ? 'Live Updates' : 'Connecting...'}
+        </span>
+      </div>
     </div>
-  );
+  )
 }

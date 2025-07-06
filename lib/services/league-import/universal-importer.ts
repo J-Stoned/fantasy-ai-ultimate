@@ -570,23 +570,148 @@ class YahooImporter implements PlatformImporter {
   private apiUrl = 'https://fantasysports.yahooapis.com/fantasy/v2'
 
   async fetchUserLeagues(connection: any) {
-    // Yahoo OAuth implementation
     const leagues: any[] = []
     
     try {
-      const response = await axios.get(`${this.apiUrl}/users;use_login=1/games/leagues`, {
+      // Fetch user's leagues from Yahoo API
+      const response = await axios.get(`${this.apiUrl}/users;use_login=1/games;game_keys=nfl,nba,mlb,nhl/leagues?format=json`, {
         headers: {
-          Authorization: `Bearer ${connection.accessToken}`,
+          'Authorization': `Bearer ${connection.accessToken}`,
+          'Accept': 'application/json'
         }
       })
       
-      // Parse Yahoo's XML response
-      // Convert to standard format
+      // Parse Yahoo's complex response structure
+      const games = response.data.fantasy_content?.users?.[0]?.user?.[1]?.games
+      
+      if (games) {
+        // Yahoo returns data in a numbered array format
+        for (let i = 0; i < games.count; i++) {
+          const game = games[i]?.game
+          if (game && game[1]?.leagues) {
+            const gameLeagues = game[1].leagues
+            for (let j = 0; j < gameLeagues.count; j++) {
+              const league = gameLeagues[j]?.league
+              if (league) {
+                // Fetch teams for this league
+                const teams = await this.fetchLeagueTeams(league[0].league_key, connection.accessToken)
+                
+                leagues.push({
+                  platformLeagueId: league[0].league_key,
+                  name: league[0].name,
+                  season: parseInt(league[0].season),
+                  sport: this.mapGameCodeToSport(league[0].game_code),
+                  settings: {
+                    num_teams: league[0].num_teams,
+                    game_code: league[0].game_code,
+                    draft_status: league[0].draft_status,
+                    scoring_type: league[0].scoring_type,
+                    league_type: league[0].league_type,
+                    scoring: {},
+                    roster: {}
+                  },
+                  teams: teams
+                })
+              }
+            }
+          }
+        }
+      }
     } catch (error) {
       apiLogger.error('Yahoo API error', error)
+      // Check if token expired
+      if (error.response?.status === 401) {
+        throw new Error('Yahoo token expired. Please re-authenticate.')
+      }
     }
 
     return leagues
+  }
+
+  private async fetchLeagueTeams(leagueKey: string, accessToken: string): Promise<any[]> {
+    const teams: any[] = []
+    
+    try {
+      const response = await axios.get(`${this.apiUrl}/league/${leagueKey}/teams?format=json`, {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json'
+        }
+      })
+
+      const teamsData = response.data.fantasy_content?.league?.[1]?.teams
+
+      if (teamsData) {
+        for (let i = 0; i < teamsData.count; i++) {
+          const team = teamsData[i]?.team
+          if (team) {
+            // Fetch roster for each team
+            const roster = await this.fetchTeamRoster(team[0].team_key, accessToken)
+            
+            teams.push({
+              id: team[0].team_key,
+              ownerId: team[0].managers?.[0]?.manager?.guid || team[0].team_key,
+              name: team[0].name,
+              roster: roster,
+              standings: {
+                wins: parseInt(team[1]?.team_standings?.outcome_totals?.wins || 0),
+                losses: parseInt(team[1]?.team_standings?.outcome_totals?.losses || 0),
+                ties: parseInt(team[1]?.team_standings?.outcome_totals?.ties || 0),
+              },
+              stats: team[1]?.team_stats || {},
+            })
+          }
+        }
+      }
+    } catch (error) {
+      apiLogger.error('Error fetching teams', error)
+    }
+
+    return teams
+  }
+
+  private async fetchTeamRoster(teamKey: string, accessToken: string): Promise<any[]> {
+    const roster: any[] = []
+    
+    try {
+      const response = await axios.get(`${this.apiUrl}/team/${teamKey}/roster?format=json`, {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json'
+        }
+      })
+
+      const players = response.data.fantasy_content?.team?.[1]?.roster?.[0]?.players
+
+      if (players) {
+        for (let i = 0; i < players.count; i++) {
+          const player = players[i]?.player
+          if (player) {
+            roster.push({
+              id: player[0].player_key,
+              name: player[0].name?.full || 'Unknown',
+              position: player[0].primary_position || player[0].display_position,
+              team: player[0].editorial_team_abbr,
+              jerseyNumber: player[0].uniform_number,
+            })
+          }
+        }
+      }
+    } catch (error) {
+      apiLogger.error('Error fetching roster', error)
+    }
+
+    return roster
+  }
+
+  private mapGameCodeToSport(gameCode: string): string {
+    const sportMap: Record<string, string> = {
+      nfl: 'football',
+      nba: 'basketball',
+      mlb: 'baseball',
+      nhl: 'hockey'
+    }
+    return sportMap[gameCode] || 'other'
   }
 }
 
@@ -616,35 +741,40 @@ class FanDuelImporter implements PlatformImporter {
   }
 }
 
-// Sleeper Importer
+// Sleeper Importer - Enhanced with full data fetching
 class SleeperImporter implements PlatformImporter {
   private apiUrl = 'https://api.sleeper.app/v1'
+  private nflPlayers: Map<string, any> = new Map()
 
   async fetchUserLeagues(connection: any) {
     const leagues: any[] = []
     
     try {
+      // Load NFL players data first
+      await this.loadNFLPlayers()
+
       // Get user info
-      const userResponse = await axios.get(`${this.apiUrl}/user/${connection.platformUserId}`)
+      const userResponse = await axios.get(`${this.apiUrl}/user/${connection.platformUserId || connection.username}`)
       const userId = userResponse.data.user_id
 
-      // Get user leagues
-      const leaguesResponse = await axios.get(`${this.apiUrl}/user/${userId}/leagues/nfl/2024`)
+      // Get user leagues for multiple sports
+      const sports = ['nfl', 'nba', 'mlb']
+      const currentYear = new Date().getFullYear()
       
-      for (const league of leaguesResponse.data) {
-        // Get league details
-        const leagueDetails = await axios.get(`${this.apiUrl}/league/${league.league_id}`)
-        const rosters = await axios.get(`${this.apiUrl}/league/${league.league_id}/rosters`)
-        const users = await axios.get(`${this.apiUrl}/league/${league.league_id}/users`)
-        
-        leagues.push({
-          platformLeagueId: league.league_id,
-          name: league.name,
-          season: 2024,
-          sport: 'football',
-          settings: leagueDetails.data.settings,
-          teams: this.formatSleeperTeams(rosters.data, users.data),
-        })
+      for (const sport of sports) {
+        try {
+          const leaguesResponse = await axios.get(`${this.apiUrl}/user/${userId}/leagues/${sport}/${currentYear}`)
+          
+          for (const league of leaguesResponse.data) {
+            const fullLeague = await this.fetchFullLeagueData(league, sport)
+            if (fullLeague) {
+              leagues.push(fullLeague)
+            }
+          }
+        } catch (error) {
+          // Sport might not have active leagues
+          apiLogger.debug(`No ${sport} leagues found for user`)
+        }
       }
     } catch (error) {
       apiLogger.error('Sleeper API error', error)
@@ -653,30 +783,380 @@ class SleeperImporter implements PlatformImporter {
     return leagues
   }
 
-  private formatSleeperTeams(rosters: any[], users: any[]) {
+  private async loadNFLPlayers() {
+    try {
+      const response = await axios.get(`${this.apiUrl}/players/nfl`)
+      Object.entries(response.data).forEach(([id, player]: [string, any]) => {
+        this.nflPlayers.set(id, player)
+      })
+    } catch (error) {
+      apiLogger.error('Failed to load NFL players', error)
+    }
+  }
+
+  private async fetchFullLeagueData(league: any, sport: string) {
+    try {
+      // Fetch all league data in parallel for efficiency
+      const [leagueDetails, rosters, users, matchups, transactions, draftPicks, tradedPicks] = await Promise.all([
+        axios.get(`${this.apiUrl}/league/${league.league_id}`),
+        axios.get(`${this.apiUrl}/league/${league.league_id}/rosters`),
+        axios.get(`${this.apiUrl}/league/${league.league_id}/users`),
+        this.fetchAllMatchups(league.league_id),
+        axios.get(`${this.apiUrl}/league/${league.league_id}/transactions/1`).catch(() => ({ data: [] })),
+        axios.get(`${this.apiUrl}/league/${league.league_id}/drafts`).catch(() => ({ data: [] })),
+        axios.get(`${this.apiUrl}/league/${league.league_id}/traded_picks`).catch(() => ({ data: [] }))
+      ])
+
+      const settings = leagueDetails.data.settings || {}
+      
+      return {
+        platformLeagueId: league.league_id,
+        name: league.name,
+        season: league.season,
+        sport: this.mapSleeperSport(sport),
+        settings: {
+          ...settings,
+          scoring: this.extractScoringSettings(settings),
+          roster: this.extractRosterSettings(settings),
+          playoff_settings: {
+            playoff_week_start: settings.playoff_week_start,
+            playoff_teams: settings.playoff_teams,
+            playoff_type: settings.playoff_type
+          }
+        },
+        teams: this.formatSleeperTeams(rosters.data, users.data, sport),
+        matchups: matchups,
+        transactions: this.formatTransactions(transactions.data),
+        draft: await this.fetchDraftData(draftPicks.data),
+        tradedPicks: tradedPicks.data
+      }
+    } catch (error) {
+      apiLogger.error(`Failed to fetch full league data for ${league.league_id}`, error)
+      return null
+    }
+  }
+
+  private async fetchAllMatchups(leagueId: string) {
+    const matchups: any[] = []
+    const currentWeek = 18 // Adjust based on current NFL week
+    
+    for (let week = 1; week <= currentWeek; week++) {
+      try {
+        const response = await axios.get(`${this.apiUrl}/league/${leagueId}/matchups/${week}`)
+        matchups.push({
+          week,
+          matchups: response.data
+        })
+      } catch (error) {
+        break // No more weeks available
+      }
+    }
+    
+    return matchups
+  }
+
+  private async fetchDraftData(drafts: any[]) {
+    if (!drafts || drafts.length === 0) return null
+    
+    const draftId = drafts[0]?.draft_id
+    if (!draftId) return null
+    
+    try {
+      const response = await axios.get(`${this.apiUrl}/draft/${draftId}/picks`)
+      return {
+        draft_id: draftId,
+        picks: response.data
+      }
+    } catch (error) {
+      return null
+    }
+  }
+
+  private formatSleeperTeams(rosters: any[], users: any[], sport: string) {
     return rosters.map(roster => {
       const owner = users.find(u => u.user_id === roster.owner_id)
+      const enrichedRoster = this.enrichRosterWithPlayerData(roster.players || [], sport)
+      
       return {
         id: roster.roster_id.toString(),
         ownerId: roster.owner_id,
-        name: owner?.display_name || `Team ${roster.roster_id}`,
-        roster: roster.players || [],
+        name: owner?.team_name || owner?.display_name || `Team ${roster.roster_id}`,
+        avatar: owner?.avatar,
+        roster: enrichedRoster,
+        starters: roster.starters || [],
+        reserve: roster.reserve || [],
+        taxi: roster.taxi || [],
         standings: {
-          wins: roster.settings.wins,
-          losses: roster.settings.losses,
-          ties: roster.settings.ties,
+          wins: roster.settings?.wins || 0,
+          losses: roster.settings?.losses || 0,
+          ties: roster.settings?.ties || 0,
+          fpts: roster.settings?.fpts || 0,
+          fpts_against: roster.settings?.fpts_against || 0,
+          fpts_decimal: roster.settings?.fpts_decimal || 0,
+          total_moves: roster.settings?.total_moves || 0
         },
         stats: roster.settings,
+        metadata: roster.metadata
       }
     })
+  }
+
+  private enrichRosterWithPlayerData(playerIds: string[], sport: string) {
+    if (sport !== 'nfl' || !this.nflPlayers.size) {
+      return playerIds.map(id => ({ id, name: 'Unknown Player' }))
+    }
+    
+    return playerIds.map(playerId => {
+      const player = this.nflPlayers.get(playerId)
+      if (!player) {
+        return { id: playerId, name: 'Unknown Player' }
+      }
+      
+      return {
+        id: playerId,
+        name: `${player.first_name} ${player.last_name}`,
+        position: player.position,
+        team: player.team,
+        jerseyNumber: player.number,
+        age: player.age,
+        years_exp: player.years_exp,
+        status: player.status,
+        injury_status: player.injury_status,
+        search_rank: player.search_rank
+      }
+    })
+  }
+
+  private formatTransactions(transactions: any[]) {
+    return transactions.map(transaction => ({
+      type: transaction.type,
+      status: transaction.status,
+      week: transaction.leg,
+      adds: transaction.adds,
+      drops: transaction.drops,
+      roster_ids: transaction.roster_ids,
+      created: new Date(transaction.created).toISOString()
+    }))
+  }
+
+  private extractScoringSettings(settings: any) {
+    const scoring: any = {}
+    
+    // Extract all scoring settings
+    Object.entries(settings).forEach(([key, value]) => {
+      if (key.includes('pts') || key.includes('bonus')) {
+        scoring[key] = value
+      }
+    })
+    
+    return scoring
+  }
+
+  private extractRosterSettings(settings: any) {
+    return {
+      roster_positions: settings.roster_positions || [],
+      reserve_slots: settings.reserve_slots || 0,
+      taxi_slots: settings.taxi_slots || 0,
+      taxi_years: settings.taxi_years || 0,
+      taxi_allow_vets: settings.taxi_allow_vets || false
+    }
+  }
+
+  private mapSleeperSport(sport: string): string {
+    const sportMap: Record<string, string> = {
+      nfl: 'football',
+      nba: 'basketball',
+      mlb: 'baseball',
+      nhl: 'hockey'
+    }
+    return sportMap[sport] || sport
   }
 }
 
 // CBS Sports Importer
 class CBSImporter implements PlatformImporter {
+  private apiUrl = 'http://api.cbssports.com/fantasy'
+  
   async fetchUserLeagues(connection: any) {
-    // CBS Sports implementation
-    return []
+    const leagues: any[] = []
+    
+    try {
+      // CBS requires API token authentication
+      if (!connection.apiToken) {
+        throw new Error('CBS API token required. Please obtain from CBS Fantasy settings.')
+      }
+
+      // CBS API endpoints (Note: CBS API is limited compared to others)
+      const sports = ['football', 'basketball', 'baseball', 'hockey']
+      
+      for (const sport of sports) {
+        try {
+          // Get user's leagues for each sport
+          const leaguesResponse = await axios.get(`${this.apiUrl}/leagues`, {
+            params: {
+              sport: sport,
+              user_token: connection.apiToken,
+              response_format: 'json'
+            }
+          })
+
+          if (leaguesResponse.data && leaguesResponse.data.body?.leagues) {
+            for (const league of leaguesResponse.data.body.leagues) {
+              const fullLeague = await this.fetchLeagueDetails(league, sport, connection.apiToken)
+              if (fullLeague) {
+                leagues.push(fullLeague)
+              }
+            }
+          }
+        } catch (error) {
+          apiLogger.debug(`No ${sport} leagues found for CBS user`)
+        }
+      }
+    } catch (error) {
+      apiLogger.error('CBS API error', error)
+      throw new Error('Failed to fetch CBS leagues. Please check your API token.')
+    }
+
+    return leagues
+  }
+
+  private async fetchLeagueDetails(league: any, sport: string, apiToken: string) {
+    try {
+      // Fetch league details, teams, and rosters
+      const [teams, standings, transactions] = await Promise.all([
+        this.fetchTeams(league.id, apiToken),
+        this.fetchStandings(league.id, apiToken),
+        this.fetchTransactions(league.id, apiToken)
+      ])
+
+      return {
+        platformLeagueId: league.id,
+        name: league.name,
+        season: league.season || new Date().getFullYear(),
+        sport: sport,
+        settings: {
+          league_type: league.type,
+          num_teams: league.num_teams,
+          scoring_type: league.scoring_type,
+          commissioner: league.commissioner,
+          draft_date: league.draft_date,
+          // CBS doesn't provide detailed scoring settings via API
+          scoring: {},
+          roster: {
+            roster_positions: this.extractRosterPositions(league)
+          }
+        },
+        teams: this.formatCBSTeams(teams, standings),
+        transactions: transactions
+      }
+    } catch (error) {
+      apiLogger.error(`Failed to fetch CBS league details for ${league.id}`, error)
+      return null
+    }
+  }
+
+  private async fetchTeams(leagueId: string, apiToken: string) {
+    try {
+      const response = await axios.get(`${this.apiUrl}/league/teams`, {
+        params: {
+          league_id: leagueId,
+          user_token: apiToken,
+          response_format: 'json'
+        }
+      })
+      return response.data.body?.teams || []
+    } catch (error) {
+      return []
+    }
+  }
+
+  private async fetchStandings(leagueId: string, apiToken: string) {
+    try {
+      const response = await axios.get(`${this.apiUrl}/league/standings`, {
+        params: {
+          league_id: leagueId,
+          user_token: apiToken,
+          response_format: 'json'
+        }
+      })
+      return response.data.body?.standings || []
+    } catch (error) {
+      return []
+    }
+  }
+
+  private async fetchTransactions(leagueId: string, apiToken: string) {
+    try {
+      const response = await axios.get(`${this.apiUrl}/league/transactions`, {
+        params: {
+          league_id: leagueId,
+          user_token: apiToken,
+          response_format: 'json',
+          limit: 100
+        }
+      })
+      return this.formatCBSTransactions(response.data.body?.transactions || [])
+    } catch (error) {
+      return []
+    }
+  }
+
+  private formatCBSTeams(teams: any[], standings: any[]) {
+    return teams.map(team => {
+      const teamStanding = standings.find(s => s.team_id === team.id) || {}
+      
+      return {
+        id: team.id,
+        ownerId: team.owner_id,
+        name: team.name,
+        owner_name: team.owner_name,
+        logo: team.logo,
+        roster: this.formatCBSRoster(team.roster || []),
+        standings: {
+          wins: teamStanding.wins || 0,
+          losses: teamStanding.losses || 0,
+          ties: teamStanding.ties || 0,
+          points_for: teamStanding.points_for || 0,
+          points_against: teamStanding.points_against || 0,
+          rank: teamStanding.rank || 0
+        }
+      }
+    })
+  }
+
+  private formatCBSRoster(roster: any[]) {
+    return roster.map(player => ({
+      id: player.id,
+      name: player.fullname,
+      position: player.position,
+      team: player.pro_team,
+      status: player.injury_status,
+      // CBS provides limited player data via API
+      stats: player.stats || {}
+    }))
+  }
+
+  private formatCBSTransactions(transactions: any[]) {
+    return transactions.map(transaction => ({
+      type: transaction.type,
+      date: transaction.date,
+      description: transaction.description,
+      teams_involved: transaction.teams,
+      players: transaction.players
+    }))
+  }
+
+  private extractRosterPositions(league: any): string[] {
+    // CBS doesn't provide detailed roster positions via API
+    // Return typical roster based on sport
+    const defaultRosters: Record<string, string[]> = {
+      football: ['QB', 'RB', 'RB', 'WR', 'WR', 'WR', 'TE', 'FLEX', 'K', 'DEF'],
+      basketball: ['PG', 'SG', 'SF', 'PF', 'C', 'G', 'F', 'UTIL', 'UTIL'],
+      baseball: ['C', '1B', '2B', '3B', 'SS', 'OF', 'OF', 'OF', 'UTIL', 'SP', 'SP', 'RP', 'RP'],
+      hockey: ['C', 'C', 'LW', 'LW', 'RW', 'RW', 'D', 'D', 'D', 'D', 'G', 'G']
+    }
+    
+    return defaultRosters[league.sport] || []
   }
 }
 

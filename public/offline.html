@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fantasy AI - Offline</title>
+  <meta name="description" content="Fantasy AI is temporarily offline">
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #0F172A;
+      color: #F3F4F6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+    
+    .icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 30px;
+      background: #1E293B;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .icon::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #10B981 0%, #3B82F6 100%);
+      opacity: 0.2;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    .icon svg {
+      width: 60px;
+      height: 60px;
+      z-index: 1;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.2; }
+      50% { transform: scale(1.1); opacity: 0.3; }
+    }
+    
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      background: linear-gradient(to right, #10B981, #3B82F6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #9CA3AF;
+      margin-bottom: 32px;
+    }
+    
+    .features {
+      background: #1E293B;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .features h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      color: #F3F4F6;
+    }
+    
+    .feature-list {
+      list-style: none;
+      text-align: left;
+    }
+    
+    .feature-list li {
+      padding: 8px 0;
+      color: #9CA3AF;
+      display: flex;
+      align-items: center;
+    }
+    
+    .feature-list li::before {
+      content: '✓';
+      color: #10B981;
+      font-weight: bold;
+      margin-right: 12px;
+    }
+    
+    .actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    button {
+      background: linear-gradient(to right, #10B981, #3B82F6);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .status {
+      margin-top: 24px;
+      padding: 12px;
+      background: #1E293B;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #9CA3AF;
+    }
+    
+    .online { color: #10B981; }
+    .offline { color: #EF4444; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#10B981"/>
+      </svg>
+    </div>
+    
+    <h1>You're Offline</h1>
+    
+    <p>Don't worry! Fantasy AI works offline too. Your data is saved locally and will sync when you're back online.</p>
+    
+    <div class="features">
+      <h2>Available Offline:</h2>
+      <ul class="feature-list">
+        <li>View cached predictions</li>
+        <li>Analyze saved patterns</li>
+        <li>Track your betting history</li>
+        <li>Use voice commands</li>
+        <li>Access saved game data</li>
+      </ul>
+    </div>
+    
+    <div class="actions">
+      <button onclick="retry()">Try Again</button>
+      <button onclick="viewCached()">View Cached Data</button>
+    </div>
+    
+    <div class="status">
+      <span id="connection-status" class="offline">● Offline</span>
+      <span id="cache-info"></span>
+    </div>
+  </div>
+  
+  <script>
+    // Check connection status
+    function updateConnectionStatus() {
+      const status = document.getElementById('connection-status');
+      if (navigator.onLine) {
+        status.textContent = '● Online';
+        status.className = 'online';
+      } else {
+        status.textContent = '● Offline';
+        status.className = 'offline';
+      }
+    }
+    
+    // Listen for connection changes
+    window.addEventListener('online', () => {
+      updateConnectionStatus();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    });
+    
+    window.addEventListener('offline', updateConnectionStatus);
+    
+    // Retry connection
+    function retry() {
+      window.location.reload();
+    }
+    
+    // View cached data
+    function viewCached() {
+      // Check if we have cached data
+      if ('caches' in window) {
+        caches.keys().then(names => {
+          if (names.length > 0) {
+            // Redirect to cached version of homepage
+            window.location.href = '/';
+          } else {
+            alert('No cached data available yet.');
+          }
+        });
+      }
+    }
+    
+    // Show cache info
+    async function showCacheInfo() {
+      if ('storage' in navigator && 'estimate' in navigator.storage) {
+        const estimate = await navigator.storage.estimate();
+        const used = Math.round(estimate.usage / 1024 / 1024);
+        const quota = Math.round(estimate.quota / 1024 / 1024);
+        
+        document.getElementById('cache-info').textContent = 
+          ` | Cache: ${used}MB / ${quota}MB`;
+      }
+    }
+    
+    // Initialize
+    updateConnectionStatus();
+    showCacheInfo();
+    
+    // Periodic connection check
+    setInterval(updateConnectionStatus, 5000);
+  </script>
+</body>
+</html>

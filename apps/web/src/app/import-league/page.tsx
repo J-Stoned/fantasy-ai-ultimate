@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 
 const platforms = [
@@ -50,10 +50,71 @@ const platforms = [
 ]
 
 export default function ImportLeaguePage() {
-  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null)
+  const searchParams = useSearchParams()
+  const platformParam = searchParams.get('platform')
+  const isOnboarding = searchParams.get('onboarding') === 'true'
+  const isConnected = searchParams.get('connected') === 'true'
+  const errorParam = searchParams.get('error')
+  
+  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(platformParam)
   const [isImporting, setIsImporting] = useState(false)
   const [importStatus, setImportStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null)
   const router = useRouter()
+  
+  useEffect(() => {
+    if (platformParam) {
+      setSelectedPlatform(platformParam)
+    }
+    
+    // Handle OAuth callback
+    if (isConnected && platformParam === 'yahoo') {
+      // Automatically start Yahoo import
+      performYahooImport()
+    }
+    
+    // Handle errors
+    if (errorParam) {
+      const errorMessages: Record<string, string> = {
+        yahoo_auth_failed: 'Yahoo authorization was cancelled or failed',
+        yahoo_connection_failed: 'Failed to connect to Yahoo. Please try again.',
+        invalid_callback: 'Invalid authorization response from Yahoo'
+      }
+      setImportStatus({
+        type: 'error',
+        message: errorMessages[errorParam] || 'An error occurred during authorization'
+      })
+    }
+  }, [platformParam, isConnected, errorParam])
+  
+  const performYahooImport = async () => {
+    setIsImporting(true)
+    try {
+      const response = await fetch('/api/import/yahoo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({}), // Token is already stored server-side
+      })
+
+      const result = await response.json()
+      
+      if (result.success) {
+        setImportStatus({
+          type: 'success',
+          message: `Successfully imported ${result.leaguesImported} Yahoo leagues!`
+        })
+        setTimeout(() => router.push('/dashboard'), 2000)
+      } else {
+        throw new Error(result.error || 'Import failed')
+      }
+    } catch (error: any) {
+      setImportStatus({
+        type: 'error',
+        message: error.message || 'Failed to import Yahoo leagues'
+      })
+    } finally {
+      setIsImporting(false)
+    }
+  }
 
   const handleImport = async (platformId: string) => {
     setSelectedPlatform(platformId)
@@ -63,9 +124,8 @@ export default function ImportLeaguePage() {
     try {
       // Handle different platform authentication methods
       if (platformId === 'yahoo') {
-        // Yahoo uses OAuth
-        alert('Yahoo import requires OAuth setup. For MVP, please use ESPN or Sleeper.')
-        setIsImporting(false)
+        // Yahoo uses OAuth - redirect to OAuth flow
+        window.location.href = `/api/auth/yahoo?returnUrl=${encodeURIComponent(window.location.pathname + window.location.search)}`
         return
       } else if (platformId === 'espn') {
         // ESPN uses cookie-based auth
@@ -141,12 +201,15 @@ export default function ImportLeaguePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
-      <nav className="bg-black/20 backdrop-blur-lg border-b border-white/10">
+    <div className="min-h-screen bg-gray-950">
+      <nav className="glass-card rounded-none border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Link href="/dashboard" className="text-2xl font-bold text-white">
-              ← Back to Dashboard
+            <Link href={isOnboarding ? '/onboarding' : '/dashboard'} className="nav-link flex items-center">
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Back {isOnboarding ? 'to Platform Selection' : 'to Dashboard'}
             </Link>
           </div>
         </div>
@@ -154,17 +217,19 @@ export default function ImportLeaguePage() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-white mb-4">Import Your Fantasy Leagues</h1>
-          <p className="text-xl text-gray-300">
-            One-click import from all major fantasy platforms
+          <h1 className="text-4xl font-bold text-white mb-4">
+            {selectedPlatform ? 'Connect Your' : 'Import Your'} <span className="gradient-text">{selectedPlatform ? platforms.find(p => p.id === selectedPlatform)?.name : 'Fantasy Leagues'}</span>
+          </h1>
+          <p className="text-xl text-gray-400">
+            {selectedPlatform ? 'Follow the instructions below to connect your account' : 'One-click import from all major fantasy platforms'}
           </p>
         </div>
 
         {importStatus && (
-          <div className={`mb-8 p-4 rounded-lg text-center ${
+          <div className={`mb-8 p-4 rounded-lg text-center glass-card ${
             importStatus.type === 'error' 
-              ? 'bg-red-500/20 text-red-200 border border-red-500/30' 
-              : 'bg-green-500/20 text-green-200 border border-green-500/30'
+              ? 'error-glow border-red-500/30' 
+              : 'success-glow border-green-500/30'
           }`}>
             {importStatus.message}
           </div>
@@ -176,19 +241,26 @@ export default function ImportLeaguePage() {
               key={platform.id}
               onClick={() => handleImport(platform.id)}
               disabled={!platform.supported || isImporting}
-              className={`relative overflow-hidden rounded-xl p-6 text-left transition-all duration-200 ${
+              className={`league-import-card relative overflow-hidden ${
+                selectedPlatform === platform.id ? 'ring-2 ring-primary-500' : ''
+              } ${
                 platform.supported 
-                  ? 'hover:scale-105 hover:shadow-2xl cursor-pointer' 
+                  ? '' 
                   : 'opacity-50 cursor-not-allowed'
               }`}
             >
-              <div className={`absolute inset-0 bg-gradient-to-r ${platform.color} opacity-90`} />
+              <div className={`absolute inset-0 bg-gradient-to-br ${platform.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
               <div className="relative z-10">
                 <h3 className="text-2xl font-bold text-white mb-2">{platform.name}</h3>
-                <p className="text-gray-200">{platform.description}</p>
+                <p className="text-gray-400">{platform.description}</p>
                 {isImporting && selectedPlatform === platform.id && (
                   <div className="mt-4">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+                    <div className="spinner w-8 h-8"></div>
+                  </div>
+                )}
+                {selectedPlatform === platform.id && !isImporting && (
+                  <div className="mt-4 text-primary-400 font-medium">
+                    Click again to start import
                   </div>
                 )}
               </div>
@@ -196,25 +268,25 @@ export default function ImportLeaguePage() {
           ))}
         </div>
 
-        <div className="mt-12 bg-white/10 backdrop-blur-lg rounded-xl p-8">
+        <div className="mt-12 glass-card p-8">
           <h2 className="text-2xl font-bold text-white mb-4">How It Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="bg-purple-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <div className="bg-primary-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-white">1</span>
               </div>
               <h3 className="text-lg font-semibold text-white mb-2">Choose Platform</h3>
               <p className="text-gray-300">Select your fantasy sports platform</p>
             </div>
             <div className="text-center">
-              <div className="bg-purple-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <div className="bg-primary-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-white">2</span>
               </div>
               <h3 className="text-lg font-semibold text-white mb-2">Authorize Access</h3>
               <p className="text-gray-300">Securely connect your account</p>
             </div>
             <div className="text-center">
-              <div className="bg-purple-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <div className="bg-primary-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-white">3</span>
               </div>
               <h3 className="text-lg font-semibold text-white mb-2">Import Complete</h3>
@@ -233,7 +305,7 @@ export default function ImportLeaguePage() {
         </div>
 
         {/* Platform-specific instructions */}
-        <div className="mt-8 bg-white/10 backdrop-blur-lg rounded-xl p-6">
+        <div className="mt-8 glass-card p-6">
           <h3 className="text-xl font-bold text-white mb-4">Platform Instructions</h3>
           <div className="space-y-4">
             <div>

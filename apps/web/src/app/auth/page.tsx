@@ -41,7 +41,19 @@ export default function AuthPage() {
         
         if (error) throw error
         
-        router.push('/dashboard')
+        // Check if user has any leagues imported
+        const { data: leagues } = await supabase
+          .from('fantasy_leagues')
+          .select('id')
+          .eq('user_id', data.user.id)
+          .limit(1)
+        
+        // If no leagues, redirect to onboarding
+        if (!leagues || leagues.length === 0) {
+          router.push('/onboarding')
+        } else {
+          router.push('/dashboard')
+        }
       }
     } catch (error: any) {
       setMessage({ 

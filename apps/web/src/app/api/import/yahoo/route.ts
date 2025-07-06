@@ -57,10 +57,24 @@ async function handleYahooImport(request: NextRequest) {
       tokens = await exchangeYahooCode(code)
     }
 
+    // If no tokens provided, check stored connection
     if (!tokens.accessToken) {
-      return NextResponse.json({ 
-        error: 'Yahoo authentication required. Please provide OAuth code or access token.' 
-      }, { status: 400 })
+      const { data: connection } = await supabase
+        .from('platform_connections')
+        .select('access_token, refresh_token')
+        .eq('user_id', user.id)
+        .eq('platform', 'yahoo')
+        .eq('is_active', true)
+        .single()
+
+      if (!connection || !connection.access_token) {
+        return NextResponse.json({ 
+          error: 'Yahoo authentication required. Please authorize through the import page.' 
+        }, { status: 400 })
+      }
+
+      tokens.accessToken = connection.access_token
+      tokens.refreshToken = connection.refresh_token
     }
     
     // Import leagues

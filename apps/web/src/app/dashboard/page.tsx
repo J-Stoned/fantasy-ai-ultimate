@@ -1,6 +1,7 @@
 import { createClient } from '../../../../lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import { MobileNav } from '../../components/layout/MobileNav'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -30,8 +31,14 @@ export default async function DashboardPage() {
       <nav className="bg-black/20 backdrop-blur-lg border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <h1 className="text-2xl font-bold text-white">Fantasy.AI Ultimate</h1>
-            <div className="flex items-center gap-4">
+            <h1 className="text-xl md:text-2xl font-bold text-white">Fantasy.AI Ultimate</h1>
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-4">
+              <Link href="/live" className="text-green-400 hover:text-green-300 transition-colors flex items-center">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2"></div>
+                Live
+              </Link>
               <Link href="/pricing" className="text-yellow-400 hover:text-yellow-300 transition-colors">
                 ⚡ Upgrade
               </Link>
@@ -42,6 +49,9 @@ export default async function DashboardPage() {
                 </button>
               </form>
             </div>
+            
+            {/* Mobile Navigation */}
+            <MobileNav user={user} profile={profile} />
           </div>
         </div>
       </nav>
@@ -50,29 +60,75 @@ export default async function DashboardPage() {
         {/* Quick Actions */}
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-white mb-4">Dashboard</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link 
+              href="/patterns"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 p-6 rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-200 transform hover:scale-105"
+            >
+              <h3 className="text-xl font-semibold text-white mb-2">🎯 Pattern Detection</h3>
+              <p className="text-gray-200">65.2% accuracy patterns from 48K games</p>
+            </Link>
+            
             <Link 
               href="/import-league"
-              className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-200"
+              className="bg-gradient-to-r from-blue-600 to-cyan-600 p-6 rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 transform hover:scale-105"
             >
               <h3 className="text-xl font-semibold text-white mb-2">Import League</h3>
-              <p className="text-gray-200">One-click import from Yahoo, ESPN, DraftKings & more</p>
+              <p className="text-gray-200">One-click import from Yahoo, ESPN & more</p>
             </Link>
             
             <Link 
               href="/players"
-              className="bg-gradient-to-r from-green-600 to-teal-600 p-6 rounded-xl hover:from-green-700 hover:to-teal-700 transition-all duration-200"
+              className="bg-gradient-to-r from-green-600 to-teal-600 p-6 rounded-xl hover:from-green-700 hover:to-teal-700 transition-all duration-200 transform hover:scale-105"
             >
               <h3 className="text-xl font-semibold text-white mb-2">Player Database</h3>
               <p className="text-gray-200">Browse EVERY player from EVERY league</p>
             </Link>
             
             <Link 
-              href="/ai-assistant"
-              className="bg-gradient-to-r from-orange-600 to-red-600 p-6 rounded-xl hover:from-orange-700 hover:to-red-700 transition-all duration-200"
+              href="/lineup-optimizer"
+              className="bg-gradient-to-r from-orange-600 to-red-600 p-6 rounded-xl hover:from-orange-700 hover:to-red-700 transition-all duration-200 transform hover:scale-105"
             >
-              <h3 className="text-xl font-semibold text-white mb-2">AI Assistant</h3>
-              <p className="text-gray-200">"Hey Fantasy" - Your AI-powered helper</p>
+              <h3 className="text-xl font-semibold text-white mb-2">🚀 Lineup Optimizer</h3>
+              <p className="text-gray-200">GPU-powered optimization with patterns</p>
+            </Link>
+          </div>
+          
+          {/* Second Row of Features */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+            <Link 
+              href="/ai-assistant"
+              className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-200 transform hover:scale-105"
+            >
+              <h3 className="text-xl font-semibold text-white mb-2">🤖 AI Assistant</h3>
+              <p className="text-gray-200">"Hey Fantasy" voice commands</p>
+            </Link>
+            
+            <Link 
+              href="/trade-analyzer"
+              className="bg-gradient-to-r from-pink-600 to-rose-600 p-6 rounded-xl hover:from-pink-700 hover:to-rose-700 transition-all duration-200 transform hover:scale-105"
+            >
+              <h3 className="text-xl font-semibold text-white mb-2">💱 Trade Analyzer</h3>
+              <p className="text-gray-200">AI-powered trade recommendations</p>
+            </Link>
+            
+            <Link 
+              href="/waiver-wire"
+              className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105"
+            >
+              <h3 className="text-xl font-semibold text-white mb-2">📈 Waiver Wire</h3>
+              <p className="text-gray-200">Pattern-based breakout picks</p>
+            </Link>
+            
+            <Link 
+              href="/live"
+              className="bg-gradient-to-r from-emerald-600 to-teal-600 p-6 rounded-xl hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 transform hover:scale-105 relative overflow-hidden"
+            >
+              <div className="absolute top-2 right-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">📡 Live Dashboard</h3>
+              <p className="text-gray-200">Real-time alerts & updates</p>
             </Link>
           </div>
         </div>
@@ -116,22 +172,22 @@ export default async function DashboardPage() {
         </div>
 
         {/* Stats Overview */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="bg-white/10 backdrop-blur-lg rounded-lg p-4">
-            <h3 className="text-sm font-medium text-gray-300">Total Leagues</h3>
-            <p className="text-2xl font-bold text-white mt-1">{leagues?.length || 0}</p>
+            <h3 className="text-xs md:text-sm font-medium text-gray-300">Total Leagues</h3>
+            <p className="text-xl md:text-2xl font-bold text-white mt-1">{leagues?.length || 0}</p>
           </div>
           <div className="bg-white/10 backdrop-blur-lg rounded-lg p-4">
-            <h3 className="text-sm font-medium text-gray-300">Active Players</h3>
-            <p className="text-2xl font-bold text-white mt-1">2.5M+</p>
+            <h3 className="text-xs md:text-sm font-medium text-gray-300">Active Players</h3>
+            <p className="text-xl md:text-2xl font-bold text-white mt-1">2.5M+</p>
           </div>
           <div className="bg-white/10 backdrop-blur-lg rounded-lg p-4">
-            <h3 className="text-sm font-medium text-gray-300">Data Points</h3>
-            <p className="text-2xl font-bold text-white mt-1">10M+ Daily</p>
+            <h3 className="text-xs md:text-sm font-medium text-gray-300">Data Points</h3>
+            <p className="text-xl md:text-2xl font-bold text-white mt-1">10M+ Daily</p>
           </div>
           <div className="bg-white/10 backdrop-blur-lg rounded-lg p-4">
-            <h3 className="text-sm font-medium text-gray-300">AI Insights</h3>
-            <p className="text-2xl font-bold text-white mt-1">24/7</p>
+            <h3 className="text-xs md:text-sm font-medium text-gray-300">AI Insights</h3>
+            <p className="text-xl md:text-2xl font-bold text-white mt-1">24/7</p>
           </div>
         </div>
       </main>

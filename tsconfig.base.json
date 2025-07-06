@@ -12,8 +12,7 @@
     "module": "esnext",
     "lib": [
       "es2020",
-      "dom",
-      "node"
+      "dom"
     ],
     "types": ["node"],
     "esModuleInterop": true,
