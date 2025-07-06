@@ -62,14 +62,15 @@ class ServiceOrchestrator extends EventEmitter {
   private getServiceConfigs(): ServiceConfig[] {
     return [
       // Core Infrastructure
-      {
-        name: 'redis',
-        command: 'redis-server',
-        args: ['--maxmemory', '4gb', '--maxmemory-policy', 'allkeys-lru'],
-        port: 6379,
-        healthEndpoint: 'redis://localhost:6379',
-        critical: true,
-      },
+      // Redis is already running in Docker on port 6379
+      // {
+      //   name: 'redis',
+      //   command: 'redis-server',
+      //   args: ['--maxmemory', '4gb', '--maxmemory-policy', 'allkeys-lru'],
+      //   port: 6379,
+      //   healthEndpoint: 'redis://localhost:6379',
+      //   critical: true,
+      // },
       
       // Pattern Detection Services
       {
@@ -80,7 +81,7 @@ class ServiceOrchestrator extends EventEmitter {
         healthEndpoint: 'http://localhost:3337/api/v4/health',
         healthInterval: 30000,
         maxRestarts: 5,
-        dependencies: ['redis'],
+        dependencies: [],
         env: {
           PORT: '3337',
           WORKERS: '4',
@@ -97,7 +98,7 @@ class ServiceOrchestrator extends EventEmitter {
         healthEndpoint: 'http://localhost:3336/api/unified/health',
         healthInterval: 30000,
         maxRestarts: 5,
-        dependencies: ['redis'],
+        dependencies: [],
         env: {
           PORT: '3336',
           WORKERS: '4',
@@ -113,7 +114,7 @@ class ServiceOrchestrator extends EventEmitter {
         healthEndpoint: 'http://localhost:3340/health',
         healthInterval: 30000,
         maxRestarts: 5,
-        dependencies: ['redis'],
+        dependencies: [],
         env: {
           PORT: '3340',
           ENABLE_GPU: 'true',
@@ -129,7 +130,7 @@ class ServiceOrchestrator extends EventEmitter {
         healthEndpoint: 'ws://localhost:3338',
         healthInterval: 30000,
         maxRestarts: 3,
-        dependencies: ['redis'],
+        dependencies: [],
         env: {
           WS_PORT: '3338',
           MAX_CONNECTIONS: '10000',
@@ -143,7 +144,7 @@ class ServiceOrchestrator extends EventEmitter {
         args: ['tsx', 'scripts/enhanced-player-stats-collector.ts'],
         healthInterval: 60000,
         maxRestarts: 3,
-        dependencies: ['redis', 'pattern-api-v4'],
+        dependencies: ['pattern-api-v4'],
         env: {
           CONCURRENT_REQUESTS: '100',
         },
@@ -156,7 +157,7 @@ class ServiceOrchestrator extends EventEmitter {
         args: ['tsx', 'scripts/continuous-learning-service.ts'],
         healthInterval: 60000,
         maxRestarts: 3,
-        dependencies: ['redis', 'pattern-api-v4'],
+        dependencies: ['pattern-api-v4'],
         env: {
           ENABLE_GPU: 'true',
         },
@@ -170,7 +171,7 @@ class ServiceOrchestrator extends EventEmitter {
         port: 3339,
         healthEndpoint: 'http://localhost:3339/health',
         healthInterval: 30000,
-        dependencies: ['redis'],
+        dependencies: [],
       },
     ]
   }
