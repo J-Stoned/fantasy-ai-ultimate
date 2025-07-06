@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 🏥 ENHANCED INJURY INTELLIGENCE SYSTEM
  * Uses existing 129 injuries with correct database field mapping

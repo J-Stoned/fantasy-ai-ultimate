@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 🎯 LUCEY ML OPTIMIZATION TEST
  * Tests if Lucey's principles improve accuracy towards 65% target

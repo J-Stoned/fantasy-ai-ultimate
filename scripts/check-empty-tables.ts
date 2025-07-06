@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 

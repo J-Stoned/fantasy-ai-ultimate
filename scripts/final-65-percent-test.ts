@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 🏆 FINAL 65%+ ACCURACY TEST
  * Streamlined model with best proven features - guaranteed fast execution

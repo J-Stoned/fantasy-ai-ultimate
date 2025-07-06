@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 import { RandomForestClassifier } from 'ml-random-forest';
 import * as fs from 'fs';
 import * as path from 'path';

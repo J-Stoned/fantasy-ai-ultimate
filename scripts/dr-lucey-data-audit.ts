@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 🔥 DR. LUCEY'S DATA AUDIT - FIND THE 65%+ GOLDMINE
  * We need to see EXACTLY what data we're sitting on!

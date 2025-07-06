@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 import chalk from 'chalk';
 import axios from 'axios';
 import { createClient } from '@supabase/supabase-js';

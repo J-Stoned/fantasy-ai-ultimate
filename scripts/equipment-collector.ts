@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 👟 EQUIPMENT & SPONSORSHIP COLLECTOR
  * Tracks player equipment, brand deals, and gear changes

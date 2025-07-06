@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 💰 SALARY CAP & CONTRACT COLLECTOR
  * Collects team salary caps, player contracts, and financial data

@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 import chalk from 'chalk';
 
 async function testPredictionsAPI() {

@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 import WebSocket from 'ws';
 
 async function loadTest(numClients: number = 100) {

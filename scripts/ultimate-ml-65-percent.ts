@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 🎯 ULTIMATE ML MODEL - 65%+ ACCURACY TARGET
  * Integrates all intelligence systems: financial, injury, weather, referee bias

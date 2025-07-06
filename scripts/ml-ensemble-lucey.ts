@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 🧠 DR. LUCEY'S ENSEMBLE ML MODEL
  * Combines multiple models and features for maximum accuracy

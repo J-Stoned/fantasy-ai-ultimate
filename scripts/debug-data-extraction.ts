@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 🔍 DEBUG DATA EXTRACTION
  * Quick debug to see what's happening with data filtering

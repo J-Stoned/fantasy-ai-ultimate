@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 🌤️ WEATHER INTELLIGENCE SYSTEM
  * Populates weather_conditions table with historical game weather

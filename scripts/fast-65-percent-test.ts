@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 🚀 FAST 65%+ ACCURACY TEST
  * Quick test with proven features - NO schema issues!

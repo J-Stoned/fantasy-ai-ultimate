@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 import { supabase } from '../lib/supabase-client';
 import { loadModels } from '../lib/prediction/ensemble-predictor';
 import { extractGameFeatures } from '../lib/ml/feature-extraction';

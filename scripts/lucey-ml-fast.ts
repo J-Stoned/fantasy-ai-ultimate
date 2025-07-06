@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 🚀 FAST LUCEY ML - Sampled version for quick results
  */

@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 🎯 LUCEY ML OPTIMIZATION - ALL SPORTS VERSION
  * Fixed sport_id mappings to work with our actual data

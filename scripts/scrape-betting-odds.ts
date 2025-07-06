@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 import { createClient } from '@supabase/supabase-js';
 import axios from 'axios';
 import * as dotenv from 'dotenv';

@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 🔥 DR. LUCEY'S ULTIMATE 75%+ ACCURACY MODEL
  * Uses ALL available data - 8,858 player stats, 48,863 games, 213K news articles

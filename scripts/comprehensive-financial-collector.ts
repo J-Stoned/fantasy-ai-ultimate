@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 💰 COMPREHENSIVE FINANCIAL DATA COLLECTOR
  * Collects salary cap data for ALL teams across ALL leagues

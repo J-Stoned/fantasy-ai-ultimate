@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 📝 CONTRACT YEAR EFFECT TRACKER
  * Players in their contract year perform 15-20% better

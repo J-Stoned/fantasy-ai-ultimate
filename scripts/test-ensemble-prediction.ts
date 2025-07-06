@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 import { ensemblePredictor, GameFeatures } from '../lib/ml/ensemble-predictor';
 import chalk from 'chalk';
 import * as path from 'path';

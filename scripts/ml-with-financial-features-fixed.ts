@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 💰 ML WITH FINANCIAL FEATURES - FIXED VERSION
  * Uses team salary cap data to improve predictions

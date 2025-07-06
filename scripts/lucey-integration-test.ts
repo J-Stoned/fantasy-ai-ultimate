@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 🚀 LUCEY OPTIMIZATION INTEGRATION TEST
  * Demonstrates compression, role assignment, adaptive quality, and GPU acceleration

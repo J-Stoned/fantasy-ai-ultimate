@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * 🎯 OPTIMIZED 65%+ ACCURACY MODEL
  * Fast Random Forest with enhanced features from all intelligence systems

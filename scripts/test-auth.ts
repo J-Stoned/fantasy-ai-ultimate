@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 /**
  * Test authentication for both web and mobile apps
  */
