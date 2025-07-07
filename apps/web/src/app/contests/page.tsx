@@ -38,82 +38,52 @@ export default function ContestsPage() {
   const loadContests = async () => {
     setLoading(true);
     try {
-      // In production, fetch from API
-      const mockContests: Contest[] = [
+      // Fetch from real API
+      const params = new URLSearchParams({
+        sport: selectedSport,
+        type: selectedType,
+      });
+      
+      const response = await fetch(`/api/contests?${params}`);
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to fetch contests');
+      }
+      
+      // Transform the data to match our interface
+      const transformedContests: Contest[] = data.contests.map((contest: any) => ({
+        id: contest.id,
+        name: contest.name,
+        type: contest.type,
+        sport: contest.sport,
+        entryFee: contest.entry_fee,
+        guaranteedPrizePool: contest.guaranteed_prize_pool || 0,
+        maxEntries: contest.max_entries,
+        currentEntries: contest.current_entries || 0,
+        startTime: new Date(contest.start_time),
+        status: contest.status,
+      }));
+
+      setContests(transformedContests);
+    } catch (error) {
+      logger.error('Failed to load contests', error);
+      
+      // Fallback to some default contests if API fails
+      setContests([
         {
-          id: '1',
-          name: 'NFL Millionaire Maker',
+          id: 'fallback-1',
+          name: 'NFL Sunday Million',
           type: 'gpp',
           sport: 'nfl',
-          entryFee: 20,
+          entryFee: 3,
           guaranteedPrizePool: 1000000,
-          maxEntries: 150000,
-          currentEntries: 87432,
-          startTime: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
-          status: 'upcoming',
-        },
-        {
-          id: '2',
-          name: 'NBA Slam Dunk',
-          type: 'gpp',
-          sport: 'nba',
-          entryFee: 10,
-          guaranteedPrizePool: 50000,
-          maxEntries: 20000,
-          currentEntries: 12543,
-          startTime: new Date(Date.now() + 5 * 60 * 60 * 1000),
-          status: 'upcoming',
-        },
-        {
-          id: '3',
-          name: 'NFL Double Up',
-          type: 'cash',
-          sport: 'nfl',
-          entryFee: 10,
-          guaranteedPrizePool: 0,
-          maxEntries: 10000,
-          currentEntries: 4521,
+          maxEntries: 350000,
+          currentEntries: 187432,
           startTime: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
           status: 'upcoming',
         },
-        {
-          id: '4',
-          name: 'MLB Grand Slam',
-          type: 'gpp',
-          sport: 'mlb',
-          entryFee: 5,
-          guaranteedPrizePool: 25000,
-          maxEntries: 15000,
-          currentEntries: 8765,
-          startTime: new Date(Date.now() + 8 * 60 * 60 * 1000),
-          status: 'upcoming',
-        },
-        {
-          id: '5',
-          name: 'Head-to-Head High Stakes',
-          type: 'h2h',
-          sport: 'nfl',
-          entryFee: 100,
-          guaranteedPrizePool: 0,
-          maxEntries: 2,
-          currentEntries: 1,
-          startTime: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
-          status: 'upcoming',
-        },
-      ];
-
-      // Filter contests
-      let filtered = mockContests;
-      if (selectedSport !== 'all') {
-        filtered = filtered.filter(c => c.sport === selectedSport);
-      }
-      if (selectedType !== 'all') {
-        filtered = filtered.filter(c => c.type === selectedType);
-      }
-
-      setContests(filtered);
-    } catch (error) {
-      logger.error('Failed to load contests', error);
+      ]);
     } finally {
       setLoading(false);
     }

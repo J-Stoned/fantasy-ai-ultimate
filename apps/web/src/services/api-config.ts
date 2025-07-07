@@ -5,14 +5,14 @@
 
 export const API_CONFIG = {
   // Pattern Detection Services
-  PATTERN_API_V4: process.env.NEXT_PUBLIC_PATTERN_API_V4_URL || 'http://localhost:3337',
+  PATTERN_API_V4: process.env.NEXT_PUBLIC_PATTERN_API_V4_URL || 'http://localhost:3336', // Using unified API
   UNIFIED_PATTERN_API: process.env.NEXT_PUBLIC_UNIFIED_PATTERN_API_URL || 'http://localhost:3336',
   
   // Fantasy Services
   FANTASY_PATTERN_API: process.env.NEXT_PUBLIC_FANTASY_PATTERN_API_URL || 'http://localhost:3340',
   
   // WebSocket Services
-  WEBSOCKET_URL: process.env.NEXT_PUBLIC_WEBSOCKET_URL || 'ws://localhost:3337',
+  WEBSOCKET_URL: process.env.NEXT_PUBLIC_WEBSOCKET_URL || 'ws://localhost:8080',
   
   // API Keys (for pattern licensing platform)
   PATTERN_API_KEY: process.env.NEXT_PUBLIC_PATTERN_API_KEY || '',

@@ -19,13 +19,27 @@ async function checkPlayerStatsCoverage() {
     .from('player_stats')
     .select('*', { count: 'exact', head: true });
     
-  // Get unique games with stats
-  const { data: gamesWithStats } = await supabase
-    .from('player_stats')
-    .select('game_id')
-    .not('game_id', 'is', null);
+  // Get unique games with stats - need to fetch in chunks due to large dataset
+  const uniqueGames = new Set<number>();
+  let offset = 0;
+  const chunkSize = 10000;
+  
+  console.log(chalk.gray('Calculating unique games (this may take a moment)...'));
+  
+  while (true) {
+    const { data: chunk } = await supabase
+      .from('player_stats')
+      .select('game_id')
+      .not('game_id', 'is', null)
+      .range(offset, offset + chunkSize - 1);
+      
+    if (!chunk || chunk.length === 0) break;
     
-  const uniqueGames = new Set(gamesWithStats?.map(s => s.game_id) || []);
+    chunk.forEach(s => uniqueGames.add(s.game_id));
+    
+    if (chunk.length < chunkSize) break;
+    offset += chunkSize;
+  }
     
   // Get total completed games
   const { count: totalGames } = await supabase

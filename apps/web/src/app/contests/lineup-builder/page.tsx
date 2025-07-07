@@ -141,93 +141,61 @@ export default function LineupBuilderPage() {
     loadPlayers();
   }, []);
 
-  const loadPlayers = () => {
-    // Mock player data
-    const mockPlayers: Player[] = [
-      {
-        id: '1',
-        name: 'Patrick Mahomes',
-        position: 'QB',
-        team: 'KC',
-        salary: 8500,
-        projectedPoints: 28.5,
-        ownership: 18.5,
-        value: 3.35,
-      },
-      {
-        id: '2',
-        name: 'Josh Allen',
-        position: 'QB',
-        team: 'BUF',
-        salary: 8200,
-        projectedPoints: 27.2,
-        ownership: 22.1,
-        value: 3.32,
-      },
-      {
-        id: '3',
-        name: 'Christian McCaffrey',
-        position: 'RB',
-        team: 'SF',
-        salary: 9000,
-        projectedPoints: 24.5,
-        ownership: 35.2,
-        value: 2.72,
-      },
-      {
-        id: '4',
-        name: 'Austin Ekeler',
-        position: 'RB',
-        team: 'LAC',
-        salary: 7800,
-        projectedPoints: 19.8,
-        ownership: 28.7,
-        value: 2.54,
-      },
-      {
-        id: '5',
-        name: 'Tyreek Hill',
-        position: 'WR',
-        team: 'MIA',
-        salary: 8800,
-        projectedPoints: 22.3,
-        ownership: 31.2,
-        value: 2.53,
-      },
-      {
-        id: '6',
-        name: 'Justin Jefferson',
-        position: 'WR',
-        team: 'MIN',
-        salary: 8600,
-        projectedPoints: 21.8,
-        ownership: 29.5,
-        value: 2.53,
-      },
-      {
-        id: '7',
-        name: 'Travis Kelce',
-        position: 'TE',
-        team: 'KC',
-        salary: 7500,
-        projectedPoints: 18.5,
-        ownership: 42.3,
-        value: 2.47,
-      },
-      {
-        id: '8',
-        name: 'Bills DST',
-        position: 'DST',
-        team: 'BUF',
-        salary: 3200,
-        projectedPoints: 9.5,
-        ownership: 15.2,
-        value: 2.97,
-      },
-      // Add more players...
-    ];
-
-    setAvailablePlayers(mockPlayers);
+  const loadPlayers = async () => {
+    try {
+      // Fetch from real API
+      const params = new URLSearchParams({
+        sport: 'nfl', // You can make this dynamic based on contest
+        position: positionFilter,
+      });
+      
+      const response = await fetch(`/api/players?${params}`);
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to fetch players');
+      }
+      
+      setAvailablePlayers(data.players);
+    } catch (error) {
+      logger.error('Failed to load players', error);
+      
+      // Fallback to sample players if API fails
+      const samplePlayers: Player[] = [
+        {
+          id: 'fallback-1',
+          name: 'Patrick Mahomes',
+          position: 'QB',
+          team: 'KC',
+          salary: 8500,
+          projectedPoints: 28.5,
+          ownership: 18.5,
+          value: 3.35,
+        },
+        {
+          id: 'fallback-2',
+          name: 'Christian McCaffrey',
+          position: 'RB',
+          team: 'SF',
+          salary: 9000,
+          projectedPoints: 24.5,
+          ownership: 35.2,
+          value: 2.72,
+        },
+        {
+          id: 'fallback-3',
+          name: 'Tyreek Hill',
+          position: 'WR',
+          team: 'MIA',
+          salary: 8800,
+          projectedPoints: 22.3,
+          ownership: 31.2,
+          value: 2.53,
+        },
+      ];
+      
+      setAvailablePlayers(samplePlayers);
+    }
   };
 
   const handleAddPlayer = (player: Player, slotIndex: number) => {

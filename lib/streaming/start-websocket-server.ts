@@ -33,6 +33,25 @@ async function startWebSocketServer() {
       });
     }, 1000);
     
+    // Add HTTP health endpoint
+    const http = require('http');
+    const healthServer = http.createServer((req: any, res: any) => {
+      if (req.url === '/health') {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          status: 'ok',
+          clients: broadcaster.getMetrics().activeClients,
+          uptime: process.uptime()
+        }));
+      } else {
+        res.writeHead(404);
+        res.end();
+      }
+    });
+    healthServer.listen(8081, () => {
+      console.log(chalk.green('✅ Health check available at http://localhost:8081/health'));
+    });
+    
   } catch (error) {
     console.error(chalk.red('Failed to start WebSocket server:'), error);
     process.exit(1);
