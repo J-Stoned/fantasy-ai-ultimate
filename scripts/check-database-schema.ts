@@ -1,146 +1,70 @@
 #!/usr/bin/env tsx
-/**
- * Check Database Schema
- * Verifies which tables exist and their column structure
- */
-
-import chalk from 'chalk';
 import { createClient } from '@supabase/supabase-js';
-import * as dotenv from 'dotenv';
 
-dotenv.config({ path: '.env.local' });
+const SUPABASE_URL = 'https://pvekvqiqrrpugfmpgaup.supabase.co';
+const SUPABASE_SERVICE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2ZWt2cWlxcnJwdWdmbXBnYXVwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MTA0NTA1MiwiZXhwIjoyMDY2NjIxMDUyfQ.EzHZ-WJkjbCXEAVP750VEp38ge35nsjVQ_ajzXadbPE';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-  process.env.SUPABASE_SERVICE_ROLE_KEY || ''
-);
+const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
 
-console.log(chalk.blue.bold('\n🔍 DATABASE SCHEMA CHECK'));
-console.log(chalk.blue('========================\n'));
-
-async function checkSchema() {
+async function checkDatabaseSchema() {
+  console.log('🔍 Checking Database Schema\n');
+  
   try {
-    // Get all tables
-    const { data: tables, error: tablesError } = await supabase.rpc('get_tables', {
-      schema_name: 'public'
-    }).select('*');
-
-    if (tablesError) {
-      // Fallback method
-      console.log(chalk.yellow('Using fallback method to check tables...'));
-      
-      const requiredTables = {
-        'Core Tables': [
-          'games',
-          'players', 
-          'teams',
-          'player_stats',
-          'news_articles',
-          'betting_odds',
-          'weather_data',
-          'injuries'
-        ],
-        'ML Tables': [
-          'ml_predictions',
-          'ml_outcomes',
-          'event_predictions',
-          'ml_model_performance',
-          'correlation_insights'
-        ],
-        'Voice Tables': [
-          'voice_commands',
-          'voice_training_data',
-          'voice_preferences',
-          'voice_analytics'
-        ],
-        'GPU/Performance Tables': [
-          'gpu_optimization_cache',
-          'gpu_training_metrics',
-          'gpu_models',
-          'game_events'
-        ],
-        'Real-time Tables': [
-          'websocket_connections',
-          'broadcast_queue',
-          'websocket_rooms'
-        ],
-        'System Tables': [
-          'system_metrics',
-          'sla_violations',
-          'alert_configs',
-          'performance_benchmarks'
-        ]
-      };
-
-      for (const [category, tableList] of Object.entries(requiredTables)) {
-        console.log(chalk.yellow(`\n${category}:`));
-        
-        for (const tableName of tableList) {
-          // Try to select from the table
-          const { error } = await supabase
-            .from(tableName)
-            .select('*')
-            .limit(0);
-          
-          const exists = !error || error.code !== '42P01'; // 42P01 = table does not exist
-          console.log(`  ${exists ? '✅' : '❌'} ${tableName}`);
-        }
-      }
-    } else {
-      // If RPC works, show detailed info
-      console.log(chalk.green('Found tables in database:\n'));
-      tables?.forEach((table: any) => {
-        console.log(chalk.cyan(`📋 ${table.table_name}`));
-      });
-    }
-
-    // Check specific table columns
-    console.log(chalk.yellow('\n📊 Checking games table structure...'));
-    const { data: gamesSample, error: gamesError } = await supabase
+    // First, let's just try to get one game record to see its structure
+    const { data: sampleGame, error: gameError } = await supabase
       .from('games')
       .select('*')
-      .limit(1);
-
-    if (!gamesError && gamesSample && gamesSample.length > 0) {
-      console.log(chalk.green('Games table columns:'));
-      Object.keys(gamesSample[0]).forEach(col => {
-        console.log(`  - ${col}`);
-      });
-    }
-
-    // Check ML predictions table
-    console.log(chalk.yellow('\n🤖 Checking ML predictions table...'));
-    const { data: mlSample, error: mlError } = await supabase
-      .from('ml_predictions')
-      .select('*')
-      .limit(1);
-
-    if (!mlError) {
-      console.log(chalk.green('✅ ML predictions table exists'));
-      if (mlSample && mlSample.length > 0) {
-        console.log('Columns:', Object.keys(mlSample[0]).join(', '));
-      }
-    } else {
-      console.log(chalk.red('❌ ML predictions table not found'));
-    }
-
-    // Count records in key tables
-    console.log(chalk.yellow('\n📈 Record counts:'));
+      .limit(1)
+      .single();
     
-    const countTables = ['games', 'players', 'ml_predictions', 'news_articles'];
-    for (const table of countTables) {
-      const { count, error } = await supabase
-        .from(table)
-        .select('*', { count: 'exact', head: true });
-      
-      if (!error) {
-        console.log(`  ${table}: ${count || 0} records`);
-      }
+    if (gameError) {
+      console.error('Error fetching game:', gameError);
+    } else if (sampleGame) {
+      console.log('📊 GAMES TABLE COLUMNS:');
+      console.log(Object.keys(sampleGame).join(', '));
+      console.log('\nSample game record:');
+      console.log(JSON.stringify(sampleGame, null, 2));
     }
-
-  } catch (error: any) {
-    console.error(chalk.red('Error checking schema:'), error.message);
+    
+    // Check player_stats structure
+    const { data: samplePlayerStat, error: statError } = await supabase
+      .from('player_stats')
+      .select('*')
+      .limit(1)
+      .single();
+    
+    if (!statError && samplePlayerStat) {
+      console.log('\n📈 PLAYER_STATS TABLE COLUMNS:');
+      console.log(Object.keys(samplePlayerStat).join(', '));
+    }
+    
+    // Check player_game_logs structure
+    const { data: sampleGameLog, error: logError } = await supabase
+      .from('player_game_logs')
+      .select('*')
+      .limit(1)
+      .single();
+    
+    if (!logError && sampleGameLog) {
+      console.log('\n🏀 PLAYER_GAME_LOGS TABLE COLUMNS:');
+      console.log(Object.keys(sampleGameLog).join(', '));
+    }
+    
+    // Check teams table
+    const { data: sampleTeam, error: teamError } = await supabase
+      .from('teams')
+      .select('*')
+      .limit(1)
+      .single();
+    
+    if (!teamError && sampleTeam) {
+      console.log('\n🏆 TEAMS TABLE COLUMNS:');
+      console.log(Object.keys(sampleTeam).join(', '));
+    }
+    
+  } catch (error) {
+    console.error('Error checking schema:', error);
   }
 }
 
-checkSchema();
+checkDatabaseSchema();
