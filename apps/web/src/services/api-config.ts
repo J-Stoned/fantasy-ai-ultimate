@@ -12,7 +12,7 @@ export const API_CONFIG = {
   FANTASY_PATTERN_API: process.env.NEXT_PUBLIC_FANTASY_PATTERN_API_URL || 'http://localhost:3340',
   
   // WebSocket Services
-  WEBSOCKET_URL: process.env.NEXT_PUBLIC_WEBSOCKET_URL || 'ws://localhost:8080',
+  WEBSOCKET_URL: process.env.NEXT_PUBLIC_WEBSOCKET_URL || 'ws://localhost:3000',
   
   // API Keys (for pattern licensing platform)
   PATTERN_API_KEY: process.env.NEXT_PUBLIC_PATTERN_API_KEY || '',

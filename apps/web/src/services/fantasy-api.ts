@@ -75,7 +75,8 @@ class FantasyAPI {
   private headers: Record<string, string>
 
   constructor() {
-    this.baseUrl = API_CONFIG.FANTASY_PATTERN_API
+    // Use internal API routes instead of external service
+    this.baseUrl = ''
     this.headers = {
       'Content-Type': 'application/json',
     }

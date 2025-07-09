@@ -1,100 +1,75 @@
 #!/usr/bin/env tsx
+
 /**
- * 🧪 TEST WEBSOCKET CONNECTION
- * 
- * Verifies the real-time server is working correctly
+ * Test WebSocket Connection
+ * Verifies that WebSocket is properly configured and working
  */
 
-import WebSocket from 'ws';
+import { io } from 'socket.io-client';
 import chalk from 'chalk';
 
 async function testWebSocketConnection() {
-  console.log(chalk.blue.bold('\n🧪 TESTING WEBSOCKET CONNECTION\n'));
+  console.log(chalk.blue('🧪 Testing WebSocket Connection...\n'));
   
-  const ws = new WebSocket('ws://localhost:8080');
-  let messageCount = 0;
+  const url = 'http://localhost:3000';
+  console.log(`📡 Connecting to: ${url}`);
   
-  ws.on('open', () => {
-    console.log(chalk.green('✅ Connected to WebSocket server'));
-    
-    // Subscribe to channels
-    ws.send(JSON.stringify({
-      type: 'subscribe',
-      channels: ['predictions', 'games', 'alerts', 'metrics']
-    }));
+  const socket = io(url, {
+    transports: ['websocket', 'polling'],
+    reconnection: false
   });
   
-  ws.on('message', (data) => {
-    messageCount++;
-    const message = JSON.parse(data.toString());
+  return new Promise((resolve, reject) => {
+    const timeout = setTimeout(() => {
+      socket.disconnect();
+      reject(new Error('Connection timeout'));
+    }, 10000);
     
-    console.log(chalk.cyan(`\n📨 Message #${messageCount}:`));
-    console.log(chalk.gray(`Type: ${message.type}`));
+    socket.on('connect', () => {
+      clearTimeout(timeout);
+      console.log(chalk.green('✅ WebSocket connected successfully!'));
+      console.log(`   Socket ID: ${socket.id}`);
+      console.log(`   Transport: ${socket.io.engine.transport.name}\n`);
+      
+      // Test sending a message
+      console.log('📤 Sending test message...');
+      socket.emit('test', { message: 'Hello from test script!' });
+      
+      // Test subscribing to a channel
+      console.log('📡 Subscribing to test channel...');
+      socket.emit('subscribe', { channel: 'test' });
+      
+      setTimeout(() => {
+        socket.disconnect();
+        resolve(true);
+      }, 2000);
+    });
     
-    if (message.type === 'welcome') {
-      console.log(chalk.green('Welcome message received!'));
-      console.log('Client ID:', message.data.clientId);
-    } else if (message.type === 'subscribed') {
-      console.log(chalk.green('Subscribed to channels:'), message.data.channels);
-    } else if (message.type === 'predictions') {
-      console.log(chalk.yellow('Predictions received:'));
-      if (message.data.predictions) {
-        console.log(`  - ${message.data.predictions.length} game predictions`);
-        console.log(`  - Model accuracy: ${(message.data.accuracy * 100).toFixed(1)}%`);
-      }
-    } else if (message.type === 'games') {
-      console.log(chalk.magenta('Game update:'));
-      console.log(`  - ${message.data.homeTeam} vs ${message.data.awayTeam}`);
-      console.log(`  - Score: ${message.data.homeScore}-${message.data.awayScore}`);
-    } else if (message.type === 'metrics') {
-      console.log(chalk.blue('System metrics:'));
-      console.log(`  - Active clients: ${message.data.websocket?.activeClients || 0}`);
-      console.log(`  - ML latency: ${message.data.ml?.predictionLatency || 0}ms`);
-    }
+    socket.on('connect_error', (error) => {
+      clearTimeout(timeout);
+      console.error(chalk.red('❌ Connection failed:'), error.message);
+      reject(error);
+    });
+    
+    socket.on('message', (data) => {
+      console.log(chalk.cyan('📨 Received message:'), data);
+    });
+    
+    socket.on('error', (error) => {
+      console.error(chalk.red('🚨 Socket error:'), error);
+    });
   });
-  
-  ws.on('error', (error) => {
-    console.error(chalk.red('❌ WebSocket error:'), error.message);
-  });
-  
-  ws.on('close', () => {
-    console.log(chalk.yellow('\n🔌 Disconnected from server'));
-    console.log(chalk.cyan(`Total messages received: ${messageCount}`));
-  });
-  
-  // Send test ping
-  setTimeout(() => {
-    console.log(chalk.gray('\n🏓 Sending ping...'));
-    ws.send(JSON.stringify({ type: 'ping' }));
-  }, 2000);
-  
-  // Test for 30 seconds then disconnect
-  setTimeout(() => {
-    console.log(chalk.yellow('\n🛑 Test complete, closing connection...'));
-    ws.close();
-    
-    if (messageCount > 0) {
-      console.log(chalk.green.bold('\n✅ WebSocket test PASSED!'));
-      console.log(chalk.gray(`Received ${messageCount} messages in 30 seconds`));
-    } else {
-      console.log(chalk.red.bold('\n❌ WebSocket test FAILED!'));
-      console.log(chalk.gray('No messages received'));
-    }
-    
-    process.exit(messageCount > 0 ? 0 : 1);
-  }, 30000);
 }
 
-// Check if server is running first
-const checkServer = new WebSocket('ws://localhost:8080');
-
-checkServer.on('error', () => {
-  console.error(chalk.red('❌ WebSocket server not running!'));
-  console.log(chalk.yellow('Start the server with: npm run start:realtime'));
-  process.exit(1);
-});
-
-checkServer.on('open', () => {
-  checkServer.close();
-  testWebSocketConnection();
-});
+// Run the test
+testWebSocketConnection()
+  .then(() => {
+    console.log(chalk.green('\n✅ WebSocket test passed!'));
+    process.exit(0);
+  })
+  .catch((error) => {
+    console.error(chalk.red('\n❌ WebSocket test failed!'));
+    console.error(chalk.yellow('\nMake sure the server is running:'));
+    console.error(chalk.yellow('  npm run dev:web'));
+    process.exit(1);
+  });

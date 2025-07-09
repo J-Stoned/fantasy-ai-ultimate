@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Read env vars from .env file and add them to Vercel
+echo "https://pvekvqiqrrpugfmpgaup.supabase.co" | vercel env add NEXT_PUBLIC_SUPABASE_URL production
+echo "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2ZWt2cWlxcnJwdWdmbXBnYXVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEwNDUwNTIsImV4cCI6MjA2NjYyMTA1Mn0.NhVUmDfHDzfch4cldZDOnd8DveAJbBYqv7zKJ6tNqi4" | vercel env add NEXT_PUBLIC_SUPABASE_ANON_KEY production
+echo "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2ZWt2cWlxcnJwdWdmbXBnYXVwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MTA0NTA1MiwiZXhwIjoyMDY2NjIxMDUyfQ.EzHZ-WJkjbCXEAVP750VEp38ge35nsjVQ_ajzXadbPE" | vercel env add SUPABASE_SERVICE_ROLE_KEY production
+echo "dj0yJmk9OXFZV1RQd3djNFBUJmQ9WVdrOU5sRlhVMFkyTTJNbWNHbzlNQT09JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTMy" | vercel env add YAHOO_CLIENT_ID production
+echo "5c4a5b7e2f9a8d3c1b6e9f4a7d2c8e3b0f1a9d5c" | vercel env add YAHOO_CLIENT_SECRET production
+echo "https://fantasy-ai-ultimate.vercel.app/api/auth/callback/yahoo" | vercel env add YAHOO_REDIRECT_URI production

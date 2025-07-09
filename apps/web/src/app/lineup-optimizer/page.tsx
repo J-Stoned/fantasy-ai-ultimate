@@ -47,6 +47,11 @@ export default function LineupOptimizerPage() {
   const [excludedPlayers, setExcludedPlayers] = useState<Set<string>>(new Set())
   const [maxOwnership, setMaxOwnership] = useState(100)
   const [minProjection, setMinProjection] = useState(0)
+  const [yahooConnection, setYahooConnection] = useState<any>(null)
+  const [selectedLeague, setSelectedLeague] = useState<string>('')
+  const [selectedTeam, setSelectedTeam] = useState<string>('')
+  const [isSyncingToYahoo, setIsSyncingToYahoo] = useState(false)
+  const [syncStatus, setSyncStatus] = useState<string>('')
   
   // Subscribe to lineup updates
   useWebSocket(WS_CHANNELS.LINEUP_CHANGES, (update) => {
@@ -58,6 +63,11 @@ export default function LineupOptimizerPage() {
   useEffect(() => {
     loadPlayerPool()
   }, [sport, format])
+  
+  // Check Yahoo connection on mount
+  useEffect(() => {
+    checkYahooConnection()
+  }, [])
   
   const loadPlayerPool = () => {
     // In production, this would fetch from API
@@ -134,6 +144,86 @@ export default function LineupOptimizerPage() {
       setLockedPlayers(new Set(lockedPlayers))
     }
     setExcludedPlayers(newExcluded)
+  }
+  
+  const checkYahooConnection = async () => {
+    try {
+      const response = await fetch('/api/platform-connections/yahoo')
+      if (response.ok) {
+        const data = await response.json()
+        if (data.connection && data.connection.isActive) {
+          setYahooConnection(data.connection)
+          // Load user's Yahoo leagues
+          loadYahooLeagues()
+        }
+      }
+    } catch (error) {
+      console.error('Failed to check Yahoo connection:', error)
+    }
+  }
+  
+  const loadYahooLeagues = async () => {
+    try {
+      const response = await fetch('/api/fantasy/yahoo/leagues')
+      if (response.ok) {
+        const data = await response.json()
+        if (data.leagues && data.leagues.length > 0) {
+          setSelectedLeague(data.leagues[0].platformLeagueId)
+          setSelectedTeam(data.leagues[0].teams[0]?.id || '')
+        }
+      }
+    } catch (error) {
+      console.error('Failed to load Yahoo leagues:', error)
+    }
+  }
+  
+  const syncLineupToYahoo = async () => {
+    if (!lineup || !selectedTeam || !yahooConnection) {
+      setSyncStatus('Missing required data')
+      return
+    }
+    
+    setIsSyncingToYahoo(true)
+    setSyncStatus('Syncing lineup to Yahoo...')
+    
+    try {
+      // Map our lineup to Yahoo player keys
+      const changes = lineup.players.map(player => ({
+        playerId: `nfl.p.${player.playerId}`, // This would need proper mapping
+        position: player.position === 'FLEX' ? 'W/R/T' : player.position
+      }))
+      
+      // Determine coverage type based on sport
+      const coverageType = sport === 'NFL' ? 'week' : 'date'
+      const coverageValue = sport === 'NFL' ? 
+        new Date().getWeek() : // Would need proper week calculation
+        new Date().toISOString().split('T')[0]
+      
+      const response = await fetch('/api/fantasy/yahoo/lineup', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          teamKey: selectedTeam,
+          leagueId: selectedLeague,
+          changes,
+          coverageType,
+          coverageValue
+        })
+      })
+      
+      if (response.ok) {
+        const result = await response.json()
+        setSyncStatus('✅ Lineup synced to Yahoo successfully!')
+        setTimeout(() => setSyncStatus(''), 5000)
+      } else {
+        const error = await response.json()
+        setSyncStatus(`❌ Sync failed: ${error.error}`)
+      }
+    } catch (error) {
+      setSyncStatus(`❌ Sync error: ${error.message}`)
+    } finally {
+      setIsSyncingToYahoo(false)
+    }
   }
   
   return (
@@ -393,6 +483,54 @@ export default function LineupOptimizerPage() {
                     Save
                   </Button>
                 </div>
+                
+                {/* Yahoo Sync */}
+                {yahooConnection && format === 'season' && (
+                  <div className="mt-6 p-4 rounded-lg border border-yellow-500/20 bg-yellow-500/5">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded bg-purple-600 flex items-center justify-center">
+                          <span className="text-white font-bold text-sm">Y!</span>
+                        </div>
+                        <span className="text-white font-medium">Yahoo Fantasy Sync</span>
+                      </div>
+                      <Badge variant="success" size="sm">Connected</Badge>
+                    </div>
+                    
+                    {selectedLeague && (
+                      <div className="space-y-3">
+                        <Select
+                          value={selectedTeam}
+                          onChange={(e) => setSelectedTeam(e.target.value)}
+                          className="w-full"
+                        >
+                          <option value="">Select Team</option>
+                          {/* Teams would be loaded dynamically */}
+                          <option value={selectedTeam}>{selectedTeam}</option>
+                        </Select>
+                        
+                        <Button
+                          onClick={syncLineupToYahoo}
+                          loading={isSyncingToYahoo}
+                          className="w-full"
+                          variant="primary"
+                        >
+                          {isSyncingToYahoo ? 'Syncing...' : 'Sync Lineup to Yahoo'}
+                        </Button>
+                        
+                        {syncStatus && (
+                          <div className={`text-sm ${
+                            syncStatus.includes('✅') ? 'text-green-400' : 
+                            syncStatus.includes('❌') ? 'text-red-400' : 
+                            'text-yellow-400'
+                          }`}>
+                            {syncStatus}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
               </>
             ) : (
               <div className="text-center py-12">
@@ -402,6 +540,30 @@ export default function LineupOptimizerPage() {
                 <p className="text-gray-400">
                   Configure your settings and click optimize to generate a lineup
                 </p>
+              </div>
+            )}
+            
+            {/* Yahoo Connect Prompt */}
+            {!yahooConnection && format === 'season' && lineup && (
+              <div className="mt-6 p-4 rounded-lg border border-yellow-500/20 bg-yellow-500/5">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded bg-purple-600 flex items-center justify-center">
+                    <span className="text-white font-bold">Y!</span>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-white font-medium">Connect Yahoo Fantasy</h4>
+                    <p className="text-sm text-gray-400 mt-1">
+                      Connect your Yahoo account to sync lineups directly
+                    </p>
+                  </div>
+                  <Button
+                    onClick={() => window.location.href = '/import-league?platform=yahoo'}
+                    variant="primary"
+                    size="sm"
+                  >
+                    Connect
+                  </Button>
+                </div>
               </div>
             )}
           </CardContent>
