@@ -27,7 +27,7 @@ console.log('   Database → Logs → Look for suspicious activity\n');
 
 console.log(chalk.red('═'.repeat(60)));
 console.log(chalk.red.bold('\nTHE FOLLOWING CREDENTIALS ARE COMPROMISED:'));
-console.log(chalk.red('- Database Password: IL36Z9I7tV2629Lr'));
+console.log(chalk.red('- Database Password: ${DB_PASSWORD}'));
 console.log(chalk.red('- Project URL: https://pvekvqiqrrpugfmpgaup.supabase.co'));
 console.log(chalk.red('- All API keys associated with this project'));
 console.log(chalk.red('═'.repeat(60)));
@@ -51,7 +51,7 @@ async function checkOldCredentials() {
     const response = await fetch(`${oldUrl}/rest/v1/`, {
       method: 'GET',
       headers: {
-        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2ZWt2cWlxcnJwdWdmbXBnYXVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEwNDUwNTIsImV4cCI6MjA2NjYyMTA1Mn0.NhVUmDfHDzfch4cldZDOnd8DveAJbBYqv7zKJ6tNqi4',
+        'apikey': 'process.env.SUPABASE_SERVICE_ROLE_KEY || '',
       },
     });
     

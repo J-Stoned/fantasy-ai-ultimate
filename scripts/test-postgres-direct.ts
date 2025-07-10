@@ -4,9 +4,9 @@ import { createClient } from '@supabase/supabase-js';
 console.log('🔍 Testing Supabase Connection Methods\n');
 
 // Parse connection details from DATABASE_URL
-const DATABASE_URL = process.env.DATABASE_URL || 'postgresql://postgres:IL36Z9I7tV2629Lr@db.pvekvqiqrrpugfmpgaup.supabase.co:5432/postgres';
+const DATABASE_URL = process.env.DATABASE_URL || 'postgresql://postgres:${DB_PASSWORD}@db.pvekvqiqrrpugfmpgaup.supabase.co:5432/postgres';
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://pvekvqiqrrpugfmpgaup.supabase.co';
-const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2ZWt2cWlxcnJwdWdmbXBnYXVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEwNDUwNTIsImV4cCI6MjA2NjYyMTA1Mn0.NhVUmDfHDzfch4cldZDOnd8DveAJbBYqv7zKJ6tNqi4';
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 
 console.log('Connection Details:');
 console.log('- Database URL:', DATABASE_URL.substring(0, 50) + '...');

@@ -53,7 +53,7 @@ const REQUIRED_SECRETS: SecretCheck[] = [
     name: 'DATABASE_URL',
     required: true,
     pattern: /^postgresql:\/\/[^:]+:[^@]+@[^:]+:\d+\/\w+/,
-    validator: (value: string) => !value.includes('IL36Z9I7tV2629Lr'),
+    validator: (value: string) => !value.includes('${DB_PASSWORD}'),
     description: 'PostgreSQL connection string',
   },
   
@@ -102,7 +102,7 @@ const DANGEROUS_VALUES = [
   'YOUR_PROJECT',
   'YOUR_KEY',
   'example',
-  'IL36Z9I7tV2629Lr', // Known exposed password
+  '${DB_PASSWORD}', // Known exposed password
 ];
 
 class SecretVerifier {
@@ -173,7 +173,7 @@ class SecretVerifier {
   private checkForDangerousValues() {
     const envContent = readFileSync(envPath, 'utf8');
     
-    if (envContent.includes('IL36Z9I7tV2629Lr')) {
+    if (envContent.includes('${DB_PASSWORD}')) {
       this.errors.push('❌ CRITICAL: Exposed password found in .env.local!');
     }
   }

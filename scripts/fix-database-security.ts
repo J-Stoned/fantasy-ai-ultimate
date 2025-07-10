@@ -7,7 +7,7 @@ console.log('🔐 Fixing Supabase Database Security Issues\n');
 
 // Get Supabase credentials
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://pvekvqiqrrpugfmpgaup.supabase.co';
-const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2ZWt2cWlxcnJwdWdmbXBnYXVwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MTA0NTA1MiwiZXhwIjoyMDY2NjIxMDUyfQ.EzHZ-WJkjbCXEAVP750VEp38ge35nsjVQ_ajzXadbPE';
+const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || 'process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 
 // Create Supabase client with service role key
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
@@ -134,7 +134,7 @@ async function main() {
   
   console.log('Option 3: Use psql directly');
   console.log('1. Install PostgreSQL client');
-  console.log('2. Connect: psql "postgresql://postgres:IL36Z9I7tV2629Lr@db.pvekvqiqrrpugfmpgaup.supabase.co:5432/postgres"');
+  console.log('2. Connect: psql "postgresql://postgres:${DB_PASSWORD}@db.pvekvqiqrrpugfmpgaup.supabase.co:5432/postgres"');
   console.log('3. Run the SQL files manually\n');
   
   console.log('📁 Migration files created:');

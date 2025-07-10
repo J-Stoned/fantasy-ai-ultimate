@@ -85,7 +85,7 @@ class SecurityChecker {
       'key',
       'token',
       'exposed',
-      'IL36Z9I7tV2629Lr', // Known exposed password
+      '${DB_PASSWORD}', // Known exposed password
     ];
 
     for (const term of dangerousCommits) {
