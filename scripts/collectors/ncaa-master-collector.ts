@@ -66,6 +66,14 @@ export class NCAAMasterCollector extends BaseCollector {
       { name: 'Big 12', id: '8' },
       { name: 'SEC', id: '23' },
       { name: 'Pac-12', id: '21' }
+    ],
+    baseball: [
+      { name: 'SEC', id: '23' },
+      { name: 'ACC', id: '2' },
+      { name: 'Big 12', id: '8' },
+      { name: 'Pac-12', id: '21' },
+      { name: 'Big Ten', id: '7' },
+      { name: 'Big West', id: '13' }
     ]
   };
   
@@ -141,6 +149,48 @@ export class NCAAMasterCollector extends BaseCollector {
     { id: '248', name: 'Houston', conf: 'AAC' }
   ];
   
+  // Top baseball programs
+  private readonly TOP_BASEBALL_TEAMS = [
+    // SEC powerhouses
+    { id: '8', name: 'Arkansas', conf: 'SEC' },
+    { id: '99', name: 'LSU', conf: 'SEC' },
+    { id: '61', name: 'Florida', conf: 'SEC' },
+    { id: '344', name: 'Mississippi State', conf: 'SEC' },
+    { id: '145', name: 'Ole Miss', conf: 'SEC' },
+    { id: '2633', name: 'Tennessee', conf: 'SEC' },
+    { id: '333', name: 'Alabama', conf: 'SEC' },
+    { id: '238', name: 'Vanderbilt', conf: 'SEC' },
+    
+    // ACC contenders
+    { id: '52', name: 'Florida State', conf: 'ACC' },
+    { id: '153', name: 'North Carolina', conf: 'ACC' },
+    { id: '2390', name: 'Miami', conf: 'ACC' },
+    { id: '259', name: 'Virginia Tech', conf: 'ACC' },
+    { id: '228', name: 'Clemson', conf: 'ACC' },
+    { id: '152', name: 'NC State', conf: 'ACC' },
+    
+    // Big 12 teams
+    { id: '251', name: 'Texas', conf: 'Big 12' },
+    { id: '2628', name: 'TCU', conf: 'Big 12' },
+    { id: '197', name: 'Oklahoma State', conf: 'Big 12' },
+    { id: '2641', name: 'Texas Tech', conf: 'Big 12' },
+    
+    // Pac-12 programs
+    { id: '12', name: 'Arizona', conf: 'Pac-12' },
+    { id: '204', name: 'Oregon State', conf: 'Pac-12' },
+    { id: '24', name: 'Stanford', conf: 'Pac-12' },
+    { id: '26', name: 'UCLA', conf: 'Pac-12' },
+    
+    // Big West dominants
+    { id: '299', name: 'Long Beach State', conf: 'Big West' },
+    { id: '2239', name: 'Cal State Fullerton', conf: 'Big West' },
+    
+    // Other notable programs
+    { id: '97', name: 'Louisville', conf: 'ACC' },
+    { id: '151', name: 'ECU', conf: 'AAC' },
+    { id: '59', name: 'Georgia Tech', conf: 'ACC' }
+  ];
+  
   constructor(config?: CollectorConfig) {
     super(config);
     console.log(chalk.blue('🎓 NCAA Master Collector initialized'));
@@ -156,10 +206,13 @@ export class NCAAMasterCollector extends BaseCollector {
       // Phase 2: Collect college basketball
       await this.collectCollegeBasketball();
       
-      // Phase 3: Collect draft data
+      // Phase 3: Collect college baseball
+      await this.collectCollegeBaseball();
+      
+      // Phase 4: Collect draft data
       await this.collectDraftData();
       
-      // Phase 4: Collect recent games and stats
+      // Phase 5: Collect recent games and stats
       await this.collectRecentGames();
       
       this.printStats();
@@ -215,14 +268,38 @@ export class NCAAMasterCollector extends BaseCollector {
   }
   
   /**
+   * Collect college baseball players and teams
+   */
+  private async collectCollegeBaseball(): Promise<void> {
+    console.log(chalk.yellow('\n⚾ Collecting College Baseball data...\n'));
+    
+    const teams = this.TOP_BASEBALL_TEAMS;
+    const batches = this.chunkArray(teams, 5);
+    
+    for (let i = 0; i < batches.length; i++) {
+      console.log(chalk.gray(`Batch ${i + 1}/${batches.length}:`));
+      
+      await Promise.all(
+        batches[i].map(team => 
+          this.rateLimiter(() => this.collectTeamRoster(team, 'baseball'))
+        )
+      );
+    }
+    
+    console.log(chalk.green(`✓ Collected baseball players`));
+  }
+  
+  /**
    * Collect roster for a specific team
    */
   private async collectTeamRoster(
     team: { id: string; name: string; conf: string },
-    sport: 'football' | 'basketball'
+    sport: 'football' | 'basketball' | 'baseball'
   ): Promise<void> {
     try {
-      const sportPath = sport === 'football' ? 'college-football' : 'mens-college-basketball';
+      const sportPath = sport === 'football' ? 'college-football' : 
+                       sport === 'basketball' ? 'mens-college-basketball' : 
+                       'college-baseball';
       
       const response = await this.retryableApiCall(async () => {
         return await axios.get(
@@ -256,12 +333,14 @@ export class NCAAMasterCollector extends BaseCollector {
    */
   private async processNCAAPlayer(
     player: NCAAPlayer,
-    sport: 'football' | 'basketball',
+    sport: 'football' | 'basketball' | 'baseball',
     teamInfo: { id: string; name: string; conf: string },
     teamData: any
   ): Promise<void> {
     try {
-      const sportPrefix = sport === 'football' ? 'college-football' : 'mens-college-basketball';
+      const sportPrefix = sport === 'football' ? 'college-football' : 
+                         sport === 'basketball' ? 'mens-college-basketball' : 
+                         'college-baseball';
       
       // Generate photo URLs
       const photoUrls = [];
@@ -547,7 +626,7 @@ export class NCAAMasterCollector extends BaseCollector {
   private async processNCAATeamStats(
     teamData: any,
     gameId: number,
-    sport: 'football' | 'basketball'
+    sport: 'football' | 'basketball' | 'baseball'
   ): Promise<void> {
     // Get top performers from each statistical category
     for (const category of teamData.statistics || []) {
@@ -565,7 +644,7 @@ export class NCAAMasterCollector extends BaseCollector {
   private async processNCAAPlayerStats(
     playerData: any,
     gameId: number,
-    sport: 'football' | 'basketball',
+    sport: 'football' | 'basketball' | 'baseball',
     category: string
   ): Promise<void> {
     try {
@@ -578,7 +657,9 @@ export class NCAAMasterCollector extends BaseCollector {
       
       if (!playerId) {
         // Create player if not found
-        const sportPrefix = sport === 'football' ? 'college-football' : 'mens-college-basketball';
+        const sportPrefix = sport === 'football' ? 'college-football' : 
+                           sport === 'basketball' ? 'mens-college-basketball' : 
+                           'college-baseball';
         
         playerId = await this.upsertPlayer({
           external_id: `espn_ncaa_${sport}_${athlete.id}`,
@@ -601,11 +682,15 @@ export class NCAAMasterCollector extends BaseCollector {
       // Parse stats based on sport and category
       const stats = sport === 'football' 
         ? this.parseNCAAFootballStats(playerData.stats, category)
-        : this.parseNCAABasketballStats(playerData.stats, category);
+        : sport === 'basketball'
+        ? this.parseNCAABasketballStats(playerData.stats, category)
+        : this.parseNCAABaseballStats(playerData.stats, category);
       
       const fantasyPoints = sport === 'football'
         ? this.calculateNCAAFootballFantasy(stats)
-        : this.calculateNCAABasketballFantasy(stats);
+        : sport === 'basketball'
+        ? this.calculateNCAABasketballFantasy(stats)
+        : this.calculateNCAABaseballFantasy(stats);
       
       // Create game log
       if (fantasyPoints > 0 || this.hasSignificantNCAAStats(stats)) {
@@ -688,6 +773,43 @@ export class NCAAMasterCollector extends BaseCollector {
   }
   
   /**
+   * Parse NCAA baseball stats
+   */
+  private parseNCAABaseballStats(statsArray: string[], category: string): any {
+    const stats: any = { category, level: 'college' };
+    
+    if (!statsArray || statsArray.length === 0) return stats;
+    
+    // Baseball stat categories
+    if (category === 'batting' || !category) {
+      stats.at_bats = parseInt(statsArray[0]) || 0;
+      stats.runs = parseInt(statsArray[1]) || 0;
+      stats.hits = parseInt(statsArray[2]) || 0;
+      stats.doubles = parseInt(statsArray[3]) || 0;
+      stats.triples = parseInt(statsArray[4]) || 0;
+      stats.home_runs = parseInt(statsArray[5]) || 0;
+      stats.rbis = parseInt(statsArray[6]) || 0;
+      stats.walks = parseInt(statsArray[7]) || 0;
+      stats.strikeouts = parseInt(statsArray[8]) || 0;
+      stats.stolen_bases = parseInt(statsArray[9]) || 0;
+      stats.batting_average = parseFloat(statsArray[10]) || 0;
+    } else if (category === 'pitching') {
+      stats.innings_pitched = parseFloat(statsArray[0]) || 0;
+      stats.hits_allowed = parseInt(statsArray[1]) || 0;
+      stats.runs_allowed = parseInt(statsArray[2]) || 0;
+      stats.earned_runs = parseInt(statsArray[3]) || 0;
+      stats.walks_allowed = parseInt(statsArray[4]) || 0;
+      stats.strikeouts_pitched = parseInt(statsArray[5]) || 0;
+      stats.wins = parseInt(statsArray[6]) || 0;
+      stats.losses = parseInt(statsArray[7]) || 0;
+      stats.saves = parseInt(statsArray[8]) || 0;
+      stats.era = parseFloat(statsArray[9]) || 0;
+    }
+    
+    return stats;
+  }
+  
+  /**
    * Calculate fantasy points for NCAA football
    */
   private calculateNCAAFootballFantasy(stats: any): number {
@@ -723,11 +845,41 @@ export class NCAAMasterCollector extends BaseCollector {
   }
   
   /**
+   * Calculate fantasy points for NCAA baseball
+   */
+  private calculateNCAABaseballFantasy(stats: any): number {
+    let points = 0;
+    
+    // Batting stats
+    points += (stats.runs || 0) * 2;
+    points += (stats.hits || 0) * 3;
+    points += (stats.doubles || 0) * 1;
+    points += (stats.triples || 0) * 2;
+    points += (stats.home_runs || 0) * 4;
+    points += (stats.rbis || 0) * 2;
+    points += (stats.walks || 0) * 1;
+    points += (stats.stolen_bases || 0) * 2;
+    points += (stats.strikeouts || 0) * -0.5;
+    
+    // Pitching stats
+    points += (stats.innings_pitched || 0) * 3;
+    points += (stats.strikeouts_pitched || 0) * 1;
+    points += (stats.wins || 0) * 5;
+    points += (stats.saves || 0) * 5;
+    points += (stats.earned_runs || 0) * -2;
+    points += (stats.hits_allowed || 0) * -0.5;
+    points += (stats.walks_allowed || 0) * -0.5;
+    
+    return Math.round(points * 100) / 100;
+  }
+  
+  /**
    * Check if NCAA stats are significant
    */
   private hasSignificantNCAAStats(stats: any): boolean {
     const significantStats = [
-      'completions', 'carries', 'receptions', 'points', 'rebounds', 'assists'
+      'completions', 'carries', 'receptions', 'points', 'rebounds', 'assists',
+      'hits', 'runs', 'rbis', 'innings_pitched', 'strikeouts_pitched'
     ];
     
     return significantStats.some(stat => (stats[stat] || 0) > 0);
