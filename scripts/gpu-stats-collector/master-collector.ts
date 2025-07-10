@@ -273,16 +273,49 @@ class MasterGPUCollector {
    * Get all players for mapping
    */
   private async getAllPlayers(): Promise<any[]> {
-    const { data, error } = await this.supabase
+    console.log(chalk.cyan('Loading all players from database...'));
+    
+    // First get the total count
+    const { count } = await this.supabase
       .from('players')
-      .select('id, external_id')
+      .select('*', { count: 'exact', head: true })
       .not('external_id', 'is', null);
     
-    if (error) {
-      throw new Error(`Failed to fetch players: ${error.message}`);
+    if (!count) {
+      console.log(chalk.yellow('No players found'));
+      return [];
     }
     
-    return data || [];
+    console.log(chalk.yellow(`Found ${count} total players, loading in batches...`));
+    
+    // Paginate through all players
+    const allPlayers: any[] = [];
+    const pageSize = 1000;
+    let offset = 0;
+    
+    while (offset < count) {
+      const { data, error } = await this.supabase
+        .from('players')
+        .select('id, external_id')
+        .not('external_id', 'is', null)
+        .range(offset, offset + pageSize - 1);
+      
+      if (error) {
+        throw new Error(`Failed to fetch players at offset ${offset}: ${error.message}`);
+      }
+      
+      if (!data || data.length === 0) break;
+      
+      allPlayers.push(...data);
+      offset += pageSize;
+      
+      // Show progress
+      if (offset % 5000 === 0 || offset >= count) {
+        console.log(chalk.gray(`  Loaded ${Math.min(offset, count)} / ${count} players...`));
+      }
+    }
+    
+    return allPlayers;
   }
   
   /**

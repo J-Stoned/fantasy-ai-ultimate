@@ -154,41 +154,41 @@ class UltimateStatsCollectorV3 {
   private async loadPlayerCache(sport?: string) {
     console.log('Loading player database...');
     
-    // Load ALL players, not just first 1000
+    // First get total count
+    const { count } = await this.supabase
+      .from('players')
+      .select('*', { count: 'exact', head: true });
+    
+    console.log(`  Total players: ${count}`);
+    
+    // Load ALL players with proper pagination (Supabase limit is 1000)
     let allPlayers: any[] = [];
     let offset = 0;
-    const limit = 10000;
+    const pageSize = 1000;
     
-    while (true) {
-      let query = this.supabase
+    while (offset < (count || 0)) {
+      const { data: players, error } = await this.supabase
         .from('players')
         .select('id, name, sport')
-        .range(offset, offset + limit - 1)
+        .range(offset, Math.min(offset + pageSize - 1, (count || 0) - 1))
         .order('id');
-      
-      // Filter by sport if specified
-      if (sport) {
-        query = query.eq('sport', sport);
-      }
-      
-      const { data: players, error } = await query;
       
       if (error) {
         console.error('Error loading players:', error);
         break;
       }
       
-      if (!players || players.length === 0) break;
-      
-      allPlayers = allPlayers.concat(players);
-      offset += limit;
-      
-      // Show progress
-      if (offset % 10000 === 0) {
-        console.log(`  Loaded ${offset} players...`);
+      if (players && players.length > 0) {
+        allPlayers = allPlayers.concat(players);
+        offset += players.length;
+        
+        // Show progress
+        if (offset % 5000 === 0 || offset === count) {
+          console.log(`  Loaded ${offset}/${count} players...`);
+        }
+      } else {
+        break;
       }
-      
-      if (players.length < limit) break;
     }
     
     // Build cache with multiple name variations
@@ -544,14 +544,23 @@ class UltimateStatsCollectorV3 {
     
     // Insert game logs
     if (this.gameLogsBuffer.length > 0) {
+      // Remove duplicates based on player_id and game_id
+      const uniqueGameLogs = new Map<string, GameLog>();
+      this.gameLogsBuffer.forEach(log => {
+        const key = `${log.player_id}_${log.game_id}`;
+        uniqueGameLogs.set(key, log);
+      });
+      
+      const deduplicatedLogs = Array.from(uniqueGameLogs.values());
+      
       const { error } = await this.supabase
         .from('player_game_logs')
-        .upsert(this.gameLogsBuffer, {
+        .upsert(deduplicatedLogs, {
           onConflict: 'player_id,game_id'
         });
       
       if (!error) {
-        this.stats.totalGameLogs += this.gameLogsBuffer.length;
+        this.stats.totalGameLogs += deduplicatedLogs.length;
       } else {
         console.error('Game logs insert error:', error);
       }

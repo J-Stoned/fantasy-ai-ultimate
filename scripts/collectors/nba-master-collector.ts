@@ -118,9 +118,10 @@ export class NBAMasterCollector extends BaseCollector {
     for (const team of this.NBA_TEAMS) {
       try {
         // Check if team exists in cache
-        const cacheKey = `team_nba_${team.name}`;
+        const fullName = `${team.city} ${team.name}`;
+        const cacheKey = `team_nba_${fullName}`;
         if (this.cache.get(cacheKey)) {
-          console.log(chalk.gray(`  ${team.name} already exists (cached)`));
+          console.log(chalk.gray(`  ${fullName} already exists (cached)`));
           continue;
         }
         
@@ -133,7 +134,7 @@ export class NBAMasterCollector extends BaseCollector {
         
         if (existingTeam) {
           this.cache.set(cacheKey, existingTeam.id);
-          console.log(chalk.gray(`  ${team.name} already exists`));
+          console.log(chalk.gray(`  ${fullName} already exists`));
           continue;
         }
         
@@ -142,22 +143,22 @@ export class NBAMasterCollector extends BaseCollector {
           .from('teams')
           .insert({
             external_id: `espn_nba_${team.espnId}`,
-            name: team.name,
+            name: `${team.city} ${team.name}`,
             city: team.city,
             abbreviation: team.tricode,
-            sport_id: 'nba',
-            league_id: 'nba',
+            sport: 'NBA',
+            league: 'NBA',
             logo_url: `https://a.espncdn.com/i/teamlogos/nba/500/${team.tricode.toLowerCase()}.png`
           })
           .select('id')
           .single();
         
         if (error) {
-          console.error(`Error creating team ${team.name}:`, error);
+          console.error(`Error creating team ${fullName}:`, error);
         } else if (data) {
           created++;
           this.cache.set(cacheKey, data.id);
-          console.log(chalk.green(`  ✓ Created ${team.name}`));
+          console.log(chalk.green(`  ✓ Created ${fullName}`));
         }
         
       } catch (error) {
@@ -188,7 +189,8 @@ export class NBAMasterCollector extends BaseCollector {
           console.log(chalk.gray(`  Found ${athletes.length} players`));
           
           // Get team_id from database or cache
-          const cacheKey = `team_nba_${team.name}`;
+          const fullName = `${team.city} ${team.name}`;
+          const cacheKey = `team_nba_${fullName}`;
           let teamId = this.cache.get(cacheKey);
           
           if (!teamId) {
@@ -243,7 +245,7 @@ export class NBAMasterCollector extends BaseCollector {
         firstname: player.firstName,
         lastname: player.lastName,
         name: player.fullName || `${player.firstName} ${player.lastName}`,
-        sport: 'basketball',
+        sport: 'NBA',
         sport_id: 'nba',
         position: player.position?.abbreviation ? [player.position.abbreviation] : [],
         team_id: teamId,
