@@ -1,10 +1,10 @@
-import { BaseCollector } from './base-collector';
-import { SportType, CollectedPlayer, CollectedGame } from './types';
+import { BaseCollector, CollectorConfig } from './base-collector';
+import axios from 'axios';
 import chalk from 'chalk';
-import * as BloomFilter from 'bloom-filter';
 
 interface NBATeam {
   id: string;
+  espnId: string;  // ESPN's team ID
   tricode: string;
   name: string;
   city: string;
@@ -25,59 +25,59 @@ interface NBAPlayer {
 
 /**
  * NBA Master Collector
- * Uses free NBA API endpoints for comprehensive data collection
+ * Uses ESPN API for comprehensive NBA data collection
  */
 export class NBAMasterCollector extends BaseCollector {
   private readonly NBA_TEAMS: NBATeam[] = [
     // Atlantic Division
-    { id: '1610612738', tricode: 'BOS', name: 'Celtics', city: 'Boston' },
-    { id: '1610612751', tricode: 'BKN', name: 'Nets', city: 'Brooklyn' },
-    { id: '1610612752', tricode: 'NYK', name: 'Knicks', city: 'New York' },
-    { id: '1610612755', tricode: 'PHI', name: '76ers', city: 'Philadelphia' },
-    { id: '1610612761', tricode: 'TOR', name: 'Raptors', city: 'Toronto' },
+    { id: '1610612738', espnId: '2', tricode: 'BOS', name: 'Celtics', city: 'Boston' },
+    { id: '1610612751', espnId: '17', tricode: 'BKN', name: 'Nets', city: 'Brooklyn' },
+    { id: '1610612752', espnId: '18', tricode: 'NYK', name: 'Knicks', city: 'New York' },
+    { id: '1610612755', espnId: '20', tricode: 'PHI', name: '76ers', city: 'Philadelphia' },
+    { id: '1610612761', espnId: '28', tricode: 'TOR', name: 'Raptors', city: 'Toronto' },
     
     // Central Division
-    { id: '1610612741', tricode: 'CHI', name: 'Bulls', city: 'Chicago' },
-    { id: '1610612739', tricode: 'CLE', name: 'Cavaliers', city: 'Cleveland' },
-    { id: '1610612765', tricode: 'DET', name: 'Pistons', city: 'Detroit' },
-    { id: '1610612754', tricode: 'IND', name: 'Pacers', city: 'Indiana' },
-    { id: '1610612749', tricode: 'MIL', name: 'Bucks', city: 'Milwaukee' },
+    { id: '1610612741', espnId: '4', tricode: 'CHI', name: 'Bulls', city: 'Chicago' },
+    { id: '1610612739', espnId: '5', tricode: 'CLE', name: 'Cavaliers', city: 'Cleveland' },
+    { id: '1610612765', espnId: '8', tricode: 'DET', name: 'Pistons', city: 'Detroit' },
+    { id: '1610612754', espnId: '11', tricode: 'IND', name: 'Pacers', city: 'Indiana' },
+    { id: '1610612749', espnId: '15', tricode: 'MIL', name: 'Bucks', city: 'Milwaukee' },
     
     // Southeast Division
-    { id: '1610612737', tricode: 'ATL', name: 'Hawks', city: 'Atlanta' },
-    { id: '1610612766', tricode: 'CHA', name: 'Hornets', city: 'Charlotte' },
-    { id: '1610612748', tricode: 'MIA', name: 'Heat', city: 'Miami' },
-    { id: '1610612753', tricode: 'ORL', name: 'Magic', city: 'Orlando' },
-    { id: '1610612764', tricode: 'WAS', name: 'Wizards', city: 'Washington' },
+    { id: '1610612737', espnId: '1', tricode: 'ATL', name: 'Hawks', city: 'Atlanta' },
+    { id: '1610612766', espnId: '30', tricode: 'CHA', name: 'Hornets', city: 'Charlotte' },
+    { id: '1610612748', espnId: '14', tricode: 'MIA', name: 'Heat', city: 'Miami' },
+    { id: '1610612753', espnId: '19', tricode: 'ORL', name: 'Magic', city: 'Orlando' },
+    { id: '1610612764', espnId: '27', tricode: 'WAS', name: 'Wizards', city: 'Washington' },
     
     // Northwest Division
-    { id: '1610612743', tricode: 'DEN', name: 'Nuggets', city: 'Denver' },
-    { id: '1610612750', tricode: 'MIN', name: 'Timberwolves', city: 'Minnesota' },
-    { id: '1610612760', tricode: 'OKC', name: 'Thunder', city: 'Oklahoma City' },
-    { id: '1610612757', tricode: 'POR', name: 'Trail Blazers', city: 'Portland' },
-    { id: '1610612762', tricode: 'UTA', name: 'Jazz', city: 'Utah' },
+    { id: '1610612743', espnId: '7', tricode: 'DEN', name: 'Nuggets', city: 'Denver' },
+    { id: '1610612750', espnId: '16', tricode: 'MIN', name: 'Timberwolves', city: 'Minnesota' },
+    { id: '1610612760', espnId: '25', tricode: 'OKC', name: 'Thunder', city: 'Oklahoma City' },
+    { id: '1610612757', espnId: '22', tricode: 'POR', name: 'Trail Blazers', city: 'Portland' },
+    { id: '1610612762', espnId: '26', tricode: 'UTA', name: 'Jazz', city: 'Utah' },
     
     // Pacific Division
-    { id: '1610612744', tricode: 'GSW', name: 'Warriors', city: 'Golden State' },
-    { id: '1610612746', tricode: 'LAC', name: 'Clippers', city: 'LA' },
-    { id: '1610612747', tricode: 'LAL', name: 'Lakers', city: 'Los Angeles' },
-    { id: '1610612756', tricode: 'PHX', name: 'Suns', city: 'Phoenix' },
-    { id: '1610612758', tricode: 'SAC', name: 'Kings', city: 'Sacramento' },
+    { id: '1610612744', espnId: '9', tricode: 'GSW', name: 'Warriors', city: 'Golden State' },
+    { id: '1610612746', espnId: '12', tricode: 'LAC', name: 'Clippers', city: 'LA' },
+    { id: '1610612747', espnId: '13', tricode: 'LAL', name: 'Lakers', city: 'Los Angeles' },
+    { id: '1610612756', espnId: '21', tricode: 'PHX', name: 'Suns', city: 'Phoenix' },
+    { id: '1610612758', espnId: '23', tricode: 'SAC', name: 'Kings', city: 'Sacramento' },
     
     // Southwest Division
-    { id: '1610612742', tricode: 'DAL', name: 'Mavericks', city: 'Dallas' },
-    { id: '1610612745', tricode: 'HOU', name: 'Rockets', city: 'Houston' },
-    { id: '1610612763', tricode: 'MEM', name: 'Grizzlies', city: 'Memphis' },
-    { id: '1610612740', tricode: 'NOP', name: 'Pelicans', city: 'New Orleans' },
-    { id: '1610612759', tricode: 'SAS', name: 'Spurs', city: 'San Antonio' }
+    { id: '1610612742', espnId: '6', tricode: 'DAL', name: 'Mavericks', city: 'Dallas' },
+    { id: '1610612745', espnId: '10', tricode: 'HOU', name: 'Rockets', city: 'Houston' },
+    { id: '1610612763', espnId: '29', tricode: 'MEM', name: 'Grizzlies', city: 'Memphis' },
+    { id: '1610612740', espnId: '3', tricode: 'NOP', name: 'Pelicans', city: 'New Orleans' },
+    { id: '1610612759', espnId: '24', tricode: 'SAS', name: 'Spurs', city: 'San Antonio' }
   ];
   
   constructor() {
     super('NBA');
   }
   
-  protected getSportType(): SportType {
-    return 'basketball' as SportType;
+  protected getSportType(): string {
+    return 'nba';
   }
   
   protected getApiDelay(): number {
@@ -94,21 +94,17 @@ export class NBAMasterCollector extends BaseCollector {
       // 1. Collect all teams first
       await this.collectAllTeams();
       
-      // 2. Collect all players
-      await this.collectAllPlayers();
-      
-      // 3. Collect recent games
-      await this.collectRecentGames();
-      
-      // 4. Collect player stats for recent games
-      await this.collectPlayerStats();
+      // 2. Collect all players using ESPN API
+      await this.collectAllPlayersFromESPN();
       
       // Final report
-      this.printFinalReport();
+      this.printStats();
       
     } catch (error) {
       console.error(chalk.red('\n❌ Collection failed:'), error);
       throw error;
+    } finally {
+      this.cleanup();
     }
   }
   
@@ -121,21 +117,48 @@ export class NBAMasterCollector extends BaseCollector {
     let created = 0;
     for (const team of this.NBA_TEAMS) {
       try {
-        const teamData = {
-          id: 0, // Will be set by database
-          external_id: `nba_${team.id}`,
-          name: team.name,
-          sport: 'basketball' as SportType,
-          conference: this.getConference(team.tricode),
-          division: this.getDivision(team.tricode),
-          abbreviation: team.tricode,
-          city: team.city,
-          full_name: `${team.city} ${team.name}`,
-          logo_url: `https://cdn.nba.com/logos/nba/${team.id}/primary/L/logo.svg`
-        };
+        // Check if team exists in cache
+        const cacheKey = `team_nba_${team.name}`;
+        if (this.cache.get(cacheKey)) {
+          console.log(chalk.gray(`  ${team.name} already exists (cached)`));
+          continue;
+        }
         
-        const result = await this.saveToDatabase('teams', teamData);
-        if (result.created) created++;
+        // Check if team exists in database
+        const { data: existingTeam } = await this.supabase
+          .from('teams')
+          .select('id')
+          .eq('external_id', `espn_nba_${team.espnId}`)
+          .single();
+        
+        if (existingTeam) {
+          this.cache.set(cacheKey, existingTeam.id);
+          console.log(chalk.gray(`  ${team.name} already exists`));
+          continue;
+        }
+        
+        // Create new team
+        const { data, error } = await this.supabase
+          .from('teams')
+          .insert({
+            external_id: `espn_nba_${team.espnId}`,
+            name: team.name,
+            city: team.city,
+            abbreviation: team.tricode,
+            sport_id: 'nba',
+            league_id: 'nba',
+            logo_url: `https://a.espncdn.com/i/teamlogos/nba/500/${team.tricode.toLowerCase()}.png`
+          })
+          .select('id')
+          .single();
+        
+        if (error) {
+          console.error(`Error creating team ${team.name}:`, error);
+        } else if (data) {
+          created++;
+          this.cache.set(cacheKey, data.id);
+          console.log(chalk.green(`  ✓ Created ${team.name}`));
+        }
         
       } catch (error) {
         console.error(`Error saving team ${team.name}:`, error);
@@ -146,87 +169,102 @@ export class NBAMasterCollector extends BaseCollector {
   }
   
   /**
-   * Collect all NBA players
+   * Collect all NBA players using ESPN API
    */
-  private async collectAllPlayers(): Promise<void> {
-    console.log(chalk.yellow('\n👥 Collecting NBA players...\n'));
+  private async collectAllPlayersFromESPN(): Promise<void> {
+    console.log(chalk.yellow('\n👥 Collecting NBA players from ESPN...\n'));
     
-    try {
-      // Use the NBA API to get all players
-      const url = 'https://data.nba.net/data/10s/prod/v1/2024/players.json';
-      
-      const response = await this.makeApiCall<any>(url);
-      if (!response?.league?.standard) {
-        console.error('No player data found');
-        return;
-      }
-      
-      const players = response.league.standard;
-      console.log(chalk.gray(`Found ${players.length} players`));
-      
-      // Process in batches
-      const batches = this.chunkArray(players, 50);
-      
-      for (let i = 0; i < batches.length; i++) {
-        console.log(chalk.gray(`Processing batch ${i + 1}/${batches.length}...`));
+    let totalPlayers = 0;
+    
+    for (const team of this.NBA_TEAMS) {
+      try {
+        console.log(chalk.gray(`\nCollecting ${team.city} ${team.name} roster...`));
         
-        await Promise.all(
-          batches[i].map(player => this.processNBAPlayer(player))
-        );
+        const url = `https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/${team.espnId}/roster`;
+        const response = await axios.get(url);
         
-        await this.delay(1000); // Rate limiting between batches
+        if (response.data?.athletes) {
+          const athletes = response.data.athletes;
+          console.log(chalk.gray(`  Found ${athletes.length} players`));
+          
+          // Get team_id from database or cache
+          const cacheKey = `team_nba_${team.name}`;
+          let teamId = this.cache.get(cacheKey);
+          
+          if (!teamId) {
+            const { data: teamData } = await this.supabase
+              .from('teams')
+              .select('id')
+              .eq('external_id', `espn_nba_${team.espnId}`)
+              .single();
+            
+            if (teamData) {
+              teamId = teamData.id;
+              this.cache.set(cacheKey, teamId);
+            } else {
+              console.error(chalk.red(`  Could not find team_id for ${team.name}`));
+              continue;
+            }
+          }
+          
+          for (const player of athletes) {
+            await this.processESPNPlayer(player, teamId, team);
+            totalPlayers++;
+          }
+        }
+        
+        // Rate limit delay
+        await new Promise(resolve => setTimeout(resolve, this.getApiDelay()));
+        
+      } catch (error: any) {
+        console.error(chalk.red(`Error collecting ${team.name}:`), error.message);
       }
-      
-      console.log(chalk.green(`✓ Collected ${this.stats.playersCreated} NBA players`));
-      
-    } catch (error) {
-      console.error('Error collecting players:', error);
     }
+    
+    console.log(chalk.green(`\n✓ Collected ${totalPlayers} NBA players total`));
   }
   
   /**
-   * Process individual NBA player
+   * Process ESPN player data
    */
-  private async processNBAPlayer(player: any): Promise<void> {
+  private async processESPNPlayer(player: any, teamId: number, team: NBATeam): Promise<void> {
     try {
-      // Skip if player doesn't have required data
-      if (!player.firstName || !player.lastName) return;
+      // Skip if missing required data
+      if (!player.firstName || !player.lastName || !player.id) return;
       
-      const playerData: CollectedPlayer = {
-        external_id: `nba_${player.personId}`,
+      // Convert height from inches to feet and inches if needed
+      let heightInches = null;
+      if (player.height) {
+        heightInches = parseInt(player.height);
+      }
+      
+      const playerData = {
+        external_id: `espn_nba_${player.id}`,
         firstname: player.firstName,
         lastname: player.lastName,
-        name: `${player.firstName} ${player.lastName}`,
+        name: player.fullName || `${player.firstName} ${player.lastName}`,
         sport: 'basketball',
-        team: this.getTeamTricode(player.teamId),
-        position: player.pos || undefined,
-        jersey_number: player.jersey || undefined,
-        heightfeet: player.heightFeet ? parseInt(player.heightFeet) : undefined,
-        heightinches: player.heightInches ? parseInt(player.heightInches) : undefined,
-        weight: player.weightPounds ? parseInt(player.weightPounds) : undefined,
-        birth_date: player.dateOfBirthUTC || undefined,
-        birth_city: player.birthCity || undefined,
-        birth_state: player.birthState || undefined,
-        birth_country: player.country || undefined,
-        college: player.collegeName || undefined,
-        draft_year: player.draft?.year ? parseInt(player.draft.year) : undefined,
-        draft_round: player.draft?.roundNum ? parseInt(player.draft.roundNum) : undefined,
-        draft_pick: player.draft?.pickNum ? parseInt(player.draft.pickNum) : undefined,
-        photo_url: `https://cdn.nba.com/headshots/nba/latest/1040x760/${player.personId}.png`,
-        is_active: player.isActive || false,
-        years_pro: player.yearsPro ? parseInt(player.yearsPro) : 0,
+        sport_id: 'nba',
+        position: player.position?.abbreviation ? [player.position.abbreviation] : [],
+        team_id: teamId,
+        jersey_number: player.jersey ? parseInt(player.jersey) : null,
+        heightinches: heightInches,
+        weightlbs: player.weight ? parseInt(player.weight) : null,
+        birthdate: player.dateOfBirth || null,
+        status: player.status?.type === 'active' ? 'active' : 'inactive',
+        photo_url: player.headshot?.href || null,
+        team: team.name,
+        team_abbreviation: team.tricode,
         metadata: {
-          nba_debut_year: player.nbaDebutYear,
-          jersey: player.jersey,
-          is_rookie: player.yearsPro === '0'
+          espn_id: player.id,
+          experience: player.experience?.years || 0,
+          college: player.college?.name || null
         }
       };
       
-      const result = await this.saveToDatabase('players', playerData);
-      if (result.created) {
+      const playerId = await this.upsertPlayer(playerData);
+      if (playerId) {
         this.stats.playersCreated++;
-      } else {
-        this.stats.playersUpdated++;
       }
       
     } catch (error) {
@@ -234,109 +272,6 @@ export class NBAMasterCollector extends BaseCollector {
     }
   }
   
-  /**
-   * Collect recent NBA games
-   */
-  private async collectRecentGames(): Promise<void> {
-    console.log(chalk.yellow('\n🏀 Collecting recent NBA games...\n'));
-    
-    try {
-      // Get games for the current season
-      const currentDate = new Date();
-      const season = currentDate.getMonth() >= 8 ? currentDate.getFullYear() : currentDate.getFullYear() - 1;
-      
-      // Collect games for each month of the season
-      const months = ['10', '11', '12', '01', '02', '03', '04'];
-      
-      for (const month of months) {
-        const year = month >= '10' ? season : season + 1;
-        await this.collectGamesForMonth(year, month);
-      }
-      
-      console.log(chalk.green(`✓ Collected ${this.stats.gamesCreated} NBA games`));
-      
-    } catch (error) {
-      console.error('Error collecting games:', error);
-    }
-  }
-  
-  /**
-   * Collect games for a specific month
-   */
-  private async collectGamesForMonth(year: number, month: string): Promise<void> {
-    try {
-      const url = `https://data.nba.net/data/10s/prod/v1/${year}${month}/scoreboard.json`;
-      
-      const response = await this.makeApiCall<any>(url);
-      if (!response?.games) return;
-      
-      for (const game of response.games) {
-        await this.processNBAGame(game);
-      }
-      
-    } catch (error) {
-      // Month might not exist yet
-      console.log(chalk.gray(`No games found for ${year}-${month}`));
-    }
-  }
-  
-  /**
-   * Process individual NBA game
-   */
-  private async processNBAGame(game: any): Promise<void> {
-    try {
-      const gameData: CollectedGame = {
-        external_id: `nba_${game.gameId}`,
-        sport: 'basketball',
-        home_team: this.getTeamTricode(game.hTeam.teamId),
-        away_team: this.getTeamTricode(game.vTeam.teamId),
-        home_score: game.hTeam.score ? parseInt(game.hTeam.score) : undefined,
-        away_score: game.vTeam.score ? parseInt(game.vTeam.score) : undefined,
-        scheduled_at: new Date(game.startTimeUTC),
-        status: game.statusNum === 3 ? 'completed' : 'scheduled',
-        season: game.seasonYear,
-        season_type: game.seasonStageId === 2 ? 'regular' : 'playoffs',
-        venue: game.arena?.name,
-        attendance: game.attendance ? parseInt(game.attendance) : undefined,
-        metadata: {
-          game_duration: game.gameDuration,
-          nugget: game.nugget?.text,
-          playoffs_round: game.playoffs?.roundNum,
-          playoffs_conference: game.playoffs?.confName
-        }
-      };
-      
-      const result = await this.saveToDatabase('games', gameData);
-      if (result.created) {
-        this.stats.gamesCreated++;
-      } else {
-        this.stats.gamesUpdated++;
-      }
-      
-    } catch (error) {
-      console.error(`Error processing game ${game.gameId}:`, error);
-    }
-  }
-  
-  /**
-   * Collect player stats for recent games
-   */
-  private async collectPlayerStats(): Promise<void> {
-    console.log(chalk.yellow('\n📊 Collecting player stats...\n'));
-    
-    // This would require game-by-game boxscore API calls
-    // Skipping for now to avoid rate limits
-    
-    console.log(chalk.yellow('⚠️  Player stats collection requires individual game API calls'));
-  }
-  
-  /**
-   * Get team tricode from ID
-   */
-  private getTeamTricode(teamId: string): string | undefined {
-    const team = this.NBA_TEAMS.find(t => t.id === teamId);
-    return team?.tricode;
-  }
   
   /**
    * Get conference for team
@@ -368,13 +303,5 @@ export class NBAMasterCollector extends BaseCollector {
   }
 }
 
-// Run if called directly
-if (require.main === module) {
-  const collector = new NBAMasterCollector();
-  collector.collect()
-    .then(() => console.log(chalk.bold.green('\n✅ NBA collection complete!')))
-    .catch(error => {
-      console.error(chalk.bold.red('\n❌ NBA collection failed:'), error);
-      process.exit(1);
-    });
-}
+// Export for use in other scripts
+export default NBAMasterCollector;
