@@ -1,0 +1,9 @@
+{
+  "sport": "NFL",
+  "totalGames": 432,
+  "gamesWithStats": 430,
+  "coverage": "99.5",
+  "gamesFixed": 0,
+  "gamesFailed": 2,
+  "timestamp": "2025-07-10T23:02:36.377Z"
+}

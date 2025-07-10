@@ -1,0 +1,10 @@
+{
+  "processedGames": 600,
+  "gamesWithStats": 598,
+  "gamesWithoutStats": [
+    3183747,
+    3184112
+  ],
+  "lastProcessedId": 3561194,
+  "timestamp": "2025-07-10T22:30:39.605Z"
+}

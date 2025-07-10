@@ -1,0 +1,543 @@
+{
+  "summary": {
+    "total2024Games": 432,
+    "gamesWithStats": 366,
+    "gamesWithoutStats": 66,
+    "coverage": "84.7%"
+  },
+  "gameTypes": {
+    "playoff": 0,
+    "preseason": 2,
+    "regular": 64
+  },
+  "gamesWithoutStats": [
+    {
+      "gameId": 3184112,
+      "date": "2024-02-04",
+      "teams": "Unknown @ Unknown",
+      "score": "64-59",
+      "espnId": "401616889",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3563467,
+      "date": "2024-02-04",
+      "teams": "Carroll University (WI) Pioneers @ Tennessee Titans",
+      "score": "64-59",
+      "espnId": "401616889",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564384,
+      "date": "2024-09-06",
+      "teams": "Unknown @ Unknown",
+      "score": "20-27",
+      "espnId": "401671789",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564385,
+      "date": "2024-09-07",
+      "teams": "Unknown @ Unknown",
+      "score": "29-34",
+      "espnId": "401671805",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564386,
+      "date": "2024-09-08",
+      "teams": "Unknown @ Unknown",
+      "score": "18-10",
+      "espnId": "401671744",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564387,
+      "date": "2024-09-08",
+      "teams": "Unknown @ Unknown",
+      "score": "28-34",
+      "espnId": "401671617",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564388,
+      "date": "2024-09-08",
+      "teams": "Unknown @ Unknown",
+      "score": "17-24",
+      "espnId": "401671719",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564389,
+      "date": "2024-09-08",
+      "teams": "Unknown @ Unknown",
+      "score": "16-10",
+      "espnId": "401671628",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564390,
+      "date": "2024-09-08",
+      "teams": "Unknown @ Unknown",
+      "score": "29-27",
+      "espnId": "401671861",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564391,
+      "date": "2024-09-08",
+      "teams": "Unknown @ Unknown",
+      "score": "17-20",
+      "espnId": "401671849",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564392,
+      "date": "2024-09-08",
+      "teams": "Unknown @ Unknown",
+      "score": "10-47",
+      "espnId": "401671734",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564393,
+      "date": "2024-09-08",
+      "teams": "Unknown @ Unknown",
+      "score": "28-6",
+      "espnId": "401671712",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564395,
+      "date": "2024-09-08",
+      "teams": "Unknown @ Unknown",
+      "score": "20-26",
+      "espnId": "401671664",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564394,
+      "date": "2024-09-08",
+      "teams": "Unknown @ Unknown",
+      "score": "10-22",
+      "espnId": "401671659",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564397,
+      "date": "2024-09-08",
+      "teams": "Unknown @ Unknown",
+      "score": "20-37",
+      "espnId": "401671770",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564396,
+      "date": "2024-09-08",
+      "teams": "Unknown @ Unknown",
+      "score": "33-17",
+      "espnId": "401671761",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564398,
+      "date": "2024-09-09",
+      "teams": "Unknown @ Unknown",
+      "score": "20-26",
+      "espnId": "401671792",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564399,
+      "date": "2024-09-10",
+      "teams": "Unknown @ Unknown",
+      "score": "19-32",
+      "espnId": "401671696",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564400,
+      "date": "2024-09-13",
+      "teams": "Unknown @ Unknown",
+      "score": "31-10",
+      "espnId": "401671807",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564409,
+      "date": "2024-09-15",
+      "teams": "Unknown @ Unknown",
+      "score": "18-13",
+      "espnId": "401671635",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564408,
+      "date": "2024-09-15",
+      "teams": "Unknown @ Unknown",
+      "score": "26-3",
+      "espnId": "401671652",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564407,
+      "date": "2024-09-15",
+      "teams": "Unknown @ Unknown",
+      "score": "18-21",
+      "espnId": "401671716",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564406,
+      "date": "2024-09-15",
+      "teams": "Unknown @ Unknown",
+      "score": "23-20",
+      "espnId": "401671702",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564405,
+      "date": "2024-09-15",
+      "teams": "Unknown @ Unknown",
+      "score": "17-23",
+      "espnId": "401671645",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564404,
+      "date": "2024-09-15",
+      "teams": "Unknown @ Unknown",
+      "score": "24-17",
+      "espnId": "401671636",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564403,
+      "date": "2024-09-15",
+      "teams": "Unknown @ Unknown",
+      "score": "10-16",
+      "espnId": "401671723",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564402,
+      "date": "2024-09-15",
+      "teams": "Unknown @ Unknown",
+      "score": "20-16",
+      "espnId": "401671721",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564401,
+      "date": "2024-09-15",
+      "teams": "Unknown @ Unknown",
+      "score": "44-19",
+      "espnId": "401671709",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564410,
+      "date": "2024-09-15",
+      "teams": "Unknown @ Unknown",
+      "score": "26-23",
+      "espnId": "401671624",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564411,
+      "date": "2024-09-15",
+      "teams": "Unknown @ Unknown",
+      "score": "10-41",
+      "espnId": "401671754",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564412,
+      "date": "2024-09-15",
+      "teams": "Unknown @ Unknown",
+      "score": "13-6",
+      "espnId": "401671668",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564413,
+      "date": "2024-09-15",
+      "teams": "Unknown @ Unknown",
+      "score": "25-26",
+      "espnId": "401671670",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564414,
+      "date": "2024-09-16",
+      "teams": "Unknown @ Unknown",
+      "score": "13-19",
+      "espnId": "401671786",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564415,
+      "date": "2024-09-17",
+      "teams": "Unknown @ Unknown",
+      "score": "22-21",
+      "espnId": "401671691",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564416,
+      "date": "2024-09-20",
+      "teams": "Unknown @ Unknown",
+      "score": "3-24",
+      "espnId": "401671808",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564421,
+      "date": "2024-09-22",
+      "teams": "Unknown @ Unknown",
+      "score": "15-12",
+      "espnId": "401671736",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564417,
+      "date": "2024-09-22",
+      "teams": "Unknown @ Unknown",
+      "score": "21-15",
+      "espnId": "401671855",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564419,
+      "date": "2024-09-22",
+      "teams": "Unknown @ Unknown",
+      "score": "16-21",
+      "espnId": "401671865",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564418,
+      "date": "2024-09-22",
+      "teams": "Unknown @ Unknown",
+      "score": "30-14",
+      "espnId": "401671823",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564423,
+      "date": "2024-09-22",
+      "teams": "Unknown @ Unknown",
+      "score": "26-7",
+      "espnId": "401671741",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564422,
+      "date": "2024-09-22",
+      "teams": "Unknown @ Unknown",
+      "score": "10-20",
+      "espnId": "401671632",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564420,
+      "date": "2024-09-22",
+      "teams": "Unknown @ Unknown",
+      "score": "7-34",
+      "espnId": "401671646",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564424,
+      "date": "2024-09-22",
+      "teams": "Unknown @ Unknown",
+      "score": "36-22",
+      "espnId": "401671658",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564425,
+      "date": "2024-09-22",
+      "teams": "Unknown @ Unknown",
+      "score": "3-24",
+      "espnId": "401671662",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564426,
+      "date": "2024-09-22",
+      "teams": "Unknown @ Unknown",
+      "score": "28-25",
+      "espnId": "401671763",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564427,
+      "date": "2024-09-22",
+      "teams": "Unknown @ Unknown",
+      "score": "24-27",
+      "espnId": "401671772",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564428,
+      "date": "2024-09-22",
+      "teams": "Unknown @ Unknown",
+      "score": "20-13",
+      "espnId": "401671771",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564429,
+      "date": "2024-09-23",
+      "teams": "Unknown @ Unknown",
+      "score": "22-17",
+      "espnId": "401671793",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564430,
+      "date": "2024-09-23",
+      "teams": "Unknown @ Unknown",
+      "score": "10-47",
+      "espnId": "401671682",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564431,
+      "date": "2024-09-24",
+      "teams": "Unknown @ Unknown",
+      "score": "38-33",
+      "espnId": "401671490",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564432,
+      "date": "2024-09-27",
+      "teams": "Unknown @ Unknown",
+      "score": "20-15",
+      "espnId": "401671812",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564490,
+      "date": "2024-09-29",
+      "teams": "Unknown @ Unknown",
+      "score": "20-24",
+      "espnId": "401671857",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564488,
+      "date": "2024-09-29",
+      "teams": "Unknown @ Unknown",
+      "score": "16-33",
+      "espnId": "401671740",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564487,
+      "date": "2024-09-29",
+      "teams": "Unknown @ Unknown",
+      "score": "10-9",
+      "espnId": "401671622",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564486,
+      "date": "2024-09-29",
+      "teams": "Unknown @ Unknown",
+      "score": "24-27",
+      "espnId": "401671867",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564485,
+      "date": "2024-09-29",
+      "teams": "Unknown @ Unknown",
+      "score": "31-29",
+      "espnId": "401671643",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564484,
+      "date": "2024-09-29",
+      "teams": "Unknown @ Unknown",
+      "score": "18-24",
+      "espnId": "401671871",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564483,
+      "date": "2024-09-29",
+      "teams": "Unknown @ Unknown",
+      "score": "24-26",
+      "espnId": "401671727",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564489,
+      "date": "2024-09-29",
+      "teams": "Unknown @ Unknown",
+      "score": "34-24",
+      "espnId": "401671745",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564492,
+      "date": "2024-09-29",
+      "teams": "Unknown @ Unknown",
+      "score": "13-30",
+      "espnId": "401671758",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564491,
+      "date": "2024-09-29",
+      "teams": "Unknown @ Unknown",
+      "score": "42-14",
+      "espnId": "401671755",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564494,
+      "date": "2024-09-29",
+      "teams": "Unknown @ Unknown",
+      "score": "17-10",
+      "espnId": "401671674",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564493,
+      "date": "2024-09-29",
+      "teams": "Unknown @ Unknown",
+      "score": "16-20",
+      "espnId": "401671672",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564495,
+      "date": "2024-09-30",
+      "teams": "Unknown @ Unknown",
+      "score": "10-35",
+      "espnId": "401671783",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564496,
+      "date": "2024-09-30",
+      "teams": "Unknown @ Unknown",
+      "score": "31-12",
+      "espnId": "401671683",
+      "hasExternalId": true
+    },
+    {
+      "gameId": 3564497,
+      "date": "2024-10-01",
+      "teams": "Unknown @ Unknown",
+      "score": "29-42",
+      "espnId": "401671491",
+      "hasExternalId": true
+    }
+  ]
+}

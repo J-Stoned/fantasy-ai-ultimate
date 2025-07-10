@@ -1,4 +1,4 @@
-#!/usr/bin/env tsx
+#\!/usr/bin/env tsx
 
 import { createClient } from '@supabase/supabase-js';
 import * as dotenv from 'dotenv';
@@ -7,74 +7,81 @@ import chalk from 'chalk';
 dotenv.config({ path: '.env.local' });
 
 const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
+  process.env.NEXT_PUBLIC_SUPABASE_URL\!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY\!
 );
 
 async function checkMLBData() {
-  console.log(chalk.bold.blue('\n⚾ MLB DATA CHECK\n'));
-  
-  // Check MLB teams
-  const { count: teamCount } = await supabase
-    .from('teams')
-    .select('*', { count: 'exact', head: true })
-    .eq('sport_id', 'mlb');
-  
-  console.log(chalk.yellow(`MLB teams in database: ${teamCount}`));
-  
-  // Check MLB players
-  const { count: playerCount } = await supabase
+  console.log(chalk.bold.cyan('Checking MLB data in database...\n'));
+
+  // Check players with different sport values
+  const { count: mlbPlayers } = await supabase
     .from('players')
     .select('*', { count: 'exact', head: true })
-    .eq('sport_id', 'mlb');
-  
-  console.log(chalk.yellow(`MLB players in database: ${playerCount}`));
-  
-  // Check latest MLB players
-  const { data: latestPlayers } = await supabase
+    .eq('sport', 'mlb');
+
+  const { count: baseballPlayers } = await supabase
     .from('players')
-    .select('id, firstname, lastname, team, created_at')
-    .eq('sport_id', 'mlb')
-    .order('created_at', { ascending: false })
-    .limit(10);
-  
-  if (latestPlayers && latestPlayers.length > 0) {
-    console.log(chalk.green('\nLatest MLB players:'));
-    latestPlayers.forEach(p => {
-      console.log(chalk.white(`  ${p.firstname} ${p.lastname} - ${p.team}`));
-    });
-  } else {
-    console.log(chalk.red('\nNo MLB players found!'));
-  }
-  
-  // Show teams
-  const { data: teams } = await supabase
+    .select('*', { count: 'exact', head: true })
+    .eq('sport', 'baseball');
+
+  console.log(`Players with sport='mlb': ${mlbPlayers}`);
+  console.log(`Players with sport='baseball': ${baseballPlayers}`);
+
+  // Check teams
+  const { data: teams, count: teamCount } = await supabase
     .from('teams')
-    .select('name, abbreviation, external_id')
-    .eq('sport_id', 'mlb')
-    .order('name')
-    .limit(10);
-  
+    .select('id, name, sport', { count: 'exact' })
+    .or('sport.eq.mlb,sport.eq.baseball');
+
+  console.log(`\nTeams with sport='mlb' or 'baseball': ${teamCount}`);
   if (teams && teams.length > 0) {
-    console.log(chalk.green('\nSample MLB Teams:'));
-    teams.forEach(t => {
-      console.log(chalk.white(`  ${t.name} (${t.abbreviation}) - ${t.external_id}`));
-    });
+    console.log('Sample teams:', teams.slice(0, 3));
   }
-  
-  // Check for duplicates or short names
-  const { data: allTeams } = await supabase
-    .from('teams')
-    .select('name')
+
+  // Check games
+  const { count: mlbGames } = await supabase
+    .from('games')
+    .select('*', { count: 'exact', head: true })
     .eq('sport_id', 'mlb');
-  
-  if (allTeams) {
-    const shortNames = allTeams.filter(t => !t.name.includes(' '));
-    if (shortNames.length > 0) {
-      console.log(chalk.yellow('\n⚠️  Teams with short names:'));
-      shortNames.forEach(t => console.log(chalk.yellow(`  ${t.name}`)));
+
+  console.log(`\nGames with sport_id='mlb': ${mlbGames}`);
+
+  // If players are 'baseball', update them to 'mlb'
+  if (baseballPlayers && baseballPlayers > 0 && \!mlbPlayers) {
+    console.log(chalk.yellow('\n⚠️  Found players with sport="baseball", need to update to "mlb"'));
+    
+    const { error } = await supabase
+      .from('players')
+      .update({ sport: 'mlb' })
+      .eq('sport', 'baseball');
+    
+    if (\!error) {
+      console.log(chalk.green(`✅ Updated ${baseballPlayers} players from 'baseball' to 'mlb'`));
+    } else {
+      console.error(chalk.red('Error updating players:'), error);
+    }
+  }
+
+  // Same for teams
+  const { data: baseballTeams } = await supabase
+    .from('teams')
+    .select('id')
+    .eq('sport', 'baseball');
+
+  if (baseballTeams && baseballTeams.length > 0) {
+    console.log(chalk.yellow(`\n⚠️  Found ${baseballTeams.length} teams with sport="baseball", updating...`));
+    
+    const { error } = await supabase
+      .from('teams')
+      .update({ sport: 'mlb' })
+      .eq('sport', 'baseball');
+    
+    if (\!error) {
+      console.log(chalk.green(`✅ Updated ${baseballTeams.length} teams to 'mlb'`));
     }
   }
 }
 
-checkMLBData().catch(console.error);
+checkMLBData();
+EOF < /dev/null
