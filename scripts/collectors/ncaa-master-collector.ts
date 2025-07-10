@@ -149,46 +149,46 @@ export class NCAAMasterCollector extends BaseCollector {
     { id: '248', name: 'Houston', conf: 'AAC' }
   ];
   
-  // Top baseball programs
+  // Top baseball programs - NOTE: Baseball uses different ESPN IDs than football/basketball!
   private readonly TOP_BASEBALL_TEAMS = [
     // SEC powerhouses
-    { id: '8', name: 'Arkansas', conf: 'SEC' },
-    { id: '99', name: 'LSU', conf: 'SEC' },
-    { id: '61', name: 'Florida', conf: 'SEC' },
-    { id: '344', name: 'Mississippi State', conf: 'SEC' },
-    { id: '145', name: 'Ole Miss', conf: 'SEC' },
-    { id: '2633', name: 'Tennessee', conf: 'SEC' },
-    { id: '333', name: 'Alabama', conf: 'SEC' },
-    { id: '238', name: 'Vanderbilt', conf: 'SEC' },
+    { id: '58', name: 'Arkansas', conf: 'SEC' },
+    { id: '85', name: 'LSU', conf: 'SEC' },
+    { id: '75', name: 'Florida', conf: 'SEC' },
+    { id: '150', name: 'Mississippi State', conf: 'SEC' },
+    { id: '92', name: 'Ole Miss', conf: 'SEC' },
+    { id: '199', name: 'Tennessee', conf: 'SEC' },
+    { id: '148', name: 'Alabama', conf: 'SEC' },
+    { id: '120', name: 'Vanderbilt', conf: 'SEC' },
     
     // ACC contenders
-    { id: '52', name: 'Florida State', conf: 'ACC' },
-    { id: '153', name: 'North Carolina', conf: 'ACC' },
-    { id: '2390', name: 'Miami', conf: 'ACC' },
-    { id: '259', name: 'Virginia Tech', conf: 'ACC' },
-    { id: '228', name: 'Clemson', conf: 'ACC' },
-    { id: '152', name: 'NC State', conf: 'ACC' },
+    { id: '72', name: 'Florida State', conf: 'ACC' },
+    { id: '96', name: 'North Carolina', conf: 'ACC' },
+    { id: '176', name: 'Miami', conf: 'ACC' },
+    { id: '132', name: 'Virginia Tech', conf: 'ACC' },
+    { id: '117', name: 'Clemson', conf: 'ACC' },
+    { id: '95', name: 'NC State', conf: 'ACC' },
     
     // Big 12 teams
-    { id: '251', name: 'Texas', conf: 'Big 12' },
-    { id: '2628', name: 'TCU', conf: 'Big 12' },
-    { id: '197', name: 'Oklahoma State', conf: 'Big 12' },
-    { id: '2641', name: 'Texas Tech', conf: 'Big 12' },
+    { id: '126', name: 'Texas', conf: 'Big 12' },
+    { id: '198', name: 'TCU', conf: 'Big 12' },
+    { id: '110', name: 'Oklahoma State', conf: 'Big 12' },
+    { id: '201', name: 'Texas Tech', conf: 'Big 12' },
     
     // Pac-12 programs
-    { id: '12', name: 'Arizona', conf: 'Pac-12' },
-    { id: '204', name: 'Oregon State', conf: 'Pac-12' },
-    { id: '24', name: 'Stanford', conf: 'Pac-12' },
-    { id: '26', name: 'UCLA', conf: 'Pac-12' },
+    { id: '60', name: 'Arizona', conf: 'Pac-12' },
+    { id: '113', name: 'Oregon State', conf: 'Pac-12' },
+    { id: '64', name: 'Stanford', conf: 'Pac-12' },
+    { id: '66', name: 'UCLA', conf: 'Pac-12' },
     
     // Big West dominants
-    { id: '299', name: 'Long Beach State', conf: 'Big West' },
-    { id: '2239', name: 'Cal State Fullerton', conf: 'Big West' },
+    { id: '141', name: 'Long Beach State', conf: 'Big West' },
+    { id: '165', name: 'Cal State Fullerton', conf: 'Big West' },
     
     // Other notable programs
-    { id: '97', name: 'Louisville', conf: 'ACC' },
-    { id: '151', name: 'ECU', conf: 'AAC' },
-    { id: '59', name: 'Georgia Tech', conf: 'ACC' }
+    { id: '83', name: 'Louisville', conf: 'ACC' },
+    { id: '94', name: 'ECU', conf: 'AAC' },
+    { id: '77', name: 'Georgia Tech', conf: 'ACC' }
   ];
   
   constructor(config?: CollectorConfig) {
@@ -315,12 +315,57 @@ export class NCAAMasterCollector extends BaseCollector {
       const teamData = response.data;
       const athletes = teamData.athletes || [];
       
-      console.log(chalk.cyan(`  ${team.name}: ${athletes.length} players`));
-      
-      // Process all position groups
-      for (const group of athletes) {
-        for (const player of group.items || []) {
+      // Handle different roster structures based on sport
+      if (sport === 'football') {
+        // Football: athletes array contains position groups with items arrays
+        let totalPlayers = 0;
+        for (const group of athletes) {
+          if (group.items && Array.isArray(group.items)) {
+            totalPlayers += group.items.length;
+          }
+        }
+        console.log(chalk.cyan(`  ${team.name}: ${totalPlayers} players (${athletes.length} position groups)`));
+        
+        // Process all position groups
+        for (const group of athletes) {
+          for (const player of group.items || []) {
+            await this.processNCAAPlayer(player, sport, team, teamData.team);
+          }
+        }
+      } else if (sport === 'basketball') {
+        // Basketball: athletes array contains players directly
+        console.log(chalk.cyan(`  ${team.name}: ${athletes.length} players`));
+        
+        // Process players directly from athletes array
+        for (const player of athletes) {
           await this.processNCAAPlayer(player, sport, team, teamData.team);
+        }
+      } else if (sport === 'baseball') {
+        // Baseball: Check structure and handle accordingly
+        const hasGroups = athletes.length > 0 && athletes[0].items !== undefined;
+        
+        if (hasGroups) {
+          // Similar to football structure
+          let totalPlayers = 0;
+          for (const group of athletes) {
+            if (group.items && Array.isArray(group.items)) {
+              totalPlayers += group.items.length;
+            }
+          }
+          console.log(chalk.cyan(`  ${team.name}: ${totalPlayers} players (grouped)`));
+          
+          for (const group of athletes) {
+            for (const player of group.items || []) {
+              await this.processNCAAPlayer(player, sport, team, teamData.team);
+            }
+          }
+        } else {
+          // Similar to basketball structure
+          console.log(chalk.cyan(`  ${team.name}: ${athletes.length} players`));
+          
+          for (const player of athletes) {
+            await this.processNCAAPlayer(player, sport, team, teamData.team);
+          }
         }
       }
     } catch (error) {

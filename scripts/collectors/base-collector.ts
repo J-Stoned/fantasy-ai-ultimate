@@ -243,42 +243,69 @@ export abstract class BaseCollector {
         });
       }
       
-      // Map to our schema (matching actual database columns)
+      // Map to our schema (matching actual database columns - all lowercase!)
       const dbPlayer = {
         external_id: playerData.external_id,
-        firstName: playerData.firstname,
-        lastName: playerData.lastname,
+        firstname: playerData.firstname,
+        lastname: playerData.lastname,
         sport_id: playerData.sport_id || playerData.sport || null,
         position: playerData.position || [],
         team_id: team_id,
         jersey_number: playerData.jersey_number || null,
-        heightInches: playerData.heightinches || null,
-        weightLbs: playerData.weightlbs || null,
-        birthDate: playerData.birthdate || null,
+        heightinches: playerData.heightinches || null,
+        weightlbs: playerData.weightlbs || null,
+        birthdate: playerData.birthdate || null,
         photo_url: playerData.photo_url || null,
-        status: playerData.status || 'active'
+        status: playerData.status || 'active',
+        // Additional columns that exist in database
+        name: playerData.name || `${playerData.firstname} ${playerData.lastname}`,
+        team: playerData.team || null,
+        sport: playerData.sport || playerData.sport_id || null,
+        college: playerData.college || null,
+        metadata: playerData.metadata || {}
       };
       
-      const { data, error } = await this.supabase
+      // Check if player exists first
+      const { data: existing } = await this.supabase
         .from('players')
-        .upsert(dbPlayer, { 
-          onConflict: 'external_id',
-          ignoreDuplicates: false 
-        })
         .select('id')
+        .eq('external_id', playerData.external_id)
         .single();
       
-      if (error) {
-        console.error('Player upsert error:', error);
-        this.stats.errors++;
-        return null;
-      }
-      
-      if (data) {
-        this.stats.playersCreated++;
-        this.bloomFilter.add(`player_${playerData.external_id}`);
-        this.cache.set(`player_${playerData.external_id}`, data.id);
-        return data.id;
+      if (existing) {
+        // Update existing player
+        const { data, error } = await this.supabase
+          .from('players')
+          .update(dbPlayer)
+          .eq('id', existing.id)
+          .select('id')
+          .single();
+          
+        if (!error) {
+          this.stats.playersUpdated++;
+          this.cache.set(`player_${playerData.external_id}`, existing.id);
+          return existing.id;
+        }
+      } else {
+        // Insert new player
+        const { data, error } = await this.supabase
+          .from('players')
+          .insert(dbPlayer)
+          .select('id')
+          .single();
+        
+        if (error) {
+          console.error('Player insert error:', error);
+          this.stats.errors++;
+          return null;
+        }
+        
+        if (data) {
+          this.stats.playersCreated++;
+          this.bloomFilter.add(`player_${playerData.external_id}`);
+          this.cache.set(`player_${playerData.external_id}`, data.id);
+          return data.id;
+        }
       }
       
       return null;
