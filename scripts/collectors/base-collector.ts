@@ -132,6 +132,73 @@ export abstract class BaseCollector {
   abstract collect(): Promise<void>;
   
   /**
+   * Get or create a team
+   * Returns the integer team ID
+   */
+  protected async upsertTeam(teamData: {
+    name: string;
+    city?: string;
+    abbreviation?: string;
+    sport?: string;
+    sport_id?: string;
+    league_id?: string;
+    logo_url?: string;
+  }): Promise<number | null> {
+    try {
+      const cacheKey = `team_${teamData.name}_${teamData.sport || ''}`;
+      
+      // Check cache
+      const cached = this.cache.get(cacheKey);
+      if (cached) {
+        this.stats.cacheHits++;
+        return cached;
+      }
+      
+      // Try to find existing team
+      const { data: existing } = await this.supabase
+        .from('teams')
+        .select('id')
+        .eq('name', teamData.name)
+        .eq('sport_id', teamData.sport_id || teamData.sport || '')
+        .single();
+        
+      if (existing) {
+        this.cache.set(cacheKey, existing.id);
+        return existing.id;
+      }
+      
+      // Create new team
+      const { data, error } = await this.supabase
+        .from('teams')
+        .insert({
+          name: teamData.name,
+          city: teamData.city || null,
+          abbreviation: teamData.abbreviation || null,
+          sport_id: teamData.sport_id || teamData.sport || null,
+          league_id: teamData.league_id || null,
+          logo_url: teamData.logo_url || null
+        })
+        .select('id')
+        .single();
+        
+      if (error) {
+        console.error('Team upsert error:', error);
+        return null;
+      }
+      
+      if (data) {
+        this.cache.set(cacheKey, data.id);
+        return data.id;
+      }
+      
+      return null;
+    } catch (error) {
+      console.error('Team upsert exception:', error);
+      return null;
+    }
+  }
+  
+  /**
    * Get or create a player matching our schema
    * Returns the integer player ID
    */
@@ -165,25 +232,31 @@ export abstract class BaseCollector {
         }
       }
       
+      // Get or create team if provided
+      let team_id: number | null = null;
+      if (playerData.team) {
+        team_id = await this.upsertTeam({
+          name: playerData.team,
+          abbreviation: playerData.team_abbreviation,
+          sport: playerData.sport,
+          sport_id: playerData.sport_id
+        });
+      }
+      
       // Map to our schema (matching actual database columns)
       const dbPlayer = {
         external_id: playerData.external_id,
-        firstname: playerData.firstname,
-        lastname: playerData.lastname,
-        name: playerData.name || `${playerData.firstname} ${playerData.lastname}`,
-        sport: playerData.sport || playerData.sport_id || null,
+        firstName: playerData.firstname,
+        lastName: playerData.lastname,
         sport_id: playerData.sport_id || playerData.sport || null,
         position: playerData.position || [],
+        team_id: team_id,
         jersey_number: playerData.jersey_number || null,
-        heightinches: playerData.heightinches || null,
-        weightlbs: playerData.weightlbs || null,
-        birthdate: playerData.birthdate || null,
+        heightInches: playerData.heightinches || null,
+        weightLbs: playerData.weightlbs || null,
+        birthDate: playerData.birthdate || null,
         photo_url: playerData.photo_url || null,
-        team: playerData.team || null,
-        team_abbreviation: playerData.team_abbreviation || null,
-        status: playerData.status || 'active',
-        college: playerData.college || null,
-        metadata: playerData.metadata || {}
+        status: playerData.status || 'active'
       };
       
       const { data, error } = await this.supabase
