@@ -1,9 +1,9 @@
 {
   "sport": "MLB",
   "totalGames": 117,
-  "gamesWithStats": 3,
-  "coverage": "2.6",
-  "gamesFixed": 0,
-  "gamesFailed": 114,
-  "timestamp": "2025-07-10T23:05:08.401Z"
+  "gamesWithStats": 117,
+  "coverage": "100.0",
+  "gamesFixed": 114,
+  "gamesFailed": 0,
+  "timestamp": "2025-07-10T23:17:59.973Z"
 }
