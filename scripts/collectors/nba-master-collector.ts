@@ -217,7 +217,7 @@ export class NBAMasterCollector extends BaseCollector {
         await new Promise(resolve => setTimeout(resolve, this.getApiDelay()));
         
       } catch (error: any) {
-        console.error(chalk.red(`Error collecting ${team.name}:`), error.message);
+        console.error(chalk.red(`Error collecting ${team.fullName}:`), error.message);
       }
     }
     
