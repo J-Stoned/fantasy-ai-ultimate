@@ -1,14 +1,11 @@
 #!/usr/bin/env tsx
 /**
- * Debug what data the batch processor is actually returning
+ * Debug batch data processing
  */
 
 import { createClient } from '@supabase/supabase-js';
-import chalk from 'chalk';
 import * as dotenv from 'dotenv';
-import { parallelEngine } from './gpu-stats-collector/parallel-engine';
-import { batchProcessor } from './gpu-stats-collector/batch-processor';
-import { SportParsers } from './gpu-stats-collector/parsers/sport-parsers';
+import chalk from 'chalk';
 
 dotenv.config({ path: '.env.local' });
 
@@ -18,66 +15,111 @@ const supabase = createClient(
 );
 
 async function debugBatchData() {
-  console.log(chalk.bold.cyan('\n🔍 DEBUGGING BATCH PROCESSOR DATA\n'));
+  console.log(chalk.blue('\n=== BATCH DATA DEBUGGING ===\n'));
   
-  // Get 1 game
-  const { data: games } = await supabase
+  // 1. Check games that should have stats
+  const { data: gamesToProcess } = await supabase
     .from('games')
-    .select('id, external_id, sport_id, home_team_id, away_team_id, start_time, home_score, away_score')
-    .eq('external_id', 'nfl_401671628')
-    .single();
-    
-  if (!games) {
-    console.error('Game not found');
+    .select('id, external_id, sport_id, start_time')
+    .not('home_score', 'is', null)
+    .order('start_time', { ascending: false })
+    .limit(100);
+  
+  if (!gamesToProcess) {
+    console.log('No games found');
     return;
   }
   
-  console.log(chalk.yellow('Original game:'));
-  console.log(JSON.stringify(games, null, 2));
+  // 2. Check which ones have stats
+  const gameIds = gamesToProcess.map(g => g.id);
+  const { data: gamesWithStats } = await supabase
+    .from('player_stats')
+    .select('game_id')
+    .in('game_id', gameIds);
   
-  await parallelEngine.initialize();
+  const processedIds = new Set(gamesWithStats?.map(s => s.game_id) || []);
+  const unprocessedGames = gamesToProcess.filter(g => !processedIds.has(g.id));
   
-  try {
-    // GPU process
-    const gpuProcessed = await parallelEngine.processGamesParallel([games]);
-    console.log(chalk.cyan('\nGPU processed:'));
-    console.log(JSON.stringify(gpuProcessed[0], null, 2));
+  console.log(chalk.cyan(`Out of ${gamesToProcess.length} recent games:`));
+  console.log(chalk.green(`  ✓ ${processedIds.size} have stats`));
+  console.log(chalk.yellow(`  ⚠️  ${unprocessedGames.length} missing stats`));
+  
+  // 3. Analyze unprocessed games by sport
+  const bySport = unprocessedGames.reduce((acc, game) => {
+    acc[game.sport_id] = (acc[game.sport_id] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+  
+  console.log(chalk.cyan('\nUnprocessed games by sport:'));
+  Object.entries(bySport).forEach(([sport, count]) => {
+    console.log(`  ${sport}: ${count} games`);
+  });
+  
+  // 4. Check if there's a pattern in external_ids
+  console.log(chalk.cyan('\nSample unprocessed games:'));
+  unprocessedGames.slice(0, 5).forEach(game => {
+    const date = new Date(game.start_time).toLocaleDateString();
+    console.log(`  Game ${game.id}: ${game.external_id} (${game.sport_id}, ${date})`);
+  });
+  
+  // 5. Try to fetch data for one unprocessed game
+  if (unprocessedGames.length > 0) {
+    const testGame = unprocessedGames[0];
+    console.log(chalk.cyan(`\nTesting ESPN API for game ${testGame.id} (${testGame.external_id})...`));
     
-    // Batch process
-    const apiResults = await batchProcessor.processBatch(gpuProcessed);
-    console.log(chalk.cyan('\nAPI Results:'));
-    console.log(`Results length: ${apiResults.length}`);
-    
-    if (apiResults.length > 0) {
-      const result = apiResults[0];
-      console.log('Keys:', Object.keys(result));
-      console.log('Game ID:', result.gameId);
-      console.log('ESPN ID:', result.espnId); 
-      console.log('Sport:', result.sport);
-      console.log('Has data?', !!result.data);
-      console.log('Has boxscore?', !!result.data?.boxscore);
-      console.log('Players length:', result.data?.boxscore?.players?.length || 0);
+    // Extract ESPN ID
+    const match = testGame.external_id.match(/(\d+)$/);
+    if (match) {
+      const espnId = match[1];
+      const sportMap: Record<string, string> = {
+        nfl: 'football/nfl',
+        nba: 'basketball/nba',
+        mlb: 'baseball/mlb',
+        nhl: 'hockey/nhl'
+      };
       
-      if (result.data?.boxscore?.players?.length > 0) {
-        console.log('Team 1 stats categories:', result.data.boxscore.players[0].statistics?.length || 0);
-        if (result.data.boxscore.players[0].statistics?.length > 0) {
-          console.log('First category:', result.data.boxscore.players[0].statistics[0].name);
-          console.log('Athletes in first category:', result.data.boxscore.players[0].statistics[0].athletes?.length || 0);
+      const sportPath = sportMap[testGame.sport_id] || testGame.sport_id;
+      const url = `https://site.api.espn.com/apis/site/v2/sports/${sportPath}/summary?event=${espnId}`;
+      
+      try {
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+          console.log(chalk.green('✓ API returned data'));
+          console.log('  Has boxscore:', !!data.boxscore);
+          console.log('  Has players:', !!data.boxscore?.players);
+          if (data.boxscore?.players) {
+            console.log('  Player arrays:', data.boxscore.players.length);
+          }
+        } else {
+          console.log(chalk.red(`✗ API error: ${response.status} ${response.statusText}`));
         }
-      }
-      
-      // Test direct parsing
-      console.log(chalk.cyan('\nTesting parser directly:'));
-      const parsed = SportParsers.parseNFLGame(result.data);
-      console.log(`Parser returned ${parsed.length} players`);
-      
-      if (parsed.length > 0) {
-        console.log('First player:', JSON.stringify(parsed[0], null, 2));
+      } catch (error) {
+        console.log(chalk.red('✗ Network error:', error));
       }
     }
+  }
+  
+  // 6. Check processing rate
+  const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+  const { data: recentStats } = await supabase
+    .from('player_stats')
+    .select('game_id, created_at')
+    .gte('created_at', oneHourAgo)
+    .order('created_at', { ascending: false });
+  
+  if (recentStats && recentStats.length > 0) {
+    const uniqueRecentGames = new Set(recentStats.map(s => s.game_id));
+    const firstTime = new Date(recentStats[recentStats.length - 1].created_at).getTime();
+    const lastTime = new Date(recentStats[0].created_at).getTime();
+    const duration = (lastTime - firstTime) / 1000 / 60; // minutes
     
-  } finally {
-    parallelEngine.dispose();
+    console.log(chalk.cyan('\nProcessing rate:'));
+    console.log(`  Games processed in last hour: ${uniqueRecentGames.size}`);
+    console.log(`  Stats inserted: ${recentStats.length}`);
+    if (duration > 0) {
+      console.log(`  Rate: ${(uniqueRecentGames.size / duration * 60).toFixed(1)} games/hour`);
+    }
   }
 }
 
