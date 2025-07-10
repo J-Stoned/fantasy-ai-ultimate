@@ -228,8 +228,11 @@ class UltimateStatsCollectorV3 {
       `)
       .not('home_score', 'is', null)
       .not('away_score', 'is', null)
+      .neq('home_score', 0)  // Exclude 0-0 games
+      .neq('away_score', 0)
       .not('sport_id', 'is', null)
       .lte('start_time', new Date().toISOString())
+      .gte('start_time', '2024-01-01')  // Focus on 2024+ games
       .order('id');
 
     if (sport) {
@@ -298,8 +301,8 @@ class UltimateStatsCollectorV3 {
 
   private async processGame(game: GameToProcess) {
     try {
-      // Extract ESPN ID
-      const espnId = game.external_id.replace(/^espn_(?:nfl_|nba_|mlb_|nhl_)?/, '');
+      // Extract ESPN ID (fixed to handle both nfl_ and espn_ formats)
+      const espnId = game.external_id.replace(/^(?:espn_)?(?:nfl_|nba_|mlb_|nhl_)/, '');
       
       // Get sport config
       const sportConfig = SPORT_CONFIG[game.sport_id as keyof typeof SPORT_CONFIG];
