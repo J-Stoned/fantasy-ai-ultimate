@@ -2,33 +2,27 @@
   "patterns": [
     {
       "name": "Revenge Game",
-      "homeWinRate": 0.2716049382716049,
-      "confidence": 0.9999399299994532,
-      "sampleSize": 486
-    },
-    {
-      "name": "Division Rivalry",
-      "homeWinRate": 0.4857142857142857,
-      "confidence": 0.9925534169290756,
-      "sampleSize": 245
+      "homeWinRate": 0.26078028747433263,
+      "confidence": 0.9999411194651585,
+      "sampleSize": 487
     },
     {
       "name": "Prime Time",
-      "homeWinRate": 0.5061224489795918,
-      "confidence": 0.9925534169290756,
-      "sampleSize": 245
+      "homeWinRate": 0.5270758122743683,
+      "confidence": 0.9960734731616944,
+      "sampleSize": 277
     },
     {
-      "name": "Momentum Differential",
-      "homeWinRate": 0.5476190476190477,
-      "confidence": 0.5682894765709203,
-      "sampleSize": 42
+      "name": "Division Rivalry",
+      "homeWinRate": 0.5045454545454545,
+      "confidence": 0.9877226600969315,
+      "sampleSize": 220
     }
   ],
-  "baseHomeRate": 0.508,
+  "baseHomeRate": 0.517,
   "analysis": {
     "totalGames": 1000,
-    "teamsAnalyzed": 92,
-    "patternsFound": 4
+    "teamsAnalyzed": 34,
+    "patternsFound": 3
   }
 }
