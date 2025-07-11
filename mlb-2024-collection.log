@@ -1,0 +1,20 @@
+node:internal/process/esm_loader:40
+      internalBinding('errors').triggerUncaughtException(
+                                ^
+
+Error: Transform failed with 1 error:
+/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/scripts/collect-2024-mlb-mega.ts:24:27: ERROR: Top-level await is currently not supported with the "cjs" output format
+    at failureErrorWithLog (/home/st0ne/.npm-global/lib/node_modules/tsx/node_modules/esbuild/lib/main.js:1463:15)
+    at /home/st0ne/.npm-global/lib/node_modules/tsx/node_modules/esbuild/lib/main.js:734:50
+    at responseCallbacks.<computed> (/home/st0ne/.npm-global/lib/node_modules/tsx/node_modules/esbuild/lib/main.js:601:9)
+    at handleIncomingPacket (/home/st0ne/.npm-global/lib/node_modules/tsx/node_modules/esbuild/lib/main.js:656:12)
+    at Socket.readFromStdout (/home/st0ne/.npm-global/lib/node_modules/tsx/node_modules/esbuild/lib/main.js:579:7)
+    at Socket.emit (node:events:517:28)
+    at addChunk (node:internal/streams/readable:368:12)
+    at readableAddChunk (node:internal/streams/readable:341:9)
+    at Readable.push (node:internal/streams/readable:278:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23) {
+  name: 'TransformError'
+}
+
+Node.js v18.19.1
