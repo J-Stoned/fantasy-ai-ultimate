@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 /**
- * ⚾ MLB 2023 TARGETED COLLECTOR - Fix the stats gap!
+ * 🏒 NHL 2023-24 TARGETED COLLECTOR - Complete the season!
  */
 
 import { createClient } from '@supabase/supabase-js';
@@ -16,18 +16,18 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-class MLB2023Collector {
+class NHL2023Collector {
   private limit = pLimit(3); // Limit concurrent requests
   private playerCache = new Map<string, number>();
   private teamCache = new Map<string, number>();
   
   async run() {
-    console.log(chalk.bold.red('⚾ MLB 2023 TARGETED COLLECTOR\n'));
+    console.log(chalk.bold.cyan('🏒 NHL 2023-24 TARGETED COLLECTOR\n'));
     
     // Load caches
     await this.loadCaches();
     
-    // Get all 2023 MLB games with pagination
+    // Get all 2023-24 NHL games with pagination
     const allGames: any[] = [];
     let offset = 0;
     const pageSize = 1000;
@@ -36,9 +36,9 @@ class MLB2023Collector {
       const { data: games, error } = await supabase
         .from('games')
         .select('*')
-        .eq('sport_id', 'mlb')
-        .gte('start_time', '2023-01-01')
-        .lt('start_time', '2024-01-01')
+        .eq('sport_id', 'nhl')
+        .gte('start_time', '2023-10-01')
+        .lt('start_time', '2024-07-01')
         .order('start_time')
         .range(offset, offset + pageSize - 1);
       
@@ -52,11 +52,11 @@ class MLB2023Collector {
     const games = allGames;
     
     if (games.length === 0) {
-      console.log('No 2023 MLB games found!');
+      console.log('No 2023-24 NHL games found!');
       return;
     }
     
-    console.log(`Found ${games.length} MLB 2023 games to process\n`);
+    console.log(`Found ${games.length} NHL 2023-24 games to process\n`);
     
     let processed = 0;
     let withStats = 0;
@@ -85,11 +85,11 @@ class MLB2023Collector {
   }
   
   private async loadCaches() {
-    // Load all MLB players
+    // Load all NHL players
     const { data: players } = await supabase
       .from('players')
       .select('id, name, external_id')
-      .eq('sport', 'mlb');
+      .eq('sport', 'nhl');
     
     players?.forEach(p => {
       this.playerCache.set(p.name.toLowerCase(), p.id);
@@ -98,11 +98,11 @@ class MLB2023Collector {
       }
     });
     
-    // Load all MLB teams
+    // Load all NHL teams
     const { data: teams } = await supabase
       .from('teams')
       .select('id, name, abbreviation')
-      .eq('sport_id', 'mlb');
+      .eq('sport_id', 'nhl');
     
     teams?.forEach(t => {
       this.teamCache.set(t.abbreviation.toLowerCase(), t.id);
@@ -123,10 +123,11 @@ class MLB2023Collector {
       if (existing && existing > 0) {
         return existing; // Already has stats
       }
-      // ESPN API URL for MLB box score
-      // Extract the numeric ID from external_id format: "espn_mlb_401472263" -> "401472263"
-      const espnId = game.external_id?.replace('espn_mlb_', '') || game.external_id;
-      const url = `https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/summary?event=${espnId}`;
+      
+      // ESPN API URL for NHL box score
+      // Extract the numeric ID from external_id format: "espn_nhl_401547450" -> "401547450"
+      const espnId = game.external_id?.replace('espn_nhl_', '') || game.external_id;
+      const url = `https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/summary?event=${espnId}`;
       
       const response = await axios.get(url);
       const data = response.data;
@@ -142,13 +143,13 @@ class MLB2023Collector {
         const teamId = this.teamCache.get(team.team.abbreviation.toLowerCase());
         if (!teamId) continue;
         
-        // Process batters
+        // Process skaters
         if (team.statistics && team.statistics[0] && team.statistics[0].athletes) {
           for (const athlete of team.statistics[0].athletes) {
             const playerId = this.playerCache.get(athlete.athlete.displayName.toLowerCase());
             if (!playerId) continue;
             
-            const stats = this.parseMLBStats(athlete.stats);
+            const stats = this.parseNHLStats(athlete.stats);
             if (Object.keys(stats).length > 0) {
               statsToInsert.push({
                 game_id: game.id,
@@ -157,7 +158,7 @@ class MLB2023Collector {
                 opponent_id: teamId === game.home_team_id ? game.away_team_id : game.home_team_id,
                 game_date: game.start_time,
                 stats,
-                fantasy_points: this.calculateMLBFantasyPoints(stats)
+                fantasy_points: this.calculateNHLFantasyPoints(stats)
               });
             }
           }
@@ -185,33 +186,30 @@ class MLB2023Collector {
     }
   }
   
-  private parseMLBStats(stats: string[]): any {
-    // MLB stats order: AB, R, H, RBI, HR, BB, SO, AVG
+  private parseNHLStats(stats: string[]): any {
+    // NHL stats order varies by position
+    // Skaters: G, A, +/-, SOG, PIM, TOI
     return {
-      AB: parseInt(stats[0]) || 0,
-      R: parseInt(stats[1]) || 0,
-      H: parseInt(stats[2]) || 0,
-      RBI: parseInt(stats[3]) || 0,
-      HR: parseInt(stats[4]) || 0,
-      BB: parseInt(stats[5]) || 0,
-      SO: parseInt(stats[6]) || 0,
-      AVG: parseFloat(stats[7]) || 0
+      G: parseInt(stats[0]) || 0,
+      A: parseInt(stats[1]) || 0,
+      PlusMinus: parseInt(stats[2]) || 0,
+      SOG: parseInt(stats[3]) || 0,
+      PIM: parseInt(stats[4]) || 0,
+      TOI: stats[5] || '0:00'
     };
   }
   
-  private calculateMLBFantasyPoints(stats: any): number {
-    // Standard MLB fantasy scoring
+  private calculateNHLFantasyPoints(stats: any): number {
+    // Standard NHL fantasy scoring
     return (
-      stats.R * 1 +      // Runs
-      stats.H * 1 +      // Hits
-      stats.RBI * 1 +    // RBIs
-      stats.HR * 4 +     // Home runs
-      stats.BB * 1 +     // Walks
-      stats.SO * -1      // Strikeouts
+      stats.G * 3 +        // Goals
+      stats.A * 2 +        // Assists
+      stats.SOG * 0.5 +    // Shots on goal
+      stats.PlusMinus * 1  // Plus/minus
     );
   }
 }
 
 // Run the collector
-const collector = new MLB2023Collector();
+const collector = new NHL2023Collector();
 collector.run().catch(console.error);
