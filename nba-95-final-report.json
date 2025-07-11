@@ -1,0 +1,13 @@
+{
+  "sport": "NBA",
+  "collectionDate": "2025-07-11T00:22:51.087Z",
+  "initialCoverage": "82.0%",
+  "finalCoverage": "85.6%",
+  "totalGames": 250,
+  "gamesWithStats": 214,
+  "gamesCollected": 0,
+  "gamesFailed": 29,
+  "successRate": "0.0%",
+  "achieved95": false,
+  "collectedGameIds": []
+}

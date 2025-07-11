@@ -1,0 +1,10 @@
+{
+  "timestamp": "2025-07-11T00:22:01.611Z",
+  "successCount": 0,
+  "failureCount": 25,
+  "collectedGames": [],
+  "currentCoverage": "85.6",
+  "gamesWithStats": 214,
+  "totalGames": 250,
+  "remainingFor95": 24
+}
