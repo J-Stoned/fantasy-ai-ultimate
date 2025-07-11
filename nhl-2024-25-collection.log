@@ -1,0 +1,88 @@
+🏒 NHL 2024-25 STATS COLLECTOR (FAST MODE)
+==========================================
+
+Found 603 NHL 2024-25 games
+
+Already processed: 285 games
+Games to process: 318
+
+Processing batch 1/16...
+Batch 1 complete: 0 logs from 0 games
+Total progress: 0 logs from 0 games
+
+Processing batch 2/16...
+Batch 2 complete: 0 logs from 0 games
+Total progress: 0 logs from 0 games
+
+Processing batch 3/16...
+Batch 3 complete: 0 logs from 0 games
+Total progress: 0 logs from 0 games
+
+Processing batch 4/16...
+Batch 4 complete: 0 logs from 0 games
+Total progress: 0 logs from 0 games
+
+Processing batch 5/16...
+Batch 5 complete: 0 logs from 0 games
+Total progress: 0 logs from 0 games
+
+Processing batch 6/16...
+Batch 6 complete: 0 logs from 0 games
+Total progress: 0 logs from 0 games
+
+Processing batch 7/16...
+Batch 7 complete: 0 logs from 0 games
+Total progress: 0 logs from 0 games
+
+Processing batch 8/16...
+Batch 8 complete: 0 logs from 0 games
+Total progress: 0 logs from 0 games
+
+Processing batch 9/16...
+Batch 9 complete: 0 logs from 0 games
+Total progress: 0 logs from 0 games
+
+Processing batch 10/16...
+Batch 10 complete: 0 logs from 0 games
+Total progress: 0 logs from 0 games
+
+Processing batch 11/16...
+Batch 11 complete: 0 logs from 0 games
+Total progress: 0 logs from 0 games
+
+Processing batch 12/16...
+Batch 12 complete: 0 logs from 0 games
+Total progress: 0 logs from 0 games
+
+Processing batch 13/16...
+Batch 13 complete: 0 logs from 0 games
+Total progress: 0 logs from 0 games
+
+Processing batch 14/16...
+Batch 14 complete: 0 logs from 0 games
+Total progress: 0 logs from 0 games
+
+Processing batch 15/16...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 15 complete: 612 logs from 17 games
+Total progress: 612 logs from 17 games
+
+Processing batch 16/16...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 16 complete: 396 logs from 11 games
+Total progress: 1008 logs from 28 games
+
+✅ COMPLETE! Collected 1008 player logs from 28 games
+
+Total NHL 2024-25 logs in database: 70093
+
+🎯 GRAND TOTAL player logs in database: 143114
