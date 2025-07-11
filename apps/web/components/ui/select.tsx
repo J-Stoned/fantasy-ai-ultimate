@@ -62,4 +62,12 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 )
 Select.displayName = "Select"
 
+// Stub exports for compatibility
+export const SelectTrigger = Select;
+export const SelectValue = ({ placeholder, children }: { placeholder?: string; children?: React.ReactNode }) => (
+  <span>{children || placeholder}</span>
+);
+export const SelectContent = ({ children }: { children?: React.ReactNode }) => <>{children}</>;
+export const SelectItem = ({ children }: { children?: React.ReactNode }) => <option>{children}</option>;
+
 export { Select, selectVariants }
