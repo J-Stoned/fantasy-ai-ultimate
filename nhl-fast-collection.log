@@ -1,0 +1,709 @@
+🏒 NHL 2023-24 STATS COLLECTOR (FAST MODE)
+==========================================
+
+Found 1404 NHL 2023-24 games
+
+Already processed: 243 games
+Games to process: 1161
+
+Processing batch 1/59...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 1 complete: 718 logs from 20 games
+Total progress: 718 logs from 20 games
+
+Processing batch 2/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 2 complete: 717 logs from 20 games
+Total progress: 1435 logs from 40 games
+
+Processing batch 3/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_team_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 3 complete: 718 logs from 20 games
+Total progress: 2153 logs from 60 games
+
+Processing batch 4/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 4 complete: 717 logs from 20 games
+Total progress: 2870 logs from 80 games
+
+Processing batch 5/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 5 complete: 718 logs from 20 games
+Total progress: 3588 logs from 100 games
+
+Processing batch 6/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 6 complete: 718 logs from 20 games
+Total progress: 4306 logs from 120 games
+
+Processing batch 7/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 7 complete: 717 logs from 20 games
+Total progress: 5023 logs from 140 games
+
+Processing batch 8/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 8 complete: 718 logs from 20 games
+Total progress: 5741 logs from 160 games
+
+Processing batch 9/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 9 complete: 718 logs from 20 games
+Total progress: 6459 logs from 180 games
+
+Processing batch 10/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 10 complete: 719 logs from 20 games
+Total progress: 7178 logs from 200 games
+
+Processing batch 11/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 11 complete: 719 logs from 20 games
+Total progress: 7897 logs from 220 games
+
+Processing batch 12/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 12 complete: 718 logs from 20 games
+Total progress: 8615 logs from 240 games
+
+Processing batch 13/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 13 complete: 719 logs from 20 games
+Total progress: 9334 logs from 260 games
+
+Processing batch 14/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 14 complete: 718 logs from 20 games
+Total progress: 10052 logs from 280 games
+
+Processing batch 15/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 15 complete: 718 logs from 20 games
+Total progress: 10770 logs from 300 games
+
+Processing batch 16/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 16 complete: 718 logs from 20 games
+Total progress: 11488 logs from 320 games
+
+Processing batch 17/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 17 complete: 717 logs from 20 games
+Total progress: 12205 logs from 340 games
+
+Processing batch 18/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 18 complete: 718 logs from 20 games
+Total progress: 12923 logs from 360 games
+
+Processing batch 19/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 19 complete: 717 logs from 20 games
+Total progress: 13640 logs from 380 games
+
+Processing batch 20/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 20 complete: 717 logs from 20 games
+Total progress: 14357 logs from 400 games
+
+Processing batch 21/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 21 complete: 717 logs from 20 games
+Total progress: 15074 logs from 420 games
+
+Processing batch 22/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 22 complete: 718 logs from 20 games
+Total progress: 15792 logs from 440 games
+
+Processing batch 23/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 23 complete: 682 logs from 19 games
+Total progress: 16474 logs from 459 games
+
+Processing batch 24/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 24 complete: 717 logs from 20 games
+Total progress: 17191 logs from 479 games
+
+Processing batch 25/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 25 complete: 719 logs from 20 games
+Total progress: 17910 logs from 499 games
+
+Processing batch 26/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 26 complete: 719 logs from 20 games
+Total progress: 18629 logs from 519 games
+
+Processing batch 27/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 27 complete: 683 logs from 20 games
+Total progress: 19312 logs from 539 games
+
+Processing batch 28/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 28 complete: 699 logs from 20 games
+Total progress: 20011 logs from 559 games
+
+Processing batch 29/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 29 complete: 719 logs from 20 games
+Total progress: 20730 logs from 579 games
+
+Processing batch 30/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 30 complete: 718 logs from 20 games
+Total progress: 21448 logs from 599 games
+
+Processing batch 31/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 31 complete: 718 logs from 20 games
+Total progress: 22166 logs from 619 games
+
+Processing batch 32/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 32 complete: 717 logs from 20 games
+Total progress: 22883 logs from 639 games
+
+Processing batch 33/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 33 complete: 719 logs from 20 games
+Total progress: 23602 logs from 659 games
+
+Processing batch 34/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 34 complete: 719 logs from 20 games
+Total progress: 24321 logs from 679 games
+
+Processing batch 35/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 35 complete: 718 logs from 20 games
+Total progress: 25039 logs from 699 games
+
+Processing batch 36/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 36 complete: 720 logs from 20 games
+Total progress: 25759 logs from 719 games
+
+Processing batch 37/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 37 complete: 718 logs from 20 games
+Total progress: 26477 logs from 739 games
+
+Processing batch 38/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 38 complete: 720 logs from 20 games
+Total progress: 27197 logs from 759 games
+
+Processing batch 39/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 39 complete: 717 logs from 20 games
+Total progress: 27914 logs from 779 games
+
+Processing batch 40/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 40 complete: 718 logs from 20 games
+Total progress: 28632 logs from 799 games
+
+Processing batch 41/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 41 complete: 719 logs from 20 games
+Total progress: 29351 logs from 819 games
+
+Processing batch 42/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 42 complete: 718 logs from 20 games
+Total progress: 30069 logs from 839 games
+
+Processing batch 43/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 43 complete: 718 logs from 20 games
+Total progress: 30787 logs from 859 games
+
+Processing batch 44/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_team_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 44 complete: 719 logs from 20 games
+Total progress: 31506 logs from 879 games
+
+Processing batch 45/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 45 complete: 719 logs from 20 games
+Total progress: 32225 logs from 899 games
+
+Processing batch 46/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 46 complete: 720 logs from 20 games
+Total progress: 32945 logs from 919 games
+
+Processing batch 47/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 47 complete: 720 logs from 20 games
+Total progress: 33665 logs from 939 games
+
+Processing batch 48/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 48 complete: 719 logs from 20 games
+Total progress: 34384 logs from 959 games
+
+Processing batch 49/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 49 complete: 719 logs from 20 games
+Total progress: 35103 logs from 979 games
+
+Processing batch 50/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 50 complete: 720 logs from 20 games
+Total progress: 35823 logs from 999 games
+
+Processing batch 51/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 51 complete: 719 logs from 20 games
+Total progress: 36542 logs from 1019 games
+
+Processing batch 52/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 52 complete: 718 logs from 20 games
+Total progress: 37260 logs from 1039 games
+
+Processing batch 53/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 53 complete: 719 logs from 20 games
+Total progress: 37979 logs from 1059 games
+
+Processing batch 54/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 54 complete: 717 logs from 20 games
+Total progress: 38696 logs from 1079 games
+
+Processing batch 55/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 55 complete: 718 logs from 20 games
+Total progress: 39414 logs from 1099 games
+
+Processing batch 56/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 56 complete: 717 logs from 20 games
+Total progress: 40131 logs from 1119 games
+
+Processing batch 57/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 57 complete: 716 logs from 20 games
+Total progress: 40847 logs from 1139 games
+
+Processing batch 58/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 58 complete: 714 logs from 20 games
+Total progress: 41561 logs from 1159 games
+
+Processing batch 59/59...
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 59 complete: 36 logs from 1 games
+Total progress: 41597 logs from 1160 games
+
+✅ COMPLETE! Collected 41597 player logs from 1160 games
+
+Total NHL 2023-24 logs in database: 30502
