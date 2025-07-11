@@ -28,6 +28,7 @@
     "@types/node": "20.11.5",
     "@types/react": "18.3.23",
     "@types/react-dom": "18.3.7",
+    "@upstash/redis": "^1.35.1",
     "autoprefixer": "^10.4.17",
     "axios": "^1.6.5",
     "class-variance-authority": "^0.7.0",

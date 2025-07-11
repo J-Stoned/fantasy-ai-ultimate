@@ -102,3 +102,4 @@ credentials/
 !.env.example
 !.env.secure.example
 !.env.*.example
+.vercel
