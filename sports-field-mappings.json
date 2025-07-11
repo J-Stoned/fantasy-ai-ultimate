@@ -1,0 +1,165 @@
+{
+  "NBA": {
+    "totalLogs": 10,
+    "fieldCount": 17,
+    "fields": [
+      "assists",
+      "blocks",
+      "defensiveRebounds",
+      "fieldGoalsAttempted",
+      "fieldGoalsMade",
+      "freeThrowsAttempted",
+      "freeThrowsMade",
+      "minutes",
+      "offensiveRebounds",
+      "personalFouls",
+      "plusMinus",
+      "points",
+      "rebounds",
+      "steals",
+      "threePointersAttempted",
+      "threePointersMade",
+      "turnovers"
+    ],
+    "fieldTypes": {
+      "blocks": [
+        "number"
+      ],
+      "points": [
+        "number"
+      ],
+      "steals": [
+        "number"
+      ],
+      "assists": [
+        "number"
+      ],
+      "minutes": [
+        "string"
+      ],
+      "rebounds": [
+        "number"
+      ],
+      "plusMinus": [
+        "number"
+      ],
+      "turnovers": [
+        "number"
+      ],
+      "personalFouls": [
+        "number"
+      ],
+      "fieldGoalsMade": [
+        "number"
+      ],
+      "freeThrowsMade": [
+        "number"
+      ],
+      "defensiveRebounds": [
+        "number"
+      ],
+      "offensiveRebounds": [
+        "number"
+      ],
+      "threePointersMade": [
+        "number"
+      ],
+      "fieldGoalsAttempted": [
+        "number"
+      ],
+      "freeThrowsAttempted": [
+        "number"
+      ],
+      "threePointersAttempted": [
+        "number"
+      ]
+    },
+    "fieldSamples": {
+      "blocks": [
+        0,
+        1,
+        1
+      ],
+      "points": [
+        0,
+        14,
+        10
+      ],
+      "steals": [
+        0,
+        0,
+        0
+      ],
+      "assists": [
+        0,
+        3,
+        0
+      ],
+      "minutes": [
+        "1",
+        "28",
+        "27"
+      ],
+      "rebounds": [
+        0,
+        14,
+        1
+      ],
+      "plusMinus": [
+        0,
+        2,
+        -22
+      ],
+      "turnovers": [
+        0,
+        1,
+        0
+      ],
+      "personalFouls": [
+        0,
+        5,
+        3
+      ],
+      "fieldGoalsMade": [
+        0,
+        5,
+        4
+      ],
+      "freeThrowsMade": [
+        0,
+        3,
+        2
+      ],
+      "defensiveRebounds": [
+        0,
+        11,
+        0
+      ],
+      "offensiveRebounds": [
+        0,
+        3,
+        1
+      ],
+      "threePointersMade": [
+        0,
+        1,
+        0
+      ],
+      "fieldGoalsAttempted": [
+        0,
+        8,
+        12
+      ],
+      "freeThrowsAttempted": [
+        0,
+        3,
+        3
+      ],
+      "threePointersAttempted": [
+        0,
+        2,
+        3
+      ]
+    }
+  }
+}

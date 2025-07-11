@@ -1,0 +1,876 @@
+{
+  "NBA": {
+    "query": "NBA",
+    "totalLogs": 0,
+    "logsWithStats": 20,
+    "fieldCount": 14,
+    "fields": [
+      "assists",
+      "blocks",
+      "fantasy_points",
+      "field_goals_attempted",
+      "field_goals_made",
+      "free_throws_attempted",
+      "free_throws_made",
+      "minutes_played",
+      "points",
+      "rebounds",
+      "steals",
+      "three_pointers_attempted",
+      "three_pointers_made",
+      "turnovers"
+    ],
+    "fieldTypes": {
+      "blocks": [
+        "number"
+      ],
+      "points": [
+        "number"
+      ],
+      "steals": [
+        "number"
+      ],
+      "assists": [
+        "number"
+      ],
+      "rebounds": [
+        "number"
+      ],
+      "turnovers": [
+        "number"
+      ],
+      "fantasy_points": [
+        "number"
+      ],
+      "minutes_played": [
+        "number"
+      ],
+      "field_goals_made": [
+        "number"
+      ],
+      "free_throws_made": [
+        "number"
+      ],
+      "three_pointers_made": [
+        "number"
+      ],
+      "field_goals_attempted": [
+        "number"
+      ],
+      "free_throws_attempted": [
+        "number"
+      ],
+      "three_pointers_attempted": [
+        "number"
+      ]
+    },
+    "fieldSamples": {
+      "blocks": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "points": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "steals": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "assists": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "rebounds": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "turnovers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "fantasy_points": [
+        40,
+        31.5,
+        41.75,
+        26.75,
+        22.25
+      ],
+      "minutes_played": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "field_goals_made": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "free_throws_made": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "three_pointers_made": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "field_goals_attempted": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "free_throws_attempted": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "three_pointers_attempted": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "fieldFrequency": {
+      "blocks": 20,
+      "points": 20,
+      "steals": 20,
+      "assists": 20,
+      "rebounds": 20,
+      "turnovers": 20,
+      "fantasy_points": 20,
+      "minutes_played": 20,
+      "field_goals_made": 20,
+      "free_throws_made": 20,
+      "three_pointers_made": 20,
+      "field_goals_attempted": 20,
+      "free_throws_attempted": 20,
+      "three_pointers_attempted": 20
+    }
+  },
+  "NFL_uppercase": {
+    "query": "NFL",
+    "totalLogs": 0,
+    "logsWithStats": 20,
+    "fieldCount": 15,
+    "fields": [
+      "carries",
+      "defensive_qb_hts",
+      "defensive_sacks",
+      "defensive_solo",
+      "defensive_td",
+      "defensive_tfl",
+      "defensive_tot",
+      "receivingTDs",
+      "receivingYards",
+      "receptions",
+      "rushingTDs",
+      "rushingYards",
+      "targets",
+      "yardsPerCarry",
+      "yardsPerReception"
+    ],
+    "fieldTypes": {
+      "defensive_td": [
+        "string"
+      ],
+      "defensive_tot": [
+        "string"
+      ],
+      "targets": [
+        "number"
+      ],
+      "receptions": [
+        "number"
+      ],
+      "receivingTDs": [
+        "number"
+      ],
+      "receivingYards": [
+        "number"
+      ],
+      "yardsPerReception": [
+        "number"
+      ],
+      "defensive_tfl": [
+        "string"
+      ],
+      "defensive_solo": [
+        "string"
+      ],
+      "defensive_sacks": [
+        "string"
+      ],
+      "defensive_qb_hts": [
+        "string"
+      ],
+      "carries": [
+        "number"
+      ],
+      "rushingTDs": [
+        "number"
+      ],
+      "rushingYards": [
+        "number"
+      ],
+      "yardsPerCarry": [
+        "number"
+      ]
+    },
+    "fieldSamples": {
+      "defensive_td": [
+        "0",
+        "0"
+      ],
+      "defensive_tot": [
+        "1",
+        "5"
+      ],
+      "targets": [
+        10,
+        1,
+        4,
+        1,
+        4
+      ],
+      "receptions": [
+        7,
+        1,
+        4,
+        1,
+        4
+      ],
+      "receivingTDs": [
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "receivingYards": [
+        52,
+        11,
+        16,
+        5,
+        47
+      ],
+      "yardsPerReception": [
+        7.4,
+        11,
+        4,
+        5,
+        11.8
+      ],
+      "defensive_tfl": [
+        "1"
+      ],
+      "defensive_solo": [
+        "4"
+      ],
+      "defensive_sacks": [
+        "1"
+      ],
+      "defensive_qb_hts": [
+        "1"
+      ],
+      "carries": [
+        4,
+        17,
+        1,
+        1,
+        1
+      ],
+      "rushingTDs": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "rushingYards": [
+        55,
+        43,
+        22,
+        7,
+        2
+      ],
+      "yardsPerCarry": [
+        13.8,
+        2.5,
+        22,
+        7,
+        2
+      ]
+    },
+    "fieldFrequency": {
+      "defensive_td": 2,
+      "defensive_tot": 2,
+      "targets": 15,
+      "receptions": 15,
+      "receivingTDs": 15,
+      "receivingYards": 15,
+      "yardsPerReception": 15,
+      "defensive_tfl": 1,
+      "defensive_solo": 1,
+      "defensive_sacks": 1,
+      "defensive_qb_hts": 1,
+      "carries": 9,
+      "rushingTDs": 9,
+      "rushingYards": 9,
+      "yardsPerCarry": 9
+    }
+  },
+  "NFL_lowercase": {
+    "query": "nfl",
+    "totalLogs": 0,
+    "logsWithStats": 20,
+    "fieldCount": 15,
+    "fields": [
+      "extra_points_attempted",
+      "extra_points_made",
+      "field_goals_attempted",
+      "field_goals_made",
+      "passing_attempts",
+      "passing_completions",
+      "passing_interceptions",
+      "passing_touchdowns",
+      "passing_yards",
+      "receiving_receptions",
+      "receiving_touchdowns",
+      "receiving_yards",
+      "rushing_attempts",
+      "rushing_touchdowns",
+      "rushing_yards"
+    ],
+    "fieldTypes": {
+      "passing_yards": [
+        "number"
+      ],
+      "passing_attempts": [
+        "number"
+      ],
+      "passing_touchdowns": [
+        "number"
+      ],
+      "passing_completions": [
+        "number"
+      ],
+      "passing_interceptions": [
+        "number"
+      ],
+      "rushing_yards": [
+        "number"
+      ],
+      "rushing_attempts": [
+        "number"
+      ],
+      "rushing_touchdowns": [
+        "number"
+      ],
+      "receiving_yards": [
+        "number"
+      ],
+      "receiving_receptions": [
+        "number"
+      ],
+      "receiving_touchdowns": [
+        "number"
+      ],
+      "field_goals_made": [
+        "number"
+      ],
+      "extra_points_made": [
+        "number"
+      ],
+      "field_goals_attempted": [
+        "number"
+      ],
+      "extra_points_attempted": [
+        "number"
+      ]
+    },
+    "fieldSamples": {
+      "passing_yards": [
+        6,
+        10,
+        7
+      ],
+      "passing_attempts": [
+        273,
+        291,
+        260
+      ],
+      "passing_touchdowns": [
+        1,
+        1,
+        2
+      ],
+      "passing_completions": [
+        26,
+        20,
+        17
+      ],
+      "passing_interceptions": [
+        0,
+        1,
+        1
+      ],
+      "rushing_yards": [
+        46,
+        14,
+        45,
+        21,
+        3
+      ],
+      "rushing_attempts": [
+        13,
+        2,
+        15,
+        1,
+        2
+      ],
+      "rushing_touchdowns": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "receiving_yards": [
+        111,
+        53,
+        14,
+        6,
+        103
+      ],
+      "receiving_receptions": [
+        9,
+        2,
+        2,
+        1,
+        7
+      ],
+      "receiving_touchdowns": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "field_goals_made": [
+        2,
+        2
+      ],
+      "extra_points_made": [
+        8,
+        9
+      ],
+      "field_goals_attempted": [
+        67,
+        100
+      ],
+      "extra_points_attempted": [
+        0,
+        0
+      ]
+    },
+    "fieldFrequency": {
+      "passing_yards": 3,
+      "passing_attempts": 3,
+      "passing_touchdowns": 3,
+      "passing_completions": 3,
+      "passing_interceptions": 3,
+      "rushing_yards": 6,
+      "rushing_attempts": 6,
+      "rushing_touchdowns": 6,
+      "receiving_yards": 9,
+      "receiving_receptions": 9,
+      "receiving_touchdowns": 9,
+      "field_goals_made": 2,
+      "extra_points_made": 2,
+      "field_goals_attempted": 2,
+      "extra_points_attempted": 2
+    }
+  },
+  "NHL": {
+    "query": "NHL",
+    "totalLogs": 0,
+    "logsWithStats": 20,
+    "fieldCount": 15,
+    "fields": [
+      "assists",
+      "blockedShots",
+      "goals",
+      "goalsAgainst",
+      "goalsAgainstAvg",
+      "hits",
+      "penaltyMinutes",
+      "plusMinus",
+      "points",
+      "savePercentage",
+      "saves",
+      "shots",
+      "shotsAgainst",
+      "shutouts",
+      "timeOnIce"
+    ],
+    "fieldTypes": {
+      "hits": [
+        "number"
+      ],
+      "goals": [
+        "number"
+      ],
+      "shots": [
+        "number"
+      ],
+      "points": [
+        "number"
+      ],
+      "assists": [
+        "number"
+      ],
+      "plusMinus": [
+        "number"
+      ],
+      "blockedShots": [
+        "number"
+      ],
+      "penaltyMinutes": [
+        "number"
+      ],
+      "saves": [
+        "number"
+      ],
+      "shutouts": [
+        "number"
+      ],
+      "timeOnIce": [
+        "string"
+      ],
+      "goalsAgainst": [
+        "number"
+      ],
+      "shotsAgainst": [
+        "number"
+      ],
+      "savePercentage": [
+        "number"
+      ],
+      "goalsAgainstAvg": [
+        "number"
+      ]
+    },
+    "fieldSamples": {
+      "hits": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        1,
+        4,
+        2,
+        0,
+        2
+      ],
+      "shots": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "points": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "assists": [
+        1,
+        0,
+        1,
+        0,
+        4
+      ],
+      "plusMinus": [
+        -2,
+        0,
+        3,
+        1,
+        -4
+      ],
+      "blockedShots": [
+        18,
+        18,
+        20,
+        11,
+        22
+      ],
+      "penaltyMinutes": [
+        18,
+        18,
+        20,
+        11,
+        22
+      ],
+      "saves": [
+        0
+      ],
+      "shutouts": [
+        20
+      ],
+      "timeOnIce": [
+        ".870"
+      ],
+      "goalsAgainst": [
+        23
+      ],
+      "shotsAgainst": [
+        3
+      ],
+      "savePercentage": [
+        0
+      ],
+      "goalsAgainstAvg": [
+        20
+      ]
+    },
+    "fieldFrequency": {
+      "hits": 19,
+      "goals": 19,
+      "shots": 19,
+      "points": 19,
+      "assists": 19,
+      "plusMinus": 19,
+      "blockedShots": 19,
+      "penaltyMinutes": 19,
+      "saves": 1,
+      "shutouts": 1,
+      "timeOnIce": 1,
+      "goalsAgainst": 1,
+      "shotsAgainst": 1,
+      "savePercentage": 1,
+      "goalsAgainstAvg": 1
+    }
+  },
+  "MLB": {
+    "query": "MLB",
+    "totalLogs": 0,
+    "logsWithStats": 20,
+    "fieldCount": 14,
+    "fields": [
+      "assists",
+      "blocks",
+      "fantasy_points",
+      "field_goals_attempted",
+      "field_goals_made",
+      "free_throws_attempted",
+      "free_throws_made",
+      "minutes_played",
+      "points",
+      "rebounds",
+      "steals",
+      "three_pointers_attempted",
+      "three_pointers_made",
+      "turnovers"
+    ],
+    "fieldTypes": {
+      "blocks": [
+        "number"
+      ],
+      "points": [
+        "number"
+      ],
+      "steals": [
+        "number"
+      ],
+      "assists": [
+        "number"
+      ],
+      "rebounds": [
+        "number"
+      ],
+      "turnovers": [
+        "number"
+      ],
+      "fantasy_points": [
+        "number"
+      ],
+      "minutes_played": [
+        "number"
+      ],
+      "field_goals_made": [
+        "number"
+      ],
+      "free_throws_made": [
+        "number"
+      ],
+      "three_pointers_made": [
+        "number"
+      ],
+      "field_goals_attempted": [
+        "number"
+      ],
+      "free_throws_attempted": [
+        "number"
+      ],
+      "three_pointers_attempted": [
+        "number"
+      ]
+    },
+    "fieldSamples": {
+      "blocks": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "points": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "steals": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "assists": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "rebounds": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "turnovers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "fantasy_points": [
+        19.059489818920767,
+        25.976766557258607,
+        40.5,
+        39.15719144080364,
+        48.5
+      ],
+      "minutes_played": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "field_goals_made": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "free_throws_made": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "three_pointers_made": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "field_goals_attempted": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "free_throws_attempted": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "three_pointers_attempted": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "fieldFrequency": {
+      "blocks": 20,
+      "points": 20,
+      "steals": 20,
+      "assists": 20,
+      "rebounds": 20,
+      "turnovers": 20,
+      "fantasy_points": 20,
+      "minutes_played": 20,
+      "field_goals_made": 20,
+      "free_throws_made": 20,
+      "three_pointers_made": 20,
+      "field_goals_attempted": 20,
+      "free_throws_attempted": 20,
+      "three_pointers_attempted": 20
+    }
+  }
+}
