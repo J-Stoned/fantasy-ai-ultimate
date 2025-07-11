@@ -4,3 +4,102 @@ Target: 600,000+
 Gap: 476,446\n
 ⚠️  NBA collection still active (last update 1 min ago)
 Waiting for it to complete...\n
+✅ NBA collection appears complete\n
+\n🚀 STARTING: MLB 2023 Season\n
+Expected games: 2,470
+Expected logs: 60,000
+
+node:internal/process/esm_loader:40
+      internalBinding('errors').triggerUncaughtException(
+                                ^
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/collect-all-2023-seasons-FINAL.ts' imported from /mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/
+    at new NodeError (node:internal/errors:405:5)
+    at finalizeResolution (node:internal/modules/esm/resolve:327:11)
+    at moduleResolve (node:internal/modules/esm/resolve:980:10)
+    at defaultResolve (node:internal/modules/esm/resolve:1193:11)
+    at nextResolve (node:internal/modules/esm/hooks:864:28)
+    at resolveBase (file:///home/st0ne/.npm-global/lib/node_modules/tsx/dist/esm/index.mjs?1752200501966:2:3811)
+    at async resolveDirectory (file:///home/st0ne/.npm-global/lib/node_modules/tsx/dist/esm/index.mjs?1752200501966:2:4304)
+    at async resolve (file:///home/st0ne/.npm-global/lib/node_modules/tsx/dist/esm/index.mjs?1752200501966:2:5422)
+    at async nextResolve (node:internal/modules/esm/hooks:864:22)
+    at async Hooks.resolve (node:internal/modules/esm/hooks:302:24) {
+  url: 'file:///mnt/c/Users/st0ne/Hey%20Fantasy/fantasy-ai-ultimate/collect-all-2023-seasons-FINAL.ts',
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v18.19.1
+\n✅ COMPLETED: MLB 2023 Season
+Duration: 0.0 minutes
+Logs added: 0
+Total logs: 141,572
+\n❌ ERROR in MLB 2023 Season: Error: Process exited with code 1
+    at ChildProcess.<anonymous> (/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/scripts/master-collection-queue.ts:80:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Continuing with next job...\n
+\n🚀 STARTING: NHL 2023-24 Season\n
+Expected games: 1,392
+Expected logs: 35,000
+
+node:internal/process/esm_loader:40
+      internalBinding('errors').triggerUncaughtException(
+                                ^
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/collect-2024-nhl-mega.ts' imported from /mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/
+    at new NodeError (node:internal/errors:405:5)
+    at finalizeResolution (node:internal/modules/esm/resolve:327:11)
+    at moduleResolve (node:internal/modules/esm/resolve:980:10)
+    at defaultResolve (node:internal/modules/esm/resolve:1193:11)
+    at nextResolve (node:internal/modules/esm/hooks:864:28)
+    at resolveBase (file:///home/st0ne/.npm-global/lib/node_modules/tsx/dist/esm/index.mjs?1752200503088:2:3811)
+    at async resolveDirectory (file:///home/st0ne/.npm-global/lib/node_modules/tsx/dist/esm/index.mjs?1752200503088:2:4304)
+    at async resolve (file:///home/st0ne/.npm-global/lib/node_modules/tsx/dist/esm/index.mjs?1752200503088:2:5422)
+    at async nextResolve (node:internal/modules/esm/hooks:864:22)
+    at async Hooks.resolve (node:internal/modules/esm/hooks:302:24) {
+  url: 'file:///mnt/c/Users/st0ne/Hey%20Fantasy/fantasy-ai-ultimate/collect-2024-nhl-mega.ts',
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v18.19.1
+\n✅ COMPLETED: NHL 2023-24 Season
+Duration: 0.0 minutes
+Logs added: 0
+Total logs: 141,572
+\n❌ ERROR in NHL 2023-24 Season: Error: Process exited with code 1
+    at ChildProcess.<anonymous> (/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/scripts/master-collection-queue.ts:80:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Continuing with next job...\n
+\n🚀 STARTING: MLB 2024 Season\n
+Expected games: 2,430
+Expected logs: 58,000
+
+node:internal/process/esm_loader:40
+      internalBinding('errors').triggerUncaughtException(
+                                ^
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/collect-2024-mlb-mega.ts' imported from /mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/
+    at new NodeError (node:internal/errors:405:5)
+    at finalizeResolution (node:internal/modules/esm/resolve:327:11)
+    at moduleResolve (node:internal/modules/esm/resolve:980:10)
+    at defaultResolve (node:internal/modules/esm/resolve:1193:11)
+    at nextResolve (node:internal/modules/esm/hooks:864:28)
+    at resolveBase (file:///home/st0ne/.npm-global/lib/node_modules/tsx/dist/esm/index.mjs?1752200504132:2:3811)
+    at async resolveDirectory (file:///home/st0ne/.npm-global/lib/node_modules/tsx/dist/esm/index.mjs?1752200504132:2:4304)
+    at async resolve (file:///home/st0ne/.npm-global/lib/node_modules/tsx/dist/esm/index.mjs?1752200504132:2:5422)
+    at async nextResolve (node:internal/modules/esm/hooks:864:22)
+    at async Hooks.resolve (node:internal/modules/esm/hooks:302:24) {
+  url: 'file:///mnt/c/Users/st0ne/Hey%20Fantasy/fantasy-ai-ultimate/collect-2024-mlb-mega.ts',
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v18.19.1
+\n✅ COMPLETED: MLB 2024 Season
+Duration: 0.0 minutes
+Logs added: 0
+Total logs: 141,572
+\n❌ ERROR in MLB 2024 Season: Error: Process exited with code 1
+    at ChildProcess.<anonymous> (/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/scripts/master-collection-queue.ts:80:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Continuing with next job...\n
+\n🎉 ALL COLLECTIONS COMPLETE!\n
+Initial logs: 123,554
+Final logs: 141,572
+Total added: 18,018
+Progress to 600K: 23.6%

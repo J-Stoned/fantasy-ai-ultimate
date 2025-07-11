@@ -21,7 +21,7 @@ const supabase = createClient(
 );
 
 // Import the working collector class
-const { CollectorClass } = await import('./collect-all-2023-seasons-FINAL.js');
+import { CollectorClass } from './collect-all-2023-seasons-FINAL.js';
 
 class MLB2024Collector extends CollectorClass {
   constructor() {
