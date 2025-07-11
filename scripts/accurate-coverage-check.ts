@@ -1,91 +1,86 @@
-#!/usr/bin/env tsx
+#\!/usr/bin/env tsx
 /**
- * Accurate Coverage Check
- * Gets the real unique game count from player_stats
+ * 📊 ACCURATE COVERAGE CHECK - Get the real stats coverage
  */
 
-import { createClient } from '@supabase/supabase-js'
-import { config } from 'dotenv'
-import chalk from 'chalk'
+import { createClient } from '@supabase/supabase-js';
+import * as dotenv from 'dotenv';
+import chalk from 'chalk';
 
-config({ path: '.env.local' })
+dotenv.config({ path: '.env.local' });
 
 const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
+  process.env.NEXT_PUBLIC_SUPABASE_URL\!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY\!
+);
 
-async function getAccurateCoverage() {
-  console.log(chalk.cyan.bold('\n📊 ACCURATE COVERAGE CHECK\n'))
+async function accurateCoverageCheck() {
+  console.log(chalk.bold.cyan('\n📊 ACCURATE DATABASE COVERAGE CHECK\n'));
   
-  // Get total games
-  const { count: totalGames } = await supabase
-    .from('games')
-    .select('*', { count: 'exact', head: true })
-    .not('home_score', 'is', null)
+  const sports = ['nfl', 'nba', 'mlb', 'nhl'];
+  
+  for (const sport of sports) {
+    // Get all games for the sport
+    const { data: games, count: totalGames } = await supabase
+      .from('games')
+      .select('id', { count: 'exact' })
+      .eq('sport_id', sport)
+      .gte('start_time', '2024-01-01')
+      .lt('start_time', '2025-01-01')
+      .not('home_score', 'is', null);
     
-  console.log(chalk.white(`Total completed games: ${chalk.yellow(totalGames?.toLocaleString() || '0')}`))
-  
-  // Get total stat records
-  const { count: totalStats } = await supabase
-    .from('player_stats')
-    .select('*', { count: 'exact', head: true })
+    if (\!games || \!totalGames) {
+      console.log(`${sport.toUpperCase()}: No games found`);
+      continue;
+    }
     
-  console.log(chalk.white(`Total player stat records: ${chalk.yellow(totalStats?.toLocaleString() || '0')}`))
-  
-  // Sample approach: Get games from recent stats
-  console.log(chalk.gray('\nSampling recent games with stats...'))
-  
-  const sampleSize = 10000
-  const samples = 5
-  const uniqueGames = new Set<string>()
-  
-  for (let i = 0; i < samples; i++) {
-    const offset = i * sampleSize
-    const { data: stats } = await supabase
-      .from('player_stats')
-      .select('game_id')
-      .range(offset, offset + sampleSize - 1)
+    // Count games with stats (more accurate method)
+    let gamesWithStats = 0;
+    
+    for (const game of games) {
+      const { count } = await supabase
+        .from('player_game_logs')
+        .select('*', { count: 'exact', head: true })
+        .eq('game_id', game.id)
+        .limit(1);
       
-    stats?.forEach(s => {
-      if (s.game_id) uniqueGames.add(s.game_id)
-    })
+      if (count && count > 0) {
+        gamesWithStats++;
+      }
+    }
     
-    console.log(chalk.gray(`Sample ${i + 1}: Found ${uniqueGames.size} unique games so far`))
+    const coverage = ((gamesWithStats / totalGames) * 100).toFixed(1);
+    const gamesNeededFor95 = Math.max(0, Math.ceil(totalGames * 0.95) - gamesWithStats);
+    
+    let status = '❌';
+    let color: 'green'  < /dev/null |  'yellow' | 'cyan' | 'red' = 'red';
+    
+    if (parseFloat(coverage) >= 95) {
+      status = '✅ GOLD STANDARD';
+      color = 'green';
+    } else if (parseFloat(coverage) >= 90) {
+      status = '🟡 PROFESSIONAL';
+      color = 'yellow';
+    } else if (parseFloat(coverage) >= 85) {
+      status = '🔵 GOOD';
+      color = 'cyan';
+    }
+    
+    console.log(chalk[color](
+      `${sport.toUpperCase()}: ${gamesWithStats}/${totalGames} (${coverage}%) ${status}`
+    ));
+    
+    if (gamesNeededFor95 > 0) {
+      console.log(chalk.gray(`  Need ${gamesNeededFor95} more games for 95%`));
+    }
   }
   
-  // Extrapolate from sample
-  const sampleRate = uniqueGames.size / (sampleSize * samples)
-  const estimatedUniqueGames = Math.round((totalStats || 0) * sampleRate)
+  // Database totals
+  const { count: totalLogs } = await supabase
+    .from('player_game_logs')
+    .select('*', { count: 'exact', head: true });
   
-  console.log(chalk.cyan('\n📈 COVERAGE ANALYSIS:'))
-  console.log(chalk.white(`Sampled unique games: ${chalk.green(uniqueGames.size.toLocaleString())}`))
-  console.log(chalk.white(`Estimated total unique games: ${chalk.green(estimatedUniqueGames.toLocaleString())}`))
-  console.log(chalk.white(`Coverage: ${chalk.green.bold(((estimatedUniqueGames / (totalGames || 1)) * 100).toFixed(1) + '%')}`))
-  
-  // Stats per game
-  const statsPerGame = (totalStats || 0) / estimatedUniqueGames
-  console.log(chalk.white(`\nAverage stats per game: ${chalk.yellow(statsPerGame.toFixed(1))}`))
-  
-  // Check if we're on track
-  const targetCoverage = 50
-  const currentCoverage = (estimatedUniqueGames / (totalGames || 1)) * 100
-  
-  if (currentCoverage >= targetCoverage) {
-    console.log(chalk.green.bold(`\n✅ TARGET ACHIEVED! ${currentCoverage.toFixed(1)}% coverage!`))
-    console.log(chalk.white('Ready to test if pattern accuracy improves to 76.4%!'))
-  } else {
-    const gamesNeeded = Math.round((targetCoverage / 100) * (totalGames || 0)) - estimatedUniqueGames
-    console.log(chalk.yellow(`\n📊 Need ${gamesNeeded.toLocaleString()} more games to reach ${targetCoverage}% coverage`))
-    console.log(chalk.white(`At current rate, that's ${(gamesNeeded * statsPerGame).toLocaleString()} more stat records`))
-  }
-  
-  return {
-    totalGames,
-    estimatedUniqueGames,
-    coverage: currentCoverage,
-    statsPerGame
-  }
+  console.log(chalk.yellow(`\nTotal logs in database: ${totalLogs?.toLocaleString()}`));
 }
 
-getAccurateCoverage().catch(console.error)
+accurateCoverageCheck();

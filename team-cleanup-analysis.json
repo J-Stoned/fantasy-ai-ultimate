@@ -1,0 +1,147 @@
+{
+  "timestamp": "2025-07-11T00:28:11.606Z",
+  "totalTeams": 453,
+  "duplicateCount": 156,
+  "wrongSportCount": 6,
+  "nbaTeamsFound": 29,
+  "issues": [
+    {
+      "id": 194,
+      "name": "Hawai'i Rainbow Warriors",
+      "sport_id": "college-football",
+      "issue": "Wrong sport: Hawai'i Rainbow Warriors marked as college-football",
+      "action": "update_sport"
+    },
+    {
+      "id": 236,
+      "name": "Hawai'i Rainbow Warriors",
+      "sport_id": "mens-college-basketball",
+      "issue": "Wrong sport: Hawai'i Rainbow Warriors marked as mens-college-basketball",
+      "action": "update_sport"
+    },
+    {
+      "id": 62,
+      "name": "Hawai'i Rainbow Warriors",
+      "sport_id": "ncaab",
+      "issue": "Wrong sport: Hawai'i Rainbow Warriors marked as ncaab",
+      "action": "update_sport"
+    },
+    {
+      "id": 208,
+      "name": "South Florida Bulls",
+      "sport_id": "college-football",
+      "issue": "Wrong sport: South Florida Bulls marked as college-football",
+      "action": "update_sport"
+    },
+    {
+      "id": 253,
+      "name": "South Florida Bulls",
+      "sport_id": "mens-college-basketball",
+      "issue": "Wrong sport: South Florida Bulls marked as mens-college-basketball",
+      "action": "update_sport"
+    },
+    {
+      "id": 58,
+      "name": "South Florida Bulls",
+      "sport_id": "ncaab",
+      "issue": "Wrong sport: South Florida Bulls marked as ncaab",
+      "action": "update_sport"
+    }
+  ],
+  "thunderTeams": [
+    {
+      "id": 276,
+      "name": "Marshall Thundering Herd",
+      "city": "Marshall",
+      "abbreviation": "MRSH",
+      "sport_id": "ncaaf",
+      "league_id": "NCAAF",
+      "logo_url": null,
+      "created_at": "2025-07-07T00:01:33.280297+00:00",
+      "updated_at": "2025-07-07T00:01:33.280297+00:00",
+      "external_id": null,
+      "metadata": {
+        "color": "00ae42",
+        "alternateColor": "be854c"
+      },
+      "sport": null
+    },
+    {
+      "id": 800563,
+      "name": "Oklahoma",
+      "city": null,
+      "abbreviation": "OU",
+      "sport_id": "ncaa_football",
+      "league_id": null,
+      "logo_url": null,
+      "created_at": "2025-07-10T12:18:22.231242+00:00",
+      "updated_at": "2025-07-10T12:18:22.231242+00:00",
+      "external_id": null,
+      "metadata": {},
+      "sport": null
+    },
+    {
+      "id": 25,
+      "name": "Oklahoma City Thunder",
+      "city": "Oklahoma City",
+      "abbreviation": "OKC",
+      "sport_id": "nba",
+      "league_id": "NBA",
+      "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/25.png",
+      "created_at": "2025-06-30T22:25:47.140702+00:00",
+      "updated_at": "2025-06-30T22:25:47.140702+00:00",
+      "external_id": null,
+      "metadata": {
+        "color": "031522",
+        "division": null,
+        "nickname": "California",
+        "conference": "NCAA Men's Basketball",
+        "alternateColor": "ffc423"
+      },
+      "sport": "NBA"
+    },
+    {
+      "id": 800581,
+      "name": "Oklahoma State",
+      "city": null,
+      "abbreviation": "MOST",
+      "sport_id": "ncaa_baseball",
+      "league_id": null,
+      "logo_url": null,
+      "created_at": "2025-07-10T12:25:10.590843+00:00",
+      "updated_at": "2025-07-10T12:25:10.590843+00:00",
+      "external_id": null,
+      "metadata": {},
+      "sport": null
+    },
+    {
+      "id": 800564,
+      "name": "Oklahoma State",
+      "city": null,
+      "abbreviation": "OKST",
+      "sport_id": "ncaa_football",
+      "league_id": null,
+      "logo_url": null,
+      "created_at": "2025-07-10T12:18:22.378467+00:00",
+      "updated_at": "2025-07-10T12:18:22.378467+00:00",
+      "external_id": null,
+      "metadata": {},
+      "sport": null
+    },
+    {
+      "id": 800703,
+      "name": "Thunder",
+      "city": "Oklahoma City",
+      "abbreviation": "OKC",
+      "sport_id": "nba",
+      "league_id": "nba",
+      "logo_url": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
+      "created_at": "2025-07-10T18:33:33.544505+00:00",
+      "updated_at": "2025-07-10T18:33:33.544505+00:00",
+      "external_id": "espn_nba_25",
+      "metadata": {},
+      "sport": null
+    }
+  ],
+  "recommendation": "Run fix-team-mappings.ts to correct all issues"
+}
