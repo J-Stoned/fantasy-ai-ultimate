@@ -113,3 +113,22 @@ Total NHL logs: ~31,510
 
 CURRENT TOTAL: 143,114 player logs (23.9% of 600K goal)
 Progress: NBA ✓ MLB ✓ NHL ✓ NCAA ⏳
+
+
+=== NCAA COLLECTION BEGUN ===
+
+NCAA Football 2024: 869 games added to database
+Stats collection attempted but hit duplicate constraints
+
+CURRENT TOTAL: 143,114 player logs (23.9% of 600K goal)
+Next: NCAA Basketball (100K+ potential logs)
+
+=== NCAA BASKETBALL ADDED ===
+
+NCAA Basketball 2024-25: 6,227 games added!
+NCAA Football: 869 games
+NCAA Basketball: 6,227 games
+Total NCAA games: 7,096
+
+Potential NCAA logs: 200K+ (once player constraints fixed)
+Current bottleneck: Missing player records in database
