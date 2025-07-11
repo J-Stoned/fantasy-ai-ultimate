@@ -1,0 +1,1038 @@
+🏈 NCAA FOOTBALL STATS COLLECTOR
+================================
+
+Found 869 NCAA Football games to process
+
+Already processed: 0 games
+Games to process: 869
+
+Processing batch 1/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 1 complete: 722 logs from 10 games
+Total progress: 722 logs from 10 games
+
+Processing batch 2/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 2 complete: 838 logs from 10 games
+Total progress: 1560 logs from 20 games
+
+Processing batch 3/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 3 complete: 758 logs from 10 games
+Total progress: 2318 logs from 30 games
+
+Processing batch 4/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 4 complete: 824 logs from 10 games
+Total progress: 3142 logs from 40 games
+
+Processing batch 5/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 5 complete: 788 logs from 10 games
+Total progress: 3930 logs from 50 games
+
+Processing batch 6/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 6 complete: 813 logs from 10 games
+Total progress: 4743 logs from 60 games
+
+Processing batch 7/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 7 complete: 835 logs from 10 games
+Total progress: 5578 logs from 70 games
+
+Processing batch 8/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 8 complete: 744 logs from 10 games
+Total progress: 6322 logs from 80 games
+
+Processing batch 9/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 9 complete: 797 logs from 10 games
+Total progress: 7119 logs from 90 games
+
+Processing batch 10/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 10 complete: 721 logs from 10 games
+Total progress: 7840 logs from 100 games
+
+Processing batch 11/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 11 complete: 757 logs from 10 games
+Total progress: 8597 logs from 110 games
+
+Processing batch 12/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 12 complete: 709 logs from 10 games
+Total progress: 9306 logs from 120 games
+
+Processing batch 13/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 13 complete: 764 logs from 10 games
+Total progress: 10070 logs from 130 games
+
+Processing batch 14/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 14 complete: 791 logs from 10 games
+Total progress: 10861 logs from 140 games
+
+Processing batch 15/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 15 complete: 743 logs from 10 games
+Total progress: 11604 logs from 150 games
+
+Processing batch 16/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 16 complete: 777 logs from 10 games
+Total progress: 12381 logs from 160 games
+
+Processing batch 17/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 17 complete: 758 logs from 10 games
+Total progress: 13139 logs from 170 games
+
+Processing batch 18/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 18 complete: 765 logs from 10 games
+Total progress: 13904 logs from 180 games
+
+Processing batch 19/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 19 complete: 739 logs from 10 games
+Total progress: 14643 logs from 190 games
+
+Processing batch 20/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 20 complete: 738 logs from 10 games
+Total progress: 15381 logs from 200 games
+
+Processing batch 21/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 21 complete: 768 logs from 10 games
+Total progress: 16149 logs from 210 games
+
+Processing batch 22/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 22 complete: 743 logs from 10 games
+Total progress: 16892 logs from 220 games
+
+Processing batch 23/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 23 complete: 748 logs from 10 games
+Total progress: 17640 logs from 230 games
+
+Processing batch 24/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 24 complete: 798 logs from 10 games
+Total progress: 18438 logs from 240 games
+
+Processing batch 25/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 25 complete: 805 logs from 10 games
+Total progress: 19243 logs from 250 games
+
+Processing batch 26/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 26 complete: 733 logs from 10 games
+Total progress: 19976 logs from 260 games
+
+Processing batch 27/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 27 complete: 755 logs from 10 games
+Total progress: 20731 logs from 270 games
+
+Processing batch 28/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 28 complete: 659 logs from 10 games
+Total progress: 21390 logs from 280 games
+
+Processing batch 29/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 29 complete: 763 logs from 10 games
+Total progress: 22153 logs from 290 games
+
+Processing batch 30/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 30 complete: 729 logs from 10 games
+Total progress: 22882 logs from 300 games
+
+Processing batch 31/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 31 complete: 731 logs from 10 games
+Total progress: 23613 logs from 310 games
+
+Processing batch 32/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 32 complete: 614 logs from 10 games
+Total progress: 24227 logs from 320 games
+
+Processing batch 33/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 33 complete: 737 logs from 10 games
+Total progress: 24964 logs from 330 games
+
+Processing batch 34/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 34 complete: 744 logs from 10 games
+Total progress: 25708 logs from 340 games
+
+Processing batch 35/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 35 complete: 726 logs from 10 games
+Total progress: 26434 logs from 350 games
+
+Processing batch 36/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 36 complete: 705 logs from 10 games
+Total progress: 27139 logs from 360 games
+
+Processing batch 37/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 37 complete: 677 logs from 10 games
+Total progress: 27816 logs from 370 games
+
+Processing batch 38/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 38 complete: 713 logs from 10 games
+Total progress: 28529 logs from 380 games
+
+Processing batch 39/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 39 complete: 702 logs from 10 games
+Total progress: 29231 logs from 390 games
+
+Processing batch 40/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 40 complete: 725 logs from 10 games
+Total progress: 29956 logs from 400 games
+
+Processing batch 41/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 41 complete: 780 logs from 10 games
+Total progress: 30736 logs from 410 games
+
+Processing batch 42/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 42 complete: 687 logs from 10 games
+Total progress: 31423 logs from 420 games
+
+Processing batch 43/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 43 complete: 707 logs from 10 games
+Total progress: 32130 logs from 430 games
+
+Processing batch 44/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 44 complete: 718 logs from 10 games
+Total progress: 32848 logs from 440 games
+
+Processing batch 45/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 45 complete: 660 logs from 10 games
+Total progress: 33508 logs from 450 games
+
+Processing batch 46/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 46 complete: 746 logs from 10 games
+Total progress: 34254 logs from 460 games
+
+Processing batch 47/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 47 complete: 694 logs from 10 games
+Total progress: 34948 logs from 470 games
+
+Processing batch 48/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 48 complete: 723 logs from 10 games
+Total progress: 35671 logs from 480 games
+
+Processing batch 49/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 49 complete: 710 logs from 10 games
+Total progress: 36381 logs from 490 games
+
+Processing batch 50/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 50 complete: 698 logs from 10 games
+Total progress: 37079 logs from 500 games
+
+Processing batch 51/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 51 complete: 699 logs from 10 games
+Total progress: 37778 logs from 510 games
+
+Processing batch 52/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 52 complete: 730 logs from 10 games
+Total progress: 38508 logs from 520 games
+
+Processing batch 53/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 53 complete: 701 logs from 10 games
+Total progress: 39209 logs from 530 games
+
+Processing batch 54/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 54 complete: 750 logs from 10 games
+Total progress: 39959 logs from 540 games
+
+Processing batch 55/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 55 complete: 686 logs from 10 games
+Total progress: 40645 logs from 550 games
+
+Processing batch 56/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 56 complete: 689 logs from 10 games
+Total progress: 41334 logs from 560 games
+
+Processing batch 57/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 57 complete: 716 logs from 10 games
+Total progress: 42050 logs from 570 games
+
+Processing batch 58/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 58 complete: 729 logs from 10 games
+Total progress: 42779 logs from 580 games
+
+Processing batch 59/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 59 complete: 703 logs from 10 games
+Total progress: 43482 logs from 590 games
+
+Processing batch 60/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 60 complete: 688 logs from 10 games
+Total progress: 44170 logs from 600 games
+
+Processing batch 61/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 61 complete: 716 logs from 10 games
+Total progress: 44886 logs from 610 games
+
+Processing batch 62/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 62 complete: 730 logs from 10 games
+Total progress: 45616 logs from 620 games
+
+Processing batch 63/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 63 complete: 669 logs from 10 games
+Total progress: 46285 logs from 630 games
+
+Processing batch 64/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 64 complete: 685 logs from 10 games
+Total progress: 46970 logs from 640 games
+
+Processing batch 65/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 65 complete: 761 logs from 10 games
+Total progress: 47731 logs from 650 games
+
+Processing batch 66/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 66 complete: 686 logs from 10 games
+Total progress: 48417 logs from 660 games
+
+Processing batch 67/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 67 complete: 707 logs from 10 games
+Total progress: 49124 logs from 670 games
+
+Processing batch 68/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 68 complete: 690 logs from 10 games
+Total progress: 49814 logs from 680 games
+
+Processing batch 69/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 69 complete: 724 logs from 10 games
+Total progress: 50538 logs from 690 games
+
+Processing batch 70/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 70 complete: 677 logs from 10 games
+Total progress: 51215 logs from 700 games
+
+Processing batch 71/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 71 complete: 729 logs from 10 games
+Total progress: 51944 logs from 710 games
+
+Processing batch 72/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 72 complete: 679 logs from 10 games
+Total progress: 52623 logs from 720 games
+
+Processing batch 73/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 73 complete: 681 logs from 10 games
+Total progress: 53304 logs from 730 games
+
+Processing batch 74/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 74 complete: 663 logs from 10 games
+Total progress: 53967 logs from 740 games
+
+Processing batch 75/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 75 complete: 734 logs from 10 games
+Total progress: 54701 logs from 750 games
+
+Processing batch 76/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 76 complete: 708 logs from 10 games
+Total progress: 55409 logs from 760 games
+
+Processing batch 77/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 77 complete: 682 logs from 10 games
+Total progress: 56091 logs from 770 games
+
+Processing batch 78/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 78 complete: 657 logs from 10 games
+Total progress: 56748 logs from 780 games
+
+Processing batch 79/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 79 complete: 686 logs from 10 games
+Total progress: 57434 logs from 790 games
+
+Processing batch 80/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 80 complete: 731 logs from 10 games
+Total progress: 58165 logs from 800 games
+
+Processing batch 81/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 81 complete: 706 logs from 10 games
+Total progress: 58871 logs from 810 games
+
+Processing batch 82/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 82 complete: 664 logs from 10 games
+Total progress: 59535 logs from 820 games
+
+Processing batch 83/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 83 complete: 707 logs from 10 games
+Total progress: 60242 logs from 830 games
+
+Processing batch 84/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 84 complete: 666 logs from 10 games
+Total progress: 60908 logs from 840 games
+
+Processing batch 85/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Batch 85 complete: 744 logs from 10 games
+Total progress: 61652 logs from 850 games
+
+Processing batch 86/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 86 complete: 728 logs from 10 games
+Total progress: 62380 logs from 860 games
+
+Processing batch 87/87...
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting chunk: insert or update on table "player_game_logs" violates foreign key constraint "player_game_logs_player_id_fkey"
+Batch 87 complete: 614 logs from 9 games
+Total progress: 62994 logs from 869 games
+
+✅ COMPLETE! Collected 62994 player logs from 869 games
+
+Total NCAA Football logs in database: 0
+
+🎯 GRAND TOTAL player logs in database: 143114
+📈 Progress to 600K: 23.9%
