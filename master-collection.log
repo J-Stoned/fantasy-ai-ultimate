@@ -132,3 +132,13 @@ Total NCAA games: 7,096
 
 Potential NCAA logs: 200K+ (once player constraints fixed)
 Current bottleneck: Missing player records in database
+
+
+🏀 NCAA BASKETBALL MEGA COLLECTION V2
+=====================================
+Started: 144,832 logs
+Added: ~6,211 logs (in first 780 games)
+Rate: ~500 logs/minute
+Games: 6,220 total NCAA Basketball games found\!
+
+PROJECTION: At this rate, we'll add ~40,000+ logs from NCAA Basketball\!
