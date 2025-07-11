@@ -1,0 +1,73 @@
+{
+  "timestamp": "2025-07-11T01:16:21.282Z",
+  "fixes": [
+    {
+      "oldId": 29,
+      "newId": 138,
+      "oldName": "Carolina Panthers",
+      "newName": "Carolina Hurricanes",
+      "sport": "nhl"
+    },
+    {
+      "oldId": 28,
+      "newId": 164,
+      "oldName": "Washington Commanders",
+      "newName": "Washington Capitals",
+      "sport": "nhl"
+    },
+    {
+      "oldId": 6,
+      "newId": 142,
+      "oldName": "Dallas Cowboys",
+      "newName": "Dallas Stars",
+      "sport": "nhl"
+    },
+    {
+      "oldId": 8,
+      "newId": 143,
+      "oldName": "Detroit Pistons",
+      "newName": "Detroit Red Wings",
+      "sport": "nhl"
+    },
+    {
+      "oldId": 2,
+      "newId": 135,
+      "oldName": "Boston Celtics",
+      "newName": "Boston Bruins",
+      "sport": "nhl"
+    },
+    {
+      "oldId": 20,
+      "newId": 154,
+      "oldName": "Philadelphia 76ers",
+      "newName": "Philadelphia Flyers",
+      "sport": "nhl"
+    },
+    {
+      "oldId": 16,
+      "newId": 147,
+      "oldName": "Minnesota Timberwolves",
+      "newName": "Minnesota Wild",
+      "sport": "nhl"
+    },
+    {
+      "oldId": 3,
+      "newId": 139,
+      "oldName": "Chicago Bears",
+      "newName": "Chicago Blackhawks",
+      "sport": "nhl"
+    },
+    {
+      "oldId": 27,
+      "newId": 159,
+      "oldName": "Tampa Bay Buccaneers",
+      "newName": "Tampa Bay Lightning",
+      "sport": "nhl"
+    }
+  ],
+  "totalFixed": 0,
+  "summary": {
+    "mappingsCreated": 9,
+    "gamesUpdated": 0
+  }
+}

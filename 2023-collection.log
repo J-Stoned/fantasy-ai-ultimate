@@ -1,0 +1,503 @@
+⚠️  This will collect ~5,000+ games and ~200,000+ player stats
+⚠️  Estimated time: 2-4 hours
+⚠️  Make sure to run fix-all-team-mappings-final.ts first!
+
+
+🚀 DATABASE-MATCHED 2023 COLLECTOR - FINAL VERSION
+
+This collector is properly configured for the exact database schema
+Target: ~5,172 games from 2023 seasons
+
+Loading database caches...
+  NFL: 1832 player entries
+  NBA: 949 player entries
+  MLB: 106 player entries
+  MLB: 88 team entries
+  NCAAF: 257 team entries
+  NFL: 34 team entries
+  NCAAB: 79 team entries
+  NBA: 136 team entries
+  MENS-COLLEGE-BASKETBALL: 150 team entries
+  COLLEGE-FOOTBALL: 150 team entries
+  NHL: 72 team entries
+  NCAA_FOOTBALL: 54 team entries
+  NCAA_BASKETBALL: 38 team entries
+  NCAA_BASEBALL: 22 team entries
+  : 3 team entries
+✅ Caches loaded
+
+
+📊 COLLECTING NBA 2023 SEASON
+Date range: 2023-10-24 to 2024-06-17
+  2023-10-24: 2 games
+  2023-10-25: 12 games
+  2023-10-26: 2 games
+  2023-10-27: 11 games
+  2023-10-28: 7 games
+  2023-10-29: 6 games
+  2023-10-30: 11 games
+  2023-10-31: 3 games
+  2023-11-01: 13 games
+  2023-11-02: 4 games
+  2023-11-03: 7 games
+  2023-11-04: 8 games
+  2023-11-05: 5 games
+  2023-11-06: 12 games
+  2023-11-08: 14 games
+  2023-11-09: 2 games
+  2023-11-10: 9 games
+  2023-11-11: 4 games
+  2023-11-12: 11 games
+  2023-11-13: 4 games
+  2023-11-14: 10 games
+  2023-11-15: 8 games
+  2023-11-16: 2 games
+  2023-11-17: 11 games
+  2023-11-18: 6 games
+  2023-11-19: 9 games
+  2023-11-20: 8 games
+  2023-11-21: 5 games
+  2023-11-22: 14 games
+  2023-11-24: 10 games
+  2023-11-25: 6 games
+  2023-11-26: 8 games
+  2023-11-27: 5 games
+  2023-11-28: 8 games
+  2023-11-29: 7 games
+  2023-11-30: 9 games
+  2023-12-01: 6 games
+  2023-12-02: 12 games
+  2023-12-04: 2 games
+  2023-12-05: 2 games
+  2023-12-06: 11 games
+  2023-12-07: 2 games
+  2023-12-08: 13 games
+  2023-12-09: 1 games
+  2023-12-11: 13 games
+  2023-12-12: 5 games
+  2023-12-13: 9 games
+  2023-12-14: 7 games
+  2023-12-15: 8 games
+  2023-12-16: 10 games
+  2023-12-17: 5 games
+  2023-12-18: 11 games
+  2023-12-19: 4 games
+  2023-12-20: 10 games
+  2023-12-21: 8 games
+  2023-12-22: 6 games
+  2023-12-23: 13 games
+  2023-12-25: 5 games
+  2023-12-26: 9 games
+  2023-12-27: 6 games
+  2023-12-28: 8 games
+  2023-12-29: 10 games
+  2023-12-30: 6 games
+  2023-12-31: 6 games
+  2024-01-01: 8 games
+  2024-01-02: 6 games
+  2024-01-03: 12 games
+  2024-01-04: 2 games
+  2024-01-05: 14 games
+  2024-01-06: 4 games
+  2024-01-07: 9 games
+  2024-01-08: 6 games
+  2024-01-09: 5 games
+  2024-01-10: 10 games
+  2024-01-11: 5 games
+  2024-01-12: 10 games
+  2024-01-13: 8 games
+  2024-01-14: 5 games
+  2024-01-15: 11 games
+  2024-01-16: 3 games
+  2024-01-17: 10 games
+  2024-01-18: 5 games
+  2024-01-19: 8 games
+  2024-01-20: 8 games
+  2024-01-21: 6 games
+  2024-01-22: 8 games
+  2024-01-23: 5 games
+  2024-01-24: 8 games
+  2024-01-25: 7 games
+  2024-01-26: 8 games
+  2024-01-27: 10 games
+  2024-01-28: 5 games
+  2024-01-29: 12 games
+  2024-01-30: 5 games
+  2024-01-31: 10 games
+  2024-02-01: 4 games
+  2024-02-02: 10 games
+  2024-02-03: 6 games
+  2024-02-04: 9 games
+  2024-02-05: 6 games
+  2024-02-06: 7 games
+  2024-02-07: 7 games
+  2024-02-08: 9 games
+  2024-02-09: 6 games
+  2024-02-10: 11 games
+  2024-02-11: 2 games
+  2024-02-12: 10 games
+  2024-02-13: 6 games
+  2024-02-14: 13 games
+  2024-02-15: 3 games
+Missing teams: Eastern Conf All-Stars vs Western Conf All-Stars
+  2024-02-18: 1 games
+  2024-02-22: 12 games
+  2024-02-23: 10 games
+  2024-02-24: 3 games
+  2024-02-25: 11 games
+  2024-02-26: 4 games
+  2024-02-27: 11 games
+  2024-02-28: 6 games
+  2024-02-29: 8 games
+  2024-03-01: 9 games
+  2024-03-02: 5 games
+  2024-03-03: 8 games
+  2024-03-04: 6 games
+  2024-03-05: 9 games
+  2024-03-06: 8 games
+  2024-03-07: 7 games
+  2024-03-08: 8 games
+  2024-03-09: 7 games
+  2024-03-10: 9 games
+  2024-03-11: 6 games
+  2024-03-12: 7 games
+  2024-03-13: 9 games
+  2024-03-14: 6 games
+  2024-03-15: 6 games
+  2024-03-16: 9 games
+  2024-03-17: 7 games
+  2024-03-18: 8 games
+  2024-03-19: 5 games
+  2024-03-20: 8 games
+  2024-03-21: 7 games
+  2024-03-22: 8 games
+  2024-03-23: 8 games
+  2024-03-24: 6 games
+  2024-03-25: 11 games
+  2024-03-26: 4 games
+  2024-03-27: 12 games
+  2024-03-28: 2 games
+  2024-03-29: 12 games
+  2024-03-30: 3 games
+  2024-03-31: 10 games
+  2024-04-01: 6 games
+  2024-04-02: 9 games
+  2024-04-03: 9 games
+  2024-04-04: 5 games
+  2024-04-05: 12 games
+  2024-04-06: 4 games
+  2024-04-07: 13 games
+  2024-04-09: 14 games
+  2024-04-10: 8 games
+  2024-04-11: 5 games
+  2024-04-12: 15 games
+  2024-04-14: 15 games
+  2024-04-16: 2 games
+  2024-04-17: 2 games
+  2024-04-19: 2 games
+  2024-04-20: 4 games
+  2024-04-21: 4 games
+  2024-04-22: 3 games
+  2024-04-23: 3 games
+  2024-04-24: 2 games
+  2024-04-25: 3 games
+  2024-04-26: 3 games
+  2024-04-27: 4 games
+  2024-04-28: 4 games
+  2024-04-29: 3 games
+  2024-04-30: 3 games
+  2024-05-01: 2 games
+  2024-05-02: 2 games
+  2024-05-03: 2 games
+  2024-05-04: 1 games
+  2024-05-05: 1 games
+  2024-05-06: 2 games
+  2024-05-07: 2 games
+  2024-05-08: 1 games
+  2024-05-09: 2 games
+  2024-05-10: 2 games
+  2024-05-11: 2 games
+  2024-05-12: 2 games
+  2024-05-13: 2 games
+  2024-05-14: 2 games
+  2024-05-15: 2 games
+  2024-05-16: 1 games
+  2024-05-17: 1 games
+  2024-05-18: 1 games
+  2024-05-19: 2 games
+  2024-05-21: 1 games
+  2024-05-22: 1 games
+  2024-05-23: 1 games
+  2024-05-24: 1 games
+  2024-05-25: 1 games
+  2024-05-26: 1 games
+  2024-05-27: 1 games
+  2024-05-28: 1 games
+  2024-05-30: 1 games
+  2024-06-06: 1 games
+  2024-06-09: 1 games
+  2024-06-12: 1 games
+  2024-06-14: 1 games
+  2024-06-17: 1 games
+
+✅ Collected 1321 NBA games
+Collecting player stats...
+  Progress: 50/1321 (3.8%) - 50 with stats
+  Progress: 100/1321 (7.6%) - 100 with stats
+  Progress: 150/1321 (11.4%) - 150 with stats
+  Progress: 200/1321 (15.1%) - 200 with stats
+  Progress: 250/1321 (18.9%) - 250 with stats
+  Progress: 300/1321 (22.7%) - 300 with stats
+  Progress: 350/1321 (26.5%) - 350 with stats
+  Progress: 400/1321 (30.3%) - 400 with stats
+  Progress: 450/1321 (34.1%) - 450 with stats
+  Progress: 500/1321 (37.9%) - 500 with stats
+  Progress: 550/1321 (41.6%) - 550 with stats
+  Progress: 600/1321 (45.4%) - 600 with stats
+  Progress: 650/1321 (49.2%) - 649 with stats
+  Progress: 700/1321 (53.0%) - 699 with stats
+  Progress: 750/1321 (56.8%) - 749 with stats
+  Progress: 800/1321 (60.6%) - 799 with stats
+  Progress: 850/1321 (64.3%) - 849 with stats
+  Progress: 900/1321 (68.1%) - 899 with stats
+  Progress: 950/1321 (71.9%) - 949 with stats
+  Progress: 1000/1321 (75.7%) - 999 with stats
+  Progress: 1050/1321 (79.5%) - 1049 with stats
+  Progress: 1100/1321 (83.3%) - 1099 with stats
+  Progress: 1150/1321 (87.1%) - 1149 with stats
+  Progress: 1200/1321 (90.8%) - 1199 with stats
+  Progress: 1250/1321 (94.6%) - 1249 with stats
+  Progress: 1300/1321 (98.4%) - 1299 with stats
+
+NBA COMPLETE:
+  Games: 1321
+  Games with stats: 1320
+  Errors: 0
+  Duration: 16.5 minutes
+
+📊 COLLECTING MLB 2023 SEASON
+Date range: 2023-03-30 to 2023-11-01
+  2023-03-30: 15 games
+  2023-03-31: 5 games
+  2023-04-01: 15 games
+  2023-04-02: 15 games
+  2023-04-03: 15 games
+  2023-04-04: 14 games
+  2023-04-05: 13 games
+  2023-04-06: 10 games
+  2023-04-07: 14 games
+  2023-04-08: 15 games
+  2023-04-09: 15 games
+  2023-04-10: 14 games
+  2023-04-11: 15 games
+  2023-04-12: 15 games
+  2023-04-13: 7 games
+  2023-04-14: 15 games
+  2023-04-15: 15 games
+  2023-04-16: 15 games
+  2023-04-17: 13 games
+  2023-04-18: 17 games
+  2023-04-19: 15 games
+  2023-04-20: 7 games
+  2023-04-21: 15 games
+  2023-04-22: 16 games
+  2023-04-23: 15 games
+  2023-04-24: 11 games
+  2023-04-25: 15 games
+  2023-04-26: 15 games
+  2023-04-27: 11 games
+  2023-04-28: 14 games
+  2023-04-29: 17 games
+  2023-04-30: 15 games
+  2023-05-01: 8 games
+  2023-05-02: 15 games
+  2023-05-03: 16 games
+  2023-05-04: 10 games
+  2023-05-05: 15 games
+  2023-05-06: 15 games
+  2023-05-07: 15 games
+  2023-05-08: 11 games
+  2023-05-09: 15 games
+  2023-05-10: 15 games
+  2023-05-11: 6 games
+  2023-05-12: 15 games
+  2023-05-13: 15 games
+  2023-05-14: 16 games
+  2023-05-15: 12 games
+  2023-05-16: 15 games
+  2023-05-17: 15 games
+  2023-05-18: 6 games
+  2023-05-19: 15 games
+  2023-05-20: 15 games
+  2023-05-21: 16 games
+  2023-05-22: 12 games
+  2023-05-23: 15 games
+  2023-05-24: 15 games
+  2023-05-25: 10 games
+  2023-05-26: 15 games
+  2023-05-27: 15 games
+  2023-05-28: 15 games
+  2023-05-29: 11 games
+  2023-05-30: 15 games
+  2023-05-31: 14 games
+  2023-06-01: 7 games
+  2023-06-02: 15 games
+  2023-06-03: 16 games
+  2023-06-04: 15 games
+  2023-06-05: 8 games
+  2023-06-06: 15 games
+  2023-06-07: 15 games
+  2023-06-08: 12 games
+  2023-06-09: 15 games
+  2023-06-10: 15 games
+  2023-06-11: 15 games
+  2023-06-12: 8 games
+  2023-06-13: 15 games
+  2023-06-14: 16 games
+  2023-06-15: 10 games
+  2023-06-16: 15 games
+  2023-06-17: 15 games
+  2023-06-18: 16 games
+  2023-06-19: 10 games
+  2023-06-20: 15 games
+  2023-06-21: 15 games
+  2023-06-22: 8 games
+  2023-06-23: 14 games
+  2023-06-24: 15 games
+  2023-06-25: 15 games
+  2023-06-26: 6 games
+  2023-06-27: 15 games
+  2023-06-28: 15 games
+  2023-06-29: 12 games
+  2023-06-30: 15 games
+  2023-07-01: 16 games
+  2023-07-02: 15 games
+  2023-07-03: 10 games
+  2023-07-04: 15 games
+  2023-07-05: 15 games
+  2023-07-06: 13 games
+  2023-07-07: 15 games
+  2023-07-08: 15 games
+  2023-07-09: 14 games
+Missing teams: American All-Stars vs National All-Stars
+  2023-07-11: 1 games
+  2023-07-14: 15 games
+  2023-07-15: 18 games
+  2023-07-16: 15 games
+  2023-07-17: 10 games
+  2023-07-18: 16 games
+  2023-07-19: 15 games
+  2023-07-20: 10 games
+  2023-07-21: 15 games
+  2023-07-22: 16 games
+  2023-07-23: 15 games
+  2023-07-24: 10 games
+  2023-07-25: 15 games
+  2023-07-26: 15 games
+  2023-07-27: 5 games
+  2023-07-28: 15 games
+  2023-07-29: 15 games
+  2023-07-30: 15 games
+  2023-07-31: 10 games
+  2023-08-01: 15 games
+  2023-08-02: 15 games
+  2023-08-03: 11 games
+  2023-08-04: 14 games
+  2023-08-05: 15 games
+  2023-08-06: 15 games
+  2023-08-07: 12 games
+  2023-08-08: 16 games
+  2023-08-09: 15 games
+  2023-08-10: 8 games
+  2023-08-11: 15 games
+  2023-08-12: 16 games
+  2023-08-13: 15 games
+  2023-08-14: 9 games
+  2023-08-15: 15 games
+  2023-08-16: 15 games
+  2023-08-17: 6 games
+  2023-08-18: 16 games
+  2023-08-19: 18 games
+  2023-08-20: 12 games
+  2023-08-21: 10 games
+  2023-08-22: 15 games
+  2023-08-23: 15 games
+  2023-08-24: 10 games
+  2023-08-25: 15 games
+  2023-08-26: 15 games
+  2023-08-27: 15 games
+  2023-08-28: 14 games
+  2023-08-29: 15 games
+  2023-08-30: 15 games
+  2023-08-31: 4 games
+  2023-09-01: 16 games
+  2023-09-02: 15 games
+  2023-09-03: 15 games
+  2023-09-04: 11 games
+  2023-09-05: 15 games
+  2023-09-06: 15 games
+  2023-09-07: 6 games
+  2023-09-08: 15 games
+  2023-09-09: 15 games
+  2023-09-10: 15 games
+  2023-09-11: 15 games
+  2023-09-12: 17 games
+  2023-09-13: 15 games
+  2023-09-14: 10 games
+  2023-09-15: 15 games
+  2023-09-16: 16 games
+  2023-09-17: 15 games
+  2023-09-18: 11 games
+  2023-09-19: 15 games
+  2023-09-20: 15 games
+  2023-09-21: 9 games
+  2023-09-22: 15 games
+  2023-09-23: 15 games
+  2023-09-24: 16 games
+  2023-09-25: 4 games
+  2023-09-26: 16 games
+  2023-09-27: 16 games
+  2023-09-28: 12 games
+  2023-09-29: 15 games
+  2023-09-30: 16 games
+  2023-10-01: 15 games
+  2023-10-03: 4 games
+  2023-10-04: 4 games
+  2023-10-07: 4 games
+  2023-10-08: 2 games
+  2023-10-09: 2 games
+  2023-10-10: 2 games
+  2023-10-11: 3 games
+  2023-10-12: 1 games
+  2023-10-15: 1 games
+  2023-10-16: 2 games
+  2023-10-17: 1 games
+  2023-10-18: 1 games
+  2023-10-19: 2 games
+  2023-10-20: 2 games
+  2023-10-21: 1 games
+  2023-10-22: 1 games
+  2023-10-23: 2 games
+  2023-10-24: 1 games
+  2023-10-27: 1 games
+  2023-10-28: 1 games
+  2023-10-30: 1 games
+  2023-10-31: 1 games
+  2023-11-01: 1 games
+
+✅ Collected 2515 MLB games
+Collecting player stats...
+  Progress: 50/2515 (2.0%) - 0 with stats
+  Progress: 100/2515 (4.0%) - 0 with stats
+  Progress: 150/2515 (6.0%) - 0 with stats
+  Progress: 200/2515 (8.0%) - 0 with stats
+  Progress: 250/2515 (9.9%) - 0 with stats
+  Progress: 300/2515 (11.9%) - 0 with stats
+  Progress: 350/2515 (13.9%) - 0 with stats
+  Progress: 400/2515 (15.9%) - 0 with stats
+  Progress: 450/2515 (17.9%) - 0 with stats
+  Progress: 500/2515 (19.9%) - 0 with stats
+  Progress: 550/2515 (21.9%) - 0 with stats
+  Progress: 600/2515 (23.9%) - 0 with stats
+  Progress: 650/2515 (25.8%) - 0 with stats
+  Progress: 700/2515 (27.8%) - 0 with stats
