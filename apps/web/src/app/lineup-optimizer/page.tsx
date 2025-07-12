@@ -6,9 +6,11 @@ import { Button } from '../../components/ui'
 import { Select } from '../../components/ui/select'
 import { Input } from '../../components/ui'
 import { Badge } from '../../components/ui/badge'
-import { fantasyAPI, Lineup, SportType } from '../../services/fantasy-api'
+import { fantasyAPI, Lineup, SportType, SpatialProjection } from '../../services/fantasy-api'
 import { useWebSocket } from '../../hooks/useWebSocket'
 import { WS_CHANNELS } from '../../services/websocket-service'
+import { HeatMap } from '../../components/spatial/HeatMap'
+import { PitchControl } from '../../components/spatial/PitchControl'
 
 interface Player {
   id: string
@@ -19,6 +21,11 @@ interface Player {
   salary?: number
   ownership?: number
   patternBoost?: number
+  // Spatial analytics
+  spatialProjection?: number
+  xgContribution?: number
+  spaceCreationValue?: number
+  movementEfficiency?: number
   locked?: boolean
   excluded?: boolean
 }
@@ -48,6 +55,10 @@ export default function LineupOptimizerPage() {
   const [maxOwnership, setMaxOwnership] = useState(100)
   const [minProjection, setMinProjection] = useState(0)
   const [yahooConnection, setYahooConnection] = useState<any>(null)
+  const [includeSpatial, setIncludeSpatial] = useState(true)
+  const [spatialWeight, setSpatialWeight] = useState(0.3)
+  const [selectedPlayer, setSelectedPlayer] = useState<string | null>(null)
+  const [spatialData, setSpatialData] = useState<Record<string, SpatialProjection>>({})
   const [selectedLeague, setSelectedLeague] = useState<string>('')
   const [selectedTeam, setSelectedTeam] = useState<string>('')
   const [isSyncingToYahoo, setIsSyncingToYahoo] = useState(false)
@@ -98,8 +109,34 @@ export default function LineupOptimizerPage() {
         excludedPlayers: Array.from(excludedPlayers),
       }
       
-      const optimizedLineup = await fantasyAPI.optimizeLineup(config)
+      // Use spatial optimization if enabled
+      const optimizedLineup = includeSpatial 
+        ? await fantasyAPI.optimizeWithSpatial({ ...config, includeSpatial, spatialWeight })
+        : await fantasyAPI.optimizeLineup(config)
+      
       setLineup(optimizedLineup)
+      
+      // Fetch spatial data for players in lineup if spatial is enabled
+      if (includeSpatial && optimizedLineup.players) {
+        const spatialPromises = optimizedLineup.players.map(async (player) => {
+          try {
+            const spatial = await fantasyAPI.getSpatialProjection(player.playerId)
+            return { playerId: player.playerId, spatial }
+          } catch (error) {
+            console.error(`Failed to get spatial data for ${player.playerName}:`, error)
+            return null
+          }
+        })
+        
+        const results = await Promise.all(spatialPromises)
+        const newSpatialData: Record<string, SpatialProjection> = {}
+        results.forEach(result => {
+          if (result) {
+            newSpatialData[result.playerId] = result.spatial
+          }
+        })
+        setSpatialData(newSpatialData)
+      }
     } catch (error) {
       console.error('Optimization failed:', error)
       // Fallback to mock lineup
@@ -301,6 +338,56 @@ export default function LineupOptimizerPage() {
             )}
           </div>
           
+          {/* Spatial Analytics Toggle */}
+          <div className="mt-6 p-4 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-lg border border-purple-500/30">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                  <span className="text-2xl">🎯</span>
+                  Spatial Analytics
+                  <Badge className="bg-purple-600 text-white">Dr. Thorne's Methodology</Badge>
+                </h3>
+                <p className="text-sm text-gray-400 mt-1">
+                  Enable xG models, pitch control, and movement pattern analysis
+                </p>
+              </div>
+              <div className="flex items-center gap-4">
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={includeSpatial}
+                    onChange={(e) => setIncludeSpatial(e.target.checked)}
+                    className="w-5 h-5 rounded text-purple-600"
+                  />
+                  <span className="text-white">Enable</span>
+                </label>
+              </div>
+            </div>
+            
+            {includeSpatial && (
+              <div className="mt-4">
+                <label className="block text-sm font-medium text-gray-400 mb-2">
+                  Spatial Weight (0-1)
+                </label>
+                <div className="flex items-center gap-4">
+                  <input
+                    type="range"
+                    min={0}
+                    max={1}
+                    step={0.1}
+                    value={spatialWeight}
+                    onChange={(e) => setSpatialWeight(Number(e.target.value))}
+                    className="flex-1"
+                  />
+                  <span className="text-white font-mono">{spatialWeight.toFixed(1)}</span>
+                </div>
+                <p className="text-xs text-gray-500 mt-1">
+                  Higher weight = more emphasis on spatial factors vs traditional stats
+                </p>
+              </div>
+            )}
+          </div>
+          
           {format === 'dfs' && contest === 'gpp' && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
               <div>
@@ -416,23 +503,37 @@ export default function LineupOptimizerPage() {
             {lineup ? (
               <>
                 <div className="space-y-2 mb-6">
-                  {lineup.players.map((player, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center justify-between p-3 rounded-lg border border-white/10"
-                    >
-                      <div className="flex items-center gap-2">
-                        <Badge variant="secondary">{player.position}</Badge>
-                        <span className="text-white font-medium">{player.playerName}</span>
-                        <span className="text-xs text-gray-500">{player.team}</span>
-                        {player.patternBoost && (
-                          <Badge variant="success" size="sm">
+                  {lineup.players.map((player, idx) => {
+                    const spatial = spatialData[player.playerId]
+                    return (
+                      <div
+                        key={idx}
+                        className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-all ${
+                          selectedPlayer === player.playerId 
+                            ? 'border-purple-500 bg-purple-900/20' 
+                            : 'border-white/10 hover:border-white/20'
+                        }`}
+                        onClick={() => setSelectedPlayer(player.playerId === selectedPlayer ? null : player.playerId)}
+                      >
+                        <div className="flex items-center gap-2">
+                          <Badge variant="secondary">{player.position}</Badge>
+                          <span className="text-white font-medium">{player.playerName}</span>
+                          <span className="text-xs text-gray-500">{player.team}</span>
+                          {player.patternBoost && (
+                            <Badge variant="success" size="sm">
                             +{player.patternBoost}
                           </Badge>
                         )}
                       </div>
                       <div className="text-right">
-                        <div className="text-white">{player.projection} pts</div>
+                        <div className="text-white">
+                          {player.projection} pts
+                          {includeSpatial && spatial && (
+                            <span className="text-purple-400 text-xs ml-1">
+                              (+{(spatial.spatialProjection - spatial.traditionalProjection).toFixed(1)})
+                            </span>
+                          )}
+                        </div>
                         {player.salary && (
                           <div className="text-sm text-gray-400">${player.salary}</div>
                         )}
@@ -440,6 +541,51 @@ export default function LineupOptimizerPage() {
                     </div>
                   ))}
                 </div>
+                
+                {/* Spatial Details */}
+                {includeSpatial && selectedPlayer && spatialData[selectedPlayer] && (
+                  <div className="mb-6 p-4 bg-purple-900/20 rounded-lg border border-purple-500/30">
+                    <h4 className="text-sm font-medium text-purple-400 mb-3">
+                      Spatial Analytics for {lineup.players.find(p => p.playerId === selectedPlayer)?.playerName}
+                    </h4>
+                    <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <span className="text-gray-400">xG Contribution:</span>
+                        <span className="text-white ml-2">
+                          +{spatialData[selectedPlayer].spatialComponents.expectedGoalsBonus.toFixed(1)}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-gray-400">Space Creation:</span>
+                        <span className="text-white ml-2">
+                          +{spatialData[selectedPlayer].spatialComponents.spaceCreationBonus.toFixed(1)}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-gray-400">Movement Efficiency:</span>
+                        <span className="text-white ml-2">
+                          +{spatialData[selectedPlayer].spatialComponents.movementEfficiencyBonus.toFixed(1)}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-gray-400">Synergy Bonus:</span>
+                        <span className="text-white ml-2">
+                          +{spatialData[selectedPlayer].spatialComponents.synergyBonus.toFixed(1)}
+                        </span>
+                      </div>
+                    </div>
+                    {spatialData[selectedPlayer].keyAdvantages.length > 0 && (
+                      <div className="mt-3">
+                        <span className="text-xs text-gray-400">Key Advantages:</span>
+                        <div className="mt-1 space-y-1">
+                          {spatialData[selectedPlayer].keyAdvantages.map((adv, idx) => (
+                            <div key={idx} className="text-xs text-purple-300">• {adv}</div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
                 
                 {/* Totals */}
                 <div className="border-t border-white/10 pt-4">
@@ -470,6 +616,33 @@ export default function LineupOptimizerPage() {
                           <span className="text-gray-300">{advantage}</span>
                         </div>
                       ))}
+                    </div>
+                  </div>
+                )}
+                
+                {/* Spatial Analytics Summary */}
+                {includeSpatial && lineup.teamSpacingScore && (
+                  <div className="mt-6 p-4 bg-gradient-to-r from-purple-900/10 to-pink-900/10 rounded-lg">
+                    <h4 className="text-sm font-medium text-purple-400 mb-3">Spatial Analytics Summary</h4>
+                    <div className="grid grid-cols-3 gap-4 text-sm">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-purple-400">
+                          {(lineup.teamSpacingScore * 100).toFixed(0)}%
+                        </div>
+                        <div className="text-xs text-gray-400">Team Spacing</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-pink-400">
+                          {(lineup.offensiveSynergy * 100).toFixed(0)}%
+                        </div>
+                        <div className="text-xs text-gray-400">Offensive Synergy</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-blue-400">
+                          {(lineup.defensiveCoverage * 100).toFixed(0)}%
+                        </div>
+                        <div className="text-xs text-gray-400">Defensive Coverage</div>
+                      </div>
                     </div>
                   </div>
                 )}

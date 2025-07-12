@@ -14,10 +14,23 @@ export interface Lineup {
     projection: number
     salary?: number
     patternBoost?: number
+    // Spatial analytics enhancements
+    xgContribution?: number
+    spaceCreationValue?: number
+    movementEfficiency?: number
+    spatialSynergies?: Array<{
+      withPlayer: string
+      synergyScore: number
+      patternType: string
+    }>
   }>
   totalProjection: number
   totalSalary?: number
   patternAdvantages: string[]
+  // Spatial metrics
+  teamSpacingScore?: number
+  offensiveSynergy?: number
+  defensiveCoverage?: number
   confidence: number
 }
 
@@ -68,6 +81,56 @@ export interface FantasyInsight {
   impact: 'high' | 'medium' | 'low'
   actionable: boolean
   data: any
+}
+
+// Spatial Analytics Interfaces
+export interface SpatialProjection {
+  playerId: string
+  playerName: string
+  traditionalProjection: number
+  spatialComponents: {
+    expectedGoalsBonus: number
+    spaceCreationBonus: number
+    movementEfficiencyBonus: number
+    defensiveImpactBonus: number
+    synergyBonus: number
+  }
+  spatialProjection: number
+  projectionRange: [number, number]
+  keyAdvantages: string[]
+  recommendedStacks: Array<{
+    partnerId: string
+    partnerName: string
+    stackBonus: number
+    reason: string
+  }>
+}
+
+export interface PitchControlData {
+  timestamp: number
+  grid: number[][]
+  teamControl: {
+    home: number
+    away: number
+  }
+  highValueAreas: Array<{
+    x: number
+    y: number
+    control: number
+  }>
+}
+
+export interface MovementPattern {
+  playerId: string
+  patternType: string
+  frequency: number
+  successRate: number
+  avgSpaceCreated: number
+  preferredZones: Array<{
+    x: number
+    y: number
+    frequency: number
+  }>
 }
 
 class FantasyAPI {
@@ -228,6 +291,90 @@ class FantasyAPI {
       return await response.json()
     } catch (error) {
       console.error('Error processing voice command:', error)
+      throw error
+    }
+  }
+
+  /**
+   * Get spatial analytics projection for a player
+   */
+  async getSpatialProjection(playerId: string): Promise<SpatialProjection> {
+    try {
+      const response = await fetch(`${this.baseUrl}/api/spatial/player-projection/${playerId}`)
+      
+      if (!response.ok) {
+        throw new Error(`Failed to get spatial projection: ${response.statusText}`)
+      }
+      
+      return await response.json()
+    } catch (error) {
+      console.error('Error getting spatial projection:', error)
+      throw error
+    }
+  }
+
+  /**
+   * Get pitch control data for a game
+   */
+  async getPitchControl(gameId: string, timestamp?: number): Promise<PitchControlData> {
+    try {
+      const params = timestamp ? `?timestamp=${timestamp}` : ''
+      const response = await fetch(`${this.baseUrl}/api/spatial/pitch-control/${gameId}${params}`)
+      
+      if (!response.ok) {
+        throw new Error(`Failed to get pitch control: ${response.statusText}`)
+      }
+      
+      return await response.json()
+    } catch (error) {
+      console.error('Error getting pitch control:', error)
+      throw error
+    }
+  }
+
+  /**
+   * Get movement patterns for a player
+   */
+  async getMovementPatterns(playerId: string): Promise<MovementPattern[]> {
+    try {
+      const response = await fetch(`${this.baseUrl}/api/spatial/movement-patterns/${playerId}`)
+      
+      if (!response.ok) {
+        throw new Error(`Failed to get movement patterns: ${response.statusText}`)
+      }
+      
+      return await response.json()
+    } catch (error) {
+      console.error('Error getting movement patterns:', error)
+      throw error
+    }
+  }
+
+  /**
+   * Optimize lineup with spatial analytics
+   */
+  async optimizeWithSpatial(config: LineupConfig & { 
+    includeSpatial?: boolean 
+    spatialWeight?: number 
+  }): Promise<Lineup> {
+    try {
+      const response = await fetch(`${this.baseUrl}/api/spatial/lineup-optimizer`, {
+        method: 'POST',
+        headers: this.headers,
+        body: JSON.stringify({
+          ...config,
+          includeSpatial: config.includeSpatial ?? true,
+          spatialWeight: config.spatialWeight ?? 0.3
+        }),
+      })
+      
+      if (!response.ok) {
+        throw new Error(`Failed to optimize with spatial: ${response.statusText}`)
+      }
+      
+      return await response.json()
+    } catch (error) {
+      console.error('Error optimizing with spatial:', error)
       throw error
     }
   }
