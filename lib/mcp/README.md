@@ -1,64 +1,28 @@
 # MCP (Model Context Protocol) Orchestration System
 
-The Fantasy AI Ultimate platform leverages 32 specialized MCP servers to provide comprehensive fantasy sports functionality. This orchestration system enables seamless integration of various data sources, AI models, and third-party services.
+The Fantasy AI Ultimate platform leverages 3 specialized MCP servers to provide comprehensive fantasy sports functionality. This orchestration system enables seamless integration of various data sources, AI models, and third-party services.
 
 ## 🎯 Overview
 
-The MCP Orchestrator manages 32 specialized servers across different categories:
+The MCP Orchestrator manages 3 core servers for production use:
 
-### 📊 Data & Analytics (7 servers)
-- **PostgreSQL Database** - Core data storage and queries
-- **ESPN Data Server** - Live scores, stats, and news
-- **Sportradar API** - Professional sports data and odds
-- **Tableau Analytics** - Data visualization and reporting
-- **TensorFlow ML** - Machine learning predictions
-- **NFL Next Gen Stats** - Advanced player tracking
-- **NBA Advanced Stats** - Basketball analytics
+### 📊 Database Server
+- **Supabase PostgreSQL** - Core data storage, player_game_logs, games, players, teams
+- Handles all player stats in standardized JSONB format
+- Unlimited querying with automatic pagination
+- Schema validation and data integrity
 
-### 🎮 Fantasy Platforms (5 servers)
-- **Yahoo Fantasy** - League integration and data sync
-- **ESPN Fantasy** - ESPN league management
-- **Sleeper** - Dynasty league support
-- **DraftKings** - DFS contests and salaries
-- **FanDuel** - DFS ownership and contests
+### 🗣️ Voice Server  
+- **ElevenLabs** - Text-to-speech for voice assistant
+- Real-time audio generation for insights
+- Multi-language support
+- High-quality voice synthesis
 
-### 🤖 AI & ML (2 servers)
-- **OpenAI GPT** - Natural language processing
-- **Anthropic Claude** - Strategy analysis and advice
-
-### 📱 Social & News (4 servers)
-- **Twitter/X** - Breaking news and sentiment
-- **Reddit** - Community discussions
-- **Rotoworld** - Player news and updates
-- **RotoWire** - DFS projections
-
-### 🎲 Betting & Odds (2 servers)
-- **The Odds API** - Betting lines and props
-- **Action Network** - Sharp money tracking
-
-### 🌤️ Environmental (1 server)
-- **Weather API** - Game conditions
-
-### 📹 Media (2 servers)
-- **YouTube** - Game highlights
-- **Twitch** - Live expert streams
-
-### 🔔 Notifications (2 servers)
-- **Pushover** - Push notifications
-- **Discord** - Community alerts
-
-### 🗣️ Voice (2 servers)
-- **ElevenLabs** - Text-to-speech
-- **Whisper** - Speech-to-text
-
-### ⛓️ Blockchain (2 servers)
-- **Sorare** - NFT fantasy soccer
-- **NBA Top Shot** - Basketball NFTs
-
-### 💳 Other (3 servers)
-- **Stripe** - Payment processing
-- **Google Calendar** - Schedule management
-- **Baseball Savant** - MLB analytics
+### 🧠 Intelligence Server
+- **Fantasy Intelligence** - Memory and context management
+- Pattern detection and analysis storage
+- Knowledge graph for expert insights
+- Persistent memory across sessions
 
 ## 🚀 Key Features
 

@@ -481,6 +481,238 @@ export class EnhancedDatabaseService extends DatabaseService {
       teamResolutionCache: this.teamResolutionCache.size
     }
   }
+
+  /**
+   * Unlimited query for player_game_logs with automatic pagination
+   * Uses our standardized schema exclusively
+   */
+  async *unlimitedPlayerStatsQuery(
+    options: {
+      filter?: Record<string, any>
+      orderBy?: string
+      orderDirection?: 'asc' | 'desc'
+      includeJoins?: boolean
+    } = {}
+  ): AsyncIterableIterator<any[]> {
+    let offset = 0
+    let hasMore = true
+    let totalFetched = 0
+
+    console.log(chalk.cyan('🔄 Starting unlimited player_game_logs query...'))
+
+    while (hasMore) {
+      try {
+        let query = this.getClient()
+          .from('player_game_logs')
+          .select(options.includeJoins ? 
+            '*, player:players!player_id(name), game:games!game_id(sport, start_time)' : 
+            '*'
+          )
+          .range(offset, offset + this.BATCH_SIZE - 1)
+
+        // Apply filters
+        if (options.filter) {
+          for (const [key, value] of Object.entries(options.filter)) {
+            if (value !== undefined) {
+              query = query.eq(key, value)
+            }
+          }
+        }
+
+        // Apply ordering
+        if (options.orderBy) {
+          query = query.order(options.orderBy, { 
+            ascending: options.orderDirection !== 'desc' 
+          })
+        } else {
+          query = query.order('game_date', { ascending: false })
+        }
+
+        const { data, error } = await query
+
+        if (error) {
+          console.error(chalk.red(`❌ Error in unlimited query at offset ${offset}:`, error.message))
+          throw error
+        }
+
+        if (!data || data.length === 0) {
+          hasMore = false
+          console.log(chalk.green(`✅ Unlimited query complete! Total: ${totalFetched} records`))
+          break
+        }
+
+        totalFetched += data.length
+        console.log(chalk.gray(`📦 Fetched batch: ${data.length} records (total: ${totalFetched})`))
+
+        yield data
+
+        if (data.length < this.BATCH_SIZE) {
+          hasMore = false
+          console.log(chalk.green(`✅ Reached end of player_game_logs. Total: ${totalFetched}`))
+        }
+
+        offset += this.BATCH_SIZE
+      } catch (error) {
+        console.error(chalk.red(`❌ Fatal error in unlimited query:`, error))
+        throw error
+      }
+    }
+  }
+
+  /**
+   * Enhanced upsert specifically for player_game_logs with schema validation
+   */
+  async enhancedPlayerStatsUpsert(
+    playerStats: any[],
+    options: {
+      validateSchema?: boolean
+      skipDuplicates?: boolean
+      batchSize?: number
+    } = {}
+  ) {
+    if (playerStats.length === 0) return { successful: 0, failed: 0, errors: [] }
+
+    const batchSize = options.batchSize || this.BATCH_SIZE
+    const validateSchema = options.validateSchema !== false
+    
+    console.log(chalk.cyan(`📝 Enhanced upsert: ${playerStats.length} player stats to player_game_logs`))
+
+    // Schema validation
+    let validatedStats = playerStats
+    if (validateSchema) {
+      validatedStats = playerStats.filter(stat => {
+        const isValid = (
+          typeof stat.player_id === 'number' &&
+          typeof stat.game_id === 'number' &&
+          typeof stat.team_id === 'number' &&
+          stat.game_date &&
+          typeof stat.stats === 'object' &&
+          typeof stat.fantasy_points === 'number'
+        )
+        
+        if (!isValid) {
+          console.warn(chalk.yellow(`⚠️ Invalid player stat record:`, stat))
+        }
+        
+        return isValid
+      })
+      
+      console.log(chalk.green(`✅ Schema validation: ${validatedStats.length}/${playerStats.length} valid`))
+    }
+
+    const results = []
+    let processed = 0
+
+    // Process in batches with conflict resolution
+    for (let i = 0; i < validatedStats.length; i += batchSize) {
+      const batch = validatedStats.slice(i, i + batchSize)
+      
+      try {
+        const { data, error } = await this.getClient()
+          .from('player_game_logs')
+          .upsert(batch, { 
+            onConflict: 'player_id,game_id',
+            ignoreDuplicates: options.skipDuplicates || false
+          })
+          .select()
+
+        if (error) {
+          console.error(chalk.red(`❌ Batch ${Math.floor(i / batchSize) + 1} failed:`, error.message))
+          
+          // Try individual inserts for failed batch
+          for (const record of batch) {
+            try {
+              const { data: singleData } = await this.getClient()
+                .from('player_game_logs')
+                .upsert(record, { onConflict: 'player_id,game_id' })
+                .select()
+              
+              if (singleData) {
+                results.push(...singleData)
+              }
+            } catch (singleError) {
+              console.warn(chalk.yellow(`⚠️ Individual record failed for player_game_logs`))
+            }
+          }
+        } else {
+          if (data) {
+            results.push(...data)
+          }
+          processed += batch.length
+          console.log(chalk.green(`✅ Player stats batch ${Math.floor(i / batchSize) + 1}: ${batch.length} records`))
+        }
+      } catch (error) {
+        console.error(chalk.red(`❌ Fatal error in player stats batch ${Math.floor(i / batchSize) + 1}:`, error))
+      }
+
+      // Progress reporting
+      const progress = Math.min(i + batchSize, validatedStats.length)
+      const percentage = ((progress / validatedStats.length) * 100).toFixed(1)
+      console.log(chalk.cyan(`📊 Player stats progress: ${progress}/${validatedStats.length} (${percentage}%)`))
+    }
+
+    console.log(chalk.green(`✅ Player stats upsert complete: ${processed}/${playerStats.length} processed`))
+    return results
+  }
+
+  /**
+   * Get comprehensive stats coverage for our standardized schema
+   */
+  async getPlayerStatsCoverage(): Promise<{
+    totalGames: number
+    gamesWithStats: number
+    coveragePercentage: number
+    recordsInPlayerGameLogs: number
+    statsBySport: Record<string, number>
+  }> {
+    console.log(chalk.cyan('📊 Analyzing player_game_logs coverage...'))
+
+    // Total games with scores
+    const { count: totalGames } = await this.getClient()
+      .from('games')
+      .select('*', { count: 'exact', head: true })
+      .not('home_score', 'is', null)
+
+    // Total records in player_game_logs
+    const { count: recordsInPlayerGameLogs } = await this.getClient()
+      .from('player_game_logs')
+      .select('*', { count: 'exact', head: true })
+
+    // Unique games with stats
+    const { data: uniqueGames } = await this.getClient()
+      .from('player_game_logs')
+      .select('game_id')
+
+    const uniqueGameIds = new Set(uniqueGames?.map(g => g.game_id) || [])
+    const gamesWithStats = uniqueGameIds.size
+
+    // Stats by sport (via games join)
+    const { data: gamesSport } = await this.getClient()
+      .from('games')
+      .select('sport, id')
+      .in('id', Array.from(uniqueGameIds))
+
+    const statsBySport = gamesSport?.reduce((acc, game) => {
+      acc[game.sport] = (acc[game.sport] || 0) + 1
+      return acc
+    }, {} as Record<string, number>) || {}
+
+    const coveragePercentage = totalGames ? (gamesWithStats / totalGames) * 100 : 0
+
+    console.log(chalk.green(`✅ Coverage analysis complete:`))
+    console.log(chalk.white(`  Total games: ${totalGames}`))
+    console.log(chalk.white(`  Games with stats: ${gamesWithStats}`))
+    console.log(chalk.white(`  Coverage: ${coveragePercentage.toFixed(2)}%`))
+    console.log(chalk.white(`  Total player_game_logs: ${recordsInPlayerGameLogs}`))
+
+    return {
+      totalGames: totalGames || 0,
+      gamesWithStats,
+      coveragePercentage,
+      recordsInPlayerGameLogs: recordsInPlayerGameLogs || 0,
+      statsBySport
+    }
+  }
 }
 
 // Export enhanced singleton instance
