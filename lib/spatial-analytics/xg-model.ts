@@ -6,7 +6,7 @@
  * based on spatial characteristics like location, angle, and distance.
  */
 
-import { createClient } from '@/lib/supabase/server';
+import { createClient } from '@supabase/supabase-js';
 
 export interface ShotData {
   x_coordinate: number;
@@ -162,7 +162,10 @@ export class ExpectedGoalsModel {
    * Get xG data from database for a specific game
    */
   async getGameXGData(gameId: string) {
-    const supabase = createClient();
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
     
     const { data: shots, error } = await supabase
       .from('basketball_shots')
@@ -186,7 +189,10 @@ export class ExpectedGoalsModel {
    * Calculate player's xG performance (actual goals vs expected)
    */
   async getPlayerXGPerformance(playerId: string, season?: string) {
-    const supabase = createClient();
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
     
     let query = supabase
       .from('basketball_shots')

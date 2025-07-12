@@ -4,7 +4,7 @@
  * for use in fantasy projections and matchup analysis
  */
 
-import { createClient } from '@/lib/supabase/server';
+import { createClient } from '@supabase/supabase-js';
 import { basketballPitchControl, soccerPitchControl, footballPitchControl } from './pitch-control';
 
 export interface MovementPattern {
@@ -62,7 +62,10 @@ export class MovementPatternAnalyzer {
     gameIds: string[],
     sport: 'basketball' | 'soccer' | 'football' = 'basketball'
   ): Promise<PlayerMovementProfile> {
-    const supabase = createClient();
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
 
     // Fetch tracking data for the player across games
     const { data: trackingData, error } = await supabase
@@ -315,7 +318,10 @@ export class MovementPatternAnalyzer {
    * Analyze football route patterns
    */
   private async analyzeFootballRoutes(playerId: string): Promise<MovementPattern[]> {
-    const supabase = createClient();
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
     
     const { data: routes, error } = await supabase
       .from('football_routes')

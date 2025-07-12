@@ -3,7 +3,7 @@
  * Integrates Dr. Thorne's spatial methodologies into lineup decisions
  */
 
-import { createClient } from '@/lib/supabase/server';
+import { createClient } from '@supabase/supabase-js';
 import { xgModel } from './xg-model';
 import { basketballPitchControl, soccerPitchControl, footballPitchControl } from './pitch-control';
 import { movementAnalyzer } from './movement-patterns';
@@ -57,7 +57,17 @@ export interface SpatialLineupOptimization {
 }
 
 export class EnhancedLineupOptimizer {
-  private supabase = createClient();
+  private supabase: any;
+
+  private getSupabase() {
+    if (!this.supabase) {
+      this.supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.SUPABASE_SERVICE_ROLE_KEY!
+      );
+    }
+    return this.supabase;
+  }
   
   /**
    * Optimize lineup with spatial analytics
@@ -98,7 +108,7 @@ export class EnhancedLineupOptimizer {
    * Get players with their spatial/tracking data
    */
   private async getPlayersWithSpatialData(options: any) {
-    let query = this.supabase
+    let query = this.getSupabase()
       .from('players')
       .select(`
         id,

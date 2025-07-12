@@ -6,7 +6,7 @@
  * which becomes the foundation for valuing off-ball actions.
  */
 
-import { createClient } from '@/lib/supabase/server';
+import { createClient } from '@supabase/supabase-js';
 
 export interface PlayerPosition {
   player_id: string;
@@ -297,7 +297,10 @@ export class PitchControlModel {
    * Get real-time pitch control from tracking data
    */
   async getRealTimePitchControl(gameId: string, timestamp: number) {
-    const supabase = createClient();
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
 
     // Get player positions at specific timestamp
     const { data: trackingData, error } = await supabase
@@ -344,7 +347,10 @@ export class PitchControlModel {
     startTime: number,
     endTime: number
   ): Promise<number> {
-    const supabase = createClient();
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
 
     // Get all tracking data for the time period
     const { data: trackingData, error } = await supabase

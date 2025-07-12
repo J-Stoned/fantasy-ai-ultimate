@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { enhancedOptimizer } from '@/lib/spatial-analytics/enhanced-lineup-optimizer'
+import { enhancedOptimizer } from '../../../../../lib/spatial-analytics/enhanced-lineup-optimizer'
 
 export async function POST(request: NextRequest) {
   try {

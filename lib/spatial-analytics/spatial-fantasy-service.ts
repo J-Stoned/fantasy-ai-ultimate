@@ -3,7 +3,7 @@
  * Central service for integrating spatial analytics into fantasy projections
  */
 
-import { createClient } from '@/lib/supabase/server';
+import { createClient } from '@supabase/supabase-js';
 import { xgModel } from './xg-model';
 import { basketballPitchControl, soccerPitchControl, footballPitchControl } from './pitch-control';
 import { movementAnalyzer } from './movement-patterns';
@@ -63,7 +63,17 @@ export interface TeamSpatialAnalysis {
 }
 
 export class SpatialFantasyService {
-  private supabase = createClient();
+  private supabase: any;
+
+  private getSupabase() {
+    if (!this.supabase) {
+      this.supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.SUPABASE_SERVICE_ROLE_KEY!
+      );
+    }
+    return this.supabase;
+  }
   
   /**
    * Get enhanced fantasy projection for a player
@@ -78,7 +88,7 @@ export class SpatialFantasyService {
   ): Promise<SpatialFantasyProjection> {
     
     // Get player data
-    const { data: player, error: playerError } = await this.supabase
+    const { data: player, error: playerError } = await this.getSupabase()
       .from('players')
       .select(`
         *,
@@ -150,7 +160,7 @@ export class SpatialFantasyService {
   ): Promise<TeamSpatialAnalysis> {
     
     // Get team data
-    const { data: team, error: teamError } = await this.supabase
+    const { data: team, error: teamError } = await this.getSupabase()
       .from('teams')
       .select('*')
       .eq('id', teamId)
@@ -161,7 +171,7 @@ export class SpatialFantasyService {
     }
     
     // Get recent games for analysis
-    const { data: recentGames } = await this.supabase
+    const { data: recentGames } = await this.getSupabase()
       .from('games')
       .select('id')
       .or(`home_team_id.eq.${teamId},away_team_id.eq.${teamId}`)
@@ -397,7 +407,7 @@ export class SpatialFantasyService {
     const stacks: any[] = [];
     
     // Get teammates
-    const { data: teammates } = await this.supabase
+    const { data: teammates } = await this.getSupabase()
       .from('players')
       .select('id, name, position')
       .eq('team', player.team)
@@ -470,7 +480,7 @@ export class SpatialFantasyService {
    * Helper: Identify space creators
    */
   private async identifySpaceCreators(teamId: string): Promise<string[]> {
-    const { data: players } = await this.supabase
+    const { data: players } = await this.getSupabase()
       .from('players')
       .select('id, name')
       .eq('team', teamId)
@@ -485,7 +495,7 @@ export class SpatialFantasyService {
    * Helper: Identify space exploiters
    */
   private async identifySpaceExploiters(teamId: string): Promise<string[]> {
-    const { data: players } = await this.supabase
+    const { data: players } = await this.getSupabase()
       .from('players')
       .select('id, name, position')
       .eq('team', teamId)
@@ -499,7 +509,7 @@ export class SpatialFantasyService {
    * Helper: Identify defensive anchors
    */
   private async identifyDefensiveAnchors(teamId: string): Promise<string[]> {
-    const { data: players } = await this.supabase
+    const { data: players } = await this.getSupabase()
       .from('players')
       .select('id, name, position')
       .eq('team', teamId)

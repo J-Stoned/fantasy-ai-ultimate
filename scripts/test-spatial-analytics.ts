@@ -4,15 +4,15 @@
  * Demonstrates Dr. Thorne's methodologies in action
  */
 
-import { createClient } from '@supabase/supabase-js'
 import { config } from 'dotenv'
+config({ path: '.env.local' })
+
+import { createClient } from '@supabase/supabase-js'
 import chalk from 'chalk'
 import { xgModel } from '../lib/spatial-analytics/xg-model'
 import { basketballPitchControl } from '../lib/spatial-analytics/pitch-control'
 import { movementAnalyzer } from '../lib/spatial-analytics/movement-patterns'
 import { spatialFantasyService } from '../lib/spatial-analytics/spatial-fantasy-service'
-
-config({ path: '.env.local' })
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
