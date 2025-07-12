@@ -1,0 +1,713 @@
+{
+  "generated_at": "2025-07-12T09:49:21.392Z",
+  "stats": {
+    "totalGames": 16435,
+    "processedGames": 16435,
+    "successfulGames": 16435,
+    "failedGames": 0,
+    "duplicates": 0,
+    "conflicts": 1393
+  },
+  "sample": [
+    {
+      "id": 3567073,
+      "universal_id": "unk_20230701_1740_cin_sd",
+      "external_id": "espn_mlb_401472263",
+      "sport": null,
+      "start_time": "2023-07-01T17:40:00+00:00"
+    },
+    {
+      "id": 3567075,
+      "universal_id": "unk_20230701_1907_tor_bos",
+      "external_id": "espn_mlb_401472254",
+      "sport": null,
+      "start_time": "2023-07-01T19:07:00+00:00"
+    },
+    {
+      "id": 3567077,
+      "universal_id": "unk_20230701_2005_bal_min",
+      "external_id": "espn_mlb_401472261",
+      "sport": null,
+      "start_time": "2023-07-01T20:05:00+00:00"
+    },
+    {
+      "id": 3567079,
+      "universal_id": "unk_20230701_2005_pit_mil",
+      "external_id": "espn_mlb_401472267",
+      "sport": null,
+      "start_time": "2023-07-01T20:05:00+00:00"
+    },
+    {
+      "id": 3567081,
+      "universal_id": "unk_20230701_2010_atl_mia",
+      "external_id": "espn_mlb_401472260",
+      "sport": null,
+      "start_time": "2023-07-01T20:10:00+00:00"
+    },
+    {
+      "id": 3567083,
+      "universal_id": "unk_20230701_2315_chc_cle",
+      "external_id": "espn_mlb_401472256",
+      "sport": null,
+      "start_time": "2023-07-01T23:15:00+00:00"
+    },
+    {
+      "id": 3567085,
+      "universal_id": "unk_20230701_2315_sea_tb",
+      "external_id": "espn_mlb_401472265",
+      "sport": null,
+      "start_time": "2023-07-01T23:15:00+00:00"
+    },
+    {
+      "id": 3567087,
+      "universal_id": "unk_20230701_0110_col_det",
+      "external_id": "espn_mlb_401472257",
+      "sport": null,
+      "start_time": "2023-07-02T01:10:00+00:00"
+    },
+    {
+      "id": 3567089,
+      "universal_id": "unk_20230702_1605_bal_min",
+      "external_id": "espn_mlb_401472275",
+      "sport": null,
+      "start_time": "2023-07-02T16:05:00+00:00"
+    },
+    {
+      "id": 3567091,
+      "universal_id": "unk_20230702_1735_phi_wsh",
+      "external_id": "espn_mlb_401472280",
+      "sport": null,
+      "start_time": "2023-07-02T17:35:00+00:00"
+    },
+    {
+      "id": 3567093,
+      "universal_id": "unk_20230702_1737_tor_bos",
+      "external_id": "espn_mlb_401472269",
+      "sport": null,
+      "start_time": "2023-07-02T17:37:00+00:00"
+    },
+    {
+      "id": 3561804,
+      "universal_id": "nhl_20241105_0330_ny_car",
+      "external_id": "nhl_401687803",
+      "sport": "NHL",
+      "start_time": "2024-11-06T03:30:00+00:00"
+    },
+    {
+      "id": 3567074,
+      "universal_id": "unk_20230701_1815_stl_nyy",
+      "external_id": "espn_mlb_401472262",
+      "sport": null,
+      "start_time": "2023-07-01T18:15:00+00:00"
+    },
+    {
+      "id": 3567076,
+      "universal_id": "unk_20230701_2005_tex_hou",
+      "external_id": "espn_mlb_401472258",
+      "sport": null,
+      "start_time": "2023-07-01T20:05:00+00:00"
+    },
+    {
+      "id": 3567078,
+      "universal_id": "unk_20230701_2005_phi_wsh",
+      "external_id": "espn_mlb_401472266",
+      "sport": null,
+      "start_time": "2023-07-01T20:05:00+00:00"
+    },
+    {
+      "id": 3567080,
+      "universal_id": "unk_20230701_2007_ath_chw",
+      "external_id": "espn_mlb_401472255",
+      "sport": null,
+      "start_time": "2023-07-01T20:07:00+00:00"
+    },
+    {
+      "id": 3561817,
+      "universal_id": "nhl_20241107_0100_wsh_ne",
+      "external_id": "nhl_401687816",
+      "sport": "NHL",
+      "start_time": "2024-11-08T01:00:00+00:00"
+    },
+    {
+      "id": 3567082,
+      "universal_id": "unk_20230701_2010_nym_sf",
+      "external_id": "espn_mlb_401472264",
+      "sport": null,
+      "start_time": "2023-07-01T20:10:00+00:00"
+    },
+    {
+      "id": 3567084,
+      "universal_id": "unk_20230701_2315_kc_lad",
+      "external_id": "espn_mlb_401472259",
+      "sport": null,
+      "start_time": "2023-07-01T23:15:00+00:00"
+    },
+    {
+      "id": 3567086,
+      "universal_id": "unk_20230701_0030_stl_nyy",
+      "external_id": "espn_mlb_401564629",
+      "sport": null,
+      "start_time": "2023-07-02T00:30:00+00:00"
+    },
+    {
+      "id": 3567088,
+      "universal_id": "unk_20230701_0207_laa_ari",
+      "external_id": "espn_mlb_401472253",
+      "sport": null,
+      "start_time": "2023-07-02T02:07:00+00:00"
+    },
+    {
+      "id": 3567090,
+      "universal_id": "unk_20230702_1735_atl_mia",
+      "external_id": "espn_mlb_401472274",
+      "sport": null,
+      "start_time": "2023-07-02T17:35:00+00:00"
+    },
+    {
+      "id": 3567092,
+      "universal_id": "unk_20230702_1735_pit_mil",
+      "external_id": "espn_mlb_401472281",
+      "sport": null,
+      "start_time": "2023-07-02T17:35:00+00:00"
+    },
+    {
+      "id": 3567094,
+      "universal_id": "unk_20230702_1740_cin_sd",
+      "external_id": "espn_mlb_401472277",
+      "sport": null,
+      "start_time": "2023-07-02T17:40:00+00:00"
+    },
+    {
+      "id": 3567096,
+      "universal_id": "unk_20230702_1815_stl_nyy",
+      "external_id": "espn_mlb_401472276",
+      "sport": null,
+      "start_time": "2023-07-02T18:15:00+00:00"
+    },
+    {
+      "id": 3567098,
+      "universal_id": "unk_20230702_1910_col_det",
+      "external_id": "espn_mlb_401472282",
+      "sport": null,
+      "start_time": "2023-07-02T19:10:00+00:00"
+    },
+    {
+      "id": 3567100,
+      "universal_id": "unk_20230702_2007_ath_chw",
+      "external_id": "espn_mlb_401472270",
+      "sport": null,
+      "start_time": "2023-07-02T20:07:00+00:00"
+    },
+    {
+      "id": 3567102,
+      "universal_id": "unk_20230702_2105_chc_cle",
+      "external_id": "espn_mlb_401472271",
+      "sport": null,
+      "start_time": "2023-07-02T21:05:00+00:00"
+    },
+    {
+      "id": 3567104,
+      "universal_id": "unk_20230703_1805_tex_hou",
+      "external_id": "espn_mlb_401472287",
+      "sport": null,
+      "start_time": "2023-07-03T18:05:00+00:00"
+    },
+    {
+      "id": 3567106,
+      "universal_id": "unk_20230703_2205_wsh_cin",
+      "external_id": "espn_mlb_401472286",
+      "sport": null,
+      "start_time": "2023-07-03T22:05:00+00:00"
+    },
+    {
+      "id": 3564237,
+      "universal_id": "nfl_20241215_1800_tbd_tbd_03",
+      "external_id": "espn_401671737",
+      "sport": "NFL",
+      "start_time": "2024-12-15T18:00:00+00:00"
+    },
+    {
+      "id": 3564243,
+      "universal_id": "nfl_20241215_2125_tbd_tbd_02",
+      "external_id": "espn_401671681",
+      "sport": "NFL",
+      "start_time": "2024-12-15T21:25:00+00:00"
+    },
+    {
+      "id": 3564255,
+      "universal_id": "nfl_20241222_1800_tbd_tbd_03",
+      "external_id": "espn_401671811",
+      "sport": "NFL",
+      "start_time": "2024-12-22T18:00:00+00:00"
+    },
+    {
+      "id": 3564273,
+      "universal_id": "nfl_20241229_1800_tbd_tbd_02",
+      "external_id": "espn_401671738",
+      "sport": "NFL",
+      "start_time": "2024-12-29T18:00:00+00:00"
+    },
+    {
+      "id": 3564285,
+      "universal_id": "nfl_20250105_1800_tbd_tbd_02",
+      "external_id": "espn_401671840",
+      "sport": "NFL",
+      "start_time": "2025-01-05T18:00:00+00:00"
+    },
+    {
+      "id": 3564286,
+      "universal_id": "nfl_20250105_1800_tbd_tbd_03",
+      "external_id": "espn_401671844",
+      "sport": "NFL",
+      "start_time": "2025-01-05T18:00:00+00:00"
+    },
+    {
+      "id": 3564290,
+      "universal_id": "nfl_20250105_1800_tbd_tbd_07",
+      "external_id": "espn_401671841",
+      "sport": "NFL",
+      "start_time": "2025-01-05T18:00:00+00:00"
+    },
+    {
+      "id": 3564291,
+      "universal_id": "nfl_20250105_1800_tbd_tbd_08",
+      "external_id": "espn_401671828",
+      "sport": "NFL",
+      "start_time": "2025-01-05T18:00:00+00:00"
+    },
+    {
+      "id": 3564296,
+      "universal_id": "nfl_20250105_2125_tbd_tbd_05",
+      "external_id": "espn_401671845",
+      "sport": "NFL",
+      "start_time": "2025-01-05T21:25:00+00:00"
+    },
+    {
+      "id": 3564172,
+      "universal_id": "nfl_20241110_1800_tbd_tbd_07",
+      "external_id": "espn_401671708",
+      "sport": "NFL",
+      "start_time": "2024-11-10T18:00:00+00:00"
+    },
+    {
+      "id": 3564184,
+      "universal_id": "nfl_20241117_1800_tbd_tbd_06",
+      "external_id": "espn_401671746",
+      "sport": "NFL",
+      "start_time": "2024-11-17T18:00:00+00:00"
+    },
+    {
+      "id": 3564196,
+      "universal_id": "nfl_20241124_1800_tbd_tbd_04",
+      "external_id": "espn_401671638",
+      "sport": "NFL",
+      "start_time": "2024-11-24T18:00:00+00:00"
+    },
+    {
+      "id": 3564202,
+      "universal_id": "nfl_20241124_2125_tbd_tbd_02",
+      "external_id": "espn_401671775",
+      "sport": "NFL",
+      "start_time": "2024-11-24T21:25:00+00:00"
+    },
+    {
+      "id": 3564214,
+      "universal_id": "nfl_20241201_1800_tbd_tbd_06",
+      "external_id": "espn_401671743",
+      "sport": "NFL",
+      "start_time": "2024-12-01T18:00:00+00:00"
+    },
+    {
+      "id": 3564226,
+      "universal_id": "nfl_20241208_1800_tbd_tbd_05",
+      "external_id": "espn_401671713",
+      "sport": "NFL",
+      "start_time": "2024-12-08T18:00:00+00:00"
+    },
+    {
+      "id": 3564238,
+      "universal_id": "nfl_20241215_1800_tbd_tbd_04",
+      "external_id": "espn_401671639",
+      "sport": "NFL",
+      "start_time": "2024-12-15T18:00:00+00:00"
+    },
+    {
+      "id": 3564244,
+      "universal_id": "nfl_20241215_2125_tbd_tbd_03",
+      "external_id": "espn_401671766",
+      "sport": "NFL",
+      "start_time": "2024-12-15T21:25:00+00:00"
+    },
+    {
+      "id": 3564256,
+      "universal_id": "nfl_20241222_1800_tbd_tbd_04",
+      "external_id": "espn_401671862",
+      "sport": "NFL",
+      "start_time": "2024-12-22T18:00:00+00:00"
+    },
+    {
+      "id": 3564262,
+      "universal_id": "nfl_20241222_2125_tbd_tbd_02",
+      "external_id": "espn_401671673",
+      "sport": "NFL",
+      "start_time": "2024-12-22T21:25:00+00:00"
+    },
+    {
+      "id": 3562351,
+      "universal_id": "nfl_20200913_1700_cha_ind",
+      "external_id": "nfl_401220195",
+      "sport": "NFL",
+      "start_time": "2020-09-13T17:00:00+00:00"
+    },
+    {
+      "id": 3562359,
+      "universal_id": "nfl_20200917_0020_cle_cin",
+      "external_id": "nfl_401220163",
+      "sport": "NFL",
+      "start_time": "2020-09-18T00:20:00+00:00"
+    },
+    {
+      "id": 3564185,
+      "universal_id": "nfl_20241117_1800_tbd_tbd_07",
+      "external_id": "espn_401671782",
+      "sport": "NFL",
+      "start_time": "2024-11-17T18:00:00+00:00"
+    },
+    {
+      "id": 3564197,
+      "universal_id": "nfl_20241124_1800_tbd_tbd_05",
+      "external_id": "espn_401671715",
+      "sport": "NFL",
+      "start_time": "2024-11-24T18:00:00+00:00"
+    },
+    {
+      "id": 3564215,
+      "universal_id": "nfl_20241201_1800_tbd_tbd_07",
+      "external_id": "espn_401671705",
+      "sport": "NFL",
+      "start_time": "2024-12-01T18:00:00+00:00"
+    },
+    {
+      "id": 3564227,
+      "universal_id": "nfl_20241208_1800_tbd_tbd_06",
+      "external_id": "espn_401671631",
+      "sport": "NFL",
+      "start_time": "2024-12-08T18:00:00+00:00"
+    },
+    {
+      "id": 3564239,
+      "universal_id": "nfl_20241215_1800_tbd_tbd_05",
+      "external_id": "espn_401671731",
+      "sport": "NFL",
+      "start_time": "2024-12-15T18:00:00+00:00"
+    },
+    {
+      "id": 3564245,
+      "universal_id": "nfl_20241215_2125_tbd_tbd_04",
+      "external_id": "espn_401671677",
+      "sport": "NFL",
+      "start_time": "2024-12-15T21:25:00+00:00"
+    },
+    {
+      "id": 3564257,
+      "universal_id": "nfl_20241222_1800_tbd_tbd_05",
+      "external_id": "espn_401671621",
+      "sport": "NFL",
+      "start_time": "2024-12-22T18:00:00+00:00"
+    },
+    {
+      "id": 3564263,
+      "universal_id": "nfl_20241222_2125_tbd_tbd_03",
+      "external_id": "espn_401671874",
+      "sport": "NFL",
+      "start_time": "2024-12-22T21:25:00+00:00"
+    },
+    {
+      "id": 3564275,
+      "universal_id": "nfl_20241229_1800_tbd_tbd_04",
+      "external_id": "espn_401671765",
+      "sport": "NFL",
+      "start_time": "2024-12-29T18:00:00+00:00"
+    },
+    {
+      "id": 3564287,
+      "universal_id": "nfl_20250105_1800_tbd_tbd_04",
+      "external_id": "espn_401671826",
+      "sport": "NFL",
+      "start_time": "2025-01-05T18:00:00+00:00"
+    },
+    {
+      "id": 3564293,
+      "universal_id": "nfl_20250105_2125_tbd_tbd_02",
+      "external_id": "espn_401671839",
+      "sport": "NFL",
+      "start_time": "2025-01-05T21:25:00+00:00"
+    },
+    {
+      "id": 3564228,
+      "universal_id": "nfl_20241208_1800_tbd_tbd_07",
+      "external_id": "espn_401671654",
+      "sport": "NFL",
+      "start_time": "2024-12-08T18:00:00+00:00"
+    },
+    {
+      "id": 3564240,
+      "universal_id": "nfl_20241215_1800_tbd_tbd_06",
+      "external_id": "espn_401671706",
+      "sport": "NFL",
+      "start_time": "2024-12-15T18:00:00+00:00"
+    },
+    {
+      "id": 3564246,
+      "universal_id": "nfl_20241215_2125_tbd_tbd_05",
+      "external_id": "espn_401671762",
+      "sport": "NFL",
+      "start_time": "2024-12-15T21:25:00+00:00"
+    },
+    {
+      "id": 3564258,
+      "universal_id": "nfl_20241222_1800_tbd_tbd_06",
+      "external_id": "espn_401671717",
+      "sport": "NFL",
+      "start_time": "2024-12-22T18:00:00+00:00"
+    },
+    {
+      "id": 3564276,
+      "universal_id": "nfl_20241229_1800_tbd_tbd_05",
+      "external_id": "espn_401671653",
+      "sport": "NFL",
+      "start_time": "2024-12-29T18:00:00+00:00"
+    },
+    {
+      "id": 3564288,
+      "universal_id": "nfl_20250105_1800_tbd_tbd_05",
+      "external_id": "espn_401671837",
+      "sport": "NFL",
+      "start_time": "2025-01-05T18:00:00+00:00"
+    },
+    {
+      "id": 3564294,
+      "universal_id": "nfl_20250105_2125_tbd_tbd_03",
+      "external_id": "espn_401671830",
+      "sport": "NFL",
+      "start_time": "2025-01-05T21:25:00+00:00"
+    },
+    {
+      "id": 3562363,
+      "universal_id": "nfl_20200920_1700_hou_cha",
+      "external_id": "nfl_401220204",
+      "sport": "NFL",
+      "start_time": "2020-09-20T17:00:00+00:00"
+    },
+    {
+      "id": 3562385,
+      "universal_id": "nfl_20200927_2005_lac_car",
+      "external_id": "nfl_401220240",
+      "sport": "NFL",
+      "start_time": "2020-09-27T20:05:00+00:00"
+    },
+    {
+      "id": 3562393,
+      "universal_id": "nfl_20201004_1700_dal_cle",
+      "external_id": "nfl_401220247",
+      "sport": "NFL",
+      "start_time": "2020-10-04T17:00:00+00:00"
+    },
+    {
+      "id": 3562401,
+      "universal_id": "nfl_20201004_2025_chi_ind",
+      "external_id": "nfl_401220280",
+      "sport": "NFL",
+      "start_time": "2020-10-04T20:25:00+00:00"
+    },
+    {
+      "id": 3562409,
+      "universal_id": "nfl_20201011_1700_phi_por",
+      "external_id": "nfl_401220143",
+      "sport": "NFL",
+      "start_time": "2020-10-11T17:00:00+00:00"
+    },
+    {
+      "id": 3564175,
+      "universal_id": "nfl_20241110_2125_tbd_tbd_02",
+      "external_id": "espn_401671678",
+      "sport": "NFL",
+      "start_time": "2024-11-10T21:25:00+00:00"
+    },
+    {
+      "id": 3564181,
+      "universal_id": "nfl_20241117_1800_tbd_tbd_03",
+      "external_id": "espn_401671824",
+      "sport": "NFL",
+      "start_time": "2024-11-17T18:00:00+00:00"
+    },
+    {
+      "id": 3564199,
+      "universal_id": "nfl_20241124_1800_tbd_tbd_07",
+      "external_id": "espn_401671858",
+      "sport": "NFL",
+      "start_time": "2024-11-24T18:00:00+00:00"
+    },
+    {
+      "id": 3564211,
+      "universal_id": "nfl_20241201_1800_tbd_tbd_03",
+      "external_id": "espn_401671726",
+      "sport": "NFL",
+      "start_time": "2024-12-01T18:00:00+00:00"
+    },
+    {
+      "id": 3564217,
+      "universal_id": "nfl_20241201_2105_tbd_tbd_02",
+      "external_id": "espn_401671752",
+      "sport": "NFL",
+      "start_time": "2024-12-01T21:05:00+00:00"
+    },
+    {
+      "id": 3562374,
+      "universal_id": "nfl_20200921_0015_lal_ny",
+      "external_id": "nfl_401220231",
+      "sport": "NFL",
+      "start_time": "2020-09-22T00:15:00+00:00"
+    },
+    {
+      "id": 3562382,
+      "universal_id": "nfl_20200927_1700_phx_cin",
+      "external_id": "nfl_401220264",
+      "sport": "NFL",
+      "start_time": "2020-09-27T17:00:00+00:00"
+    },
+    {
+      "id": 3564182,
+      "universal_id": "nfl_20241117_1800_tbd_tbd_04",
+      "external_id": "espn_401671851",
+      "sport": "NFL",
+      "start_time": "2024-11-17T18:00:00+00:00"
+    },
+    {
+      "id": 3564188,
+      "universal_id": "nfl_20241117_2105_tbd_tbd_02",
+      "external_id": "espn_401671757",
+      "sport": "NFL",
+      "start_time": "2024-11-17T21:05:00+00:00"
+    },
+    {
+      "id": 3564194,
+      "universal_id": "nfl_20241124_1800_tbd_tbd_02",
+      "external_id": "espn_401671866",
+      "sport": "NFL",
+      "start_time": "2024-11-24T18:00:00+00:00"
+    },
+    {
+      "id": 3564212,
+      "universal_id": "nfl_20241201_1800_tbd_tbd_04",
+      "external_id": "espn_401671620",
+      "sport": "NFL",
+      "start_time": "2024-12-01T18:00:00+00:00"
+    },
+    {
+      "id": 3564223,
+      "universal_id": "nfl_20241208_1800_tbd_tbd_02",
+      "external_id": "espn_401671848",
+      "sport": "NFL",
+      "start_time": "2024-12-08T18:00:00+00:00"
+    },
+    {
+      "id": 3564224,
+      "universal_id": "nfl_20241208_1800_tbd_tbd_03",
+      "external_id": "espn_401671648",
+      "sport": "NFL",
+      "start_time": "2024-12-08T18:00:00+00:00"
+    },
+    {
+      "id": 3564241,
+      "universal_id": "nfl_20241215_1800_tbd_tbd_07",
+      "external_id": "espn_401671860",
+      "sport": "NFL",
+      "start_time": "2024-12-15T18:00:00+00:00"
+    },
+    {
+      "id": 3564259,
+      "universal_id": "nfl_20241222_1800_tbd_tbd_07",
+      "external_id": "espn_401671732",
+      "sport": "NFL",
+      "start_time": "2024-12-22T18:00:00+00:00"
+    },
+    {
+      "id": 3564277,
+      "universal_id": "nfl_20241229_1800_tbd_tbd_06",
+      "external_id": "espn_401671634",
+      "sport": "NFL",
+      "start_time": "2024-12-29T18:00:00+00:00"
+    },
+    {
+      "id": 3564289,
+      "universal_id": "nfl_20250105_1800_tbd_tbd_06",
+      "external_id": "espn_401671831",
+      "sport": "NFL",
+      "start_time": "2025-01-05T18:00:00+00:00"
+    },
+    {
+      "id": 3564295,
+      "universal_id": "nfl_20250105_2125_tbd_tbd_04",
+      "external_id": "espn_401671833",
+      "sport": "NFL",
+      "start_time": "2025-01-05T21:25:00+00:00"
+    },
+    {
+      "id": 3564236,
+      "universal_id": "nfl_20241215_1800_tbd_tbd_02",
+      "external_id": "espn_401671825",
+      "sport": "NFL",
+      "start_time": "2024-12-15T18:00:00+00:00"
+    },
+    {
+      "id": 3564254,
+      "universal_id": "nfl_20241222_1800_tbd_tbd_02",
+      "external_id": "espn_401671868",
+      "sport": "NFL",
+      "start_time": "2024-12-22T18:00:00+00:00"
+    },
+    {
+      "id": 3564168,
+      "universal_id": "nfl_20241110_1800_tbd_tbd_03",
+      "external_id": "espn_401671637",
+      "sport": "NFL",
+      "start_time": "2024-11-10T18:00:00+00:00"
+    },
+    {
+      "id": 3564169,
+      "universal_id": "nfl_20241110_1800_tbd_tbd_04",
+      "external_id": "espn_401671733",
+      "sport": "NFL",
+      "start_time": "2024-11-10T18:00:00+00:00"
+    },
+    {
+      "id": 3561259,
+      "universal_id": "nba_20241025_2330_atl_cha",
+      "external_id": "nba_401704645",
+      "sport": "NBA",
+      "start_time": "2024-10-25T23:30:00+00:00"
+    },
+    {
+      "id": 3561320,
+      "universal_id": "nba_20241101_0200_por_okc",
+      "external_id": "nba_401704706",
+      "sport": "NBA",
+      "start_time": "2024-11-02T02:00:00+00:00"
+    },
+    {
+      "id": 3561328,
+      "universal_id": "nba_20241102_0200_amh_sea",
+      "external_id": "nba_401704714",
+      "sport": "NBA",
+      "start_time": "2024-11-03T02:00:00+00:00"
+    },
+    {
+      "id": 3561336,
+      "universal_id": "nba_20241104_0030_det_lal",
+      "external_id": "nba_401704722",
+      "sport": "NBA",
+      "start_time": "2024-11-05T00:30:00+00:00"
+    }
+  ]
+}

@@ -4,18 +4,11 @@
  * Focused collector for current MLB season
  */
 
-import { createClient } from '@supabase/supabase-js'
-import { config } from 'dotenv'
+import { db } from '../lib/services/database-service'
+import { generateUniversalGameId, addExternalId } from '../lib/universal-id-helpers'
 import chalk from 'chalk'
 import axios from 'axios'
 import pLimit from 'p-limit'
-
-config({ path: '.env.local' })
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
 
 const ESPN_API = 'https://site.api.espn.com/apis/site/v2/sports/baseball/mlb'
 const limit = pLimit(3)
@@ -34,35 +27,31 @@ class MLBSeasonCollector {
     console.log(chalk.cyan.bold('\n⚾ MLB SEASON COLLECTOR - 2025 SEASON\n'))
     
     try {
-      // Get MLB games from current season - prefer clean numeric IDs
-      const { data: mlbGames } = await supabase
-        .from('games')
-        .select('id, sport, external_id, home_team_id, away_team_id, start_time')
-        .eq('status', 'completed')
-        .eq('sport', 'MLB')
-        .not('external_id', 'is', null)
-        .not('external_id', 'like', '%mlb%')
-        .not('external_id', 'like', '%espn%')
-        .gte('start_time', '2025-04-01')
-        .lte('start_time', '2025-10-31')
-        .order('start_time', { ascending: false })
-        .limit(50)
+      // Get MLB games from current season using standardized service
+      const mlbGames = await db.getGames({
+        sport: 'MLB',
+        status: 'completed',
+        startDate: '2025-03-01',
+        endDate: '2025-10-31',
+        limit: 100
+      })
       
-      if (!mlbGames || mlbGames.length === 0) {
-        console.log(chalk.yellow('No MLB games found for 2025 season'))
+      // Filter games with external IDs
+      const gamesWithIds = mlbGames.filter(game => game.external_id || game.universal_id)
+      
+      if (gamesWithIds.length === 0) {
+        console.log(chalk.yellow('No MLB games with IDs found for 2025 season'))
         return
       }
       
       // Filter games needing data
       const gamesNeedingData = []
-      for (const game of mlbGames) {
-        const { count } = await supabase
-          .from('player_game_logs')
-          .select('*', { count: 'exact', head: true })
-          .eq('game_id', game.id)
-          .gt('fantasy_points', 0)
+      for (const game of gamesWithIds) {
+        const count = await db.countRecords('player_game_logs', {
+          game_id: game.id
+        })
         
-        if (!count || count < 10) {
+        if (count < 10) {
           gamesNeedingData.push(game)
         }
       }
@@ -98,6 +87,19 @@ class MLBSeasonCollector {
       // Extract ESPN ID - handle different formats
       let espnId = game.external_id
       
+      if (!espnId) {
+        // Try to get from external IDs table
+        const externalIds = await db.getExternalIds(game.id)
+        const espnMapping = externalIds.find(e => e.source === 'espn')
+        if (espnMapping) {
+          espnId = espnMapping.external_id
+        } else {
+          console.log(chalk.yellow(`    No ESPN ID for game ${game.id}`)))
+          this.stats.failedGames++
+          return
+        }
+      }
+      
       // Clean up the ID - handle multiple format layers
       if (espnId.startsWith('espn_')) {
         espnId = espnId.replace('espn_', '')
@@ -116,6 +118,13 @@ class MLBSeasonCollector {
         return
       }
       
+      // Store clean ESPN ID in mapping table if using universal ID
+      if (game.universal_id) {
+        await db.addExternalId(game.id, 'espn', espnId).catch(() => {
+          // Ignore duplicate key errors
+        })
+      }
+      
       const url = `${ESPN_API}/summary?event=${espnId}`
       console.log(chalk.dim(`    Fetching: ${url}`))
       
@@ -127,19 +136,15 @@ class MLBSeasonCollector {
       // Save player logs
       if (playerLogs.length > 0) {
         const playerIds = [...new Set(playerLogs.map(log => log.player_id))]
-        await this.ensurePlayersExist(playerIds)
+        await db.ensurePlayersExist(playerIds)
         
-        const { error } = await supabase
-          .from('player_game_logs')
-          .upsert(playerLogs, { onConflict: 'player_id,game_id' })
+        await db.upsertBatch('player_game_logs', playerLogs, {
+          onConflict: 'player_id,game_id'
+        })
         
-        if (!error) {
-          this.stats.successfulGames++
-          this.stats.playerLogsCreated += playerLogs.length
-          console.log(chalk.green(`    ✓ Saved ${playerLogs.length} player logs`))
-        } else {
-          throw error
-        }
+        this.stats.successfulGames++
+        this.stats.playerLogsCreated += playerLogs.length
+        console.log(chalk.green(`    ✓ Saved ${playerLogs.length} player logs`))
       }
       
       this.stats.processedGames++
@@ -164,24 +169,29 @@ class MLBSeasonCollector {
       const teamId = team.team.id
       
       // Process batting stats
-      const batting = team.statistics?.find(s => s.name?.toLowerCase() === 'batting')
+      const batting = team.statistics?.find(s => s.type === 'batting')
       if (batting?.athletes) {
         for (const athlete of batting.athletes) {
           if (!athlete.stats || athlete.stats.length < 8) continue
+          
+          // Parse H-AB format (e.g., "1-4" means 1 hit in 4 at bats)
+          const hitsAtBats = athlete.stats[0].split('-')
+          const hits = parseInt(hitsAtBats[0]) || 0
+          const atBats = parseInt(hitsAtBats[1]) || parseInt(athlete.stats[1]) || 0
           
           const log = {
             game_id: game.id,
             player_id: parseInt(athlete.athlete.id),
             team_id: teamId,
             stats: {
-              at_bats: parseInt(athlete.stats[0]) || 0,
-              runs: parseInt(athlete.stats[1]) || 0,
-              hits: parseInt(athlete.stats[2]) || 0,
-              rbi: parseInt(athlete.stats[3]) || 0,
-              walks: parseInt(athlete.stats[4]) || 0,
-              strikeouts: parseInt(athlete.stats[5]) || 0,
-              batting_avg: parseFloat(athlete.stats[6]) || 0,
-              home_runs: parseInt(athlete.stats[7]) || 0
+              at_bats: atBats,
+              runs: parseInt(athlete.stats[2]) || 0,
+              hits: hits,
+              rbi: parseInt(athlete.stats[4]) || 0,
+              home_runs: parseInt(athlete.stats[5]) || 0,
+              walks: parseInt(athlete.stats[6]) || 0,
+              strikeouts: parseInt(athlete.stats[7]) || 0,
+              batting_avg: parseFloat(athlete.stats[9]) || 0
             },
             fantasy_points: 0,
             game_date: game.start_time
@@ -203,7 +213,7 @@ class MLBSeasonCollector {
       }
       
       // Process pitching stats
-      const pitching = team.statistics?.find(s => s.name?.toLowerCase() === 'pitching')
+      const pitching = team.statistics?.find(s => s.type === 'pitching')
       if (pitching?.athletes) {
         for (const athlete of pitching.athletes) {
           if (!athlete.stats || athlete.stats.length < 10) continue
@@ -250,25 +260,6 @@ class MLBSeasonCollector {
     return logs
   }
   
-  private async ensurePlayersExist(playerIds: number[]) {
-    const { data: existingPlayers } = await supabase
-      .from('players')
-      .select('id')
-      .in('id', playerIds)
-    
-    const existingIds = new Set(existingPlayers?.map(p => p.id) || [])
-    const newPlayerIds = playerIds.filter(id => !existingIds.has(id))
-    
-    if (newPlayerIds.length > 0) {
-      const newPlayers = newPlayerIds.map(id => ({
-        id,
-        name: `Player ${id}`,
-        status: 'active'
-      }))
-      
-      await supabase.from('players').insert(newPlayers)
-    }
-  }
   
   private showProgress() {
     const elapsed = (Date.now() - this.stats.startTime.getTime()) / 1000 / 60
