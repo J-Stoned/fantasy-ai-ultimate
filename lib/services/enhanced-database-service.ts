@@ -560,27 +560,37 @@ export class EnhancedDatabaseService extends DatabaseService {
   }
 
   /**
-   * Enhanced upsert specifically for player_game_logs with schema validation
+   * REAL Enhanced upsert - NO MORE BULLSHIT!
+   * Actually uses UPSERT and reports REAL results
    */
   async enhancedPlayerStatsUpsert(
     playerStats: any[],
     options: {
       validateSchema?: boolean
-      skipDuplicates?: boolean
       batchSize?: number
     } = {}
-  ) {
-    if (playerStats.length === 0) return { successful: 0, failed: 0, errors: [] }
+  ): Promise<{ 
+    successful: number
+    failed: number
+    actuallyInserted: number
+    actuallyUpdated: number
+    errors: any[]
+    newRecords: any[]
+  }> {
+    if (playerStats.length === 0) {
+      return { successful: 0, failed: 0, actuallyInserted: 0, actuallyUpdated: 0, errors: [], newRecords: [] }
+    }
 
     const batchSize = options.batchSize || this.BATCH_SIZE
     const validateSchema = options.validateSchema !== false
     
-    console.log(chalk.cyan(`📝 Enhanced upsert: ${playerStats.length} player stats to player_game_logs`))
+    console.log(chalk.cyan(`📝 REAL Enhanced upsert: ${playerStats.length} player stats to player_game_logs`))
 
     // Schema validation
     let validatedStats = playerStats
     if (validateSchema) {
-      validatedStats = playerStats.filter(stat => {
+      const validationResults = []
+      for (const stat of playerStats) {
         const isValid = (
           typeof stat.player_id === 'number' &&
           typeof stat.game_id === 'number' &&
@@ -590,69 +600,144 @@ export class EnhancedDatabaseService extends DatabaseService {
           typeof stat.fantasy_points === 'number'
         )
         
-        if (!isValid) {
-          console.warn(chalk.yellow(`⚠️ Invalid player stat record:`, stat))
+        if (isValid) {
+          validationResults.push(stat)
+        } else {
+          console.error(chalk.red(`❌ INVALID RECORD:`, JSON.stringify(stat, null, 2)))
         }
-        
-        return isValid
-      })
+      }
       
+      validatedStats = validationResults
       console.log(chalk.green(`✅ Schema validation: ${validatedStats.length}/${playerStats.length} valid`))
+      
+      if (validatedStats.length !== playerStats.length) {
+        console.error(chalk.red(`❌ ${playerStats.length - validatedStats.length} RECORDS FAILED VALIDATION!`))
+      }
     }
 
-    const results = []
-    let processed = 0
+    let totalSuccessful = 0
+    let totalFailed = 0
+    let actuallyInserted = 0
+    let actuallyUpdated = 0
+    const allErrors: any[] = []
+    const newRecords: any[] = []
 
-    // Process in batches with conflict resolution
+    // Get count before upsert for verification
+    const { count: countBefore } = await this.getClient()
+      .from('player_game_logs')
+      .select('*', { count: 'exact', head: true })
+
+    console.log(chalk.blue(`📊 Records before upsert: ${countBefore}`))
+
+    // Process in batches with REAL conflict resolution
     for (let i = 0; i < validatedStats.length; i += batchSize) {
       const batch = validatedStats.slice(i, i + batchSize)
       
+      console.log(chalk.yellow(`🔄 Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(validatedStats.length / batchSize)}...`))
+      
       try {
+        // Use UPSERT with proper conflict handling
         const { data, error } = await this.getClient()
           .from('player_game_logs')
           .upsert(batch, { 
             onConflict: 'player_id,game_id',
-            ignoreDuplicates: options.skipDuplicates || false
+            ignoreDuplicates: false // We want to update existing records
           })
           .select()
 
         if (error) {
-          console.error(chalk.red(`❌ Batch ${Math.floor(i / batchSize) + 1} failed:`, error.message))
+          console.error(chalk.red(`❌ BATCH UPSERT FAILED:`))
+          console.error(chalk.red(`Code: ${error.code}`))
+          console.error(chalk.red(`Message: ${error.message}`))
+          console.error(chalk.red(`Details: ${error.details}`))
           
-          // Try individual inserts for failed batch
-          for (const record of batch) {
-            try {
-              const { data: singleData } = await this.getClient()
-                .from('player_game_logs')
-                .upsert(record, { onConflict: 'player_id,game_id' })
-                .select()
-              
-              if (singleData) {
-                results.push(...singleData)
-              }
-            } catch (singleError) {
-              console.warn(chalk.yellow(`⚠️ Individual record failed for player_game_logs`))
-            }
-          }
+          allErrors.push({
+            batch: Math.floor(i / batchSize) + 1,
+            error: error,
+            recordCount: batch.length
+          })
+          
+          totalFailed += batch.length
+          
+          // Don't try individual inserts - if upsert fails, something is seriously wrong
+          console.error(chalk.red(`❌ Skipping ${batch.length} records due to batch failure`))
+          
         } else {
-          if (data) {
-            results.push(...data)
+          // SUCCESS - count actual results
+          const batchResults = data || []
+          totalSuccessful += batchResults.length
+          newRecords.push(...batchResults)
+          
+          console.log(chalk.green(`✅ Batch ${Math.floor(i / batchSize) + 1}: ${batchResults.length}/${batch.length} records upserted`))
+          
+          if (batchResults.length !== batch.length) {
+            console.warn(chalk.yellow(`⚠️ Expected ${batch.length} but got ${batchResults.length} results`))
           }
-          processed += batch.length
-          console.log(chalk.green(`✅ Player stats batch ${Math.floor(i / batchSize) + 1}: ${batch.length} records`))
         }
-      } catch (error) {
-        console.error(chalk.red(`❌ Fatal error in player stats batch ${Math.floor(i / batchSize) + 1}:`, error))
+      } catch (error: any) {
+        console.error(chalk.red(`💥 UNEXPECTED ERROR in batch ${Math.floor(i / batchSize) + 1}:`))
+        console.error(chalk.red(`Error: ${error.message}`))
+        console.error(chalk.red(`Stack: ${error.stack}`))
+        
+        allErrors.push({
+          batch: Math.floor(i / batchSize) + 1,
+          error: error,
+          recordCount: batch.length
+        })
+        
+        totalFailed += batch.length
       }
 
-      // Progress reporting
+      // REAL Progress reporting
       const progress = Math.min(i + batchSize, validatedStats.length)
       const percentage = ((progress / validatedStats.length) * 100).toFixed(1)
-      console.log(chalk.cyan(`📊 Player stats progress: ${progress}/${validatedStats.length} (${percentage}%)`))
+      console.log(chalk.cyan(`📊 Progress: ${progress}/${validatedStats.length} (${percentage}%) | Success: ${totalSuccessful} | Failed: ${totalFailed}`))
     }
 
-    console.log(chalk.green(`✅ Player stats upsert complete: ${processed}/${playerStats.length} processed`))
-    return results
+    // Get count after upsert for verification
+    const { count: countAfter } = await this.getClient()
+      .from('player_game_logs')
+      .select('*', { count: 'exact', head: true })
+
+    const actualIncrease = (countAfter || 0) - (countBefore || 0)
+    
+    console.log(chalk.blue(`📊 Records after upsert: ${countAfter}`))
+    console.log(chalk.blue(`📈 Actual increase: ${actualIncrease} records`))
+
+    // Determine inserts vs updates
+    if (actualIncrease > 0) {
+      actuallyInserted = actualIncrease
+      actuallyUpdated = totalSuccessful - actualIncrease
+    } else {
+      actuallyInserted = 0
+      actuallyUpdated = totalSuccessful
+    }
+
+    // REAL FINAL REPORTING
+    if (totalSuccessful === 0) {
+      console.error(chalk.red(`💥 ZERO RECORDS ACTUALLY UPSERTED!`))
+      console.error(chalk.red(`This means our data is not reaching the database!`))
+    } else {
+      console.log(chalk.green(`✅ REAL Results:`))
+      console.log(chalk.green(`  - Successfully processed: ${totalSuccessful}/${playerStats.length}`))
+      console.log(chalk.green(`  - Actually inserted: ${actuallyInserted}`))
+      console.log(chalk.green(`  - Actually updated: ${actuallyUpdated}`))
+      console.log(chalk.green(`  - Failed: ${totalFailed}`))
+      console.log(chalk.green(`  - Database increase: ${actualIncrease}`))
+    }
+
+    if (allErrors.length > 0) {
+      console.error(chalk.red(`❌ Errors encountered: ${allErrors.length} batches failed`))
+    }
+
+    return {
+      successful: totalSuccessful,
+      failed: totalFailed,
+      actuallyInserted,
+      actuallyUpdated,
+      errors: allErrors,
+      newRecords
+    }
   }
 
   /**
