@@ -1,0 +1,41 @@
+🚨 REAL-TIME PATTERN SCANNER
+Monitoring games 24/7 for pattern alignments
+================================================================================
+🚨 REAL-TIME PATTERN SCANNER ACTIVATED
+Scanning for high-value pattern combinations...
+[2025-07-11T23:33:28.117Z] Scanning...
+Real-time subscriptions configured
+node:events:495
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::3337
+    at __node_internal_captureLargerStackTrace (node:internal/errors:496:5)
+    at __node_internal_uvExceptionWithHostPort (node:internal/errors:593:12)
+    at Server.setupListenHandle [as _listen2] (node:net:1811:16)
+    at listenInCluster (node:net:1859:12)
+    at Server.listen (node:net:1947:7)
+    at startRealtimeScanner (/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/scripts/pattern-detection/realtime-pattern-scanner.ts:457:10)
+    at chalk (/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/scripts/pattern-detection/realtime-pattern-scanner.ts:482:3)
+    at Object.<anonymous> (/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/scripts/pattern-detection/realtime-pattern-scanner.ts:483:1)
+    at Module._compile (node:internal/modules/cjs/loader:1356:14)
+    at Object.transformer (/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1197:32)
+    at Module._load (node:internal/modules/cjs/loader:1013:12)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:202:29)
+    at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:336:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12)
+Emitted 'error' event on WebSocketServer instance at:
+    at Server.emit (node:events:517:28)
+    at emitErrorNT (node:net:1838:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3337
+}
+
+Node.js v18.19.1

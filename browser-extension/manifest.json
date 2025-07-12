@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "Fantasy AI Ultimate - 1-Click Import",
+  "version": "1.0.0",
+  "description": "Import any fantasy league with one click",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "cookies"
+  ],
+  "host_permissions": [
+    "https://*.yahoo.com/*",
+    "https://*.espn.com/*",
+    "https://*.sleeper.app/*",
+    "https://*.sleeper.com/*",
+    "https://*.cbssports.com/*",
+    "https://*.draftkings.com/*",
+    "https://*.fanduel.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://football.fantasysports.yahoo.com/*",
+        "*://baseball.fantasysports.yahoo.com/*",
+        "*://basketball.fantasysports.yahoo.com/*",
+        "*://hockey.fantasysports.yahoo.com/*",
+        "*://fantasy.espn.com/*",
+        "*://sleeper.app/*",
+        "*://sleeper.com/*",
+        "*://*.cbssports.com/fantasy/*",
+        "*://draftkings.com/*",
+        "*://fanduel.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

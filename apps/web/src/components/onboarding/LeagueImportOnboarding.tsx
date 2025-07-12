@@ -63,9 +63,19 @@ interface LeagueImportOnboardingProps {
 export function LeagueImportOnboarding({ onComplete, skipUrl = '/dashboard' }: LeagueImportOnboardingProps) {
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null)
   const [importing, setImporting] = useState(false)
+  const [pasteUrl, setPasteUrl] = useState('')
+  const [showPlatforms, setShowPlatforms] = useState(false)
 
   const handlePlatformSelect = (platformId: string) => {
     setSelectedPlatform(platformId)
+  }
+
+  const handlePasteImport = async () => {
+    if (!pasteUrl.trim()) return
+    
+    setImporting(true)
+    // Redirect to import page with URL
+    window.location.href = `/import-league?url=${encodeURIComponent(pasteUrl)}&onboarding=true`
   }
 
   const handleImport = async () => {
@@ -106,11 +116,59 @@ export function LeagueImportOnboarding({ onComplete, skipUrl = '/dashboard' }: L
           </p>
         </div>
 
+        {/* Quick Import First */}
+        {!showPlatforms && (
+          <div className="glass-card p-8 mb-6">
+            <h2 className="text-2xl font-semibold text-white mb-6">
+              Quick Import - Just Paste Your League URL
+            </h2>
+            
+            <div className="space-y-4">
+              <input
+                type="url"
+                value={pasteUrl}
+                onChange={(e) => setPasteUrl(e.target.value)}
+                onPaste={(e) => {
+                  const text = e.clipboardData.getData('text')
+                  if (text && text.startsWith('http')) {
+                    setPasteUrl(text)
+                    setTimeout(() => handlePasteImport(), 100)
+                  }
+                }}
+                placeholder="Paste any fantasy league URL here..."
+                className="w-full px-6 py-4 bg-gray-900/50 border border-gray-700 rounded-lg text-white text-lg 
+                         placeholder-gray-500 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
+                         transition-all duration-200"
+                disabled={importing}
+                autoFocus
+              />
+              
+              <button
+                onClick={handlePasteImport}
+                disabled={importing || !pasteUrl.trim()}
+                className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {importing ? 'Importing...' : 'Import League'}
+              </button>
+              
+              <div className="text-center">
+                <button
+                  onClick={() => setShowPlatforms(true)}
+                  className="text-gray-400 hover:text-gray-300 text-sm"
+                >
+                  or select platform manually →
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Platform Selection */}
-        <div className="glass-card p-8 mb-6">
-          <h2 className="text-2xl font-semibold text-white mb-6">
-            Select Your Fantasy Platform
-          </h2>
+        {showPlatforms && (
+          <div className="glass-card p-8 mb-6">
+            <h2 className="text-2xl font-semibold text-white mb-6">
+              Select Your Fantasy Platform
+            </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {platforms.map((platform) => (
@@ -186,6 +244,16 @@ export function LeagueImportOnboarding({ onComplete, skipUrl = '/dashboard' }: L
             </button>
           </div>
         </div>
+        )}
+
+        {/* Skip option for both views */}
+        {!showPlatforms && (
+          <div className="text-center">
+            <Link href={skipUrl} className="text-gray-400 hover:text-white transition-colors text-sm">
+              Skip for now →
+            </Link>
+          </div>
+        )}
 
         {/* Benefits */}
         <div className="glass-card p-6">
@@ -196,27 +264,27 @@ export function LeagueImportOnboarding({ onComplete, skipUrl = '/dashboard' }: L
             <div className="flex items-start">
               <div className="text-2xl mr-3">🎯</div>
               <div>
-                <h4 className="font-medium text-white mb-1">Pattern Detection</h4>
+                <h4 className="font-medium text-white mb-1">AI Lineup Optimizer</h4>
                 <p className="text-sm text-gray-400">
-                  65.2% accuracy patterns discovered from 48K+ games
+                  Pattern-based predictions for optimal lineups every week
                 </p>
               </div>
             </div>
             <div className="flex items-start">
-              <div className="text-2xl mr-3">💰</div>
+              <div className="text-2xl mr-3">📊</div>
               <div>
-                <h4 className="font-medium text-white mb-1">Profit Insights</h4>
+                <h4 className="font-medium text-white mb-1">Trade Analyzer</h4>
                 <p className="text-sm text-gray-400">
-                  $1.15M profit potential identified in betting patterns
+                  AI evaluates trades and finds hidden value players
                 </p>
               </div>
             </div>
             <div className="flex items-start">
-              <div className="text-2xl mr-3">🤖</div>
+              <div className="text-2xl mr-3">🏆</div>
               <div>
-                <h4 className="font-medium text-white mb-1">AI Assistant</h4>
+                <h4 className="font-medium text-white mb-1">Waiver Wire AI</h4>
                 <p className="text-sm text-gray-400">
-                  24/7 personalized advice for your specific leagues
+                  Get alerts on breakout players before your league
                 </p>
               </div>
             </div>

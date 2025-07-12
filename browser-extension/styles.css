@@ -1,0 +1,133 @@
+/* Fantasy AI Ultimate Extension Styles */
+
+.fantasy-ai-import-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  margin: 10px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.3);
+  transition: all 0.3s ease;
+  z-index: 10000;
+}
+
+.fantasy-ai-import-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(99, 102, 241, 0.4);
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+}
+
+.fantasy-ai-import-button:active {
+  transform: translateY(0);
+}
+
+.fantasy-ai-import-button .fai-icon {
+  font-size: 18px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.fantasy-ai-import-button[data-state="loading"] {
+  background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
+  cursor: not-allowed;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.fantasy-ai-import-button[data-state="loading"] .fai-icon {
+  animation: spin 1s linear infinite;
+}
+
+.fantasy-ai-import-button[data-state="success"] {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.fantasy-ai-import-button[data-state="error"] {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Floating notification */
+.fantasy-ai-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 16px 24px;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  color: white;
+  border-radius: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  z-index: 10001;
+  animation: slideIn 0.3s ease-out;
+}
+
+.fantasy-ai-notification.success {
+  border-left: 4px solid #10b981;
+}
+
+.fantasy-ai-notification.error {
+  border-left: 4px solid #ef4444;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Platform-specific positioning */
+/* Yahoo */
+.yahoo-fantasy .fantasy-ai-import-button {
+  margin-left: auto;
+}
+
+/* ESPN */
+.fantasy-espn .fantasy-ai-import-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Sleeper */
+.sleeper-app .fantasy-ai-import-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}

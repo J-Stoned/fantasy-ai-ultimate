@@ -1,0 +1,24 @@
+node:internal/modules/cjs/loader:1134
+  const err = new Error(message);
+              ^
+
+Error: Cannot find module '../lib/ml/ensemble-predictor'
+Require stack:
+- /mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/scripts/production-services/production-prediction-service.ts
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1134:15)
+    at nextResolveSimple (/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/node_modules/tsx/dist/register-D46fvsV_.cjs:4:1004)
+    at /mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/node_modules/tsx/dist/register-D46fvsV_.cjs:3:2630
+    at /mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1542
+    at resolveTsPaths (/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/node_modules/tsx/dist/register-D46fvsV_.cjs:4:760)
+    at /mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/node_modules/tsx/dist/register-D46fvsV_.cjs:4:1102
+    at m._resolveFilename (file:///mnt/c/Users/st0ne/Hey%20Fantasy/fantasy-ai-ultimate/node_modules/tsx/dist/register-B7jrtLTO.mjs:1:789)
+    at Module._load (node:internal/modules/cjs/loader:975:27)
+    at Module.require (node:internal/modules/cjs/loader:1225:19)
+    at require (node:internal/modules/helpers:177:18) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/mnt/c/Users/st0ne/Hey Fantasy/fantasy-ai-ultimate/scripts/production-services/production-prediction-service.ts'
+  ]
+}
+
+Node.js v18.19.1

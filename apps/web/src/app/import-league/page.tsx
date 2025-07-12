@@ -55,15 +55,26 @@ export default function ImportLeaguePage() {
   const isOnboarding = searchParams.get('onboarding') === 'true'
   const isConnected = searchParams.get('connected') === 'true'
   const errorParam = searchParams.get('error')
+  const method = searchParams.get('method')
+  const urlParam = searchParams.get('url')
   
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(platformParam)
   const [isImporting, setIsImporting] = useState(false)
   const [importStatus, setImportStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null)
+  const [showPasteImport, setShowPasteImport] = useState(true)
+  const [pasteUrl, setPasteUrl] = useState(urlParam || '')
   const router = useRouter()
   
   useEffect(() => {
     if (platformParam) {
       setSelectedPlatform(platformParam)
+      setShowPasteImport(false)
+    }
+    
+    // Auto-import if URL is provided
+    if (urlParam) {
+      setPasteUrl(urlParam)
+      setTimeout(() => handlePasteImport(), 500)
     }
     
     // Handle OAuth callback
@@ -110,6 +121,48 @@ export default function ImportLeaguePage() {
       setImportStatus({
         type: 'error',
         message: error.message || 'Failed to import Yahoo leagues'
+      })
+    } finally {
+      setIsImporting(false)
+    }
+  }
+
+  const handlePasteImport = async () => {
+    if (!pasteUrl.trim()) {
+      setImportStatus({ type: 'error', message: 'Please paste a league URL' })
+      return
+    }
+
+    setIsImporting(true)
+    setImportStatus(null)
+
+    try {
+      const response = await fetch('/api/import/url', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: pasteUrl.trim() }),
+      })
+
+      const result = await response.json()
+
+      if (result.requiresAuth) {
+        setImportStatus({ type: 'error', message: `Redirecting to ${result.platform} login...` })
+        setTimeout(() => {
+          window.location.href = result.authUrl
+        }, 1000)
+      } else if (result.success) {
+        setImportStatus({
+          type: 'success',
+          message: result.message
+        })
+        setTimeout(() => router.push('/dashboard'), 1500)
+      } else {
+        setImportStatus({ type: 'error', message: result.message })
+      }
+    } catch (error: any) {
+      setImportStatus({
+        type: 'error',
+        message: error.message || 'Failed to import league'
       })
     } finally {
       setIsImporting(false)
@@ -218,10 +271,10 @@ export default function ImportLeaguePage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-white mb-4">
-            {selectedPlatform ? 'Connect Your' : 'Import Your'} <span className="gradient-text">{selectedPlatform ? platforms.find(p => p.id === selectedPlatform)?.name : 'Fantasy Leagues'}</span>
+            Import Your <span className="gradient-text">Fantasy Leagues</span>
           </h1>
           <p className="text-xl text-gray-400">
-            {selectedPlatform ? 'Follow the instructions below to connect your account' : 'One-click import from all major fantasy platforms'}
+            Paste any league URL or select your platform
           </p>
         </div>
 
@@ -235,7 +288,59 @@ export default function ImportLeaguePage() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Paste URL Import - Primary Method */}
+        {showPasteImport && (
+          <div className="max-w-2xl mx-auto mb-12">
+            <div className="glass-card p-8 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-blue-600/10 animate-gradient" />
+              
+              <div className="relative z-10">
+                <h2 className="text-2xl font-bold text-white mb-4">Quick Import</h2>
+                <div className="space-y-4">
+                  <input
+                    type="url"
+                    value={pasteUrl}
+                    onChange={(e) => setPasteUrl(e.target.value)}
+                    onPaste={(e) => {
+                      const text = e.clipboardData.getData('text')
+                      if (text && text.startsWith('http')) {
+                        setPasteUrl(text)
+                        setTimeout(() => handlePasteImport(), 100)
+                      }
+                    }}
+                    placeholder="Paste your league URL here..."
+                    className="w-full px-6 py-4 bg-gray-900/50 border border-gray-700 rounded-lg text-white text-lg 
+                             placeholder-gray-500 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
+                             transition-all duration-200"
+                    disabled={isImporting}
+                  />
+                  
+                  <button
+                    onClick={handlePasteImport}
+                    disabled={isImporting || !pasteUrl.trim()}
+                    className="w-full px-6 py-4 bg-gradient-to-r from-primary-600 to-primary-700 
+                             text-white font-semibold rounded-lg hover:from-primary-700 hover:to-primary-800 
+                             disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200
+                             transform hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    {isImporting ? 'Importing...' : 'Import League'}
+                  </button>
+                </div>
+                
+                <div className="mt-6 text-center">
+                  <button
+                    onClick={() => setShowPasteImport(false)}
+                    className="text-gray-400 hover:text-gray-300 text-sm"
+                  >
+                    or choose platform manually →
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${showPasteImport ? 'opacity-50' : ''}`}>
           {platforms.map((platform) => (
             <button
               key={platform.id}
