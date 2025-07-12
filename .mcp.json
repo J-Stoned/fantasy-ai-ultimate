@@ -8,6 +8,25 @@
       "env": {
         "POSTGRES_CONNECTION_STRING": "${DATABASE_URL}"
       }
+    },
+    "elevenlabs-voice": {
+      "command": "npx",
+      "args": [
+        "@modelcontextprotocol/server-elevenlabs"
+      ],
+      "env": {
+        "ELEVENLABS_API_KEY": "${ELEVENLABS_API_KEY}"
+      }
+    },
+    "fantasy-intelligence": {
+      "command": "npx",
+      "args": [
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_BACKEND": "file",
+        "MEMORY_PATH": "./data/fantasy-context"
+      }
     }
   }
 }
