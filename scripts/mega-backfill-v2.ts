@@ -143,10 +143,17 @@ class MegaBackfillV2 {
     try {
       console.log(chalk.dim(`  Processing ${game.sport || 'unknown sport'} game ${game.id}...`))
       
-      // Extract ESPN ID
-      const espnId = game.external_id?.replace('espn_', '')
+      // Extract ESPN ID - handle different formats
+      let espnId = game.external_id
       if (!espnId) {
         throw new Error('No ESPN ID found')
+      }
+      
+      // Clean up the ID based on format
+      if (espnId.startsWith('espn_')) {
+        espnId = espnId.replace('espn_', '')
+      } else if (espnId.startsWith('mlb_')) {
+        espnId = espnId.replace('mlb_', '')
       }
       
       // Try to infer sport from external_id if sport is null

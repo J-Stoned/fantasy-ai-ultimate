@@ -128,9 +128,17 @@ class SmartSeasonCollector {
     try {
       console.log(chalk.dim(`  Processing ${game.sport} game ${game.id}...`))
       
-      const espnId = game.external_id?.replace('espn_', '')
+      // Extract ESPN ID - handle different formats
+      let espnId = game.external_id
       if (!espnId) {
         throw new Error('No ESPN ID')
+      }
+      
+      // Clean up the ID based on format
+      if (espnId.startsWith('espn_')) {
+        espnId = espnId.replace('espn_', '')
+      } else if (espnId.startsWith('mlb_')) {
+        espnId = espnId.replace('mlb_', '')
       }
       
       const sportMap = {
