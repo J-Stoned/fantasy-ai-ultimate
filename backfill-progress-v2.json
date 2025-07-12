@@ -1,0 +1,91 @@
+{
+  "lastProcessedGameId": 3565809,
+  "totalGames": 291,
+  "processedGames": 20,
+  "successfulGames": 11,
+  "failedGames": 20,
+  "totalPlayerLogs": 660,
+  "startTime": "2025-07-12T08:53:29.357Z",
+  "errors": [
+    {
+      "game_id": 3560469,
+      "error": "Request failed with status code 400"
+    },
+    {
+      "game_id": 3560468,
+      "error": "Request failed with status code 400"
+    },
+    {
+      "game_id": 3560470,
+      "error": "Request failed with status code 400"
+    },
+    {
+      "game_id": 3560464,
+      "error": "Request failed with status code 400"
+    },
+    {
+      "game_id": 3560457,
+      "error": "Request failed with status code 400"
+    },
+    {
+      "game_id": 3560462,
+      "error": "Request failed with status code 400"
+    },
+    {
+      "game_id": 3560461,
+      "error": "Request failed with status code 400"
+    },
+    {
+      "game_id": 3560452,
+      "error": "Request failed with status code 400"
+    },
+    {
+      "game_id": 3560455,
+      "error": "Request failed with status code 400"
+    },
+    {
+      "game_id": 3560454,
+      "error": "Request failed with status code 400"
+    },
+    {
+      "game_id": 3565818,
+      "error": "Cannot read properties of null (reading 'toUpperCase')"
+    },
+    {
+      "game_id": 3565817,
+      "error": "Cannot read properties of null (reading 'toUpperCase')"
+    },
+    {
+      "game_id": 3565816,
+      "error": "Cannot read properties of null (reading 'toUpperCase')"
+    },
+    {
+      "game_id": 3565815,
+      "error": "Cannot read properties of null (reading 'toUpperCase')"
+    },
+    {
+      "game_id": 3565814,
+      "error": "Cannot read properties of null (reading 'toUpperCase')"
+    },
+    {
+      "game_id": 3565813,
+      "error": "Cannot read properties of null (reading 'toUpperCase')"
+    },
+    {
+      "game_id": 3565812,
+      "error": "Cannot read properties of null (reading 'toUpperCase')"
+    },
+    {
+      "game_id": 3565811,
+      "error": "Cannot read properties of null (reading 'toUpperCase')"
+    },
+    {
+      "game_id": 3565810,
+      "error": "Cannot read properties of null (reading 'toUpperCase')"
+    },
+    {
+      "game_id": 3565809,
+      "error": "Cannot read properties of null (reading 'toUpperCase')"
+    }
+  ]
+}
