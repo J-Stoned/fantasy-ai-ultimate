@@ -91,6 +91,16 @@ class MegaBackfillV2 {
   private async getGamesNeedingData(): Promise<any[]> {
     console.log(chalk.yellow('Finding games without player data...\n'))
     
+    // Get list of games that have failed multiple times
+    const failedGameIds = new Set<number>()
+    this.progress.errors.forEach(error => {
+      const gameId = error.game_id
+      const failCount = this.progress.errors.filter(e => e.game_id === gameId).length
+      if (failCount >= 2) {
+        failedGameIds.add(gameId)
+      }
+    })
+    
     // Get recent completed games with ESPN IDs
     const { data: games } = await supabase
       .from('games')
@@ -99,14 +109,20 @@ class MegaBackfillV2 {
       .not('external_id', 'is', null)
       .like('external_id', 'espn_%')
       .order('start_time', { ascending: false })
+      .gte('start_time', new Date('2024-01-01').toISOString()) // Focus on 2024+ games
       .limit(500) // Start with 500 recent games
     
     if (!games) return []
     
-    // Filter games without sufficient player logs
+    // Filter games without sufficient player logs and skip known failures
     const gamesNeedingData = []
     
     for (const game of games) {
+      // Skip if this game has failed multiple times
+      if (failedGameIds.has(game.id)) {
+        continue
+      }
+      
       const { count } = await supabase
         .from('player_game_logs')
         .select('*', { count: 'exact', head: true })
@@ -117,6 +133,8 @@ class MegaBackfillV2 {
         gamesNeedingData.push(game)
       }
     }
+    
+    console.log(chalk.yellow(`Skipping ${failedGameIds.size} games that failed multiple times\n`))
     
     return gamesNeedingData
   }
