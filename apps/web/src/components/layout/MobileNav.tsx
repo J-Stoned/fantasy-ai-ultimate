@@ -16,6 +16,7 @@ export function MobileNav({ user, profile }: MobileNavProps) {
     { href: '/dashboard', label: 'Dashboard', icon: '🏠' },
     { href: '/patterns', label: 'Patterns', icon: '🎯' },
     { href: '/lineup-optimizer', label: 'Lineup', icon: '🚀' },
+    { href: '/spatial-analytics', label: 'Spatial Analytics', icon: '🔮' },
     { href: '/trade-analyzer', label: 'Trades', icon: '💱' },
     { href: '/waiver-wire', label: 'Waivers', icon: '📈' },
     { href: '/live', label: 'Live', icon: '📡' },

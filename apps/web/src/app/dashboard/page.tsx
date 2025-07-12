@@ -97,6 +97,14 @@ export default async function DashboardPage() {
           {/* Second Row of Features */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
             <Link 
+              href="/spatial-analytics"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 p-6 rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-200 transform hover:scale-105 border border-purple-500/30"
+            >
+              <h3 className="text-xl font-semibold text-white mb-2">🔮 Spatial Analytics</h3>
+              <p className="text-gray-200">Dr. Thorne's xG & pitch control</p>
+            </Link>
+            
+            <Link 
               href="/ai-assistant"
               className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-200 transform hover:scale-105"
             >
