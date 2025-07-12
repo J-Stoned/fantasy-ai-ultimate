@@ -123,12 +123,25 @@ class MegaBackfillV2 {
   
   private async processGame(game: any) {
     try {
-      console.log(chalk.dim(`  Processing ${game.sport} game ${game.id}...`))
+      console.log(chalk.dim(`  Processing ${game.sport || 'unknown sport'} game ${game.id}...`))
       
       // Extract ESPN ID
       const espnId = game.external_id?.replace('espn_', '')
       if (!espnId) {
         throw new Error('No ESPN ID found')
+      }
+      
+      // Try to infer sport from external_id if sport is null
+      let sportKey = game.sport
+      if (!sportKey && game.external_id) {
+        const match = game.external_id.match(/espn_([a-z]+)_/)
+        if (match) {
+          sportKey = match[1]
+        }
+      }
+      
+      if (!sportKey) {
+        throw new Error('No sport defined for game and cannot infer from external_id')
       }
       
       // Get sport endpoint
@@ -143,9 +156,9 @@ class MegaBackfillV2 {
         NHL: 'hockey/nhl'
       }
       
-      const sport = sportMap[game.sport] || sportMap[game.sport.toUpperCase()]
+      const sport = sportMap[sportKey] || sportMap[sportKey.toUpperCase()]
       if (!sport) {
-        throw new Error(`Unknown sport: ${game.sport}`)
+        throw new Error(`Unknown sport: ${sportKey}`)
       }
       
       // Fetch boxscore from ESPN
@@ -155,9 +168,9 @@ class MegaBackfillV2 {
       // Extract player stats based on sport
       let playerLogs = []
       
-      if (game.sport.toUpperCase() === 'NFL') {
+      if (sportKey.toUpperCase() === 'NFL') {
         playerLogs = await this.extractNFLStats(response.data, game)
-      } else if (game.sport.toUpperCase() === 'NBA') {
+      } else if (sportKey.toUpperCase() === 'NBA') {
         playerLogs = await this.extractNBAStats(response.data, game)
       } else {
         // Generic extraction
