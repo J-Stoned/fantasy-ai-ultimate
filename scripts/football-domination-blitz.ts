@@ -1,8 +1,7 @@
 #!/usr/bin/env tsx
 /**
- * COMPLETE NFL DOMINATION
- * Target the 526 remaining NFL games to achieve 100% coverage!
- * Modeled after our NCAAF perfection
+ * FOOTBALL DOMINATION BLITZ
+ * ALL OUT ATTACK ON NFL + NCAAF - OUR PROVEN HIGH-PERFORMANCE APIS!
  */
 
 import { createClient } from '@supabase/supabase-js'
@@ -21,48 +20,101 @@ const supabase = createClient(
 )
 
 const cpuCount = os.cpus().length
-const limit = pLimit(cpuCount * 4) // MAXIMUM POWER
+const limit = pLimit(cpuCount * 4) // MAXIMUM AGGRESSION
 
-async function completeNFLDomination() {
-  console.log(chalk.bold.red('🏈 COMPLETE NFL DOMINATION - 100% COVERAGE MISSION!\n'))
+async function footballDominationBlitz() {
+  console.log(chalk.bold.red('🏈 FOOTBALL DOMINATION BLITZ - MAXIMUM OVERDRIVE!\n'))
   
   const { count: startingCount } = await supabase
     .from('player_game_logs')
     .select('*', { count: 'exact', head: true })
     
   console.log(chalk.cyan(`🚀 Starting: ${startingCount?.toLocaleString() || 0} player stats`))
-  console.log(chalk.yellow('🎯 MISSION: Achieve 100% NFL coverage like NCAAF!\n'))
+  console.log(chalk.yellow('🎯 MISSION: Collect ALL remaining football stats → 300K+ TOTAL!\n'))
   
-  // Get ONLY NFL games (not 'nfl' lowercase)
-  console.log(chalk.yellow('🔍 Finding ALL NFL games...\n'))
+  let grandTotalStats = 0
   
-  const allNFLGames: any[] = []
+  // NFL COMPLETE DOMINATION
+  console.log(chalk.bold.yellow('🏈 NFL COMPLETE DOMINATION PHASE:\n'))
+  
+  const nflStats = await processFootballSport('NFL', 2500, 'ULTRA_AGGRESSIVE')
+  grandTotalStats += nflStats
+  
+  // NCAAF COMPLETE DOMINATION  
+  console.log(chalk.bold.yellow('\n🏈 NCAAF COMPLETE DOMINATION PHASE:\n'))
+  
+  const ncaafStats = await processFootballSport('NCAAF', 2000, 'ULTRA_AGGRESSIVE')
+  grandTotalStats += ncaafStats
+  
+  // BONUS: Hit the lowercase 'nfl' games too
+  console.log(chalk.bold.yellow('\n🏈 BONUS ROUND - lowercase nfl:\n'))
+  
+  const bonusStats = await processFootballSport('nfl', 100, 'AGGRESSIVE')
+  grandTotalStats += bonusStats
+  
+  // FINAL DOMINATION REPORT
+  const { count: finalCount } = await supabase
+    .from('player_game_logs')
+    .select('*', { count: 'exact', head: true })
+    
+  const netGain = (finalCount || 0) - (startingCount || 0)
+  
+  console.log(chalk.bold.red('\n🔥 FOOTBALL DOMINATION COMPLETE!\n'))
+  console.log(chalk.bold.yellow('📊 DOMINATION RESULTS:'))
+  console.log(`  🚀 Starting: ${startingCount?.toLocaleString() || 0} stats`)
+  console.log(`  🏈 Final: ${finalCount?.toLocaleString() || 0} stats`)
+  console.log(`  📈 NET DOMINATION: ${netGain.toLocaleString()} NEW STATS`)
+  console.log(`  ⚡ Total Processed: ${grandTotalStats.toLocaleString()} stats`)
+  
+  if (finalCount && finalCount >= 300000) {
+    console.log(chalk.bold.green('\n🏆 LEGENDARY ACHIEVEMENT: 300K+ STATS REACHED!'))
+    console.log(chalk.bold.cyan('👑 WE ARE THE UNDISPUTED STATS COLLECTION CHAMPIONS!'))
+  } else if (netGain >= 20000) {
+    console.log(chalk.bold.green('\n🎉 EPIC DOMINATION: 20K+ NEW STATS COLLECTED!'))
+  } else if (netGain >= 10000) {
+    console.log(chalk.bold.green('\n✅ SOLID DOMINATION: 10K+ NEW STATS COLLECTED!'))
+  }
+  
+  // Calculate our collection rate and efficiency
+  const efficiency = ((grandTotalStats / (Date.now() - startTime)) * 1000).toFixed(1)
+  console.log(chalk.bold.cyan(`\n⚡ DOMINATION RATE: ${efficiency} stats/second`))
+  
+  console.log(chalk.bold.red('\n🚀 FOOTBALL EMPIRE ESTABLISHED! READY TO DOMINATE BETTING MARKETS!'))
+}
+
+const startTime = Date.now()
+
+async function processFootballSport(sport: string, maxGames: number, intensity: 'AGGRESSIVE' | 'ULTRA_AGGRESSIVE'): Promise<number> {
+  console.log(chalk.cyan(`🎯 ${sport} BLITZ (${intensity} MODE):`))
+  
+  // Get ALL games for this sport
+  const allGames: any[] = []
   let offset = 0
   
-  while (true) {
+  while (allGames.length < maxGames) {
     const { data: batch } = await supabase
       .from('games')
       .select('id, external_id, sport, start_time, home_team_id, away_team_id, home_score, away_score')
-      .eq('sport', 'NFL') // ONLY uppercase NFL
+      .eq('sport', sport)
       .not('home_score', 'is', null) // Only completed games
-      .gte('start_time', '2020-01-01') // Extended range
-      .lte('start_time', new Date().toISOString()) // Up to today
+      .gte('start_time', '2020-01-01') // Expanded date range
+      .lte('start_time', '2024-12-31')
       .range(offset, offset + 999)
-      .order('start_time', { ascending: false })
+      .order('start_time', { ascending: false }) // Most recent first
       
     if (!batch || batch.length === 0) break
     
-    allNFLGames.push(...batch)
+    allGames.push(...batch)
     offset += 1000
   }
   
-  console.log(chalk.bold.cyan(`📊 Found ${allNFLGames.length} total NFL games`))
+  console.log(chalk.yellow(`  📊 Found ${allGames.length} total ${sport} games`))
+  
+  if (allGames.length === 0) return 0
   
   // Check which need stats
-  const gameIds = allNFLGames.map(g => g.id)
+  const gameIds = allGames.map(g => g.id)
   const gamesWithStats = new Set<number>()
-  
-  console.log(chalk.yellow('🔍 Checking which games need stats...\n'))
   
   // Efficient batch checking
   for (let i = 0; i < gameIds.length; i += 2000) {
@@ -75,44 +127,28 @@ async function completeNFLDomination() {
     data?.forEach(row => gamesWithStats.add(row.game_id))
   }
   
-  const missingGames = allNFLGames.filter(g => !gamesWithStats.has(g.id))
-  const gamesWithStatsCount = allNFLGames.length - missingGames.length
-  const currentCoverage = (gamesWithStatsCount / allNFLGames.length * 100).toFixed(1)
-  
-  console.log(chalk.bold.yellow(`📈 Current NFL Coverage: ${gamesWithStatsCount}/${allNFLGames.length} games (${currentCoverage}%)`))
-  console.log(chalk.bold.red(`🎯 ${missingGames.length} games need stats for 100% coverage!\n`))
+  const missingGames = allGames.filter(g => !gamesWithStats.has(g.id))
+  console.log(chalk.yellow(`  🎯 ${missingGames.length} games need stats`))
   
   if (missingGames.length === 0) {
-    console.log(chalk.bold.green('✅ NFL ALREADY AT 100% COVERAGE! 🏆'))
-    return
+    console.log(chalk.green(`  ✅ All ${sport} games already have stats!`))
+    return 0
   }
   
-  // Group by season for organized attack
-  const seasonGroups = new Map<number, typeof missingGames>()
-  missingGames.forEach(game => {
-    const year = new Date(game.start_time).getFullYear()
-    if (!seasonGroups.has(year)) {
-      seasonGroups.set(year, [])
-    }
-    seasonGroups.get(year)!.push(game)
-  })
-  
-  console.log(chalk.cyan('Missing games by season:'))
-  Array.from(seasonGroups.entries())
-    .sort(([a], [b]) => b - a)
-    .forEach(([year, games]) => {
-      console.log(`  ${year}: ${games.length} games`)
-    })
-  
-  console.log(chalk.bold.red('\n🚀 LAUNCHING FULL-SCALE NFL ATTACK!\n'))
-  
-  // Process ALL missing games
+  // DOMINATION COLLECTION
   let successful = 0
   let totalNewStats = 0
   let errors = 0
-  const startTime = Date.now()
+  const sportStartTime = Date.now()
   
-  const promises = missingGames.map(game => 
+  // Intensity-based batch sizing
+  const batchSize = intensity === 'ULTRA_AGGRESSIVE' ? missingGames.length : 
+                   Math.min(1000, missingGames.length)
+  
+  const gamesToProcess = missingGames.slice(0, batchSize)
+  console.log(chalk.cyan(`  🚀 PROCESSING ${gamesToProcess.length} games with ${cpuCount}x4 MAXIMUM THREADS`))
+  
+  const promises = gamesToProcess.map(game => 
     limit(async () => {
       try {
         if (!game.external_id?.includes('espn_')) return
@@ -121,7 +157,7 @@ async function completeNFLDomination() {
         if (!apiUrl) return
         
         const response = await axios.get(apiUrl, {
-          timeout: 15000, // Extended timeout
+          timeout: 12000, // Extended timeout for reliability
           validateStatus: (status) => status < 500,
           headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
@@ -133,7 +169,7 @@ async function completeNFLDomination() {
         })
         
         if (response.status === 200 && response.data.boxscore?.players) {
-          const stats = extractNFLStats(response.data.boxscore, game)
+          const stats = extractFootballStats(response.data.boxscore, game)
           
           if (stats.length > 0) {
             const statsWithDate = stats.map(stat => ({
@@ -141,14 +177,13 @@ async function completeNFLDomination() {
               game_date: new Date(game.start_time).toISOString().split('T')[0]
             }))
             
-            await saveNFLStats(statsWithDate)
+            await saveFootballStats(statsWithDate, sport)
             successful++
             totalNewStats += stats.length
             
-            if (successful % 25 === 0) {
-              const rate = (totalNewStats / ((Date.now() - startTime) / 1000)).toFixed(1)
-              const progress = (successful / missingGames.length * 100).toFixed(1)
-              console.log(chalk.green(`    ⚡ Progress: ${progress}% | ${successful} games | ${totalNewStats} stats (${rate}/sec)`))
+            if (successful % 50 === 0) {
+              const rate = (totalNewStats / ((Date.now() - sportStartTime) / 1000)).toFixed(1)
+              console.log(chalk.green(`    ⚡ ${successful} games, ${totalNewStats} stats (${rate}/sec)`))
             }
           }
         } else if (response.status === 404) {
@@ -164,50 +199,24 @@ async function completeNFLDomination() {
   
   await Promise.all(promises)
   
-  const elapsed = (Date.now() - startTime) / 1000
+  const elapsed = (Date.now() - sportStartTime) / 1000
   const rate = (totalNewStats / elapsed).toFixed(1)
   
-  // Final coverage check
-  const { data: finalCheck } = await supabase
-    .from('player_game_logs')
-    .select('game_id')
-    .in('game_id', gameIds)
-    
-  const finalGamesWithStats = new Set(finalCheck?.map(row => row.game_id) || [])
-  const finalCoverage = (finalGamesWithStats.size / allNFLGames.length * 100).toFixed(1)
-  
-  const { count: finalCount } = await supabase
-    .from('player_game_logs')
-    .select('*', { count: 'exact', head: true })
-    
-  const netGain = (finalCount || 0) - (startingCount || 0)
-  
-  console.log(chalk.bold.red('\n🏈 NFL DOMINATION COMPLETE!\n'))
-  console.log(chalk.bold.yellow('📊 FINAL NFL RESULTS:'))
-  console.log(`  🚀 Starting: ${startingCount?.toLocaleString() || 0} stats`)
-  console.log(`  🏈 Final: ${finalCount?.toLocaleString() || 0} stats`)
-  console.log(`  📈 NET GAIN: ${netGain.toLocaleString()} NEW STATS`)
-  console.log(`  ⚡ Collection: ${successful}/${missingGames.length} games conquered`)
-  console.log(`  🎯 NFL Coverage: ${currentCoverage}% → ${finalCoverage}%`)
-  console.log(`  ⏱️  Speed: ${rate} stats/second`)
-  
-  if (finalCoverage === '100.0') {
-    console.log(chalk.bold.green('\n🏆 LEGENDARY ACHIEVEMENT: 100% NFL COVERAGE ACHIEVED!'))
-    console.log(chalk.bold.cyan('👑 NFL DOMINATION COMPLETE - MATCHING NCAAF PERFECTION!'))
-  } else if (parseFloat(finalCoverage) >= 90) {
-    console.log(chalk.bold.green('\n🎉 ELITE STATUS: 90%+ NFL COVERAGE!'))
-  } else if (parseFloat(finalCoverage) >= 80) {
-    console.log(chalk.bold.green('\n✅ STRONG COVERAGE: 80%+ NFL GAMES!'))
-  }
+  console.log(chalk.bold.green(
+    `  🎉 ${sport} DOMINATION: ${successful}/${gamesToProcess.length} games conquered!`
+  ))
+  console.log(chalk.bold.green(
+    `  ⚡ ${totalNewStats} stats in ${elapsed.toFixed(1)}s (${rate} stats/sec)`
+  ))
   
   if (errors > 0) {
-    console.log(chalk.yellow(`\n⚠️  ${errors} API errors encountered`))
+    console.log(chalk.yellow(`  ⚠️  ${errors} API errors encountered`))
   }
   
-  console.log(chalk.bold.cyan('\n🚀 READY FOR NEXT SPORT DOMINATION!'))
+  return totalNewStats
 }
 
-function extractNFLStats(boxscore: any, game: any): any[] {
+function extractFootballStats(boxscore: any, game: any): any[] {
   const stats: any[] = []
   
   try {
@@ -297,21 +306,6 @@ function extractNFLStats(boxscore: any, game: any): any[] {
                 }
                 stats.push({...baseStats})
               }
-              
-              // KICKING STATS
-              if (statGroup.name === 'kicking' && athlete.stats.length >= 5) {
-                const fgMade = parseInt(athlete.stats[0]?.split('/')[0]) || 0
-                const fgAtt = parseInt(athlete.stats[0]?.split('/')[1]) || 0
-                const xpMade = parseInt(athlete.stats[2]?.split('/')[0]) || 0
-                
-                baseStats.stats = {
-                  field_goals_made: fgMade,
-                  field_goals_attempted: fgAtt,
-                  extra_points_made: xpMade,
-                  fantasy_points: (fgMade * 3) + (xpMade * 1)
-                }
-                stats.push({...baseStats})
-              }
             })
           }
         })
@@ -335,16 +329,16 @@ function calculatePasserRating(comp: number, att: number, yards: number, tds: nu
   return ((a + b + c + d) / 6) * 100
 }
 
-async function saveNFLStats(stats: any[]) {
+async function saveFootballStats(stats: any[], sport: string) {
   if (stats.length === 0) return
   
   // Create players efficiently
   const playerIds = [...new Set(stats.map(s => s.player_id))]
   const players = playerIds.map(id => ({
     id,
-    external_id: `espn_nfl_${id}`,
-    name: `NFL Player ${id}`,
-    sport: 'NFL'
+    external_id: `espn_${sport.toLowerCase()}_${id}`,
+    name: `${sport} Player ${id}`,
+    sport: sport.toUpperCase()
   }))
   
   // Batch player creation
@@ -381,5 +375,5 @@ async function saveNFLStats(stats: any[]) {
   }
 }
 
-// EXECUTE NFL DOMINATION!
-completeNFLDomination().catch(console.error)
+// UNLEASH THE FOOTBALL DOMINATION!
+footballDominationBlitz().catch(console.error)
