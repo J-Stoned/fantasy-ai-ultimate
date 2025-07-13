@@ -224,25 +224,50 @@ class UniversalCoverageAnalyzer {
   // Analyze games coverage
   private async analyzeGames(config: CoverageConfig, metrics: CoverageMetrics, timeRange?: string): Promise<void> {
     try {
-      // Get all games for this sport
-      let query = supabase
-        .from('games')
-        .select('id, sport, sport_id, status, home_score, away_score, start_time, created_at');
+      // Get all games for this sport using chunked pagination
+      console.log(chalk.blue(`    Fetching ${config.sport} games in chunks...`));
+      
+      const allGames: any[] = [];
+      let offset = 0;
+      const chunkSize = 1000;
+      let hasMore = true;
+      
+      while (hasMore) {
+        let query = supabase
+          .from('games')
+          .select('id, sport, sport_id, status, home_score, away_score, start_time, created_at')
+          .or(config.tableQueries.games)
+          .order('created_at', { ascending: false })
+          .range(offset, offset + chunkSize - 1);
 
-      // Apply sport filter
-      query = query.or(config.tableQueries.games);
+        // Apply time range if specified
+        if (timeRange) {
+          query = query.gte('start_time', timeRange);
+        }
 
-      // Apply time range if specified
-      if (timeRange) {
-        query = query.gte('start_time', timeRange);
+        const { data: gameChunk, error } = await query;
+        
+        if (error) {
+          console.error(chalk.red(`Error fetching ${config.sport} games:`, error.message));
+          break;
+        }
+
+        if (!gameChunk || gameChunk.length === 0) {
+          hasMore = false;
+          break;
+        }
+        
+        allGames.push(...gameChunk);
+        offset += chunkSize;
+        
+        console.log(chalk.gray(`      Fetched ${allGames.length} ${config.sport} games so far...`));
+        
+        if (gameChunk.length < chunkSize) {
+          hasMore = false;
+        }
       }
-
-      const { data: games, error } = await query;
-
-      if (error) {
-        console.error(chalk.red(`Error fetching ${config.sport} games:`, error.message));
-        return;
-      }
+      
+      const games = allGames;
 
       if (!games) {
         console.warn(chalk.yellow(`No games found for ${config.sport}`));

@@ -1090,13 +1090,41 @@ class UniversalSportsCollector {
         // Phase 2: Collect player stats for recent games
         console.log(chalk.yellow(`📊 ${sport}: Collecting player stats...`));
         
-        // Get recent games to collect stats for
-        const { data: recentGames } = await supabase
-          .from('games')
-          .select('id, external_id')
-          .eq('sport', sport)
-          .order('created_at', { ascending: false })
-          .limit(10); // Collect stats for last 10 games
+        // Get games in chunks to avoid query limits
+        console.log(chalk.blue(`📊 ${sport}: Fetching games in chunks to avoid query limits...`));
+        
+        const allGames: { id: number; external_id: string }[] = [];
+        let offset = 0;
+        const chunkSize = 1000;
+        let hasMore = true;
+        
+        while (hasMore && allGames.length < 10000) { // Limit to 10K games per sport
+          const { data: gameChunk } = await supabase
+            .from('games')
+            .select('id, external_id')
+            .eq('sport', sport)
+            .not('home_score', 'is', null) // Only completed games
+            .not('away_score', 'is', null)
+            .order('created_at', { ascending: false })
+            .range(offset, offset + chunkSize - 1);
+          
+          if (!gameChunk || gameChunk.length === 0) {
+            hasMore = false;
+            break;
+          }
+          
+          allGames.push(...gameChunk);
+          offset += chunkSize;
+          
+          console.log(chalk.gray(`    Fetched ${allGames.length} games so far...`));
+          
+          if (gameChunk.length < chunkSize) {
+            hasMore = false;
+          }
+        }
+        
+        console.log(chalk.green(`✅ ${sport}: Found ${allGames.length} total games`));
+        const recentGames = allGames.slice(0, 500); // Process 500 most recent
         
         if (recentGames) {
           const allStats: PlayerStatEntry[] = [];
