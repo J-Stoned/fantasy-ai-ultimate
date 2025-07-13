@@ -366,11 +366,16 @@ async function saveFootballStats(stats: any[], sport: string) {
   for (let i = 0; i < uniqueStatsArray.length; i += 100) {
     const batch = uniqueStatsArray.slice(i, i + 100)
     try {
-      await supabase
+      const { error } = await supabase
         .from('player_game_logs')
         .upsert(batch, { onConflict: 'player_id,game_id' })
+      
+      if (error) {
+        console.log(chalk.red(`Save error: ${error.message}`))
+        console.log('Failed batch sample:', batch[0])
+      }
     } catch (error: any) {
-      // Continue on errors to maintain speed
+      console.log(chalk.red(`Exception: ${error.message}`))
     }
   }
 }
