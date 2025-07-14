@@ -12,14 +12,14 @@
     -0.0011904779148469214
   ],
   "bias": 0,
-  "accuracy": 66.66666666666666,
+  "accuracy": 40.963855421686745,
   "version": 1,
   "learning_rate": 0.01,
   "momentum": 0.9,
   "experience": {
-    "total_predictions": 12,
-    "correct_predictions": 8,
-    "wrong_predictions": 4,
+    "total_predictions": 332,
+    "correct_predictions": 136,
+    "wrong_predictions": 196,
     "learning_cycles": 0
   },
   "mistakes": []

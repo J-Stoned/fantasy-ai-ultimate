@@ -103,3 +103,16 @@ credentials/
 !.env.secure.example
 !.env.*.example
 .vercel
+
+# MCP Configuration (contains API keys)
+.mcp.json
+.claude/mcp-servers.json
+
+# Test results with potential sensitive data
+mcp-test-results.json
+api-test-results.json
+
+# Cached player mappings
+mlb-player-mappings.json
+nba-player-mappings.json
+nfl-player-mappings.json
