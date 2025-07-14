@@ -9,11 +9,11 @@ import chalk from 'chalk';
 async function startWebSocketServer() {
   console.log(chalk.blue.bold('\n🌐 Starting WebSocket Server...'));
   
-  const broadcaster = new WebSocketBroadcaster(8080);
+  const broadcaster = new WebSocketBroadcaster(8088);
   
   try {
     await broadcaster.initialize();
-    console.log(chalk.green('✅ WebSocket server running on ws://localhost:8080'));
+    console.log(chalk.green('✅ WebSocket server running on ws://localhost:8088'));
     
     // Log metrics every 30 seconds
     setInterval(() => {

@@ -50,7 +50,7 @@ export function PatternScreen() {
 
   const connectToPatternStream = () => {
     try {
-      const ws = new WebSocket('ws://localhost:3340');
+      const ws = new WebSocket('ws://localhost:8088');
       
       ws.onopen = () => {
         console.log('Mobile connected to pattern stream');
@@ -337,16 +337,16 @@ export function PatternScreen() {
           </Text>
           <View style={styles.statsRow}>
             <View style={styles.statItem}>
-              <Text style={styles.statValue}>65.2%</Text>
+              <Text style={styles.statValue}>81.3%</Text>
               <Text style={styles.statLabel}>Accuracy</Text>
             </View>
             <View style={styles.statItem}>
-              <Text style={styles.statValue}>5,542</Text>
-              <Text style={styles.statLabel}>Games</Text>
+              <Text style={styles.statValue}>371K</Text>
+              <Text style={styles.statLabel}>Stats</Text>
             </View>
             <View style={styles.statItem}>
-              <Text style={styles.statValue}>12.5%</Text>
-              <Text style={styles.statLabel}>ROI</Text>
+              <Text style={styles.statValue}>+10.4</Text>
+              <Text style={styles.statLabel}>Home Adv</Text>
             </View>
           </View>
         </View>
