@@ -72,6 +72,7 @@ npx tsx scripts/production-pattern-api-v4.ts      # V4 API with 48K games (port 
 npx tsx scripts/unified-pattern-api.ts             # Unified pattern API (port 3336)
 npx tsx scripts/scan-and-compress-48k.ts           # Analyze all 48K games
 npx tsx scripts/realtime-pattern-scanner.ts        # Real-time pattern detection
+npx tsx scripts/continuous-pattern-learning.ts     # Pattern learning system (NEW!)
 
 # 🚀 PRODUCTION SERVICES  
 npx tsx scripts/production-prediction-service.ts   # Make predictions with ensemble models
@@ -101,6 +102,7 @@ npx tsx scripts/master-control.ts status          # Check system status
 npx tsx scripts/master-control.ts start-all       # Start everything
 npx tsx scripts/system-status.ts                  # Comprehensive status
 npx tsx scripts/test-websocket-integration.ts     # Test WebSocket pipeline
+npx tsx scripts/test-continuous-learning.ts       # Test learning system (NEW!)
 
 # 📱 MOBILE API TESTING
 curl http://localhost:3000/api/v2/predictions     # Get predictions
@@ -190,6 +192,12 @@ curl http://localhost:3000/api/v2/live            # WebSocket info
 - Retrains automatically when accuracy drops
 - GPU acceleration reduces training time 3.5x
 - Production monitoring with alerts
+- **NEW: Continuous Pattern Learning** - Learns from mistakes daily! 🧠
+  - Tracks pattern predictions vs actual outcomes
+  - Updates confidence scores automatically
+  - Adjusts multipliers based on performance
+  - Generates daily learning reports
+  - Real-time pattern monitoring
 
 ### API Endpoints (V2):
 - GET /api/v2/predictions - Cached predictions with filtering

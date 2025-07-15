@@ -10,6 +10,83 @@
 - **40+ API Endpoints** - Ready to scale
 - **GPU-Accelerated AI** - 3.5x faster predictions
 - **WebSocket Real-time** - 10K+ concurrent users
+- **AI Predictive Models** - Breakout, Injury, Streaks, DFS
+- **50+ Next-Gen Stats** - Bat speed, xwOBA, WAR integrated
+
+## 🎯 NEW DOMINATION FEATURES (MCP POWERED):
+
+### 1. **🔥 CONNECT REAL BETTING APIs (DraftKings/FanDuel)** 
+**Using: Puppeteer MCP + PostgreSQL MCP + Redis MCP**
+- Use Puppeteer MCP to scrape real-time odds if APIs aren't available
+- Store odds in PostgreSQL using the MCP server
+- Cache with Redis MCP for sub-second responses
+- Implement OAuth flows for DraftKings/FanDuel betting placement
+- Create arbitrage detection engine
+- Files to create:
+  - `scripts/integrations/draftkings-real-api.ts`
+  - `scripts/integrations/fanduel-real-api.ts`
+  - `scripts/integrations/odds-aggregator.ts`
+  - `scripts/betting/automated-bet-placer.ts`
+
+### 2. **🧠 CREATE PATTERN DISCOVERY AI**
+**Using: Anthropic API + MLB-API MCP + PostgreSQL MCP**
+- Use Anthropic API to analyze game outcomes and discover new patterns
+- Query MLB-API MCP for real-time game data
+- Store discovered patterns in PostgreSQL
+- Implement backtesting with historical data
+- Files to create:
+  - `scripts/ai/anthropic-pattern-discovery.ts`
+  - `scripts/ai/pattern-hypothesis-generator.ts`
+  - `scripts/ai/pattern-validation-engine.ts`
+  - `scripts/pattern-detection/new-pattern-tester.ts`
+
+### 3. **⚾ BUILD BASEBALL-SPECIFIC PATTERNS**
+**Using: MLB-API MCP + Anthropic API + PostgreSQL MCP**
+- Leverage MLB-API MCP for pitcher/batter matchups
+- Use Anthropic to identify unique baseball patterns
+- Implement weather impact analysis
+- Day/night game performance patterns
+- Files to create:
+  - `scripts/patterns/baseball/pitcher-fatigue-pattern.ts`
+  - `scripts/patterns/baseball/weather-impact-pattern.ts`
+  - `scripts/patterns/baseball/bullpen-usage-pattern.ts`
+  - `scripts/patterns/baseball/lineup-stack-pattern.ts`
+
+### 4. **🔄 ADD REAL-TIME ODDS SCRAPING**
+**Using: Puppeteer MCP + Playwright MCP + Redis MCP**
+- Deploy both Puppeteer and Playwright for redundancy
+- Scrape odds from 10+ sportsbooks every 30 seconds
+- Detect line movements and steam moves
+- Store in Redis with PostgreSQL backup
+- Files to create:
+  - `scripts/scraping/real-time-odds-scraper.ts`
+  - `scripts/scraping/line-movement-detector.ts`
+  - `scripts/scraping/steam-move-alerts.ts`
+  - `scripts/api/odds-websocket-server.ts`
+
+### 5. **📊 BUILD REAL-TIME PATTERN MONITORING DASHBOARD**
+**Using: Chart MCP + PostgreSQL MCP + Redis MCP + Vercel MCP**
+- Use Chart MCP for beautiful visualizations
+- Real-time WebSocket updates from Redis
+- Deploy to Vercel using Vercel MCP
+- Push notifications for high-confidence plays
+- Files to create:
+  - `app/dashboard/patterns/real-time/page.tsx`
+  - `app/api/patterns/websocket/route.ts`
+  - `lib/components/PatternAlerts.tsx`
+  - `lib/notifications/push-service.ts`
+
+### 6. **💰 IMPLEMENT KELLY CRITERION BETTING SYSTEM**
+**Using: PostgreSQL MCP + Anthropic API**
+- Calculate optimal bet sizes using pattern confidence
+- Use Anthropic to analyze risk/reward scenarios
+- Implement fractional Kelly (25-50%) for safety
+- Track bankroll and set stop-loss rules
+- Files to create:
+  - `scripts/betting/kelly-criterion-calculator.ts`
+  - `scripts/betting/bankroll-manager.ts`
+  - `scripts/betting/risk-assessment.ts`
+  - `lib/api/bet-sizing-engine.ts`
 
 ## 🚀 IMMEDIATE DOMINATION STEPS:
 
