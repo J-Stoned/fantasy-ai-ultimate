@@ -37,6 +37,7 @@ class AnthropicDatabaseQuery {
   
   // Fast-path patterns for common queries
   private readonly FAST_PATTERNS = {
+    // Traditional Stats
     homeRunLeaders: /who.*most.*home.*runs?|home.*run.*lead|hr.*lead/i,
     rbiLeaders: /who.*most.*rbi|rbi.*lead/i,
     battingAverageLeaders: /who.*highest.*average|batting.*average.*lead/i,
@@ -50,6 +51,32 @@ class AnthropicDatabaseQuery {
     strikeoutLeaders: /who.*most.*strikeouts?|strikeout.*lead|k.*lead.*pitcher/i,
     eraLeaders: /who.*lowest.*era|era.*lead|best.*era/i,
     savesLeaders: /who.*most.*saves?|saves.*lead|closer.*lead/i,
+    // Statcast Expected Stats
+    xwOBALeaders: /who.*highest.*xwoba|expected.*woba.*lead|xwoba.*lead/i,
+    xBALeaders: /who.*highest.*xba|expected.*batting.*average|xba.*lead/i,
+    xSLGLeaders: /who.*highest.*xslg|expected.*slugging|xslg.*lead/i,
+    barrelLeaders: /who.*most.*barrels?|barrel.*lead|barrel.*rate/i,
+    exitVelocityLeaders: /who.*hardest.*hit|exit.*velocity.*lead|ev.*lead/i,
+    hardHitLeaders: /who.*hard.*hit.*rate|hard.*hit.*lead/i,
+    // Bat Tracking (2024 NEW!)
+    batSpeedLeaders: /who.*fastest.*bat.*speed|bat.*speed.*lead/i,
+    swingLengthLeaders: /who.*swing.*length|shortest.*swing|longest.*swing/i,
+    squaredUpLeaders: /who.*squared.*up|best.*contact.*quality/i,
+    blastsLeaders: /who.*most.*blasts?|blasts.*lead/i,
+    // Advanced Sabermetrics
+    warLeaders: /who.*highest.*war|war.*lead|wins.*above.*replacement/i,
+    wrcPlusLeaders: /who.*highest.*wrc\+|wrc.*plus.*lead|weighted.*runs.*created/i,
+    babipLeaders: /who.*highest.*babip|babip.*lead|batting.*average.*balls.*play/i,
+    fipLeaders: /who.*lowest.*fip|fip.*lead|fielding.*independent/i,
+    // Fielding & Running
+    oaaLeaders: /who.*best.*fielder|outs.*above.*average|oaa.*lead/i,
+    sprintSpeedLeaders: /who.*fastest.*runner|sprint.*speed.*lead/i,
+    armStrengthLeaders: /who.*strongest.*arm|arm.*strength.*lead/i,
+    popTimeLeaders: /who.*fastest.*pop.*time|pop.*time.*lead|catcher.*throwing/i,
+    // Pitching Advanced
+    spinRateLeaders: /who.*highest.*spin.*rate|spin.*rate.*lead/i,
+    cswLeaders: /who.*highest.*csw|csw.*percent|called.*swinging.*strike/i,
+    whiffLeaders: /who.*highest.*whiff|whiff.*rate.*lead|swing.*miss/i,
     currentStats: /current.*stats|latest.*stats|recent.*performance/i
   };
   
@@ -284,6 +311,16 @@ Format as a detailed, helpful response that a fantasy baseball player would find
                  searchLower.includes('stolen') || searchLower.includes('doubles') || 
                  searchLower.includes('walks') || searchLower.includes('hits')) {
         statsQuery = statsQuery.eq('stat_type', 'current_season_hitting');
+      } else if (searchLower.includes('xwoba') || searchLower.includes('expected') || 
+                 searchLower.includes('barrel') || searchLower.includes('exit velocity') || 
+                 searchLower.includes('bat speed') || searchLower.includes('squared up')) {
+        statsQuery = statsQuery.eq('stat_type', 'statcast_hitting');
+      } else if (searchLower.includes('war') || searchLower.includes('wrc+') || 
+                 searchLower.includes('babip') || searchLower.includes('fip')) {
+        statsQuery = statsQuery.in('stat_type', ['advanced_hitting', 'advanced_pitching']);
+      } else if (searchLower.includes('sprint') || searchLower.includes('speed') || 
+                 searchLower.includes('arm strength') || searchLower.includes('outs above')) {
+        statsQuery = statsQuery.in('stat_type', ['statcast_running', 'statcast_fielding']);
       } else {
         statsQuery = statsQuery.eq('stat_type', 'fantasy_intelligence');
       }
@@ -414,6 +451,42 @@ Format as a detailed, helpful response that a fantasy baseball player would find
     if (this.FAST_PATTERNS.stolenBaseLeaders.test(question)) {
       console.log('🏃‍♂️ Fast-path: Stolen base leaders query detected');
       return await this.getStolenBaseLeaders();
+    }
+    
+    // Expected wOBA leaders query
+    if (this.FAST_PATTERNS.xwOBALeaders.test(question)) {
+      console.log('📊 Fast-path: Expected wOBA leaders query detected');
+      return await this.getExpectedWOBALeaders();
+    }
+    
+    // Barrel leaders query
+    if (this.FAST_PATTERNS.barrelLeaders.test(question)) {
+      console.log('💥 Fast-path: Barrel leaders query detected');
+      return await this.getBarrelLeaders();
+    }
+    
+    // Bat speed leaders query
+    if (this.FAST_PATTERNS.batSpeedLeaders.test(question)) {
+      console.log('⚡ Fast-path: Bat speed leaders query detected');
+      return await this.getBatSpeedLeaders();
+    }
+    
+    // WAR leaders query
+    if (this.FAST_PATTERNS.warLeaders.test(question)) {
+      console.log('🏆 Fast-path: WAR leaders query detected');
+      return await this.getWARLeaders();
+    }
+    
+    // wRC+ leaders query
+    if (this.FAST_PATTERNS.wrcPlusLeaders.test(question)) {
+      console.log('📈 Fast-path: wRC+ leaders query detected');
+      return await this.getWRCPlusLeaders();
+    }
+    
+    // Sprint speed leaders query
+    if (this.FAST_PATTERNS.sprintSpeedLeaders.test(question)) {
+      console.log('💨 Fast-path: Sprint speed leaders query detected');
+      return await this.getSprintSpeedLeaders();
     }
     
     return null; // No fast-path match
@@ -872,6 +945,300 @@ Format as a detailed, helpful response that a fantasy baseball player would find
       console.error('❌ Stolen base query error:', error);
       return {
         answer: "Unable to retrieve stolen base data at this time.",
+        sources: [],
+        confidence: 'Low',
+        data: []
+      };
+    }
+  }
+
+  async getExpectedWOBALeaders(): Promise<QueryResult> {
+    const startTime = Date.now();
+    
+    try {
+      const statsData = await supabase
+        .from('player_stats')
+        .select('stat_value')
+        .eq('stat_type', 'statcast_hitting')
+        .limit(50);
+
+      const xwOBAStats = statsData.data?.map(stat => stat.stat_value)
+        .filter(stat => stat?.expected_woba > 0)
+        .sort((a, b) => (b.expected_woba || 0) - (a.expected_woba || 0))
+        .slice(0, 10) || [];
+
+      let answer = "**MLB Expected wOBA (xwOBA) Leaders:**\n\n";
+      
+      if (xwOBAStats.length > 0) {
+        xwOBAStats.forEach((stat, i) => {
+          answer += `${i + 1}. ${stat.player_name} - ${stat.expected_woba?.toFixed(3)} xwOBA`;
+          if (stat.team) answer += ` (${stat.team})`;
+          if (stat.barrel_percent) answer += ` - ${stat.barrel_percent}% Barrels`;
+          answer += "\n";
+        });
+      } else {
+        answer += "No xwOBA data currently available.\n";
+      }
+
+      answer += `\n✅ **Confidence: ${xwOBAStats.length > 0 ? 'High' : 'Medium'}**`;
+      answer += "\n\n**Fantasy Insight:** xwOBA is the best predictive hitting metric - target players outperforming their actual stats.";
+
+      return {
+        answer,
+        sources: ['Baseball Savant', 'Statcast'],
+        confidence: xwOBAStats.length > 0 ? 'High' : 'Medium',
+        data: statsData.data || []
+      };
+
+    } catch (error) {
+      console.error('❌ xwOBA query error:', error);
+      return {
+        answer: "Unable to retrieve xwOBA data at this time.",
+        sources: [],
+        confidence: 'Low',
+        data: []
+      };
+    }
+  }
+
+  async getBarrelLeaders(): Promise<QueryResult> {
+    const startTime = Date.now();
+    
+    try {
+      const statsData = await supabase
+        .from('player_stats')
+        .select('stat_value')
+        .eq('stat_type', 'statcast_hitting')
+        .limit(50);
+
+      const barrelStats = statsData.data?.map(stat => stat.stat_value)
+        .filter(stat => stat?.barrel_percent > 0)
+        .sort((a, b) => (b.barrel_percent || 0) - (a.barrel_percent || 0))
+        .slice(0, 10) || [];
+
+      let answer = "**MLB Barrel Rate Leaders:**\n\n";
+      
+      if (barrelStats.length > 0) {
+        barrelStats.forEach((stat, i) => {
+          answer += `${i + 1}. ${stat.player_name} - ${stat.barrel_percent}% Barrel Rate`;
+          if (stat.team) answer += ` (${stat.team})`;
+          if (stat.exit_velocity_avg) answer += ` - ${stat.exit_velocity_avg} MPH avg EV`;
+          answer += "\n";
+        });
+      } else {
+        answer += "No barrel data currently available.\n";
+      }
+
+      answer += `\n✅ **Confidence: ${barrelStats.length > 0 ? 'High' : 'Medium'}**`;
+      answer += "\n\n**Fantasy Insight:** Barrels = Perfect contact. Elite power indicator for HR production.";
+
+      return {
+        answer,
+        sources: ['Baseball Savant', 'Statcast'],
+        confidence: barrelStats.length > 0 ? 'High' : 'Medium',
+        data: statsData.data || []
+      };
+
+    } catch (error) {
+      console.error('❌ Barrel query error:', error);
+      return {
+        answer: "Unable to retrieve barrel data at this time.",
+        sources: [],
+        confidence: 'Low',
+        data: []
+      };
+    }
+  }
+
+  async getBatSpeedLeaders(): Promise<QueryResult> {
+    const startTime = Date.now();
+    
+    try {
+      const statsData = await supabase
+        .from('player_stats')
+        .select('stat_value')
+        .eq('stat_type', 'statcast_hitting')
+        .limit(50);
+
+      const batSpeedStats = statsData.data?.map(stat => stat.stat_value)
+        .filter(stat => stat?.bat_speed_avg > 0)
+        .sort((a, b) => (b.bat_speed_avg || 0) - (a.bat_speed_avg || 0))
+        .slice(0, 10) || [];
+
+      let answer = "**MLB Bat Speed Leaders (2024 NEW!):**\n\n";
+      
+      if (batSpeedStats.length > 0) {
+        batSpeedStats.forEach((stat, i) => {
+          answer += `${i + 1}. ${stat.player_name} - ${stat.bat_speed_avg?.toFixed(1)} MPH`;
+          if (stat.team) answer += ` (${stat.team})`;
+          if (stat.squared_up_rate) answer += ` - ${stat.squared_up_rate}% Squared-Up`;
+          answer += "\n";
+        });
+      } else {
+        answer += "No bat speed data currently available.\n";
+      }
+
+      answer += `\n✅ **Confidence: ${batSpeedStats.length > 0 ? 'High' : 'Medium'}**`;
+      answer += "\n\n**Fantasy Insight:** Bat speed is the future - 75+ MPH = elite power potential.";
+
+      return {
+        answer,
+        sources: ['Baseball Savant', 'Statcast Bat Tracking'],
+        confidence: batSpeedStats.length > 0 ? 'High' : 'Medium',
+        data: statsData.data || []
+      };
+
+    } catch (error) {
+      console.error('❌ Bat speed query error:', error);
+      return {
+        answer: "Unable to retrieve bat speed data at this time.",
+        sources: [],
+        confidence: 'Low',
+        data: []
+      };
+    }
+  }
+
+  async getWARLeaders(): Promise<QueryResult> {
+    const startTime = Date.now();
+    
+    try {
+      const statsData = await supabase
+        .from('player_stats')
+        .select('stat_value')
+        .in('stat_type', ['advanced_hitting', 'advanced_pitching'])
+        .limit(100);
+
+      const warStats = statsData.data?.map(stat => stat.stat_value)
+        .filter(stat => stat?.war > 0)
+        .sort((a, b) => (b.war || 0) - (a.war || 0))
+        .slice(0, 10) || [];
+
+      let answer = "**MLB WAR (Wins Above Replacement) Leaders:**\n\n";
+      
+      if (warStats.length > 0) {
+        warStats.forEach((stat, i) => {
+          answer += `${i + 1}. ${stat.player_name} - ${stat.war?.toFixed(1)} WAR`;
+          if (stat.team) answer += ` (${stat.team})`;
+          if (stat.wrc_plus) answer += ` - ${stat.wrc_plus} wRC+`;
+          answer += "\n";
+        });
+      } else {
+        answer += "No WAR data currently available.\n";
+      }
+
+      answer += `\n✅ **Confidence: ${warStats.length > 0 ? 'High' : 'Medium'}**`;
+      answer += "\n\n**Fantasy Insight:** WAR = Total player value. 6+ WAR = MVP caliber season.";
+
+      return {
+        answer,
+        sources: ['FanGraphs', 'Advanced Sabermetrics'],
+        confidence: warStats.length > 0 ? 'High' : 'Medium',
+        data: statsData.data || []
+      };
+
+    } catch (error) {
+      console.error('❌ WAR query error:', error);
+      return {
+        answer: "Unable to retrieve WAR data at this time.",
+        sources: [],
+        confidence: 'Low',
+        data: []
+      };
+    }
+  }
+
+  async getWRCPlusLeaders(): Promise<QueryResult> {
+    const startTime = Date.now();
+    
+    try {
+      const statsData = await supabase
+        .from('player_stats')
+        .select('stat_value')
+        .eq('stat_type', 'advanced_hitting')
+        .limit(50);
+
+      const wrcStats = statsData.data?.map(stat => stat.stat_value)
+        .filter(stat => stat?.wrc_plus > 0)
+        .sort((a, b) => (b.wrc_plus || 0) - (a.wrc_plus || 0))
+        .slice(0, 10) || [];
+
+      let answer = "**MLB wRC+ (Weighted Runs Created Plus) Leaders:**\n\n";
+      
+      if (wrcStats.length > 0) {
+        wrcStats.forEach((stat, i) => {
+          answer += `${i + 1}. ${stat.player_name} - ${stat.wrc_plus} wRC+`;
+          if (stat.team) answer += ` (${stat.team})`;
+          if (stat.woba) answer += ` - ${stat.woba?.toFixed(3)} wOBA`;
+          answer += "\n";
+        });
+      } else {
+        answer += "No wRC+ data currently available.\n";
+      }
+
+      answer += `\n✅ **Confidence: ${wrcStats.length > 0 ? 'High' : 'Medium'}**`;
+      answer += "\n\n**Fantasy Insight:** wRC+ adjusts for park/league. 100 = average, 150+ = elite offense.";
+
+      return {
+        answer,
+        sources: ['FanGraphs', 'Advanced Sabermetrics'],
+        confidence: wrcStats.length > 0 ? 'High' : 'Medium',
+        data: statsData.data || []
+      };
+
+    } catch (error) {
+      console.error('❌ wRC+ query error:', error);
+      return {
+        answer: "Unable to retrieve wRC+ data at this time.",
+        sources: [],
+        confidence: 'Low',
+        data: []
+      };
+    }
+  }
+
+  async getSprintSpeedLeaders(): Promise<QueryResult> {
+    const startTime = Date.now();
+    
+    try {
+      const statsData = await supabase
+        .from('player_stats')
+        .select('stat_value')
+        .eq('stat_type', 'statcast_running')
+        .limit(50);
+
+      const speedStats = statsData.data?.map(stat => stat.stat_value)
+        .filter(stat => stat?.sprint_speed > 0)
+        .sort((a, b) => (b.sprint_speed || 0) - (a.sprint_speed || 0))
+        .slice(0, 10) || [];
+
+      let answer = "**MLB Sprint Speed Leaders:**\n\n";
+      
+      if (speedStats.length > 0) {
+        speedStats.forEach((stat, i) => {
+          answer += `${i + 1}. ${stat.player_name} - ${stat.sprint_speed?.toFixed(1)} ft/sec`;
+          if (stat.team) answer += ` (${stat.team})`;
+          if (stat.hp_to_1b) answer += ` - ${stat.hp_to_1b?.toFixed(2)}s to 1B`;
+          answer += "\n";
+        });
+      } else {
+        answer += "No sprint speed data currently available.\n";
+      }
+
+      answer += `\n✅ **Confidence: ${speedStats.length > 0 ? 'High' : 'Medium'}**`;
+      answer += "\n\n**Fantasy Insight:** 30+ ft/sec = Elite speed. 27 ft/sec = MLB average.";
+
+      return {
+        answer,
+        sources: ['Baseball Savant', 'Statcast'],
+        confidence: speedStats.length > 0 ? 'High' : 'Medium',
+        data: statsData.data || []
+      };
+
+    } catch (error) {
+      console.error('❌ Sprint speed query error:', error);
+      return {
+        answer: "Unable to retrieve sprint speed data at this time.",
         sources: [],
         confidence: 'Low',
         data: []
