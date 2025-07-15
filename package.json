@@ -16,7 +16,7 @@
     "start:web:prod": "cd apps/web && NODE_ENV=production tsx server.ts",
     "test": "node --max-old-space-size=4096 node_modules/.bin/nx run-many --target=test --all",
     "test:unit": "node --max-old-space-size=4096 node_modules/.bin/nx run-many --target=test --all",
-    "test:integration": "node --max-old-space-size=4096 node_modules/.bin/nx run-many --target=test --all --configuration=integration",
+    "test:integration": "npm run test:websocket && npm run test:patterns && npm run test:ai",
     "test:e2e": "nx e2e web-e2e",
     "test:coverage": "nx run-many --target=test --all --coverage",
     "lint": "nx run-many --target=lint --all",
@@ -65,7 +65,6 @@
     "test:websocket": "tsx scripts/test-websocket-connection.ts",
     "test:patterns": "tsx scripts/test-pattern-detection.ts",
     "test:ai": "tsx scripts/test-ai-assistant.ts",
-    "test:integration": "npm run test:websocket && npm run test:patterns && npm run test:ai",
     "dev:connected": "tsx scripts/start-connected.ts",
     "precommit": "npm run security:check && npm run lint && npm run type-check"
   },

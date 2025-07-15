@@ -8,7 +8,7 @@ import cliProgress from 'cli-progress';
 // REAL DATA COLLECTION - NO MORE FAKE STATS!
 const supabase = createClient(
   'https://pvekvqiqrrpugfmpgaup.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2ZWt2cWlxcnJwdWdmbXBnYXVwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MTA0NTA1MiwiZXhwIjoyMDY2NjIxMDUyfQ.EzHZ-WJkjbCXEAVP750VEp38ge35nsjVQ_ajzXadbPE'
+  process.env.SUPABASE_SERVICE_KEY || ''
 );
 
 const mlbApi = axios.create({

@@ -96,7 +96,7 @@ npm run verify:secrets
 
 ## CRITICAL REMINDER
 
-The exposed password `IL36Z9I7tV2629Lr` must be:
+The exposed password `process.env.DB_PASSWORD || ''` must be:
 1. Changed in Supabase immediately
 2. Removed from git history using BFG
 3. Never used again anywhere
