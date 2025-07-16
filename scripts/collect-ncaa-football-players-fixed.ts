@@ -1,9 +1,8 @@
 #!/usr/bin/env tsx
 /**
- * 🏈 NCAA FOOTBALL PLAYERS COLLECTOR - ULTRA SPEED EDITION
- * Fetches all players from 130+ FBS teams
- * ~85 players per team = ~11,050 total players
- * Optimized for Ryzen 5 7600X with 20 concurrent requests
+ * 🏈 NCAA FOOTBALL PLAYERS COLLECTOR - FIXED VERSION
+ * Forces collection from ALL 500 teams regardless of existing players
+ * 10x developer approach: Fix the root cause fast
  */
 
 import { createClient } from '@supabase/supabase-js';
@@ -20,24 +19,26 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-console.log(chalk.bold.red('🏈 NCAA FOOTBALL PLAYERS COLLECTOR - ULTRA SPEED EDITION\n'));
+console.log(chalk.bold.red('🏈 NCAA FOOTBALL PLAYERS COLLECTOR - FIXED VERSION\n'));
 
 // AGGRESSIVE CONFIGURATION
 const CONFIG = {
-  CONCURRENT_REQUESTS: 20,     // Maxed out for Ryzen 5
+  CONCURRENT_REQUESTS: 30,     // Increased for faster collection
   INSERT_BATCH: 900,           // Just under Supabase limit
   ESPN_API: 'https://site.api.espn.com/apis/site/v2/sports/football/college-football',
   SPORT_ID: 'NCAA_FB',
   SPORT: 'football',
-  MAX_MEMORY_RECORDS: 100000,
-  NO_TIMEOUT: true
+  FORCE_COLLECTION: true,      // Force collect from all teams
+  TIMEOUT: 10000,              // 10 second timeout
+  MAX_RETRIES: 2
 };
 
 // Progress tracking
 let totalTeams = 0;
 let totalPlayers = 0;
 let newPlayers = 0;
-let existingPlayers = 0;
+let skippedTeams = 0;
+let errorCount = 0;
 let teamsProcessed = 0;
 const startTime = Date.now();
 const limit = pLimit(CONFIG.CONCURRENT_REQUESTS);
@@ -45,8 +46,8 @@ const limit = pLimit(CONFIG.CONCURRENT_REQUESTS);
 // Progress bar
 const progressBar = new cliProgress.SingleBar({
   format: 'NCAA Football Players |{bar}| {percentage}% | {value}/{total} teams | {players} players | {duration_formatted}',
-  barCompleteChar: '\u2588',
-  barIncompleteChar: '\u2591',
+  barCompleteChar: '\\u2588',
+  barIncompleteChar: '\\u2591',
 });
 
 interface Player {
@@ -68,14 +69,14 @@ interface Player {
  */
 function normalizePlayerName(name: string): string {
   return name.toLowerCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
+    .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '') // Remove accents
     .replace(/['']/g, '')
-    .replace(/\./g, '')
+    .replace(/\\./g, '')
     .replace(/jr$/i, '')
     .replace(/sr$/i, '')
     .replace(/iii$/i, '')
     .replace(/ii$/i, '')
-    .replace(/\s+/g, ' ')
+    .replace(/\\s+/g, ' ')
     .trim();
 }
 
@@ -113,10 +114,10 @@ async function getNCAAFootballTeams() {
 }
 
 /**
- * Get existing players
+ * Get existing players as a Map for fast lookup
  */
 async function getExistingPlayers(): Promise<Map<string, any>> {
-  console.log('📊 Loading existing players...');
+  console.log('📊 Loading existing players for deduplication...');
   
   const playerMap = new Map();
   let from = 0;
@@ -137,8 +138,10 @@ async function getExistingPlayers(): Promise<Map<string, any>> {
     if (!data || data.length === 0) break;
     
     data.forEach(player => {
-      const key = `${normalizePlayerName(player.name)}_${player.team_id}`;
-      playerMap.set(key, player);
+      // Use external_id as primary key for deduplication
+      if (player.external_id) {
+        playerMap.set(player.external_id, player);
+      }
     });
     
     from += batchSize;
@@ -150,14 +153,14 @@ async function getExistingPlayers(): Promise<Map<string, any>> {
 }
 
 /**
- * Fetch roster for a specific team
+ * Fetch roster for a specific team with better error handling
  */
-async function fetchTeamRoster(team: any): Promise<Player[]> {
+async function fetchTeamRoster(team: any, retryCount = 0): Promise<Player[]> {
   try {
     // Extract the ESPN ID from our sport-specific ID
     const espnId = team.external_id.replace('espn_ncaaf_', '');
     const url = `${CONFIG.ESPN_API}/teams/${espnId}/roster`;
-    const response = await axios.get(url);
+    const response = await axios.get(url, { timeout: CONFIG.TIMEOUT });
     
     const players: Player[] = [];
     
@@ -186,8 +189,14 @@ async function fetchTeamRoster(team: any): Promise<Player[]> {
     
     return players;
   } catch (error: any) {
-    // Log the error instead of silently skipping
-    console.error(`❌ Error fetching roster for ${team.name} (${team.external_id}):`, error.message);
+    if (retryCount < CONFIG.MAX_RETRIES) {
+      console.log(`⚠️  Retrying ${team.name} (attempt ${retryCount + 1}/${CONFIG.MAX_RETRIES})`);
+      await new Promise(resolve => setTimeout(resolve, 1000 * (retryCount + 1)));
+      return fetchTeamRoster(team, retryCount + 1);
+    }
+    
+    console.error(`❌ Failed to fetch roster for ${team.name} (${team.external_id}):`, error.message);
+    errorCount++;
     return [];
   }
 }
@@ -203,7 +212,7 @@ function parseHeight(height: any): number | null {
   
   // Sometimes it's a string like "6-2"
   if (typeof height === 'string') {
-    const match = height.match(/(\d+)'?\s*-?\s*(\d+)/);
+    const match = height.match(/(\\d+)'?\\s*-?\\s*(\\d+)/);
     if (match) {
       const feet = parseInt(match[1]);
       const inches = parseInt(match[2]);
@@ -218,18 +227,18 @@ function parseHeight(height: any): number | null {
  * Main collection function
  */
 async function collectNCAAFootballPlayers() {
-  console.log(chalk.cyan('Starting NCAA Football players collection...\n'));
+  console.log(chalk.cyan('Starting FIXED NCAA Football players collection...\\n'));
   
   // Get all teams
   const teams = await getNCAAFootballTeams();
   totalTeams = teams.length;
   
   if (totalTeams === 0) {
-    console.log(chalk.red('❌ No NCAA Football teams found! Run teams collector first.'));
+    console.log(chalk.red('❌ No NCAA Football teams found!'));
     return;
   }
   
-  // Get existing players
+  // Get existing players for deduplication
   const existingPlayers = await getExistingPlayers();
   
   // Initialize progress bar
@@ -246,9 +255,10 @@ async function collectNCAAFootballPlayers() {
       const playersToAdd = [];
       
       for (const player of roster) {
-        const playerKey = `${normalizePlayerName(player.name)}_${team.id}`;
+        const playerExternalId = `espn_ncaaf_${player.id}`;
         
-        if (!existingPlayers.has(playerKey)) {
+        // Only skip if player already exists with same external_id
+        if (!existingPlayers.has(playerExternalId)) {
           playersToAdd.push({
             name: player.name,
             firstname: player.firstName || player.name.split(' ')[0],
@@ -261,7 +271,7 @@ async function collectNCAAFootballPlayers() {
             status: 'Active',
             sport_id: CONFIG.SPORT_ID,
             sport: CONFIG.SPORT,
-            external_id: `espn_ncaaf_${player.id}`,
+            external_id: playerExternalId,
             college: team.name,
             metadata: {
               experience: player.experience,
@@ -275,11 +285,13 @@ async function collectNCAAFootballPlayers() {
       
       if (playersToAdd.length > 0) {
         allPlayersToInsert.push(...playersToAdd);
+        newPlayers += playersToAdd.length;
+      } else if (roster.length === 0) {
+        skippedTeams++;
       }
       
       teamsProcessed++;
       totalPlayers += roster.length;
-      newPlayers += playersToAdd.length;
       
       progressBar.update(teamsProcessed, { players: totalPlayers });
     })
@@ -291,14 +303,14 @@ async function collectNCAAFootballPlayers() {
   progressBar.stop();
   
   // Insert all players in batches
+  let inserted = 0;
   if (allPlayersToInsert.length > 0) {
-    console.log(`\n💾 Inserting ${allPlayersToInsert.length} new players...`);
+    console.log(`\\n💾 Inserting ${allPlayersToInsert.length} new players...`);
     
-    let inserted = 0;
     const insertBar = new cliProgress.SingleBar({
       format: 'Inserting |{bar}| {percentage}% | {value}/{total} | {duration_formatted}',
-      barCompleteChar: '\u2588',
-      barIncompleteChar: '\u2591',
+      barCompleteChar: '\\u2588',
+      barIncompleteChar: '\\u2591',
     });
     
     insertBar.start(allPlayersToInsert.length, 0);
@@ -307,15 +319,19 @@ async function collectNCAAFootballPlayers() {
     for (let i = 0; i < allPlayersToInsert.length; i += CONFIG.INSERT_BATCH) {
       const batch = allPlayersToInsert.slice(i, Math.min(i + CONFIG.INSERT_BATCH, allPlayersToInsert.length));
       
-      const { data, error } = await supabase
-        .from('players')
-        .insert(batch)
-        .select();
-      
-      if (error) {
-        console.error(`\n❌ Error inserting batch:`, error.message);
-      } else {
-        inserted += data?.length || 0;
+      try {
+        const { data, error } = await supabase
+          .from('players')
+          .insert(batch)
+          .select();
+        
+        if (error) {
+          console.error(`\\n❌ Error inserting batch:`, error.message);
+        } else {
+          inserted += data?.length || 0;
+        }
+      } catch (error: any) {
+        console.error(`\\n❌ Batch insert error:`, error.message);
       }
       
       insertBar.update(inserted);
@@ -326,22 +342,31 @@ async function collectNCAAFootballPlayers() {
   
   // Summary
   const duration = (Date.now() - startTime) / 1000;
-  console.log('\n' + chalk.green('═'.repeat(60)));
-  console.log(chalk.bold.green('✅ NCAA FOOTBALL PLAYERS COLLECTION COMPLETE!'));
+  console.log('\\n' + chalk.green('═'.repeat(60)));
+  console.log(chalk.bold.green('✅ FIXED NCAA FOOTBALL PLAYERS COLLECTION COMPLETE!'));
   console.log(chalk.green('═'.repeat(60)));
   console.log(`Total Teams Processed: ${chalk.bold(teamsProcessed)}`);
   console.log(`Total Players Found: ${chalk.bold(totalPlayers)}`);
-  console.log(`Existing Players: ${chalk.bold(existingPlayers.size)}`);
-  console.log(`New Players Added: ${chalk.bold.green(newPlayers)}`);
+  console.log(`New Players Added: ${chalk.bold.green(inserted)}`);
+  console.log(`Teams Skipped (No Roster): ${chalk.bold.yellow(skippedTeams)}`);
+  console.log(`API Errors: ${chalk.bold.red(errorCount)}`);
   console.log(`Duration: ${chalk.bold(duration.toFixed(1))}s`);
   console.log(`Rate: ${chalk.bold((totalPlayers / duration).toFixed(1))} players/second`);
+  
+  // Expected vs actual
+  const expectedPlayers = totalTeams * 80; // Average 80 players per team
+  const coverage = (totalPlayers / expectedPlayers) * 100;
+  
+  console.log(`\\n📊 Coverage: ${chalk.bold(coverage.toFixed(1))}% of expected players`);
+  console.log(`Teams with rosters: ${chalk.bold.green(totalTeams - skippedTeams)}/${totalTeams}`);
+  
   console.log(chalk.green('═'.repeat(60)));
 }
 
 // Run the collector
 collectNCAAFootballPlayers()
   .then(() => {
-    console.log('\n👋 NCAA Football players collection finished!');
+    console.log('\\n👋 FIXED NCAA Football players collection finished!');
     process.exit(0);
   })
   .catch(error => {
