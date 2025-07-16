@@ -2,8 +2,36 @@
 
 ## 📊 Final Achievement: 313,755+ Total Stats Collected!
 
+## 🔄 DAILY COLLECTION (NEW!)
+
+### Automated Daily Stats Collection
+All collectors now include **deduplication logic** for safe daily runs without conflicts!
+
+**Run all sports daily:**
+```bash
+# Collect stats from last 3 days (default)
+npx tsx scripts/collect-daily-stats.ts
+
+# Customize days back
+STATS_DAYS_BACK=7 npx tsx scripts/collect-daily-stats.ts
+
+# Run specific sports only
+STATS_SPORTS=nba,nfl npx tsx scripts/collect-daily-stats.ts
+
+# Run in parallel (faster but more resource intensive)
+STATS_PARALLEL=true npx tsx scripts/collect-daily-stats.ts
+```
+
+**Cron job example:**
+```bash
+# Run daily at 6 AM
+0 6 * * * cd /path/to/project && npx tsx scripts/collect-daily-stats.ts >> logs/daily-stats.log 2>&1
+```
+
 ### 🏀 NBA - 74,277 Stats Collected
-**Script**: `scripts/collect-nba-stats-batch-yahoo.ts`
+**Scripts**: 
+- **Full Collection**: `scripts/collect-nba-stats-yahoo.ts`
+- **Daily-Ready**: `scripts/collect-nba-stats-yahoo-dedup.ts` ✨
 - **Collection Time**: 3.5 minutes
 - **Features**: 
   - Yahoo Fantasy scoring
@@ -13,7 +41,9 @@
 - **Success Rate**: 100%
 
 ### 🏈 NFL - 9,512 Stats Collected  
-**Script**: `scripts/collect-nfl-stats-yahoo.ts`
+**Scripts**: 
+- **Full Collection**: `scripts/collect-nfl-stats-yahoo.ts`
+- **Daily-Ready**: `scripts/collect-nfl-stats-yahoo-dedup.ts` ✨
 - **Collection Time**: 30 seconds
 - **Features**:
   - Yahoo Fantasy scoring
@@ -23,7 +53,9 @@
 - **Success Rate**: 100%
 
 ### 🏒 NHL - 82,528 Stats Collected
-**Script**: `scripts/collect-nhl-stats-batch.ts`
+**Scripts**: 
+- **Full Collection**: `scripts/collect-nhl-stats-batch.ts`
+- **Daily-Ready**: `scripts/collect-nhl-stats-batch-dedup.ts` ✨
 - **Collection Time**: 2 minutes
 - **Features**:
   - Yahoo Fantasy scoring
@@ -33,7 +65,8 @@
 - **Success Rate**: 100%
 
 ### ⚾ MLB - 95,000+ Stats Collected
-**Script**: `scripts/collect-mlb-stats-yahoo-fixed.ts`
+**Scripts**: 
+- **Production**: `scripts/collect-mlb-stats-yahoo-fixed.ts` ✨ (includes deduplication)
 - **Collection Time**: 2.1 minutes per run
 - **Features**:
   - Yahoo Fantasy scoring
@@ -53,18 +86,27 @@
 
 ## 📝 Usage Instructions
 
-### Run Individual Sports:
+### Daily Collection (Recommended):
 ```bash
-# NBA
-npx tsx scripts/collect-nba-stats-batch-yahoo.ts
+# Run all sports with deduplication
+npx tsx scripts/collect-daily-stats.ts
 
-# NFL  
-npx tsx scripts/collect-nfl-stats-yahoo.ts
+# Configure with environment variables
+STATS_DAYS_BACK=7 STATS_PARALLEL=true npx tsx scripts/collect-daily-stats.ts
+```
 
-# NHL
-npx tsx scripts/collect-nhl-stats-batch.ts
+### Run Individual Sports (Full Collection):
+```bash
+# NBA (with deduplication)
+npx tsx scripts/collect-nba-stats-yahoo-dedup.ts
 
-# MLB (use the fixed version!)
+# NFL (with deduplication)
+npx tsx scripts/collect-nfl-stats-yahoo-dedup.ts
+
+# NHL (with deduplication)
+npx tsx scripts/collect-nhl-stats-batch-dedup.ts
+
+# MLB (already includes deduplication)
 npx tsx scripts/collect-mlb-stats-yahoo-fixed.ts
 ```
 
