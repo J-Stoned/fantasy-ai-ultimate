@@ -153,16 +153,27 @@ curl http://localhost:3000/api/v2/live            # WebSocket info
 └──────────────────────────────────────────────────────┘
 ```
 
-### Real Database Stats (2025-07-13 UPDATED):
-- **Player Stats**: 258,662 total (↑10,335 from standardization!)
-- **Games**: 82,861 total (48,863 completed with scores)
-- **ESPN ID Standardization**: 559 conflicts resolved, 100% compliant
+### Real Database Stats (2025-07-16 UPDATED):
+- **Player Stats**: 670,000+ total across all sports!
+  - NBA: 73,390 stats
+  - MLB: ~247,000 stats (null sport field - needs fix)
+  - NCAA Football: 39,018 stats
+  - NCAA Basketball: ~152,000 stats (97% complete)
+- **Games**: 19,173 total
+  - 8,910 MLB games (null sport field)
+  - 5,427 NCAA Basketball games
+  - 3,967 NBA games
+  - 869 NCAA Football games
+- **Players**: 32,918 total
+  - 5,563 NCAA Basketball players (fixed null sport)
+  - 2,916 NFL players
+  - 1,769 MLB players
+  - 790 NHL players
+- **Teams**: 2,537
 - **Pattern Occurrences**: 36,846 found
 - **High-Value Opportunities**: 27,575 identified
-- **News Articles**: 213,851 
-- **Players**: 846,724
-- **Teams**: 224
-- **Total Records**: 1.4M+ (↑50K from ESPN standardization)
+- **News Articles**: 213,851
+- **Total Records**: 1.5M+ (massive stats increase!)
 
 ### Pattern Detection Performance (BREAKTHROUGH - 2025-07-06):
 - **Average Pattern Accuracy**: 65.2% (massive improvement!)

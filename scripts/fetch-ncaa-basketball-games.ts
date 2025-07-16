@@ -52,7 +52,7 @@ async function fetchNCAABasketballGames() {
                         const awayTeam = event.competitions[0].competitors.find((c: any) => c.homeAway === 'away');
                         
                         const gameData = {
-                            external_id: event.id,
+                            external_id: `espn_ncaabb_${event.id}`,
                             sport: 'NCAA_BB',
                             start_time: event.date,
                             status: event.status.type.name,
@@ -62,8 +62,8 @@ async function fetchNCAABasketballGames() {
                             metadata: {
                                 home_team: homeTeam.team.displayName,
                                 away_team: awayTeam.team.displayName,
-                                home_team_id: homeTeam.team.id,
-                                away_team_id: awayTeam.team.id,
+                                home_team_id: `espn_ncaabb_${homeTeam.team.id}`,
+                                away_team_id: `espn_ncaabb_${awayTeam.team.id}`,
                                 home_team_abbr: homeTeam.team.abbreviation,
                                 away_team_abbr: awayTeam.team.abbreviation,
                                 conference: event.competitions[0].conferenceCompetition ? 'Conference' : 'Non-Conference',
@@ -98,8 +98,8 @@ async function fetchNCAABasketballGames() {
         console.log(`New games to add: ${gamesToAdd.length}`);
         
         if (gamesToAdd.length > 0) {
-            // Insert in batches of 100
-            const batchSize = 100;
+            // Insert in batches of 900 (lesson learned from NCAA Football)
+            const batchSize = 900;
             let insertedCount = 0;
             
             for (let i = 0; i < gamesToAdd.length; i += batchSize) {

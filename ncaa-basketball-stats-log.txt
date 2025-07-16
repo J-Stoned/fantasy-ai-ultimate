@@ -1,0 +1,77 @@
+🏀 NCAA BASKETBALL STATS COLLECTOR
+=====================================
+
+📊 Loading completed NCAA Basketball games with pagination...
+Loaded 1000 completed games...
+Loaded 2000 completed games...
+Loaded 3000 completed games...
+Loaded 4000 completed games...
+Loaded 5000 completed games...
+Loaded 5420 completed games...
+
+✅ Found 5420 completed games to process
+📊 Loading NCAA Basketball players with pagination...
+✅ Loaded 5563 players for stats matching
+Skipping existing stats check (known to be 0)
+
+🔍 Processing game stats with concurrent requests...
+Processed 100/5420 games (2%): 2387 stats found (~129375 total expected)
+Processed 200/5420 games (4%): 4793 stats found (~129890 total expected)
+Processed 300/5420 games (6%): 7275 stats found (~131435 total expected)
+Processed 400/5420 games (7%): 9948 stats found (~134795 total expected)
+Processed 500/5420 games (9%): 12606 stats found (~136649 total expected)
+Processed 600/5420 games (11%): 15242 stats found (~137686 total expected)
+Processed 700/5420 games (13%): 18027 stats found (~139580 total expected)
+Processed 800/5420 games (15%): 20856 stats found (~141299 total expected)
+Processed 900/5420 games (17%): 23657 stats found (~142468 total expected)
+Processed 1000/5420 games (18%): 26449 stats found (~143354 total expected)
+Processed 1100/5420 games (20%): 29387 stats found (~144798 total expected)
+Processed 1200/5420 games (22%): 32341 stats found (~146074 total expected)
+Processed 1300/5420 games (24%): 35172 stats found (~146640 total expected)
+Processed 1400/5420 games (26%): 38043 stats found (~147281 total expected)
+Processed 1500/5420 games (28%): 41002 stats found (~148154 total expected)
+Processed 1600/5420 games (30%): 43815 stats found (~148423 total expected)
+Processed 1700/5420 games (31%): 46618 stats found (~148629 total expected)
+Processed 1800/5420 games (33%): 49464 stats found (~148942 total expected)
+Processed 1900/5420 games (35%): 52416 stats found (~149524 total expected)
+Processed 2000/5420 games (37%): 54956 stats found (~148931 total expected)
+Processed 2100/5420 games (39%): 57781 stats found (~149130 total expected)
+Processed 2200/5420 games (41%): 60469 stats found (~148974 total expected)
+Processed 2300/5420 games (42%): 63203 stats found (~148939 total expected)
+Processed 2400/5420 games (44%): 66054 stats found (~149172 total expected)
+Processed 2500/5420 games (46%): 68839 stats found (~149243 total expected)
+Processed 2600/5420 games (48%): 71406 stats found (~148854 total expected)
+Processed 2700/5420 games (50%): 74093 stats found (~148735 total expected)
+Processed 2800/5420 games (52%): 77104 stats found (~149251 total expected)
+Processed 2900/5420 games (54%): 80165 stats found (~149826 total expected)
+Processed 3000/5420 games (55%): 83121 stats found (~150172 total expected)
+Processed 3100/5420 games (57%): 86201 stats found (~150713 total expected)
+Processed 3200/5420 games (59%): 89227 stats found (~151128 total expected)
+Processed 3300/5420 games (61%): 92286 stats found (~151573 total expected)
+Processed 3400/5420 games (63%): 95285 stats found (~151896 total expected)
+Processed 3500/5420 games (65%): 98299 stats found (~152223 total expected)
+Processed 3600/5420 games (66%): 101377 stats found (~152629 total expected)
+Processed 3700/5420 games (68%): 104408 stats found (~152944 total expected)
+Processed 3800/5420 games (70%): 107425 stats found (~153222 total expected)
+Processed 3900/5420 games (72%): 110439 stats found (~153482 total expected)
+Processed 4000/5420 games (74%): 113528 stats found (~153830 total expected)
+Processed 4100/5420 games (76%): 116605 stats found (~154146 total expected)
+Processed 4200/5420 games (77%): 119650 stats found (~154405 total expected)
+Processed 4300/5420 games (79%): 122723 stats found (~154688 total expected)
+Processed 4400/5420 games (81%): 125770 stats found (~154926 total expected)
+Processed 4500/5420 games (83%): 128799 stats found (~155131 total expected)
+Processed 4600/5420 games (85%): 131880 stats found (~155389 total expected)
+Processed 4700/5420 games (87%): 134888 stats found (~155552 total expected)
+Processed 4800/5420 games (89%): 137967 stats found (~155788 total expected)
+Processed 4900/5420 games (90%): 140978 stats found (~155939 total expected)
+Processed 5000/5420 games (92%): 144045 stats found (~156145 total expected)
+Processed 5100/5420 games (94%): 147100 stats found (~156330 total expected)
+Processed 5200/5420 games (96%): 150143 stats found (~156495 total expected)
+Processed 5300/5420 games (98%): 153224 stats found (~156693 total expected)
+Processed 5400/5420 games (100%): 156171 stats found (~156749 total expected)
+Processed 5420/5420 games (100%): 156792 stats found (~156792 total expected)
+
+✅ Found 156792 player stats from 5420 games
+
+🚀 Inserting stats in 900-record batches...
+⚠️  Attempting individual inserts for this batch...
