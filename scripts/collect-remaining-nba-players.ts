@@ -67,6 +67,14 @@ const NBA_TEAMS = new Map([
 const teamCache = new Map<string, number>();
 const existingPlayers = new Set<string>();
 
+// BallDontLie API with proper authentication
+const ballDontLieApi = axios.create({
+  baseURL: 'https://api.balldontlie.io/v1',
+  headers: {
+    'Authorization': process.env.BALLDONTLIE_API_KEY || '59de4292-dfc4-4a8a-b337-1e804f4109c6'
+  }
+});
+
 async function loadExistingPlayers() {
   console.log(chalk.yellow('Loading existing players...'));
   
@@ -134,7 +142,7 @@ async function collectPlayers() {
   const playersToInsert: any[] = [];
   
   // First, get total count
-  const firstResponse = await axios.get('https://api.balldontlie.io/v1/players', {
+  const firstResponse = await ballDontLieApi.get('/players', {
     params: { per_page: 1 }
   });
   const totalCount = firstResponse.data.meta.total_count;
@@ -143,7 +151,7 @@ async function collectPlayers() {
   
   while (hasMore) {
     try {
-      const response = await axios.get('https://api.balldontlie.io/v1/players', {
+      const response = await ballDontLieApi.get('/players', {
         params: {
           per_page: 100,
           page: page

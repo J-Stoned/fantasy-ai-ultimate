@@ -50,7 +50,7 @@ const teamMapping: { [key: string]: string } = {
 };
 
 async function fetchMLB2024() {
-  console.log(chalk.bold.red('⚾ FETCHING ALL MLB 2024 GAMES\n'));
+  console.log(chalk.bold.red('⚾ FETCHING MLB 2025 SEASON GAMES (through July 13)\n'));
   
   // Load our teams
   const { data: teams } = await supabase
@@ -68,9 +68,9 @@ async function fetchMLB2024() {
   const allGames = [];
   let totalFound = 0;
   
-  // MLB 2024: March 20 (spring training games) through October 31
-  const startDate = new Date('2024-03-20');
-  const endDate = new Date('2024-10-31');
+  // MLB 2025 season through July 13
+  const startDate = new Date('2025-03-27'); // 2025 season start
+  const endDate = new Date('2025-07-13');   // User requested end date
   
   const currentDate = new Date(startDate);
   while (currentDate <= endDate) {
@@ -107,8 +107,8 @@ async function fetchMLB2024() {
             sport_id: 'mlb',
             home_team_id: homeTeamId,
             away_team_id: awayTeamId,
-            home_team_score: competition.status.type.completed ? parseInt(homeTeam.score) : null,
-            away_team_score: competition.status.type.completed ? parseInt(awayTeam.score) : null,
+            home_score: competition.status.type.completed ? parseInt(homeTeam.score) : null,
+            away_score: competition.status.type.completed ? parseInt(awayTeam.score) : null,
             start_time: event.date,
             status: competition.status.type.completed ? 'completed' : 'scheduled'
           });
@@ -132,7 +132,8 @@ async function fetchMLB2024() {
     .from('games')
     .select('*', { count: 'exact', head: true })
     .eq('sport_id', 'mlb')
-    .gte('start_time', '2024-01-01');
+    .gte('start_time', '2025-01-01')
+    .lte('start_time', '2025-07-13');
   
   console.log(`Already in database: ${existing}`);
   console.log(`New games to add: ${allGames.length - (existing || 0)}\n`);

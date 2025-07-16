@@ -1,12 +1,15 @@
-#!/usr/bin/env node
+#!/usr/bin/env tsx
 import { createClient } from '@supabase/supabase-js';
 import axios from 'axios';
 import pLimit from 'p-limit';
 import cliProgress from 'cli-progress';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const supabase = createClient(
-  'https://pvekvqiqrrpugfmpgaup.supabase.co',
-  process.env.SUPABASE_SERVICE_KEY || ''
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
 const mlbApi = axios.create({
@@ -20,8 +23,8 @@ console.log('📅 Collecting REAL games from 2024 season\n');
 const CONFIG = {
   START_DATE: '2024-03-20', // MLB 2024 season start
   END_DATE: '2024-10-31',   // Including playoffs
-  CONCURRENT_CALLS: 10,
-  BATCH_SIZE: 100
+  CONCURRENT_CALLS: 20,     // 🚀 RYZEN 5 7600X OPTIMIZED (12 threads)
+  BATCH_SIZE: 200           // 🚀 LARGER BATCHES FOR SPEED
 };
 
 // Tracking
