@@ -1,0 +1,4626 @@
+[
+  {
+    "id": 3800702,
+    "external_id": "espn_mlb_401696356",
+    "start_time": "2025-07-13T20:10:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800700,
+    "external_id": "espn_mlb_401696355",
+    "start_time": "2025-07-13T20:05:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800698,
+    "external_id": "espn_mlb_401696353",
+    "start_time": "2025-07-13T18:10:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800695,
+    "external_id": "espn_mlb_401696350",
+    "start_time": "2025-07-13T18:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800694,
+    "external_id": "espn_mlb_401696349",
+    "start_time": "2025-07-13T18:10:00+00:00",
+    "home_team_id": 110,
+    "away_team_id": 112,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800692,
+    "external_id": "espn_mlb_401696344",
+    "start_time": "2025-07-13T17:40:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800691,
+    "external_id": "espn_mlb_401696347",
+    "start_time": "2025-07-13T17:35:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800690,
+    "external_id": "espn_mlb_401696345",
+    "start_time": "2025-07-13T17:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800687,
+    "external_id": "espn_mlb_401696341",
+    "start_time": "2025-07-12T23:35:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800684,
+    "external_id": "espn_mlb_401696335",
+    "start_time": "2025-07-12T20:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800682,
+    "external_id": "espn_mlb_401696332",
+    "start_time": "2025-07-12T20:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800681,
+    "external_id": "espn_mlb_401696329",
+    "start_time": "2025-07-12T20:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800680,
+    "external_id": "espn_mlb_401696340",
+    "start_time": "2025-07-12T20:05:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800679,
+    "external_id": "espn_mlb_401696330",
+    "start_time": "2025-07-12T20:05:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800674,
+    "external_id": "espn_mlb_401696325",
+    "start_time": "2025-07-12T02:15:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800673,
+    "external_id": "espn_mlb_401696326",
+    "start_time": "2025-07-12T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800667,
+    "external_id": "espn_mlb_401696320",
+    "start_time": "2025-07-12T00:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800670,
+    "external_id": "espn_mlb_401696323",
+    "start_time": "2025-07-12T00:10:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800663,
+    "external_id": "espn_mlb_401696314",
+    "start_time": "2025-07-11T23:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800664,
+    "external_id": "espn_mlb_401696316",
+    "start_time": "2025-07-11T23:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 128,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800665,
+    "external_id": "espn_mlb_401696317",
+    "start_time": "2025-07-11T23:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800662,
+    "external_id": "espn_mlb_401696315",
+    "start_time": "2025-07-11T23:05:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800658,
+    "external_id": "espn_mlb_401696312",
+    "start_time": "2025-07-11T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800655,
+    "external_id": "espn_mlb_401696306",
+    "start_time": "2025-07-10T23:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800653,
+    "external_id": "espn_mlb_401696303",
+    "start_time": "2025-07-10T21:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800652,
+    "external_id": "espn_mlb_401800369",
+    "start_time": "2025-07-10T21:05:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800650,
+    "external_id": "espn_mlb_401696304",
+    "start_time": "2025-07-10T16:05:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800648,
+    "external_id": "espn_mlb_401696302",
+    "start_time": "2025-07-10T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800646,
+    "external_id": "espn_mlb_401696298",
+    "start_time": "2025-07-09T23:45:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800644,
+    "external_id": "espn_mlb_401696293",
+    "start_time": "2025-07-09T23:40:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 109,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800642,
+    "external_id": "espn_mlb_401696288",
+    "start_time": "2025-07-09T23:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800643,
+    "external_id": "espn_mlb_401696289",
+    "start_time": "2025-07-09T23:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800639,
+    "external_id": "espn_mlb_401696292",
+    "start_time": "2025-07-09T21:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800638,
+    "external_id": "espn_mlb_401696301",
+    "start_time": "2025-07-09T19:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800636,
+    "external_id": "espn_mlb_401696295",
+    "start_time": "2025-07-09T18:10:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800637,
+    "external_id": "espn_mlb_401696297",
+    "start_time": "2025-07-09T18:10:00+00:00",
+    "home_team_id": 110,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800635,
+    "external_id": "espn_mlb_401696286",
+    "start_time": "2025-07-09T01:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800633,
+    "external_id": "espn_mlb_401696287",
+    "start_time": "2025-07-09T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800632,
+    "external_id": "espn_mlb_401696279",
+    "start_time": "2025-07-09T00:10:00+00:00",
+    "home_team_id": 115,
+    "away_team_id": 112,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800628,
+    "external_id": "espn_mlb_401696280",
+    "start_time": "2025-07-08T23:40:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800626,
+    "external_id": "espn_mlb_401696274",
+    "start_time": "2025-07-08T23:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800607,
+    "external_id": "espn_mlb_401696170",
+    "start_time": "2025-06-30T23:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800606,
+    "external_id": "espn_mlb_401696171",
+    "start_time": "2025-06-30T23:07:00+00:00",
+    "home_team_id": 132,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800604,
+    "external_id": "espn_mlb_401696173",
+    "start_time": "2025-06-30T22:35:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800603,
+    "external_id": "espn_mlb_401696155",
+    "start_time": "2025-06-29T23:00:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800601,
+    "external_id": "espn_mlb_401696169",
+    "start_time": "2025-06-29T20:07:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800597,
+    "external_id": "espn_mlb_401696164",
+    "start_time": "2025-06-29T18:10:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800598,
+    "external_id": "espn_mlb_401696165",
+    "start_time": "2025-06-29T18:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800595,
+    "external_id": "espn_mlb_401696159",
+    "start_time": "2025-06-29T17:40:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800593,
+    "external_id": "espn_mlb_401696161",
+    "start_time": "2025-06-29T17:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800594,
+    "external_id": "espn_mlb_401696162",
+    "start_time": "2025-06-29T17:35:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800590,
+    "external_id": "espn_mlb_401696160",
+    "start_time": "2025-06-29T16:05:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800589,
+    "external_id": "espn_mlb_401696154",
+    "start_time": "2025-06-29T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800580,
+    "external_id": "espn_mlb_401696144",
+    "start_time": "2025-06-28T20:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800582,
+    "external_id": "espn_mlb_401696147",
+    "start_time": "2025-06-28T20:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800583,
+    "external_id": "espn_mlb_401696149",
+    "start_time": "2025-06-28T20:10:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800584,
+    "external_id": "espn_mlb_401696150",
+    "start_time": "2025-06-28T20:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800577,
+    "external_id": "espn_mlb_401696141",
+    "start_time": "2025-06-28T20:05:00+00:00",
+    "home_team_id": 125,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800578,
+    "external_id": "espn_mlb_401696146",
+    "start_time": "2025-06-28T20:05:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800576,
+    "external_id": "espn_mlb_401696140",
+    "start_time": "2025-06-28T17:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800574,
+    "external_id": "espn_mlb_401696139",
+    "start_time": "2025-06-28T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800572,
+    "external_id": "espn_mlb_401696134",
+    "start_time": "2025-06-28T00:10:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800573,
+    "external_id": "espn_mlb_401696135",
+    "start_time": "2025-06-28T00:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800570,
+    "external_id": "espn_mlb_401696136",
+    "start_time": "2025-06-28T00:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 128,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800564,
+    "external_id": "espn_mlb_401696125",
+    "start_time": "2025-06-27T23:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800565,
+    "external_id": "espn_mlb_401696129",
+    "start_time": "2025-06-27T23:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800566,
+    "external_id": "espn_mlb_401696130",
+    "start_time": "2025-06-27T23:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800567,
+    "external_id": "espn_mlb_401696132",
+    "start_time": "2025-06-27T23:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800563,
+    "external_id": "espn_mlb_401696131",
+    "start_time": "2025-06-27T23:05:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800560,
+    "external_id": "espn_mlb_401696124",
+    "start_time": "2025-06-26T19:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800559,
+    "external_id": "espn_mlb_401696123",
+    "start_time": "2025-06-26T19:10:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800557,
+    "external_id": "espn_mlb_401696122",
+    "start_time": "2025-06-26T18:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800553,
+    "external_id": "espn_mlb_401696114",
+    "start_time": "2025-06-26T01:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800552,
+    "external_id": "espn_mlb_401696112",
+    "start_time": "2025-06-26T00:40:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800550,
+    "external_id": "espn_mlb_401696107",
+    "start_time": "2025-06-25T23:45:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 109,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800549,
+    "external_id": "espn_mlb_401696111",
+    "start_time": "2025-06-25T23:40:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800547,
+    "external_id": "espn_mlb_401696102",
+    "start_time": "2025-06-25T23:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800545,
+    "external_id": "espn_mlb_401696105",
+    "start_time": "2025-06-25T22:40:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800544,
+    "external_id": "espn_mlb_401696104",
+    "start_time": "2025-06-25T22:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800543,
+    "external_id": "espn_mlb_401696115",
+    "start_time": "2025-06-25T20:10:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800542,
+    "external_id": "espn_mlb_401696113",
+    "start_time": "2025-06-25T20:07:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800539,
+    "external_id": "espn_mlb_401696099",
+    "start_time": "2025-06-25T01:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800538,
+    "external_id": "espn_mlb_401696100",
+    "start_time": "2025-06-25T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800537,
+    "external_id": "espn_mlb_401696098",
+    "start_time": "2025-06-25T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800536,
+    "external_id": "espn_mlb_401696097",
+    "start_time": "2025-06-25T00:40:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800531,
+    "external_id": "espn_mlb_401696094",
+    "start_time": "2025-06-24T23:40:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 125,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800533,
+    "external_id": "espn_mlb_401696096",
+    "start_time": "2025-06-24T23:40:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800529,
+    "external_id": "espn_mlb_401696087",
+    "start_time": "2025-06-24T23:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800526,
+    "external_id": "espn_mlb_401696089",
+    "start_time": "2025-06-24T22:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800525,
+    "external_id": "espn_mlb_401696085",
+    "start_time": "2025-06-24T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800524,
+    "external_id": "espn_mlb_401696084",
+    "start_time": "2025-06-24T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800519,
+    "external_id": "espn_mlb_401696078",
+    "start_time": "2025-06-23T23:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800517,
+    "external_id": "espn_mlb_401696079",
+    "start_time": "2025-06-23T22:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800514,
+    "external_id": "espn_mlb_401696075",
+    "start_time": "2025-06-22T20:10:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800515,
+    "external_id": "espn_mlb_401696076",
+    "start_time": "2025-06-22T20:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800512,
+    "external_id": "espn_mlb_401696072",
+    "start_time": "2025-06-22T20:05:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800509,
+    "external_id": "espn_mlb_401696068",
+    "start_time": "2025-06-22T18:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800508,
+    "external_id": "espn_mlb_401696069",
+    "start_time": "2025-06-22T18:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800504,
+    "external_id": "espn_mlb_401696065",
+    "start_time": "2025-06-22T16:10:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800503,
+    "external_id": "espn_mlb_401696063",
+    "start_time": "2025-06-22T15:35:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 107,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800502,
+    "external_id": "espn_mlb_401696061",
+    "start_time": "2025-06-22T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800499,
+    "external_id": "espn_mlb_401696060",
+    "start_time": "2025-06-21T23:15:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800495,
+    "external_id": "espn_mlb_401696052",
+    "start_time": "2025-06-21T20:05:00+00:00",
+    "home_team_id": 125,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800496,
+    "external_id": "espn_mlb_401696057",
+    "start_time": "2025-06-21T20:05:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800492,
+    "external_id": "espn_mlb_401696053",
+    "start_time": "2025-06-21T18:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800491,
+    "external_id": "espn_mlb_401696054",
+    "start_time": "2025-06-21T18:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800490,
+    "external_id": "espn_mlb_401696048",
+    "start_time": "2025-06-21T17:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 107,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800489,
+    "external_id": "espn_mlb_401696050",
+    "start_time": "2025-06-21T16:10:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800488,
+    "external_id": "espn_mlb_401696042",
+    "start_time": "2025-06-21T02:15:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800487,
+    "external_id": "espn_mlb_401696046",
+    "start_time": "2025-06-21T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800486,
+    "external_id": "espn_mlb_401696045",
+    "start_time": "2025-06-21T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800483,
+    "external_id": "espn_mlb_401696039",
+    "start_time": "2025-06-21T00:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800481,
+    "external_id": "espn_mlb_401696036",
+    "start_time": "2025-06-20T23:15:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800482,
+    "external_id": "espn_mlb_401696038",
+    "start_time": "2025-06-20T23:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800477,
+    "external_id": "espn_mlb_401696033",
+    "start_time": "2025-06-20T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 107,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800478,
+    "external_id": "espn_mlb_401696035",
+    "start_time": "2025-06-20T23:05:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800476,
+    "external_id": "espn_mlb_401696037",
+    "start_time": "2025-06-20T22:40:00+00:00",
+    "home_team_id": 125,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800474,
+    "external_id": "espn_mlb_401696031",
+    "start_time": "2025-06-20T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800473,
+    "external_id": "espn_mlb_401696020",
+    "start_time": "2025-06-19T23:45:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 107,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800471,
+    "external_id": "espn_mlb_401696024",
+    "start_time": "2025-06-19T22:40:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800468,
+    "external_id": "espn_mlb_401696029",
+    "start_time": "2025-06-19T20:05:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 112,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800466,
+    "external_id": "espn_mlb_401696026",
+    "start_time": "2025-06-19T18:35:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800461,
+    "external_id": "espn_mlb_401696018",
+    "start_time": "2025-06-19T17:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800460,
+    "external_id": "espn_mlb_401696022",
+    "start_time": "2025-06-19T16:40:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800459,
+    "external_id": "espn_mlb_401696017",
+    "start_time": "2025-06-19T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800458,
+    "external_id": "espn_mlb_401696015",
+    "start_time": "2025-06-19T01:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 112,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800456,
+    "external_id": "espn_mlb_401696011",
+    "start_time": "2025-06-19T00:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800454,
+    "external_id": "espn_mlb_401696005",
+    "start_time": "2025-06-18T23:35:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 107,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800452,
+    "external_id": "espn_mlb_401696007",
+    "start_time": "2025-06-18T23:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800450,
+    "external_id": "espn_mlb_401696003",
+    "start_time": "2025-06-18T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800447,
+    "external_id": "espn_mlb_401696009",
+    "start_time": "2025-06-18T22:40:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800445,
+    "external_id": "espn_mlb_401696002",
+    "start_time": "2025-06-18T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800441,
+    "external_id": "espn_mlb_401695996",
+    "start_time": "2025-06-18T00:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800440,
+    "external_id": "espn_mlb_401695998",
+    "start_time": "2025-06-17T23:40:00+00:00",
+    "home_team_id": 110,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800437,
+    "external_id": "espn_mlb_401695992",
+    "start_time": "2025-06-17T23:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800435,
+    "external_id": "espn_mlb_401695988",
+    "start_time": "2025-06-17T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800433,
+    "external_id": "espn_mlb_401695995",
+    "start_time": "2025-06-17T22:40:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 125,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800432,
+    "external_id": "espn_mlb_401695994",
+    "start_time": "2025-06-17T22:10:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800431,
+    "external_id": "espn_mlb_401695987",
+    "start_time": "2025-06-17T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800429,
+    "external_id": "espn_mlb_401695982",
+    "start_time": "2025-06-16T23:35:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 107,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800428,
+    "external_id": "espn_mlb_401695981",
+    "start_time": "2025-06-16T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800426,
+    "external_id": "espn_mlb_401695984",
+    "start_time": "2025-06-16T22:40:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800425,
+    "external_id": "espn_mlb_401695980",
+    "start_time": "2025-06-15T23:00:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800421,
+    "external_id": "espn_mlb_401695976",
+    "start_time": "2025-06-15T18:20:00+00:00",
+    "home_team_id": 109,
+    "away_team_id": 125,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800419,
+    "external_id": "espn_mlb_401695974",
+    "start_time": "2025-06-15T18:10:00+00:00",
+    "home_team_id": 115,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800420,
+    "external_id": "espn_mlb_401695977",
+    "start_time": "2025-06-15T18:10:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800413,
+    "external_id": "espn_mlb_401695966",
+    "start_time": "2025-06-15T17:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800415,
+    "external_id": "espn_mlb_401695969",
+    "start_time": "2025-06-15T17:35:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800416,
+    "external_id": "espn_mlb_401695970",
+    "start_time": "2025-06-15T17:35:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800417,
+    "external_id": "espn_mlb_401695972",
+    "start_time": "2025-06-15T17:35:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800412,
+    "external_id": "espn_mlb_401695967",
+    "start_time": "2025-06-15T16:05:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800411,
+    "external_id": "espn_mlb_401695965",
+    "start_time": "2025-06-15T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800408,
+    "external_id": "espn_mlb_401695955",
+    "start_time": "2025-06-14T23:15:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800406,
+    "external_id": "espn_mlb_401695962",
+    "start_time": "2025-06-14T20:10:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800401,
+    "external_id": "espn_mlb_401695951",
+    "start_time": "2025-06-14T20:05:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800402,
+    "external_id": "espn_mlb_401695957",
+    "start_time": "2025-06-14T20:05:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800399,
+    "external_id": "espn_mlb_401695952",
+    "start_time": "2025-06-14T17:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800398,
+    "external_id": "espn_mlb_401695954",
+    "start_time": "2025-06-14T17:05:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800397,
+    "external_id": "espn_mlb_401695950",
+    "start_time": "2025-06-14T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800394,
+    "external_id": "espn_mlb_401695947",
+    "start_time": "2025-06-14T00:10:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800388,
+    "external_id": "espn_mlb_401695937",
+    "start_time": "2025-06-13T23:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800389,
+    "external_id": "espn_mlb_401695940",
+    "start_time": "2025-06-13T23:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800390,
+    "external_id": "espn_mlb_401695941",
+    "start_time": "2025-06-13T23:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800387,
+    "external_id": "espn_mlb_401695936",
+    "start_time": "2025-06-13T23:05:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800385,
+    "external_id": "espn_mlb_401695939",
+    "start_time": "2025-06-13T22:45:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800386,
+    "external_id": "espn_mlb_401695942",
+    "start_time": "2025-06-13T22:45:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800384,
+    "external_id": "espn_mlb_401695946",
+    "start_time": "2025-06-13T18:20:00+00:00",
+    "home_team_id": 109,
+    "away_team_id": 125,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800380,
+    "external_id": "espn_mlb_401695931",
+    "start_time": "2025-06-12T23:40:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800381,
+    "external_id": "espn_mlb_401695933",
+    "start_time": "2025-06-12T23:40:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800379,
+    "external_id": "espn_mlb_401695928",
+    "start_time": "2025-06-12T22:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800376,
+    "external_id": "espn_mlb_401695929",
+    "start_time": "2025-06-12T17:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800377,
+    "external_id": "espn_mlb_401695934",
+    "start_time": "2025-06-12T17:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800372,
+    "external_id": "espn_mlb_401695921",
+    "start_time": "2025-06-11T23:40:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800373,
+    "external_id": "espn_mlb_401695922",
+    "start_time": "2025-06-11T23:40:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800370,
+    "external_id": "espn_mlb_401695917",
+    "start_time": "2025-06-11T23:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800371,
+    "external_id": "espn_mlb_401695918",
+    "start_time": "2025-06-11T23:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800369,
+    "external_id": "espn_mlb_401695915",
+    "start_time": "2025-06-11T22:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800368,
+    "external_id": "espn_mlb_401695925",
+    "start_time": "2025-06-11T20:10:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800366,
+    "external_id": "espn_mlb_401695923",
+    "start_time": "2025-06-11T18:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800364,
+    "external_id": "espn_mlb_401695914",
+    "start_time": "2025-06-11T17:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800362,
+    "external_id": "espn_mlb_401695916",
+    "start_time": "2025-06-11T16:35:00+00:00",
+    "home_team_id": 125,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800360,
+    "external_id": "espn_mlb_401695910",
+    "start_time": "2025-06-11T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800357,
+    "external_id": "espn_mlb_401695908",
+    "start_time": "2025-06-10T23:45:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800355,
+    "external_id": "espn_mlb_401695906",
+    "start_time": "2025-06-10T23:40:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800356,
+    "external_id": "espn_mlb_401695907",
+    "start_time": "2025-06-10T23:40:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800352,
+    "external_id": "espn_mlb_401695902",
+    "start_time": "2025-06-10T23:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800353,
+    "external_id": "espn_mlb_401695903",
+    "start_time": "2025-06-10T23:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800351,
+    "external_id": "espn_mlb_401695898",
+    "start_time": "2025-06-10T22:45:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 109,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800350,
+    "external_id": "espn_mlb_401695901",
+    "start_time": "2025-06-10T22:40:00+00:00",
+    "home_team_id": 125,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800348,
+    "external_id": "espn_mlb_401695900",
+    "start_time": "2025-06-10T22:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800346,
+    "external_id": "espn_mlb_401695895",
+    "start_time": "2025-06-10T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800345,
+    "external_id": "espn_mlb_401695894",
+    "start_time": "2025-06-09T23:45:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800343,
+    "external_id": "espn_mlb_401695892",
+    "start_time": "2025-06-09T23:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800341,
+    "external_id": "espn_mlb_401695891",
+    "start_time": "2025-06-09T22:40:00+00:00",
+    "home_team_id": 125,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800339,
+    "external_id": "espn_mlb_401695875",
+    "start_time": "2025-06-08T23:00:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800338,
+    "external_id": "espn_mlb_401695888",
+    "start_time": "2025-06-08T20:07:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 128,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800335,
+    "external_id": "espn_mlb_401695882",
+    "start_time": "2025-06-08T18:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800334,
+    "external_id": "espn_mlb_401695884",
+    "start_time": "2025-06-08T18:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800327,
+    "external_id": "espn_mlb_401695883",
+    "start_time": "2025-06-08T17:05:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800326,
+    "external_id": "espn_mlb_401695878",
+    "start_time": "2025-06-08T16:10:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800325,
+    "external_id": "espn_mlb_401695870",
+    "start_time": "2025-06-08T01:40:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800324,
+    "external_id": "espn_mlb_401695873",
+    "start_time": "2025-06-08T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 128,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800322,
+    "external_id": "espn_mlb_401695860",
+    "start_time": "2025-06-07T23:35:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800323,
+    "external_id": "espn_mlb_401695868",
+    "start_time": "2025-06-07T23:35:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800320,
+    "external_id": "espn_mlb_401695863",
+    "start_time": "2025-06-07T20:10:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800314,
+    "external_id": "espn_mlb_401695867",
+    "start_time": "2025-06-07T18:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800313,
+    "external_id": "espn_mlb_401695869",
+    "start_time": "2025-06-07T18:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800312,
+    "external_id": "espn_mlb_401695861",
+    "start_time": "2025-06-07T17:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 109,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800309,
+    "external_id": "espn_mlb_401695858",
+    "start_time": "2025-06-07T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 128,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800308,
+    "external_id": "espn_mlb_401695855",
+    "start_time": "2025-06-07T00:40:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800307,
+    "external_id": "espn_mlb_401695852",
+    "start_time": "2025-06-07T00:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800305,
+    "external_id": "espn_mlb_401695853",
+    "start_time": "2025-06-07T00:10:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800306,
+    "external_id": "espn_mlb_401695854",
+    "start_time": "2025-06-07T00:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800300,
+    "external_id": "espn_mlb_401695845",
+    "start_time": "2025-06-06T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800299,
+    "external_id": "espn_mlb_401695850",
+    "start_time": "2025-06-06T22:45:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800298,
+    "external_id": "espn_mlb_401695849",
+    "start_time": "2025-06-06T22:40:00+00:00",
+    "home_team_id": 125,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800297,
+    "external_id": "espn_mlb_401695848",
+    "start_time": "2025-06-06T17:10:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800296,
+    "external_id": "espn_mlb_401695839",
+    "start_time": "2025-06-05T23:45:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800291,
+    "external_id": "espn_mlb_401695842",
+    "start_time": "2025-06-05T20:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800290,
+    "external_id": "espn_mlb_401695843",
+    "start_time": "2025-06-05T19:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800288,
+    "external_id": "espn_mlb_401695836",
+    "start_time": "2025-06-05T19:07:00+00:00",
+    "home_team_id": 132,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800286,
+    "external_id": "espn_mlb_401778098",
+    "start_time": "2025-06-05T17:45:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800284,
+    "external_id": "espn_mlb_401695830",
+    "start_time": "2025-06-05T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800283,
+    "external_id": "espn_mlb_401695831",
+    "start_time": "2025-06-05T01:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800279,
+    "external_id": "espn_mlb_401695825",
+    "start_time": "2025-06-04T23:35:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800277,
+    "external_id": "espn_mlb_401695824",
+    "start_time": "2025-06-04T23:07:00+00:00",
+    "home_team_id": 132,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800276,
+    "external_id": "espn_mlb_401695820",
+    "start_time": "2025-06-04T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 112,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800273,
+    "external_id": "espn_mlb_401695817",
+    "start_time": "2025-06-04T17:35:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800272,
+    "external_id": "espn_mlb_401695823",
+    "start_time": "2025-06-04T16:40:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800270,
+    "external_id": "espn_mlb_401695815",
+    "start_time": "2025-06-04T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800269,
+    "external_id": "espn_mlb_401695816",
+    "start_time": "2025-06-04T01:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800268,
+    "external_id": "espn_mlb_401695813",
+    "start_time": "2025-06-04T01:40:00+00:00",
+    "home_team_id": 128,
+    "away_team_id": 107,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800267,
+    "external_id": "espn_mlb_401695812",
+    "start_time": "2025-06-03T23:45:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800265,
+    "external_id": "espn_mlb_401695810",
+    "start_time": "2025-06-03T23:35:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800262,
+    "external_id": "espn_mlb_401695802",
+    "start_time": "2025-06-03T23:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800263,
+    "external_id": "espn_mlb_401695808",
+    "start_time": "2025-06-03T23:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800261,
+    "external_id": "espn_mlb_401695809",
+    "start_time": "2025-06-03T23:07:00+00:00",
+    "home_team_id": 132,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800256,
+    "external_id": "espn_mlb_401695800",
+    "start_time": "2025-06-03T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800255,
+    "external_id": "espn_mlb_401695801",
+    "start_time": "2025-06-03T01:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800252,
+    "external_id": "espn_mlb_401695795",
+    "start_time": "2025-06-02T23:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800253,
+    "external_id": "espn_mlb_401695797",
+    "start_time": "2025-06-02T23:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800250,
+    "external_id": "espn_mlb_401695792",
+    "start_time": "2025-06-01T23:00:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800247,
+    "external_id": "espn_mlb_401695791",
+    "start_time": "2025-06-01T20:10:00+00:00",
+    "home_team_id": 128,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800246,
+    "external_id": "espn_mlb_401695787",
+    "start_time": "2025-06-01T18:20:00+00:00",
+    "home_team_id": 109,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800244,
+    "external_id": "espn_mlb_401695788",
+    "start_time": "2025-06-01T18:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800241,
+    "external_id": "espn_mlb_401695780",
+    "start_time": "2025-06-01T17:40:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800243,
+    "external_id": "espn_mlb_401695786",
+    "start_time": "2025-06-01T17:40:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800240,
+    "external_id": "espn_mlb_401695784",
+    "start_time": "2025-06-01T17:35:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800237,
+    "external_id": "espn_mlb_401695789",
+    "start_time": "2025-06-01T17:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800235,
+    "external_id": "espn_mlb_401695778",
+    "start_time": "2025-06-01T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 125,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800234,
+    "external_id": "espn_mlb_401695777",
+    "start_time": "2025-05-31T23:15:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800227,
+    "external_id": "espn_mlb_401695765",
+    "start_time": "2025-05-31T20:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800229,
+    "external_id": "espn_mlb_401695768",
+    "start_time": "2025-05-31T20:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800230,
+    "external_id": "espn_mlb_401695771",
+    "start_time": "2025-05-31T20:10:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800231,
+    "external_id": "espn_mlb_401695773",
+    "start_time": "2025-05-31T20:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800225,
+    "external_id": "espn_mlb_401695769",
+    "start_time": "2025-05-31T20:05:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800226,
+    "external_id": "espn_mlb_401695774",
+    "start_time": "2025-05-31T20:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800222,
+    "external_id": "espn_mlb_401695762",
+    "start_time": "2025-05-31T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800217,
+    "external_id": "espn_mlb_401695758",
+    "start_time": "2025-05-31T00:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800216,
+    "external_id": "espn_mlb_401695759",
+    "start_time": "2025-05-31T00:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800212,
+    "external_id": "espn_mlb_401695750",
+    "start_time": "2025-05-30T23:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800213,
+    "external_id": "espn_mlb_401695753",
+    "start_time": "2025-05-30T23:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800214,
+    "external_id": "espn_mlb_401695756",
+    "start_time": "2025-05-30T23:10:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800211,
+    "external_id": "espn_mlb_401695754",
+    "start_time": "2025-05-30T22:45:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800204,
+    "external_id": "espn_mlb_401695745",
+    "start_time": "2025-05-29T01:40:00+00:00",
+    "home_team_id": 128,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800203,
+    "external_id": "espn_mlb_401695743",
+    "start_time": "2025-05-29T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800202,
+    "external_id": "espn_mlb_401695741",
+    "start_time": "2025-05-29T00:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800200,
+    "external_id": "espn_mlb_401695737",
+    "start_time": "2025-05-28T23:40:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800197,
+    "external_id": "espn_mlb_401695742",
+    "start_time": "2025-05-28T20:10:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800193,
+    "external_id": "espn_mlb_401695734",
+    "start_time": "2025-05-28T17:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800194,
+    "external_id": "espn_mlb_401695736",
+    "start_time": "2025-05-28T17:10:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800195,
+    "external_id": "espn_mlb_401695740",
+    "start_time": "2025-05-28T17:10:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800188,
+    "external_id": "espn_mlb_401695727",
+    "start_time": "2025-05-28T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800187,
+    "external_id": "espn_mlb_401695728",
+    "start_time": "2025-05-28T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800186,
+    "external_id": "espn_mlb_401695726",
+    "start_time": "2025-05-28T00:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800183,
+    "external_id": "espn_mlb_401695721",
+    "start_time": "2025-05-27T23:40:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800184,
+    "external_id": "espn_mlb_401695722",
+    "start_time": "2025-05-27T23:40:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800181,
+    "external_id": "espn_mlb_401695725",
+    "start_time": "2025-05-27T23:05:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800179,
+    "external_id": "espn_mlb_401695719",
+    "start_time": "2025-05-27T22:40:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800178,
+    "external_id": "espn_mlb_401695720",
+    "start_time": "2025-05-27T22:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800177,
+    "external_id": "espn_mlb_401695718",
+    "start_time": "2025-05-27T22:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800176,
+    "external_id": "espn_mlb_401695714",
+    "start_time": "2025-05-27T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800175,
+    "external_id": "espn_mlb_401695713",
+    "start_time": "2025-05-27T00:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800173,
+    "external_id": "espn_mlb_401695711",
+    "start_time": "2025-05-26T23:05:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800172,
+    "external_id": "espn_mlb_401695705",
+    "start_time": "2025-05-26T22:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800171,
+    "external_id": "espn_mlb_401695709",
+    "start_time": "2025-05-26T20:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800169,
+    "external_id": "espn_mlb_401695712",
+    "start_time": "2025-05-26T20:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800167,
+    "external_id": "espn_mlb_401695710",
+    "start_time": "2025-05-26T18:20:00+00:00",
+    "home_team_id": 109,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800166,
+    "external_id": "espn_mlb_401695708",
+    "start_time": "2025-05-26T18:10:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800165,
+    "external_id": "espn_mlb_401695706",
+    "start_time": "2025-05-26T17:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800164,
+    "external_id": "espn_mlb_401695692",
+    "start_time": "2025-05-25T23:00:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800162,
+    "external_id": "espn_mlb_401695702",
+    "start_time": "2025-05-25T20:07:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800161,
+    "external_id": "espn_mlb_401695701",
+    "start_time": "2025-05-25T19:10:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800157,
+    "external_id": "espn_mlb_401695698",
+    "start_time": "2025-05-25T18:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800155,
+    "external_id": "espn_mlb_401695690",
+    "start_time": "2025-05-25T17:40:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 109,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800154,
+    "external_id": "espn_mlb_401695695",
+    "start_time": "2025-05-25T17:35:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800151,
+    "external_id": "espn_mlb_401695691",
+    "start_time": "2025-05-25T15:35:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 112,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800150,
+    "external_id": "espn_mlb_401695687",
+    "start_time": "2025-05-25T02:07:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800148,
+    "external_id": "espn_mlb_401695676",
+    "start_time": "2025-05-24T23:15:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 112,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800149,
+    "external_id": "espn_mlb_401695677",
+    "start_time": "2025-05-24T23:15:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800147,
+    "external_id": "espn_mlb_401695681",
+    "start_time": "2025-05-24T23:05:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800145,
+    "external_id": "espn_mlb_401695686",
+    "start_time": "2025-05-24T20:10:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800139,
+    "external_id": "espn_mlb_401695678",
+    "start_time": "2025-05-24T20:05:00+00:00",
+    "home_team_id": 125,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800140,
+    "external_id": "espn_mlb_401695680",
+    "start_time": "2025-05-24T20:05:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800137,
+    "external_id": "espn_mlb_401695683",
+    "start_time": "2025-05-24T18:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800135,
+    "external_id": "espn_mlb_401695672",
+    "start_time": "2025-05-24T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800134,
+    "external_id": "espn_mlb_401695671",
+    "start_time": "2025-05-24T00:40:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800131,
+    "external_id": "espn_mlb_401695668",
+    "start_time": "2025-05-24T00:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800128,
+    "external_id": "espn_mlb_401695662",
+    "start_time": "2025-05-23T23:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800125,
+    "external_id": "espn_mlb_401695666",
+    "start_time": "2025-05-23T23:05:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800123,
+    "external_id": "espn_mlb_401695663",
+    "start_time": "2025-05-23T22:40:00+00:00",
+    "home_team_id": 125,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800116,
+    "external_id": "espn_mlb_401695652",
+    "start_time": "2025-05-22T22:40:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 112,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800115,
+    "external_id": "espn_mlb_401695657",
+    "start_time": "2025-05-22T19:10:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800114,
+    "external_id": "espn_mlb_401695654",
+    "start_time": "2025-05-22T17:07:00+00:00",
+    "home_team_id": 132,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800113,
+    "external_id": "espn_mlb_401695655",
+    "start_time": "2025-05-22T16:35:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800111,
+    "external_id": "espn_mlb_401695646",
+    "start_time": "2025-05-22T00:40:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800110,
+    "external_id": "espn_mlb_401695640",
+    "start_time": "2025-05-21T23:07:00+00:00",
+    "home_team_id": 132,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800109,
+    "external_id": "espn_mlb_401695641",
+    "start_time": "2025-05-21T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800017,
+    "external_id": "espn_mlb_401695539",
+    "start_time": "2025-05-14T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800015,
+    "external_id": "espn_mlb_401695536",
+    "start_time": "2025-05-14T00:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800012,
+    "external_id": "espn_mlb_401695532",
+    "start_time": "2025-05-13T23:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 125,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800011,
+    "external_id": "espn_mlb_401695534",
+    "start_time": "2025-05-13T23:07:00+00:00",
+    "home_team_id": 132,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800008,
+    "external_id": "espn_mlb_401695528",
+    "start_time": "2025-05-13T22:40:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800006,
+    "external_id": "espn_mlb_401695530",
+    "start_time": "2025-05-13T22:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800003,
+    "external_id": "espn_mlb_401695524",
+    "start_time": "2025-05-13T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800004,
+    "external_id": "espn_mlb_401695526",
+    "start_time": "2025-05-13T01:40:00+00:00",
+    "home_team_id": 128,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3800001,
+    "external_id": "espn_mlb_401695521",
+    "start_time": "2025-05-13T00:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799998,
+    "external_id": "espn_mlb_401695518",
+    "start_time": "2025-05-12T23:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 125,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799997,
+    "external_id": "espn_mlb_401695519",
+    "start_time": "2025-05-12T22:45:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799996,
+    "external_id": "espn_mlb_401695516",
+    "start_time": "2025-05-12T22:40:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799994,
+    "external_id": "espn_mlb_401695504",
+    "start_time": "2025-05-11T23:00:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799993,
+    "external_id": "espn_mlb_401695515",
+    "start_time": "2025-05-11T20:10:00+00:00",
+    "home_team_id": 128,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799990,
+    "external_id": "espn_mlb_401695511",
+    "start_time": "2025-05-11T19:10:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799986,
+    "external_id": "espn_mlb_401695507",
+    "start_time": "2025-05-11T18:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799989,
+    "external_id": "espn_mlb_401695510",
+    "start_time": "2025-05-11T18:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799985,
+    "external_id": "espn_mlb_401695506",
+    "start_time": "2025-05-11T17:40:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799977,
+    "external_id": "espn_mlb_401695496",
+    "start_time": "2025-05-11T00:10:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799975,
+    "external_id": "espn_mlb_401695487",
+    "start_time": "2025-05-10T23:15:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 109,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799976,
+    "external_id": "espn_mlb_401695495",
+    "start_time": "2025-05-10T23:15:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799972,
+    "external_id": "espn_mlb_401695492",
+    "start_time": "2025-05-10T23:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799970,
+    "external_id": "espn_mlb_401695489",
+    "start_time": "2025-05-10T22:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799971,
+    "external_id": "espn_mlb_401695491",
+    "start_time": "2025-05-10T22:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799969,
+    "external_id": "espn_mlb_401695488",
+    "start_time": "2025-05-10T20:10:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799968,
+    "external_id": "espn_mlb_401695490",
+    "start_time": "2025-05-10T20:05:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799966,
+    "external_id": "espn_mlb_401695485",
+    "start_time": "2025-05-10T01:40:00+00:00",
+    "home_team_id": 128,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799963,
+    "external_id": "espn_mlb_401695481",
+    "start_time": "2025-05-10T00:40:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799962,
+    "external_id": "espn_mlb_401695480",
+    "start_time": "2025-05-10T00:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799959,
+    "external_id": "espn_mlb_401695477",
+    "start_time": "2025-05-09T23:40:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799958,
+    "external_id": "espn_mlb_401695474",
+    "start_time": "2025-05-09T23:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799954,
+    "external_id": "espn_mlb_401695476",
+    "start_time": "2025-05-09T22:40:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799951,
+    "external_id": "espn_mlb_401695470",
+    "start_time": "2025-05-09T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799949,
+    "external_id": "espn_mlb_401695464",
+    "start_time": "2025-05-08T23:05:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799948,
+    "external_id": "espn_mlb_401770084",
+    "start_time": "2025-05-08T22:10:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799947,
+    "external_id": "espn_mlb_401695468",
+    "start_time": "2025-05-08T19:10:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799945,
+    "external_id": "espn_mlb_401695465",
+    "start_time": "2025-05-08T17:35:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799943,
+    "external_id": "espn_mlb_401695462",
+    "start_time": "2025-05-08T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799942,
+    "external_id": "espn_mlb_401695459",
+    "start_time": "2025-05-08T00:40:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799938,
+    "external_id": "espn_mlb_401695452",
+    "start_time": "2025-05-07T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799936,
+    "external_id": "espn_mlb_401695453",
+    "start_time": "2025-05-07T22:45:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799935,
+    "external_id": "espn_mlb_401695450",
+    "start_time": "2025-05-07T20:40:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799928,
+    "external_id": "espn_mlb_401695447",
+    "start_time": "2025-05-07T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799926,
+    "external_id": "espn_mlb_401695442",
+    "start_time": "2025-05-06T23:45:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 125,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799922,
+    "external_id": "espn_mlb_401695439",
+    "start_time": "2025-05-06T23:40:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 107,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799920,
+    "external_id": "espn_mlb_401695434",
+    "start_time": "2025-05-06T23:10:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 112,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799919,
+    "external_id": "espn_mlb_401695437",
+    "start_time": "2025-05-06T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799917,
+    "external_id": "espn_mlb_401695438",
+    "start_time": "2025-05-06T22:45:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799916,
+    "external_id": "espn_mlb_401695435",
+    "start_time": "2025-05-06T22:40:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799910,
+    "external_id": "espn_mlb_401695427",
+    "start_time": "2025-05-05T23:40:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 110,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799908,
+    "external_id": "espn_mlb_401695426",
+    "start_time": "2025-05-05T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799906,
+    "external_id": "espn_mlb_401695425",
+    "start_time": "2025-05-05T22:40:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799904,
+    "external_id": "espn_mlb_401769824",
+    "start_time": "2025-05-04T22:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799903,
+    "external_id": "espn_mlb_401695416",
+    "start_time": "2025-05-04T20:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799902,
+    "external_id": "espn_mlb_401695422",
+    "start_time": "2025-05-04T20:07:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799901,
+    "external_id": "espn_mlb_401695421",
+    "start_time": "2025-05-04T20:05:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799900,
+    "external_id": "espn_mlb_401695420",
+    "start_time": "2025-05-04T18:35:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 128,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799898,
+    "external_id": "espn_mlb_401695417",
+    "start_time": "2025-05-04T18:10:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 109,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799896,
+    "external_id": "espn_mlb_401695409",
+    "start_time": "2025-05-04T17:37:00+00:00",
+    "home_team_id": 132,
+    "away_team_id": 112,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799892,
+    "external_id": "espn_mlb_401695410",
+    "start_time": "2025-05-04T17:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799893,
+    "external_id": "espn_mlb_401695412",
+    "start_time": "2025-05-04T17:35:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799895,
+    "external_id": "espn_mlb_401695415",
+    "start_time": "2025-05-04T17:35:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799891,
+    "external_id": "espn_mlb_401695419",
+    "start_time": "2025-05-04T17:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799889,
+    "external_id": "espn_mlb_401695407",
+    "start_time": "2025-05-04T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799886,
+    "external_id": "espn_mlb_401695405",
+    "start_time": "2025-05-03T23:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 128,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799883,
+    "external_id": "espn_mlb_401695397",
+    "start_time": "2025-05-03T20:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799881,
+    "external_id": "espn_mlb_401695399",
+    "start_time": "2025-05-03T20:05:00+00:00",
+    "home_team_id": 125,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799882,
+    "external_id": "espn_mlb_401695406",
+    "start_time": "2025-05-03T20:05:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799877,
+    "external_id": "espn_mlb_401695400",
+    "start_time": "2025-05-03T17:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799876,
+    "external_id": "espn_mlb_401695391",
+    "start_time": "2025-05-03T02:15:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799875,
+    "external_id": "espn_mlb_401695392",
+    "start_time": "2025-05-03T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799874,
+    "external_id": "espn_mlb_401695389",
+    "start_time": "2025-05-03T00:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799872,
+    "external_id": "espn_mlb_401695390",
+    "start_time": "2025-05-03T00:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 128,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799869,
+    "external_id": "espn_mlb_401695382",
+    "start_time": "2025-05-02T23:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799868,
+    "external_id": "espn_mlb_401695379",
+    "start_time": "2025-05-02T23:07:00+00:00",
+    "home_team_id": 132,
+    "away_team_id": 112,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799867,
+    "external_id": "espn_mlb_401695385",
+    "start_time": "2025-05-02T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799864,
+    "external_id": "espn_mlb_401695384",
+    "start_time": "2025-05-02T22:40:00+00:00",
+    "home_team_id": 125,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799863,
+    "external_id": "espn_mlb_401695386",
+    "start_time": "2025-05-02T22:10:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799862,
+    "external_id": "espn_mlb_401695376",
+    "start_time": "2025-05-02T01:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799861,
+    "external_id": "espn_mlb_401695377",
+    "start_time": "2025-05-02T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799860,
+    "external_id": "espn_mlb_401695368",
+    "start_time": "2025-05-01T23:07:00+00:00",
+    "home_team_id": 132,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799859,
+    "external_id": "espn_mlb_401695373",
+    "start_time": "2025-05-01T22:45:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799858,
+    "external_id": "espn_mlb_401695374",
+    "start_time": "2025-05-01T18:10:00+00:00",
+    "home_team_id": 110,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799856,
+    "external_id": "espn_mlb_401695370",
+    "start_time": "2025-05-01T17:10:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799854,
+    "external_id": "espn_mlb_401695372",
+    "start_time": "2025-05-01T16:40:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799853,
+    "external_id": "espn_mlb_401695369",
+    "start_time": "2025-05-01T16:35:00+00:00",
+    "home_team_id": 125,
+    "away_team_id": 109,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799852,
+    "external_id": "espn_mlb_401695361",
+    "start_time": "2025-04-30T23:40:00+00:00",
+    "home_team_id": 110,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799850,
+    "external_id": "espn_mlb_401695353",
+    "start_time": "2025-04-30T23:07:00+00:00",
+    "home_team_id": 132,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799849,
+    "external_id": "espn_mlb_401695355",
+    "start_time": "2025-04-30T23:05:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799848,
+    "external_id": "espn_mlb_401695359",
+    "start_time": "2025-04-30T22:45:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799847,
+    "external_id": "espn_mlb_401695358",
+    "start_time": "2025-04-30T22:40:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799845,
+    "external_id": "espn_mlb_401695357",
+    "start_time": "2025-04-30T22:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799844,
+    "external_id": "espn_mlb_401695356",
+    "start_time": "2025-04-30T22:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799842,
+    "external_id": "espn_mlb_401695364",
+    "start_time": "2025-04-30T20:10:00+00:00",
+    "home_team_id": 128,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799843,
+    "external_id": "espn_mlb_401695366",
+    "start_time": "2025-04-30T20:10:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799841,
+    "external_id": "espn_mlb_401695365",
+    "start_time": "2025-04-30T19:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799838,
+    "external_id": "espn_mlb_401769679",
+    "start_time": "2025-04-30T16:40:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799837,
+    "external_id": "espn_mlb_401695350",
+    "start_time": "2025-04-30T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799836,
+    "external_id": "espn_mlb_401695351",
+    "start_time": "2025-04-30T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799830,
+    "external_id": "espn_mlb_401695338",
+    "start_time": "2025-04-29T23:07:00+00:00",
+    "home_team_id": 132,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799829,
+    "external_id": "espn_mlb_401695340",
+    "start_time": "2025-04-29T23:05:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799828,
+    "external_id": "espn_mlb_401695344",
+    "start_time": "2025-04-29T22:45:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799824,
+    "external_id": "espn_mlb_401695341",
+    "start_time": "2025-04-29T22:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799823,
+    "external_id": "espn_mlb_401695336",
+    "start_time": "2025-04-29T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799820,
+    "external_id": "espn_mlb_401695332",
+    "start_time": "2025-04-28T22:40:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799819,
+    "external_id": "espn_mlb_401695330",
+    "start_time": "2025-04-28T22:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799817,
+    "external_id": "espn_mlb_401695331",
+    "start_time": "2025-04-28T20:05:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799816,
+    "external_id": "espn_mlb_401695321",
+    "start_time": "2025-04-27T23:00:00+00:00",
+    "home_team_id": 109,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799815,
+    "external_id": "espn_mlb_401769356",
+    "start_time": "2025-04-27T21:25:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799812,
+    "external_id": "espn_mlb_401695325",
+    "start_time": "2025-04-27T20:10:00+00:00",
+    "home_team_id": 128,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799814,
+    "external_id": "espn_mlb_401695327",
+    "start_time": "2025-04-27T20:10:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799809,
+    "external_id": "espn_mlb_401695322",
+    "start_time": "2025-04-27T19:10:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799808,
+    "external_id": "espn_mlb_401695320",
+    "start_time": "2025-04-27T18:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799804,
+    "external_id": "espn_mlb_401695314",
+    "start_time": "2025-04-27T17:40:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 107,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799805,
+    "external_id": "espn_mlb_401695318",
+    "start_time": "2025-04-27T17:40:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799802,
+    "external_id": "espn_mlb_401695316",
+    "start_time": "2025-04-27T17:35:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799803,
+    "external_id": "espn_mlb_401695317",
+    "start_time": "2025-04-27T17:35:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799801,
+    "external_id": "espn_mlb_401695310",
+    "start_time": "2025-04-27T01:40:00+00:00",
+    "home_team_id": 128,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799799,
+    "external_id": "espn_mlb_401695312",
+    "start_time": "2025-04-27T00:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799796,
+    "external_id": "espn_mlb_401769298",
+    "start_time": "2025-04-26T22:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 107,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799794,
+    "external_id": "espn_mlb_401695301",
+    "start_time": "2025-04-26T20:30:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799792,
+    "external_id": "espn_mlb_401695306",
+    "start_time": "2025-04-26T20:05:00+00:00",
+    "home_team_id": 109,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799791,
+    "external_id": "espn_mlb_401695307",
+    "start_time": "2025-04-26T19:10:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799790,
+    "external_id": "espn_mlb_401695305",
+    "start_time": "2025-04-26T18:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799789,
+    "external_id": "espn_mlb_401695303",
+    "start_time": "2025-04-26T18:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799787,
+    "external_id": "espn_mlb_401695299",
+    "start_time": "2025-04-26T17:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 107,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799788,
+    "external_id": "espn_mlb_401769299",
+    "start_time": "2025-04-26T17:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799785,
+    "external_id": "espn_mlb_401695298",
+    "start_time": "2025-04-26T02:15:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799782,
+    "external_id": "espn_mlb_401695295",
+    "start_time": "2025-04-26T01:40:00+00:00",
+    "home_team_id": 128,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799783,
+    "external_id": "espn_mlb_401695297",
+    "start_time": "2025-04-26T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 130,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799780,
+    "external_id": "espn_mlb_401695292",
+    "start_time": "2025-04-26T00:40:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799779,
+    "external_id": "espn_mlb_401695290",
+    "start_time": "2025-04-26T00:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799777,
+    "external_id": "espn_mlb_401695288",
+    "start_time": "2025-04-25T23:40:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799775,
+    "external_id": "espn_mlb_401695287",
+    "start_time": "2025-04-25T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799774,
+    "external_id": "espn_mlb_401695286",
+    "start_time": "2025-04-25T22:45:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799770,
+    "external_id": "espn_mlb_401695281",
+    "start_time": "2025-04-25T01:29:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 125,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799769,
+    "external_id": "espn_mlb_401695276",
+    "start_time": "2025-04-24T22:45:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 107,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799768,
+    "external_id": "espn_mlb_401769126",
+    "start_time": "2025-04-24T21:25:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799767,
+    "external_id": "espn_mlb_401695280",
+    "start_time": "2025-04-24T19:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799766,
+    "external_id": "espn_mlb_401695279",
+    "start_time": "2025-04-24T18:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799765,
+    "external_id": "espn_mlb_401695277",
+    "start_time": "2025-04-24T17:35:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 128,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799764,
+    "external_id": "espn_mlb_401695278",
+    "start_time": "2025-04-24T17:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 110,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799763,
+    "external_id": "espn_mlb_401695272",
+    "start_time": "2025-04-24T01:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799758,
+    "external_id": "espn_mlb_401695268",
+    "start_time": "2025-04-23T23:40:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 110,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799755,
+    "external_id": "espn_mlb_401695261",
+    "start_time": "2025-04-23T22:45:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 107,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799756,
+    "external_id": "espn_mlb_401695266",
+    "start_time": "2025-04-23T22:45:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 128,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799751,
+    "external_id": "espn_mlb_401695262",
+    "start_time": "2025-04-23T17:10:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799752,
+    "external_id": "espn_mlb_401695263",
+    "start_time": "2025-04-23T17:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799753,
+    "external_id": "espn_mlb_401695264",
+    "start_time": "2025-04-23T17:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799754,
+    "external_id": "espn_mlb_401695265",
+    "start_time": "2025-04-23T17:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799749,
+    "external_id": "espn_mlb_401695257",
+    "start_time": "2025-04-23T01:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799743,
+    "external_id": "espn_mlb_401695253",
+    "start_time": "2025-04-22T23:40:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 110,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799744,
+    "external_id": "espn_mlb_401695254",
+    "start_time": "2025-04-22T23:40:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799741,
+    "external_id": "espn_mlb_401695249",
+    "start_time": "2025-04-22T23:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799739,
+    "external_id": "espn_mlb_401695246",
+    "start_time": "2025-04-22T22:45:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 107,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799740,
+    "external_id": "espn_mlb_401695251",
+    "start_time": "2025-04-22T22:45:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 128,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799737,
+    "external_id": "espn_mlb_401695247",
+    "start_time": "2025-04-22T22:40:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799738,
+    "external_id": "espn_mlb_401695250",
+    "start_time": "2025-04-22T22:40:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799736,
+    "external_id": "espn_mlb_401695248",
+    "start_time": "2025-04-22T22:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799735,
+    "external_id": "espn_mlb_401695245",
+    "start_time": "2025-04-22T01:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799734,
+    "external_id": "espn_mlb_401695244",
+    "start_time": "2025-04-22T00:10:00+00:00",
+    "home_team_id": 115,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799732,
+    "external_id": "espn_mlb_401695241",
+    "start_time": "2025-04-21T23:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799730,
+    "external_id": "espn_mlb_401695239",
+    "start_time": "2025-04-21T22:40:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799731,
+    "external_id": "espn_mlb_401695242",
+    "start_time": "2025-04-21T22:40:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 126,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799727,
+    "external_id": "espn_mlb_401768543",
+    "start_time": "2025-04-21T00:10:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799725,
+    "external_id": "espn_mlb_401695237",
+    "start_time": "2025-04-20T20:07:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799724,
+    "external_id": "espn_mlb_401695236",
+    "start_time": "2025-04-20T19:10:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799723,
+    "external_id": "espn_mlb_401695233",
+    "start_time": "2025-04-20T18:35:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799719,
+    "external_id": "espn_mlb_401695226",
+    "start_time": "2025-04-20T17:40:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799720,
+    "external_id": "espn_mlb_401695229",
+    "start_time": "2025-04-20T17:40:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799721,
+    "external_id": "espn_mlb_401695231",
+    "start_time": "2025-04-20T17:40:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799718,
+    "external_id": "espn_mlb_401695230",
+    "start_time": "2025-04-20T17:37:00+00:00",
+    "home_team_id": 132,
+    "away_team_id": 128,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799713,
+    "external_id": "espn_mlb_401695223",
+    "start_time": "2025-04-20T17:35:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 110,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799714,
+    "external_id": "espn_mlb_401695224",
+    "start_time": "2025-04-20T17:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799716,
+    "external_id": "espn_mlb_401695227",
+    "start_time": "2025-04-20T17:35:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799712,
+    "external_id": "espn_mlb_401695222",
+    "start_time": "2025-04-20T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799707,
+    "external_id": "espn_mlb_401695208",
+    "start_time": "2025-04-19T20:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 110,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799708,
+    "external_id": "espn_mlb_401695214",
+    "start_time": "2025-04-19T20:10:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799709,
+    "external_id": "espn_mlb_401695221",
+    "start_time": "2025-04-19T20:10:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799703,
+    "external_id": "espn_mlb_401695209",
+    "start_time": "2025-04-19T20:05:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799705,
+    "external_id": "espn_mlb_401695216",
+    "start_time": "2025-04-19T20:05:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799706,
+    "external_id": "espn_mlb_401695218",
+    "start_time": "2025-04-19T20:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799700,
+    "external_id": "espn_mlb_401695211",
+    "start_time": "2025-04-19T17:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799699,
+    "external_id": "espn_mlb_401695212",
+    "start_time": "2025-04-19T17:05:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799698,
+    "external_id": "espn_mlb_401695207",
+    "start_time": "2025-04-19T01:38:00+00:00",
+    "home_team_id": 117,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799695,
+    "external_id": "espn_mlb_401695203",
+    "start_time": "2025-04-19T00:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799693,
+    "external_id": "espn_mlb_401695201",
+    "start_time": "2025-04-18T23:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799691,
+    "external_id": "espn_mlb_401695200",
+    "start_time": "2025-04-18T23:07:00+00:00",
+    "home_team_id": 132,
+    "away_team_id": 128,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799689,
+    "external_id": "espn_mlb_401695194",
+    "start_time": "2025-04-18T23:05:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799690,
+    "external_id": "espn_mlb_401695199",
+    "start_time": "2025-04-18T23:05:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799688,
+    "external_id": "espn_mlb_401695197",
+    "start_time": "2025-04-18T22:45:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799687,
+    "external_id": "espn_mlb_401695196",
+    "start_time": "2025-04-18T22:40:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799684,
+    "external_id": "espn_mlb_401695191",
+    "start_time": "2025-04-18T00:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799683,
+    "external_id": "espn_mlb_401695189",
+    "start_time": "2025-04-17T23:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 129,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799682,
+    "external_id": "espn_mlb_401695186",
+    "start_time": "2025-04-17T23:05:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799681,
+    "external_id": "espn_mlb_401695185",
+    "start_time": "2025-04-17T22:40:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799680,
+    "external_id": "espn_mlb_401695184",
+    "start_time": "2025-04-17T22:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 112,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799679,
+    "external_id": "espn_mlb_401695188",
+    "start_time": "2025-04-17T20:05:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799675,
+    "external_id": "espn_mlb_401695182",
+    "start_time": "2025-04-17T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799674,
+    "external_id": "espn_mlb_401695176",
+    "start_time": "2025-04-17T00:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799672,
+    "external_id": "espn_mlb_401695170",
+    "start_time": "2025-04-16T23:05:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799673,
+    "external_id": "espn_mlb_401695172",
+    "start_time": "2025-04-16T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799671,
+    "external_id": "espn_mlb_401695174",
+    "start_time": "2025-04-16T22:45:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799667,
+    "external_id": "espn_mlb_401695171",
+    "start_time": "2025-04-16T22:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 112,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799663,
+    "external_id": "espn_mlb_401695177",
+    "start_time": "2025-04-16T17:10:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799664,
+    "external_id": "espn_mlb_401695179",
+    "start_time": "2025-04-16T17:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799661,
+    "external_id": "espn_mlb_401695167",
+    "start_time": "2025-04-16T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799660,
+    "external_id": "espn_mlb_401695166",
+    "start_time": "2025-04-16T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 109,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799659,
+    "external_id": "espn_mlb_401695161",
+    "start_time": "2025-04-16T00:05:00+00:00",
+    "home_team_id": 131,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799656,
+    "external_id": "espn_mlb_401695162",
+    "start_time": "2025-04-15T23:40:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799657,
+    "external_id": "espn_mlb_401695164",
+    "start_time": "2025-04-15T23:40:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799652,
+    "external_id": "espn_mlb_401695155",
+    "start_time": "2025-04-15T23:05:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799654,
+    "external_id": "espn_mlb_401695157",
+    "start_time": "2025-04-15T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799651,
+    "external_id": "espn_mlb_401695159",
+    "start_time": "2025-04-15T22:45:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799649,
+    "external_id": "espn_mlb_401695158",
+    "start_time": "2025-04-15T22:40:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 128,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799647,
+    "external_id": "espn_mlb_401695152",
+    "start_time": "2025-04-15T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799646,
+    "external_id": "espn_mlb_401695151",
+    "start_time": "2025-04-15T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 109,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799643,
+    "external_id": "espn_mlb_401695148",
+    "start_time": "2025-04-14T23:40:00+00:00",
+    "home_team_id": 120,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799644,
+    "external_id": "espn_mlb_401695150",
+    "start_time": "2025-04-14T23:40:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 122,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799640,
+    "external_id": "espn_mlb_401695144",
+    "start_time": "2025-04-14T23:05:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799641,
+    "external_id": "espn_mlb_401695145",
+    "start_time": "2025-04-14T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799639,
+    "external_id": "espn_mlb_401695146",
+    "start_time": "2025-04-14T22:45:00+00:00",
+    "home_team_id": 124,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799634,
+    "external_id": "espn_mlb_401695139",
+    "start_time": "2025-04-13T20:10:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799633,
+    "external_id": "espn_mlb_401695137",
+    "start_time": "2025-04-13T18:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799632,
+    "external_id": "espn_mlb_401695136",
+    "start_time": "2025-04-13T18:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799627,
+    "external_id": "espn_mlb_401695129",
+    "start_time": "2025-04-13T17:40:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799628,
+    "external_id": "espn_mlb_401695130",
+    "start_time": "2025-04-13T17:40:00+00:00",
+    "home_team_id": 111,
+    "away_team_id": 125,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799629,
+    "external_id": "espn_mlb_401695133",
+    "start_time": "2025-04-13T17:40:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799624,
+    "external_id": "espn_mlb_401695131",
+    "start_time": "2025-04-13T17:35:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799625,
+    "external_id": "espn_mlb_401695132",
+    "start_time": "2025-04-13T17:35:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799623,
+    "external_id": "espn_mlb_401695127",
+    "start_time": "2025-04-13T01:40:00+00:00",
+    "home_team_id": 128,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799621,
+    "external_id": "espn_mlb_401695124",
+    "start_time": "2025-04-13T00:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799615,
+    "external_id": "espn_mlb_401695118",
+    "start_time": "2025-04-12T20:10:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799613,
+    "external_id": "espn_mlb_401695117",
+    "start_time": "2025-04-12T20:05:00+00:00",
+    "home_team_id": 107,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799612,
+    "external_id": "espn_mlb_401695116",
+    "start_time": "2025-04-12T19:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799611,
+    "external_id": "espn_mlb_401695122",
+    "start_time": "2025-04-12T18:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799610,
+    "external_id": "espn_mlb_401695121",
+    "start_time": "2025-04-12T18:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799609,
+    "external_id": "espn_mlb_401695108",
+    "start_time": "2025-04-12T02:10:00+00:00",
+    "home_team_id": 800650,
+    "away_team_id": 109,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799606,
+    "external_id": "espn_mlb_401695109",
+    "start_time": "2025-04-12T01:40:00+00:00",
+    "home_team_id": 126,
+    "away_team_id": 113,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799605,
+    "external_id": "espn_mlb_401695107",
+    "start_time": "2025-04-12T00:15:00+00:00",
+    "home_team_id": 129,
+    "away_team_id": 124,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799604,
+    "external_id": "espn_mlb_401695106",
+    "start_time": "2025-04-12T00:10:00+00:00",
+    "home_team_id": 121,
+    "away_team_id": 114,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799602,
+    "external_id": "espn_mlb_401695105",
+    "start_time": "2025-04-11T23:40:00+00:00",
+    "home_team_id": 110,
+    "away_team_id": 39,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799601,
+    "external_id": "espn_mlb_401695103",
+    "start_time": "2025-04-11T23:10:00+00:00",
+    "home_team_id": 119,
+    "away_team_id": 133,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799599,
+    "external_id": "espn_mlb_401695101",
+    "start_time": "2025-04-11T23:05:00+00:00",
+    "home_team_id": 37,
+    "away_team_id": 127,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799596,
+    "external_id": "espn_mlb_401695099",
+    "start_time": "2025-04-11T22:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 116,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799594,
+    "external_id": "espn_mlb_401695095",
+    "start_time": "2025-04-10T20:10:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799593,
+    "external_id": "espn_mlb_401695097",
+    "start_time": "2025-04-10T19:10:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799592,
+    "external_id": "espn_mlb_401695096",
+    "start_time": "2025-04-10T18:10:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799590,
+    "external_id": "espn_mlb_401695062",
+    "start_time": "2025-04-10T17:10:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799591,
+    "external_id": "espn_mlb_401695093",
+    "start_time": "2025-04-10T17:10:00+00:00",
+    "home_team_id": 112,
+    "away_team_id": 110,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799589,
+    "external_id": "espn_mlb_401695087",
+    "start_time": "2025-04-10T00:40:00+00:00",
+    "home_team_id": 113,
+    "away_team_id": 120,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799588,
+    "external_id": "espn_mlb_401695085",
+    "start_time": "2025-04-09T23:40:00+00:00",
+    "home_team_id": 116,
+    "away_team_id": 121,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799586,
+    "external_id": "espn_mlb_401695092",
+    "start_time": "2025-04-09T23:05:00+00:00",
+    "home_team_id": 130,
+    "away_team_id": 117,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799585,
+    "external_id": "espn_mlb_401695084",
+    "start_time": "2025-04-09T22:45:00+00:00",
+    "home_team_id": 39,
+    "away_team_id": 132,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799582,
+    "external_id": "espn_mlb_401695079",
+    "start_time": "2025-04-09T20:05:00+00:00",
+    "home_team_id": 133,
+    "away_team_id": 800650,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799581,
+    "external_id": "espn_mlb_401695089",
+    "start_time": "2025-04-09T19:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 111,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799579,
+    "external_id": "espn_mlb_401695086",
+    "start_time": "2025-04-09T18:20:00+00:00",
+    "home_team_id": 109,
+    "away_team_id": 131,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799577,
+    "external_id": "espn_mlb_401695080",
+    "start_time": "2025-04-09T17:10:00+00:00",
+    "home_team_id": 122,
+    "away_team_id": 119,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799578,
+    "external_id": "espn_mlb_401695081",
+    "start_time": "2025-04-09T17:10:00+00:00",
+    "home_team_id": 114,
+    "away_team_id": 37,
+    "sport": "mlb"
+  },
+  {
+    "id": 3799575,
+    "external_id": "espn_mlb_401695074",
+    "start_time": "2025-04-09T01:45:00+00:00",
+    "home_team_id": 127,
+    "away_team_id": 111,
+    "sport": "mlb"
+  }
+]

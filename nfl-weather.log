@@ -1,0 +1,124 @@
+🌤️ REAL-TIME WEATHER DATA COLLECTOR
+
+✅ Using real OpenWeatherMap API
+🚀 STARTING REAL-TIME WEATHER DATA COLLECTION FOR NFL GAMES
+⚡ Configuration: 10 concurrent requests, 100 batch size
+🔑 API Key: Present
+
+🔍 Finding outdoor games (with pagination)...
+
+📊 Loading NFL games...
+  Loaded 570 games so far...
+
+✅ Found 570 total outdoor games
+🔍 Checking existing weather data...
+✅ Found 5 games with existing weather data
+
+🎯 Need to process 565 games
+
+🌦️  Processing weather data for 565 games...
+
+📊 Progress Report: 50/565 games | Rate: 161 games/min | API calls: 33
+
+💾 Saving batch of 50 records...
+
+💾 Inserting 50 weather records in batches...
+💾 Inserted 50 / 50 records (0 batch errors)
+✅ Successfully inserted 50 weather records
+
+💾 Saving batch of 50 records...
+
+💾 Inserting 50 weather records in batches...
+💾 Inserted 50 / 50 records (0 batch errors)
+✅ Successfully inserted 50 weather records
+
+📊 Progress Report: 150/565 games | Rate: 171 games/min | API calls: 96
+
+💾 Saving batch of 50 records...
+
+💾 Inserting 50 weather records in batches...
+💾 Inserted 50 / 50 records (0 batch errors)
+✅ Successfully inserted 50 weather records
+
+📊 Progress Report: 200/565 games | Rate: 159 games/min | API calls: 131
+
+💾 Saving batch of 50 records...
+
+💾 Inserting 50 weather records in batches...
+💾 Inserted 50 / 50 records (0 batch errors)
+✅ Successfully inserted 50 weather records
+
+💾 Saving batch of 50 records...
+
+💾 Inserting 50 weather records in batches...
+💾 Inserted 50 / 50 records (0 batch errors)
+✅ Successfully inserted 50 weather records
+
+💾 Saving batch of 50 records...
+
+💾 Inserting 50 weather records in batches...
+💾 Inserted 50 / 50 records (0 batch errors)
+✅ Successfully inserted 50 weather records
+
+📊 Progress Report: 350/565 games | Rate: 167 games/min | API calls: 230
+
+💾 Saving batch of 50 records...
+
+💾 Inserting 50 weather records in batches...
+💾 Inserted 50 / 50 records (0 batch errors)
+✅ Successfully inserted 50 weather records
+
+💾 Saving batch of 50 records...
+
+💾 Inserting 50 weather records in batches...
+💾 Inserted 50 / 50 records (0 batch errors)
+✅ Successfully inserted 50 weather records
+
+📊 Progress Report: 450/565 games | Rate: 170 games/min | API calls: 294
+
+💾 Saving batch of 50 records...
+
+💾 Inserting 50 weather records in batches...
+💾 Inserted 50 / 50 records (0 batch errors)
+✅ Successfully inserted 50 weather records
+
+📊 Progress Report: 500/565 games | Rate: 166 games/min | API calls: 326
+
+💾 Saving batch of 50 records...
+
+💾 Inserting 50 weather records in batches...
+💾 Inserted 50 / 50 records (0 batch errors)
+✅ Successfully inserted 50 weather records
+
+📊 Progress Report: 550/565 games | Rate: 151 games/min | API calls: 361
+
+💾 Saving batch of 50 records...
+
+💾 Inserting 50 weather records in batches...
+💾 Inserted 50 / 50 records (0 batch errors)
+✅ Successfully inserted 50 weather records
+
+💾 Saving batch of 15 records...
+
+💾 Inserting 15 weather records in batches...
+💾 Inserted 15 / 15 records (0 batch errors)
+✅ Successfully inserted 15 weather records
+
+✅ Processed 565 weather records
+
+
+🏆 WEATHER DATA COLLECTION COMPLETE!
+
+⏱️  Total Time: 3.4 minutes
+🎮 Games Found: 570
+📊 Games Processed: 565
+🌤️  Weather Records Inserted: 15
+⚠️  Games Skipped: 0
+❌ Errors: 0
+🔌 API Calls Made: 371
+⚡ Processing Rate: 164.8 games/min
+
+📈 Total weather records in database: 770
+✅ Real-time weather data collection successful!
+
+👋 Exiting - Real-time weather collection complete!

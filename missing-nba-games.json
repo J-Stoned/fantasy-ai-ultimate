@@ -1,0 +1,3066 @@
+[
+  {
+    "id": 3792377,
+    "external_id": "espn_nba_401766125",
+    "start_time": "2025-06-14T00:30:00+00:00",
+    "home_team_id": 11,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3792376,
+    "external_id": "espn_nba_401766124",
+    "start_time": "2025-06-12T00:30:00+00:00",
+    "home_team_id": 11,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3792375,
+    "external_id": "espn_nba_401766123",
+    "start_time": "2025-06-09T00:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 11,
+    "sport": "nba"
+  },
+  {
+    "id": 3792374,
+    "external_id": "espn_nba_401766122",
+    "start_time": "2025-06-06T00:30:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 11,
+    "sport": "nba"
+  },
+  {
+    "id": 3792371,
+    "external_id": "espn_nba_401773152",
+    "start_time": "2025-05-29T00:30:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3792369,
+    "external_id": "espn_nba_401773151",
+    "start_time": "2025-05-27T00:30:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3792367,
+    "external_id": "espn_nba_401773150",
+    "start_time": "2025-05-25T00:30:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3792365,
+    "external_id": "espn_nba_401773149",
+    "start_time": "2025-05-23T00:30:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3792363,
+    "external_id": "espn_nba_401773148",
+    "start_time": "2025-05-21T00:30:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3792362,
+    "external_id": "espn_nba_401769992",
+    "start_time": "2025-05-18T19:30:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3792360,
+    "external_id": "espn_nba_401769991",
+    "start_time": "2025-05-16T00:30:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3792359,
+    "external_id": "espn_nba_401769987",
+    "start_time": "2025-05-15T01:30:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3792357,
+    "external_id": "espn_nba_401769990",
+    "start_time": "2025-05-14T01:30:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3792355,
+    "external_id": "espn_nba_401769840",
+    "start_time": "2025-05-13T02:00:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3792352,
+    "external_id": "espn_nba_401769823",
+    "start_time": "2025-05-11T19:30:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3792351,
+    "external_id": "espn_nba_401769839",
+    "start_time": "2025-05-11T00:30:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3792349,
+    "external_id": "espn_nba_401769822",
+    "start_time": "2025-05-10T02:25:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3792347,
+    "external_id": "espn_nba_401769838",
+    "start_time": "2025-05-09T00:30:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3792346,
+    "external_id": "espn_nba_401769821",
+    "start_time": "2025-05-08T01:30:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3792344,
+    "external_id": "espn_nba_401769837",
+    "start_time": "2025-05-07T01:30:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3792342,
+    "external_id": "espn_nba_401769820",
+    "start_time": "2025-05-06T01:30:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3792338,
+    "external_id": "espn_nba_401768066",
+    "start_time": "2025-05-03T23:30:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 809333,
+    "sport": "nba"
+  },
+  {
+    "id": 3792336,
+    "external_id": "espn_nba_401768065",
+    "start_time": "2025-05-02T02:00:00+00:00",
+    "home_team_id": 809333,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3792334,
+    "external_id": "espn_nba_401768058",
+    "start_time": "2025-05-01T02:00:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3792332,
+    "external_id": "espn_nba_401768064",
+    "start_time": "2025-04-30T02:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 809333,
+    "sport": "nba"
+  },
+  {
+    "id": 3792331,
+    "external_id": "espn_nba_401768032",
+    "start_time": "2025-04-30T00:30:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3792325,
+    "external_id": "espn_nba_401768031",
+    "start_time": "2025-04-27T23:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3792324,
+    "external_id": "espn_nba_401768057",
+    "start_time": "2025-04-27T19:50:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3792321,
+    "external_id": "espn_nba_401768063",
+    "start_time": "2025-04-26T22:00:00+00:00",
+    "home_team_id": 809333,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3792320,
+    "external_id": "espn_nba_401767905",
+    "start_time": "2025-04-26T19:30:00+00:00",
+    "home_team_id": 88,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3792318,
+    "external_id": "espn_nba_401768056",
+    "start_time": "2025-04-26T01:53:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3792316,
+    "external_id": "espn_nba_401768030",
+    "start_time": "2025-04-25T23:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3792315,
+    "external_id": "espn_nba_401768062",
+    "start_time": "2025-04-25T02:00:00+00:00",
+    "home_team_id": 809333,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3792314,
+    "external_id": "espn_nba_401767904",
+    "start_time": "2025-04-25T01:30:00+00:00",
+    "home_team_id": 88,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3792310,
+    "external_id": "espn_nba_401768029",
+    "start_time": "2025-04-23T23:00:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3792309,
+    "external_id": "espn_nba_401767915",
+    "start_time": "2025-04-23T02:00:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3792306,
+    "external_id": "espn_nba_401768061",
+    "start_time": "2025-04-22T02:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 809333,
+    "sport": "nba"
+  },
+  {
+    "id": 3792302,
+    "external_id": "espn_nba_401767822",
+    "start_time": "2025-04-20T19:30:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3792300,
+    "external_id": "espn_nba_401767821",
+    "start_time": "2025-04-20T00:30:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3792298,
+    "external_id": "espn_nba_401767819",
+    "start_time": "2025-04-19T19:30:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 809333,
+    "sport": "nba"
+  },
+  {
+    "id": 3792294,
+    "external_id": "espn_nba_401766461",
+    "start_time": "2025-04-17T02:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3792292,
+    "external_id": "espn_nba_401766459",
+    "start_time": "2025-04-16T02:00:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3792291,
+    "external_id": "espn_nba_401766458",
+    "start_time": "2025-04-15T23:30:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3792285,
+    "external_id": "espn_nba_401705761",
+    "start_time": "2025-04-13T19:30:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3792286,
+    "external_id": "espn_nba_401705762",
+    "start_time": "2025-04-13T19:30:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3792288,
+    "external_id": "espn_nba_401705764",
+    "start_time": "2025-04-13T19:30:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 809333,
+    "sport": "nba"
+  },
+  {
+    "id": 3792289,
+    "external_id": "espn_nba_401705765",
+    "start_time": "2025-04-13T19:30:00+00:00",
+    "home_team_id": 22,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3792276,
+    "external_id": "espn_nba_401705752",
+    "start_time": "2025-04-13T17:00:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3792277,
+    "external_id": "espn_nba_401705753",
+    "start_time": "2025-04-13T17:00:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 30,
+    "sport": "nba"
+  },
+  {
+    "id": 3792281,
+    "external_id": "espn_nba_401705757",
+    "start_time": "2025-04-13T17:00:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 78,
+    "sport": "nba"
+  },
+  {
+    "id": 3792275,
+    "external_id": "espn_nba_401705751",
+    "start_time": "2025-04-12T02:30:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 10,
+    "sport": "nba"
+  },
+  {
+    "id": 3792273,
+    "external_id": "espn_nba_401705749",
+    "start_time": "2025-04-12T02:00:00+00:00",
+    "home_team_id": 22,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3792274,
+    "external_id": "espn_nba_401705750",
+    "start_time": "2025-04-12T02:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 809333,
+    "sport": "nba"
+  },
+  {
+    "id": 3792271,
+    "external_id": "espn_nba_401705747",
+    "start_time": "2025-04-12T01:30:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3792269,
+    "external_id": "espn_nba_401705745",
+    "start_time": "2025-04-12T01:00:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3792270,
+    "external_id": "espn_nba_401705746",
+    "start_time": "2025-04-12T01:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3792268,
+    "external_id": "espn_nba_401705744",
+    "start_time": "2025-04-12T00:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 101,
+    "sport": "nba"
+  },
+  {
+    "id": 3792266,
+    "external_id": "espn_nba_401705742",
+    "start_time": "2025-04-12T00:00:00+00:00",
+    "home_team_id": 78,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3792264,
+    "external_id": "espn_nba_401705740",
+    "start_time": "2025-04-11T23:30:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 30,
+    "sport": "nba"
+  },
+  {
+    "id": 3792263,
+    "external_id": "espn_nba_401705739",
+    "start_time": "2025-04-11T23:00:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3792258,
+    "external_id": "espn_nba_401705735",
+    "start_time": "2025-04-10T23:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3792255,
+    "external_id": "espn_nba_401705732",
+    "start_time": "2025-04-10T02:30:00+00:00",
+    "home_team_id": 809333,
+    "away_team_id": 10,
+    "sport": "nba"
+  },
+  {
+    "id": 3792254,
+    "external_id": "espn_nba_401705731",
+    "start_time": "2025-04-10T02:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3792251,
+    "external_id": "espn_nba_401705728",
+    "start_time": "2025-04-10T01:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3792248,
+    "external_id": "espn_nba_401705724",
+    "start_time": "2025-04-09T23:30:00+00:00",
+    "home_team_id": 101,
+    "away_team_id": 30,
+    "sport": "nba"
+  },
+  {
+    "id": 3792249,
+    "external_id": "espn_nba_401705725",
+    "start_time": "2025-04-09T23:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3792246,
+    "external_id": "espn_nba_401705722",
+    "start_time": "2025-04-09T23:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3792247,
+    "external_id": "espn_nba_401705723",
+    "start_time": "2025-04-09T23:00:00+00:00",
+    "home_team_id": 809338,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3792243,
+    "external_id": "espn_nba_401705719",
+    "start_time": "2025-04-09T00:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3792240,
+    "external_id": "espn_nba_401705716",
+    "start_time": "2025-04-08T23:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3792238,
+    "external_id": "espn_nba_401705714",
+    "start_time": "2025-04-08T23:00:00+00:00",
+    "home_team_id": 11,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3792239,
+    "external_id": "espn_nba_401705715",
+    "start_time": "2025-04-08T23:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3792233,
+    "external_id": "espn_nba_401754706",
+    "start_time": "2025-04-07T00:30:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 90,
+    "sport": "nba"
+  },
+  {
+    "id": 3792226,
+    "external_id": "espn_nba_401705702",
+    "start_time": "2025-04-06T22:00:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3792227,
+    "external_id": "espn_nba_401705703",
+    "start_time": "2025-04-06T22:00:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3792224,
+    "external_id": "espn_nba_401705700",
+    "start_time": "2025-04-06T19:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 101,
+    "sport": "nba"
+  },
+  {
+    "id": 3792225,
+    "external_id": "espn_nba_401705701",
+    "start_time": "2025-04-06T19:30:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3792222,
+    "external_id": "espn_nba_401705698",
+    "start_time": "2025-04-06T02:30:00+00:00",
+    "home_team_id": 809333,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3792220,
+    "external_id": "espn_nba_401705696",
+    "start_time": "2025-04-05T23:00:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3792216,
+    "external_id": "espn_nba_401705692",
+    "start_time": "2025-04-05T02:30:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3792217,
+    "external_id": "espn_nba_401705693",
+    "start_time": "2025-04-05T02:30:00+00:00",
+    "home_team_id": 809333,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3792215,
+    "external_id": "espn_nba_401705691",
+    "start_time": "2025-04-05T02:00:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3792212,
+    "external_id": "espn_nba_401705688",
+    "start_time": "2025-04-05T00:00:00+00:00",
+    "home_team_id": 78,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3792207,
+    "external_id": "espn_nba_401705683",
+    "start_time": "2025-04-04T02:00:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3792204,
+    "external_id": "espn_nba_401705679",
+    "start_time": "2025-04-03T23:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3792206,
+    "external_id": "espn_nba_401705682",
+    "start_time": "2025-04-03T23:30:00+00:00",
+    "home_team_id": 101,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3792202,
+    "external_id": "espn_nba_401705678",
+    "start_time": "2025-04-03T23:00:00+00:00",
+    "home_team_id": 809338,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3792201,
+    "external_id": "espn_nba_401705677",
+    "start_time": "2025-04-03T02:30:00+00:00",
+    "home_team_id": 809333,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3792198,
+    "external_id": "espn_nba_401705675",
+    "start_time": "2025-04-03T00:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3792197,
+    "external_id": "espn_nba_401705673",
+    "start_time": "2025-04-03T00:00:00+00:00",
+    "home_team_id": 10,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3792195,
+    "external_id": "espn_nba_401705671",
+    "start_time": "2025-04-02T23:00:00+00:00",
+    "home_team_id": 809338,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3792192,
+    "external_id": "espn_nba_401705668",
+    "start_time": "2025-04-02T02:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3792190,
+    "external_id": "espn_nba_401705665",
+    "start_time": "2025-04-02T00:00:00+00:00",
+    "home_team_id": 78,
+    "away_team_id": 101,
+    "sport": "nba"
+  },
+  {
+    "id": 3792186,
+    "external_id": "espn_nba_401705663",
+    "start_time": "2025-04-01T23:30:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3792184,
+    "external_id": "espn_nba_401705661",
+    "start_time": "2025-04-01T00:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3792183,
+    "external_id": "espn_nba_401705660",
+    "start_time": "2025-04-01T00:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 78,
+    "sport": "nba"
+  },
+  {
+    "id": 3792180,
+    "external_id": "espn_nba_401705657",
+    "start_time": "2025-03-31T23:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 809333,
+    "sport": "nba"
+  },
+  {
+    "id": 3792176,
+    "external_id": "espn_nba_401705653",
+    "start_time": "2025-03-30T23:30:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 101,
+    "sport": "nba"
+  },
+  {
+    "id": 3792166,
+    "external_id": "espn_nba_401705643",
+    "start_time": "2025-03-30T00:00:00+00:00",
+    "home_team_id": 78,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3792167,
+    "external_id": "espn_nba_401705644",
+    "start_time": "2025-03-30T00:00:00+00:00",
+    "home_team_id": 88,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3792164,
+    "external_id": "espn_nba_401705641",
+    "start_time": "2025-03-29T23:00:00+00:00",
+    "home_team_id": 809338,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3792163,
+    "external_id": "espn_nba_401705640",
+    "start_time": "2025-03-29T21:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3792162,
+    "external_id": "espn_nba_401705639",
+    "start_time": "2025-03-29T01:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3792157,
+    "external_id": "espn_nba_401705634",
+    "start_time": "2025-03-28T23:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 809333,
+    "sport": "nba"
+  },
+  {
+    "id": 3792155,
+    "external_id": "espn_nba_401705632",
+    "start_time": "2025-03-28T02:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3792154,
+    "external_id": "espn_nba_401705631",
+    "start_time": "2025-03-28T01:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 10,
+    "sport": "nba"
+  },
+  {
+    "id": 3792152,
+    "external_id": "espn_nba_401705629",
+    "start_time": "2025-03-28T00:00:00+00:00",
+    "home_team_id": 78,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3792153,
+    "external_id": "espn_nba_401705630",
+    "start_time": "2025-03-28T00:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3792149,
+    "external_id": "espn_nba_401705626",
+    "start_time": "2025-03-27T23:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3792146,
+    "external_id": "espn_nba_401705623",
+    "start_time": "2025-03-27T01:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 90,
+    "sport": "nba"
+  },
+  {
+    "id": 3792143,
+    "external_id": "espn_nba_401705620",
+    "start_time": "2025-03-26T23:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 101,
+    "sport": "nba"
+  },
+  {
+    "id": 3792144,
+    "external_id": "espn_nba_401705621",
+    "start_time": "2025-03-26T23:30:00+00:00",
+    "home_team_id": 11,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3792142,
+    "external_id": "espn_nba_401705619",
+    "start_time": "2025-03-26T23:00:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3792141,
+    "external_id": "espn_nba_401705618",
+    "start_time": "2025-03-26T02:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3792139,
+    "external_id": "espn_nba_401705616",
+    "start_time": "2025-03-26T01:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3792133,
+    "external_id": "espn_nba_401705610",
+    "start_time": "2025-03-25T02:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3792131,
+    "external_id": "espn_nba_401705608",
+    "start_time": "2025-03-25T01:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 78,
+    "sport": "nba"
+  },
+  {
+    "id": 3792129,
+    "external_id": "espn_nba_401705606",
+    "start_time": "2025-03-24T23:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3792126,
+    "external_id": "espn_nba_401705603",
+    "start_time": "2025-03-24T23:00:00+00:00",
+    "home_team_id": 11,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3792127,
+    "external_id": "espn_nba_401705604",
+    "start_time": "2025-03-24T23:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3792128,
+    "external_id": "espn_nba_401705605",
+    "start_time": "2025-03-24T23:00:00+00:00",
+    "home_team_id": 809338,
+    "away_team_id": 101,
+    "sport": "nba"
+  },
+  {
+    "id": 3792125,
+    "external_id": "espn_nba_401705602",
+    "start_time": "2025-03-24T01:00:00+00:00",
+    "home_team_id": 809333,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3792120,
+    "external_id": "espn_nba_401705597",
+    "start_time": "2025-03-23T22:00:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3792123,
+    "external_id": "espn_nba_401705600",
+    "start_time": "2025-03-23T22:00:00+00:00",
+    "home_team_id": 22,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3792117,
+    "external_id": "espn_nba_401705594",
+    "start_time": "2025-03-23T02:30:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 78,
+    "sport": "nba"
+  },
+  {
+    "id": 3792114,
+    "external_id": "espn_nba_401705591",
+    "start_time": "2025-03-22T23:00:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3792113,
+    "external_id": "espn_nba_401705590",
+    "start_time": "2025-03-22T21:00:00+00:00",
+    "home_team_id": 11,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3792111,
+    "external_id": "espn_nba_401705588",
+    "start_time": "2025-03-22T02:00:00+00:00",
+    "home_team_id": 22,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3792109,
+    "external_id": "espn_nba_401705586",
+    "start_time": "2025-03-22T01:30:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3792105,
+    "external_id": "espn_nba_401705582",
+    "start_time": "2025-03-22T00:00:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3792103,
+    "external_id": "espn_nba_401705580",
+    "start_time": "2025-03-21T23:00:00+00:00",
+    "home_team_id": 809338,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3792100,
+    "external_id": "espn_nba_401705571",
+    "start_time": "2025-03-21T02:00:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 101,
+    "sport": "nba"
+  },
+  {
+    "id": 3792101,
+    "external_id": "espn_nba_401705579",
+    "start_time": "2025-03-21T02:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 78,
+    "sport": "nba"
+  },
+  {
+    "id": 3792099,
+    "external_id": "espn_nba_401705577",
+    "start_time": "2025-03-20T23:00:00+00:00",
+    "home_team_id": 11,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3792094,
+    "external_id": "espn_nba_401705572",
+    "start_time": "2025-03-20T02:00:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3792093,
+    "external_id": "espn_nba_401705193",
+    "start_time": "2025-03-20T01:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3792090,
+    "external_id": "espn_nba_401705567",
+    "start_time": "2025-03-20T00:00:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3792091,
+    "external_id": "espn_nba_401705568",
+    "start_time": "2025-03-20T00:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3792084,
+    "external_id": "espn_nba_401705560",
+    "start_time": "2025-03-18T23:30:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3792083,
+    "external_id": "espn_nba_401705559",
+    "start_time": "2025-03-18T23:00:00+00:00",
+    "home_team_id": 30,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3792078,
+    "external_id": "espn_nba_401705556",
+    "start_time": "2025-03-18T02:00:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3792080,
+    "external_id": "espn_nba_401705558",
+    "start_time": "2025-03-18T02:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3792081,
+    "external_id": "espn_nba_401705561",
+    "start_time": "2025-03-18T02:00:00+00:00",
+    "home_team_id": 22,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3792077,
+    "external_id": "espn_nba_401705555",
+    "start_time": "2025-03-18T01:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 78,
+    "sport": "nba"
+  },
+  {
+    "id": 3792070,
+    "external_id": "espn_nba_401705547",
+    "start_time": "2025-03-16T23:00:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3792068,
+    "external_id": "espn_nba_401705544",
+    "start_time": "2025-03-16T22:00:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3792069,
+    "external_id": "espn_nba_401705546",
+    "start_time": "2025-03-16T22:00:00+00:00",
+    "home_team_id": 22,
+    "away_team_id": 101,
+    "sport": "nba"
+  },
+  {
+    "id": 3792065,
+    "external_id": "espn_nba_401705542",
+    "start_time": "2025-03-16T17:00:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3792064,
+    "external_id": "espn_nba_401705541",
+    "start_time": "2025-03-16T01:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3792057,
+    "external_id": "espn_nba_401705534",
+    "start_time": "2025-03-15T22:00:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3792054,
+    "external_id": "espn_nba_401705531",
+    "start_time": "2025-03-15T01:30:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3792055,
+    "external_id": "espn_nba_401705532",
+    "start_time": "2025-03-15T01:30:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 101,
+    "sport": "nba"
+  },
+  {
+    "id": 3792052,
+    "external_id": "espn_nba_401705529",
+    "start_time": "2025-03-15T00:00:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3792049,
+    "external_id": "espn_nba_401705526",
+    "start_time": "2025-03-14T23:30:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 809333,
+    "sport": "nba"
+  },
+  {
+    "id": 3792046,
+    "external_id": "espn_nba_401705523",
+    "start_time": "2025-03-14T02:00:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3792044,
+    "external_id": "espn_nba_401705522",
+    "start_time": "2025-03-14T00:00:00+00:00",
+    "home_team_id": 78,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3792040,
+    "external_id": "espn_nba_401705518",
+    "start_time": "2025-03-13T02:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3792038,
+    "external_id": "espn_nba_401705516",
+    "start_time": "2025-03-13T00:00:00+00:00",
+    "home_team_id": 88,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3792034,
+    "external_id": "espn_nba_401705512",
+    "start_time": "2025-03-12T23:30:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3792035,
+    "external_id": "espn_nba_401705513",
+    "start_time": "2025-03-12T23:30:00+00:00",
+    "home_team_id": 101,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3792027,
+    "external_id": "espn_nba_401705504",
+    "start_time": "2025-03-11T02:00:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3792025,
+    "external_id": "espn_nba_401705502",
+    "start_time": "2025-03-11T00:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3792017,
+    "external_id": "espn_nba_401705494",
+    "start_time": "2025-03-10T23:30:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3792018,
+    "external_id": "espn_nba_401705495",
+    "start_time": "2025-03-10T23:30:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3792019,
+    "external_id": "espn_nba_401705496",
+    "start_time": "2025-03-10T23:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3792021,
+    "external_id": "espn_nba_401705498",
+    "start_time": "2025-03-10T23:30:00+00:00",
+    "home_team_id": 101,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3792016,
+    "external_id": "espn_nba_401705493",
+    "start_time": "2025-03-10T01:30:00+00:00",
+    "home_team_id": 809333,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3792012,
+    "external_id": "espn_nba_401705490",
+    "start_time": "2025-03-09T23:30:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3792011,
+    "external_id": "espn_nba_401705489",
+    "start_time": "2025-03-09T23:00:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3792009,
+    "external_id": "espn_nba_401705486",
+    "start_time": "2025-03-09T17:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3792007,
+    "external_id": "espn_nba_401705484",
+    "start_time": "2025-03-09T01:30:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3792003,
+    "external_id": "espn_nba_401705480",
+    "start_time": "2025-03-09T00:30:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 11,
+    "sport": "nba"
+  },
+  {
+    "id": 3792004,
+    "external_id": "espn_nba_401705481",
+    "start_time": "2025-03-09T00:30:00+00:00",
+    "home_team_id": 101,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3791997,
+    "external_id": "espn_nba_401705474",
+    "start_time": "2025-03-08T01:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3791994,
+    "external_id": "espn_nba_401705471",
+    "start_time": "2025-03-08T00:30:00+00:00",
+    "home_team_id": 101,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3791995,
+    "external_id": "espn_nba_401705472",
+    "start_time": "2025-03-08T00:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3791988,
+    "external_id": "espn_nba_401705465",
+    "start_time": "2025-03-07T00:30:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 11,
+    "sport": "nba"
+  },
+  {
+    "id": 3791989,
+    "external_id": "espn_nba_401705466",
+    "start_time": "2025-03-07T00:30:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3791990,
+    "external_id": "espn_nba_401705467",
+    "start_time": "2025-03-07T00:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3791987,
+    "external_id": "espn_nba_401705510",
+    "start_time": "2025-03-07T00:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 78,
+    "sport": "nba"
+  },
+  {
+    "id": 3791984,
+    "external_id": "espn_nba_401705462",
+    "start_time": "2025-03-06T02:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791979,
+    "external_id": "espn_nba_401705457",
+    "start_time": "2025-03-06T00:00:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3791982,
+    "external_id": "espn_nba_401705460",
+    "start_time": "2025-03-06T00:00:00+00:00",
+    "home_team_id": 809338,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3791978,
+    "external_id": "espn_nba_401705456",
+    "start_time": "2025-03-05T03:30:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3791975,
+    "external_id": "espn_nba_401705453",
+    "start_time": "2025-03-05T01:00:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3791971,
+    "external_id": "espn_nba_401705449",
+    "start_time": "2025-03-05T00:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 101,
+    "sport": "nba"
+  },
+  {
+    "id": 3791968,
+    "external_id": "espn_nba_401705446",
+    "start_time": "2025-03-04T01:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791966,
+    "external_id": "espn_nba_401705444",
+    "start_time": "2025-03-04T01:00:00+00:00",
+    "home_team_id": 88,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3791967,
+    "external_id": "espn_nba_401705445",
+    "start_time": "2025-03-04T01:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 10,
+    "sport": "nba"
+  },
+  {
+    "id": 3791964,
+    "external_id": "espn_nba_401705442",
+    "start_time": "2025-03-04T00:00:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3791962,
+    "external_id": "espn_nba_401705440",
+    "start_time": "2025-03-03T02:30:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 809333,
+    "sport": "nba"
+  },
+  {
+    "id": 3791960,
+    "external_id": "espn_nba_401705438",
+    "start_time": "2025-03-03T01:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3791958,
+    "external_id": "espn_nba_401705436",
+    "start_time": "2025-03-02T23:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 101,
+    "sport": "nba"
+  },
+  {
+    "id": 3791954,
+    "external_id": "espn_nba_401705432",
+    "start_time": "2025-03-02T18:00:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3791952,
+    "external_id": "espn_nba_401705430",
+    "start_time": "2025-03-02T01:30:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3791947,
+    "external_id": "espn_nba_401705425",
+    "start_time": "2025-03-01T03:00:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 809333,
+    "sport": "nba"
+  },
+  {
+    "id": 3791946,
+    "external_id": "espn_nba_401705424",
+    "start_time": "2025-03-01T02:30:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3791939,
+    "external_id": "espn_nba_401705417",
+    "start_time": "2025-03-01T00:30:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3791941,
+    "external_id": "espn_nba_401705419",
+    "start_time": "2025-03-01T00:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3791937,
+    "external_id": "espn_nba_401705415",
+    "start_time": "2025-02-28T03:30:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3791933,
+    "external_id": "espn_nba_401705411",
+    "start_time": "2025-02-28T00:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3791931,
+    "external_id": "espn_nba_401705409",
+    "start_time": "2025-02-27T02:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791928,
+    "external_id": "espn_nba_401705406",
+    "start_time": "2025-02-27T00:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3791927,
+    "external_id": "espn_nba_401705405",
+    "start_time": "2025-02-27T00:00:00+00:00",
+    "home_team_id": 809338,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3791923,
+    "external_id": "espn_nba_401705401",
+    "start_time": "2025-02-26T03:00:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3791915,
+    "external_id": "espn_nba_401705393",
+    "start_time": "2025-02-25T02:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3791914,
+    "external_id": "espn_nba_401705392",
+    "start_time": "2025-02-25T01:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3791910,
+    "external_id": "espn_nba_401705388",
+    "start_time": "2025-02-25T00:00:00+00:00",
+    "home_team_id": 11,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3791912,
+    "external_id": "espn_nba_401705390",
+    "start_time": "2025-02-25T00:00:00+00:00",
+    "home_team_id": 809338,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3791908,
+    "external_id": "espn_nba_401705386",
+    "start_time": "2025-02-24T02:50:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3791903,
+    "external_id": "espn_nba_401705381",
+    "start_time": "2025-02-23T23:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3791901,
+    "external_id": "espn_nba_401705379",
+    "start_time": "2025-02-23T22:00:00+00:00",
+    "home_team_id": 11,
+    "away_team_id": 809333,
+    "sport": "nba"
+  },
+  {
+    "id": 3791900,
+    "external_id": "espn_nba_401705378",
+    "start_time": "2025-02-23T20:30:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3791896,
+    "external_id": "espn_nba_401705374",
+    "start_time": "2025-02-23T01:30:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3791895,
+    "external_id": "espn_nba_401705373",
+    "start_time": "2025-02-23T00:30:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3791893,
+    "external_id": "espn_nba_401705371",
+    "start_time": "2025-02-22T03:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3791892,
+    "external_id": "espn_nba_401705370",
+    "start_time": "2025-02-22T02:30:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3791890,
+    "external_id": "espn_nba_401705369",
+    "start_time": "2025-02-22T01:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3791886,
+    "external_id": "espn_nba_401705364",
+    "start_time": "2025-02-22T00:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3791884,
+    "external_id": "espn_nba_401705362",
+    "start_time": "2025-02-21T03:00:00+00:00",
+    "home_team_id": 22,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3791878,
+    "external_id": "espn_nba_401705356",
+    "start_time": "2025-02-21T00:30:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3791877,
+    "external_id": "espn_nba_401705355",
+    "start_time": "2025-02-21T00:00:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3791874,
+    "external_id": "espn_nba_401705570",
+    "start_time": "2025-02-14T02:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 809333,
+    "sport": "nba"
+  },
+  {
+    "id": 3791873,
+    "external_id": "espn_nba_401705353",
+    "start_time": "2025-02-14T01:30:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3791871,
+    "external_id": "espn_nba_401705351",
+    "start_time": "2025-02-14T01:00:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791869,
+    "external_id": "espn_nba_401705349",
+    "start_time": "2025-02-13T03:30:00+00:00",
+    "home_team_id": 809333,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3791868,
+    "external_id": "espn_nba_401705348",
+    "start_time": "2025-02-13T02:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3791866,
+    "external_id": "espn_nba_401705346",
+    "start_time": "2025-02-13T02:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3791867,
+    "external_id": "espn_nba_401705347",
+    "start_time": "2025-02-13T02:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3791862,
+    "external_id": "espn_nba_401705342",
+    "start_time": "2025-02-13T01:00:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 90,
+    "sport": "nba"
+  },
+  {
+    "id": 3791863,
+    "external_id": "espn_nba_401705343",
+    "start_time": "2025-02-13T01:00:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791858,
+    "external_id": "espn_nba_401705338",
+    "start_time": "2025-02-13T00:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3791850,
+    "external_id": "espn_nba_401705334",
+    "start_time": "2025-02-11T03:30:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3791848,
+    "external_id": "espn_nba_401705328",
+    "start_time": "2025-02-11T01:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791846,
+    "external_id": "espn_nba_401705326",
+    "start_time": "2025-02-11T01:00:00+00:00",
+    "home_team_id": 90,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3791847,
+    "external_id": "espn_nba_401705327",
+    "start_time": "2025-02-11T01:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3791842,
+    "external_id": "espn_nba_401705322",
+    "start_time": "2025-02-11T00:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3791840,
+    "external_id": "espn_nba_401705320",
+    "start_time": "2025-02-09T19:00:00+00:00",
+    "home_team_id": 90,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3791837,
+    "external_id": "espn_nba_401705317",
+    "start_time": "2025-02-09T03:30:00+00:00",
+    "home_team_id": 809333,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3791836,
+    "external_id": "espn_nba_401705316",
+    "start_time": "2025-02-09T03:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3791831,
+    "external_id": "espn_nba_401705311",
+    "start_time": "2025-02-09T01:00:00+00:00",
+    "home_team_id": 78,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3791832,
+    "external_id": "espn_nba_401705312",
+    "start_time": "2025-02-09T01:00:00+00:00",
+    "home_team_id": 88,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3791828,
+    "external_id": "espn_nba_401705308",
+    "start_time": "2025-02-08T21:00:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 11,
+    "sport": "nba"
+  },
+  {
+    "id": 3791822,
+    "external_id": "espn_nba_401705302",
+    "start_time": "2025-02-08T00:30:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 90,
+    "sport": "nba"
+  },
+  {
+    "id": 3791819,
+    "external_id": "espn_nba_401705299",
+    "start_time": "2025-02-07T03:30:00+00:00",
+    "home_team_id": 809333,
+    "away_team_id": 11,
+    "sport": "nba"
+  },
+  {
+    "id": 3791817,
+    "external_id": "espn_nba_401705297",
+    "start_time": "2025-02-07T03:00:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3791816,
+    "external_id": "espn_nba_401705296",
+    "start_time": "2025-02-07T02:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3791814,
+    "external_id": "espn_nba_401705294",
+    "start_time": "2025-02-07T00:30:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3791813,
+    "external_id": "espn_nba_401705293",
+    "start_time": "2025-02-06T03:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3791810,
+    "external_id": "espn_nba_401705291",
+    "start_time": "2025-02-06T02:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3791811,
+    "external_id": "espn_nba_401705292",
+    "start_time": "2025-02-06T02:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3791809,
+    "external_id": "espn_nba_401705289",
+    "start_time": "2025-02-06T01:00:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 78,
+    "sport": "nba"
+  },
+  {
+    "id": 3791808,
+    "external_id": "espn_nba_401705288",
+    "start_time": "2025-02-06T00:30:00+00:00",
+    "home_team_id": 101,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3791801,
+    "external_id": "espn_nba_401705281",
+    "start_time": "2025-02-05T03:00:00+00:00",
+    "home_team_id": 809333,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3791796,
+    "external_id": "espn_nba_401705278",
+    "start_time": "2025-02-05T00:00:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3791794,
+    "external_id": "espn_nba_401705274",
+    "start_time": "2025-02-04T03:00:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3791792,
+    "external_id": "espn_nba_401705272",
+    "start_time": "2025-02-04T02:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3791793,
+    "external_id": "espn_nba_401705273",
+    "start_time": "2025-02-04T02:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 11,
+    "sport": "nba"
+  },
+  {
+    "id": 3791789,
+    "external_id": "espn_nba_401705270",
+    "start_time": "2025-02-04T01:00:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791790,
+    "external_id": "espn_nba_401705271",
+    "start_time": "2025-02-04T01:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 90,
+    "sport": "nba"
+  },
+  {
+    "id": 3791784,
+    "external_id": "espn_nba_401705264",
+    "start_time": "2025-02-02T23:00:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3791777,
+    "external_id": "espn_nba_401705257",
+    "start_time": "2025-02-02T01:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791772,
+    "external_id": "espn_nba_401705252",
+    "start_time": "2025-02-01T22:00:00+00:00",
+    "home_team_id": 11,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3791773,
+    "external_id": "espn_nba_401705253",
+    "start_time": "2025-02-01T22:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3791769,
+    "external_id": "espn_nba_401705249",
+    "start_time": "2025-02-01T01:00:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3791767,
+    "external_id": "espn_nba_401705247",
+    "start_time": "2025-02-01T00:30:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3791762,
+    "external_id": "espn_nba_401705243",
+    "start_time": "2025-01-31T02:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3791760,
+    "external_id": "espn_nba_401705240",
+    "start_time": "2025-01-31T00:00:00+00:00",
+    "home_team_id": 809338,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3791756,
+    "external_id": "espn_nba_401705236",
+    "start_time": "2025-01-30T01:00:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3791755,
+    "external_id": "espn_nba_401705235",
+    "start_time": "2025-01-30T00:30:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791745,
+    "external_id": "espn_nba_401705226",
+    "start_time": "2025-01-29T00:30:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3791742,
+    "external_id": "espn_nba_401705223",
+    "start_time": "2025-01-28T01:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3791741,
+    "external_id": "espn_nba_401705222",
+    "start_time": "2025-01-28T01:00:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3791736,
+    "external_id": "espn_nba_401705217",
+    "start_time": "2025-01-28T00:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791732,
+    "external_id": "espn_nba_401705213",
+    "start_time": "2025-01-26T23:00:00+00:00",
+    "home_team_id": 22,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3791729,
+    "external_id": "espn_nba_401705210",
+    "start_time": "2025-01-26T01:30:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3791728,
+    "external_id": "espn_nba_401705209",
+    "start_time": "2025-01-26T01:00:00+00:00",
+    "home_team_id": 88,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3791720,
+    "external_id": "espn_nba_401705201",
+    "start_time": "2025-01-25T22:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3791719,
+    "external_id": "espn_nba_401705200",
+    "start_time": "2025-01-25T20:00:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3791717,
+    "external_id": "espn_nba_401705198",
+    "start_time": "2025-01-25T01:00:00+00:00",
+    "home_team_id": 88,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3791715,
+    "external_id": "espn_nba_401705196",
+    "start_time": "2025-01-25T00:00:00+00:00",
+    "home_team_id": 30,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3791713,
+    "external_id": "espn_nba_401705195",
+    "start_time": "2025-01-24T03:00:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3791711,
+    "external_id": "espn_nba_401705192",
+    "start_time": "2025-01-24T02:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791709,
+    "external_id": "espn_nba_401705191",
+    "start_time": "2025-01-24T01:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3791707,
+    "external_id": "espn_nba_401705188",
+    "start_time": "2025-01-24T00:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 22,
+    "sport": "nba"
+  },
+  {
+    "id": 3791704,
+    "external_id": "espn_nba_401705185",
+    "start_time": "2025-01-23T03:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3791703,
+    "external_id": "espn_nba_401705184",
+    "start_time": "2025-01-23T01:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3791699,
+    "external_id": "espn_nba_401705180",
+    "start_time": "2025-01-23T00:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3791696,
+    "external_id": "espn_nba_401705176",
+    "start_time": "2025-01-22T03:30:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3791695,
+    "external_id": "espn_nba_401705175",
+    "start_time": "2025-01-22T03:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3791690,
+    "external_id": "espn_nba_401705171",
+    "start_time": "2025-01-21T01:00:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3791689,
+    "external_id": "espn_nba_401705170",
+    "start_time": "2025-01-20T22:00:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3791686,
+    "external_id": "espn_nba_401705167",
+    "start_time": "2025-01-20T19:30:00+00:00",
+    "home_team_id": 88,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3791683,
+    "external_id": "espn_nba_401705164",
+    "start_time": "2025-01-20T02:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3791680,
+    "external_id": "espn_nba_401705161",
+    "start_time": "2025-01-20T00:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3791678,
+    "external_id": "espn_nba_401705159",
+    "start_time": "2025-01-19T23:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3791674,
+    "external_id": "espn_nba_401705155",
+    "start_time": "2025-01-19T01:30:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3791672,
+    "external_id": "espn_nba_401705153",
+    "start_time": "2025-01-19T00:00:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3791673,
+    "external_id": "espn_nba_401705154",
+    "start_time": "2025-01-19T00:00:00+00:00",
+    "home_team_id": 11,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3791670,
+    "external_id": "espn_nba_401705151",
+    "start_time": "2025-01-18T03:30:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3791668,
+    "external_id": "espn_nba_401705149",
+    "start_time": "2025-01-18T01:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3791666,
+    "external_id": "espn_nba_401705147",
+    "start_time": "2025-01-18T01:00:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3791662,
+    "external_id": "espn_nba_401705143",
+    "start_time": "2025-01-18T00:00:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3791654,
+    "external_id": "espn_nba_401705131",
+    "start_time": "2025-01-16T02:30:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 35,
+    "sport": "nba"
+  },
+  {
+    "id": 3791648,
+    "external_id": "espn_nba_401705129",
+    "start_time": "2025-01-16T01:00:00+00:00",
+    "home_team_id": 78,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3791650,
+    "external_id": "espn_nba_401705132",
+    "start_time": "2025-01-16T01:00:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3791644,
+    "external_id": "espn_nba_401705125",
+    "start_time": "2025-01-15T02:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3791640,
+    "external_id": "espn_nba_401705121",
+    "start_time": "2025-01-15T00:00:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3791633,
+    "external_id": "espn_nba_401705114",
+    "start_time": "2025-01-14T00:00:00+00:00",
+    "home_team_id": 809338,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3791631,
+    "external_id": "espn_nba_401705112",
+    "start_time": "2025-01-13T01:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3791627,
+    "external_id": "espn_nba_401705108",
+    "start_time": "2025-01-12T23:00:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3791629,
+    "external_id": "espn_nba_401705110",
+    "start_time": "2025-01-12T23:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3791630,
+    "external_id": "espn_nba_401705111",
+    "start_time": "2025-01-12T23:00:00+00:00",
+    "home_team_id": 809338,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3791625,
+    "external_id": "espn_nba_401705106",
+    "start_time": "2025-01-12T20:00:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3791620,
+    "external_id": "espn_nba_401705101",
+    "start_time": "2025-01-12T01:00:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3791616,
+    "external_id": "espn_nba_401705097",
+    "start_time": "2025-01-11T02:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3791613,
+    "external_id": "espn_nba_401705094",
+    "start_time": "2025-01-11T00:30:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791612,
+    "external_id": "espn_nba_401705093",
+    "start_time": "2025-01-11T00:00:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3791604,
+    "external_id": "espn_nba_401705085",
+    "start_time": "2025-01-10T00:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3791596,
+    "external_id": "espn_nba_401705078",
+    "start_time": "2025-01-09T00:00:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 809338,
+    "sport": "nba"
+  },
+  {
+    "id": 3791592,
+    "external_id": "espn_nba_401705073",
+    "start_time": "2025-01-08T03:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3791591,
+    "external_id": "espn_nba_401705072",
+    "start_time": "2025-01-08T02:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3791590,
+    "external_id": "espn_nba_401705071",
+    "start_time": "2025-01-08T01:00:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3791589,
+    "external_id": "espn_nba_401705070",
+    "start_time": "2025-01-08T00:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3791584,
+    "external_id": "espn_nba_401705065",
+    "start_time": "2025-01-07T01:00:00+00:00",
+    "home_team_id": 88,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3791585,
+    "external_id": "espn_nba_401705066",
+    "start_time": "2025-01-07T01:00:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 809333,
+    "sport": "nba"
+  },
+  {
+    "id": 3791580,
+    "external_id": "espn_nba_401705061",
+    "start_time": "2025-01-07T00:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 11,
+    "sport": "nba"
+  },
+  {
+    "id": 3791575,
+    "external_id": "espn_nba_401705056",
+    "start_time": "2025-01-05T23:30:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3791572,
+    "external_id": "espn_nba_401705053",
+    "start_time": "2025-01-05T20:30:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3791571,
+    "external_id": "espn_nba_401705052",
+    "start_time": "2025-01-05T03:30:00+00:00",
+    "home_team_id": 809333,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3791563,
+    "external_id": "espn_nba_401705044",
+    "start_time": "2025-01-04T23:00:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3791562,
+    "external_id": "espn_nba_401705043",
+    "start_time": "2025-01-04T03:30:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3791561,
+    "external_id": "espn_nba_401705042",
+    "start_time": "2025-01-04T03:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3791555,
+    "external_id": "espn_nba_401705036",
+    "start_time": "2025-01-04T00:30:00+00:00",
+    "home_team_id": 101,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3791549,
+    "external_id": "espn_nba_401705030",
+    "start_time": "2025-01-03T00:30:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3791547,
+    "external_id": "espn_nba_401705028",
+    "start_time": "2025-01-02T03:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3791546,
+    "external_id": "espn_nba_401705027",
+    "start_time": "2025-01-02T02:00:00+00:00",
+    "home_team_id": 81,
+    "away_team_id": 1,
+    "sport": "nba"
+  },
+  {
+    "id": 3791537,
+    "external_id": "espn_nba_401705018",
+    "start_time": "2025-01-01T01:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3791533,
+    "external_id": "espn_nba_401705014",
+    "start_time": "2024-12-31T03:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3791530,
+    "external_id": "espn_nba_401705011",
+    "start_time": "2024-12-31T02:00:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3791525,
+    "external_id": "espn_nba_401705006",
+    "start_time": "2024-12-30T00:00:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3791522,
+    "external_id": "espn_nba_401705003",
+    "start_time": "2024-12-29T23:00:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 11,
+    "sport": "nba"
+  },
+  {
+    "id": 3791521,
+    "external_id": "espn_nba_401705002",
+    "start_time": "2024-12-29T20:30:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3791520,
+    "external_id": "espn_nba_401705001",
+    "start_time": "2024-12-29T03:30:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791518,
+    "external_id": "espn_nba_401704999",
+    "start_time": "2024-12-29T02:30:00+00:00",
+    "home_team_id": 809337,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3791508,
+    "external_id": "espn_nba_401704989",
+    "start_time": "2024-12-28T01:00:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3791505,
+    "external_id": "espn_nba_401704986",
+    "start_time": "2024-12-28T00:30:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 11,
+    "sport": "nba"
+  },
+  {
+    "id": 3791500,
+    "external_id": "espn_nba_401704981",
+    "start_time": "2024-12-27T01:00:00+00:00",
+    "home_team_id": 90,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3791498,
+    "external_id": "espn_nba_401704979",
+    "start_time": "2024-12-27T00:30:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 78,
+    "sport": "nba"
+  },
+  {
+    "id": 3791495,
+    "external_id": "espn_nba_401704976",
+    "start_time": "2024-12-27T00:00:00+00:00",
+    "home_team_id": 11,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3791493,
+    "external_id": "espn_nba_401704974",
+    "start_time": "2024-12-26T01:00:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3791492,
+    "external_id": "espn_nba_401704973",
+    "start_time": "2024-12-25T22:00:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 20,
+    "sport": "nba"
+  },
+  {
+    "id": 3791491,
+    "external_id": "espn_nba_401704972",
+    "start_time": "2024-12-25T19:30:00+00:00",
+    "home_team_id": 80,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3791488,
+    "external_id": "espn_nba_401704969",
+    "start_time": "2024-12-24T03:00:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 11,
+    "sport": "nba"
+  },
+  {
+    "id": 3791483,
+    "external_id": "espn_nba_401704964",
+    "start_time": "2024-12-24T01:00:00+00:00",
+    "home_team_id": 78,
+    "away_team_id": 90,
+    "sport": "nba"
+  },
+  {
+    "id": 3791480,
+    "external_id": "espn_nba_401704961",
+    "start_time": "2024-12-24T00:30:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 16,
+    "sport": "nba"
+  },
+  {
+    "id": 3791478,
+    "external_id": "espn_nba_401704959",
+    "start_time": "2024-12-24T00:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 2,
+    "sport": "nba"
+  },
+  {
+    "id": 3791475,
+    "external_id": "espn_nba_401704956",
+    "start_time": "2024-12-23T00:00:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3791474,
+    "external_id": "espn_nba_401704955",
+    "start_time": "2024-12-22T23:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 11,
+    "sport": "nba"
+  },
+  {
+    "id": 3791463,
+    "external_id": "espn_nba_401704944",
+    "start_time": "2024-12-22T00:30:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3791464,
+    "external_id": "espn_nba_401704945",
+    "start_time": "2024-12-22T00:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3791461,
+    "external_id": "espn_nba_401704942",
+    "start_time": "2024-12-21T23:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3791457,
+    "external_id": "espn_nba_401704938",
+    "start_time": "2024-12-20T03:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3791446,
+    "external_id": "espn_nba_401704927",
+    "start_time": "2024-12-20T00:00:00+00:00",
+    "home_team_id": 95,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3791442,
+    "external_id": "espn_nba_401736819",
+    "start_time": "2024-12-17T03:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3791437,
+    "external_id": "espn_nba_401736814",
+    "start_time": "2024-12-16T02:30:00+00:00",
+    "home_team_id": 13,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3791436,
+    "external_id": "espn_nba_401737912",
+    "start_time": "2024-12-16T01:30:00+00:00",
+    "home_team_id": 35,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3791431,
+    "external_id": "espn_nba_401736810",
+    "start_time": "2024-12-15T22:00:00+00:00",
+    "home_team_id": 11,
+    "away_team_id": 809334,
+    "sport": "nba"
+  },
+  {
+    "id": 3791423,
+    "external_id": "espn_nba_401736804",
+    "start_time": "2024-12-14T01:00:00+00:00",
+    "home_team_id": 16,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3791424,
+    "external_id": "espn_nba_401736805",
+    "start_time": "2024-12-14T01:00:00+00:00",
+    "home_team_id": 88,
+    "away_team_id": 76,
+    "sport": "nba"
+  },
+  {
+    "id": 3791422,
+    "external_id": "espn_nba_401736803",
+    "start_time": "2024-12-14T00:00:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 11,
+    "sport": "nba"
+  },
+  {
+    "id": 3791420,
+    "external_id": "espn_nba_401736801",
+    "start_time": "2024-12-13T01:00:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791415,
+    "external_id": "espn_nba_401734903",
+    "start_time": "2024-12-11T02:30:00+00:00",
+    "home_team_id": 25,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3791411,
+    "external_id": "espn_nba_401704923",
+    "start_time": "2024-12-09T02:00:00+00:00",
+    "home_team_id": 99,
+    "away_team_id": 809337,
+    "sport": "nba"
+  },
+  {
+    "id": 3791404,
+    "external_id": "espn_nba_401704916",
+    "start_time": "2024-12-08T23:00:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 81,
+    "sport": "nba"
+  },
+  {
+    "id": 3791403,
+    "external_id": "espn_nba_401704915",
+    "start_time": "2024-12-08T22:00:00+00:00",
+    "home_team_id": 11,
+    "away_team_id": 30,
+    "sport": "nba"
+  },
+  {
+    "id": 3791399,
+    "external_id": "espn_nba_401704911",
+    "start_time": "2024-12-08T01:00:00+00:00",
+    "home_team_id": 2,
+    "away_team_id": 88,
+    "sport": "nba"
+  },
+  {
+    "id": 3791398,
+    "external_id": "espn_nba_401704910",
+    "start_time": "2024-12-08T00:30:00+00:00",
+    "home_team_id": 101,
+    "away_team_id": 80,
+    "sport": "nba"
+  },
+  {
+    "id": 3791396,
+    "external_id": "espn_nba_401704908",
+    "start_time": "2024-12-08T00:00:00+00:00",
+    "home_team_id": 809334,
+    "away_team_id": 25,
+    "sport": "nba"
+  },
+  {
+    "id": 3791388,
+    "external_id": "espn_nba_401704900",
+    "start_time": "2024-12-07T00:30:00+00:00",
+    "home_team_id": 1,
+    "away_team_id": 13,
+    "sport": "nba"
+  },
+  {
+    "id": 3791387,
+    "external_id": "espn_nba_401704899",
+    "start_time": "2024-12-07T00:00:00+00:00",
+    "home_team_id": 20,
+    "away_team_id": 95,
+    "sport": "nba"
+  },
+  {
+    "id": 3791383,
+    "external_id": "espn_nba_401704895",
+    "start_time": "2024-12-06T01:00:00+00:00",
+    "home_team_id": 88,
+    "away_team_id": 99,
+    "sport": "nba"
+  },
+  {
+    "id": 3791374,
+    "external_id": "espn_nba_401704886",
+    "start_time": "2024-12-05T00:30:00+00:00",
+    "home_team_id": 76,
+    "away_team_id": 11,
+    "sport": "nba"
+  }
+]

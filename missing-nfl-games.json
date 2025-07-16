@@ -1,0 +1,2274 @@
+[
+  {
+    "id": 3801271,
+    "external_id": "espn_nfl_401671888",
+    "start_time": "2025-01-26T20:00:00+00:00",
+    "home_team_id": 809357,
+    "away_team_id": 28,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801265,
+    "external_id": "espn_nfl_401671937",
+    "start_time": "2025-01-19T20:00:00+00:00",
+    "home_team_id": 809357,
+    "away_team_id": 809368,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801264,
+    "external_id": "espn_nfl_401671885",
+    "start_time": "2025-01-19T01:00:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 28,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801269,
+    "external_id": "espn_nfl_401671882",
+    "start_time": "2025-01-14T01:00:00+00:00",
+    "home_team_id": 809368,
+    "away_team_id": 809362,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800854,
+    "external_id": "espn_nfl_401671883",
+    "start_time": "2025-01-13T01:00:00+00:00",
+    "home_team_id": 27,
+    "away_team_id": 28,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801268,
+    "external_id": "espn_nfl_401671880",
+    "start_time": "2025-01-12T21:30:00+00:00",
+    "home_team_id": 809357,
+    "away_team_id": 9,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800852,
+    "external_id": "espn_nfl_401671878",
+    "start_time": "2025-01-11T21:30:00+00:00",
+    "home_team_id": 34,
+    "away_team_id": 24,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801218,
+    "external_id": "espn_nfl_401671843",
+    "start_time": "2025-01-06T01:20:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 809362,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801213,
+    "external_id": "espn_nfl_401671838",
+    "start_time": "2025-01-05T21:25:00+00:00",
+    "home_team_id": 809351,
+    "away_team_id": 12,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801216,
+    "external_id": "espn_nfl_401671833",
+    "start_time": "2025-01-05T21:25:00+00:00",
+    "home_team_id": 809342,
+    "away_team_id": 15,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801215,
+    "external_id": "espn_nfl_401671830",
+    "start_time": "2025-01-05T21:25:00+00:00",
+    "home_team_id": 809368,
+    "away_team_id": 26,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801214,
+    "external_id": "espn_nfl_401671839",
+    "start_time": "2025-01-05T21:25:00+00:00",
+    "home_team_id": 809353,
+    "away_team_id": 24,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800837,
+    "external_id": "espn_nfl_401671826",
+    "start_time": "2025-01-05T18:00:00+00:00",
+    "home_team_id": 31,
+    "away_team_id": 34,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800835,
+    "external_id": "espn_nfl_401671840",
+    "start_time": "2025-01-05T18:00:00+00:00",
+    "home_team_id": 6,
+    "away_team_id": 28,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800836,
+    "external_id": "espn_nfl_401671844",
+    "start_time": "2025-01-05T18:00:00+00:00",
+    "home_team_id": 9,
+    "away_team_id": 3,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801212,
+    "external_id": "espn_nfl_401671828",
+    "start_time": "2025-01-05T18:00:00+00:00",
+    "home_team_id": 27,
+    "away_team_id": 809365,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801209,
+    "external_id": "espn_nfl_401671837",
+    "start_time": "2025-01-05T18:00:00+00:00",
+    "home_team_id": 809348,
+    "away_team_id": 809349,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801211,
+    "external_id": "espn_nfl_401671841",
+    "start_time": "2025-01-05T18:00:00+00:00",
+    "home_team_id": 809357,
+    "away_team_id": 19,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801229,
+    "external_id": "espn_nfl_401671698",
+    "start_time": "2024-12-31T01:15:00+00:00",
+    "home_team_id": 809369,
+    "away_team_id": 809360,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801227,
+    "external_id": "espn_nfl_401671725",
+    "start_time": "2024-12-29T21:25:00+00:00",
+    "home_team_id": 809362,
+    "away_team_id": 9,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801226,
+    "external_id": "espn_nfl_401671877",
+    "start_time": "2024-12-29T21:05:00+00:00",
+    "home_team_id": 809345,
+    "away_team_id": 15,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800842,
+    "external_id": "espn_nfl_401671653",
+    "start_time": "2024-12-29T18:00:00+00:00",
+    "home_team_id": 27,
+    "away_team_id": 29,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801222,
+    "external_id": "espn_nfl_401671738",
+    "start_time": "2024-12-29T18:00:00+00:00",
+    "home_team_id": 809365,
+    "away_team_id": 809353,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801223,
+    "external_id": "espn_nfl_401671846",
+    "start_time": "2024-12-29T18:00:00+00:00",
+    "home_team_id": 19,
+    "away_team_id": 809348,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801225,
+    "external_id": "espn_nfl_401671634",
+    "start_time": "2024-12-29T18:00:00+00:00",
+    "home_team_id": 809349,
+    "away_team_id": 31,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801219,
+    "external_id": "espn_nfl_401671835",
+    "start_time": "2024-12-28T21:30:00+00:00",
+    "home_team_id": 4,
+    "away_team_id": 809351,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800841,
+    "external_id": "espn_nfl_401671832",
+    "start_time": "2024-12-28T18:00:00+00:00",
+    "home_team_id": 17,
+    "away_team_id": 24,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800840,
+    "external_id": "espn_nfl_401671876",
+    "start_time": "2024-12-27T01:15:00+00:00",
+    "home_team_id": 3,
+    "away_team_id": 26,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801263,
+    "external_id": "espn_nfl_401671692",
+    "start_time": "2024-12-24T01:15:00+00:00",
+    "home_team_id": 9,
+    "away_team_id": 809365,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801262,
+    "external_id": "espn_nfl_401671874",
+    "start_time": "2024-12-22T21:25:00+00:00",
+    "home_team_id": 15,
+    "away_team_id": 809369,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801259,
+    "external_id": "espn_nfl_401671759",
+    "start_time": "2024-12-22T21:05:00+00:00",
+    "home_team_id": 26,
+    "away_team_id": 809362,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801256,
+    "external_id": "espn_nfl_401671621",
+    "start_time": "2024-12-22T18:00:00+00:00",
+    "home_team_id": 809342,
+    "away_team_id": 809368,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801255,
+    "external_id": "espn_nfl_401671862",
+    "start_time": "2024-12-22T18:00:00+00:00",
+    "home_team_id": 809348,
+    "away_team_id": 31,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801254,
+    "external_id": "espn_nfl_401671811",
+    "start_time": "2024-12-22T18:00:00+00:00",
+    "home_team_id": 4,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801253,
+    "external_id": "espn_nfl_401671868",
+    "start_time": "2024-12-22T18:00:00+00:00",
+    "home_team_id": 3,
+    "away_team_id": 809360,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801257,
+    "external_id": "espn_nfl_401671717",
+    "start_time": "2024-12-22T18:00:00+00:00",
+    "home_team_id": 28,
+    "away_team_id": 809357,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801251,
+    "external_id": "espn_nfl_401671749",
+    "start_time": "2024-12-20T01:15:00+00:00",
+    "home_team_id": 24,
+    "away_team_id": 809351,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801194,
+    "external_id": "espn_nfl_401671489",
+    "start_time": "2024-12-17T01:00:00+00:00",
+    "home_team_id": 809362,
+    "away_team_id": 3,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800831,
+    "external_id": "espn_nfl_401671796",
+    "start_time": "2024-12-16T01:20:00+00:00",
+    "home_team_id": 26,
+    "away_team_id": 9,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800830,
+    "external_id": "espn_nfl_401671762",
+    "start_time": "2024-12-15T21:25:00+00:00",
+    "home_team_id": 24,
+    "away_team_id": 27,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801190,
+    "external_id": "espn_nfl_401671669",
+    "start_time": "2024-12-15T21:25:00+00:00",
+    "home_team_id": 809351,
+    "away_team_id": 809348,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801192,
+    "external_id": "espn_nfl_401671766",
+    "start_time": "2024-12-15T21:25:00+00:00",
+    "home_team_id": 809357,
+    "away_team_id": 23,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800826,
+    "external_id": "espn_nfl_401671825",
+    "start_time": "2024-12-15T18:00:00+00:00",
+    "home_team_id": 31,
+    "away_team_id": 4,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801189,
+    "external_id": "espn_nfl_401671706",
+    "start_time": "2024-12-15T18:00:00+00:00",
+    "home_team_id": 809349,
+    "away_team_id": 809342,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801188,
+    "external_id": "espn_nfl_401671737",
+    "start_time": "2024-12-15T18:00:00+00:00",
+    "home_team_id": 809365,
+    "away_team_id": 28,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801186,
+    "external_id": "espn_nfl_401671818",
+    "start_time": "2024-12-13T01:15:00+00:00",
+    "home_team_id": 809369,
+    "away_team_id": 809368,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801206,
+    "external_id": "espn_nfl_401671774",
+    "start_time": "2024-12-08T21:25:00+00:00",
+    "home_team_id": 809369,
+    "away_team_id": 3,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801202,
+    "external_id": "espn_nfl_401671631",
+    "start_time": "2024-12-08T18:00:00+00:00",
+    "home_team_id": 23,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801203,
+    "external_id": "espn_nfl_401671654",
+    "start_time": "2024-12-08T18:00:00+00:00",
+    "home_team_id": 27,
+    "away_team_id": 809353,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801197,
+    "external_id": "espn_nfl_401671821",
+    "start_time": "2024-12-08T18:00:00+00:00",
+    "home_team_id": 31,
+    "away_team_id": 809349,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801198,
+    "external_id": "espn_nfl_401671848",
+    "start_time": "2024-12-08T18:00:00+00:00",
+    "home_team_id": 15,
+    "away_team_id": 809342,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801200,
+    "external_id": "espn_nfl_401671601",
+    "start_time": "2024-12-08T18:00:00+00:00",
+    "home_team_id": 19,
+    "away_team_id": 809365,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801201,
+    "external_id": "espn_nfl_401671713",
+    "start_time": "2024-12-08T18:00:00+00:00",
+    "home_team_id": 809357,
+    "away_team_id": 29,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801196,
+    "external_id": "espn_nfl_401671814",
+    "start_time": "2024-12-06T01:15:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 9,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801240,
+    "external_id": "espn_nfl_401671686",
+    "start_time": "2024-12-03T01:15:00+00:00",
+    "home_team_id": 809351,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801237,
+    "external_id": "espn_nfl_401671753",
+    "start_time": "2024-12-01T21:05:00+00:00",
+    "home_team_id": 809365,
+    "away_team_id": 809368,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800845,
+    "external_id": "espn_nfl_401671627",
+    "start_time": "2024-12-01T18:00:00+00:00",
+    "home_team_id": 4,
+    "away_team_id": 23,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801234,
+    "external_id": "espn_nfl_401671620",
+    "start_time": "2024-12-01T18:00:00+00:00",
+    "home_team_id": 17,
+    "away_team_id": 809348,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801235,
+    "external_id": "espn_nfl_401671703",
+    "start_time": "2024-12-01T18:00:00+00:00",
+    "home_team_id": 809342,
+    "away_team_id": 26,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801236,
+    "external_id": "espn_nfl_401671705",
+    "start_time": "2024-12-01T18:00:00+00:00",
+    "home_team_id": 809349,
+    "away_team_id": 34,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800844,
+    "external_id": "espn_nfl_401671798",
+    "start_time": "2024-11-29T01:20:00+00:00",
+    "home_team_id": 9,
+    "away_team_id": 15,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801230,
+    "external_id": "espn_nfl_401671492",
+    "start_time": "2024-11-28T17:30:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 3,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801185,
+    "external_id": "espn_nfl_401671794",
+    "start_time": "2024-11-25T01:20:00+00:00",
+    "home_team_id": 809368,
+    "away_team_id": 809357,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801183,
+    "external_id": "espn_nfl_401671768",
+    "start_time": "2024-11-24T21:25:00+00:00",
+    "home_team_id": 9,
+    "away_team_id": 809369,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800824,
+    "external_id": "espn_nfl_401671858",
+    "start_time": "2024-11-24T18:00:00+00:00",
+    "home_team_id": 34,
+    "away_team_id": 31,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800821,
+    "external_id": "espn_nfl_401671638",
+    "start_time": "2024-11-24T18:00:00+00:00",
+    "home_team_id": 19,
+    "away_team_id": 27,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800820,
+    "external_id": "espn_nfl_401671847",
+    "start_time": "2024-11-24T18:00:00+00:00",
+    "home_team_id": 15,
+    "away_team_id": 17,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801180,
+    "external_id": "espn_nfl_401671870",
+    "start_time": "2024-11-24T18:00:00+00:00",
+    "home_team_id": 3,
+    "away_team_id": 809362,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801181,
+    "external_id": "espn_nfl_401671866",
+    "start_time": "2024-11-24T18:00:00+00:00",
+    "home_team_id": 809348,
+    "away_team_id": 809360,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801179,
+    "external_id": "espn_nfl_401671875",
+    "start_time": "2024-11-22T01:15:00+00:00",
+    "home_team_id": 809345,
+    "away_team_id": 23,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800818,
+    "external_id": "espn_nfl_401671675",
+    "start_time": "2024-11-18T01:20:00+00:00",
+    "home_team_id": 24,
+    "away_team_id": 4,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801249,
+    "external_id": "espn_nfl_401671757",
+    "start_time": "2024-11-17T21:05:00+00:00",
+    "home_team_id": 809369,
+    "away_team_id": 26,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801244,
+    "external_id": "espn_nfl_401671851",
+    "start_time": "2024-11-17T18:00:00+00:00",
+    "home_team_id": 15,
+    "away_team_id": 809353,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800816,
+    "external_id": "espn_nfl_401671869",
+    "start_time": "2024-11-17T18:00:00+00:00",
+    "home_team_id": 3,
+    "away_team_id": 9,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801242,
+    "external_id": "espn_nfl_401671642",
+    "start_time": "2024-11-17T18:00:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 809349,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801243,
+    "external_id": "espn_nfl_401671824",
+    "start_time": "2024-11-17T18:00:00+00:00",
+    "home_team_id": 31,
+    "away_team_id": 809362,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801245,
+    "external_id": "espn_nfl_401671701",
+    "start_time": "2024-11-17T18:00:00+00:00",
+    "home_team_id": 17,
+    "away_team_id": 809368,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801246,
+    "external_id": "espn_nfl_401671746",
+    "start_time": "2024-11-17T18:00:00+00:00",
+    "home_team_id": 809365,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801247,
+    "external_id": "espn_nfl_401671782",
+    "start_time": "2024-11-17T18:00:00+00:00",
+    "home_team_id": 809342,
+    "away_team_id": 809348,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801155,
+    "external_id": "espn_nfl_401671693",
+    "start_time": "2024-11-12T01:15:00+00:00",
+    "home_team_id": 809368,
+    "away_team_id": 15,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801154,
+    "external_id": "espn_nfl_401671787",
+    "start_time": "2024-11-11T01:20:00+00:00",
+    "home_team_id": 34,
+    "away_team_id": 809360,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800802,
+    "external_id": "espn_nfl_401671751",
+    "start_time": "2024-11-10T21:05:00+00:00",
+    "home_team_id": 24,
+    "away_team_id": 31,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800801,
+    "external_id": "espn_nfl_401671641",
+    "start_time": "2024-11-10T18:00:00+00:00",
+    "home_team_id": 28,
+    "away_team_id": 23,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801151,
+    "external_id": "espn_nfl_401671708",
+    "start_time": "2024-11-10T18:00:00+00:00",
+    "home_team_id": 809349,
+    "away_team_id": 809362,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801150,
+    "external_id": "espn_nfl_401671742",
+    "start_time": "2024-11-10T18:00:00+00:00",
+    "home_team_id": 27,
+    "away_team_id": 809369,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800800,
+    "external_id": "espn_nfl_401671873",
+    "start_time": "2024-11-10T18:00:00+00:00",
+    "home_team_id": 3,
+    "away_team_id": 17,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800799,
+    "external_id": "espn_nfl_401671803",
+    "start_time": "2024-11-10T14:30:00+00:00",
+    "home_team_id": 29,
+    "away_team_id": 19,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801111,
+    "external_id": "espn_nfl_401671647",
+    "start_time": "2024-11-04T01:20:00+00:00",
+    "home_team_id": 809362,
+    "away_team_id": 809348,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801109,
+    "external_id": "espn_nfl_401671767",
+    "start_time": "2024-11-03T21:25:00+00:00",
+    "home_team_id": 9,
+    "away_team_id": 809360,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801110,
+    "external_id": "espn_nfl_401671776",
+    "start_time": "2024-11-03T21:25:00+00:00",
+    "home_team_id": 26,
+    "away_team_id": 809368,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801107,
+    "external_id": "espn_nfl_401671797",
+    "start_time": "2024-11-03T21:05:00+00:00",
+    "home_team_id": 809357,
+    "away_team_id": 809349,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800788,
+    "external_id": "espn_nfl_401671822",
+    "start_time": "2024-11-03T18:00:00+00:00",
+    "home_team_id": 31,
+    "away_team_id": 17,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801105,
+    "external_id": "espn_nfl_401671650",
+    "start_time": "2024-11-03T18:00:00+00:00",
+    "home_team_id": 29,
+    "away_team_id": 809365,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801103,
+    "external_id": "espn_nfl_401671704",
+    "start_time": "2024-11-03T18:00:00+00:00",
+    "home_team_id": 4,
+    "away_team_id": 809353,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800789,
+    "external_id": "espn_nfl_401671711",
+    "start_time": "2024-11-03T18:00:00+00:00",
+    "home_team_id": 19,
+    "away_team_id": 28,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801100,
+    "external_id": "espn_nfl_401671809",
+    "start_time": "2024-11-01T00:15:00+00:00",
+    "home_team_id": 809342,
+    "away_team_id": 34,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800797,
+    "external_id": "espn_nfl_401671685",
+    "start_time": "2024-10-29T00:15:00+00:00",
+    "home_team_id": 23,
+    "away_team_id": 19,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801125,
+    "external_id": "espn_nfl_401671795",
+    "start_time": "2024-10-28T00:20:00+00:00",
+    "home_team_id": 809369,
+    "away_team_id": 6,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800796,
+    "external_id": "espn_nfl_401671599",
+    "start_time": "2024-10-27T20:25:00+00:00",
+    "home_team_id": 28,
+    "away_team_id": 3,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801123,
+    "external_id": "espn_nfl_401671600",
+    "start_time": "2024-10-27T20:25:00+00:00",
+    "home_team_id": 809351,
+    "away_team_id": 29,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801113,
+    "external_id": "espn_nfl_401671667",
+    "start_time": "2024-10-27T17:00:00+00:00",
+    "home_team_id": 4,
+    "away_team_id": 809357,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801115,
+    "external_id": "espn_nfl_401671720",
+    "start_time": "2024-10-27T17:00:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 31,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801119,
+    "external_id": "espn_nfl_401671707",
+    "start_time": "2024-10-27T17:00:00+00:00",
+    "home_team_id": 809349,
+    "away_team_id": 9,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801120,
+    "external_id": "espn_nfl_401671856",
+    "start_time": "2024-10-27T17:00:00+00:00",
+    "home_team_id": 34,
+    "away_team_id": 809348,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801112,
+    "external_id": "espn_nfl_401671817",
+    "start_time": "2024-10-25T00:15:00+00:00",
+    "home_team_id": 809368,
+    "away_team_id": 809362,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801076,
+    "external_id": "espn_nfl_401671785",
+    "start_time": "2024-10-21T00:20:00+00:00",
+    "home_team_id": 23,
+    "away_team_id": 809342,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801075,
+    "external_id": "espn_nfl_401671777",
+    "start_time": "2024-10-20T20:25:00+00:00",
+    "home_team_id": 809369,
+    "away_team_id": 12,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800778,
+    "external_id": "espn_nfl_401671640",
+    "start_time": "2024-10-20T20:05:00+00:00",
+    "home_team_id": 28,
+    "away_team_id": 29,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801074,
+    "external_id": "espn_nfl_401671663",
+    "start_time": "2024-10-20T20:05:00+00:00",
+    "home_team_id": 809368,
+    "away_team_id": 809353,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801073,
+    "external_id": "espn_nfl_401671710",
+    "start_time": "2024-10-20T17:00:00+00:00",
+    "home_team_id": 19,
+    "away_team_id": 809357,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801072,
+    "external_id": "espn_nfl_401671724",
+    "start_time": "2024-10-20T17:00:00+00:00",
+    "home_team_id": 809362,
+    "away_team_id": 809360,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801071,
+    "external_id": "espn_nfl_401671864",
+    "start_time": "2024-10-20T17:00:00+00:00",
+    "home_team_id": 809348,
+    "away_team_id": 15,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801070,
+    "external_id": "espn_nfl_401671853",
+    "start_time": "2024-10-20T17:00:00+00:00",
+    "home_team_id": 809345,
+    "away_team_id": 4,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800777,
+    "external_id": "espn_nfl_401671644",
+    "start_time": "2024-10-20T17:00:00+00:00",
+    "home_team_id": 9,
+    "away_team_id": 34,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801067,
+    "external_id": "espn_nfl_401671801",
+    "start_time": "2024-10-20T13:30:00+00:00",
+    "home_team_id": 809349,
+    "away_team_id": 17,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801066,
+    "external_id": "espn_nfl_401671816",
+    "start_time": "2024-10-18T00:15:00+00:00",
+    "home_team_id": 809365,
+    "away_team_id": 809351,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800782,
+    "external_id": "espn_nfl_401671791",
+    "start_time": "2024-10-14T00:20:00+00:00",
+    "home_team_id": 19,
+    "away_team_id": 4,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801096,
+    "external_id": "espn_nfl_401671657",
+    "start_time": "2024-10-13T20:05:00+00:00",
+    "home_team_id": 809353,
+    "away_team_id": 23,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800780,
+    "external_id": "espn_nfl_401671619",
+    "start_time": "2024-10-13T17:00:00+00:00",
+    "home_team_id": 17,
+    "away_team_id": 34,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801094,
+    "external_id": "espn_nfl_401671714",
+    "start_time": "2024-10-13T17:00:00+00:00",
+    "home_team_id": 809357,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801093,
+    "external_id": "espn_nfl_401671735",
+    "start_time": "2024-10-13T17:00:00+00:00",
+    "home_team_id": 809365,
+    "away_team_id": 27,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801090,
+    "external_id": "espn_nfl_401671802",
+    "start_time": "2024-10-13T13:30:00+00:00",
+    "home_team_id": 3,
+    "away_team_id": 809349,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801089,
+    "external_id": "espn_nfl_401671819",
+    "start_time": "2024-10-11T00:15:00+00:00",
+    "home_team_id": 26,
+    "away_team_id": 809369,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801134,
+    "external_id": "espn_nfl_401671687",
+    "start_time": "2024-10-08T00:15:00+00:00",
+    "home_team_id": 12,
+    "away_team_id": 809365,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800787,
+    "external_id": "espn_nfl_401671784",
+    "start_time": "2024-10-07T01:45:00+00:00",
+    "home_team_id": 23,
+    "away_team_id": 6,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800786,
+    "external_id": "espn_nfl_401671680",
+    "start_time": "2024-10-06T20:25:00+00:00",
+    "home_team_id": 26,
+    "away_team_id": 19,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801133,
+    "external_id": "espn_nfl_401671679",
+    "start_time": "2024-10-06T20:25:00+00:00",
+    "home_team_id": 809368,
+    "away_team_id": 9,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801131,
+    "external_id": "espn_nfl_401671747",
+    "start_time": "2024-10-06T20:05:00+00:00",
+    "home_team_id": 809351,
+    "away_team_id": 809353,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800783,
+    "external_id": "espn_nfl_401671872",
+    "start_time": "2024-10-06T17:00:00+00:00",
+    "home_team_id": 3,
+    "away_team_id": 29,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801128,
+    "external_id": "espn_nfl_401671718",
+    "start_time": "2024-10-06T17:00:00+00:00",
+    "home_team_id": 28,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801127,
+    "external_id": "espn_nfl_401671804",
+    "start_time": "2024-10-06T13:30:00+00:00",
+    "home_team_id": 809362,
+    "away_team_id": 809342,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801178,
+    "external_id": "espn_nfl_401671491",
+    "start_time": "2024-10-01T00:15:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 26,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800814,
+    "external_id": "espn_nfl_401671674",
+    "start_time": "2024-09-29T20:25:00+00:00",
+    "home_team_id": 24,
+    "away_team_id": 12,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801176,
+    "external_id": "espn_nfl_401671672",
+    "start_time": "2024-09-29T20:25:00+00:00",
+    "home_team_id": 809353,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801173,
+    "external_id": "espn_nfl_401671857",
+    "start_time": "2024-09-29T17:00:00+00:00",
+    "home_team_id": 34,
+    "away_team_id": 809349,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801168,
+    "external_id": "espn_nfl_401671871",
+    "start_time": "2024-09-29T17:00:00+00:00",
+    "home_team_id": 3,
+    "away_team_id": 809368,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801169,
+    "external_id": "espn_nfl_401671643",
+    "start_time": "2024-09-29T17:00:00+00:00",
+    "home_team_id": 9,
+    "away_team_id": 809362,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801170,
+    "external_id": "espn_nfl_401671867",
+    "start_time": "2024-09-29T17:00:00+00:00",
+    "home_team_id": 809348,
+    "away_team_id": 23,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800812,
+    "external_id": "espn_nfl_401671812",
+    "start_time": "2024-09-27T00:15:00+00:00",
+    "home_team_id": 19,
+    "away_team_id": 6,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800811,
+    "external_id": "espn_nfl_401671490",
+    "start_time": "2024-09-24T00:15:00+00:00",
+    "home_team_id": 4,
+    "away_team_id": 28,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801163,
+    "external_id": "espn_nfl_401671772",
+    "start_time": "2024-09-22T20:25:00+00:00",
+    "home_team_id": 809368,
+    "away_team_id": 809369,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800809,
+    "external_id": "espn_nfl_401671662",
+    "start_time": "2024-09-22T20:05:00+00:00",
+    "home_team_id": 26,
+    "away_team_id": 15,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801162,
+    "external_id": "espn_nfl_401671658",
+    "start_time": "2024-09-22T20:05:00+00:00",
+    "home_team_id": 809353,
+    "away_team_id": 29,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801158,
+    "external_id": "espn_nfl_401671865",
+    "start_time": "2024-09-22T17:00:00+00:00",
+    "home_team_id": 809348,
+    "away_team_id": 3,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801160,
+    "external_id": "espn_nfl_401671736",
+    "start_time": "2024-09-22T17:00:00+00:00",
+    "home_team_id": 809365,
+    "away_team_id": 809357,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801161,
+    "external_id": "espn_nfl_401671741",
+    "start_time": "2024-09-22T17:00:00+00:00",
+    "home_team_id": 27,
+    "away_team_id": 809351,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801157,
+    "external_id": "espn_nfl_401671855",
+    "start_time": "2024-09-22T17:00:00+00:00",
+    "home_team_id": 809345,
+    "away_team_id": 19,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801159,
+    "external_id": "espn_nfl_401671646",
+    "start_time": "2024-09-22T17:00:00+00:00",
+    "home_team_id": 809362,
+    "away_team_id": 34,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801156,
+    "external_id": "espn_nfl_401671808",
+    "start_time": "2024-09-20T00:15:00+00:00",
+    "home_team_id": 809342,
+    "away_team_id": 17,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800795,
+    "external_id": "espn_nfl_401671786",
+    "start_time": "2024-09-16T00:20:00+00:00",
+    "home_team_id": 34,
+    "away_team_id": 3,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800794,
+    "external_id": "espn_nfl_401671670",
+    "start_time": "2024-09-15T20:25:00+00:00",
+    "home_team_id": 12,
+    "away_team_id": 4,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801087,
+    "external_id": "espn_nfl_401671668",
+    "start_time": "2024-09-15T20:25:00+00:00",
+    "home_team_id": 809351,
+    "away_team_id": 23,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801081,
+    "external_id": "espn_nfl_401671723",
+    "start_time": "2024-09-15T17:00:00+00:00",
+    "home_team_id": 9,
+    "away_team_id": 809348,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801080,
+    "external_id": "espn_nfl_401671721",
+    "start_time": "2024-09-15T17:00:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 27,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801084,
+    "external_id": "espn_nfl_401671635",
+    "start_time": "2024-09-15T17:00:00+00:00",
+    "home_team_id": 809349,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801083,
+    "external_id": "espn_nfl_401671645",
+    "start_time": "2024-09-15T17:00:00+00:00",
+    "home_team_id": 809362,
+    "away_team_id": 809369,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800793,
+    "external_id": "espn_nfl_401671652",
+    "start_time": "2024-09-15T17:00:00+00:00",
+    "home_team_id": 29,
+    "away_team_id": 24,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800792,
+    "external_id": "espn_nfl_401671716",
+    "start_time": "2024-09-15T17:00:00+00:00",
+    "home_team_id": 28,
+    "away_team_id": 19,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801079,
+    "external_id": "espn_nfl_401671709",
+    "start_time": "2024-09-15T17:00:00+00:00",
+    "home_team_id": 6,
+    "away_team_id": 809365,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801146,
+    "external_id": "espn_nfl_401671696",
+    "start_time": "2024-09-10T00:15:00+00:00",
+    "home_team_id": 809369,
+    "away_team_id": 809342,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801145,
+    "external_id": "espn_nfl_401671792",
+    "start_time": "2024-09-09T00:20:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 809368,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800806,
+    "external_id": "espn_nfl_401671770",
+    "start_time": "2024-09-08T20:25:00+00:00",
+    "home_team_id": 27,
+    "away_team_id": 28,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801143,
+    "external_id": "espn_nfl_401671664",
+    "start_time": "2024-09-08T20:05:00+00:00",
+    "home_team_id": 26,
+    "away_team_id": 809351,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801142,
+    "external_id": "espn_nfl_401671659",
+    "start_time": "2024-09-08T20:05:00+00:00",
+    "home_team_id": 24,
+    "away_team_id": 809353,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801138,
+    "external_id": "espn_nfl_401671861",
+    "start_time": "2024-09-08T17:00:00+00:00",
+    "home_team_id": 809348,
+    "away_team_id": 34,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801141,
+    "external_id": "espn_nfl_401671712",
+    "start_time": "2024-09-08T17:00:00+00:00",
+    "home_team_id": 19,
+    "away_team_id": 809362,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801139,
+    "external_id": "espn_nfl_401671849",
+    "start_time": "2024-09-08T17:00:00+00:00",
+    "home_team_id": 15,
+    "away_team_id": 809349,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801135,
+    "external_id": "espn_nfl_401671805",
+    "start_time": "2024-09-07T00:15:00+00:00",
+    "home_team_id": 809357,
+    "away_team_id": 9,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801061,
+    "external_id": "espn_nfl_401547380",
+    "start_time": "2024-01-28T23:30:00+00:00",
+    "home_team_id": 809369,
+    "away_team_id": 809360,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801058,
+    "external_id": "espn_nfl_401547757",
+    "start_time": "2024-01-21T20:00:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 27,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801063,
+    "external_id": "espn_nfl_401547753",
+    "start_time": "2024-01-15T01:15:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 809368,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800774,
+    "external_id": "espn_nfl_401547752",
+    "start_time": "2024-01-14T21:30:00+00:00",
+    "home_team_id": 6,
+    "away_team_id": 9,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800773,
+    "external_id": "espn_nfl_401547750",
+    "start_time": "2024-01-14T01:00:00+00:00",
+    "home_team_id": 12,
+    "away_team_id": 15,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801062,
+    "external_id": "espn_nfl_401547749",
+    "start_time": "2024-01-13T21:30:00+00:00",
+    "home_team_id": 34,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800770,
+    "external_id": "espn_nfl_401547643",
+    "start_time": "2024-01-07T21:25:00+00:00",
+    "home_team_id": 9,
+    "away_team_id": 3,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800772,
+    "external_id": "espn_nfl_401547653",
+    "start_time": "2024-01-07T21:25:00+00:00",
+    "home_team_id": 28,
+    "away_team_id": 6,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801019,
+    "external_id": "espn_nfl_401547646",
+    "start_time": "2024-01-07T21:25:00+00:00",
+    "home_team_id": 809353,
+    "away_team_id": 809351,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801014,
+    "external_id": "espn_nfl_401547641",
+    "start_time": "2024-01-07T18:00:00+00:00",
+    "home_team_id": 4,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801015,
+    "external_id": "espn_nfl_401547642",
+    "start_time": "2024-01-07T18:00:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 809362,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800769,
+    "external_id": "espn_nfl_401547640",
+    "start_time": "2024-01-07T18:00:00+00:00",
+    "home_team_id": 29,
+    "away_team_id": 27,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801017,
+    "external_id": "espn_nfl_401547648",
+    "start_time": "2024-01-07T18:00:00+00:00",
+    "home_team_id": 17,
+    "away_team_id": 809342,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801013,
+    "external_id": "espn_nfl_401547644",
+    "start_time": "2024-01-07T01:15:00+00:00",
+    "home_team_id": 809348,
+    "away_team_id": 34,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801056,
+    "external_id": "espn_nfl_401547637",
+    "start_time": "2024-01-01T01:20:00+00:00",
+    "home_team_id": 809362,
+    "away_team_id": 9,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800767,
+    "external_id": "espn_nfl_401547235",
+    "start_time": "2023-12-31T21:25:00+00:00",
+    "home_team_id": 12,
+    "away_team_id": 4,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800766,
+    "external_id": "espn_nfl_401547636",
+    "start_time": "2023-12-31T21:05:00+00:00",
+    "home_team_id": 26,
+    "away_team_id": 23,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801053,
+    "external_id": "espn_nfl_401547635",
+    "start_time": "2023-12-31T18:00:00+00:00",
+    "home_team_id": 28,
+    "away_team_id": 809369,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801049,
+    "external_id": "espn_nfl_401547628",
+    "start_time": "2023-12-31T18:00:00+00:00",
+    "home_team_id": 809348,
+    "away_team_id": 809353,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801050,
+    "external_id": "espn_nfl_401547632",
+    "start_time": "2023-12-31T18:00:00+00:00",
+    "home_team_id": 19,
+    "away_team_id": 809368,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801052,
+    "external_id": "espn_nfl_401547634",
+    "start_time": "2023-12-31T18:00:00+00:00",
+    "home_team_id": 27,
+    "away_team_id": 809365,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801046,
+    "external_id": "espn_nfl_401547624",
+    "start_time": "2023-12-31T01:15:00+00:00",
+    "home_team_id": 6,
+    "away_team_id": 809360,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801011,
+    "external_id": "espn_nfl_401547241",
+    "start_time": "2023-12-25T21:30:00+00:00",
+    "home_team_id": 809357,
+    "away_team_id": 19,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801009,
+    "external_id": "espn_nfl_401547621",
+    "start_time": "2023-12-25T01:15:00+00:00",
+    "home_team_id": 809351,
+    "away_team_id": 17,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800763,
+    "external_id": "espn_nfl_401547620",
+    "start_time": "2023-12-24T21:25:00+00:00",
+    "home_team_id": 15,
+    "away_team_id": 6,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801004,
+    "external_id": "espn_nfl_401547618",
+    "start_time": "2023-12-24T18:00:00+00:00",
+    "home_team_id": 809362,
+    "away_team_id": 809360,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801006,
+    "external_id": "espn_nfl_401547612",
+    "start_time": "2023-12-24T18:00:00+00:00",
+    "home_team_id": 34,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800760,
+    "external_id": "espn_nfl_401547610",
+    "start_time": "2023-12-23T21:30:00+00:00",
+    "home_team_id": 23,
+    "away_team_id": 4,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800757,
+    "external_id": "espn_nfl_401547598",
+    "start_time": "2023-12-17T18:00:00+00:00",
+    "home_team_id": 9,
+    "away_team_id": 27,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800759,
+    "external_id": "espn_nfl_401547608",
+    "start_time": "2023-12-17T18:00:00+00:00",
+    "home_team_id": 17,
+    "away_team_id": 12,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801037,
+    "external_id": "espn_nfl_401547594",
+    "start_time": "2023-12-17T18:00:00+00:00",
+    "home_team_id": 15,
+    "away_team_id": 809342,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801035,
+    "external_id": "espn_nfl_401547606",
+    "start_time": "2023-12-17T01:15:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 809351,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801034,
+    "external_id": "espn_nfl_401547607",
+    "start_time": "2023-12-16T21:30:00+00:00",
+    "home_team_id": 809348,
+    "away_team_id": 23,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801033,
+    "external_id": "espn_nfl_401547604",
+    "start_time": "2023-12-16T18:00:00+00:00",
+    "home_team_id": 4,
+    "away_team_id": 809362,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801000,
+    "external_id": "espn_nfl_401547590",
+    "start_time": "2023-12-11T01:20:00+00:00",
+    "home_team_id": 6,
+    "away_team_id": 809357,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800996,
+    "external_id": "espn_nfl_401547588",
+    "start_time": "2023-12-10T21:05:00+00:00",
+    "home_team_id": 809353,
+    "away_team_id": 809362,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800991,
+    "external_id": "espn_nfl_401547580",
+    "start_time": "2023-12-10T18:00:00+00:00",
+    "home_team_id": 4,
+    "away_team_id": 809348,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800993,
+    "external_id": "espn_nfl_401547587",
+    "start_time": "2023-12-10T18:00:00+00:00",
+    "home_team_id": 809365,
+    "away_team_id": 29,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800994,
+    "external_id": "espn_nfl_401547582",
+    "start_time": "2023-12-10T18:00:00+00:00",
+    "home_team_id": 809342,
+    "away_team_id": 34,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800750,
+    "external_id": "espn_nfl_401547578",
+    "start_time": "2023-12-08T01:15:00+00:00",
+    "home_team_id": 23,
+    "away_team_id": 17,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800749,
+    "external_id": "espn_nfl_401547576",
+    "start_time": "2023-12-04T01:20:00+00:00",
+    "home_team_id": 9,
+    "away_team_id": 12,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801029,
+    "external_id": "espn_nfl_401547575",
+    "start_time": "2023-12-03T21:25:00+00:00",
+    "home_team_id": 809368,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800748,
+    "external_id": "espn_nfl_401547569",
+    "start_time": "2023-12-03T21:05:00+00:00",
+    "home_team_id": 27,
+    "away_team_id": 29,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801025,
+    "external_id": "espn_nfl_401547572",
+    "start_time": "2023-12-03T18:00:00+00:00",
+    "home_team_id": 809365,
+    "away_team_id": 809360,
+    "sport": "nfl"
+  },
+  {
+    "id": 3801028,
+    "external_id": "espn_nfl_401547571",
+    "start_time": "2023-12-03T18:00:00+00:00",
+    "home_team_id": 34,
+    "away_team_id": 809351,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800746,
+    "external_id": "espn_nfl_401547567",
+    "start_time": "2023-12-03T18:00:00+00:00",
+    "home_team_id": 17,
+    "away_team_id": 24,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800747,
+    "external_id": "espn_nfl_401547574",
+    "start_time": "2023-12-03T18:00:00+00:00",
+    "home_team_id": 28,
+    "away_team_id": 15,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800986,
+    "external_id": "espn_nfl_401547557",
+    "start_time": "2023-11-26T21:25:00+00:00",
+    "home_team_id": 809353,
+    "away_team_id": 12,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800984,
+    "external_id": "espn_nfl_401547563",
+    "start_time": "2023-11-26T21:05:00+00:00",
+    "home_team_id": 809351,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800743,
+    "external_id": "espn_nfl_401547560",
+    "start_time": "2023-11-26T18:00:00+00:00",
+    "home_team_id": 19,
+    "away_team_id": 17,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800982,
+    "external_id": "espn_nfl_401547556",
+    "start_time": "2023-11-26T18:00:00+00:00",
+    "home_team_id": 809348,
+    "away_team_id": 27,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800980,
+    "external_id": "espn_nfl_401547242",
+    "start_time": "2023-11-24T20:00:00+00:00",
+    "home_team_id": 809342,
+    "away_team_id": 15,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800740,
+    "external_id": "espn_nfl_401547551",
+    "start_time": "2023-11-23T21:30:00+00:00",
+    "home_team_id": 6,
+    "away_team_id": 28,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800978,
+    "external_id": "espn_nfl_401547552",
+    "start_time": "2023-11-23T17:30:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 9,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800977,
+    "external_id": "espn_nfl_401547345",
+    "start_time": "2023-11-21T01:15:00+00:00",
+    "home_team_id": 12,
+    "away_team_id": 809357,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800976,
+    "external_id": "espn_nfl_401547550",
+    "start_time": "2023-11-20T01:20:00+00:00",
+    "home_team_id": 809351,
+    "away_team_id": 809362,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800973,
+    "external_id": "espn_nfl_401547549",
+    "start_time": "2023-11-19T21:05:00+00:00",
+    "home_team_id": 809369,
+    "away_team_id": 27,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800755,
+    "external_id": "espn_nfl_401547548",
+    "start_time": "2023-11-19T18:00:00+00:00",
+    "home_team_id": 28,
+    "away_team_id": 19,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800754,
+    "external_id": "espn_nfl_401547547",
+    "start_time": "2023-11-19T18:00:00+00:00",
+    "home_team_id": 9,
+    "away_team_id": 24,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800968,
+    "external_id": "espn_nfl_401547539",
+    "start_time": "2023-11-19T18:00:00+00:00",
+    "home_team_id": 809345,
+    "away_team_id": 23,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800739,
+    "external_id": "espn_nfl_401547535",
+    "start_time": "2023-11-12T21:25:00+00:00",
+    "home_team_id": 26,
+    "away_team_id": 28,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800896,
+    "external_id": "espn_nfl_401547530",
+    "start_time": "2023-11-12T21:05:00+00:00",
+    "home_team_id": 24,
+    "away_team_id": 809360,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800735,
+    "external_id": "espn_nfl_401547526",
+    "start_time": "2023-11-12T18:00:00+00:00",
+    "home_team_id": 4,
+    "away_team_id": 34,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800892,
+    "external_id": "espn_nfl_401547533",
+    "start_time": "2023-11-12T18:00:00+00:00",
+    "home_team_id": 809362,
+    "away_team_id": 809365,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800736,
+    "external_id": "espn_nfl_401547527",
+    "start_time": "2023-11-12T18:00:00+00:00",
+    "home_team_id": 23,
+    "away_team_id": 9,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800893,
+    "external_id": "espn_nfl_401547532",
+    "start_time": "2023-11-12T18:00:00+00:00",
+    "home_team_id": 809349,
+    "away_team_id": 809369,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800891,
+    "external_id": "espn_nfl_401547231",
+    "start_time": "2023-11-12T14:30:00+00:00",
+    "home_team_id": 17,
+    "away_team_id": 809348,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800905,
+    "external_id": "espn_nfl_401547522",
+    "start_time": "2023-11-05T21:25:00+00:00",
+    "home_team_id": 809357,
+    "away_team_id": 6,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800904,
+    "external_id": "espn_nfl_401547521",
+    "start_time": "2023-11-05T21:25:00+00:00",
+    "home_team_id": 809353,
+    "away_team_id": 19,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800903,
+    "external_id": "espn_nfl_401547517",
+    "start_time": "2023-11-05T21:05:00+00:00",
+    "home_team_id": 29,
+    "away_team_id": 809348,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800720,
+    "external_id": "espn_nfl_401547515",
+    "start_time": "2023-11-05T18:00:00+00:00",
+    "home_team_id": 34,
+    "away_team_id": 27,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800718,
+    "external_id": "espn_nfl_401547520",
+    "start_time": "2023-11-05T18:00:00+00:00",
+    "home_team_id": 17,
+    "away_team_id": 28,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800717,
+    "external_id": "espn_nfl_401547230",
+    "start_time": "2023-11-05T14:30:00+00:00",
+    "home_team_id": 12,
+    "away_team_id": 15,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800879,
+    "external_id": "espn_nfl_401547511",
+    "start_time": "2023-10-31T00:15:00+00:00",
+    "home_team_id": 809360,
+    "away_team_id": 809353,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800876,
+    "external_id": "espn_nfl_401547502",
+    "start_time": "2023-10-29T20:25:00+00:00",
+    "home_team_id": 809351,
+    "away_team_id": 12,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800875,
+    "external_id": "espn_nfl_401547509",
+    "start_time": "2023-10-29T20:05:00+00:00",
+    "home_team_id": 26,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800874,
+    "external_id": "espn_nfl_401547508",
+    "start_time": "2023-10-29T17:00:00+00:00",
+    "home_team_id": 28,
+    "away_team_id": 809357,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800711,
+    "external_id": "espn_nfl_401547497",
+    "start_time": "2023-10-29T17:00:00+00:00",
+    "home_team_id": 15,
+    "away_team_id": 17,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800712,
+    "external_id": "espn_nfl_401547504",
+    "start_time": "2023-10-29T17:00:00+00:00",
+    "home_team_id": 29,
+    "away_team_id": 34,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800873,
+    "external_id": "espn_nfl_401547499",
+    "start_time": "2023-10-29T17:00:00+00:00",
+    "home_team_id": 23,
+    "away_team_id": 809349,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800871,
+    "external_id": "espn_nfl_401547507",
+    "start_time": "2023-10-29T17:00:00+00:00",
+    "home_team_id": 809348,
+    "away_team_id": 809365,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800889,
+    "external_id": "espn_nfl_401547494",
+    "start_time": "2023-10-23T00:20:00+00:00",
+    "home_team_id": 809357,
+    "away_team_id": 15,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800715,
+    "external_id": "espn_nfl_401547488",
+    "start_time": "2023-10-22T20:25:00+00:00",
+    "home_team_id": 12,
+    "away_team_id": 24,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800888,
+    "external_id": "espn_nfl_401547487",
+    "start_time": "2023-10-22T20:25:00+00:00",
+    "home_team_id": 809351,
+    "away_team_id": 9,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800886,
+    "external_id": "espn_nfl_401547492",
+    "start_time": "2023-10-22T20:05:00+00:00",
+    "home_team_id": 809368,
+    "away_team_id": 23,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800714,
+    "external_id": "espn_nfl_401547486",
+    "start_time": "2023-10-22T17:00:00+00:00",
+    "home_team_id": 19,
+    "away_team_id": 28,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800882,
+    "external_id": "espn_nfl_401547484",
+    "start_time": "2023-10-22T17:00:00+00:00",
+    "home_team_id": 809348,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800710,
+    "external_id": "espn_nfl_401547482",
+    "start_time": "2023-10-17T00:15:00+00:00",
+    "home_team_id": 24,
+    "away_team_id": 6,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800954,
+    "external_id": "espn_nfl_401547478",
+    "start_time": "2023-10-15T20:25:00+00:00",
+    "home_team_id": 27,
+    "away_team_id": 809360,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800951,
+    "external_id": "espn_nfl_401547474",
+    "start_time": "2023-10-15T20:05:00+00:00",
+    "home_team_id": 809353,
+    "away_team_id": 17,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800950,
+    "external_id": "espn_nfl_401547477",
+    "start_time": "2023-10-15T17:00:00+00:00",
+    "home_team_id": 34,
+    "away_team_id": 809365,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800949,
+    "external_id": "espn_nfl_401547472",
+    "start_time": "2023-10-15T17:00:00+00:00",
+    "home_team_id": 809349,
+    "away_team_id": 809348,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800709,
+    "external_id": "espn_nfl_401547473",
+    "start_time": "2023-10-15T17:00:00+00:00",
+    "home_team_id": 15,
+    "away_team_id": 29,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800945,
+    "external_id": "espn_nfl_401547469",
+    "start_time": "2023-10-13T00:15:00+00:00",
+    "home_team_id": 12,
+    "away_team_id": 809351,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800728,
+    "external_id": "espn_nfl_401547465",
+    "start_time": "2023-10-08T17:00:00+00:00",
+    "home_team_id": 15,
+    "away_team_id": 19,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800864,
+    "external_id": "espn_nfl_401547447",
+    "start_time": "2023-10-01T20:05:00+00:00",
+    "home_team_id": 24,
+    "away_team_id": 809353,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800704,
+    "external_id": "espn_nfl_401547446",
+    "start_time": "2023-10-01T17:00:00+00:00",
+    "home_team_id": 34,
+    "away_team_id": 23,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800860,
+    "external_id": "espn_nfl_401547449",
+    "start_time": "2023-10-01T17:00:00+00:00",
+    "home_team_id": 809348,
+    "away_team_id": 809368,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800861,
+    "external_id": "espn_nfl_401547450",
+    "start_time": "2023-10-01T17:00:00+00:00",
+    "home_team_id": 809365,
+    "away_team_id": 27,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800862,
+    "external_id": "espn_nfl_401547451",
+    "start_time": "2023-10-01T17:00:00+00:00",
+    "home_team_id": 809357,
+    "away_team_id": 28,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800932,
+    "external_id": "espn_nfl_401547441",
+    "start_time": "2023-09-26T00:15:00+00:00",
+    "home_team_id": 4,
+    "away_team_id": 809368,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800931,
+    "external_id": "espn_nfl_401547440",
+    "start_time": "2023-09-25T23:15:00+00:00",
+    "home_team_id": 27,
+    "away_team_id": 809357,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800930,
+    "external_id": "espn_nfl_401547439",
+    "start_time": "2023-09-25T00:20:00+00:00",
+    "home_team_id": 809353,
+    "away_team_id": 23,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800923,
+    "external_id": "espn_nfl_401547429",
+    "start_time": "2023-09-24T17:00:00+00:00",
+    "home_team_id": 15,
+    "away_team_id": 809351,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800919,
+    "external_id": "espn_nfl_401547426",
+    "start_time": "2023-09-22T00:15:00+00:00",
+    "home_team_id": 809369,
+    "away_team_id": 19,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800944,
+    "external_id": "espn_nfl_401547424",
+    "start_time": "2023-09-19T00:15:00+00:00",
+    "home_team_id": 23,
+    "away_team_id": 809345,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800733,
+    "external_id": "espn_nfl_401547423",
+    "start_time": "2023-09-18T00:20:00+00:00",
+    "home_team_id": 17,
+    "away_team_id": 15,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800942,
+    "external_id": "espn_nfl_401547416",
+    "start_time": "2023-09-17T20:25:00+00:00",
+    "home_team_id": 809351,
+    "away_team_id": 28,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800939,
+    "external_id": "espn_nfl_401547422",
+    "start_time": "2023-09-17T20:05:00+00:00",
+    "home_team_id": 809368,
+    "away_team_id": 809369,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800732,
+    "external_id": "espn_nfl_401547420",
+    "start_time": "2023-09-17T17:00:00+00:00",
+    "home_team_id": 27,
+    "away_team_id": 3,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800938,
+    "external_id": "espn_nfl_401547419",
+    "start_time": "2023-09-17T17:00:00+00:00",
+    "home_team_id": 34,
+    "away_team_id": 809348,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800724,
+    "external_id": "espn_nfl_401547409",
+    "start_time": "2023-09-11T00:20:00+00:00",
+    "home_team_id": 19,
+    "away_team_id": 6,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800964,
+    "external_id": "espn_nfl_401547400",
+    "start_time": "2023-09-10T20:25:00+00:00",
+    "home_team_id": 809351,
+    "away_team_id": 809353,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800723,
+    "external_id": "espn_nfl_401547401",
+    "start_time": "2023-09-10T20:25:00+00:00",
+    "home_team_id": 24,
+    "away_team_id": 15,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800962,
+    "external_id": "espn_nfl_401547405",
+    "start_time": "2023-09-10T17:00:00+00:00",
+    "home_team_id": 23,
+    "away_team_id": 809369,
+    "sport": "nfl"
+  },
+  {
+    "id": 3800956,
+    "external_id": "espn_nfl_401547353",
+    "start_time": "2023-09-08T00:20:00+00:00",
+    "home_team_id": 12,
+    "away_team_id": 809360,
+    "sport": "nfl"
+  }
+]

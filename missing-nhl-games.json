@@ -1,0 +1,6354 @@
+[
+  {
+    "id": 3804947,
+    "external_id": "espn_nhl_401774292",
+    "start_time": "2025-05-29T00:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802951,
+    "external_id": "espn_nhl_401774291",
+    "start_time": "2025-05-27T00:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802949,
+    "external_id": "espn_nhl_401774290",
+    "start_time": "2025-05-25T00:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802947,
+    "external_id": "espn_nhl_401773329",
+    "start_time": "2025-05-23T00:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802945,
+    "external_id": "espn_nhl_401773328",
+    "start_time": "2025-05-21T00:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804945,
+    "external_id": "espn_nhl_401769949",
+    "start_time": "2025-05-18T23:30:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804946,
+    "external_id": "espn_nhl_401769996",
+    "start_time": "2025-05-18T00:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804944,
+    "external_id": "espn_nhl_401769947",
+    "start_time": "2025-05-17T00:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804943,
+    "external_id": "espn_nhl_401769995",
+    "start_time": "2025-05-16T01:30:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804940,
+    "external_id": "espn_nhl_401769946",
+    "start_time": "2025-05-14T23:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802944,
+    "external_id": "espn_nhl_401769994",
+    "start_time": "2025-05-14T00:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802941,
+    "external_id": "espn_nhl_401769944",
+    "start_time": "2025-05-11T23:30:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802940,
+    "external_id": "espn_nhl_401769973",
+    "start_time": "2025-05-11T20:30:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802937,
+    "external_id": "espn_nhl_401769972",
+    "start_time": "2025-05-10T01:50:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802936,
+    "external_id": "espn_nhl_401769943",
+    "start_time": "2025-05-09T23:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802933,
+    "external_id": "espn_nhl_401769971",
+    "start_time": "2025-05-08T01:30:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802932,
+    "external_id": "espn_nhl_401769941",
+    "start_time": "2025-05-07T23:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804939,
+    "external_id": "espn_nhl_401769841",
+    "start_time": "2025-05-06T00:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804938,
+    "external_id": "espn_nhl_401768160",
+    "start_time": "2025-05-04T23:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804936,
+    "external_id": "espn_nhl_401768166",
+    "start_time": "2025-05-04T00:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804937,
+    "external_id": "espn_nhl_401768159",
+    "start_time": "2025-05-03T00:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804934,
+    "external_id": "espn_nhl_401768165",
+    "start_time": "2025-05-02T01:30:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804933,
+    "external_id": "espn_nhl_401768172",
+    "start_time": "2025-05-01T23:30:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804932,
+    "external_id": "espn_nhl_401768129",
+    "start_time": "2025-05-01T23:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804931,
+    "external_id": "espn_nhl_401768158",
+    "start_time": "2025-05-01T01:52:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804930,
+    "external_id": "espn_nhl_401768135",
+    "start_time": "2025-04-30T23:30:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804927,
+    "external_id": "espn_nhl_401768171",
+    "start_time": "2025-04-30T01:30:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804926,
+    "external_id": "espn_nhl_401768152",
+    "start_time": "2025-04-29T23:30:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 150,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804925,
+    "external_id": "espn_nhl_401768128",
+    "start_time": "2025-04-29T23:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804913,
+    "external_id": "espn_nhl_401768164",
+    "start_time": "2025-04-29T01:50:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804912,
+    "external_id": "espn_nhl_401768134",
+    "start_time": "2025-04-28T23:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804918,
+    "external_id": "espn_nhl_401768151",
+    "start_time": "2025-04-27T19:50:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804917,
+    "external_id": "espn_nhl_401768157",
+    "start_time": "2025-04-27T17:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804924,
+    "external_id": "espn_nhl_401768163",
+    "start_time": "2025-04-27T01:30:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804923,
+    "external_id": "espn_nhl_401768127",
+    "start_time": "2025-04-26T23:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804922,
+    "external_id": "espn_nhl_401768170",
+    "start_time": "2025-04-26T20:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804921,
+    "external_id": "espn_nhl_401768133",
+    "start_time": "2025-04-26T17:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804915,
+    "external_id": "espn_nhl_401768150",
+    "start_time": "2025-04-26T00:00:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804911,
+    "external_id": "espn_nhl_401768156",
+    "start_time": "2025-04-25T01:30:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804910,
+    "external_id": "espn_nhl_401768169",
+    "start_time": "2025-04-25T01:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804909,
+    "external_id": "espn_nhl_401768126",
+    "start_time": "2025-04-24T23:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804908,
+    "external_id": "espn_nhl_401768132",
+    "start_time": "2025-04-24T22:30:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804902,
+    "external_id": "espn_nhl_401768162",
+    "start_time": "2025-04-24T01:52:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804907,
+    "external_id": "espn_nhl_401768168",
+    "start_time": "2025-04-23T03:15:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804906,
+    "external_id": "espn_nhl_401768131",
+    "start_time": "2025-04-23T00:48:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804905,
+    "external_id": "espn_nhl_401768125",
+    "start_time": "2025-04-22T23:30:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804904,
+    "external_id": "espn_nhl_401768149",
+    "start_time": "2025-04-22T22:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 150,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804899,
+    "external_id": "espn_nhl_401768161",
+    "start_time": "2025-04-22T01:52:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804898,
+    "external_id": "espn_nhl_401768155",
+    "start_time": "2025-04-21T23:30:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804896,
+    "external_id": "espn_nhl_401768167",
+    "start_time": "2025-04-21T02:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804895,
+    "external_id": "espn_nhl_401768124",
+    "start_time": "2025-04-20T23:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804894,
+    "external_id": "espn_nhl_401768148",
+    "start_time": "2025-04-20T19:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 150,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802977,
+    "external_id": "espn_nhl_401768101",
+    "start_time": "2025-04-20T00:30:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802976,
+    "external_id": "espn_nhl_401768100",
+    "start_time": "2025-04-19T22:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802975,
+    "external_id": "espn_nhl_401751835",
+    "start_time": "2025-04-18T01:30:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802969,
+    "external_id": "espn_nhl_401688906",
+    "start_time": "2025-04-17T23:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802970,
+    "external_id": "espn_nhl_401688907",
+    "start_time": "2025-04-17T23:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802971,
+    "external_id": "espn_nhl_401688908",
+    "start_time": "2025-04-17T23:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802972,
+    "external_id": "espn_nhl_401688909",
+    "start_time": "2025-04-17T23:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802974,
+    "external_id": "espn_nhl_401688911",
+    "start_time": "2025-04-17T23:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802967,
+    "external_id": "espn_nhl_401688904",
+    "start_time": "2025-04-17T02:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802966,
+    "external_id": "espn_nhl_401688903",
+    "start_time": "2025-04-17T00:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802963,
+    "external_id": "espn_nhl_401688900",
+    "start_time": "2025-04-16T23:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802964,
+    "external_id": "espn_nhl_401688901",
+    "start_time": "2025-04-16T23:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802962,
+    "external_id": "espn_nhl_401688899",
+    "start_time": "2025-04-16T02:30:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802961,
+    "external_id": "espn_nhl_401688898",
+    "start_time": "2025-04-16T01:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802959,
+    "external_id": "espn_nhl_401688896",
+    "start_time": "2025-04-16T00:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802960,
+    "external_id": "espn_nhl_401688897",
+    "start_time": "2025-04-16T00:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802957,
+    "external_id": "espn_nhl_401688893",
+    "start_time": "2025-04-15T23:30:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802953,
+    "external_id": "espn_nhl_401688890",
+    "start_time": "2025-04-15T23:00:00+00:00",
+    "home_team_id": 135,
+    "away_team_id": 150,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802954,
+    "external_id": "espn_nhl_401688891",
+    "start_time": "2025-04-15T23:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802955,
+    "external_id": "espn_nhl_401688892",
+    "start_time": "2025-04-15T23:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802956,
+    "external_id": "espn_nhl_401688894",
+    "start_time": "2025-04-15T23:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804884,
+    "external_id": "espn_nhl_401688889",
+    "start_time": "2025-04-15T02:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804882,
+    "external_id": "espn_nhl_401688887",
+    "start_time": "2025-04-15T00:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804881,
+    "external_id": "espn_nhl_401688886",
+    "start_time": "2025-04-14T23:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804880,
+    "external_id": "espn_nhl_401688885",
+    "start_time": "2025-04-14T23:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804879,
+    "external_id": "espn_nhl_401688884",
+    "start_time": "2025-04-14T23:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804893,
+    "external_id": "espn_nhl_401688883",
+    "start_time": "2025-04-14T02:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804892,
+    "external_id": "espn_nhl_401688882",
+    "start_time": "2025-04-14T00:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804889,
+    "external_id": "espn_nhl_401688879",
+    "start_time": "2025-04-13T22:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804888,
+    "external_id": "espn_nhl_401688878",
+    "start_time": "2025-04-13T21:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804887,
+    "external_id": "espn_nhl_401688877",
+    "start_time": "2025-04-13T19:30:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 135,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804886,
+    "external_id": "espn_nhl_401688876",
+    "start_time": "2025-04-13T17:00:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804885,
+    "external_id": "espn_nhl_401688875",
+    "start_time": "2025-04-13T17:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804873,
+    "external_id": "espn_nhl_401688874",
+    "start_time": "2025-04-13T02:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804872,
+    "external_id": "espn_nhl_401688873",
+    "start_time": "2025-04-13T02:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804871,
+    "external_id": "espn_nhl_401688872",
+    "start_time": "2025-04-13T02:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804870,
+    "external_id": "espn_nhl_401688871",
+    "start_time": "2025-04-13T00:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804869,
+    "external_id": "espn_nhl_401688870",
+    "start_time": "2025-04-12T23:00:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804868,
+    "external_id": "espn_nhl_401688868",
+    "start_time": "2025-04-12T23:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804867,
+    "external_id": "espn_nhl_401688867",
+    "start_time": "2025-04-12T22:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804866,
+    "external_id": "espn_nhl_401688866",
+    "start_time": "2025-04-12T20:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804865,
+    "external_id": "espn_nhl_401688865",
+    "start_time": "2025-04-12T19:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804863,
+    "external_id": "espn_nhl_401688864",
+    "start_time": "2025-04-12T16:30:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804878,
+    "external_id": "espn_nhl_401688863",
+    "start_time": "2025-04-12T02:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804875,
+    "external_id": "espn_nhl_401688860",
+    "start_time": "2025-04-11T23:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804874,
+    "external_id": "espn_nhl_401688859",
+    "start_time": "2025-04-11T23:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804862,
+    "external_id": "espn_nhl_401688858",
+    "start_time": "2025-04-11T02:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804861,
+    "external_id": "espn_nhl_401688857",
+    "start_time": "2025-04-11T02:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804860,
+    "external_id": "espn_nhl_401688856",
+    "start_time": "2025-04-11T01:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804859,
+    "external_id": "espn_nhl_401688855",
+    "start_time": "2025-04-11T01:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804858,
+    "external_id": "espn_nhl_401688854",
+    "start_time": "2025-04-11T00:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804857,
+    "external_id": "espn_nhl_401688853",
+    "start_time": "2025-04-10T23:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804855,
+    "external_id": "espn_nhl_401688852",
+    "start_time": "2025-04-10T23:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804854,
+    "external_id": "espn_nhl_401688850",
+    "start_time": "2025-04-10T23:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804853,
+    "external_id": "espn_nhl_401688849",
+    "start_time": "2025-04-10T23:00:00+00:00",
+    "home_team_id": 135,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804839,
+    "external_id": "espn_nhl_401688848",
+    "start_time": "2025-04-10T02:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804837,
+    "external_id": "espn_nhl_401688846",
+    "start_time": "2025-04-10T00:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804836,
+    "external_id": "espn_nhl_401688845",
+    "start_time": "2025-04-09T23:30:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804835,
+    "external_id": "espn_nhl_401688844",
+    "start_time": "2025-04-09T23:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804834,
+    "external_id": "espn_nhl_401688843",
+    "start_time": "2025-04-09T01:30:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804833,
+    "external_id": "espn_nhl_401688842",
+    "start_time": "2025-04-09T01:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804832,
+    "external_id": "espn_nhl_401688841",
+    "start_time": "2025-04-09T00:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804831,
+    "external_id": "espn_nhl_401688840",
+    "start_time": "2025-04-09T00:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804830,
+    "external_id": "espn_nhl_401688839",
+    "start_time": "2025-04-08T23:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804829,
+    "external_id": "espn_nhl_401688838",
+    "start_time": "2025-04-08T23:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804828,
+    "external_id": "espn_nhl_401688837",
+    "start_time": "2025-04-08T23:00:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 135,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804827,
+    "external_id": "espn_nhl_401688836",
+    "start_time": "2025-04-08T23:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804826,
+    "external_id": "espn_nhl_401688835",
+    "start_time": "2025-04-08T23:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804825,
+    "external_id": "espn_nhl_401688834",
+    "start_time": "2025-04-08T23:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804824,
+    "external_id": "espn_nhl_401688833",
+    "start_time": "2025-04-08T02:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804823,
+    "external_id": "espn_nhl_401688832",
+    "start_time": "2025-04-08T02:30:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804821,
+    "external_id": "espn_nhl_401688830",
+    "start_time": "2025-04-07T23:30:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804820,
+    "external_id": "espn_nhl_401688829",
+    "start_time": "2025-04-07T23:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804819,
+    "external_id": "espn_nhl_401688828",
+    "start_time": "2025-04-07T02:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804818,
+    "external_id": "espn_nhl_401688827",
+    "start_time": "2025-04-06T23:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804816,
+    "external_id": "espn_nhl_401688825",
+    "start_time": "2025-04-06T22:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 135,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804817,
+    "external_id": "espn_nhl_401688826",
+    "start_time": "2025-04-06T22:00:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804815,
+    "external_id": "espn_nhl_401688824",
+    "start_time": "2025-04-06T21:30:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804814,
+    "external_id": "espn_nhl_401688823",
+    "start_time": "2025-04-06T21:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804813,
+    "external_id": "espn_nhl_401688822",
+    "start_time": "2025-04-06T19:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804852,
+    "external_id": "espn_nhl_401688820",
+    "start_time": "2025-04-06T02:00:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804851,
+    "external_id": "espn_nhl_401688819",
+    "start_time": "2025-04-06T02:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804845,
+    "external_id": "espn_nhl_401688813",
+    "start_time": "2025-04-05T23:00:00+00:00",
+    "home_team_id": 135,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804846,
+    "external_id": "espn_nhl_401688814",
+    "start_time": "2025-04-05T23:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804847,
+    "external_id": "espn_nhl_401688815",
+    "start_time": "2025-04-05T23:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804848,
+    "external_id": "espn_nhl_401688816",
+    "start_time": "2025-04-05T23:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804849,
+    "external_id": "espn_nhl_401688817",
+    "start_time": "2025-04-05T23:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804850,
+    "external_id": "espn_nhl_401688818",
+    "start_time": "2025-04-05T23:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804843,
+    "external_id": "espn_nhl_401688811",
+    "start_time": "2025-04-05T20:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804842,
+    "external_id": "espn_nhl_401688810",
+    "start_time": "2025-04-05T19:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804841,
+    "external_id": "espn_nhl_401688809",
+    "start_time": "2025-04-05T18:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804840,
+    "external_id": "espn_nhl_401688808",
+    "start_time": "2025-04-05T16:30:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804797,
+    "external_id": "espn_nhl_401688807",
+    "start_time": "2025-04-04T23:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804795,
+    "external_id": "espn_nhl_401688805",
+    "start_time": "2025-04-04T23:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804805,
+    "external_id": "espn_nhl_401688803",
+    "start_time": "2025-04-04T02:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804804,
+    "external_id": "espn_nhl_401688802",
+    "start_time": "2025-04-04T01:30:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804803,
+    "external_id": "espn_nhl_401688801",
+    "start_time": "2025-04-04T01:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804801,
+    "external_id": "espn_nhl_401688799",
+    "start_time": "2025-04-04T00:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804802,
+    "external_id": "espn_nhl_401688800",
+    "start_time": "2025-04-04T00:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804800,
+    "external_id": "espn_nhl_401688798",
+    "start_time": "2025-04-03T23:30:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804798,
+    "external_id": "espn_nhl_401688796",
+    "start_time": "2025-04-03T23:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 135,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804799,
+    "external_id": "espn_nhl_401688797",
+    "start_time": "2025-04-03T23:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804811,
+    "external_id": "espn_nhl_401688795",
+    "start_time": "2025-04-03T02:30:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804810,
+    "external_id": "espn_nhl_401688794",
+    "start_time": "2025-04-03T01:30:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804809,
+    "external_id": "espn_nhl_401688793",
+    "start_time": "2025-04-02T23:30:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804807,
+    "external_id": "espn_nhl_401688791",
+    "start_time": "2025-04-02T23:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802929,
+    "external_id": "espn_nhl_401688790",
+    "start_time": "2025-04-02T02:30:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802928,
+    "external_id": "espn_nhl_401688789",
+    "start_time": "2025-04-02T02:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802926,
+    "external_id": "espn_nhl_401688787",
+    "start_time": "2025-04-02T01:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802925,
+    "external_id": "espn_nhl_401688786",
+    "start_time": "2025-04-02T00:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802924,
+    "external_id": "espn_nhl_401688785",
+    "start_time": "2025-04-01T23:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802921,
+    "external_id": "espn_nhl_401688782",
+    "start_time": "2025-04-01T23:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802922,
+    "external_id": "espn_nhl_401688783",
+    "start_time": "2025-04-01T23:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802923,
+    "external_id": "espn_nhl_401688784",
+    "start_time": "2025-04-01T23:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802919,
+    "external_id": "espn_nhl_401688780",
+    "start_time": "2025-04-01T02:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802918,
+    "external_id": "espn_nhl_401688779",
+    "start_time": "2025-04-01T00:30:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802917,
+    "external_id": "espn_nhl_401688778",
+    "start_time": "2025-03-31T23:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802915,
+    "external_id": "espn_nhl_401688776",
+    "start_time": "2025-03-31T02:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802914,
+    "external_id": "espn_nhl_401688775",
+    "start_time": "2025-03-31T00:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802912,
+    "external_id": "espn_nhl_401688773",
+    "start_time": "2025-03-30T21:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802913,
+    "external_id": "espn_nhl_401688774",
+    "start_time": "2025-03-30T21:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802911,
+    "external_id": "espn_nhl_401688772",
+    "start_time": "2025-03-30T20:00:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802910,
+    "external_id": "espn_nhl_401688771",
+    "start_time": "2025-03-30T19:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802908,
+    "external_id": "espn_nhl_401688769",
+    "start_time": "2025-03-30T17:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802906,
+    "external_id": "espn_nhl_401688767",
+    "start_time": "2025-03-30T02:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802907,
+    "external_id": "espn_nhl_401688768",
+    "start_time": "2025-03-30T02:30:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802904,
+    "external_id": "espn_nhl_401688765",
+    "start_time": "2025-03-30T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 135,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802902,
+    "external_id": "espn_nhl_401688763",
+    "start_time": "2025-03-29T23:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802903,
+    "external_id": "espn_nhl_401688764",
+    "start_time": "2025-03-29T23:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802901,
+    "external_id": "espn_nhl_401688762",
+    "start_time": "2025-03-29T22:30:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802900,
+    "external_id": "espn_nhl_401688761",
+    "start_time": "2025-03-29T22:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 150,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802899,
+    "external_id": "espn_nhl_401688760",
+    "start_time": "2025-03-29T20:30:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802898,
+    "external_id": "espn_nhl_401688759",
+    "start_time": "2025-03-29T18:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802897,
+    "external_id": "espn_nhl_401688758",
+    "start_time": "2025-03-29T17:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802896,
+    "external_id": "espn_nhl_401688757",
+    "start_time": "2025-03-29T02:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802895,
+    "external_id": "espn_nhl_401688756",
+    "start_time": "2025-03-29T00:30:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802891,
+    "external_id": "espn_nhl_401688752",
+    "start_time": "2025-03-28T23:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802892,
+    "external_id": "espn_nhl_401688753",
+    "start_time": "2025-03-28T23:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802893,
+    "external_id": "espn_nhl_401688754",
+    "start_time": "2025-03-28T23:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802890,
+    "external_id": "espn_nhl_401688751",
+    "start_time": "2025-03-28T02:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802888,
+    "external_id": "espn_nhl_401688748",
+    "start_time": "2025-03-28T02:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802887,
+    "external_id": "espn_nhl_401688749",
+    "start_time": "2025-03-28T01:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802886,
+    "external_id": "espn_nhl_401688746",
+    "start_time": "2025-03-28T00:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802881,
+    "external_id": "espn_nhl_401688742",
+    "start_time": "2025-03-27T23:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802882,
+    "external_id": "espn_nhl_401688743",
+    "start_time": "2025-03-27T23:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802883,
+    "external_id": "espn_nhl_401688744",
+    "start_time": "2025-03-27T23:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802884,
+    "external_id": "espn_nhl_401688745",
+    "start_time": "2025-03-27T23:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802880,
+    "external_id": "espn_nhl_401688741",
+    "start_time": "2025-03-27T02:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 135,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804794,
+    "external_id": "espn_nhl_401688738",
+    "start_time": "2025-03-26T23:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804793,
+    "external_id": "espn_nhl_401688737",
+    "start_time": "2025-03-26T02:30:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804791,
+    "external_id": "espn_nhl_401688735",
+    "start_time": "2025-03-26T01:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804792,
+    "external_id": "espn_nhl_401688736",
+    "start_time": "2025-03-26T01:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804788,
+    "external_id": "espn_nhl_401688732",
+    "start_time": "2025-03-26T00:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804789,
+    "external_id": "espn_nhl_401688733",
+    "start_time": "2025-03-26T00:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804784,
+    "external_id": "espn_nhl_401688728",
+    "start_time": "2025-03-25T23:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804785,
+    "external_id": "espn_nhl_401688729",
+    "start_time": "2025-03-25T23:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804786,
+    "external_id": "espn_nhl_401688730",
+    "start_time": "2025-03-25T23:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804787,
+    "external_id": "espn_nhl_401688731",
+    "start_time": "2025-03-25T23:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804783,
+    "external_id": "espn_nhl_401688727",
+    "start_time": "2025-03-25T01:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804782,
+    "external_id": "espn_nhl_401688726",
+    "start_time": "2025-03-25T00:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804780,
+    "external_id": "espn_nhl_401688724",
+    "start_time": "2025-03-24T23:30:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804781,
+    "external_id": "espn_nhl_401688725",
+    "start_time": "2025-03-24T23:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804779,
+    "external_id": "espn_nhl_401688723",
+    "start_time": "2025-03-24T01:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 135,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804777,
+    "external_id": "espn_nhl_401688721",
+    "start_time": "2025-03-24T00:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804778,
+    "external_id": "espn_nhl_401688722",
+    "start_time": "2025-03-24T00:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804775,
+    "external_id": "espn_nhl_401688719",
+    "start_time": "2025-03-23T22:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804776,
+    "external_id": "espn_nhl_401688720",
+    "start_time": "2025-03-23T22:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804773,
+    "external_id": "espn_nhl_401688717",
+    "start_time": "2025-03-23T19:00:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804774,
+    "external_id": "espn_nhl_401688718",
+    "start_time": "2025-03-23T19:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804772,
+    "external_id": "espn_nhl_401688716",
+    "start_time": "2025-03-23T02:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 135,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804770,
+    "external_id": "espn_nhl_401688714",
+    "start_time": "2025-03-23T00:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804767,
+    "external_id": "espn_nhl_401688711",
+    "start_time": "2025-03-22T23:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804769,
+    "external_id": "espn_nhl_401688713",
+    "start_time": "2025-03-22T23:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804766,
+    "external_id": "espn_nhl_401688710",
+    "start_time": "2025-03-22T21:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804763,
+    "external_id": "espn_nhl_401688707",
+    "start_time": "2025-03-22T20:00:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804764,
+    "external_id": "espn_nhl_401688708",
+    "start_time": "2025-03-22T20:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804762,
+    "external_id": "espn_nhl_401688706",
+    "start_time": "2025-03-22T19:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804760,
+    "external_id": "espn_nhl_401688704",
+    "start_time": "2025-03-22T18:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804761,
+    "external_id": "espn_nhl_401688705",
+    "start_time": "2025-03-22T18:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804759,
+    "external_id": "espn_nhl_401688703",
+    "start_time": "2025-03-22T17:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804758,
+    "external_id": "espn_nhl_401688702",
+    "start_time": "2025-03-21T23:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804757,
+    "external_id": "espn_nhl_401688701",
+    "start_time": "2025-03-21T02:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804756,
+    "external_id": "espn_nhl_401688700",
+    "start_time": "2025-03-21T02:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 135,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804755,
+    "external_id": "espn_nhl_401688699",
+    "start_time": "2025-03-21T01:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804753,
+    "external_id": "espn_nhl_401688697",
+    "start_time": "2025-03-21T00:30:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804751,
+    "external_id": "espn_nhl_401688695",
+    "start_time": "2025-03-21T00:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804752,
+    "external_id": "espn_nhl_401688696",
+    "start_time": "2025-03-21T00:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804749,
+    "external_id": "espn_nhl_401688693",
+    "start_time": "2025-03-20T23:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804750,
+    "external_id": "espn_nhl_401688694",
+    "start_time": "2025-03-20T23:30:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804744,
+    "external_id": "espn_nhl_401688688",
+    "start_time": "2025-03-20T23:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804745,
+    "external_id": "espn_nhl_401688689",
+    "start_time": "2025-03-20T23:00:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804746,
+    "external_id": "espn_nhl_401688690",
+    "start_time": "2025-03-20T23:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804748,
+    "external_id": "espn_nhl_401688692",
+    "start_time": "2025-03-20T23:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804729,
+    "external_id": "espn_nhl_401688687",
+    "start_time": "2025-03-20T01:30:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804728,
+    "external_id": "espn_nhl_401688686",
+    "start_time": "2025-03-19T23:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804738,
+    "external_id": "espn_nhl_401688685",
+    "start_time": "2025-03-19T02:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804736,
+    "external_id": "espn_nhl_401688683",
+    "start_time": "2025-03-19T00:30:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804734,
+    "external_id": "espn_nhl_401688681",
+    "start_time": "2025-03-19T00:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804735,
+    "external_id": "espn_nhl_401688682",
+    "start_time": "2025-03-19T00:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804730,
+    "external_id": "espn_nhl_401688677",
+    "start_time": "2025-03-18T23:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804731,
+    "external_id": "espn_nhl_401688678",
+    "start_time": "2025-03-18T23:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804732,
+    "external_id": "espn_nhl_401688679",
+    "start_time": "2025-03-18T23:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804743,
+    "external_id": "espn_nhl_401688676",
+    "start_time": "2025-03-18T00:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804742,
+    "external_id": "espn_nhl_401688675",
+    "start_time": "2025-03-17T23:30:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804739,
+    "external_id": "espn_nhl_401688672",
+    "start_time": "2025-03-17T23:00:00+00:00",
+    "home_team_id": 135,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804740,
+    "external_id": "espn_nhl_401688673",
+    "start_time": "2025-03-17T23:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804727,
+    "external_id": "espn_nhl_401688671",
+    "start_time": "2025-03-17T01:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804725,
+    "external_id": "espn_nhl_401688667",
+    "start_time": "2025-03-17T00:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804726,
+    "external_id": "espn_nhl_401688670",
+    "start_time": "2025-03-17T00:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804724,
+    "external_id": "espn_nhl_401688669",
+    "start_time": "2025-03-16T23:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804722,
+    "external_id": "espn_nhl_401688666",
+    "start_time": "2025-03-16T19:30:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804721,
+    "external_id": "espn_nhl_401688665",
+    "start_time": "2025-03-16T17:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804720,
+    "external_id": "espn_nhl_401688664",
+    "start_time": "2025-03-16T02:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804718,
+    "external_id": "espn_nhl_401688662",
+    "start_time": "2025-03-16T00:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804719,
+    "external_id": "espn_nhl_401688663",
+    "start_time": "2025-03-16T00:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804713,
+    "external_id": "espn_nhl_401688657",
+    "start_time": "2025-03-15T23:00:00+00:00",
+    "home_team_id": 135,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804714,
+    "external_id": "espn_nhl_401688658",
+    "start_time": "2025-03-15T23:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804715,
+    "external_id": "espn_nhl_401688659",
+    "start_time": "2025-03-15T23:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804716,
+    "external_id": "espn_nhl_401688660",
+    "start_time": "2025-03-15T23:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804717,
+    "external_id": "espn_nhl_401688661",
+    "start_time": "2025-03-15T23:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804710,
+    "external_id": "espn_nhl_401688654",
+    "start_time": "2025-03-15T16:30:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804699,
+    "external_id": "espn_nhl_401688652",
+    "start_time": "2025-03-15T02:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804700,
+    "external_id": "espn_nhl_401688653",
+    "start_time": "2025-03-15T02:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804698,
+    "external_id": "espn_nhl_401688651",
+    "start_time": "2025-03-15T01:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804697,
+    "external_id": "espn_nhl_401688650",
+    "start_time": "2025-03-15T00:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804695,
+    "external_id": "espn_nhl_401688648",
+    "start_time": "2025-03-14T23:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804709,
+    "external_id": "espn_nhl_401688647",
+    "start_time": "2025-03-14T02:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804707,
+    "external_id": "espn_nhl_401688645",
+    "start_time": "2025-03-14T00:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804701,
+    "external_id": "espn_nhl_401688639",
+    "start_time": "2025-03-13T23:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804702,
+    "external_id": "espn_nhl_401688640",
+    "start_time": "2025-03-13T23:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 135,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804703,
+    "external_id": "espn_nhl_401688642",
+    "start_time": "2025-03-13T23:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804704,
+    "external_id": "espn_nhl_401688643",
+    "start_time": "2025-03-13T23:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804705,
+    "external_id": "espn_nhl_401688644",
+    "start_time": "2025-03-13T23:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804694,
+    "external_id": "espn_nhl_401688638",
+    "start_time": "2025-03-13T02:30:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804693,
+    "external_id": "espn_nhl_401688637",
+    "start_time": "2025-03-13T02:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804692,
+    "external_id": "espn_nhl_401688636",
+    "start_time": "2025-03-13T01:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804691,
+    "external_id": "espn_nhl_401688635",
+    "start_time": "2025-03-12T23:30:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802809,
+    "external_id": "espn_nhl_401688634",
+    "start_time": "2025-03-12T02:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802808,
+    "external_id": "espn_nhl_401688633",
+    "start_time": "2025-03-12T02:30:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802806,
+    "external_id": "espn_nhl_401688631",
+    "start_time": "2025-03-12T02:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802805,
+    "external_id": "espn_nhl_401688630",
+    "start_time": "2025-03-12T00:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802804,
+    "external_id": "espn_nhl_401688629",
+    "start_time": "2025-03-12T00:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802803,
+    "external_id": "espn_nhl_401688628",
+    "start_time": "2025-03-11T23:30:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802802,
+    "external_id": "espn_nhl_401688627",
+    "start_time": "2025-03-11T23:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802801,
+    "external_id": "espn_nhl_401688626",
+    "start_time": "2025-03-11T23:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802799,
+    "external_id": "espn_nhl_401688624",
+    "start_time": "2025-03-11T23:00:00+00:00",
+    "home_team_id": 135,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802798,
+    "external_id": "espn_nhl_401688623",
+    "start_time": "2025-03-11T02:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802797,
+    "external_id": "espn_nhl_401688622",
+    "start_time": "2025-03-11T01:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802796,
+    "external_id": "espn_nhl_401688621",
+    "start_time": "2025-03-10T23:30:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802794,
+    "external_id": "espn_nhl_401688619",
+    "start_time": "2025-03-10T01:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802793,
+    "external_id": "espn_nhl_401688618",
+    "start_time": "2025-03-10T01:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802792,
+    "external_id": "espn_nhl_401688617",
+    "start_time": "2025-03-10T00:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802791,
+    "external_id": "espn_nhl_401688616",
+    "start_time": "2025-03-09T22:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802790,
+    "external_id": "espn_nhl_401688615",
+    "start_time": "2025-03-09T21:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802789,
+    "external_id": "espn_nhl_401688614",
+    "start_time": "2025-03-09T19:30:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802786,
+    "external_id": "espn_nhl_401688611",
+    "start_time": "2025-03-09T03:00:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802784,
+    "external_id": "espn_nhl_401688609",
+    "start_time": "2025-03-09T01:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802783,
+    "external_id": "espn_nhl_401688608",
+    "start_time": "2025-03-09T01:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802782,
+    "external_id": "espn_nhl_401688607",
+    "start_time": "2025-03-09T00:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802781,
+    "external_id": "espn_nhl_401688606",
+    "start_time": "2025-03-09T00:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802780,
+    "external_id": "espn_nhl_401688605",
+    "start_time": "2025-03-08T23:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802779,
+    "external_id": "espn_nhl_401688604",
+    "start_time": "2025-03-08T20:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 135,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802778,
+    "external_id": "espn_nhl_401688603",
+    "start_time": "2025-03-08T17:30:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802777,
+    "external_id": "espn_nhl_401688602",
+    "start_time": "2025-03-08T17:30:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802776,
+    "external_id": "espn_nhl_401688601",
+    "start_time": "2025-03-08T03:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802775,
+    "external_id": "espn_nhl_401688600",
+    "start_time": "2025-03-08T03:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802774,
+    "external_id": "espn_nhl_401688599",
+    "start_time": "2025-03-08T03:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802773,
+    "external_id": "espn_nhl_401688598",
+    "start_time": "2025-03-08T01:30:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802770,
+    "external_id": "espn_nhl_401688595",
+    "start_time": "2025-03-07T02:30:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802768,
+    "external_id": "espn_nhl_401688593",
+    "start_time": "2025-03-07T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802767,
+    "external_id": "espn_nhl_401688592",
+    "start_time": "2025-03-07T01:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802766,
+    "external_id": "espn_nhl_401688591",
+    "start_time": "2025-03-07T00:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 135,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802765,
+    "external_id": "espn_nhl_401688590",
+    "start_time": "2025-03-07T00:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802764,
+    "external_id": "espn_nhl_401688589",
+    "start_time": "2025-03-07T00:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802763,
+    "external_id": "espn_nhl_401688588",
+    "start_time": "2025-03-07T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802762,
+    "external_id": "espn_nhl_401688587",
+    "start_time": "2025-03-07T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802761,
+    "external_id": "espn_nhl_401688586",
+    "start_time": "2025-03-06T03:30:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802760,
+    "external_id": "espn_nhl_401688585",
+    "start_time": "2025-03-06T03:30:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802759,
+    "external_id": "espn_nhl_401688584",
+    "start_time": "2025-03-06T03:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802758,
+    "external_id": "espn_nhl_401688583",
+    "start_time": "2025-03-06T00:30:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802756,
+    "external_id": "espn_nhl_401688581",
+    "start_time": "2025-03-05T03:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802754,
+    "external_id": "espn_nhl_401688579",
+    "start_time": "2025-03-05T02:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802752,
+    "external_id": "espn_nhl_401688577",
+    "start_time": "2025-03-05T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802751,
+    "external_id": "espn_nhl_401688576",
+    "start_time": "2025-03-05T00:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802750,
+    "external_id": "espn_nhl_401688575",
+    "start_time": "2025-03-05T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802749,
+    "external_id": "espn_nhl_401688574",
+    "start_time": "2025-03-05T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802748,
+    "external_id": "espn_nhl_401688573",
+    "start_time": "2025-03-05T00:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802747,
+    "external_id": "espn_nhl_401688572",
+    "start_time": "2025-03-05T00:00:00+00:00",
+    "home_team_id": 135,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804690,
+    "external_id": "espn_nhl_401688571",
+    "start_time": "2025-03-04T01:30:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804689,
+    "external_id": "espn_nhl_401688570",
+    "start_time": "2025-03-04T00:30:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804688,
+    "external_id": "espn_nhl_401688569",
+    "start_time": "2025-03-04T00:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804687,
+    "external_id": "espn_nhl_401688568",
+    "start_time": "2025-03-04T00:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804686,
+    "external_id": "espn_nhl_401688567",
+    "start_time": "2025-03-04T00:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804683,
+    "external_id": "espn_nhl_401688564",
+    "start_time": "2025-03-03T00:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804682,
+    "external_id": "espn_nhl_401688563",
+    "start_time": "2025-03-02T23:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804681,
+    "external_id": "espn_nhl_401688562",
+    "start_time": "2025-03-02T22:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804680,
+    "external_id": "espn_nhl_401688561",
+    "start_time": "2025-03-02T20:30:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 135,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804679,
+    "external_id": "espn_nhl_401688560",
+    "start_time": "2025-03-02T18:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804678,
+    "external_id": "espn_nhl_401688559",
+    "start_time": "2025-03-02T03:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804677,
+    "external_id": "espn_nhl_401688558",
+    "start_time": "2025-03-02T03:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804675,
+    "external_id": "espn_nhl_401688556",
+    "start_time": "2025-03-02T01:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804674,
+    "external_id": "espn_nhl_401688555",
+    "start_time": "2025-03-02T00:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804672,
+    "external_id": "espn_nhl_401688553",
+    "start_time": "2025-03-02T00:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804671,
+    "external_id": "espn_nhl_401688552",
+    "start_time": "2025-03-02T00:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804670,
+    "external_id": "espn_nhl_401688549",
+    "start_time": "2025-03-01T23:35:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804669,
+    "external_id": "espn_nhl_401688551",
+    "start_time": "2025-03-01T20:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 135,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804668,
+    "external_id": "espn_nhl_401688550",
+    "start_time": "2025-03-01T20:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804666,
+    "external_id": "espn_nhl_401688547",
+    "start_time": "2025-03-01T17:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804665,
+    "external_id": "espn_nhl_401688546",
+    "start_time": "2025-03-01T02:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804664,
+    "external_id": "espn_nhl_401688545",
+    "start_time": "2025-03-01T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804663,
+    "external_id": "espn_nhl_401688544",
+    "start_time": "2025-03-01T00:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804662,
+    "external_id": "espn_nhl_401688543",
+    "start_time": "2025-02-28T03:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804661,
+    "external_id": "espn_nhl_401688542",
+    "start_time": "2025-02-28T03:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804660,
+    "external_id": "espn_nhl_401688541",
+    "start_time": "2025-02-28T02:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804659,
+    "external_id": "espn_nhl_401688540",
+    "start_time": "2025-02-28T01:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804658,
+    "external_id": "espn_nhl_401688537",
+    "start_time": "2025-02-28T00:30:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804657,
+    "external_id": "espn_nhl_401688539",
+    "start_time": "2025-02-28T00:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804654,
+    "external_id": "espn_nhl_401688535",
+    "start_time": "2025-02-28T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804653,
+    "external_id": "espn_nhl_401688534",
+    "start_time": "2025-02-28T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804652,
+    "external_id": "espn_nhl_401688533",
+    "start_time": "2025-02-28T00:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804651,
+    "external_id": "espn_nhl_401688532",
+    "start_time": "2025-02-28T00:00:00+00:00",
+    "home_team_id": 135,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804650,
+    "external_id": "espn_nhl_401688531",
+    "start_time": "2025-02-27T03:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804649,
+    "external_id": "espn_nhl_401688530",
+    "start_time": "2025-02-27T02:30:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 150,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804648,
+    "external_id": "espn_nhl_401688529",
+    "start_time": "2025-02-27T00:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804647,
+    "external_id": "espn_nhl_401688528",
+    "start_time": "2025-02-26T02:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802846,
+    "external_id": "espn_nhl_401688527",
+    "start_time": "2025-02-26T01:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802845,
+    "external_id": "espn_nhl_401688526",
+    "start_time": "2025-02-26T01:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802844,
+    "external_id": "espn_nhl_401688525",
+    "start_time": "2025-02-26T01:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802843,
+    "external_id": "espn_nhl_401688524",
+    "start_time": "2025-02-26T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802841,
+    "external_id": "espn_nhl_401688523",
+    "start_time": "2025-02-26T00:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802839,
+    "external_id": "espn_nhl_401688521",
+    "start_time": "2025-02-26T00:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802838,
+    "external_id": "espn_nhl_401688519",
+    "start_time": "2025-02-26T00:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802837,
+    "external_id": "espn_nhl_401688518",
+    "start_time": "2025-02-26T00:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802835,
+    "external_id": "espn_nhl_401688516",
+    "start_time": "2025-02-25T03:30:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802834,
+    "external_id": "espn_nhl_401688515",
+    "start_time": "2025-02-25T00:30:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802833,
+    "external_id": "espn_nhl_401688514",
+    "start_time": "2025-02-24T01:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802832,
+    "external_id": "espn_nhl_401688513",
+    "start_time": "2025-02-24T01:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802831,
+    "external_id": "espn_nhl_401688512",
+    "start_time": "2025-02-24T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802830,
+    "external_id": "espn_nhl_401688511",
+    "start_time": "2025-02-24T00:00:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802829,
+    "external_id": "espn_nhl_401688510",
+    "start_time": "2025-02-23T23:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 150,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802828,
+    "external_id": "espn_nhl_401688509",
+    "start_time": "2025-02-23T23:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802827,
+    "external_id": "espn_nhl_401688508",
+    "start_time": "2025-02-23T23:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802826,
+    "external_id": "espn_nhl_401688507",
+    "start_time": "2025-02-23T23:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802825,
+    "external_id": "espn_nhl_401688506",
+    "start_time": "2025-02-23T20:30:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802823,
+    "external_id": "espn_nhl_401688504",
+    "start_time": "2025-02-23T03:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802822,
+    "external_id": "espn_nhl_401688503",
+    "start_time": "2025-02-23T02:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802821,
+    "external_id": "espn_nhl_401688502",
+    "start_time": "2025-02-23T00:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802820,
+    "external_id": "espn_nhl_401688501",
+    "start_time": "2025-02-23T00:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802819,
+    "external_id": "espn_nhl_401688500",
+    "start_time": "2025-02-23T00:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802818,
+    "external_id": "espn_nhl_401688499",
+    "start_time": "2025-02-23T00:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802816,
+    "external_id": "espn_nhl_401688497",
+    "start_time": "2025-02-22T23:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802814,
+    "external_id": "espn_nhl_401688495",
+    "start_time": "2025-02-22T23:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802813,
+    "external_id": "espn_nhl_401688494",
+    "start_time": "2025-02-22T22:30:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802810,
+    "external_id": "espn_nhl_401688493",
+    "start_time": "2025-02-22T17:30:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804646,
+    "external_id": "espn_nhl_401688490",
+    "start_time": "2025-02-09T18:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804639,
+    "external_id": "espn_nhl_401688487",
+    "start_time": "2025-02-09T03:30:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804638,
+    "external_id": "espn_nhl_401688488",
+    "start_time": "2025-02-09T03:00:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804637,
+    "external_id": "espn_nhl_401688486",
+    "start_time": "2025-02-09T03:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804636,
+    "external_id": "espn_nhl_401688485",
+    "start_time": "2025-02-09T01:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804635,
+    "external_id": "espn_nhl_401688484",
+    "start_time": "2025-02-09T01:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804634,
+    "external_id": "espn_nhl_401688483",
+    "start_time": "2025-02-09T00:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804633,
+    "external_id": "espn_nhl_401688482",
+    "start_time": "2025-02-09T00:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804632,
+    "external_id": "espn_nhl_401688481",
+    "start_time": "2025-02-09T00:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804631,
+    "external_id": "espn_nhl_401688480",
+    "start_time": "2025-02-09T00:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804630,
+    "external_id": "espn_nhl_401688479",
+    "start_time": "2025-02-09T00:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804628,
+    "external_id": "espn_nhl_401688477",
+    "start_time": "2025-02-08T18:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804627,
+    "external_id": "espn_nhl_401688476",
+    "start_time": "2025-02-08T18:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804644,
+    "external_id": "espn_nhl_401688474",
+    "start_time": "2025-02-08T03:30:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804642,
+    "external_id": "espn_nhl_401688472",
+    "start_time": "2025-02-08T01:30:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804641,
+    "external_id": "espn_nhl_401688471",
+    "start_time": "2025-02-08T01:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804640,
+    "external_id": "espn_nhl_401688470",
+    "start_time": "2025-02-08T00:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804625,
+    "external_id": "espn_nhl_401688469",
+    "start_time": "2025-02-07T03:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804624,
+    "external_id": "espn_nhl_401688468",
+    "start_time": "2025-02-07T03:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804623,
+    "external_id": "espn_nhl_401688467",
+    "start_time": "2025-02-07T02:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804622,
+    "external_id": "espn_nhl_401688465",
+    "start_time": "2025-02-07T01:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804621,
+    "external_id": "espn_nhl_401688466",
+    "start_time": "2025-02-07T00:30:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804620,
+    "external_id": "espn_nhl_401688464",
+    "start_time": "2025-02-07T00:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804617,
+    "external_id": "espn_nhl_401688461",
+    "start_time": "2025-02-07T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804602,
+    "external_id": "espn_nhl_401688460",
+    "start_time": "2025-02-06T03:30:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804616,
+    "external_id": "espn_nhl_401688457",
+    "start_time": "2025-02-05T03:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804615,
+    "external_id": "espn_nhl_401688455",
+    "start_time": "2025-02-05T03:30:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804614,
+    "external_id": "espn_nhl_401688456",
+    "start_time": "2025-02-05T03:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804613,
+    "external_id": "espn_nhl_401688454",
+    "start_time": "2025-02-05T03:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804612,
+    "external_id": "espn_nhl_401688453",
+    "start_time": "2025-02-05T02:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804611,
+    "external_id": "espn_nhl_401688452",
+    "start_time": "2025-02-05T02:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804610,
+    "external_id": "espn_nhl_401688451",
+    "start_time": "2025-02-05T01:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804608,
+    "external_id": "espn_nhl_401688449",
+    "start_time": "2025-02-05T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804605,
+    "external_id": "espn_nhl_401688446",
+    "start_time": "2025-02-05T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804604,
+    "external_id": "espn_nhl_401688445",
+    "start_time": "2025-02-05T00:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804599,
+    "external_id": "espn_nhl_401688443",
+    "start_time": "2025-02-04T00:30:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804589,
+    "external_id": "espn_nhl_401688442",
+    "start_time": "2025-02-03T02:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804588,
+    "external_id": "espn_nhl_401688441",
+    "start_time": "2025-02-03T01:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804587,
+    "external_id": "espn_nhl_401688440",
+    "start_time": "2025-02-03T00:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804586,
+    "external_id": "espn_nhl_401688439",
+    "start_time": "2025-02-02T23:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804585,
+    "external_id": "espn_nhl_401688438",
+    "start_time": "2025-02-02T23:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804584,
+    "external_id": "espn_nhl_401688437",
+    "start_time": "2025-02-02T23:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804583,
+    "external_id": "espn_nhl_401688436",
+    "start_time": "2025-02-02T21:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804582,
+    "external_id": "espn_nhl_401688435",
+    "start_time": "2025-02-02T20:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804598,
+    "external_id": "espn_nhl_401688433",
+    "start_time": "2025-02-02T03:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804596,
+    "external_id": "espn_nhl_401688431",
+    "start_time": "2025-02-02T00:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804594,
+    "external_id": "espn_nhl_401688429",
+    "start_time": "2025-02-02T00:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804593,
+    "external_id": "espn_nhl_401688428",
+    "start_time": "2025-02-02T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804592,
+    "external_id": "espn_nhl_401688427",
+    "start_time": "2025-02-02T00:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804590,
+    "external_id": "espn_nhl_401688425",
+    "start_time": "2025-02-01T18:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804569,
+    "external_id": "espn_nhl_401688423",
+    "start_time": "2025-02-01T02:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804570,
+    "external_id": "espn_nhl_401688424",
+    "start_time": "2025-02-01T02:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804568,
+    "external_id": "espn_nhl_401688422",
+    "start_time": "2025-02-01T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804567,
+    "external_id": "espn_nhl_401688421",
+    "start_time": "2025-02-01T00:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804580,
+    "external_id": "espn_nhl_401688420",
+    "start_time": "2025-01-31T03:30:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804579,
+    "external_id": "espn_nhl_401688419",
+    "start_time": "2025-01-31T03:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804577,
+    "external_id": "espn_nhl_401688417",
+    "start_time": "2025-01-31T02:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804576,
+    "external_id": "espn_nhl_401688415",
+    "start_time": "2025-01-31T00:30:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804572,
+    "external_id": "espn_nhl_401688412",
+    "start_time": "2025-01-31T00:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804574,
+    "external_id": "espn_nhl_401688414",
+    "start_time": "2025-01-31T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804575,
+    "external_id": "espn_nhl_401688416",
+    "start_time": "2025-01-31T00:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804561,
+    "external_id": "espn_nhl_401688410",
+    "start_time": "2025-01-30T02:30:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804560,
+    "external_id": "espn_nhl_401688409",
+    "start_time": "2025-01-30T02:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804557,
+    "external_id": "espn_nhl_401688406",
+    "start_time": "2025-01-30T00:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804558,
+    "external_id": "espn_nhl_401688407",
+    "start_time": "2025-01-30T00:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804555,
+    "external_id": "espn_nhl_401688404",
+    "start_time": "2025-01-29T03:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804556,
+    "external_id": "espn_nhl_401688405",
+    "start_time": "2025-01-29T03:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804553,
+    "external_id": "espn_nhl_401688402",
+    "start_time": "2025-01-29T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804550,
+    "external_id": "espn_nhl_401688399",
+    "start_time": "2025-01-29T00:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804551,
+    "external_id": "espn_nhl_401688400",
+    "start_time": "2025-01-29T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804552,
+    "external_id": "espn_nhl_401688401",
+    "start_time": "2025-01-29T00:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804566,
+    "external_id": "espn_nhl_401688397",
+    "start_time": "2025-01-28T03:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804564,
+    "external_id": "espn_nhl_401688395",
+    "start_time": "2025-01-28T00:30:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804562,
+    "external_id": "espn_nhl_401688393",
+    "start_time": "2025-01-28T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804535,
+    "external_id": "espn_nhl_401688392",
+    "start_time": "2025-01-27T01:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804534,
+    "external_id": "espn_nhl_401688391",
+    "start_time": "2025-01-27T00:00:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804533,
+    "external_id": "espn_nhl_401688390",
+    "start_time": "2025-01-26T23:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804532,
+    "external_id": "espn_nhl_401688389",
+    "start_time": "2025-01-26T22:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804531,
+    "external_id": "espn_nhl_401688388",
+    "start_time": "2025-01-26T18:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804547,
+    "external_id": "espn_nhl_401688386",
+    "start_time": "2025-01-26T03:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804548,
+    "external_id": "espn_nhl_401688387",
+    "start_time": "2025-01-26T03:00:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804545,
+    "external_id": "espn_nhl_401688384",
+    "start_time": "2025-01-26T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804540,
+    "external_id": "espn_nhl_401688379",
+    "start_time": "2025-01-26T00:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804541,
+    "external_id": "espn_nhl_401688380",
+    "start_time": "2025-01-26T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804542,
+    "external_id": "espn_nhl_401688381",
+    "start_time": "2025-01-26T00:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804543,
+    "external_id": "espn_nhl_401688382",
+    "start_time": "2025-01-26T00:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804544,
+    "external_id": "espn_nhl_401688383",
+    "start_time": "2025-01-26T00:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804538,
+    "external_id": "espn_nhl_401688377",
+    "start_time": "2025-01-25T21:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804529,
+    "external_id": "espn_nhl_401688372",
+    "start_time": "2025-01-25T01:00:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804530,
+    "external_id": "espn_nhl_401688374",
+    "start_time": "2025-01-25T01:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804527,
+    "external_id": "espn_nhl_401688371",
+    "start_time": "2025-01-25T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804528,
+    "external_id": "espn_nhl_401688373",
+    "start_time": "2025-01-25T00:30:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804526,
+    "external_id": "espn_nhl_401688370",
+    "start_time": "2025-01-24T03:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804524,
+    "external_id": "espn_nhl_401688368",
+    "start_time": "2025-01-24T03:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804522,
+    "external_id": "espn_nhl_401688366",
+    "start_time": "2025-01-24T02:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804520,
+    "external_id": "espn_nhl_401688364",
+    "start_time": "2025-01-24T01:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804521,
+    "external_id": "espn_nhl_401688365",
+    "start_time": "2025-01-24T01:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804517,
+    "external_id": "espn_nhl_401688361",
+    "start_time": "2025-01-24T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804518,
+    "external_id": "espn_nhl_401688362",
+    "start_time": "2025-01-24T00:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804519,
+    "external_id": "espn_nhl_401688363",
+    "start_time": "2025-01-24T00:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804515,
+    "external_id": "espn_nhl_401688359",
+    "start_time": "2025-01-23T03:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804514,
+    "external_id": "espn_nhl_401688358",
+    "start_time": "2025-01-23T02:30:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804513,
+    "external_id": "espn_nhl_401688356",
+    "start_time": "2025-01-23T00:30:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804501,
+    "external_id": "espn_nhl_401688354",
+    "start_time": "2025-01-22T03:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804502,
+    "external_id": "espn_nhl_401688355",
+    "start_time": "2025-01-22T03:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804498,
+    "external_id": "espn_nhl_401688351",
+    "start_time": "2025-01-22T01:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804499,
+    "external_id": "espn_nhl_401688352",
+    "start_time": "2025-01-22T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804495,
+    "external_id": "espn_nhl_401688348",
+    "start_time": "2025-01-22T00:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804496,
+    "external_id": "espn_nhl_401688349",
+    "start_time": "2025-01-22T00:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804497,
+    "external_id": "espn_nhl_401688350",
+    "start_time": "2025-01-22T00:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804511,
+    "external_id": "espn_nhl_401688347",
+    "start_time": "2025-01-21T03:30:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804510,
+    "external_id": "espn_nhl_401688346",
+    "start_time": "2025-01-21T02:30:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804509,
+    "external_id": "espn_nhl_401688345",
+    "start_time": "2025-01-21T01:30:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804507,
+    "external_id": "espn_nhl_401688343",
+    "start_time": "2025-01-21T00:30:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804508,
+    "external_id": "espn_nhl_401688344",
+    "start_time": "2025-01-21T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804506,
+    "external_id": "espn_nhl_401688342",
+    "start_time": "2025-01-20T23:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804505,
+    "external_id": "espn_nhl_401688341",
+    "start_time": "2025-01-20T21:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804504,
+    "external_id": "espn_nhl_401688340",
+    "start_time": "2025-01-20T20:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804503,
+    "external_id": "espn_nhl_401688339",
+    "start_time": "2025-01-20T18:00:00+00:00",
+    "home_team_id": 135,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804494,
+    "external_id": "espn_nhl_401688338",
+    "start_time": "2025-01-20T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804493,
+    "external_id": "espn_nhl_401688337",
+    "start_time": "2025-01-20T00:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804489,
+    "external_id": "espn_nhl_401688335",
+    "start_time": "2025-01-19T03:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804487,
+    "external_id": "espn_nhl_401688333",
+    "start_time": "2025-01-19T02:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804485,
+    "external_id": "espn_nhl_401688331",
+    "start_time": "2025-01-19T01:00:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804486,
+    "external_id": "espn_nhl_401688332",
+    "start_time": "2025-01-19T01:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804484,
+    "external_id": "espn_nhl_401688330",
+    "start_time": "2025-01-19T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804479,
+    "external_id": "espn_nhl_401688325",
+    "start_time": "2025-01-19T00:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804480,
+    "external_id": "espn_nhl_401688326",
+    "start_time": "2025-01-19T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804481,
+    "external_id": "espn_nhl_401688327",
+    "start_time": "2025-01-19T00:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804483,
+    "external_id": "espn_nhl_401688329",
+    "start_time": "2025-01-19T00:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804478,
+    "external_id": "espn_nhl_401688324",
+    "start_time": "2025-01-18T23:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804477,
+    "external_id": "espn_nhl_401688323",
+    "start_time": "2025-01-18T21:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804490,
+    "external_id": "espn_nhl_401688319",
+    "start_time": "2025-01-18T00:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804491,
+    "external_id": "espn_nhl_401688320",
+    "start_time": "2025-01-18T00:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804474,
+    "external_id": "espn_nhl_401688318",
+    "start_time": "2025-01-17T03:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804472,
+    "external_id": "espn_nhl_401688316",
+    "start_time": "2025-01-17T02:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804468,
+    "external_id": "espn_nhl_401688312",
+    "start_time": "2025-01-17T01:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804469,
+    "external_id": "espn_nhl_401688313",
+    "start_time": "2025-01-17T01:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804470,
+    "external_id": "espn_nhl_401688314",
+    "start_time": "2025-01-17T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804471,
+    "external_id": "espn_nhl_401688315",
+    "start_time": "2025-01-17T01:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804467,
+    "external_id": "espn_nhl_401688311",
+    "start_time": "2025-01-17T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804464,
+    "external_id": "espn_nhl_401688308",
+    "start_time": "2025-01-17T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804465,
+    "external_id": "espn_nhl_401688309",
+    "start_time": "2025-01-17T00:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804466,
+    "external_id": "espn_nhl_401688310",
+    "start_time": "2025-01-17T00:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804460,
+    "external_id": "espn_nhl_401688304",
+    "start_time": "2025-01-15T23:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804458,
+    "external_id": "espn_nhl_401688302",
+    "start_time": "2025-01-15T02:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804459,
+    "external_id": "espn_nhl_401688303",
+    "start_time": "2025-01-15T02:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804455,
+    "external_id": "espn_nhl_401688299",
+    "start_time": "2025-01-15T01:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804456,
+    "external_id": "espn_nhl_401688300",
+    "start_time": "2025-01-15T01:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804457,
+    "external_id": "espn_nhl_401688301",
+    "start_time": "2025-01-15T01:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804454,
+    "external_id": "espn_nhl_401688298",
+    "start_time": "2025-01-15T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804448,
+    "external_id": "espn_nhl_401688292",
+    "start_time": "2025-01-15T00:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804449,
+    "external_id": "espn_nhl_401688293",
+    "start_time": "2025-01-15T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804450,
+    "external_id": "espn_nhl_401688295",
+    "start_time": "2025-01-15T00:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804452,
+    "external_id": "espn_nhl_401688297",
+    "start_time": "2025-01-15T00:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804445,
+    "external_id": "espn_nhl_401688289",
+    "start_time": "2025-01-14T00:30:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804444,
+    "external_id": "espn_nhl_401688288",
+    "start_time": "2025-01-14T00:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804443,
+    "external_id": "espn_nhl_401688287",
+    "start_time": "2025-01-13T01:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804440,
+    "external_id": "espn_nhl_401688284",
+    "start_time": "2025-01-12T22:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804441,
+    "external_id": "espn_nhl_401688285",
+    "start_time": "2025-01-12T22:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804442,
+    "external_id": "espn_nhl_401688286",
+    "start_time": "2025-01-12T22:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804439,
+    "external_id": "espn_nhl_401688283",
+    "start_time": "2025-01-12T20:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804436,
+    "external_id": "espn_nhl_401688280",
+    "start_time": "2025-01-12T03:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804437,
+    "external_id": "espn_nhl_401688281",
+    "start_time": "2025-01-12T03:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804438,
+    "external_id": "espn_nhl_401688282",
+    "start_time": "2025-01-12T03:00:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804435,
+    "external_id": "espn_nhl_401688279",
+    "start_time": "2025-01-12T02:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804427,
+    "external_id": "espn_nhl_401688271",
+    "start_time": "2025-01-12T00:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804428,
+    "external_id": "espn_nhl_401688272",
+    "start_time": "2025-01-12T00:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804430,
+    "external_id": "espn_nhl_401688274",
+    "start_time": "2025-01-12T00:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804432,
+    "external_id": "espn_nhl_401688276",
+    "start_time": "2025-01-12T00:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804433,
+    "external_id": "espn_nhl_401688277",
+    "start_time": "2025-01-12T00:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804425,
+    "external_id": "espn_nhl_401688269",
+    "start_time": "2025-01-11T21:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804426,
+    "external_id": "espn_nhl_401688270",
+    "start_time": "2025-01-11T21:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804423,
+    "external_id": "espn_nhl_401688267",
+    "start_time": "2025-01-11T02:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804422,
+    "external_id": "espn_nhl_401688266",
+    "start_time": "2025-01-11T01:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804419,
+    "external_id": "espn_nhl_401688263",
+    "start_time": "2025-01-11T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804421,
+    "external_id": "espn_nhl_401688265",
+    "start_time": "2025-01-11T00:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804418,
+    "external_id": "espn_nhl_401688262",
+    "start_time": "2025-01-10T03:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804416,
+    "external_id": "espn_nhl_401688260",
+    "start_time": "2025-01-10T01:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804417,
+    "external_id": "espn_nhl_401688261",
+    "start_time": "2025-01-10T01:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804415,
+    "external_id": "espn_nhl_401688258",
+    "start_time": "2025-01-10T00:30:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804409,
+    "external_id": "espn_nhl_401688253",
+    "start_time": "2025-01-10T00:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804412,
+    "external_id": "espn_nhl_401688256",
+    "start_time": "2025-01-10T00:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804414,
+    "external_id": "espn_nhl_401688259",
+    "start_time": "2025-01-10T00:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804397,
+    "external_id": "espn_nhl_401688251",
+    "start_time": "2025-01-09T03:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804396,
+    "external_id": "espn_nhl_401688250",
+    "start_time": "2025-01-09T00:30:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804408,
+    "external_id": "espn_nhl_401688248",
+    "start_time": "2025-01-08T03:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804407,
+    "external_id": "espn_nhl_401688247",
+    "start_time": "2025-01-08T03:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804405,
+    "external_id": "espn_nhl_401688245",
+    "start_time": "2025-01-08T01:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804406,
+    "external_id": "espn_nhl_401688246",
+    "start_time": "2025-01-08T01:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804404,
+    "external_id": "espn_nhl_401688243",
+    "start_time": "2025-01-08T00:30:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804400,
+    "external_id": "espn_nhl_401688241",
+    "start_time": "2025-01-08T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804401,
+    "external_id": "espn_nhl_401688242",
+    "start_time": "2025-01-08T00:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804402,
+    "external_id": "espn_nhl_401688244",
+    "start_time": "2025-01-08T00:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804403,
+    "external_id": "espn_nhl_401734652",
+    "start_time": "2025-01-08T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804393,
+    "external_id": "espn_nhl_401688238",
+    "start_time": "2025-01-07T02:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804392,
+    "external_id": "espn_nhl_401688237",
+    "start_time": "2025-01-07T00:30:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804390,
+    "external_id": "espn_nhl_401688235",
+    "start_time": "2025-01-06T01:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804389,
+    "external_id": "espn_nhl_401688234",
+    "start_time": "2025-01-06T00:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804388,
+    "external_id": "espn_nhl_401688233",
+    "start_time": "2025-01-05T23:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804386,
+    "external_id": "espn_nhl_401688231",
+    "start_time": "2025-01-05T20:00:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804384,
+    "external_id": "espn_nhl_401688229",
+    "start_time": "2025-01-05T03:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804383,
+    "external_id": "espn_nhl_401688226",
+    "start_time": "2025-01-05T03:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804382,
+    "external_id": "espn_nhl_401688228",
+    "start_time": "2025-01-05T02:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804381,
+    "external_id": "espn_nhl_401688227",
+    "start_time": "2025-01-05T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804380,
+    "external_id": "espn_nhl_401688225",
+    "start_time": "2025-01-05T00:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804379,
+    "external_id": "espn_nhl_401688224",
+    "start_time": "2025-01-05T00:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804378,
+    "external_id": "espn_nhl_401688223",
+    "start_time": "2025-01-05T00:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804376,
+    "external_id": "espn_nhl_401688220",
+    "start_time": "2025-01-05T00:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804373,
+    "external_id": "espn_nhl_401688218",
+    "start_time": "2025-01-04T03:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804371,
+    "external_id": "espn_nhl_401688216",
+    "start_time": "2025-01-04T01:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804370,
+    "external_id": "espn_nhl_401688215",
+    "start_time": "2025-01-04T01:00:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804369,
+    "external_id": "espn_nhl_401688214",
+    "start_time": "2025-01-04T00:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804368,
+    "external_id": "espn_nhl_401688213",
+    "start_time": "2025-01-03T03:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804367,
+    "external_id": "espn_nhl_401688212",
+    "start_time": "2025-01-03T03:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804366,
+    "external_id": "espn_nhl_401688211",
+    "start_time": "2025-01-03T03:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804365,
+    "external_id": "espn_nhl_401688210",
+    "start_time": "2025-01-03T02:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804364,
+    "external_id": "espn_nhl_401688209",
+    "start_time": "2025-01-03T02:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804363,
+    "external_id": "espn_nhl_401688208",
+    "start_time": "2025-01-03T01:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804362,
+    "external_id": "espn_nhl_401688207",
+    "start_time": "2025-01-03T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804361,
+    "external_id": "espn_nhl_401688206",
+    "start_time": "2025-01-03T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804360,
+    "external_id": "espn_nhl_401688205",
+    "start_time": "2025-01-03T00:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804357,
+    "external_id": "espn_nhl_401688202",
+    "start_time": "2025-01-03T00:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804355,
+    "external_id": "espn_nhl_401688199",
+    "start_time": "2025-01-01T02:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804348,
+    "external_id": "espn_nhl_401688192",
+    "start_time": "2025-01-01T01:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804349,
+    "external_id": "espn_nhl_401688193",
+    "start_time": "2025-01-01T01:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804350,
+    "external_id": "espn_nhl_401688194",
+    "start_time": "2025-01-01T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804351,
+    "external_id": "espn_nhl_401688195",
+    "start_time": "2025-01-01T01:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804352,
+    "external_id": "espn_nhl_401688196",
+    "start_time": "2025-01-01T01:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804354,
+    "external_id": "espn_nhl_401688198",
+    "start_time": "2025-01-01T01:00:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804347,
+    "external_id": "espn_nhl_401688191",
+    "start_time": "2024-12-31T22:00:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804346,
+    "external_id": "espn_nhl_401688190",
+    "start_time": "2024-12-31T20:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804345,
+    "external_id": "espn_nhl_401688189",
+    "start_time": "2024-12-31T18:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804342,
+    "external_id": "espn_nhl_401688187",
+    "start_time": "2024-12-31T01:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804341,
+    "external_id": "espn_nhl_401688186",
+    "start_time": "2024-12-31T00:30:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804340,
+    "external_id": "espn_nhl_401688185",
+    "start_time": "2024-12-31T00:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804339,
+    "external_id": "espn_nhl_401688184",
+    "start_time": "2024-12-30T02:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804338,
+    "external_id": "espn_nhl_401688176",
+    "start_time": "2024-12-30T01:30:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804336,
+    "external_id": "espn_nhl_401688182",
+    "start_time": "2024-12-30T01:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804337,
+    "external_id": "espn_nhl_401688183",
+    "start_time": "2024-12-30T01:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804335,
+    "external_id": "espn_nhl_401688180",
+    "start_time": "2024-12-29T22:30:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804334,
+    "external_id": "espn_nhl_401688179",
+    "start_time": "2024-12-29T22:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804331,
+    "external_id": "espn_nhl_401688181",
+    "start_time": "2024-12-29T20:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804330,
+    "external_id": "espn_nhl_401688175",
+    "start_time": "2024-12-29T03:00:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804329,
+    "external_id": "espn_nhl_401688174",
+    "start_time": "2024-12-29T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804326,
+    "external_id": "espn_nhl_401688171",
+    "start_time": "2024-12-29T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804328,
+    "external_id": "espn_nhl_401688173",
+    "start_time": "2024-12-29T00:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804321,
+    "external_id": "espn_nhl_401688166",
+    "start_time": "2024-12-28T21:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804322,
+    "external_id": "espn_nhl_401688167",
+    "start_time": "2024-12-28T21:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804320,
+    "external_id": "espn_nhl_401688165",
+    "start_time": "2024-12-28T18:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804319,
+    "external_id": "espn_nhl_401688164",
+    "start_time": "2024-12-28T03:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804318,
+    "external_id": "espn_nhl_401688163",
+    "start_time": "2024-12-28T02:30:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804316,
+    "external_id": "espn_nhl_401688161",
+    "start_time": "2024-12-28T01:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804317,
+    "external_id": "espn_nhl_401688162",
+    "start_time": "2024-12-28T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804312,
+    "external_id": "espn_nhl_401688157",
+    "start_time": "2024-12-28T00:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804313,
+    "external_id": "espn_nhl_401688158",
+    "start_time": "2024-12-28T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804314,
+    "external_id": "espn_nhl_401688159",
+    "start_time": "2024-12-28T00:00:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804311,
+    "external_id": "espn_nhl_401688156",
+    "start_time": "2024-12-24T03:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804309,
+    "external_id": "espn_nhl_401688154",
+    "start_time": "2024-12-24T02:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804310,
+    "external_id": "espn_nhl_401688155",
+    "start_time": "2024-12-24T02:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804307,
+    "external_id": "espn_nhl_401688152",
+    "start_time": "2024-12-24T01:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804308,
+    "external_id": "espn_nhl_401688153",
+    "start_time": "2024-12-24T01:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804306,
+    "external_id": "espn_nhl_401688151",
+    "start_time": "2024-12-24T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804302,
+    "external_id": "espn_nhl_401688147",
+    "start_time": "2024-12-24T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804303,
+    "external_id": "espn_nhl_401688148",
+    "start_time": "2024-12-24T00:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804304,
+    "external_id": "espn_nhl_401688149",
+    "start_time": "2024-12-24T00:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804305,
+    "external_id": "espn_nhl_401688150",
+    "start_time": "2024-12-24T00:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804300,
+    "external_id": "espn_nhl_401688145",
+    "start_time": "2024-12-23T19:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804299,
+    "external_id": "espn_nhl_401688144",
+    "start_time": "2024-12-23T18:00:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804297,
+    "external_id": "espn_nhl_401688142",
+    "start_time": "2024-12-23T01:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804294,
+    "external_id": "espn_nhl_401688139",
+    "start_time": "2024-12-22T22:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804296,
+    "external_id": "espn_nhl_401688141",
+    "start_time": "2024-12-22T22:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804293,
+    "external_id": "espn_nhl_401688138",
+    "start_time": "2024-12-22T17:30:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804291,
+    "external_id": "espn_nhl_401688136",
+    "start_time": "2024-12-22T03:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804292,
+    "external_id": "espn_nhl_401688137",
+    "start_time": "2024-12-22T03:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804286,
+    "external_id": "espn_nhl_401688131",
+    "start_time": "2024-12-22T00:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804287,
+    "external_id": "espn_nhl_401688132",
+    "start_time": "2024-12-22T00:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804288,
+    "external_id": "espn_nhl_401688133",
+    "start_time": "2024-12-22T00:00:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804289,
+    "external_id": "espn_nhl_401688134",
+    "start_time": "2024-12-22T00:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804290,
+    "external_id": "espn_nhl_401688135",
+    "start_time": "2024-12-22T00:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804283,
+    "external_id": "espn_nhl_401688128",
+    "start_time": "2024-12-21T21:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804282,
+    "external_id": "espn_nhl_401688127",
+    "start_time": "2024-12-21T18:30:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804281,
+    "external_id": "espn_nhl_401688126",
+    "start_time": "2024-12-21T03:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804279,
+    "external_id": "espn_nhl_401688124",
+    "start_time": "2024-12-21T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804280,
+    "external_id": "espn_nhl_401688125",
+    "start_time": "2024-12-21T01:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804275,
+    "external_id": "espn_nhl_401688120",
+    "start_time": "2024-12-21T00:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804276,
+    "external_id": "espn_nhl_401688121",
+    "start_time": "2024-12-21T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804277,
+    "external_id": "espn_nhl_401688122",
+    "start_time": "2024-12-21T00:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804274,
+    "external_id": "espn_nhl_401688119",
+    "start_time": "2024-12-20T03:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804273,
+    "external_id": "espn_nhl_401688118",
+    "start_time": "2024-12-20T03:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804271,
+    "external_id": "espn_nhl_401688116",
+    "start_time": "2024-12-20T02:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804270,
+    "external_id": "espn_nhl_401688115",
+    "start_time": "2024-12-20T01:30:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804269,
+    "external_id": "espn_nhl_401688114",
+    "start_time": "2024-12-20T01:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804268,
+    "external_id": "espn_nhl_401688112",
+    "start_time": "2024-12-20T00:30:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804266,
+    "external_id": "espn_nhl_401688111",
+    "start_time": "2024-12-20T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804267,
+    "external_id": "espn_nhl_401688113",
+    "start_time": "2024-12-20T00:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 150,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804264,
+    "external_id": "espn_nhl_401688109",
+    "start_time": "2024-12-19T03:00:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804265,
+    "external_id": "espn_nhl_401688110",
+    "start_time": "2024-12-19T03:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804263,
+    "external_id": "espn_nhl_401688108",
+    "start_time": "2024-12-19T02:30:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804262,
+    "external_id": "espn_nhl_401688107",
+    "start_time": "2024-12-19T00:30:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804261,
+    "external_id": "espn_nhl_401688106",
+    "start_time": "2024-12-19T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804260,
+    "external_id": "espn_nhl_401688105",
+    "start_time": "2024-12-18T03:30:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804259,
+    "external_id": "espn_nhl_401688104",
+    "start_time": "2024-12-18T03:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804256,
+    "external_id": "espn_nhl_401688101",
+    "start_time": "2024-12-18T01:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804254,
+    "external_id": "espn_nhl_401688099",
+    "start_time": "2024-12-18T00:30:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804251,
+    "external_id": "espn_nhl_401688096",
+    "start_time": "2024-12-18T00:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804252,
+    "external_id": "espn_nhl_401688097",
+    "start_time": "2024-12-18T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804253,
+    "external_id": "espn_nhl_401688098",
+    "start_time": "2024-12-18T00:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804250,
+    "external_id": "espn_nhl_401688095",
+    "start_time": "2024-12-17T03:30:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804248,
+    "external_id": "espn_nhl_401688093",
+    "start_time": "2024-12-17T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 164,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804246,
+    "external_id": "espn_nhl_401688091",
+    "start_time": "2024-12-15T23:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804247,
+    "external_id": "espn_nhl_401688092",
+    "start_time": "2024-12-15T23:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804244,
+    "external_id": "espn_nhl_401688089",
+    "start_time": "2024-12-15T22:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 136,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804245,
+    "external_id": "espn_nhl_401688090",
+    "start_time": "2024-12-15T22:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804243,
+    "external_id": "espn_nhl_401688088",
+    "start_time": "2024-12-15T20:00:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804239,
+    "external_id": "espn_nhl_401688084",
+    "start_time": "2024-12-15T03:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804241,
+    "external_id": "espn_nhl_401688086",
+    "start_time": "2024-12-15T03:00:00+00:00",
+    "home_team_id": 809399,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804242,
+    "external_id": "espn_nhl_401688087",
+    "start_time": "2024-12-15T03:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804238,
+    "external_id": "espn_nhl_401688083",
+    "start_time": "2024-12-15T02:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804237,
+    "external_id": "espn_nhl_401688082",
+    "start_time": "2024-12-15T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804232,
+    "external_id": "espn_nhl_401688077",
+    "start_time": "2024-12-15T00:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804233,
+    "external_id": "espn_nhl_401688078",
+    "start_time": "2024-12-15T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804235,
+    "external_id": "espn_nhl_401688080",
+    "start_time": "2024-12-15T00:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804236,
+    "external_id": "espn_nhl_401688081",
+    "start_time": "2024-12-15T00:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 809375,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804230,
+    "external_id": "espn_nhl_401688075",
+    "start_time": "2024-12-14T19:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804228,
+    "external_id": "espn_nhl_401688073",
+    "start_time": "2024-12-14T18:00:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804229,
+    "external_id": "espn_nhl_401688074",
+    "start_time": "2024-12-14T18:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804213,
+    "external_id": "espn_nhl_401688072",
+    "start_time": "2024-12-14T00:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 809376,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804226,
+    "external_id": "espn_nhl_401688070",
+    "start_time": "2024-12-13T03:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804224,
+    "external_id": "espn_nhl_401688068",
+    "start_time": "2024-12-13T02:00:00+00:00",
+    "home_team_id": 140,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804225,
+    "external_id": "espn_nhl_401688069",
+    "start_time": "2024-12-13T02:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804220,
+    "external_id": "espn_nhl_401688064",
+    "start_time": "2024-12-13T01:00:00+00:00",
+    "home_team_id": 158,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804221,
+    "external_id": "espn_nhl_401688065",
+    "start_time": "2024-12-13T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804222,
+    "external_id": "espn_nhl_401688067",
+    "start_time": "2024-12-13T01:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804219,
+    "external_id": "espn_nhl_401688063",
+    "start_time": "2024-12-13T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804214,
+    "external_id": "espn_nhl_401688058",
+    "start_time": "2024-12-13T00:00:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804215,
+    "external_id": "espn_nhl_401688059",
+    "start_time": "2024-12-13T00:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804216,
+    "external_id": "espn_nhl_401688060",
+    "start_time": "2024-12-13T00:00:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804217,
+    "external_id": "espn_nhl_401688061",
+    "start_time": "2024-12-13T00:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804212,
+    "external_id": "espn_nhl_401688057",
+    "start_time": "2024-12-12T00:30:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804211,
+    "external_id": "espn_nhl_401688056",
+    "start_time": "2024-12-12T00:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 800666,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804209,
+    "external_id": "espn_nhl_401688054",
+    "start_time": "2024-12-11T03:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804210,
+    "external_id": "espn_nhl_401688055",
+    "start_time": "2024-12-11T03:00:00+00:00",
+    "home_team_id": 809400,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804208,
+    "external_id": "espn_nhl_401688053",
+    "start_time": "2024-12-11T02:30:00+00:00",
+    "home_team_id": 129764,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804205,
+    "external_id": "espn_nhl_401688050",
+    "start_time": "2024-12-11T01:00:00+00:00",
+    "home_team_id": 809392,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3804204,
+    "external_id": "espn_nhl_401688049",
+    "start_time": "2024-12-11T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 146,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802338,
+    "external_id": "espn_nhl_401688045",
+    "start_time": "2024-12-11T00:00:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802339,
+    "external_id": "espn_nhl_401688046",
+    "start_time": "2024-12-11T00:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802340,
+    "external_id": "espn_nhl_401688047",
+    "start_time": "2024-12-11T00:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802341,
+    "external_id": "espn_nhl_401688048",
+    "start_time": "2024-12-11T00:00:00+00:00",
+    "home_team_id": 141,
+    "away_team_id": 154,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802337,
+    "external_id": "espn_nhl_401688044",
+    "start_time": "2024-12-10T00:30:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 134,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802335,
+    "external_id": "espn_nhl_401688042",
+    "start_time": "2024-12-10T00:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802336,
+    "external_id": "espn_nhl_401688043",
+    "start_time": "2024-12-10T00:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 139,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802334,
+    "external_id": "espn_nhl_401688041",
+    "start_time": "2024-12-09T01:00:00+00:00",
+    "home_team_id": 142,
+    "away_team_id": 137,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802333,
+    "external_id": "espn_nhl_401688040",
+    "start_time": "2024-12-09T00:30:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802332,
+    "external_id": "espn_nhl_401688039",
+    "start_time": "2024-12-09T00:00:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802331,
+    "external_id": "espn_nhl_401688038",
+    "start_time": "2024-12-08T23:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802330,
+    "external_id": "espn_nhl_401688037",
+    "start_time": "2024-12-08T22:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 809382,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802329,
+    "external_id": "espn_nhl_401688036",
+    "start_time": "2024-12-08T21:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 159,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802328,
+    "external_id": "espn_nhl_401688035",
+    "start_time": "2024-12-08T18:00:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802326,
+    "external_id": "espn_nhl_401688033",
+    "start_time": "2024-12-08T01:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802323,
+    "external_id": "espn_nhl_401688029",
+    "start_time": "2024-12-08T00:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802324,
+    "external_id": "espn_nhl_401688030",
+    "start_time": "2024-12-08T00:00:00+00:00",
+    "home_team_id": 143,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802325,
+    "external_id": "espn_nhl_401688031",
+    "start_time": "2024-12-08T00:00:00+00:00",
+    "home_team_id": 809385,
+    "away_team_id": 800661,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802321,
+    "external_id": "espn_nhl_401688027",
+    "start_time": "2024-12-07T23:00:00+00:00",
+    "home_team_id": 145,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802320,
+    "external_id": "espn_nhl_401688032",
+    "start_time": "2024-12-07T22:00:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 138,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802319,
+    "external_id": "espn_nhl_401688026",
+    "start_time": "2024-12-07T21:00:00+00:00",
+    "home_team_id": 139,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802318,
+    "external_id": "espn_nhl_401688025",
+    "start_time": "2024-12-07T18:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 129764,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802314,
+    "external_id": "espn_nhl_401688021",
+    "start_time": "2024-12-07T03:00:00+00:00",
+    "home_team_id": 809401,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802315,
+    "external_id": "espn_nhl_401688022",
+    "start_time": "2024-12-07T03:00:00+00:00",
+    "home_team_id": 163,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802316,
+    "external_id": "espn_nhl_401688023",
+    "start_time": "2024-12-07T03:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 147,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802313,
+    "external_id": "espn_nhl_401688020",
+    "start_time": "2024-12-07T00:30:00+00:00",
+    "home_team_id": 800666,
+    "away_team_id": 809385,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802312,
+    "external_id": "espn_nhl_401688019",
+    "start_time": "2024-12-07T00:00:00+00:00",
+    "home_team_id": 150,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802309,
+    "external_id": "espn_nhl_401688016",
+    "start_time": "2024-12-06T02:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802308,
+    "external_id": "espn_nhl_401688015",
+    "start_time": "2024-12-06T00:30:00+00:00",
+    "home_team_id": 809382,
+    "away_team_id": 809400,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802302,
+    "external_id": "espn_nhl_401688009",
+    "start_time": "2024-12-06T00:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 165,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802303,
+    "external_id": "espn_nhl_401688010",
+    "start_time": "2024-12-06T00:00:00+00:00",
+    "home_team_id": 809375,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802304,
+    "external_id": "espn_nhl_401688011",
+    "start_time": "2024-12-06T00:00:00+00:00",
+    "home_team_id": 809376,
+    "away_team_id": 143,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802305,
+    "external_id": "espn_nhl_401688012",
+    "start_time": "2024-12-06T00:00:00+00:00",
+    "home_team_id": 159,
+    "away_team_id": 809399,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802306,
+    "external_id": "espn_nhl_401688013",
+    "start_time": "2024-12-06T00:00:00+00:00",
+    "home_team_id": 154,
+    "away_team_id": 145,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802307,
+    "external_id": "espn_nhl_401688014",
+    "start_time": "2024-12-06T00:00:00+00:00",
+    "home_team_id": 138,
+    "away_team_id": 140,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802300,
+    "external_id": "espn_nhl_401688007",
+    "start_time": "2024-12-05T03:00:00+00:00",
+    "home_team_id": 134,
+    "away_team_id": 163,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802301,
+    "external_id": "espn_nhl_401688008",
+    "start_time": "2024-12-05T03:00:00+00:00",
+    "home_team_id": 146,
+    "away_team_id": 142,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802298,
+    "external_id": "espn_nhl_401688005",
+    "start_time": "2024-12-05T00:30:00+00:00",
+    "home_team_id": 800661,
+    "away_team_id": 809392,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802296,
+    "external_id": "espn_nhl_401688003",
+    "start_time": "2024-12-04T02:00:00+00:00",
+    "home_team_id": 137,
+    "away_team_id": 141,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802294,
+    "external_id": "espn_nhl_401688001",
+    "start_time": "2024-12-04T01:00:00+00:00",
+    "home_team_id": 147,
+    "away_team_id": 809401,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802295,
+    "external_id": "espn_nhl_401688002",
+    "start_time": "2024-12-04T01:00:00+00:00",
+    "home_team_id": 165,
+    "away_team_id": 158,
+    "sport": "nhl"
+  },
+  {
+    "id": 3802289,
+    "external_id": "espn_nhl_401687996",
+    "start_time": "2024-12-04T00:00:00+00:00",
+    "home_team_id": 136,
+    "away_team_id": 140,
+    "sport": "nhl"
+  }
+]
