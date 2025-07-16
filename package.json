@@ -39,6 +39,8 @@
     "data:auto": "tsx scripts/auto-collect.ts",
     "data:monitor": "tsx scripts/monitor-data-growth.ts",
     "data:check": "tsx scripts/check-all-tables.ts",
+    "data:check:full": "tsx scripts/database/checks/check-comprehensive-data.ts",
+    "db:check": "node scripts/check-db-data.js",
     "turbo": "tsx scripts/turbo-loader.ts",
     "turbo:fantasy": "tsx scripts/fantasy-turbo-loader.ts",
     "turbo:simple": "tsx scripts/simple-turbo-loader.ts",

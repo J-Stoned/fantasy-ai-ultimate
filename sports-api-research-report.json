@@ -1,0 +1,446 @@
+{
+  "timestamp": "2025-07-15T20:01:04.349Z",
+  "summary": {
+    "total_apis_tested": 5,
+    "working": 3,
+    "empty": 2,
+    "failed": 0
+  },
+  "results": [
+    {
+      "sport": "MLB",
+      "api_name": "MLB Stats API",
+      "base_url": "https://statsapi.mlb.com/api/v1",
+      "test_endpoint": "https://statsapi.mlb.com/api/v1/teams/118/roster?season=2024",
+      "status": "success",
+      "player_count": 50,
+      "sample_player": {
+        "person": {
+          "id": 680769,
+          "fullName": "CJ Alexander",
+          "link": "/api/v1/people/680769"
+        },
+        "jerseyNumber": "40",
+        "position": {
+          "code": "5",
+          "name": "Third Base",
+          "type": "Infielder",
+          "abbreviation": "3B"
+        },
+        "status": {
+          "code": "RL",
+          "description": "Released"
+        }
+      },
+      "data_structure": {
+        "roster_path": "data.roster",
+        "player_id": "person.id",
+        "player_name": "person.fullName",
+        "position": "position.abbreviation",
+        "jersey": "jerseyNumber"
+      },
+      "auth_required": false,
+      "rate_limit": "None specified"
+    },
+    {
+      "sport": "NFL",
+      "api_name": "ESPN NFL API",
+      "base_url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl",
+      "test_endpoint": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/12/roster",
+      "status": "success",
+      "player_count": 93,
+      "sample_player": {
+        "id": "4429184",
+        "uid": "s:20~l:28~a:4429184",
+        "guid": "24c6dfa5-dae9-34ca-ad26-fa17e8762216",
+        "alternateIds": {
+          "sdr": "4429184"
+        },
+        "firstName": "Elijhah",
+        "lastName": "Badger",
+        "fullName": "Elijhah Badger",
+        "displayName": "Elijhah Badger",
+        "shortName": "E. Badger",
+        "weight": 192,
+        "displayWeight": "192 lbs",
+        "height": 73,
+        "displayHeight": "6' 1\"",
+        "links": [
+          {
+            "language": "en-US",
+            "rel": [
+              "playercard",
+              "desktop",
+              "athlete"
+            ],
+            "href": "https://www.espn.com/nfl/player/_/id/4429184/elijhah-badger",
+            "text": "Player Card",
+            "shortText": "Player Card",
+            "isExternal": false,
+            "isPremium": false
+          },
+          {
+            "language": "en-US",
+            "rel": [
+              "stats",
+              "desktop",
+              "athlete"
+            ],
+            "href": "https://www.espn.com/nfl/player/stats/_/id/4429184/elijhah-badger",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false
+          },
+          {
+            "language": "en-US",
+            "rel": [
+              "splits",
+              "desktop",
+              "athlete"
+            ],
+            "href": "https://www.espn.com/nfl/player/splits/_/id/4429184/elijhah-badger",
+            "text": "Splits",
+            "shortText": "Splits",
+            "isExternal": false,
+            "isPremium": false
+          },
+          {
+            "language": "en-US",
+            "rel": [
+              "gamelog",
+              "desktop",
+              "athlete"
+            ],
+            "href": "https://www.espn.com/nfl/player/gamelog/_/id/4429184/elijhah-badger",
+            "text": "Game Log",
+            "shortText": "Game Log",
+            "isExternal": false,
+            "isPremium": false
+          },
+          {
+            "language": "en-US",
+            "rel": [
+              "news",
+              "desktop",
+              "athlete"
+            ],
+            "href": "https://www.espn.com/nfl/player/news/_/id/4429184/elijhah-badger",
+            "text": "News",
+            "shortText": "News",
+            "isExternal": false,
+            "isPremium": false
+          },
+          {
+            "language": "en-US",
+            "rel": [
+              "bio",
+              "desktop",
+              "athlete"
+            ],
+            "href": "https://www.espn.com/nfl/player/bio/_/id/4429184/elijhah-badger",
+            "text": "Bio",
+            "shortText": "Bio",
+            "isExternal": false,
+            "isPremium": false
+          },
+          {
+            "language": "en-US",
+            "rel": [
+              "overview",
+              "desktop",
+              "athlete"
+            ],
+            "href": "https://www.espn.com/nfl/player/_/id/4429184/elijhah-badger",
+            "text": "Overview",
+            "shortText": "Overview",
+            "isExternal": false,
+            "isPremium": false
+          }
+        ],
+        "birthPlace": {
+          "city": "Sacramento",
+          "state": "CA",
+          "country": "USA"
+        },
+        "college": {
+          "id": "57",
+          "guid": "97faef39-d222-37b0-94fc-9944321184e4",
+          "mascot": "Gators",
+          "name": "Florida",
+          "shortName": "Florida",
+          "abbrev": "FLA",
+          "logos": [
+            {
+              "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/57.png",
+              "width": 500,
+              "height": 500,
+              "alt": "",
+              "rel": [
+                "full",
+                "default"
+              ],
+              "lastUpdated": "2023-03-01T14:17Z"
+            },
+            {
+              "href": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/57.png",
+              "width": 500,
+              "height": 500,
+              "alt": "",
+              "rel": [
+                "full",
+                "dark"
+              ],
+              "lastUpdated": "2023-03-01T14:18Z"
+            }
+          ]
+        },
+        "slug": "elijhah-badger",
+        "jersey": "80",
+        "position": {
+          "id": "1",
+          "name": "Wide Receiver",
+          "displayName": "Wide Receiver",
+          "abbreviation": "WR",
+          "leaf": true,
+          "parent": {
+            "id": "70",
+            "name": "Offense",
+            "displayName": "Offense",
+            "abbreviation": "OFF",
+            "leaf": false
+          }
+        },
+        "injuries": [],
+        "contracts": [],
+        "experience": {
+          "years": 0
+        },
+        "status": {
+          "id": "1",
+          "name": "Active",
+          "type": "active",
+          "abbreviation": "Active"
+        },
+        "headshot": {
+          "href": "https://a.espncdn.com/i/headshots/college-football/players/full/4429184.png",
+          "alt": "Elijhah Badger"
+        }
+      },
+      "data_structure": {
+        "roster_path": "data.athletes[].items[]",
+        "player_id": "id",
+        "player_name": "displayName",
+        "position": "position.abbreviation",
+        "jersey": "jersey",
+        "height": "height (number)",
+        "weight": "weight"
+      },
+      "auth_required": false,
+      "rate_limit": "None specified"
+    },
+    {
+      "sport": "NBA",
+      "api_name": "ESPN NBA API",
+      "base_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba",
+      "test_endpoint": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/13/roster",
+      "status": "empty",
+      "player_count": 0,
+      "sample_player": null,
+      "auth_required": false,
+      "rate_limit": "None specified"
+    },
+    {
+      "sport": "NBA",
+      "api_name": "NBA.com Stats API",
+      "base_url": "https://stats.nba.com/stats",
+      "test_endpoint": "https://stats.nba.com/stats/commonteamroster?TeamID=1610612747&Season=2024-25",
+      "status": "empty",
+      "player_count": 0,
+      "data_structure": {
+        "roster_path": "data.resultSets[0].rowSet",
+        "headers": "data.resultSets[0].headers",
+        "format": "Array with headers mapping"
+      },
+      "auth_required": false,
+      "rate_limit": "Headers required to prevent blocking"
+    },
+    {
+      "sport": "NHL",
+      "api_name": "ESPN NHL API",
+      "base_url": "https://site.api.espn.com/apis/site/v2/sports/hockey/nhl",
+      "test_endpoint": "https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/teams/10/roster",
+      "status": "success",
+      "player_count": 23,
+      "sample_player": {
+        "id": "4874734",
+        "uid": "s:70~l:90~a:4874734",
+        "guid": "70b797c3-bce6-34f8-b0e3-a3c049c47797",
+        "alternateIds": {
+          "sdr": "4874734"
+        },
+        "alternateId": "4874734",
+        "firstName": "Zack",
+        "lastName": "Bolduc",
+        "fullName": "Zack Bolduc",
+        "displayName": "Zack Bolduc",
+        "shortName": "Z. Bolduc",
+        "weight": 187,
+        "displayWeight": "187 lbs",
+        "height": 72,
+        "displayHeight": "6' 0\"",
+        "age": 22,
+        "dateOfBirth": "2003-02-24T08:00Z",
+        "links": [
+          {
+            "language": "en-US",
+            "rel": [
+              "playercard",
+              "desktop",
+              "athlete"
+            ],
+            "href": "https://www.espn.com/nhl/player/_/id/4874734",
+            "text": "Player Card",
+            "shortText": "Player Card",
+            "isExternal": false,
+            "isPremium": false
+          },
+          {
+            "language": "en-US",
+            "rel": [
+              "stats",
+              "desktop",
+              "athlete"
+            ],
+            "href": "https://www.espn.com/nhl/player/stats/_/id/4874734/zack-bolduc",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false
+          },
+          {
+            "language": "en-US",
+            "rel": [
+              "splits",
+              "desktop",
+              "athlete"
+            ],
+            "href": "https://www.espn.com/nhl/player/splits/_/id/4874734/zack-bolduc",
+            "text": "Splits",
+            "shortText": "Splits",
+            "isExternal": false,
+            "isPremium": false
+          },
+          {
+            "language": "en-US",
+            "rel": [
+              "gamelog",
+              "desktop",
+              "athlete"
+            ],
+            "href": "https://www.espn.com/nhl/player/gamelog/_/id/4874734/zack-bolduc",
+            "text": "Game Log",
+            "shortText": "Game Log",
+            "isExternal": false,
+            "isPremium": false
+          },
+          {
+            "language": "en-US",
+            "rel": [
+              "news",
+              "desktop",
+              "athlete"
+            ],
+            "href": "https://www.espn.com/nhl/player/news/_/id/4874734/zack-bolduc",
+            "text": "News",
+            "shortText": "News",
+            "isExternal": false,
+            "isPremium": false
+          },
+          {
+            "language": "en-US",
+            "rel": [
+              "bio",
+              "desktop",
+              "athlete"
+            ],
+            "href": "https://www.espn.com/nhl/player/bio/_/id/4874734/zack-bolduc",
+            "text": "Bio",
+            "shortText": "Bio",
+            "isExternal": false,
+            "isPremium": false
+          },
+          {
+            "language": "en-US",
+            "rel": [
+              "overview",
+              "desktop",
+              "athlete"
+            ],
+            "href": "https://www.espn.com/nhl/player/_/id/4874734/zack-bolduc",
+            "text": "Overview",
+            "shortText": "Overview",
+            "isExternal": false,
+            "isPremium": false
+          }
+        ],
+        "birthPlace": {
+          "city": "Trois-Rivieres",
+          "state": "QC",
+          "country": "CAN",
+          "displayText": "Trois-Rivieres, CAN"
+        },
+        "birthCountry": {
+          "abbreviation": "CAN"
+        },
+        "slug": "zack-bolduc",
+        "headshot": {
+          "href": "https://a.espncdn.com/i/headshots/nhl/players/full/4874734.png",
+          "alt": "Zack Bolduc"
+        },
+        "jersey": "76",
+        "hand": {
+          "type": "LEFT",
+          "abbreviation": "L",
+          "displayValue": "Left"
+        },
+        "position": {
+          "id": "1",
+          "name": "Center",
+          "displayName": "Center",
+          "abbreviation": "C",
+          "leaf": true,
+          "parent": {
+            "id": "20",
+            "name": "Forward",
+            "displayName": "Forward",
+            "abbreviation": "F",
+            "leaf": false
+          }
+        },
+        "injuries": [],
+        "contracts": [],
+        "experience": {
+          "years": 0
+        },
+        "status": {
+          "id": "1",
+          "name": "Active",
+          "type": "active",
+          "abbreviation": "Active"
+        }
+      },
+      "data_structure": {
+        "roster_path": "data.athletes[].items[]",
+        "player_id": "id",
+        "player_name": "displayName",
+        "position": "position.abbreviation",
+        "jersey": "jersey",
+        "height": "height (number)",
+        "weight": "weight"
+      },
+      "auth_required": false,
+      "rate_limit": "None specified"
+    }
+  ]
+}
