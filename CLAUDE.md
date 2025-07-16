@@ -154,16 +154,20 @@ curl http://localhost:3000/api/v2/live            # WebSocket info
 ```
 
 ### Real Database Stats (2025-07-16 UPDATED):
-- **Player Stats**: 670,000+ total across all sports!
-  - NBA: 73,390 stats
-  - MLB: ~247,000 stats (null sport field - needs fix)
-  - NCAA Football: 39,018 stats
-  - NCAA Basketball: ~152,000 stats (97% complete)
+- **Player Stats**: 519,536 total across all sports!
+  - NBA: 80,292 stats
+  - MLB: 143,602 stats
+  - NHL: 83,262 stats  
+  - NFL: 17,346 stats
+  - NCAA Football: 38,252 stats
+  - NCAA Basketball: 156,782 stats (complete!)
 - **Games**: 19,173 total
-  - 8,910 MLB games (null sport field)
+  - 5,541 MLB games
   - 5,427 NCAA Basketball games
   - 3,967 NBA games
+  - 2,799 NHL games
   - 869 NCAA Football games
+  - 570 NFL games
 - **Players**: 32,918 total
   - 5,563 NCAA Basketball players (fixed null sport)
   - 2,916 NFL players
