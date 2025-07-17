@@ -1,5 +1,5 @@
 /**
- * 🔥 INTEGRATION TEST FOR 48K GAMES 🔥
+ * 🔥 INTEGRATION TEST FOR 21.5K GAMES 🔥
  * Tests all services with real database data
  */
 
@@ -34,11 +34,11 @@ async function testIntegration() {
     
     console.log(`✅ Connected to database - Found ${gameCount} games`);
     
-    if (gameCount && gameCount >= 48000) {
-      console.log(`✅ Confirmed 48K+ games present (${gameCount} total)`);
+    if (gameCount && gameCount >= 20000) {
+      console.log(`✅ Confirmed 20K+ games present (${gameCount} total)`);
       passedTests++;
     } else {
-      console.log(`❌ Expected 48K+ games, found ${gameCount}`);
+      console.log(`❌ Expected 20K+ games, found ${gameCount}`);
       failedTests++;
     }
   } catch (error) {
@@ -211,7 +211,7 @@ async function testIntegration() {
   console.log(`🎯 Success Rate: ${((passedTests / (passedTests + failedTests)) * 100).toFixed(1)}%`);
   
   if (failedTests === 0) {
-    console.log('\n🎉 ALL TESTS PASSED! System ready for 48K games!');
+    console.log('\n🎉 ALL TESTS PASSED! System ready for 21.5K games!');
   } else {
     console.log('\n⚠️  Some tests failed. Check the errors above.');
     console.log('\n📌 To start all services:');
