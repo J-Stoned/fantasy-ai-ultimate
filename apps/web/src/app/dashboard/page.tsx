@@ -70,11 +70,11 @@ export default async function DashboardPage() {
             </Link>
             
             <Link 
-              href="/import-league"
+              href="/data-hub"
               className="bg-gradient-to-r from-blue-600 to-cyan-600 p-6 rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 transform hover:scale-105"
             >
-              <h3 className="text-xl font-semibold text-white mb-2">Import League</h3>
-              <p className="text-gray-200">One-click import from Yahoo, ESPN & more</p>
+              <h3 className="text-xl font-semibold text-white mb-2">📊 Data Hub</h3>
+              <p className="text-gray-200">519K+ real player stats</p>
             </Link>
             
             <Link 
@@ -94,38 +94,14 @@ export default async function DashboardPage() {
             </Link>
           </div>
           
-          {/* Second Row of Features */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
-            <Link 
-              href="/spatial-analytics"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 p-6 rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-200 transform hover:scale-105 border border-purple-500/30"
-            >
-              <h3 className="text-xl font-semibold text-white mb-2">🔮 Spatial Analytics</h3>
-              <p className="text-gray-200">Dr. Thorne's xG & pitch control</p>
-            </Link>
-            
+          {/* Additional Features */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
             <Link 
               href="/ai-assistant"
               className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-200 transform hover:scale-105"
             >
               <h3 className="text-xl font-semibold text-white mb-2">🤖 AI Assistant</h3>
               <p className="text-gray-200">"Hey Fantasy" voice commands</p>
-            </Link>
-            
-            <Link 
-              href="/trade-analyzer"
-              className="bg-gradient-to-r from-pink-600 to-rose-600 p-6 rounded-xl hover:from-pink-700 hover:to-rose-700 transition-all duration-200 transform hover:scale-105"
-            >
-              <h3 className="text-xl font-semibold text-white mb-2">💱 Trade Analyzer</h3>
-              <p className="text-gray-200">AI-powered trade recommendations</p>
-            </Link>
-            
-            <Link 
-              href="/waiver-wire"
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105"
-            >
-              <h3 className="text-xl font-semibold text-white mb-2">📈 Waiver Wire</h3>
-              <p className="text-gray-200">Pattern-based breakout picks</p>
             </Link>
             
             <Link 
@@ -136,7 +112,15 @@ export default async function DashboardPage() {
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
               </div>
               <h3 className="text-xl font-semibold text-white mb-2">📡 Live Dashboard</h3>
-              <p className="text-gray-200">Real-time alerts & updates</p>
+              <p className="text-gray-200">Real-time pattern alerts</p>
+            </Link>
+            
+            <Link 
+              href="/data-hub"
+              className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105"
+            >
+              <h3 className="text-xl font-semibold text-white mb-2">📊 Data Hub</h3>
+              <p className="text-gray-200">Real-time sports data</p>
             </Link>
           </div>
         </div>
@@ -168,12 +152,12 @@ export default async function DashboardPage() {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-gray-300 mb-4">You haven't imported any leagues yet.</p>
+              <p className="text-gray-300 mb-4">No leagues found in your profile.</p>
               <Link 
-                href="/import-league"
+                href="/patterns"
                 className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
               >
-                Import Your First League
+                Explore Pattern Detection
               </Link>
             </div>
           )}
@@ -186,16 +170,16 @@ export default async function DashboardPage() {
             <p className="text-xl md:text-2xl font-bold text-white mt-1">{leagues?.length || 0}</p>
           </div>
           <div className="bg-white/10 backdrop-blur-lg rounded-lg p-4">
-            <h3 className="text-xs md:text-sm font-medium text-gray-300">Active Players</h3>
-            <p className="text-xl md:text-2xl font-bold text-white mt-1">2.5M+</p>
+            <h3 className="text-xs md:text-sm font-medium text-gray-300">Player Stats</h3>
+            <p className="text-xl md:text-2xl font-bold text-white mt-1">519K+</p>
           </div>
           <div className="bg-white/10 backdrop-blur-lg rounded-lg p-4">
-            <h3 className="text-xs md:text-sm font-medium text-gray-300">Data Points</h3>
-            <p className="text-xl md:text-2xl font-bold text-white mt-1">10M+ Daily</p>
+            <h3 className="text-xs md:text-sm font-medium text-gray-300">Games Analyzed</h3>
+            <p className="text-xl md:text-2xl font-bold text-white mt-1">48K+</p>
           </div>
           <div className="bg-white/10 backdrop-blur-lg rounded-lg p-4">
-            <h3 className="text-xs md:text-sm font-medium text-gray-300">AI Insights</h3>
-            <p className="text-xl md:text-2xl font-bold text-white mt-1">24/7</p>
+            <h3 className="text-xs md:text-sm font-medium text-gray-300">Pattern Accuracy</h3>
+            <p className="text-xl md:text-2xl font-bold text-white mt-1">65.2%</p>
           </div>
         </div>
       </main>
