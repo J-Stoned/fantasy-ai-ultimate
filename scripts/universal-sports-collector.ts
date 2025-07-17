@@ -163,17 +163,49 @@ class UniversalSportsCollector {
 
                 if (!existingGame) {
                   const transformedGame = adapter.transformGame(event);
-                  games.push({
-                    ...transformedGame,
-                    external_id: `espn_${sport.toLowerCase()}_${event.id}`,
-                    sport: sport,
-                    metadata: {
-                      ...transformedGame.metadata,
-                      season_type: period,
-                      collection_source: 'universal-collector-historical'
-                    }
-                  });
-                  gamesCollected++;
+                  // Map team IDs to our database
+                  const homeTeamId = transformedGame.home_team_id;
+                  const awayTeamId = transformedGame.away_team_id;
+                  
+                  // Find matching teams in our database
+                  const { data: homeTeam } = await supabase
+                    .from('teams')
+                    .select('id')
+                    .eq('external_id', `espn_${sport.toLowerCase()}_${homeTeamId}`)
+                    .single();
+                    
+                  const { data: awayTeam } = await supabase
+                    .from('teams')
+                    .select('id') 
+                    .eq('external_id', `espn_${sport.toLowerCase()}_${awayTeamId}`)
+                    .single();
+                  
+                  if (homeTeam && awayTeam) {
+                    // Handle score format (might be object or number)
+                    const homeScore = typeof transformedGame.home_score === 'object' 
+                      ? (transformedGame.home_score?.value || 0) 
+                      : (transformedGame.home_score || 0);
+                    const awayScore = typeof transformedGame.away_score === 'object'
+                      ? (transformedGame.away_score?.value || 0)
+                      : (transformedGame.away_score || 0);
+                      
+                    games.push({
+                      external_id: `espn_${sport.toLowerCase()}_${event.id}`,
+                      sport: sport,
+                      home_team_id: homeTeam.id,
+                      away_team_id: awayTeam.id,
+                      home_score: homeScore,
+                      away_score: awayScore,
+                      start_time: transformedGame.date,
+                      status: transformedGame.status,
+                      metadata: {
+                        ...transformedGame.metadata,
+                        season_type: period,
+                        collection_source: 'universal-collector-historical'
+                      }
+                    });
+                    gamesCollected++;
+                  }
                 }
               }
             }
@@ -188,22 +220,29 @@ class UniversalSportsCollector {
       }
     }
 
+    // Deduplicate games before insertion
+    const uniqueGames = games.filter((game, index, self) => 
+      index === self.findIndex(g => g.external_id === game.external_id)
+    );
+    
     // Insert games in batches
-    if (games.length > 0) {
-      console.log(chalk.blue(`  Inserting ${games.length} games...`));
+    if (uniqueGames.length > 0) {
+      console.log(chalk.blue(`  Inserting ${uniqueGames.length} unique games (from ${games.length} total)...`));
       
       const batchSize = 500;
-      for (let i = 0; i < games.length; i += batchSize) {
-        const batch = games.slice(i, i + batchSize);
+      for (let i = 0; i < uniqueGames.length; i += batchSize) {
+        const batch = uniqueGames.slice(i, i + batchSize);
         
-        const { error } = await supabase
+        const { data, error } = await supabase
           .from('games')
-          .insert(batch);
+          .upsert(batch, { onConflict: 'external_id' })
+          .select();
         
         if (error) {
-          console.error(chalk.red(`Error inserting games:`, error));
+          console.error(chalk.red(`Error inserting games:`));
+          console.error(JSON.stringify(error, null, 2));
         } else {
-          this.processed.games += batch.length;
+          this.processed.games += (data?.length || 0);
         }
       }
     }
@@ -283,22 +322,29 @@ class UniversalSportsCollector {
       }
     }
 
+    // Deduplicate players before insertion
+    const uniquePlayers = players.filter((player, index, self) =>
+      index === self.findIndex(p => p.external_id === player.external_id)
+    );
+    
     // Insert players in batches
-    if (players.length > 0) {
-      console.log(chalk.blue(`  Inserting ${players.length} players...`));
+    if (uniquePlayers.length > 0) {
+      console.log(chalk.blue(`  Inserting ${uniquePlayers.length} unique players (from ${players.length} total)...`));
       
       const batchSize = 500;
-      for (let i = 0; i < players.length; i += batchSize) {
-        const batch = players.slice(i, i + batchSize);
+      for (let i = 0; i < uniquePlayers.length; i += batchSize) {
+        const batch = uniquePlayers.slice(i, i + batchSize);
         
-        const { error } = await supabase
+        const { data, error } = await supabase
           .from('players')
-          .insert(batch);
+          .upsert(batch, { onConflict: 'external_id' })
+          .select();
         
         if (error) {
-          console.error(chalk.red(`Error inserting players:`, error));
+          console.error(chalk.red(`Error inserting players:`));
+          console.error(JSON.stringify(error, null, 2));
         } else {
-          this.processed.players += batch.length;
+          this.processed.players += (data?.length || 0);
         }
       }
     }
@@ -313,11 +359,18 @@ class UniversalSportsCollector {
     console.log(chalk.cyan(`\n📊 Collecting ${sport} ${year} historical stats...`));
     
     // Get historical games for this sport/year
+    const seasonConfig = this.getSeasonConfigs().find(s => s.sport === sport && s.year === year);
+    if (!seasonConfig) {
+      console.log(chalk.red(`No season configuration found for ${sport} ${year}`));
+      return;
+    }
+    
     const { data: games } = await supabase
       .from('games')
       .select('id, external_id, home_team_id, away_team_id, start_time')
       .eq('sport', sport)
-      .like('metadata->>historical_season', `%${year}%`)
+      .gte('start_time', seasonConfig.regular.start)
+      .lte('start_time', seasonConfig.playoffs.end)
       .limit(1000); // Process in chunks
 
     if (!games || games.length === 0) {
@@ -328,10 +381,15 @@ class UniversalSportsCollector {
     console.log(chalk.blue(`  Processing ${games.length} games for stats...`));
     
     let statsCollected = 0;
+    const batchSize = 10; // Process 10 games at a time
     
-    for (const game of games) {
-      try {
-        const espnGameId = game.external_id?.split('_').pop();
+    for (let i = 0; i < games.length; i += batchSize) {
+      const batch = games.slice(i, i + batchSize);
+      console.log(chalk.gray(`  Processing batch ${Math.floor(i/batchSize) + 1}/${Math.ceil(games.length/batchSize)} (games ${i+1}-${Math.min(i+batchSize, games.length)})...`));
+      
+      for (const game of batch) {
+        try {
+          const espnGameId = game.external_id?.split('_').pop();
         if (!espnGameId) continue;
 
         // Get game details with stats
@@ -352,28 +410,47 @@ class UniversalSportsCollector {
                   .single();
 
                 if (player) {
-                  const stats = this.transformStats(athlete.stats, sport);
-                  
-                  const statRecord = {
-                    player_id: player.id,
-                    game_id: game.id,
-                    team_id: team.team.id,
-                    game_date: new Date(game.start_time).toISOString().split('T')[0],
-                    is_home: team.homeAway === 'home',
-                    stats: stats,
-                    fantasy_points: this.calculateFantasyPoints(stats, sport),
-                    metadata: {
-                      historical_season: year,
-                      collection_source: 'universal-collector-historical'
-                    }
-                  };
-
-                  const { error } = await supabase
+                  // Check if stat already exists
+                  const { data: existingStat } = await supabase
                     .from('player_game_logs')
-                    .insert([statRecord]);
+                    .select('id')
+                    .eq('player_id', player.id)
+                    .eq('game_id', game.id)
+                    .single();
+                    
+                  if (!existingStat) {
+                    const stats = this.transformStats(athlete.stats, sport);
+                    
+                    // Find the correct team ID from our database
+                    const { data: dbTeam } = await supabase
+                      .from('teams')
+                      .select('id')
+                      .eq('external_id', `espn_${sport.toLowerCase()}_${team.team.id}`)
+                      .single();
+                    
+                    if (dbTeam) {
+                      const statRecord = {
+                        player_id: player.id,
+                        game_id: game.id,
+                        team_id: dbTeam.id,
+                        game_date: new Date(game.start_time).toISOString().split('T')[0],
+                        is_home: team.homeAway === 'home',
+                        stats: stats,
+                        fantasy_points: this.calculateFantasyPoints(stats, sport),
+                        metadata: {
+                          historical_season: year,
+                          collection_source: 'universal-collector-historical'
+                        }
+                      };
+                      
+                      const { error } = await supabase
+                        .from('player_game_logs')
+                        .insert([statRecord]);
 
-                  if (!error) {
-                    statsCollected++;
+                      if (!error) {
+                        statsCollected++;
+                      }
+                    }
                   }
                 }
               }
@@ -386,6 +463,7 @@ class UniversalSportsCollector {
         
       } catch (error) {
         console.error(chalk.red(`Error collecting stats for game ${game.id}:`, error));
+      }
       }
     }
 
@@ -509,11 +587,20 @@ class UniversalSportsCollector {
   private async enrichWithWeather(games: any[]) {
     const weatherData = [];
     
+    // First, we need to get the actual game IDs from the database
     for (const game of games) {
       // Only add weather for outdoor sports
       if (['NFL', 'MLB', 'NCAA_FB'].includes(game.sport)) {
-        const weather = {
-          game_id: game.id,
+        // Get the actual game ID from database
+        const { data: dbGame } = await supabase
+          .from('games')
+          .select('id')
+          .eq('external_id', game.external_id)
+          .single();
+          
+        if (dbGame) {
+          const weather = {
+            game_id: dbGame.id,
           temperature: 65 + Math.floor(Math.random() * 40), // 65-105°F
           wind_speed: Math.floor(Math.random() * 15), // 0-15 mph
           wind_direction: ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'][Math.floor(Math.random() * 8)],
@@ -523,6 +610,7 @@ class UniversalSportsCollector {
         };
         
         weatherData.push(weather);
+        }
       }
     }
     
@@ -542,28 +630,37 @@ class UniversalSportsCollector {
     const bettingData = [];
     
     for (const game of games) {
-      // Generate realistic betting lines
-      const spread = (Math.random() - 0.5) * 14; // -7 to +7 point spread
-      const total = 200 + Math.random() * 50; // 200-250 total points
-      
-      const betting = {
-        game_id: game.id,
-        sportsbook: 'consensus',
-        line_type: 'spread',
-        home_line: -Math.abs(spread),
-        away_line: Math.abs(spread),
-        over_under: total,
-        home_odds: spread > 0 ? -110 : +100,
-        away_odds: spread < 0 ? -110 : +100,
-        timestamp: new Date().toISOString(),
-        away_moneyline: spread < 0 ? -150 : +130,
-        home_spread_odds: -110,
-        away_spread_odds: -110,
-        over_odds: -110,
-        under_odds: -110
-      };
-      
-      bettingData.push(betting);
+      // Get the actual game ID from database
+      const { data: dbGame } = await supabase
+        .from('games')
+        .select('id')
+        .eq('external_id', game.external_id)
+        .single();
+        
+      if (dbGame) {
+        // Generate realistic betting lines
+        const spread = (Math.random() - 0.5) * 14; // -7 to +7 point spread
+        const total = 200 + Math.random() * 50; // 200-250 total points
+        
+        const betting = {
+          game_id: dbGame.id,
+          sportsbook: 'consensus',
+          line_type: 'spread',
+          home_line: -Math.abs(spread),
+          away_line: Math.abs(spread),
+          over_under: total,
+          home_odds: spread > 0 ? -110 : +100,
+          away_odds: spread < 0 ? -110 : +100,
+          timestamp: new Date().toISOString(),
+          away_moneyline: spread < 0 ? -150 : +130,
+          home_spread_odds: -110,
+          away_spread_odds: -110,
+          over_odds: -110,
+          under_odds: -110
+        };
+        
+        bettingData.push(betting);
+      }
     }
     
     if (bettingData.length > 0) {
@@ -621,30 +718,42 @@ class UniversalSportsCollector {
 
   // Add advanced metrics
   private async enrichWithAdvancedMetrics(games: any[]) {
-    // This would calculate PER, usage rate, efficiency, etc.
-    // For now, we'll add placeholder logic
-    
-    const { data: recentStats } = await supabase
-      .from('player_game_logs')
-      .select('player_id, game_id, stats')
-      .limit(1000);
-      
-    if (!recentStats) return;
-    
     const metricsData = [];
     
-    for (const stat of recentStats) {
-      const metrics = {
-        player_id: stat.player_id,
-        game_id: stat.game_id,
-        sport: 'NBA', // Would be dynamic
-        fantasy_points_per_minute: (stat.stats.fantasy_points || 0) / Math.max(1, stat.stats.minutes_played || 1),
-        usage_rate: 0.15 + Math.random() * 0.20, // 15-35% usage
-        efficiency_rating: 0.40 + Math.random() * 0.30, // 40-70% efficiency
-        player_efficiency_rating: 10 + Math.random() * 20 // 10-30 PER
-      };
-      
-      metricsData.push(metrics);
+    // Get actual game IDs for the games we're enriching
+    for (const game of games) {
+      const { data: dbGame } = await supabase
+        .from('games')
+        .select('id')
+        .eq('external_id', game.external_id)
+        .single();
+        
+      if (dbGame) {
+        // Get player stats for this specific game
+        const { data: gameStats } = await supabase
+          .from('player_game_logs')
+          .select('player_id, stats')
+          .eq('game_id', dbGame.id)
+          .limit(50);
+          
+        if (gameStats) {
+          for (const stat of gameStats) {
+            if (stat.stats && stat.stats.minutes_played > 0) {
+              const metrics = {
+                player_id: stat.player_id,
+                game_id: dbGame.id,
+                sport: game.sport,
+                fantasy_points_per_minute: (stat.stats.fantasy_points || 0) / Math.max(1, stat.stats.minutes_played || 1),
+                usage_rate: 0.15 + Math.random() * 0.20, // 15-35% usage
+                efficiency_rating: 0.40 + Math.random() * 0.30, // 40-70% efficiency
+                player_efficiency_rating: 10 + Math.random() * 20 // 10-30 PER
+              };
+              
+              metricsData.push(metrics);
+            }
+          }
+        }
+      }
     }
     
     if (metricsData.length > 0) {
