@@ -6,7 +6,6 @@
 
 import { Server } from 'socket.io';
 import { createServer } from 'http';
-import axios from 'axios';
 import { createClient } from '@supabase/supabase-js';
 import Redis from 'ioredis';
 
@@ -20,8 +19,8 @@ const io = new Server(httpServer, {
 });
 
 const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_KEY!
+  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+  process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 );
 
 const redis = new Redis({
@@ -41,11 +40,6 @@ export const CHANNELS = {
 
 // Connected clients tracking
 const clients = new Map<string, any>();
-
-// Pattern API endpoints
-const PATTERN_API_V4 = 'http://localhost:3337';
-const UNIFIED_PATTERN_API = 'http://localhost:3336';
-const API_GATEWAY = 'http://localhost:3000';
 
 // Connection handling
 io.on('connection', (socket) => {
@@ -100,11 +94,39 @@ io.on('connection', (socket) => {
   // Request live patterns
   socket.on('get_live_patterns', async (sport?: string) => {
     try {
-      const response = await axios.get(`${API_GATEWAY}/api/patterns/opportunities`, {
-        params: { sport, minConfidence: 0.6 }
-      });
-      
-      socket.emit('live_patterns', response.data);
+      let query = supabase
+        .from('fantasy_betting_insights')
+        .select(`
+          *,
+          games!inner(*),
+          players!inner(*)
+        `)
+        .not('active_patterns', 'is', null)
+        .gte('pattern_confidence', 0.6)
+        .eq('has_betting_edge', true);
+
+      if (sport) {
+        query = query.eq('games.sport', sport);
+      }
+
+      const { data: insights, error } = await query
+        .order('expected_value', { ascending: false })
+        .limit(20);
+
+      if (error) throw error;
+
+      const opportunities = (insights || []).map(insight => ({
+        id: `opp_${insight.id}`,
+        gameId: insight.game_id,
+        playerId: insight.player_id,
+        playerName: insight.players?.name,
+        sport: insight.games?.sport,
+        patterns: insight.active_patterns || [],
+        confidence: insight.pattern_confidence || 0,
+        expectedValue: insight.expected_value || 0
+      }));
+
+      socket.emit('live_patterns', { opportunities });
     } catch (error) {
       socket.emit('error', { message: 'Failed to fetch live patterns' });
     }
@@ -113,8 +135,42 @@ io.on('connection', (socket) => {
   // Request game analysis
   socket.on('analyze_game', async (gameData) => {
     try {
-      const response = await axios.post(`${API_GATEWAY}/api/patterns/analyze`, gameData);
-      socket.emit('game_analysis', response.data);
+      // Query fantasy_betting_insights for this game
+      const { data: insights, error } = await supabase
+        .from('fantasy_betting_insights')
+        .select(`
+          *,
+          games!inner(*),
+          players!inner(*)
+        `)
+        .eq('game_id', gameData.gameId);
+
+      if (error) throw error;
+
+      // Get pattern performance data
+      const patterns = insights?.flatMap(i => i.active_patterns || []) || [];
+      const uniquePatterns = [...new Set(patterns)];
+
+      const { data: patternPerf } = await supabase
+        .from('pattern_performance')
+        .select('*')
+        .in('pattern_type', uniquePatterns);
+
+      const analysis = {
+        gameId: gameData.gameId,
+        patterns: uniquePatterns.map(p => {
+          const perf = patternPerf?.find(pf => pf.pattern_type === p);
+          return {
+            name: p,
+            accuracy: perf?.accuracy_rate || 0,
+            roi: perf?.roi || 0
+          };
+        }),
+        opportunities: insights || [],
+        timestamp: new Date().toISOString()
+      };
+
+      socket.emit('game_analysis', analysis);
     } catch (error) {
       socket.emit('error', { message: 'Failed to analyze game' });
     }
@@ -130,12 +186,56 @@ io.on('connection', (socket) => {
 // Pattern scanning interval (every 30 seconds)
 setInterval(async () => {
   try {
-    // Get high-value opportunities
-    const opportunities = await axios.get(`${API_GATEWAY}/api/patterns/opportunities`, {
-      params: { minConfidence: 0.65 }
-    }).then(r => r.data.opportunities);
+    // Query fantasy_betting_insights directly for high-value opportunities
+    const { data: insights, error } = await supabase
+      .from('fantasy_betting_insights')
+      .select(`
+        *,
+        games!inner(
+          id,
+          sport,
+          home_team_id,
+          away_team_id,
+          start_time,
+          status,
+          teams_home:teams!fantasy_betting_insights_game_id_fkey(name, abbreviation),
+          teams_away:teams!fantasy_betting_insights_game_id_fkey1(name, abbreviation)
+        ),
+        players!inner(
+          id,
+          name,
+          position,
+          team
+        )
+      `)
+      .not('active_patterns', 'is', null)
+      .gte('pattern_confidence', 0.65)
+      .eq('has_betting_edge', true)
+      .gte('games.start_time', new Date().toISOString())
+      .order('expected_value', { ascending: false })
+      .limit(50);
 
-    if (opportunities && opportunities.length > 0) {
+    if (error) throw error;
+
+    if (insights && insights.length > 0) {
+      // Transform to opportunities format
+      const opportunities = insights.map(insight => ({
+        id: `opp_${insight.id}`,
+        gameId: insight.game_id,
+        playerId: insight.player_id,
+        playerName: insight.players?.name,
+        sport: insight.games?.sport,
+        homeTeam: insight.games?.teams_home?.name,
+        awayTeam: insight.games?.teams_away?.name,
+        startTime: insight.games?.start_time,
+        patterns: insight.active_patterns || [],
+        confidence: insight.pattern_confidence || 0,
+        expectedValue: insight.expected_value || 0,
+        recommendation: insight.recommended_action,
+        edgeType: insight.edge_type,
+        edgeDescription: insight.edge_description
+      }));
+
       // Broadcast to pattern alerts channel
       io.to(CHANNELS.PATTERN_ALERTS).emit('new_patterns', {
         patterns: opportunities,
@@ -166,7 +266,7 @@ setInterval(async () => {
         io.to(CHANNELS.SPORT_CHANNEL(opportunity.sport)).emit('sport_pattern', opportunity);
       }
 
-      console.log(`📢 Broadcasted ${opportunities.length} pattern alerts`);
+      console.log(`📢 Broadcasted ${opportunities.length} pattern alerts from database`);
     }
   } catch (error) {
     console.error('Pattern scanning error:', error);

@@ -47,59 +47,8 @@ export default function PatternsPage() {
       setPatterns(data)
     } catch (error) {
       console.error('Failed to load patterns:', error)
-      // Fallback to mock data if API is not available
-      setPatterns([
-        {
-          id: '1',
-          name: 'Back-to-Back Fade',
-          description: 'Teams on second game of back-to-back underperform',
-          accuracy: 76.8,
-          roi: 46.6,
-          occurrences: 8234,
-          sport: 'NBA' as any,
-          conditions: {},
-        },
-        {
-          id: '2',
-          name: 'Embarrassment Revenge',
-          description: 'Teams bounce back after 20+ point losses',
-          accuracy: 74.4,
-          roi: 41.9,
-          occurrences: 5421,
-          sport: 'NFL' as any,
-          conditions: {},
-        },
-        {
-          id: '3',
-          name: 'Altitude Advantage',
-          description: 'Home teams at high altitude dominate',
-          accuracy: 68.3,
-          roi: 36.3,
-          occurrences: 3156,
-          sport: 'NFL' as any,
-          conditions: {},
-        },
-        {
-          id: '4',
-          name: 'Perfect Storm',
-          description: 'Multiple factors align for upset potential',
-          accuracy: 67.0,
-          roi: 35.9,
-          occurrences: 2847,
-          sport: 'NFL' as any,
-          conditions: {},
-        },
-        {
-          id: '5',
-          name: 'Division Dog Bite',
-          description: 'Division underdogs cover at high rate',
-          accuracy: 58.6,
-          roi: 32.9,
-          occurrences: 9876,
-          sport: 'NFL' as any,
-          conditions: {},
-        },
-      ])
+      // Don't use mock data - show empty state
+      setPatterns([])
     } finally {
       setIsLoading(false)
     }

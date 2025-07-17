@@ -80,19 +80,38 @@ export default function LineupOptimizerPage() {
     checkYahooConnection()
   }, [])
   
-  const loadPlayerPool = () => {
-    // In production, this would fetch from API
-    const mockPlayers: Player[] = [
-      { id: '1', name: 'Patrick Mahomes', position: 'QB', team: 'KC', projection: 25.4, salary: 8200, ownership: 18.5 },
-      { id: '2', name: 'Christian McCaffrey', position: 'RB', team: 'SF', projection: 22.1, salary: 9500, ownership: 35.2, patternBoost: 2.5 },
-      { id: '3', name: 'Tyreek Hill', position: 'WR', team: 'MIA', projection: 18.3, salary: 8800, ownership: 22.1 },
-      { id: '4', name: 'Travis Kelce', position: 'TE', team: 'KC', projection: 16.7, salary: 7600, ownership: 28.9 },
-      { id: '5', name: 'Austin Ekeler', position: 'RB', team: 'LAC', projection: 19.2, salary: 7800, ownership: 15.3 },
-      { id: '6', name: 'Stefon Diggs', position: 'WR', team: 'BUF', projection: 17.8, salary: 8200, ownership: 19.7 },
-      { id: '7', name: 'Mark Andrews', position: 'TE', team: 'BAL', projection: 14.2, salary: 6800, ownership: 12.4 },
-      { id: '8', name: 'Cowboys DST', position: 'DST', team: 'DAL', projection: 9.5, salary: 3200, ownership: 8.7 },
-    ]
-    setPlayerPool(mockPlayers)
+  const loadPlayerPool = async () => {
+    try {
+      // Fetch real players from API based on sport
+      const sportMap: Record<SportType, string> = {
+        'NFL': 'nfl',
+        'NBA': 'nba', 
+        'MLB': 'mlb',
+        'NHL': 'nhl'
+      }
+      
+      const response = await fetch(`/api/players?sport=${sportMap[sport] || 'nfl'}`)
+      const data = await response.json()
+      
+      if (data.players && data.players.length > 0) {
+        const players: Player[] = data.players.map((p: any) => ({
+          id: p.id,
+          name: p.name,
+          position: p.position,
+          team: p.team,
+          projection: p.projectedPoints || 0,
+          salary: p.salary || 5000,
+          ownership: p.ownership || 5,
+          patternBoost: 0
+        }))
+        setPlayerPool(players)
+      } else {
+        setPlayerPool([])
+      }
+    } catch (error) {
+      console.error('Failed to load players:', error)
+      setPlayerPool([])
+    }
   }
   
   const handleOptimize = async () => {
@@ -139,22 +158,8 @@ export default function LineupOptimizerPage() {
       }
     } catch (error) {
       console.error('Optimization failed:', error)
-      // Fallback to mock lineup
-      setLineup({
-        players: playerPool.slice(0, 9).map(p => ({
-          playerId: p.id,
-          playerName: p.name,
-          position: p.position,
-          team: p.team,
-          projection: p.projection,
-          salary: p.salary,
-          patternBoost: p.patternBoost
-        })),
-        totalProjection: 142.3,
-        totalSalary: 49800,
-        patternAdvantages: ['Back-to-Back Fade boost on McCaffrey', 'Altitude Advantage for Broncos players'],
-        confidence: 78.5
-      })
+      // Don't use mock lineup - show error state
+      setLineup(null)
     } finally {
       setIsOptimizing(false)
     }

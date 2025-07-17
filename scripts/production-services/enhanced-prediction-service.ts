@@ -3,7 +3,6 @@
  * Combines ML predictions with pattern detection for maximum accuracy
  */
 
-import axios from 'axios';
 import * as tf from '@tensorflow/tfjs-node-gpu';
 import { createClient } from '@supabase/supabase-js';
 import Redis from 'ioredis';
@@ -178,37 +177,43 @@ export class EnhancedPredictionService {
    */
   private async getPatternAnalysis(gameId: string, sport: string, gameData: any) {
     try {
-      // Analyze game with pattern API
-      const response = await axios.post(`${API_GATEWAY}/api/patterns/analyze`, {
-        gameId,
-        sport,
-        homeTeam: gameData.home_team,
-        awayTeam: gameData.away_team
-      });
+      // Query fantasy_betting_insights for patterns
+      const { data: insights, error } = await supabase
+        .from('fantasy_betting_insights')
+        .select('*')
+        .eq('game_id', gameId);
 
-      const analysis = response.data;
+      if (error) throw error;
+
       const effects: PatternEffect[] = [];
       let totalBoost = 1.0;
 
-      // Process V4 patterns
-      if (analysis.v4Analysis?.patterns) {
-        for (const pattern of analysis.v4Analysis.patterns) {
-          if (pattern.triggered) {
-            const effect = this.calculatePatternEffect(pattern);
-            effects.push(effect);
-            totalBoost *= (1 + effect.effect);
-          }
-        }
-      }
+      // Process patterns from insights
+      if (insights && insights.length > 0) {
+        // Get unique patterns across all insights
+        const allPatterns = insights.flatMap(i => i.active_patterns || []);
+        const uniquePatterns = [...new Set(allPatterns)];
 
-      // Process unified patterns
-      if (analysis.unifiedAnalysis?.patterns) {
-        for (const pattern of analysis.unifiedAnalysis.patterns) {
-          if (pattern.active) {
-            const effect = this.calculatePatternEffect(pattern);
-            effects.push(effect);
-            totalBoost *= (1 + effect.effect);
-          }
+        // Get pattern performance data
+        const { data: patternPerf } = await supabase
+          .from('pattern_performance')
+          .select('*')
+          .in('pattern_type', uniquePatterns);
+
+        // Calculate effects for each pattern
+        for (const patternName of uniquePatterns) {
+          const perf = patternPerf?.find(p => p.pattern_type === patternName);
+          const confidence = perf?.accuracy_rate || 0.65;
+          
+          const pattern = {
+            patternName,
+            confidence,
+            triggered: true
+          };
+          
+          const effect = this.calculatePatternEffect(pattern);
+          effects.push(effect);
+          totalBoost *= (1 + effect.effect);
         }
       }
 
@@ -352,11 +357,24 @@ export class EnhancedPredictionService {
   private async storePrediction(prediction: EnhancedPrediction) {
     try {
       await supabase
-        .from('predictions_history')
+        .from('ml_predictions')
         .insert({
-          player_id: prediction.playerId,
           game_id: prediction.gameId,
-          prediction_data: prediction,
+          player_id: prediction.playerId,
+          model_name: 'enhanced_v2',
+          prediction_type: 'player_performance',
+          prediction: prediction.finalPrediction,
+          confidence: prediction.confidence,
+          features: {
+            base_prediction: prediction.basePrediction,
+            pattern_boost: prediction.patternBoost,
+            patterns: prediction.patterns
+          },
+          metadata: {
+            kelly_bet: prediction.kellyBet,
+            recommendation: prediction.recommendation,
+            player_name: prediction.playerName
+          },
           created_at: prediction.timestamp
         });
     } catch (error) {
@@ -388,9 +406,10 @@ export class EnhancedPredictionService {
    */
   async getPredictionHistory(playerId: string, limit = 10) {
     const { data } = await supabase
-      .from('predictions_history')
+      .from('ml_predictions')
       .select('*')
       .eq('player_id', playerId)
+      .eq('model_name', 'enhanced_v2')
       .order('created_at', { ascending: false })
       .limit(limit);
     
@@ -402,9 +421,10 @@ export class EnhancedPredictionService {
    */
   async calculateAccuracy(playerId: string, days = 30) {
     const { data: predictions } = await supabase
-      .from('predictions_history')
+      .from('ml_predictions')
       .select('*')
       .eq('player_id', playerId)
+      .eq('model_name', 'enhanced_v2')
       .gte('created_at', new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString());
 
     if (!predictions || predictions.length === 0) return null;
@@ -426,7 +446,7 @@ export class EnhancedPredictionService {
     predictions.forEach(pred => {
       const actual = actuals.find(a => a.game_id === pred.game_id);
       if (actual) {
-        const predicted = pred.prediction_data.finalPrediction;
+        const predicted = pred.prediction || 0;
         const actualValue = actual.points || 0;
         const error = Math.abs(predicted - actualValue);
         totalError += error;

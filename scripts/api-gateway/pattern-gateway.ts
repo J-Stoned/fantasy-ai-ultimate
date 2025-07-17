@@ -5,7 +5,6 @@
  */
 
 import express from 'express';
-import axios from 'axios';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
@@ -35,21 +34,22 @@ const limiter = rateLimit({
 
 app.use('/api/', limiter);
 
-// API endpoints configuration
-const PATTERN_API_V4 = 'http://localhost:3337';
-const UNIFIED_PATTERN_API = 'http://localhost:3336';
-
 // Health check
 app.get('/health', async (req, res) => {
   const cacheStats = await PatternCache.getStats();
+  
+  // Test database connection
+  const { count: patternCount } = await supabase
+    .from('pattern_performance')
+    .select('*', { count: 'exact', head: true });
   
   res.json({ 
     status: 'healthy', 
     service: 'pattern-gateway',
     timestamp: new Date().toISOString(),
-    apis: {
-      v4: PATTERN_API_V4,
-      unified: UNIFIED_PATTERN_API
+    database: {
+      connected: true,
+      patterns: patternCount || 0
     },
     cache: cacheStats
   });
@@ -68,27 +68,61 @@ app.get('/api/cache/stats', async (req, res) => {
 
 /**
  * GET /api/patterns/all
- * Combines patterns from both APIs
+ * Get all patterns from pattern_performance table
  */
 app.get('/api/patterns/all', 
   cacheMiddleware(() => 'patterns:all', 300),
   async (req, res) => {
   try {
-    // Fetch from both APIs in parallel
-    const [v4Response, unifiedResponse] = await Promise.all([
-      axios.get(`${PATTERN_API_V4}/api/v4/patterns`).catch(err => ({ data: [] })),
-      axios.get(`${UNIFIED_PATTERN_API}/api/unified/stats`).catch(err => ({ data: {} }))
-    ]);
+    // Get all patterns from pattern_performance
+    const { data: patterns, error } = await supabase
+      .from('pattern_performance')
+      .select('*')
+      .order('accuracy_rate', { ascending: false });
 
-    // Combine results
-    const combinedPatterns = {
-      v4Patterns: v4Response.data,
-      unifiedStats: unifiedResponse.data,
-      totalPatterns: (v4Response.data?.length || 0) + (unifiedResponse.data?.patterns?.length || 0),
+    if (error) throw error;
+
+    // Get pattern multipliers
+    const { data: multipliers } = await supabase
+      .from('pattern_multipliers')
+      .select('*');
+
+    // Group patterns by sport
+    const patternsBySport = patterns?.reduce((acc, pattern) => {
+      const sport = pattern.sport || 'ALL';
+      if (!acc[sport]) acc[sport] = [];
+      
+      // Find multiplier for this pattern
+      const multiplier = multipliers?.find(
+        m => m.pattern_type === pattern.pattern_type && m.sport === pattern.sport
+      );
+      
+      acc[sport].push({
+        ...pattern,
+        adjustedAccuracy: pattern.accuracy_rate * (multiplier?.adjusted_multiplier || 1),
+        multiplier: multiplier?.adjusted_multiplier || 1
+      });
+      return acc;
+    }, {} as Record<string, any[]>);
+
+    // Calculate overall stats
+    const totalPatterns = patterns?.length || 0;
+    const avgAccuracy = patterns?.reduce((sum, p) => sum + (p.accuracy_rate || 0), 0) / totalPatterns || 0;
+    const totalProfit = patterns?.reduce((sum, p) => sum + parseFloat(p.total_profit_loss || '0'), 0) || 0;
+
+    res.json({
+      patterns: patterns || [],
+      patternsBySport,
+      multipliers: multipliers || [],
+      stats: {
+        totalPatterns,
+        averageAccuracy: avgAccuracy.toFixed(2),
+        totalProfit: totalProfit.toFixed(2),
+        topPattern: patterns?.[0],
+        activeSports: Object.keys(patternsBySport || {})
+      },
       timestamp: new Date().toISOString()
-    };
-
-    res.json(combinedPatterns);
+    });
   } catch (error) {
     console.error('Error fetching patterns:', error);
     res.status(500).json({ error: 'Failed to fetch patterns' });
@@ -111,30 +145,61 @@ app.post('/api/patterns/analyze', async (req, res) => {
   if (cached) {
     return res.json(cached);
   }
-  const { gameId, sport, homeTeam, awayTeam } = req.body;
-
-  if (!gameId) {
-    return res.status(400).json({ error: 'gameId is required' });
-  }
 
   try {
-    // Analyze with both APIs
-    const [v4Analysis, unifiedAnalysis] = await Promise.all([
-      axios.post(`${PATTERN_API_V4}/api/v4/analyze`, { gameId }).catch(err => ({ data: null })),
-      axios.post(`${UNIFIED_PATTERN_API}/api/unified/analyze`, { 
-        sport, 
-        homeTeam, 
-        awayTeam 
-      }).catch(err => ({ data: null }))
-    ]);
+    // Query fantasy_betting_insights for this game's patterns
+    const { data: insights, error: insightsError } = await supabase
+      .from('fantasy_betting_insights')
+      .select(`
+        *,
+        games!inner(*),
+        players!inner(*)
+      `)
+      .eq('game_id', gameId);
 
-    // Combine analyses
+    if (insightsError) throw insightsError;
+
+    // Get pattern performance data
+    const patterns = insights?.flatMap(i => i.active_patterns || []) || [];
+    const uniquePatterns = [...new Set(patterns)];
+
+    const { data: patternPerf, error: perfError } = await supabase
+      .from('pattern_performance')
+      .select('*')
+      .in('pattern_type', uniquePatterns);
+
+    if (perfError) throw perfError;
+
+    // Calculate combined analysis
+    const patternAnalysis = uniquePatterns.map(pattern => {
+      const perf = patternPerf?.find(p => p.pattern_type === pattern);
+      const insightCount = insights?.filter(i => i.active_patterns?.includes(pattern)).length || 0;
+      
+      return {
+        pattern,
+        accuracy: perf?.accuracy_rate || 0,
+        roi: perf?.roi || 0,
+        occurrences: perf?.total_occurrences || 0,
+        activeInGame: insightCount > 0,
+        confidence: perf?.accuracy_rate || 0
+      };
+    });
+
+    const totalConfidence = patternAnalysis.reduce((sum, p) => sum + p.confidence, 0) / Math.max(patternAnalysis.length, 1);
+    const highConfidencePatterns = patternAnalysis.filter(p => p.accuracy > 0.65);
+
     const combinedAnalysis = {
       gameId,
-      v4Analysis: v4Analysis.data,
-      unifiedAnalysis: unifiedAnalysis.data,
-      recommendedBet: determineRecommendation(v4Analysis.data, unifiedAnalysis.data),
-      confidence: calculateCombinedConfidence(v4Analysis.data, unifiedAnalysis.data),
+      sport,
+      homeTeam,
+      awayTeam,
+      patterns: patternAnalysis,
+      highValueOpportunities: insights || [],
+      totalPatterns: uniquePatterns.length,
+      highConfidencePatterns: highConfidencePatterns.length,
+      confidence: totalConfidence,
+      recommendedBet: totalConfidence > 0.65 ? 'STRONG BET' : totalConfidence > 0.6 ? 'MODERATE BET' : 'PASS',
+      kellyBet: calculateKellyBet(totalConfidence, 1.5),
       timestamp: new Date().toISOString()
     };
 
@@ -153,7 +218,7 @@ app.post('/api/patterns/analyze', async (req, res) => {
 
 /**
  * GET /api/patterns/opportunities
- * Get current high-value betting opportunities
+ * Get current high-value opportunities from fantasy_betting_insights
  */
 app.get('/api/patterns/opportunities', 
   cacheMiddleware(
@@ -164,29 +229,75 @@ app.get('/api/patterns/opportunities',
   const { sport, minConfidence = 0.6 } = req.query;
 
   try {
-    // Get opportunities from V4 API
-    const v4Opportunities = await axios.get(`${PATTERN_API_V4}/api/v4/opportunities`, {
-      params: { sport, minConfidence }
-    }).then(r => r.data).catch(() => []);
+    // Query fantasy_betting_insights for active patterns
+    let query = supabase
+      .from('fantasy_betting_insights')
+      .select(`
+        *,
+        games!inner(
+          id,
+          sport,
+          home_team_id,
+          away_team_id,
+          start_time,
+          status,
+          teams_home:teams!fantasy_betting_insights_game_id_fkey(name, abbreviation),
+          teams_away:teams!fantasy_betting_insights_game_id_fkey1(name, abbreviation)
+        ),
+        players!inner(
+          id,
+          name,
+          position,
+          team
+        )
+      `)
+      .not('active_patterns', 'is', null)
+      .gte('pattern_confidence', Number(minConfidence))
+      .eq('has_betting_edge', true);
 
-    // Get live games for unified analysis
-    const liveGames = await axios.get(`${UNIFIED_PATTERN_API}/api/unified/live`)
-      .then(r => r.data?.games || [])
-      .catch(() => []);
+    if (sport && sport !== 'all') {
+      query = query.eq('games.sport', sport);
+    }
 
-    // Filter and enhance opportunities
-    const enhancedOpportunities = v4Opportunities.map((opp: any) => ({
-      ...opp,
-      unifiedPatterns: findUnifiedPatterns(opp, liveGames),
-      combinedConfidence: opp.confidence,
-      kellyBet: calculateKellyBet(opp.confidence, opp.expectedValue)
+    // Only upcoming games
+    query = query.gte('games.start_time', new Date().toISOString());
+
+    const { data: insights, error } = await query
+      .order('expected_value', { ascending: false })
+      .limit(20);
+
+    if (error) throw error;
+
+    // Transform to opportunities format
+    const opportunities = (insights || []).map(insight => ({
+      id: `opp_${insight.id}`,
+      gameId: insight.game_id,
+      playerId: insight.player_id,
+      playerName: insight.players?.name,
+      sport: insight.games?.sport,
+      homeTeam: insight.games?.teams_home?.name,
+      awayTeam: insight.games?.teams_away?.name,
+      startTime: insight.games?.start_time,
+      patterns: insight.active_patterns || [],
+      confidence: insight.pattern_confidence || 0,
+      expectedValue: insight.expected_value || 0,
+      recommendation: insight.recommended_action,
+      edgeType: insight.edge_type,
+      edgeDescription: insight.edge_description,
+      fantasyProjection: insight.fantasy_points_projected,
+      dfsValueDK: insight.dfs_salary_dk ? 
+        (insight.fantasy_points_projected / insight.dfs_salary_dk * 1000).toFixed(2) : null,
+      dfsValueFD: insight.dfs_salary_fd ? 
+        (insight.fantasy_points_projected / insight.dfs_salary_fd * 1000).toFixed(2) : null,
+      kellyBet: calculateKellyBet(insight.pattern_confidence || 0, insight.expected_value || 1)
     }));
 
     res.json({
-      opportunities: enhancedOpportunities,
-      totalCount: enhancedOpportunities.length,
+      opportunities,
+      totalCount: opportunities.length,
       sport: sport || 'all',
       minConfidence,
+      dataSource: 'fantasy_betting_insights',
       timestamp: new Date().toISOString()
     });
   } catch (error) {
@@ -197,34 +308,77 @@ app.get('/api/patterns/opportunities',
 
 /**
  * GET /api/patterns/performance
- * Track pattern performance over time
+ * Track pattern performance over time from existing database
  */
 app.get('/api/patterns/performance', 
   cacheMiddleware(
-    (req) => `performance:${req.query.pattern || 'all'}:${req.query.days || 30}`,
+    (req) => `performance:${req.query.pattern || 'all'}:${req.query.sport || 'all'}`,
     3600
   ),
   async (req, res) => {
-  const { pattern, days = 30 } = req.query;
+  const { pattern, sport, days = 30 } = req.query;
 
   try {
-    // Get performance from V4 API
-    const v4Performance = await axios.get(`${PATTERN_API_V4}/api/v4/performance`, {
-      params: { pattern }
-    }).then(r => r.data).catch(() => []);
-
-    // Get historical accuracy from database
-    const { data: dbPerformance } = await supabase
+    // Query existing pattern_performance table
+    let query = supabase
       .from('pattern_performance')
+      .select('*');
+    
+    if (pattern && pattern !== 'all') {
+      query = query.eq('pattern_type', pattern);
+    }
+    
+    if (sport && sport !== 'all') {
+      query = query.eq('sport', sport);
+    }
+    
+    const { data: performance, error } = await query
+      .order('last_updated', { ascending: false });
+
+    if (error) throw error;
+
+    // Get temporal pattern performance for trends
+    const { data: temporalPerf } = await supabase
+      .from('temporal_pattern_performance')
       .select('*')
-      .gte('created_at', new Date(Date.now() - Number(days) * 24 * 60 * 60 * 1000).toISOString())
-      .order('created_at', { ascending: false });
+      .eq('pattern_type', pattern || '')
+      .eq('sport', sport || '')
+      .limit(10);
+
+    // Calculate aggregated metrics
+    const aggregated = performance?.reduce((acc, perf) => {
+      return {
+        totalOccurrences: acc.totalOccurrences + (perf.total_occurrences || 0),
+        successfulPredictions: acc.successfulPredictions + (perf.successful_predictions || 0),
+        totalWagered: acc.totalWagered + parseFloat(perf.total_wagered || 0),
+        totalProfit: acc.totalProfit + parseFloat(perf.total_profit_loss || 0),
+        patterns: acc.patterns + 1
+      };
+    }, {
+      totalOccurrences: 0,
+      successfulPredictions: 0,
+      totalWagered: 0,
+      totalProfit: 0,
+      patterns: 0
+    });
+
+    const avgAccuracy = aggregated.totalOccurrences > 0 
+      ? (aggregated.successfulPredictions / aggregated.totalOccurrences) * 100 
+      : 0;
+    
+    const roi = aggregated.totalWagered > 0
+      ? (aggregated.totalProfit / aggregated.totalWagered) * 100
+      : 0;
 
     res.json({
-      v4Performance,
-      historicalPerformance: dbPerformance || [],
-      averageAccuracy: calculateAverageAccuracy(v4Performance, dbPerformance),
-      trend: calculateTrend(dbPerformance),
+      performance: performance || [],
+      temporalTrends: temporalPerf || [],
+      aggregated: {
+        ...aggregated,
+        averageAccuracy: avgAccuracy.toFixed(2),
+        roi: roi.toFixed(2)
+      },
+      topPatterns: performance?.slice(0, 5) || [],
       timestamp: new Date().toISOString()
     });
   } catch (error) {
@@ -349,10 +503,11 @@ async function storeAnalysis(analysis: any): Promise<void> {
 // Start server
 app.listen(PORT, () => {
   console.log(`🔥 Pattern API Gateway running on port ${PORT}`);
-  console.log(`📊 Routing to:`);
-  console.log(`   - Pattern API V4: ${PATTERN_API_V4}`);
-  console.log(`   - Unified Pattern API: ${UNIFIED_PATTERN_API}`);
-  console.log(`🚀 Ready to unify pattern detection!`);
+  console.log(`📊 Connected to Supabase database`);
+  console.log(`   - Querying pattern_performance table`);
+  console.log(`   - Querying fantasy_betting_insights table`);
+  console.log(`   - Redis caching enabled`);
+  console.log(`🚀 Ready to serve pattern data!`);
 });
 
 export default app;
