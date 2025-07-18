@@ -1,0 +1,26 @@
+🚀 TURBO 2021 NFL STATS COLLECTION
+
+Target: 78 stats per game with COMPLETE mappings
+
+Found 257 NFL games from 2021 season
+
+Loading player and team data...
+✅ Loaded 3577 players, 634 teams
+
+
+📤 Inserting 6215 stats to database...
+Error inserting batch: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting batch: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting batch: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting batch: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting batch: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting batch: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+Error inserting batch: duplicate key value violates unique constraint "player_game_logs_player_id_game_id_key"
+
+
+✅ COLLECTION COMPLETE!
+   Total stats collected: 6,215
+   Average per game: 24
+   Target per game: 78
+
+⚠️  Still 54 stats per game short of target
