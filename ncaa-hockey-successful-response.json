@@ -1,0 +1,1713 @@
+{
+  "boxscore": {
+    "teams": [
+      {
+        "team": {
+          "id": "285",
+          "uid": "s:70~l:91~t:285",
+          "slug": "lake-superior-state-lakers",
+          "location": "Lake Superior State",
+          "name": "Lakers",
+          "abbreviation": "LSS",
+          "displayName": "Lake Superior State Lakers",
+          "shortDisplayName": "Lake Superior State",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/285.png"
+        },
+        "statistics": [],
+        "displayOrder": 1,
+        "homeAway": "away"
+      },
+      {
+        "team": {
+          "id": "127",
+          "uid": "s:70~l:91~t:127",
+          "slug": "michigan-state-spartans",
+          "location": "Michigan State",
+          "name": "Spartans",
+          "abbreviation": "MSU",
+          "displayName": "Michigan State Spartans",
+          "shortDisplayName": "Michigan State",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/127.png"
+        },
+        "statistics": [],
+        "displayOrder": 2,
+        "homeAway": "home"
+      }
+    ],
+    "players": [
+      {
+        "team": {
+          "id": "285",
+          "uid": "s:70~l:91~t:285",
+          "slug": "lake-superior-state-lakers",
+          "location": "Lake Superior State",
+          "name": "Lakers",
+          "abbreviation": "LSS",
+          "displayName": "Lake Superior State Lakers",
+          "shortDisplayName": "Lake Superior State",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/285.png"
+        },
+        "statistics": [
+          {
+            "name": "forwards",
+            "keys": [],
+            "labels": [],
+            "descriptions": [],
+            "athletes": []
+          },
+          {
+            "name": "defenses",
+            "keys": [],
+            "labels": [],
+            "descriptions": [],
+            "athletes": []
+          },
+          {
+            "name": "goalies",
+            "keys": [],
+            "labels": [],
+            "descriptions": [],
+            "athletes": []
+          }
+        ],
+        "displayOrder": 1
+      },
+      {
+        "team": {
+          "id": "127",
+          "uid": "s:70~l:91~t:127",
+          "slug": "michigan-state-spartans",
+          "location": "Michigan State",
+          "name": "Spartans",
+          "abbreviation": "MSU",
+          "displayName": "Michigan State Spartans",
+          "shortDisplayName": "Michigan State",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/127.png"
+        },
+        "statistics": [
+          {
+            "name": "forwards",
+            "keys": [],
+            "labels": [],
+            "descriptions": [],
+            "athletes": []
+          },
+          {
+            "name": "defenses",
+            "keys": [],
+            "labels": [],
+            "descriptions": [],
+            "athletes": []
+          },
+          {
+            "name": "goalies",
+            "keys": [],
+            "labels": [],
+            "descriptions": [],
+            "athletes": []
+          }
+        ],
+        "displayOrder": 2
+      }
+    ]
+  },
+  "format": {
+    "regulation": {
+      "periods": 3,
+      "displayName": "Period",
+      "slug": "period",
+      "clock": 1200
+    },
+    "overtime": {
+      "periods": 1,
+      "displayName": "Period",
+      "slug": "period",
+      "clock": 300
+    },
+    "shootout": {
+      "periods": 1,
+      "displayName": "Shootout",
+      "slug": "shootout"
+    }
+  },
+  "gameInfo": {
+    "venue": {
+      "id": "1197",
+      "fullName": "Munn Ice Arena",
+      "address": {
+        "city": "East Lansing",
+        "state": "MI",
+        "country": "USA"
+      },
+      "grass": false,
+      "images": []
+    },
+    "attendance": 0,
+    "officials": []
+  },
+  "broadcasts": [],
+  "news": {
+    "header": "NCAAH News",
+    "link": {
+      "language": "en",
+      "rel": [
+        "index",
+        "desktop",
+        "league"
+      ],
+      "href": "https://www.espn.com/college-sports/",
+      "text": "All NCAAH News",
+      "shortText": "All News",
+      "isExternal": false,
+      "isPremium": false
+    },
+    "articles": [
+      {
+        "id": 45764381,
+        "nowId": "1-45764381",
+        "contentKey": "45764381-1-5-1",
+        "dataSourceIdentifier": "8c838b4a9285d",
+        "type": "HeadlineNews",
+        "headline": "Donald Trump considers executive order on NCAA athletes' employment status",
+        "description": "President Donald Trump is considering an executive order that would require federal authorities to clarify whether college athletes can be considered employees of their schools.",
+        "lastModified": "2025-07-17T22:47:39Z",
+        "published": "2025-07-17T19:54:00Z",
+        "images": [
+          {
+            "dataSourceIdentifier": "15ca070f4ead6",
+            "id": 45258806,
+            "type": "header",
+            "name": "Todd Golden Donald Trump [1296x729]",
+            "caption": "Florida men's basketball coach Todd Golden presents President Donald Trump with a uniform with his name on it as Trump hosted the Gators to celebrate their 2025 NCAA championship at the White House on Tuesday.",
+            "credit": "Chip Somodevilla/Getty Images",
+            "height": 729,
+            "width": 1296,
+            "url": "https://a.espncdn.com/photo/2025/0521/r1496365_1296x729_16-9.jpg"
+          }
+        ],
+        "categories": [
+          {
+            "id": 647280,
+            "type": "contributor",
+            "guid": "37be3dad-8916-3040-bba4-167834f0afd0",
+            "description": "Pete Thamel",
+            "slug": "pete-thamel",
+            "contributor": {
+              "id": 3899,
+              "description": "Pete Thamel",
+              "links": {
+                "web": {
+                  "contributors": {
+                    "href": "https://www.espn.com/contributor/pete-thamel"
+                  }
+                },
+                "mobile": {
+                  "contributors": {
+                    "href": "https://www.espn.com/contributor/pete-thamel"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 701826,
+            "type": "contributor",
+            "guid": "7f535a35-c6b2-3389-bb85-da565e38fc32",
+            "description": "Dan Murphy",
+            "slug": "dan-murphy",
+            "contributor": {
+              "id": 2383,
+              "description": "Dan Murphy",
+              "links": {
+                "web": {},
+                "mobile": {}
+              }
+            }
+          },
+          {
+            "id": 409224,
+            "type": "topic",
+            "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+            "description": "news",
+            "sportId": 0,
+            "topicId": 781
+          },
+          {
+            "id": 48676,
+            "type": "league",
+            "uid": "s:1~l:102",
+            "guid": "7d99b155-bb1c-3f1d-be39-ea62eec72b9f",
+            "description": "NCAA Softball",
+            "sportId": 102,
+            "leagueId": 102,
+            "league": {
+              "id": 102,
+              "description": "NCAA Softball",
+              "abbreviation": "CSOFT",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 48675,
+            "type": "league",
+            "uid": "s:70~l:92",
+            "guid": "a5346237-9479-316f-80ec-071c09af4903",
+            "description": "NCAA Women's Hockey",
+            "sportId": 92,
+            "leagueId": 92,
+            "league": {
+              "id": 92,
+              "description": "NCAA Women's Hockey",
+              "abbreviation": "CWHOC",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 48677,
+            "type": "league",
+            "uid": "s:400~l:401",
+            "guid": "a9da481d-b2b4-3ce8-a1f3-2b58547b7c34",
+            "description": "NCAA Men's Volleyball",
+            "sportId": 401,
+            "leagueId": 401,
+            "league": {
+              "id": 401,
+              "description": "NCAA Men's Volleyball",
+              "abbreviation": "NCAA Men's Volleyball",
+              "links": {
+                "web": {},
+                "mobile": {}
+              }
+            }
+          },
+          {
+            "id": 9576,
+            "type": "league",
+            "uid": "s:40~l:41",
+            "guid": "11965179-4504-3b99-983e-83ea0e36d5f3",
+            "description": "NCAA Men's Basketball",
+            "sportId": 41,
+            "leagueId": 41,
+            "league": {
+              "id": 41,
+              "description": "NCAA Men's Basketball",
+              "abbreviation": "NCAAM",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/mens-college-basketball/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/mens-college-basketball/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 48674,
+            "type": "league",
+            "uid": "s:70~l:91",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702",
+            "description": "NCAA Men's Hockey",
+            "sportId": 91,
+            "leagueId": 91,
+            "league": {
+              "id": 91,
+              "description": "NCAA Men's Hockey",
+              "abbreviation": "NCAAH",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 14486,
+            "type": "league",
+            "guid": "d765930d-4c8c-47ed-8b85-8f1955d4a602",
+            "description": "NCAA - Other sports",
+            "sportId": 0,
+            "leagueId": 3170,
+            "league": {
+              "id": 3170,
+              "description": "NCAA - Other sports",
+              "links": {
+                "web": {},
+                "mobile": {}
+              }
+            }
+          },
+          {
+            "id": 129588,
+            "type": "league",
+            "uid": "s:400~l:402",
+            "guid": "c977ce8a-abd5-3522-ad36-b7b496ab5f84",
+            "description": "NCAA Women's Volleyball",
+            "sportId": 402,
+            "leagueId": 402,
+            "league": {
+              "id": 402,
+              "description": "NCAA Women's Volleyball",
+              "abbreviation": "NCAA Women's Volleyball",
+              "links": {
+                "web": {},
+                "mobile": {}
+              }
+            }
+          },
+          {
+            "id": 9571,
+            "type": "league",
+            "uid": "s:20~l:23",
+            "guid": "0f8e3d42-fa27-3f60-9e8d-276e4892f50e",
+            "description": "NCAA Football",
+            "sportId": 23,
+            "leagueId": 23,
+            "league": {
+              "id": 23,
+              "description": "NCAA Football",
+              "abbreviation": "NCAAF",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-football/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-football/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 48650,
+            "type": "league",
+            "uid": "s:1~l:14",
+            "guid": "894d4ec9-d078-3ab1-a173-cbf3bd205b06",
+            "description": "NCAA Baseball",
+            "sportId": 14,
+            "leagueId": 14,
+            "league": {
+              "id": 14,
+              "description": "NCAA Baseball",
+              "abbreviation": "CBASE",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 48680,
+            "type": "league",
+            "uid": "s:500~l:503",
+            "guid": "461f2718-47e3-3cea-9cd2-1a2b52fb15b3",
+            "description": "NCAA Women's Lacrosse",
+            "sportId": 503,
+            "leagueId": 503,
+            "league": {
+              "id": 503,
+              "description": "NCAA Women's Lacrosse",
+              "abbreviation": "NCAAW Lacrosse",
+              "links": {
+                "web": {},
+                "mobile": {}
+              }
+            }
+          },
+          {
+            "id": 9578,
+            "type": "league",
+            "uid": "s:40~l:54",
+            "guid": "45cd175c-f9f2-338b-83b9-6d7d64001733",
+            "description": "NCAA Women's Basketball",
+            "sportId": 54,
+            "leagueId": 54,
+            "league": {
+              "id": 54,
+              "description": "NCAA Women's Basketball",
+              "abbreviation": "NCAAW",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/womens-college-basketball/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/womens-college-basketball/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 48679,
+            "type": "league",
+            "uid": "s:500~l:502",
+            "guid": "5502ec5b-0e6b-3922-8086-2381731c1d26",
+            "description": "NCAA Men's Lacrosse",
+            "sportId": 502,
+            "leagueId": 502,
+            "league": {
+              "id": 502,
+              "description": "NCAA Men's Lacrosse",
+              "abbreviation": "NCAAM Lacrosse",
+              "links": {
+                "web": {},
+                "mobile": {}
+              }
+            }
+          },
+          {
+            "type": "guid",
+            "guid": "37be3dad-8916-3040-bba4-167834f0afd0"
+          },
+          {
+            "type": "guid",
+            "guid": "7f535a35-c6b2-3389-bb85-da565e38fc32"
+          },
+          {
+            "type": "guid",
+            "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+          },
+          {
+            "type": "guid",
+            "guid": "7d99b155-bb1c-3f1d-be39-ea62eec72b9f"
+          },
+          {
+            "type": "guid",
+            "guid": "a5346237-9479-316f-80ec-071c09af4903"
+          },
+          {
+            "type": "guid",
+            "guid": "a9da481d-b2b4-3ce8-a1f3-2b58547b7c34"
+          },
+          {
+            "type": "guid",
+            "guid": "11965179-4504-3b99-983e-83ea0e36d5f3"
+          },
+          {
+            "type": "guid",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702"
+          },
+          {
+            "type": "guid",
+            "guid": "d765930d-4c8c-47ed-8b85-8f1955d4a602"
+          },
+          {
+            "type": "guid",
+            "guid": "c977ce8a-abd5-3522-ad36-b7b496ab5f84"
+          },
+          {
+            "type": "guid",
+            "guid": "0f8e3d42-fa27-3f60-9e8d-276e4892f50e"
+          },
+          {
+            "type": "guid",
+            "guid": "894d4ec9-d078-3ab1-a173-cbf3bd205b06"
+          },
+          {
+            "type": "guid",
+            "guid": "461f2718-47e3-3cea-9cd2-1a2b52fb15b3"
+          },
+          {
+            "type": "guid",
+            "guid": "45cd175c-f9f2-338b-83b9-6d7d64001733"
+          },
+          {
+            "type": "guid",
+            "guid": "5502ec5b-0e6b-3922-8086-2381731c1d26"
+          }
+        ],
+        "premium": false,
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/college-sports/story/_/id/45764381/donald-trump-considers-executive-order-ncaa-athletes-employment-status"
+          },
+          "mobile": {
+            "href": "http://m.espn.go.com/extra/ncaa/story?storyId=45764381"
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/sports/news/45764381"
+            }
+          },
+          "app": {
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showStory?uid=45764381"
+            }
+          }
+        },
+        "byline": "Pete Thamel and Dan Murphy"
+      },
+      {
+        "id": 45697391,
+        "nowId": "1-45697391",
+        "contentKey": "45697391-1-293-1",
+        "dataSourceIdentifier": "3f4544f8a2141",
+        "type": "Media",
+        "headline": "Top NHL prospect Gavin McKenna announces PSU commitment",
+        "description": "Gavin McKenna joins \"SportsCenter\" to announce his official commitment to Penn State University.",
+        "lastModified": "2025-07-17T12:56:58Z",
+        "published": "2025-07-08T22:53:39Z",
+        "images": [
+          {
+            "name": "Top NHL prospect Gavin McKenna announces PSU commitment",
+            "caption": "Gavin McKenna joins \"SportsCenter\" to announce his official commitment to Penn State University.",
+            "alt": "",
+            "height": 324,
+            "width": 576,
+            "url": "https://a.espncdn.com/media/motion/2025/0708/dm_250708_Gavin_commitment_psu/dm_250708_Gavin_commitment_psu.jpg"
+          }
+        ],
+        "categories": [
+          {
+            "id": 640591,
+            "type": "team",
+            "uid": "s:70~l:91~t:213",
+            "guid": "1dc74608-e690-3c20-a3a1-e018f4c5cfa4",
+            "description": "Penn State Nittany Lions",
+            "sportId": 91,
+            "teamId": 213,
+            "team": {
+              "id": 213,
+              "description": "Penn State Nittany Lions"
+            }
+          },
+          {
+            "id": 48674,
+            "type": "league",
+            "uid": "s:70~l:91",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702",
+            "description": "NCAA Men's Hockey",
+            "sportId": 91,
+            "leagueId": 91,
+            "league": {
+              "id": 91,
+              "description": "NCAA Men's Hockey",
+              "abbreviation": "NCAAH",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 9580,
+            "type": "league",
+            "uid": "s:70~l:90",
+            "guid": "1a5f0227-a13e-396c-8cea-8961bc288666",
+            "description": "NHL",
+            "sportId": 90,
+            "leagueId": 90,
+            "league": {
+              "id": 90,
+              "description": "NHL",
+              "abbreviation": "NHL",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/nhl/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/nhl/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "guid",
+            "guid": "1dc74608-e690-3c20-a3a1-e018f4c5cfa4"
+          },
+          {
+            "type": "guid",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702"
+          },
+          {
+            "type": "guid",
+            "guid": "1a5f0227-a13e-396c-8cea-8961bc288666"
+          }
+        ],
+        "premium": false,
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/video/clip?id=45697391",
+            "self": {
+              "href": "https://www.espn.com/video/clip?id=45697391",
+              "dsi": {
+                "href": "https://www.espn.com/video/clip?id=3f4544f8a2141"
+              }
+            },
+            "seo": {
+              "href": "https://www.espn.com/video/clip/_/id/45697391"
+            }
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/video/clips/45697391"
+            },
+            "artwork": {
+              "href": "https://artwork.api.espn.com/artwork/collections/media/5dcfbd03-69a8-4c77-a49f-40776dc3c28f"
+            }
+          },
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showVideo?videoID=45697391&videoDSI=3f4544f8a2141"
+          }
+        }
+      },
+      {
+        "id": 44372307,
+        "nowId": "1-44372307",
+        "contentKey": "44372307-1-6-1",
+        "dataSourceIdentifier": "cc7592396d721",
+        "type": "Story",
+        "headline": "Frozen Four: Western Michigan wins first NCAA men's hockey title",
+        "description": "Scores, highlights, features and more, from the regionals to the Broncos' historic win.",
+        "lastModified": "2025-04-13T02:57:28Z",
+        "published": "2025-04-13T02:10:00Z",
+        "images": [
+          {
+            "dataSourceIdentifier": "e562be381a224",
+            "id": 44650600,
+            "type": "header",
+            "name": "Western Michigan hockey [608x342]",
+            "credit": "Jeff Curry/Imagn Images",
+            "height": 342,
+            "width": 608,
+            "url": "https://a.espncdn.com/photo/2025/0413/r1477982_608x342_16-9.jpg"
+          },
+          {
+            "type": "Media",
+            "name": "Western Michigan claims first NCAA hockey championship in school history",
+            "caption": "In a stunning 6-2 victory over Boston University, Western Michigan wins the national championship, the school's first.",
+            "height": 324,
+            "width": 576,
+            "url": "https://a.espncdn.com/media/motion/2025/0412/dm_250412_dm_chky_celly_pub2tag/dm_250412_dm_chky_celly_pub2tag.jpg"
+          }
+        ],
+        "categories": [
+          {
+            "id": 48674,
+            "type": "league",
+            "uid": "s:70~l:91",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702",
+            "description": "NCAA Men's Hockey",
+            "sportId": 91,
+            "leagueId": 91,
+            "league": {
+              "id": 91,
+              "description": "NCAA Men's Hockey",
+              "abbreviation": "NCAAH",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "guid",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702"
+          }
+        ],
+        "premium": false,
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/college-sports/story/_/id/44372307/2025-frozen-four-ncaa-men-hockey-tournament-schedule-teams-glance"
+          },
+          "mobile": {
+            "href": "http://m.espn.go.com/extra/ncaa/story?storyId=44372307"
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/sports/news/44372307"
+            }
+          },
+          "app": {
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showStory?uid=44372307"
+            }
+          }
+        },
+        "byline": "ESPN"
+      },
+      {
+        "id": 44635343,
+        "nowId": "1-44635343",
+        "contentKey": "44635343-1-5-1",
+        "dataSourceIdentifier": "9ff222f734f31",
+        "type": "HeadlineNews",
+        "headline": "Michigan State forward Isaac Howard wins Hobey Baker award",
+        "description": "Michigan State junior forward Isaac Howard won the Hobey Baker Memorial Award on Friday as college hockey's top player, claiming the honor over finalists Zeev Buium of Denver and Boston College's Ryan Leonard, now with the Capitals.",
+        "lastModified": "2025-04-12T00:20:56Z",
+        "published": "2025-04-12T00:02:00Z",
+        "images": [
+          {
+            "dataSourceIdentifier": "4c42bbd7935aa",
+            "id": 44635495,
+            "type": "header",
+            "name": "Isaac Howard [600x400]",
+            "credit": "Gregory Payan/AP",
+            "height": 400,
+            "width": 600,
+            "url": "https://a.espncdn.com/photo/2025/0412/r1477496_600x400_3-2.jpg"
+          }
+        ],
+        "categories": [
+          {
+            "id": 640756,
+            "type": "team",
+            "uid": "s:70~l:91~t:103",
+            "guid": "2e94defb-0957-34be-aa5a-d591f7553610",
+            "description": "Boston College Eagles",
+            "sportId": 91,
+            "teamId": 103,
+            "team": {
+              "id": 103,
+              "description": "Boston College Eagles"
+            }
+          },
+          {
+            "id": 6161,
+            "type": "team",
+            "uid": "s:70~l:90~t:23",
+            "guid": "cbe677ee-361e-91b4-5cae-6c4c30044743",
+            "description": "Washington Capitals",
+            "sportId": 90,
+            "teamId": 23,
+            "team": {
+              "id": 23,
+              "description": "Washington Capitals",
+              "links": {
+                "web": {
+                  "teams": {
+                    "href": "https://www.espn.com/nhl/team/_/name/wsh/washington-capitals"
+                  }
+                },
+                "mobile": {
+                  "teams": {
+                    "href": "https://www.espn.com/nhl/team/_/name/wsh/washington-capitals"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 409224,
+            "type": "topic",
+            "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+            "description": "news",
+            "sportId": 0,
+            "topicId": 781
+          },
+          {
+            "id": 640683,
+            "type": "team",
+            "uid": "s:70~l:91~t:2172",
+            "guid": "b6466f74-98f0-3e78-a10b-f18121423735",
+            "description": "Denver Pioneers",
+            "sportId": 91,
+            "teamId": 2172,
+            "team": {
+              "id": 2172,
+              "description": "Denver Pioneers"
+            }
+          },
+          {
+            "id": 603782,
+            "type": "athlete",
+            "uid": "s:70~l:90~a:5149172",
+            "guid": "ed7fbeaa-ec2d-3d18-9a0a-8d19b6c8ff72",
+            "description": "Ryan Leonard",
+            "sportId": 90,
+            "athleteId": 5149172,
+            "athlete": {
+              "id": 5149172,
+              "description": "Ryan Leonard",
+              "links": {
+                "web": {
+                  "athletes": {
+                    "href": "https://www.espn.com/nhl/player/_/id/5149172"
+                  }
+                },
+                "mobile": {
+                  "athletes": {
+                    "href": "https://www.espn.com/nhl/player/_/id/5149172"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 6136,
+            "type": "team",
+            "uid": "s:70~l:90~t:20",
+            "guid": "49fa608f-040f-21c1-ebfb-99e8feb8b774",
+            "description": "Tampa Bay Lightning",
+            "sportId": 90,
+            "teamId": 20,
+            "team": {
+              "id": 20,
+              "description": "Tampa Bay Lightning",
+              "links": {
+                "web": {
+                  "teams": {
+                    "href": "https://www.espn.com/nhl/team/_/name/tb/tampa-bay-lightning"
+                  }
+                },
+                "mobile": {
+                  "teams": {
+                    "href": "https://www.espn.com/nhl/team/_/name/tb/tampa-bay-lightning"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 48674,
+            "type": "league",
+            "uid": "s:70~l:91",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702",
+            "description": "NCAA Men's Hockey",
+            "sportId": 91,
+            "leagueId": 91,
+            "league": {
+              "id": 91,
+              "description": "NCAA Men's Hockey",
+              "abbreviation": "NCAAH",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 640747,
+            "type": "team",
+            "uid": "s:70~l:91~t:127",
+            "guid": "d1755f18-51b7-3463-9b8c-23b02d07c7a5",
+            "description": "Michigan State Spartans",
+            "sportId": 91,
+            "teamId": 127,
+            "team": {
+              "id": 127,
+              "description": "Michigan State Spartans"
+            }
+          },
+          {
+            "id": 9580,
+            "type": "league",
+            "uid": "s:70~l:90",
+            "guid": "1a5f0227-a13e-396c-8cea-8961bc288666",
+            "description": "NHL",
+            "sportId": 90,
+            "leagueId": 90,
+            "league": {
+              "id": 90,
+              "description": "NHL",
+              "abbreviation": "NHL",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/nhl/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/nhl/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 14486,
+            "type": "league",
+            "guid": "d765930d-4c8c-47ed-8b85-8f1955d4a602",
+            "description": "NCAA - Other sports",
+            "sportId": 0,
+            "leagueId": 3170,
+            "league": {
+              "id": 3170,
+              "description": "NCAA - Other sports",
+              "links": {
+                "web": {},
+                "mobile": {}
+              }
+            }
+          },
+          {
+            "type": "guid",
+            "guid": "2e94defb-0957-34be-aa5a-d591f7553610"
+          },
+          {
+            "type": "guid",
+            "guid": "cbe677ee-361e-91b4-5cae-6c4c30044743"
+          },
+          {
+            "type": "guid",
+            "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+          },
+          {
+            "type": "guid",
+            "guid": "b6466f74-98f0-3e78-a10b-f18121423735"
+          },
+          {
+            "type": "guid",
+            "guid": "ed7fbeaa-ec2d-3d18-9a0a-8d19b6c8ff72"
+          },
+          {
+            "type": "guid",
+            "guid": "49fa608f-040f-21c1-ebfb-99e8feb8b774"
+          },
+          {
+            "type": "guid",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702"
+          },
+          {
+            "type": "guid",
+            "guid": "d1755f18-51b7-3463-9b8c-23b02d07c7a5"
+          },
+          {
+            "type": "guid",
+            "guid": "1a5f0227-a13e-396c-8cea-8961bc288666"
+          },
+          {
+            "type": "guid",
+            "guid": "d765930d-4c8c-47ed-8b85-8f1955d4a602"
+          }
+        ],
+        "premium": false,
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/college-sports/story/_/id/44635343/michigan-state-forward-isaac-howard-wins-hobey-baker-award-college-hockey-top-player"
+          },
+          "mobile": {
+            "href": "http://m.espn.go.com/extra/ncaa/story?storyId=44635343"
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/sports/news/44635343"
+            }
+          },
+          "app": {
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showStory?uid=44635343"
+            }
+          }
+        }
+      },
+      {
+        "id": 44558025,
+        "nowId": "1-44558025",
+        "contentKey": "44558025-1-6-1",
+        "dataSourceIdentifier": "2f260f2a247e3",
+        "type": "Story",
+        "headline": "Men's Frozen Four: Championship preview, predictions, stats",
+        "description": "The Terriers and Broncos play for the national championship in men's hockey. Here's a look at each team.",
+        "lastModified": "2025-04-13T00:24:31Z",
+        "published": "2025-04-11T04:50:00Z",
+        "images": [
+          {
+            "dataSourceIdentifier": "71fa4519ff1ea",
+            "id": 44649108,
+            "type": "header",
+            "name": "Owen Michaels [608x342]",
+            "credit": "AP Photo/Jeff Roberson",
+            "height": 342,
+            "width": 608,
+            "url": "https://a.espncdn.com/photo/2025/0413/r1477911_608x342_16-9.jpg"
+          },
+          {
+            "type": "Media",
+            "name": "Owen Michaels' OT winner sends Western Michigan to title game",
+            "caption": "Owen Michaels nets an overtime winner, his second goal of the game, to send Western Michigan to the NCAA Frozen Four championship game.",
+            "height": 324,
+            "width": 576,
+            "url": "https://a.espncdn.com/media/motion/2025/0410/dm_250410_CHCKY_One-Play_Western_Michigan_wins/dm_250410_CHCKY_One-Play_Western_Michigan_wins.jpg"
+          }
+        ],
+        "categories": [
+          {
+            "id": 640683,
+            "type": "team",
+            "uid": "s:70~l:91~t:2172",
+            "guid": "b6466f74-98f0-3e78-a10b-f18121423735",
+            "description": "Denver Pioneers",
+            "sportId": 91,
+            "teamId": 2172,
+            "team": {
+              "id": 2172,
+              "description": "Denver Pioneers"
+            }
+          },
+          {
+            "id": 640778,
+            "type": "team",
+            "uid": "s:70~l:91~t:2711",
+            "guid": "36c06eb6-a0c5-3946-81d7-6f2473e5792e",
+            "description": "Western Michigan Broncos",
+            "sportId": 91,
+            "teamId": 2711,
+            "team": {
+              "id": 2711,
+              "description": "Western Michigan Broncos"
+            }
+          },
+          {
+            "id": 48674,
+            "type": "league",
+            "uid": "s:70~l:91",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702",
+            "description": "NCAA Men's Hockey",
+            "sportId": 91,
+            "leagueId": 91,
+            "league": {
+              "id": 91,
+              "description": "NCAA Men's Hockey",
+              "abbreviation": "NCAAH",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "guid",
+            "guid": "b6466f74-98f0-3e78-a10b-f18121423735"
+          },
+          {
+            "type": "guid",
+            "guid": "36c06eb6-a0c5-3946-81d7-6f2473e5792e"
+          },
+          {
+            "type": "guid",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702"
+          }
+        ],
+        "premium": false,
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/college-sports/story/_/id/44558025/2025-men-frozen-four-championship-preview-predictions-stats"
+          },
+          "mobile": {
+            "href": "http://m.espn.go.com/extra/ncaa/story?storyId=44558025"
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/sports/news/44558025"
+            }
+          },
+          "app": {
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showStory?uid=44558025"
+            }
+          }
+        },
+        "byline": "ESPN"
+      },
+      {
+        "id": 44622786,
+        "nowId": "1-44622786",
+        "contentKey": "44622786-1-293-1",
+        "dataSourceIdentifier": "251f21906a62f",
+        "type": "Media",
+        "headline": "Owen Michaels' OT winner sends Western Michigan to title game",
+        "description": "Owen Michaels nets an overtime winner, his second goal of the game, to send Western Michigan to the NCAA Frozen Four championship game.",
+        "lastModified": "2025-04-11T00:55:04Z",
+        "published": "2025-04-11T00:50:37Z",
+        "images": [
+          {
+            "name": "Owen Michaels' OT winner sends Western Michigan to title game",
+            "caption": "Owen Michaels nets an overtime winner, his second goal of the game, to send Western Michigan to the NCAA Frozen Four championship game.",
+            "alt": "",
+            "height": 324,
+            "width": 576,
+            "url": "https://a.espncdn.com/media/motion/2025/0410/dm_250410_CHCKY_One-Play_Western_Michigan_wins/dm_250410_CHCKY_One-Play_Western_Michigan_wins.jpg"
+          }
+        ],
+        "categories": [
+          {
+            "id": 640778,
+            "type": "team",
+            "uid": "s:70~l:91~t:2711",
+            "guid": "36c06eb6-a0c5-3946-81d7-6f2473e5792e",
+            "description": "Western Michigan Broncos",
+            "sportId": 91,
+            "teamId": 2711,
+            "team": {
+              "id": 2711,
+              "description": "Western Michigan Broncos"
+            }
+          },
+          {
+            "id": 48674,
+            "type": "league",
+            "uid": "s:70~l:91",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702",
+            "description": "NCAA Men's Hockey",
+            "sportId": 91,
+            "leagueId": 91,
+            "league": {
+              "id": 91,
+              "description": "NCAA Men's Hockey",
+              "abbreviation": "NCAAH",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "guid",
+            "guid": "bb312eed-e9b9-310d-89f1-6344ce266159"
+          },
+          {
+            "type": "guid",
+            "guid": "36c06eb6-a0c5-3946-81d7-6f2473e5792e"
+          },
+          {
+            "type": "guid",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702"
+          }
+        ],
+        "premium": false,
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/video/clip?id=44622786",
+            "self": {
+              "href": "https://www.espn.com/video/clip?id=44622786",
+              "dsi": {
+                "href": "https://www.espn.com/video/clip?id=251f21906a62f"
+              }
+            },
+            "seo": {
+              "href": "https://www.espn.com/video/clip/_/id/44622786"
+            }
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/video/clips/44622786"
+            },
+            "artwork": {
+              "href": "https://artwork.api.espn.com/artwork/collections/media/a9ef7df0-27ae-4a6d-9599-8e79df526465"
+            }
+          },
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showVideo?videoID=44622786&videoDSI=251f21906a62f"
+          }
+        }
+      }
+    ]
+  },
+  "videos": [],
+  "plays": [],
+  "header": {
+    "id": "401599049",
+    "uid": "s:70~l:91~e:401599049",
+    "season": {
+      "year": 2024,
+      "current": false,
+      "type": 2
+    },
+    "timeValid": true,
+    "competitions": [
+      {
+        "id": "401599049",
+        "uid": "s:70~l:91~e:401599049~c:401599049",
+        "date": "2023-10-07T20:00Z",
+        "neutralSite": false,
+        "boxscoreAvailable": false,
+        "commentaryAvailable": false,
+        "liveAvailable": false,
+        "onWatchESPN": false,
+        "recent": false,
+        "wallclockAvailable": false,
+        "boxscoreSource": "none",
+        "playByPlaySource": "none",
+        "competitors": [
+          {
+            "id": "127",
+            "uid": "s:70~l:91~t:127",
+            "order": 0,
+            "homeAway": "home",
+            "winner": true,
+            "team": {
+              "id": "127",
+              "guid": "d1755f18-51b7-3463-9b8c-23b02d07c7a5",
+              "uid": "s:70~l:91~t:127",
+              "location": "Michigan State",
+              "name": "Spartans",
+              "nickname": "Michigan State",
+              "abbreviation": "MSU",
+              "displayName": "Michigan State Spartans",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/127.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "default"
+                  ],
+                  "lastUpdated": "2018-06-05T12:08Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/127.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "dark"
+                  ],
+                  "lastUpdated": "2018-06-05T12:08Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/d1755f18-51b7-3463-9b8c-23b02d07c7a5/logos/primary_logo_on_white_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_white_color"
+                  ],
+                  "lastUpdated": "2025-03-06T18:31Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/d1755f18-51b7-3463-9b8c-23b02d07c7a5/logos/primary_logo_on_black_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_black_color"
+                  ],
+                  "lastUpdated": "2025-03-06T18:31Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/d1755f18-51b7-3463-9b8c-23b02d07c7a5/logos/primary_logo_on_primary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_primary_color"
+                  ],
+                  "lastUpdated": "2025-03-06T18:31Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/d1755f18-51b7-3463-9b8c-23b02d07c7a5/logos/primary_logo_on_secondary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_secondary_color"
+                  ],
+                  "lastUpdated": "2025-03-06T18:31Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/d1755f18-51b7-3463-9b8c-23b02d07c7a5/logos/secondary_logo_on_white_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_white_color"
+                  ],
+                  "lastUpdated": "2025-03-06T18:31Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/d1755f18-51b7-3463-9b8c-23b02d07c7a5/logos/secondary_logo_on_black_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_black_color"
+                  ],
+                  "lastUpdated": "2025-03-06T18:31Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/d1755f18-51b7-3463-9b8c-23b02d07c7a5/logos/secondary_logo_on_primary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_primary_color"
+                  ],
+                  "lastUpdated": "2025-03-06T18:31Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/d1755f18-51b7-3463-9b8c-23b02d07c7a5/logos/secondary_logo_on_secondary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_secondary_color"
+                  ],
+                  "lastUpdated": "2025-03-06T18:31Z"
+                }
+              ],
+              "links": []
+            },
+            "score": "5",
+            "linescores": [
+              {
+                "displayValue": "1"
+              },
+              {
+                "displayValue": "2"
+              },
+              {
+                "displayValue": "2"
+              }
+            ],
+            "record": [],
+            "possession": false
+          },
+          {
+            "id": "285",
+            "uid": "s:70~l:91~t:285",
+            "order": 1,
+            "homeAway": "away",
+            "winner": false,
+            "team": {
+              "id": "285",
+              "guid": "35ae472d-cb01-32c6-b090-874654eb6731",
+              "uid": "s:70~l:91~t:285",
+              "location": "Lake Superior State",
+              "name": "Lakers",
+              "nickname": "Lake Superior State",
+              "abbreviation": "LSS",
+              "displayName": "Lake Superior State Lakers",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/285.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "default"
+                  ],
+                  "lastUpdated": "2024-09-24T20:10Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/285.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "dark"
+                  ],
+                  "lastUpdated": "2024-09-24T20:10Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/35ae472d-cb01-32c6-b090-874654eb6731/logos/primary_logo_on_white_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_white_color"
+                  ],
+                  "lastUpdated": "2025-03-07T17:02Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/35ae472d-cb01-32c6-b090-874654eb6731/logos/primary_logo_on_black_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_black_color"
+                  ],
+                  "lastUpdated": "2025-03-07T17:02Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/35ae472d-cb01-32c6-b090-874654eb6731/logos/primary_logo_on_primary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_primary_color"
+                  ],
+                  "lastUpdated": "2025-03-07T17:02Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/35ae472d-cb01-32c6-b090-874654eb6731/logos/primary_logo_on_secondary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_secondary_color"
+                  ],
+                  "lastUpdated": "2025-03-07T17:02Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/35ae472d-cb01-32c6-b090-874654eb6731/logos/secondary_logo_on_white_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_white_color"
+                  ],
+                  "lastUpdated": "2025-03-07T17:02Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/35ae472d-cb01-32c6-b090-874654eb6731/logos/secondary_logo_on_black_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_black_color"
+                  ],
+                  "lastUpdated": "2025-03-07T17:02Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/35ae472d-cb01-32c6-b090-874654eb6731/logos/secondary_logo_on_primary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_primary_color"
+                  ],
+                  "lastUpdated": "2025-03-07T17:02Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/35ae472d-cb01-32c6-b090-874654eb6731/logos/secondary_logo_on_secondary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_secondary_color"
+                  ],
+                  "lastUpdated": "2025-03-07T17:02Z"
+                }
+              ],
+              "links": []
+            },
+            "score": "2",
+            "linescores": [
+              {
+                "displayValue": "0"
+              },
+              {
+                "displayValue": "2"
+              },
+              {
+                "displayValue": "0"
+              }
+            ],
+            "record": [],
+            "possession": false
+          }
+        ],
+        "status": {
+          "type": {
+            "id": "3",
+            "name": "STATUS_FINAL",
+            "state": "post",
+            "completed": true,
+            "description": "Final",
+            "detail": "Final",
+            "shortDetail": "Final"
+          }
+        },
+        "broadcasts": [],
+        "series": [
+          {
+            "type": "season",
+            "title": "Regular Season Series",
+            "description": "Regular Season Series",
+            "summary": "MSU leads series 1-0",
+            "completed": false,
+            "totalCompetitions": 2,
+            "competitors": [
+              {
+                "id": "127",
+                "uid": "s:70~l:91~t:127",
+                "wins": 1,
+                "ties": 0,
+                "team": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/seasons/2024/teams/127?lang=en&region=us"
+                }
+              },
+              {
+                "id": "285",
+                "uid": "s:70~l:91~t:285",
+                "wins": 0,
+                "ties": 0,
+                "team": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/seasons/2024/teams/285?lang=en&region=us"
+                }
+              }
+            ],
+            "events": [
+              {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/events/401599049?lang=en&region=us",
+                "id": "401599049"
+              },
+              {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/events/401599050?lang=en&region=us",
+                "id": "401599050"
+              }
+            ],
+            "startDate": "2023-10-07T20:00Z"
+          }
+        ],
+        "boxscoreMinutes": false
+      }
+    ],
+    "links": [],
+    "league": {
+      "id": "91",
+      "uid": "s:70~l:91",
+      "name": "NCAA Men's Ice Hockey",
+      "abbreviation": "NCAAH",
+      "slug": "mens-college-hockey",
+      "isTournament": false,
+      "links": [
+        {
+          "rel": [
+            "index",
+            "desktop",
+            "league"
+          ],
+          "href": "https://www.espn.com/college-sports/",
+          "text": "Index"
+        },
+        {
+          "rel": [
+            "index",
+            "sportscenter",
+            "app",
+            "league"
+          ],
+          "href": "sportscenter://x-callback-url/showClubhouse?uid=s:70~l:91",
+          "text": "Index"
+        },
+        {
+          "rel": [
+            "rankings",
+            "desktop",
+            "league"
+          ],
+          "href": "https://www.espn.com/college-sports/rankings/_/pollId/10363/sportId/13030000",
+          "text": "Rankings"
+        },
+        {
+          "rel": [
+            "scores",
+            "desktop",
+            "league"
+          ],
+          "href": "https://www.espn.com/mens-college-hockey/scoreboard",
+          "text": "Scores"
+        }
+      ]
+    }
+  },
+  "wallclockAvailable": false,
+  "meta": {
+    "gameState": "post"
+  }
+}

@@ -1,0 +1,5508 @@
+{
+  "boxscore": {
+    "teams": [
+      {
+        "team": {
+          "id": "104",
+          "uid": "s:70~l:91~t:104",
+          "slug": "boston-university-terriers",
+          "location": "Boston University",
+          "name": "Terriers",
+          "abbreviation": "BU",
+          "displayName": "Boston University Terriers",
+          "shortDisplayName": "Boston University",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/104.png"
+        },
+        "statistics": [
+          {
+            "name": "blockedShots",
+            "abbreviation": "BS",
+            "displayValue": "0",
+            "label": "Blocked Shots"
+          },
+          {
+            "name": "hits",
+            "abbreviation": "HT",
+            "displayValue": "0",
+            "label": "Hits"
+          },
+          {
+            "name": "takeaways",
+            "abbreviation": "TK",
+            "displayValue": "0",
+            "label": "Takeaways"
+          },
+          {
+            "name": "shotsTotal",
+            "abbreviation": "S",
+            "displayValue": "26",
+            "label": "Shots"
+          },
+          {
+            "name": "powerPlayGoals",
+            "abbreviation": "PPG",
+            "displayValue": "1",
+            "label": "Power Play Goals"
+          },
+          {
+            "name": "powerPlayOpportunities",
+            "abbreviation": "PPO",
+            "displayValue": "2",
+            "label": "Power Play Opportunities"
+          },
+          {
+            "name": "powerPlayPct",
+            "abbreviation": "PCT",
+            "displayValue": "50.0",
+            "label": "Power Play Percentage"
+          },
+          {
+            "name": "shortHandedGoals",
+            "abbreviation": "SHG",
+            "displayValue": "0",
+            "label": "Short Handed Goals"
+          },
+          {
+            "name": "shootoutGoals",
+            "abbreviation": "SOG",
+            "displayValue": "0",
+            "label": "Shootout Goals"
+          },
+          {
+            "name": "faceoffsWon",
+            "abbreviation": "FW",
+            "displayValue": "0",
+            "label": "Faceoffs Won"
+          },
+          {
+            "name": "faceoffPercent",
+            "abbreviation": "FO%",
+            "displayValue": "0.0",
+            "label": "Faceoff Win Percent"
+          },
+          {
+            "name": "giveaways",
+            "abbreviation": "GV",
+            "displayValue": "0",
+            "label": "Giveaways"
+          },
+          {
+            "name": "penalties",
+            "abbreviation": "PN",
+            "displayValue": "2",
+            "label": "Total Penalties"
+          },
+          {
+            "name": "penaltyMinutes",
+            "abbreviation": "PIM",
+            "displayValue": "4",
+            "label": "Penalty Minutes"
+          }
+        ],
+        "displayOrder": 1,
+        "homeAway": "away"
+      },
+      {
+        "team": {
+          "id": "2711",
+          "uid": "s:70~l:91~t:2711",
+          "slug": "western-michigan-broncos",
+          "location": "Western Michigan",
+          "name": "Broncos",
+          "abbreviation": "WMU",
+          "displayName": "Western Michigan Broncos",
+          "shortDisplayName": "Western Michigan",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png"
+        },
+        "statistics": [
+          {
+            "name": "blockedShots",
+            "abbreviation": "BS",
+            "displayValue": "0",
+            "label": "Blocked Shots"
+          },
+          {
+            "name": "hits",
+            "abbreviation": "HT",
+            "displayValue": "0",
+            "label": "Hits"
+          },
+          {
+            "name": "takeaways",
+            "abbreviation": "TK",
+            "displayValue": "0",
+            "label": "Takeaways"
+          },
+          {
+            "name": "shotsTotal",
+            "abbreviation": "S",
+            "displayValue": "28",
+            "label": "Shots"
+          },
+          {
+            "name": "powerPlayGoals",
+            "abbreviation": "PPG",
+            "displayValue": "0",
+            "label": "Power Play Goals"
+          },
+          {
+            "name": "powerPlayOpportunities",
+            "abbreviation": "PPO",
+            "displayValue": "2",
+            "label": "Power Play Opportunities"
+          },
+          {
+            "name": "powerPlayPct",
+            "abbreviation": "PCT",
+            "displayValue": "0.0",
+            "label": "Power Play Percentage"
+          },
+          {
+            "name": "shortHandedGoals",
+            "abbreviation": "SHG",
+            "displayValue": "0",
+            "label": "Short Handed Goals"
+          },
+          {
+            "name": "shootoutGoals",
+            "abbreviation": "SOG",
+            "displayValue": "0",
+            "label": "Shootout Goals"
+          },
+          {
+            "name": "faceoffsWon",
+            "abbreviation": "FW",
+            "displayValue": "0",
+            "label": "Faceoffs Won"
+          },
+          {
+            "name": "faceoffPercent",
+            "abbreviation": "FO%",
+            "displayValue": "0.0",
+            "label": "Faceoff Win Percent"
+          },
+          {
+            "name": "giveaways",
+            "abbreviation": "GV",
+            "displayValue": "0",
+            "label": "Giveaways"
+          },
+          {
+            "name": "penalties",
+            "abbreviation": "PN",
+            "displayValue": "2",
+            "label": "Total Penalties"
+          },
+          {
+            "name": "penaltyMinutes",
+            "abbreviation": "PIM",
+            "displayValue": "4",
+            "label": "Penalty Minutes"
+          }
+        ],
+        "displayOrder": 2,
+        "homeAway": "home"
+      }
+    ],
+    "players": [
+      {
+        "team": {
+          "id": "104",
+          "uid": "s:70~l:91~t:104",
+          "slug": "boston-university-terriers",
+          "location": "Boston University",
+          "name": "Terriers",
+          "abbreviation": "BU",
+          "displayName": "Boston University Terriers",
+          "shortDisplayName": "Boston University",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/104.png"
+        },
+        "statistics": [
+          {
+            "name": "forwards",
+            "keys": [
+              "blockedShots",
+              "hits",
+              "takeaways",
+              "plusMinus",
+              "timeOnIce",
+              "powerPlayTimeOnIce",
+              "shortHandedTimeOnIce",
+              "evenStrengthTimeOnIce",
+              "shifts",
+              "goals",
+              "ytdGoals",
+              "assists",
+              "shotsTotal",
+              "shotsMissed",
+              "shootoutGoals",
+              "faceoffsWon",
+              "faceoffsLost",
+              "faceoffPercent",
+              "giveaways",
+              "penalties",
+              "penaltyMinutes"
+            ],
+            "labels": [
+              "BS",
+              "HT",
+              "TK",
+              "+/-",
+              "TOI",
+              "PPTOI",
+              "SHTOI",
+              "ESTOI",
+              "SHFT",
+              "G",
+              "YTDG",
+              "A",
+              "S",
+              "SM",
+              "SOG",
+              "FW",
+              "FL",
+              "FO%",
+              "GV",
+              "PN",
+              "PIM"
+            ],
+            "descriptions": [
+              "Total shots blocked.",
+              "Total hits.",
+              "Total takeaways.",
+              "Plus/Minus Rating",
+              "Total time on ice.",
+              "Total power play time on ice.",
+              "Total short handed time on ice.",
+              "Total even strength time on ice.",
+              "Total shifts.",
+              "Total goals scored.",
+              "Year to date goals/",
+              "Total goal assists.",
+              "Total shots.",
+              "Total missed shots.",
+              "Total shootout goals.",
+              "Total faceoffs won.",
+              "Total faceoffs lost.",
+              "Percentage of faceoffs won.",
+              "Total giveaways.",
+              "Total number of penalties.",
+              "Total penalty minutes."
+            ],
+            "athletes": [
+              {
+                "athlete": {
+                  "id": "5136656",
+                  "uid": "s:70~l:91~a:5136656",
+                  "lastName": "Amonte",
+                  "displayName": "Tristan Amonte",
+                  "shortName": "T. Amonte",
+                  "jersey": "3",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5216936",
+                  "uid": "s:70~l:91~a:5216936",
+                  "lastName": "Bednarik",
+                  "displayName": "Kamil Bednarik",
+                  "shortName": "K. Bednarik",
+                  "jersey": "11",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5137145",
+                  "uid": "s:70~l:91~a:5137145",
+                  "lastName": "Copponi",
+                  "displayName": "Matt Copponi",
+                  "shortName": "M. Copponi",
+                  "jersey": "15",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5216888",
+                  "uid": "s:70~l:91~a:5216888",
+                  "lastName": "Eiserman",
+                  "displayName": "Cole Eiserman",
+                  "shortName": "C. Eiserman",
+                  "jersey": "34",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "3",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5080227",
+                  "uid": "s:70~l:91~a:5080227",
+                  "lastName": "Greene",
+                  "displayName": "Ryan Greene",
+                  "shortName": "R. Greene",
+                  "jersey": "9",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": false,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5188526",
+                  "uid": "s:70~l:91~a:5188526",
+                  "lastName": "Harvey",
+                  "displayName": "Jack Harvey",
+                  "shortName": "J. Harvey",
+                  "jersey": "12",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "4996314",
+                  "uid": "s:70~l:91~a:4996314",
+                  "lastName": "Hughes",
+                  "displayName": "Jack Hughes",
+                  "shortName": "J. Hughes",
+                  "jersey": "4",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5136660",
+                  "uid": "s:70~l:91~a:5136660",
+                  "lastName": "Hutson",
+                  "displayName": "Quinn Hutson",
+                  "shortName": "Q. Hutson",
+                  "jersey": "17",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": false,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5136662",
+                  "uid": "s:70~l:91~a:5136662",
+                  "lastName": "Kaplan",
+                  "displayName": "Devin Kaplan",
+                  "shortName": "D. Kaplan",
+                  "jersey": "21",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": false,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5103873",
+                  "uid": "s:70~l:91~a:5103873",
+                  "lastName": "Lachance",
+                  "displayName": "Shane Lachance",
+                  "shortName": "S. Lachance",
+                  "jersey": "18",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": false,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "3",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5275394",
+                  "uid": "s:70~l:91~a:5275394",
+                  "lastName": "Roukounakis",
+                  "displayName": "Nick Roukounakis",
+                  "shortName": "N. Roukounakis",
+                  "jersey": "7",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "3",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5188600",
+                  "uid": "s:70~l:91~a:5188600",
+                  "lastName": "Svoboda",
+                  "displayName": "Brandon Svoboda",
+                  "shortName": "B. Svoboda",
+                  "jersey": "8",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "defenses",
+            "keys": [
+              "blockedShots",
+              "hits",
+              "takeaways",
+              "plusMinus",
+              "timeOnIce",
+              "powerPlayTimeOnIce",
+              "shortHandedTimeOnIce",
+              "evenStrengthTimeOnIce",
+              "shifts",
+              "goals",
+              "ytdGoals",
+              "assists",
+              "shotsTotal",
+              "shotsMissed",
+              "shootoutGoals",
+              "faceoffsWon",
+              "faceoffsLost",
+              "faceoffPercent",
+              "giveaways",
+              "penalties",
+              "penaltyMinutes"
+            ],
+            "labels": [
+              "BS",
+              "HT",
+              "TK",
+              "+/-",
+              "TOI",
+              "PPTOI",
+              "SHTOI",
+              "ESTOI",
+              "SHFT",
+              "G",
+              "YTDG",
+              "A",
+              "S",
+              "SM",
+              "SOG",
+              "FW",
+              "FL",
+              "FO%",
+              "GV",
+              "PN",
+              "PIM"
+            ],
+            "descriptions": [
+              "Total shots blocked.",
+              "Total hits.",
+              "Total takeaways.",
+              "Plus/Minus Rating",
+              "Total time on ice.",
+              "Total power play time on ice.",
+              "Total short handed time on ice.",
+              "Total even strength time on ice.",
+              "Total shifts.",
+              "Total goals scored.",
+              "Year to date goals/",
+              "Total goal assists.",
+              "Total shots.",
+              "Total missed shots.",
+              "Total shootout goals.",
+              "Total faceoffs won.",
+              "Total faceoffs lost.",
+              "Percentage of faceoffs won.",
+              "Total giveaways.",
+              "Total number of penalties.",
+              "Total penalty minutes."
+            ],
+            "athletes": [
+              {
+                "athlete": {
+                  "id": "5275396",
+                  "uid": "s:70~l:91~a:5275396",
+                  "lastName": "Boumedienne",
+                  "displayName": "Sascha Boumedienne",
+                  "shortName": "S. Boumedienne",
+                  "jersey": "78",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                    "id": "4",
+                    "name": "Defense",
+                    "displayName": "Defense",
+                    "abbreviation": "D",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": false,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5188559",
+                  "uid": "s:70~l:91~a:5188559",
+                  "lastName": "Celebrini",
+                  "displayName": "Aiden Celebrini",
+                  "shortName": "A. Celebrini",
+                  "jersey": "22",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                    "id": "4",
+                    "name": "Defense",
+                    "displayName": "Defense",
+                    "abbreviation": "D",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5206622",
+                  "uid": "s:70~l:91~a:5206622",
+                  "lastName": "Frechette",
+                  "displayName": "Mick Frechette",
+                  "shortName": "M. Frechette",
+                  "jersey": "14",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                    "id": "4",
+                    "name": "Defense",
+                    "displayName": "Defense",
+                    "abbreviation": "D",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5216918",
+                  "uid": "s:70~l:91~a:5216918",
+                  "lastName": "Hutson",
+                  "displayName": "Cole Hutson",
+                  "shortName": "C. Hutson",
+                  "jersey": "44",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                    "id": "4",
+                    "name": "Defense",
+                    "displayName": "Defense",
+                    "abbreviation": "D",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-3",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "6",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5188434",
+                  "uid": "s:70~l:91~a:5188434",
+                  "lastName": "McCarthy",
+                  "displayName": "Gavin McCarthy",
+                  "shortName": "G. McCarthy",
+                  "jersey": "2",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                    "id": "4",
+                    "name": "Defense",
+                    "displayName": "Defense",
+                    "abbreviation": "D",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5136661",
+                  "uid": "s:70~l:91~a:5136661",
+                  "lastName": "Page",
+                  "displayName": "Jack Page",
+                  "shortName": "J. Page",
+                  "jersey": "19",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                    "id": "4",
+                    "name": "Defense",
+                    "displayName": "Defense",
+                    "abbreviation": "D",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5149180",
+                  "uid": "s:70~l:91~a:5149180",
+                  "lastName": "Willander",
+                  "displayName": "Tom Willander",
+                  "shortName": "T. Willander",
+                  "jersey": "5",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                    "id": "4",
+                    "name": "Defense",
+                    "displayName": "Defense",
+                    "abbreviation": "D",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": false,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "3",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "goalies",
+            "keys": [
+              "goalsAgainst",
+              "shotsAgainst",
+              "shootoutSaves",
+              "shootoutShotsAgainst",
+              "saves",
+              "savePct",
+              "evenStrengthSaves",
+              "powerPlaySaves",
+              "shortHandedSaves",
+              "timeOnIce",
+              "ytdGoals",
+              "penaltyMinutes"
+            ],
+            "labels": [
+              "GA",
+              "SA",
+              "SOS",
+              "SOSA",
+              "SV",
+              "SV%",
+              "ESSV",
+              "PPSV",
+              "SHSV",
+              "TOI",
+              "YTDG",
+              "PIM"
+            ],
+            "descriptions": [
+              "Total goals against.",
+              "Total shots against.",
+              "Total shootout saves.",
+              "Total shootout shots against.",
+              "Total saves.",
+              "Percentage of shots saved.",
+              "Saves made at even strength.",
+              "Saves made while in a power play.",
+              "Saves made while shorthanded",
+              "Total time on ice.",
+              "Year to date goals/",
+              "Total penalty minutes."
+            ],
+            "athletes": [
+              {
+                "athlete": {
+                  "id": "5216924",
+                  "uid": "s:70~l:91~a:5216924",
+                  "lastName": "Yegorov",
+                  "displayName": "Mikhail Yegorov",
+                  "shortName": "M. Yegorov",
+                  "jersey": "40",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/5?lang=en&region=us",
+                    "id": "5",
+                    "name": "Goaltender",
+                    "displayName": "Goaltender",
+                    "abbreviation": "G",
+                    "leaf": false
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "5",
+                  "27",
+                  "0",
+                  "0",
+                  "22",
+                  ".815",
+                  "0",
+                  "0",
+                  "0",
+                  "60:00",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          }
+        ],
+        "displayOrder": 1
+      },
+      {
+        "team": {
+          "id": "2711",
+          "uid": "s:70~l:91~t:2711",
+          "slug": "western-michigan-broncos",
+          "location": "Western Michigan",
+          "name": "Broncos",
+          "abbreviation": "WMU",
+          "displayName": "Western Michigan Broncos",
+          "shortDisplayName": "Western Michigan",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png"
+        },
+        "statistics": [
+          {
+            "name": "forwards",
+            "keys": [
+              "blockedShots",
+              "hits",
+              "takeaways",
+              "plusMinus",
+              "timeOnIce",
+              "powerPlayTimeOnIce",
+              "shortHandedTimeOnIce",
+              "evenStrengthTimeOnIce",
+              "shifts",
+              "goals",
+              "ytdGoals",
+              "assists",
+              "shotsTotal",
+              "shotsMissed",
+              "shootoutGoals",
+              "faceoffsWon",
+              "faceoffsLost",
+              "faceoffPercent",
+              "giveaways",
+              "penalties",
+              "penaltyMinutes"
+            ],
+            "labels": [
+              "BS",
+              "HT",
+              "TK",
+              "+/-",
+              "TOI",
+              "PPTOI",
+              "SHTOI",
+              "ESTOI",
+              "SHFT",
+              "G",
+              "YTDG",
+              "A",
+              "S",
+              "SM",
+              "SOG",
+              "FW",
+              "FL",
+              "FO%",
+              "GV",
+              "PN",
+              "PIM"
+            ],
+            "descriptions": [
+              "Total shots blocked.",
+              "Total hits.",
+              "Total takeaways.",
+              "Plus/Minus Rating",
+              "Total time on ice.",
+              "Total power play time on ice.",
+              "Total short handed time on ice.",
+              "Total even strength time on ice.",
+              "Total shifts.",
+              "Total goals scored.",
+              "Year to date goals/",
+              "Total goal assists.",
+              "Total shots.",
+              "Total missed shots.",
+              "Total shootout goals.",
+              "Total faceoffs won.",
+              "Total faceoffs lost.",
+              "Percentage of faceoffs won.",
+              "Total giveaways.",
+              "Total number of penalties.",
+              "Total penalty minutes."
+            ],
+            "athletes": [
+              {
+                "athlete": {
+                  "id": "5206836",
+                  "uid": "s:70~l:91~a:5206836",
+                  "lastName": "Bump",
+                  "displayName": "Alex Bump",
+                  "shortName": "A. Bump",
+                  "jersey": "20",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "3",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "4997050",
+                  "uid": "s:70~l:91~a:4997050",
+                  "lastName": "Costantini",
+                  "displayName": "Matteo Costantini",
+                  "shortName": "M. Costantini",
+                  "jersey": "25",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5275386",
+                  "uid": "s:70~l:91~a:5275386",
+                  "lastName": "Hakkarainen",
+                  "displayName": "Iiro Hakkarainen",
+                  "shortName": "I. Hakkarainen",
+                  "jersey": "22",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "1",
+                  "0",
+                  "1",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5188380",
+                  "uid": "s:70~l:91~a:5188380",
+                  "lastName": "Henricks",
+                  "displayName": "Ty Henricks",
+                  "shortName": "T. Henricks",
+                  "jersey": "17",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "4996087",
+                  "uid": "s:70~l:91~a:4996087",
+                  "lastName": "Knuble",
+                  "displayName": "Cam Knuble",
+                  "shortName": "C. Knuble",
+                  "jersey": "19",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5136628",
+                  "uid": "s:70~l:91~a:5136628",
+                  "lastName": "Lemyre",
+                  "displayName": "Tristan Lemyre",
+                  "shortName": "T. Lemyre",
+                  "jersey": "29",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5206840",
+                  "uid": "s:70~l:91~a:5206840",
+                  "lastName": "Michaels",
+                  "displayName": "Owen Michaels",
+                  "shortName": "O. Michaels",
+                  "jersey": "34",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "3",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5188663",
+                  "uid": "s:70~l:91~a:5188663",
+                  "lastName": "Nehring",
+                  "displayName": "Zach Nehring",
+                  "shortName": "Z. Nehring",
+                  "jersey": "8",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "4697792",
+                  "uid": "s:70~l:91~a:4697792",
+                  "lastName": "Schingoethe",
+                  "displayName": "Wyatt Schingoethe",
+                  "shortName": "W. Schingoethe",
+                  "jersey": "18",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "1",
+                  "0",
+                  "1",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5275384",
+                  "uid": "s:70~l:91~a:5275384",
+                  "lastName": "Slukynsky",
+                  "displayName": "Grant Slukynsky",
+                  "shortName": "G. Slukynsky",
+                  "jersey": "13",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5206837",
+                  "uid": "s:70~l:91~a:5206837",
+                  "lastName": "Szydlowski",
+                  "displayName": "Garrett Szydlowski",
+                  "shortName": "G. Szydlowski",
+                  "jersey": "24",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5275387",
+                  "uid": "s:70~l:91~a:5275387",
+                  "lastName": "Valente",
+                  "displayName": "Liam Valente",
+                  "shortName": "L. Valente",
+                  "jersey": "23",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "5",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "4996085",
+                  "uid": "s:70~l:91~a:4996085",
+                  "lastName": "Washe",
+                  "displayName": "Tim Washe",
+                  "shortName": "T. Washe",
+                  "jersey": "16",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                    "id": "20",
+                    "name": "Forward",
+                    "displayName": "Forward",
+                    "abbreviation": "F",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": false,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "defenses",
+            "keys": [
+              "blockedShots",
+              "hits",
+              "takeaways",
+              "plusMinus",
+              "timeOnIce",
+              "powerPlayTimeOnIce",
+              "shortHandedTimeOnIce",
+              "evenStrengthTimeOnIce",
+              "shifts",
+              "goals",
+              "ytdGoals",
+              "assists",
+              "shotsTotal",
+              "shotsMissed",
+              "shootoutGoals",
+              "faceoffsWon",
+              "faceoffsLost",
+              "faceoffPercent",
+              "giveaways",
+              "penalties",
+              "penaltyMinutes"
+            ],
+            "labels": [
+              "BS",
+              "HT",
+              "TK",
+              "+/-",
+              "TOI",
+              "PPTOI",
+              "SHTOI",
+              "ESTOI",
+              "SHFT",
+              "G",
+              "YTDG",
+              "A",
+              "S",
+              "SM",
+              "SOG",
+              "FW",
+              "FL",
+              "FO%",
+              "GV",
+              "PN",
+              "PIM"
+            ],
+            "descriptions": [
+              "Total shots blocked.",
+              "Total hits.",
+              "Total takeaways.",
+              "Plus/Minus Rating",
+              "Total time on ice.",
+              "Total power play time on ice.",
+              "Total short handed time on ice.",
+              "Total even strength time on ice.",
+              "Total shifts.",
+              "Total goals scored.",
+              "Year to date goals/",
+              "Total goal assists.",
+              "Total shots.",
+              "Total missed shots.",
+              "Total shootout goals.",
+              "Total faceoffs won.",
+              "Total faceoffs lost.",
+              "Percentage of faceoffs won.",
+              "Total giveaways.",
+              "Total number of penalties.",
+              "Total penalty minutes."
+            ],
+            "athletes": [
+              {
+                "athlete": {
+                  "id": "5206833",
+                  "uid": "s:70~l:91~a:5206833",
+                  "lastName": "Crusberg-Roseen",
+                  "displayName": "Cole Crusberg-Roseen",
+                  "shortName": "C. Crusberg-Roseen",
+                  "jersey": "3",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                    "id": "4",
+                    "name": "Defense",
+                    "displayName": "Defense",
+                    "abbreviation": "D",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "3",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5275379",
+                  "uid": "s:70~l:91~a:5275379",
+                  "lastName": "Drazner",
+                  "displayName": "Robby Drazner",
+                  "shortName": "R. Drazner",
+                  "jersey": "4",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                    "id": "4",
+                    "name": "Defense",
+                    "displayName": "Defense",
+                    "abbreviation": "D",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "4997152",
+                  "uid": "s:70~l:91~a:4997152",
+                  "lastName": "Kramer",
+                  "displayName": "Brian Kramer",
+                  "shortName": "B. Kramer",
+                  "jersey": "14",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                    "id": "4",
+                    "name": "Defense",
+                    "displayName": "Defense",
+                    "abbreviation": "D",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "3",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5275380",
+                  "uid": "s:70~l:91~a:5275380",
+                  "lastName": "Mesic",
+                  "displayName": "Jack Mesic",
+                  "shortName": "J. Mesic",
+                  "jersey": "6",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                    "id": "4",
+                    "name": "Defense",
+                    "displayName": "Defense",
+                    "abbreviation": "D",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5275382",
+                  "uid": "s:70~l:91~a:5275382",
+                  "lastName": "Sharp",
+                  "displayName": "Zack Sharp",
+                  "shortName": "Z. Sharp",
+                  "jersey": "10",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                    "id": "4",
+                    "name": "Defense",
+                    "displayName": "Defense",
+                    "abbreviation": "D",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5104228",
+                  "uid": "s:70~l:91~a:5104228",
+                  "lastName": "Sjolund",
+                  "displayName": "Samuel Sjolund",
+                  "shortName": "S. Sjolund",
+                  "jersey": "33",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                    "id": "4",
+                    "name": "Defense",
+                    "displayName": "Defense",
+                    "abbreviation": "D",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "athlete": {
+                  "id": "5275388",
+                  "uid": "s:70~l:91~a:5275388",
+                  "lastName": "Vaisanen",
+                  "displayName": "Joona Vaisanen",
+                  "shortName": "J. Vaisanen",
+                  "jersey": "27",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                    "id": "4",
+                    "name": "Defense",
+                    "displayName": "Defense",
+                    "abbreviation": "D",
+                    "leaf": false,
+                    "parent": {
+                      "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                    }
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "goalies",
+            "keys": [
+              "goalsAgainst",
+              "shotsAgainst",
+              "shootoutSaves",
+              "shootoutShotsAgainst",
+              "saves",
+              "savePct",
+              "evenStrengthSaves",
+              "powerPlaySaves",
+              "shortHandedSaves",
+              "timeOnIce",
+              "ytdGoals",
+              "penaltyMinutes"
+            ],
+            "labels": [
+              "GA",
+              "SA",
+              "SOS",
+              "SOSA",
+              "SV",
+              "SV%",
+              "ESSV",
+              "PPSV",
+              "SHSV",
+              "TOI",
+              "YTDG",
+              "PIM"
+            ],
+            "descriptions": [
+              "Total goals against.",
+              "Total shots against.",
+              "Total shootout saves.",
+              "Total shootout shots against.",
+              "Total saves.",
+              "Percentage of shots saved.",
+              "Saves made at even strength.",
+              "Saves made while in a power play.",
+              "Saves made while shorthanded",
+              "Total time on ice.",
+              "Year to date goals/",
+              "Total penalty minutes."
+            ],
+            "athletes": [
+              {
+                "athlete": {
+                  "id": "5188589",
+                  "uid": "s:70~l:91~a:5188589",
+                  "lastName": "Slukynsky",
+                  "displayName": "Hampton Slukynsky",
+                  "shortName": "H. Slukynsky",
+                  "jersey": "30",
+                  "position": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/5?lang=en&region=us",
+                    "id": "5",
+                    "name": "Goaltender",
+                    "displayName": "Goaltender",
+                    "abbreviation": "G",
+                    "leaf": false
+                  },
+                  "active": true,
+                  "links": [],
+                  "scratched": false
+                },
+                "stats": [
+                  "2",
+                  "26",
+                  "0",
+                  "0",
+                  "24",
+                  ".923",
+                  "0",
+                  "0",
+                  "0",
+                  "60:00",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          }
+        ],
+        "displayOrder": 2
+      }
+    ]
+  },
+  "format": {
+    "regulation": {
+      "periods": 3,
+      "displayName": "Period",
+      "slug": "period",
+      "clock": 1200
+    },
+    "suddenDeath": {
+      "periods": 0,
+      "clock": 300
+    }
+  },
+  "gameInfo": {
+    "venue": {
+      "id": "1839",
+      "fullName": "Enterprise Center",
+      "address": {
+        "city": "St. Louis",
+        "state": "MO",
+        "country": "USA"
+      },
+      "grass": false,
+      "images": []
+    },
+    "attendance": 0,
+    "officials": []
+  },
+  "broadcasts": [
+    {
+      "type": {
+        "id": "4",
+        "shortName": "Streaming",
+        "longName": "Streaming",
+        "slug": "streaming"
+      },
+      "station": "ESPN+",
+      "market": {
+        "id": "1",
+        "type": "National"
+      },
+      "media": {
+        "callLetters": "ESPN+",
+        "name": "ESPN+",
+        "shortName": "ESPN+"
+      },
+      "lang": "en",
+      "region": "us",
+      "isNational": true
+    }
+  ],
+  "header": {
+    "id": "401717648",
+    "uid": "s:70~l:91~e:401717648",
+    "season": {
+      "year": 2025,
+      "current": true,
+      "type": 3
+    },
+    "timeValid": true,
+    "competitions": [
+      {
+        "id": "401717648",
+        "uid": "s:70~l:91~e:401717648~c:401717648",
+        "date": "2025-04-12T23:30Z",
+        "neutralSite": true,
+        "boxscoreAvailable": true,
+        "commentaryAvailable": false,
+        "liveAvailable": false,
+        "onWatchESPN": true,
+        "recent": false,
+        "wallclockAvailable": true,
+        "boxscoreSource": "basic",
+        "playByPlaySource": "basic",
+        "competitors": [
+          {
+            "id": "2711",
+            "uid": "s:70~l:91~t:2711",
+            "order": 0,
+            "homeAway": "home",
+            "winner": true,
+            "team": {
+              "id": "2711",
+              "guid": "36c06eb6-a0c5-3946-81d7-6f2473e5792e",
+              "uid": "s:70~l:91~t:2711",
+              "location": "Western Michigan",
+              "name": "Broncos",
+              "nickname": "Western Michigan",
+              "abbreviation": "WMU",
+              "displayName": "Western Michigan Broncos",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "default"
+                  ],
+                  "lastUpdated": "2022-09-09T18:08Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/2711.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "dark"
+                  ],
+                  "lastUpdated": "2022-09-09T18:08Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/primary_logo_on_white_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_white_color"
+                  ],
+                  "lastUpdated": "2025-03-06T21:33Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/primary_logo_on_black_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_black_color"
+                  ],
+                  "lastUpdated": "2025-03-06T21:33Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/primary_logo_on_primary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_primary_color"
+                  ],
+                  "lastUpdated": "2025-03-06T21:33Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/primary_logo_on_secondary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_secondary_color"
+                  ],
+                  "lastUpdated": "2025-03-06T21:33Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/secondary_logo_on_white_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_white_color"
+                  ],
+                  "lastUpdated": "2025-03-06T21:33Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/secondary_logo_on_black_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_black_color"
+                  ],
+                  "lastUpdated": "2025-03-06T21:33Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/secondary_logo_on_primary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_primary_color"
+                  ],
+                  "lastUpdated": "2025-03-06T21:33Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/secondary_logo_on_secondary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_secondary_color"
+                  ],
+                  "lastUpdated": "2025-03-06T21:33Z"
+                }
+              ],
+              "links": []
+            },
+            "score": "6",
+            "linescores": [
+              {
+                "displayValue": "2"
+              },
+              {
+                "displayValue": "1"
+              },
+              {
+                "displayValue": "3"
+              }
+            ],
+            "record": [],
+            "possession": false
+          },
+          {
+            "id": "104",
+            "uid": "s:70~l:91~t:104",
+            "order": 1,
+            "homeAway": "away",
+            "winner": false,
+            "team": {
+              "id": "104",
+              "guid": "0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c",
+              "uid": "s:70~l:91~t:104",
+              "location": "Boston University",
+              "name": "Terriers",
+              "nickname": "Boston University",
+              "abbreviation": "BU",
+              "displayName": "Boston University Terriers",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/104.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "default"
+                  ],
+                  "lastUpdated": "2020-07-22T18:35Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/104.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "dark"
+                  ],
+                  "lastUpdated": "2020-07-22T18:35Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/primary_logo_on_white_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_white_color"
+                  ],
+                  "lastUpdated": "2025-03-05T22:00Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/primary_logo_on_black_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_black_color"
+                  ],
+                  "lastUpdated": "2025-03-05T22:00Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/primary_logo_on_primary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_primary_color"
+                  ],
+                  "lastUpdated": "2025-03-05T22:00Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/primary_logo_on_secondary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "primary_logo_on_secondary_color"
+                  ],
+                  "lastUpdated": "2025-03-05T22:00Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/secondary_logo_on_white_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_white_color"
+                  ],
+                  "lastUpdated": "2025-03-05T22:00Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/secondary_logo_on_black_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_black_color"
+                  ],
+                  "lastUpdated": "2025-03-05T22:00Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/secondary_logo_on_primary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_primary_color"
+                  ],
+                  "lastUpdated": "2025-03-05T22:00Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/secondary_logo_on_secondary_color.png",
+                  "width": 4096,
+                  "height": 4096,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "secondary_logo_on_secondary_color"
+                  ],
+                  "lastUpdated": "2025-03-05T22:00Z"
+                }
+              ],
+              "links": []
+            },
+            "score": "2",
+            "linescores": [
+              {
+                "displayValue": "1"
+              },
+              {
+                "displayValue": "1"
+              },
+              {
+                "displayValue": "0"
+              }
+            ],
+            "record": [],
+            "possession": false
+          }
+        ],
+        "status": {
+          "type": {
+            "id": "3",
+            "name": "STATUS_FINAL",
+            "state": "post",
+            "completed": true,
+            "description": "Final",
+            "detail": "Final",
+            "shortDetail": "Final"
+          },
+          "featuredAthletes": [
+            {
+              "name": "winningGoalie",
+              "displayName": "Winning Goalie",
+              "playerId": 5188589,
+              "athlete": {
+                "id": "5188589",
+                "uid": "s:70~l:91~a:5188589",
+                "fullName": "Hampton Slukynsky",
+                "displayName": "Hampton Slukynsky",
+                "shortName": "H. Slukynsky"
+              },
+              "team": {
+                "id": "2711",
+                "name": "Broncos",
+                "nickname": "Western Michigan",
+                "logos": [
+                  {
+                    "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png",
+                    "width": 500,
+                    "height": 500,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "default"
+                    ],
+                    "lastUpdated": "2022-09-09T18:08Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/2711.png",
+                    "width": 500,
+                    "height": 500,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "dark"
+                    ],
+                    "lastUpdated": "2022-09-09T18:08Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/primary_logo_on_white_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "primary_logo_on_white_color"
+                    ],
+                    "lastUpdated": "2025-03-06T21:33Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/primary_logo_on_black_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "primary_logo_on_black_color"
+                    ],
+                    "lastUpdated": "2025-03-06T21:33Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/primary_logo_on_primary_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "primary_logo_on_primary_color"
+                    ],
+                    "lastUpdated": "2025-03-06T21:33Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/primary_logo_on_secondary_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "primary_logo_on_secondary_color"
+                    ],
+                    "lastUpdated": "2025-03-06T21:33Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/secondary_logo_on_white_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "secondary_logo_on_white_color"
+                    ],
+                    "lastUpdated": "2025-03-06T21:33Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/secondary_logo_on_black_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "secondary_logo_on_black_color"
+                    ],
+                    "lastUpdated": "2025-03-06T21:33Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/secondary_logo_on_primary_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "secondary_logo_on_primary_color"
+                    ],
+                    "lastUpdated": "2025-03-06T21:33Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/36c06eb6-a0c5-3946-81d7-6f2473e5792e/logos/secondary_logo_on_secondary_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "secondary_logo_on_secondary_color"
+                    ],
+                    "lastUpdated": "2025-03-06T21:33Z"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "losingGoalie",
+              "displayName": "Losing Goalie",
+              "playerId": 5216924,
+              "athlete": {
+                "id": "5216924",
+                "uid": "s:70~l:91~a:5216924",
+                "fullName": "Mikhail Yegorov",
+                "displayName": "Mikhail Yegorov",
+                "shortName": "M. Yegorov"
+              },
+              "team": {
+                "id": "104",
+                "name": "Terriers",
+                "nickname": "Boston University",
+                "logos": [
+                  {
+                    "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/104.png",
+                    "width": 500,
+                    "height": 500,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "default"
+                    ],
+                    "lastUpdated": "2020-07-22T18:35Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/104.png",
+                    "width": 500,
+                    "height": 500,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "dark"
+                    ],
+                    "lastUpdated": "2020-07-22T18:35Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/primary_logo_on_white_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "primary_logo_on_white_color"
+                    ],
+                    "lastUpdated": "2025-03-05T22:00Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/primary_logo_on_black_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "primary_logo_on_black_color"
+                    ],
+                    "lastUpdated": "2025-03-05T22:00Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/primary_logo_on_primary_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "primary_logo_on_primary_color"
+                    ],
+                    "lastUpdated": "2025-03-05T22:00Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/primary_logo_on_secondary_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "primary_logo_on_secondary_color"
+                    ],
+                    "lastUpdated": "2025-03-05T22:00Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/secondary_logo_on_white_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "secondary_logo_on_white_color"
+                    ],
+                    "lastUpdated": "2025-03-05T22:00Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/secondary_logo_on_black_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "secondary_logo_on_black_color"
+                    ],
+                    "lastUpdated": "2025-03-05T22:00Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/secondary_logo_on_primary_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "secondary_logo_on_primary_color"
+                    ],
+                    "lastUpdated": "2025-03-05T22:00Z"
+                  },
+                  {
+                    "href": "https://a.espncdn.com/guid/0dcae7b4-46d1-3ba5-92f3-eb8bb9eaed8c/logos/secondary_logo_on_secondary_color.png",
+                    "width": 4096,
+                    "height": 4096,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "secondary_logo_on_secondary_color"
+                    ],
+                    "lastUpdated": "2025-03-05T22:00Z"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "broadcasts": [
+          {
+            "type": {
+              "id": "1",
+              "shortName": "TV"
+            },
+            "market": {
+              "id": "1",
+              "type": "National"
+            },
+            "media": {
+              "shortName": "ESPN2"
+            },
+            "lang": "en",
+            "region": "us",
+            "isNational": true
+          },
+          {
+            "type": {
+              "id": "4",
+              "shortName": "Streaming"
+            },
+            "market": {
+              "id": "1",
+              "type": "National"
+            },
+            "media": {
+              "shortName": "ESPN+"
+            },
+            "lang": "en",
+            "region": "us",
+            "isNational": true
+          }
+        ],
+        "series": [
+          {
+            "type": "playoff",
+            "title": "Playoff Series",
+            "description": "Playoff Series",
+            "summary": "",
+            "completed": false,
+            "totalCompetitions": 0,
+            "competitors": [
+              {
+                "id": "2711",
+                "uid": "s:70~l:91~t:2711",
+                "wins": 0,
+                "ties": 0,
+                "team": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/seasons/2025/teams/2711?lang=en&region=us"
+                }
+              },
+              {
+                "id": "104",
+                "uid": "s:70~l:91~t:104",
+                "wins": 0,
+                "ties": 0,
+                "team": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/seasons/2025/teams/104?lang=en&region=us"
+                }
+              }
+            ],
+            "events": []
+          }
+        ],
+        "boxscoreMinutes": false
+      }
+    ],
+    "links": [
+      {
+        "rel": [
+          "boxscore",
+          "desktop",
+          "event"
+        ],
+        "href": "https://www.espn.com/mens-college-hockey/boxscore?gameId=401717648",
+        "text": "Box Score",
+        "shortText": "Box Score",
+        "isExternal": false,
+        "isPremium": false
+      },
+      {
+        "rel": [
+          "videos",
+          "desktop",
+          "event"
+        ],
+        "href": "https://www.espn.com/mens-college-hockey/video?gameId=401717648",
+        "text": "Videos",
+        "shortText": "Videos",
+        "isExternal": false,
+        "isPremium": false
+      }
+    ],
+    "league": {
+      "id": "91",
+      "uid": "s:70~l:91",
+      "name": "NCAA Men's Ice Hockey",
+      "abbreviation": "NCAAH",
+      "slug": "mens-college-hockey",
+      "isTournament": false,
+      "links": [
+        {
+          "rel": [
+            "index",
+            "desktop",
+            "league"
+          ],
+          "href": "https://www.espn.com/college-sports/",
+          "text": "Index"
+        },
+        {
+          "rel": [
+            "index",
+            "sportscenter",
+            "app",
+            "league"
+          ],
+          "href": "sportscenter://x-callback-url/showClubhouse?uid=s:70~l:91",
+          "text": "Index"
+        },
+        {
+          "rel": [
+            "rankings",
+            "desktop",
+            "league"
+          ],
+          "href": "https://www.espn.com/college-sports/rankings/_/pollId/10363/sportId/13030000",
+          "text": "Rankings"
+        },
+        {
+          "rel": [
+            "scores",
+            "desktop",
+            "league"
+          ],
+          "href": "https://www.espn.com/mens-college-hockey/scoreboard",
+          "text": "Scores"
+        }
+      ]
+    },
+    "gameNote": "NCAA Men's Hockey National Championship"
+  },
+  "news": {
+    "header": "NCAAH News",
+    "link": {
+      "language": "en",
+      "rel": [
+        "index",
+        "desktop",
+        "league"
+      ],
+      "href": "https://www.espn.com/college-sports/",
+      "text": "All NCAAH News",
+      "shortText": "All News",
+      "isExternal": false,
+      "isPremium": false
+    },
+    "articles": [
+      {
+        "id": 45764381,
+        "nowId": "1-45764381",
+        "contentKey": "45764381-1-5-1",
+        "dataSourceIdentifier": "8c838b4a9285d",
+        "type": "HeadlineNews",
+        "headline": "Donald Trump considers executive order on NCAA athletes' employment status",
+        "description": "President Donald Trump is considering an executive order that would require federal authorities to clarify whether college athletes can be considered employees of their schools.",
+        "lastModified": "2025-07-18T07:27:47Z",
+        "published": "2025-07-17T19:54:00Z",
+        "images": [
+          {
+            "dataSourceIdentifier": "15ca070f4ead6",
+            "id": 45258806,
+            "type": "header",
+            "name": "Todd Golden Donald Trump [1296x729]",
+            "caption": "Florida men's basketball coach Todd Golden presents President Donald Trump with a uniform with his name on it as Trump hosted the Gators to celebrate their 2025 NCAA championship at the White House on Tuesday.",
+            "credit": "Chip Somodevilla/Getty Images",
+            "height": 729,
+            "width": 1296,
+            "url": "https://a.espncdn.com/photo/2025/0521/r1496365_1296x729_16-9.jpg"
+          },
+          {
+            "type": "Media",
+            "name": "Big Ten, Big 12 to partner with PayPal to enable payments for student-athletes",
+            "caption": "Big 12 commissioner Brett Yormark joins \"Get Up\" to announce that the Big Ten and Big 12 will partner with PayPal to distribute funds to student-athletes.",
+            "height": 324,
+            "width": 576,
+            "url": "https://a.espncdn.com/media/motion/2025/0626/dm_250626_Greeny/dm_250626_Greeny.jpg"
+          }
+        ],
+        "categories": [
+          {
+            "id": 647280,
+            "type": "contributor",
+            "guid": "37be3dad-8916-3040-bba4-167834f0afd0",
+            "description": "Pete Thamel",
+            "slug": "pete-thamel",
+            "contributor": {
+              "id": 3899,
+              "description": "Pete Thamel",
+              "links": {
+                "web": {
+                  "contributors": {
+                    "href": "https://www.espn.com/contributor/pete-thamel"
+                  }
+                },
+                "mobile": {
+                  "contributors": {
+                    "href": "https://www.espn.com/contributor/pete-thamel"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 701826,
+            "type": "contributor",
+            "guid": "7f535a35-c6b2-3389-bb85-da565e38fc32",
+            "description": "Dan Murphy",
+            "slug": "dan-murphy",
+            "contributor": {
+              "id": 2383,
+              "description": "Dan Murphy",
+              "links": {
+                "web": {},
+                "mobile": {}
+              }
+            }
+          },
+          {
+            "id": 409224,
+            "type": "topic",
+            "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+            "description": "news",
+            "sportId": 0,
+            "topicId": 781
+          },
+          {
+            "id": 48676,
+            "type": "league",
+            "uid": "s:1~l:102",
+            "guid": "7d99b155-bb1c-3f1d-be39-ea62eec72b9f",
+            "description": "NCAA Softball",
+            "sportId": 102,
+            "leagueId": 102,
+            "league": {
+              "id": 102,
+              "description": "NCAA Softball",
+              "abbreviation": "CSOFT",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 48675,
+            "type": "league",
+            "uid": "s:70~l:92",
+            "guid": "a5346237-9479-316f-80ec-071c09af4903",
+            "description": "NCAA Women's Hockey",
+            "sportId": 92,
+            "leagueId": 92,
+            "league": {
+              "id": 92,
+              "description": "NCAA Women's Hockey",
+              "abbreviation": "CWHOC",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 48677,
+            "type": "league",
+            "uid": "s:400~l:401",
+            "guid": "a9da481d-b2b4-3ce8-a1f3-2b58547b7c34",
+            "description": "NCAA Men's Volleyball",
+            "sportId": 401,
+            "leagueId": 401,
+            "league": {
+              "id": 401,
+              "description": "NCAA Men's Volleyball",
+              "abbreviation": "NCAA Men's Volleyball",
+              "links": {
+                "web": {},
+                "mobile": {}
+              }
+            }
+          },
+          {
+            "id": 9576,
+            "type": "league",
+            "uid": "s:40~l:41",
+            "guid": "11965179-4504-3b99-983e-83ea0e36d5f3",
+            "description": "NCAA Men's Basketball",
+            "sportId": 41,
+            "leagueId": 41,
+            "league": {
+              "id": 41,
+              "description": "NCAA Men's Basketball",
+              "abbreviation": "NCAAM",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/mens-college-basketball/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/mens-college-basketball/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 48674,
+            "type": "league",
+            "uid": "s:70~l:91",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702",
+            "description": "NCAA Men's Hockey",
+            "sportId": 91,
+            "leagueId": 91,
+            "league": {
+              "id": 91,
+              "description": "NCAA Men's Hockey",
+              "abbreviation": "NCAAH",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 14486,
+            "type": "league",
+            "guid": "d765930d-4c8c-47ed-8b85-8f1955d4a602",
+            "description": "NCAA - Other sports",
+            "sportId": 0,
+            "leagueId": 3170,
+            "league": {
+              "id": 3170,
+              "description": "NCAA - Other sports",
+              "links": {
+                "web": {},
+                "mobile": {}
+              }
+            }
+          },
+          {
+            "id": 129588,
+            "type": "league",
+            "uid": "s:400~l:402",
+            "guid": "c977ce8a-abd5-3522-ad36-b7b496ab5f84",
+            "description": "NCAA Women's Volleyball",
+            "sportId": 402,
+            "leagueId": 402,
+            "league": {
+              "id": 402,
+              "description": "NCAA Women's Volleyball",
+              "abbreviation": "NCAA Women's Volleyball",
+              "links": {
+                "web": {},
+                "mobile": {}
+              }
+            }
+          },
+          {
+            "id": 9571,
+            "type": "league",
+            "uid": "s:20~l:23",
+            "guid": "0f8e3d42-fa27-3f60-9e8d-276e4892f50e",
+            "description": "NCAA Football",
+            "sportId": 23,
+            "leagueId": 23,
+            "league": {
+              "id": 23,
+              "description": "NCAA Football",
+              "abbreviation": "NCAAF",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-football/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-football/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 48650,
+            "type": "league",
+            "uid": "s:1~l:14",
+            "guid": "894d4ec9-d078-3ab1-a173-cbf3bd205b06",
+            "description": "NCAA Baseball",
+            "sportId": 14,
+            "leagueId": 14,
+            "league": {
+              "id": 14,
+              "description": "NCAA Baseball",
+              "abbreviation": "CBASE",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 48680,
+            "type": "league",
+            "uid": "s:500~l:503",
+            "guid": "461f2718-47e3-3cea-9cd2-1a2b52fb15b3",
+            "description": "NCAA Women's Lacrosse",
+            "sportId": 503,
+            "leagueId": 503,
+            "league": {
+              "id": 503,
+              "description": "NCAA Women's Lacrosse",
+              "abbreviation": "NCAAW Lacrosse",
+              "links": {
+                "web": {},
+                "mobile": {}
+              }
+            }
+          },
+          {
+            "id": 9578,
+            "type": "league",
+            "uid": "s:40~l:54",
+            "guid": "45cd175c-f9f2-338b-83b9-6d7d64001733",
+            "description": "NCAA Women's Basketball",
+            "sportId": 54,
+            "leagueId": 54,
+            "league": {
+              "id": 54,
+              "description": "NCAA Women's Basketball",
+              "abbreviation": "NCAAW",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/womens-college-basketball/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/womens-college-basketball/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 48679,
+            "type": "league",
+            "uid": "s:500~l:502",
+            "guid": "5502ec5b-0e6b-3922-8086-2381731c1d26",
+            "description": "NCAA Men's Lacrosse",
+            "sportId": 502,
+            "leagueId": 502,
+            "league": {
+              "id": 502,
+              "description": "NCAA Men's Lacrosse",
+              "abbreviation": "NCAAM Lacrosse",
+              "links": {
+                "web": {},
+                "mobile": {}
+              }
+            }
+          },
+          {
+            "type": "guid",
+            "guid": "37be3dad-8916-3040-bba4-167834f0afd0"
+          },
+          {
+            "type": "guid",
+            "guid": "7f535a35-c6b2-3389-bb85-da565e38fc32"
+          },
+          {
+            "type": "guid",
+            "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+          },
+          {
+            "type": "guid",
+            "guid": "7d99b155-bb1c-3f1d-be39-ea62eec72b9f"
+          },
+          {
+            "type": "guid",
+            "guid": "a5346237-9479-316f-80ec-071c09af4903"
+          },
+          {
+            "type": "guid",
+            "guid": "a9da481d-b2b4-3ce8-a1f3-2b58547b7c34"
+          },
+          {
+            "type": "guid",
+            "guid": "11965179-4504-3b99-983e-83ea0e36d5f3"
+          },
+          {
+            "type": "guid",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702"
+          },
+          {
+            "type": "guid",
+            "guid": "d765930d-4c8c-47ed-8b85-8f1955d4a602"
+          },
+          {
+            "type": "guid",
+            "guid": "c977ce8a-abd5-3522-ad36-b7b496ab5f84"
+          },
+          {
+            "type": "guid",
+            "guid": "0f8e3d42-fa27-3f60-9e8d-276e4892f50e"
+          },
+          {
+            "type": "guid",
+            "guid": "894d4ec9-d078-3ab1-a173-cbf3bd205b06"
+          },
+          {
+            "type": "guid",
+            "guid": "461f2718-47e3-3cea-9cd2-1a2b52fb15b3"
+          },
+          {
+            "type": "guid",
+            "guid": "45cd175c-f9f2-338b-83b9-6d7d64001733"
+          },
+          {
+            "type": "guid",
+            "guid": "5502ec5b-0e6b-3922-8086-2381731c1d26"
+          }
+        ],
+        "premium": false,
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/college-sports/story/_/id/45764381/donald-trump-considers-executive-order-ncaa-athletes-employment-status"
+          },
+          "mobile": {
+            "href": "http://m.espn.go.com/extra/ncaa/story?storyId=45764381"
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/sports/news/45764381"
+            }
+          },
+          "app": {
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showStory?uid=45764381"
+            }
+          }
+        },
+        "byline": "Pete Thamel and Dan Murphy"
+      },
+      {
+        "id": 45697391,
+        "nowId": "1-45697391",
+        "contentKey": "45697391-1-293-1",
+        "dataSourceIdentifier": "3f4544f8a2141",
+        "type": "Media",
+        "headline": "Top NHL prospect Gavin McKenna announces PSU commitment",
+        "description": "Gavin McKenna joins \"SportsCenter\" to announce his official commitment to Penn State University.",
+        "lastModified": "2025-07-17T12:56:58Z",
+        "published": "2025-07-08T22:53:39Z",
+        "images": [
+          {
+            "name": "Top NHL prospect Gavin McKenna announces PSU commitment",
+            "caption": "Gavin McKenna joins \"SportsCenter\" to announce his official commitment to Penn State University.",
+            "alt": "",
+            "height": 324,
+            "width": 576,
+            "url": "https://a.espncdn.com/media/motion/2025/0708/dm_250708_Gavin_commitment_psu/dm_250708_Gavin_commitment_psu.jpg"
+          }
+        ],
+        "categories": [
+          {
+            "id": 640591,
+            "type": "team",
+            "uid": "s:70~l:91~t:213",
+            "guid": "1dc74608-e690-3c20-a3a1-e018f4c5cfa4",
+            "description": "Penn State Nittany Lions",
+            "sportId": 91,
+            "teamId": 213,
+            "team": {
+              "id": 213,
+              "description": "Penn State Nittany Lions"
+            }
+          },
+          {
+            "id": 48674,
+            "type": "league",
+            "uid": "s:70~l:91",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702",
+            "description": "NCAA Men's Hockey",
+            "sportId": 91,
+            "leagueId": 91,
+            "league": {
+              "id": 91,
+              "description": "NCAA Men's Hockey",
+              "abbreviation": "NCAAH",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 9580,
+            "type": "league",
+            "uid": "s:70~l:90",
+            "guid": "1a5f0227-a13e-396c-8cea-8961bc288666",
+            "description": "NHL",
+            "sportId": 90,
+            "leagueId": 90,
+            "league": {
+              "id": 90,
+              "description": "NHL",
+              "abbreviation": "NHL",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/nhl/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/nhl/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "guid",
+            "guid": "1dc74608-e690-3c20-a3a1-e018f4c5cfa4"
+          },
+          {
+            "type": "guid",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702"
+          },
+          {
+            "type": "guid",
+            "guid": "1a5f0227-a13e-396c-8cea-8961bc288666"
+          }
+        ],
+        "premium": false,
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/video/clip?id=45697391",
+            "self": {
+              "href": "https://www.espn.com/video/clip?id=45697391",
+              "dsi": {
+                "href": "https://www.espn.com/video/clip?id=3f4544f8a2141"
+              }
+            },
+            "seo": {
+              "href": "https://www.espn.com/video/clip/_/id/45697391"
+            }
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/video/clips/45697391"
+            },
+            "artwork": {
+              "href": "https://artwork.api.espn.com/artwork/collections/media/5dcfbd03-69a8-4c77-a49f-40776dc3c28f"
+            }
+          },
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showVideo?videoID=45697391&videoDSI=3f4544f8a2141"
+          }
+        }
+      },
+      {
+        "id": 44372307,
+        "nowId": "1-44372307",
+        "contentKey": "44372307-1-6-1",
+        "dataSourceIdentifier": "cc7592396d721",
+        "type": "Story",
+        "headline": "Frozen Four: Western Michigan wins first NCAA men's hockey title",
+        "description": "Scores, highlights, features and more, from the regionals to the Broncos' historic win.",
+        "lastModified": "2025-04-13T02:57:28Z",
+        "published": "2025-04-13T02:10:00Z",
+        "images": [
+          {
+            "dataSourceIdentifier": "e562be381a224",
+            "id": 44650600,
+            "type": "header",
+            "name": "Western Michigan hockey [608x342]",
+            "credit": "Jeff Curry/Imagn Images",
+            "height": 342,
+            "width": 608,
+            "url": "https://a.espncdn.com/photo/2025/0413/r1477982_608x342_16-9.jpg"
+          },
+          {
+            "type": "Media",
+            "name": "Western Michigan claims first NCAA hockey championship in school history",
+            "caption": "In a stunning 6-2 victory over Boston University, Western Michigan wins the national championship, the school's first.",
+            "height": 324,
+            "width": 576,
+            "url": "https://a.espncdn.com/media/motion/2025/0412/dm_250412_dm_chky_celly_pub2tag/dm_250412_dm_chky_celly_pub2tag.jpg"
+          }
+        ],
+        "categories": [
+          {
+            "id": 48674,
+            "type": "league",
+            "uid": "s:70~l:91",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702",
+            "description": "NCAA Men's Hockey",
+            "sportId": 91,
+            "leagueId": 91,
+            "league": {
+              "id": 91,
+              "description": "NCAA Men's Hockey",
+              "abbreviation": "NCAAH",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "guid",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702"
+          }
+        ],
+        "premium": false,
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/college-sports/story/_/id/44372307/2025-frozen-four-ncaa-men-hockey-tournament-schedule-teams-glance"
+          },
+          "mobile": {
+            "href": "http://m.espn.go.com/extra/ncaa/story?storyId=44372307"
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/sports/news/44372307"
+            }
+          },
+          "app": {
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showStory?uid=44372307"
+            }
+          }
+        },
+        "byline": "ESPN"
+      },
+      {
+        "id": 44635343,
+        "nowId": "1-44635343",
+        "contentKey": "44635343-1-5-1",
+        "dataSourceIdentifier": "9ff222f734f31",
+        "type": "HeadlineNews",
+        "headline": "Michigan State forward Isaac Howard wins Hobey Baker award",
+        "description": "Michigan State junior forward Isaac Howard won the Hobey Baker Memorial Award on Friday as college hockey's top player, claiming the honor over finalists Zeev Buium of Denver and Boston College's Ryan Leonard, now with the Capitals.",
+        "lastModified": "2025-04-12T00:20:56Z",
+        "published": "2025-04-12T00:02:00Z",
+        "images": [
+          {
+            "dataSourceIdentifier": "4c42bbd7935aa",
+            "id": 44635495,
+            "type": "header",
+            "name": "Isaac Howard [600x400]",
+            "credit": "Gregory Payan/AP",
+            "height": 400,
+            "width": 600,
+            "url": "https://a.espncdn.com/photo/2025/0412/r1477496_600x400_3-2.jpg"
+          }
+        ],
+        "categories": [
+          {
+            "id": 640756,
+            "type": "team",
+            "uid": "s:70~l:91~t:103",
+            "guid": "2e94defb-0957-34be-aa5a-d591f7553610",
+            "description": "Boston College Eagles",
+            "sportId": 91,
+            "teamId": 103,
+            "team": {
+              "id": 103,
+              "description": "Boston College Eagles"
+            }
+          },
+          {
+            "id": 6161,
+            "type": "team",
+            "uid": "s:70~l:90~t:23",
+            "guid": "cbe677ee-361e-91b4-5cae-6c4c30044743",
+            "description": "Washington Capitals",
+            "sportId": 90,
+            "teamId": 23,
+            "team": {
+              "id": 23,
+              "description": "Washington Capitals",
+              "links": {
+                "web": {
+                  "teams": {
+                    "href": "https://www.espn.com/nhl/team/_/name/wsh/washington-capitals"
+                  }
+                },
+                "mobile": {
+                  "teams": {
+                    "href": "https://www.espn.com/nhl/team/_/name/wsh/washington-capitals"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 409224,
+            "type": "topic",
+            "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+            "description": "news",
+            "sportId": 0,
+            "topicId": 781
+          },
+          {
+            "id": 640683,
+            "type": "team",
+            "uid": "s:70~l:91~t:2172",
+            "guid": "b6466f74-98f0-3e78-a10b-f18121423735",
+            "description": "Denver Pioneers",
+            "sportId": 91,
+            "teamId": 2172,
+            "team": {
+              "id": 2172,
+              "description": "Denver Pioneers"
+            }
+          },
+          {
+            "id": 603782,
+            "type": "athlete",
+            "uid": "s:70~l:90~a:5149172",
+            "guid": "ed7fbeaa-ec2d-3d18-9a0a-8d19b6c8ff72",
+            "description": "Ryan Leonard",
+            "sportId": 90,
+            "athleteId": 5149172,
+            "athlete": {
+              "id": 5149172,
+              "description": "Ryan Leonard",
+              "links": {
+                "web": {
+                  "athletes": {
+                    "href": "https://www.espn.com/nhl/player/_/id/5149172"
+                  }
+                },
+                "mobile": {
+                  "athletes": {
+                    "href": "https://www.espn.com/nhl/player/_/id/5149172"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 6136,
+            "type": "team",
+            "uid": "s:70~l:90~t:20",
+            "guid": "49fa608f-040f-21c1-ebfb-99e8feb8b774",
+            "description": "Tampa Bay Lightning",
+            "sportId": 90,
+            "teamId": 20,
+            "team": {
+              "id": 20,
+              "description": "Tampa Bay Lightning",
+              "links": {
+                "web": {
+                  "teams": {
+                    "href": "https://www.espn.com/nhl/team/_/name/tb/tampa-bay-lightning"
+                  }
+                },
+                "mobile": {
+                  "teams": {
+                    "href": "https://www.espn.com/nhl/team/_/name/tb/tampa-bay-lightning"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 48674,
+            "type": "league",
+            "uid": "s:70~l:91",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702",
+            "description": "NCAA Men's Hockey",
+            "sportId": 91,
+            "leagueId": 91,
+            "league": {
+              "id": 91,
+              "description": "NCAA Men's Hockey",
+              "abbreviation": "NCAAH",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 640747,
+            "type": "team",
+            "uid": "s:70~l:91~t:127",
+            "guid": "d1755f18-51b7-3463-9b8c-23b02d07c7a5",
+            "description": "Michigan State Spartans",
+            "sportId": 91,
+            "teamId": 127,
+            "team": {
+              "id": 127,
+              "description": "Michigan State Spartans"
+            }
+          },
+          {
+            "id": 9580,
+            "type": "league",
+            "uid": "s:70~l:90",
+            "guid": "1a5f0227-a13e-396c-8cea-8961bc288666",
+            "description": "NHL",
+            "sportId": 90,
+            "leagueId": 90,
+            "league": {
+              "id": 90,
+              "description": "NHL",
+              "abbreviation": "NHL",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/nhl/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/nhl/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": 14486,
+            "type": "league",
+            "guid": "d765930d-4c8c-47ed-8b85-8f1955d4a602",
+            "description": "NCAA - Other sports",
+            "sportId": 0,
+            "leagueId": 3170,
+            "league": {
+              "id": 3170,
+              "description": "NCAA - Other sports",
+              "links": {
+                "web": {},
+                "mobile": {}
+              }
+            }
+          },
+          {
+            "type": "guid",
+            "guid": "2e94defb-0957-34be-aa5a-d591f7553610"
+          },
+          {
+            "type": "guid",
+            "guid": "cbe677ee-361e-91b4-5cae-6c4c30044743"
+          },
+          {
+            "type": "guid",
+            "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+          },
+          {
+            "type": "guid",
+            "guid": "b6466f74-98f0-3e78-a10b-f18121423735"
+          },
+          {
+            "type": "guid",
+            "guid": "ed7fbeaa-ec2d-3d18-9a0a-8d19b6c8ff72"
+          },
+          {
+            "type": "guid",
+            "guid": "49fa608f-040f-21c1-ebfb-99e8feb8b774"
+          },
+          {
+            "type": "guid",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702"
+          },
+          {
+            "type": "guid",
+            "guid": "d1755f18-51b7-3463-9b8c-23b02d07c7a5"
+          },
+          {
+            "type": "guid",
+            "guid": "1a5f0227-a13e-396c-8cea-8961bc288666"
+          },
+          {
+            "type": "guid",
+            "guid": "d765930d-4c8c-47ed-8b85-8f1955d4a602"
+          }
+        ],
+        "premium": false,
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/college-sports/story/_/id/44635343/michigan-state-forward-isaac-howard-wins-hobey-baker-award-college-hockey-top-player"
+          },
+          "mobile": {
+            "href": "http://m.espn.go.com/extra/ncaa/story?storyId=44635343"
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/sports/news/44635343"
+            }
+          },
+          "app": {
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showStory?uid=44635343"
+            }
+          }
+        }
+      },
+      {
+        "id": 44558025,
+        "nowId": "1-44558025",
+        "contentKey": "44558025-1-6-1",
+        "dataSourceIdentifier": "2f260f2a247e3",
+        "type": "Story",
+        "headline": "Men's Frozen Four: Championship preview, predictions, stats",
+        "description": "The Terriers and Broncos play for the national championship in men's hockey. Here's a look at each team.",
+        "lastModified": "2025-04-13T00:24:31Z",
+        "published": "2025-04-11T04:50:00Z",
+        "images": [
+          {
+            "dataSourceIdentifier": "71fa4519ff1ea",
+            "id": 44649108,
+            "type": "header",
+            "name": "Owen Michaels [608x342]",
+            "credit": "AP Photo/Jeff Roberson",
+            "height": 342,
+            "width": 608,
+            "url": "https://a.espncdn.com/photo/2025/0413/r1477911_608x342_16-9.jpg"
+          },
+          {
+            "type": "Media",
+            "name": "Owen Michaels' OT winner sends Western Michigan to title game",
+            "caption": "Owen Michaels nets an overtime winner, his second goal of the game, to send Western Michigan to the NCAA Frozen Four championship game.",
+            "height": 324,
+            "width": 576,
+            "url": "https://a.espncdn.com/media/motion/2025/0410/dm_250410_CHCKY_One-Play_Western_Michigan_wins/dm_250410_CHCKY_One-Play_Western_Michigan_wins.jpg"
+          }
+        ],
+        "categories": [
+          {
+            "id": 640683,
+            "type": "team",
+            "uid": "s:70~l:91~t:2172",
+            "guid": "b6466f74-98f0-3e78-a10b-f18121423735",
+            "description": "Denver Pioneers",
+            "sportId": 91,
+            "teamId": 2172,
+            "team": {
+              "id": 2172,
+              "description": "Denver Pioneers"
+            }
+          },
+          {
+            "id": 640778,
+            "type": "team",
+            "uid": "s:70~l:91~t:2711",
+            "guid": "36c06eb6-a0c5-3946-81d7-6f2473e5792e",
+            "description": "Western Michigan Broncos",
+            "sportId": 91,
+            "teamId": 2711,
+            "team": {
+              "id": 2711,
+              "description": "Western Michigan Broncos"
+            }
+          },
+          {
+            "id": 48674,
+            "type": "league",
+            "uid": "s:70~l:91",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702",
+            "description": "NCAA Men's Hockey",
+            "sportId": 91,
+            "leagueId": 91,
+            "league": {
+              "id": 91,
+              "description": "NCAA Men's Hockey",
+              "abbreviation": "NCAAH",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "guid",
+            "guid": "b6466f74-98f0-3e78-a10b-f18121423735"
+          },
+          {
+            "type": "guid",
+            "guid": "36c06eb6-a0c5-3946-81d7-6f2473e5792e"
+          },
+          {
+            "type": "guid",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702"
+          }
+        ],
+        "premium": false,
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/college-sports/story/_/id/44558025/2025-men-frozen-four-championship-preview-predictions-stats"
+          },
+          "mobile": {
+            "href": "http://m.espn.go.com/extra/ncaa/story?storyId=44558025"
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/sports/news/44558025"
+            }
+          },
+          "app": {
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showStory?uid=44558025"
+            }
+          }
+        },
+        "byline": "ESPN"
+      },
+      {
+        "id": 44622786,
+        "nowId": "1-44622786",
+        "contentKey": "44622786-1-293-1",
+        "dataSourceIdentifier": "251f21906a62f",
+        "type": "Media",
+        "headline": "Owen Michaels' OT winner sends Western Michigan to title game",
+        "description": "Owen Michaels nets an overtime winner, his second goal of the game, to send Western Michigan to the NCAA Frozen Four championship game.",
+        "lastModified": "2025-04-11T00:55:04Z",
+        "published": "2025-04-11T00:50:37Z",
+        "images": [
+          {
+            "name": "Owen Michaels' OT winner sends Western Michigan to title game",
+            "caption": "Owen Michaels nets an overtime winner, his second goal of the game, to send Western Michigan to the NCAA Frozen Four championship game.",
+            "alt": "",
+            "height": 324,
+            "width": 576,
+            "url": "https://a.espncdn.com/media/motion/2025/0410/dm_250410_CHCKY_One-Play_Western_Michigan_wins/dm_250410_CHCKY_One-Play_Western_Michigan_wins.jpg"
+          }
+        ],
+        "categories": [
+          {
+            "id": 640778,
+            "type": "team",
+            "uid": "s:70~l:91~t:2711",
+            "guid": "36c06eb6-a0c5-3946-81d7-6f2473e5792e",
+            "description": "Western Michigan Broncos",
+            "sportId": 91,
+            "teamId": 2711,
+            "team": {
+              "id": 2711,
+              "description": "Western Michigan Broncos"
+            }
+          },
+          {
+            "id": 48674,
+            "type": "league",
+            "uid": "s:70~l:91",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702",
+            "description": "NCAA Men's Hockey",
+            "sportId": 91,
+            "leagueId": 91,
+            "league": {
+              "id": 91,
+              "description": "NCAA Men's Hockey",
+              "abbreviation": "NCAAH",
+              "links": {
+                "web": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                },
+                "mobile": {
+                  "leagues": {
+                    "href": "https://www.espn.com/college-sports/"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "guid",
+            "guid": "bb312eed-e9b9-310d-89f1-6344ce266159"
+          },
+          {
+            "type": "guid",
+            "guid": "36c06eb6-a0c5-3946-81d7-6f2473e5792e"
+          },
+          {
+            "type": "guid",
+            "guid": "383aeb8b-cbb8-379f-9ef4-8a5c69f60702"
+          }
+        ],
+        "premium": false,
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/video/clip?id=44622786",
+            "self": {
+              "href": "https://www.espn.com/video/clip?id=44622786",
+              "dsi": {
+                "href": "https://www.espn.com/video/clip?id=251f21906a62f"
+              }
+            },
+            "seo": {
+              "href": "https://www.espn.com/video/clip/_/id/44622786"
+            }
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/video/clips/44622786"
+            },
+            "artwork": {
+              "href": "https://artwork.api.espn.com/artwork/collections/media/a9ef7df0-27ae-4a6d-9599-8e79df526465"
+            }
+          },
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showVideo?videoID=44622786&videoDSI=251f21906a62f"
+          }
+        }
+      }
+    ]
+  },
+  "plays": [
+    {
+      "id": "40171764804386",
+      "sequenceNumber": "1",
+      "type": {
+        "id": "505",
+        "text": "Goal",
+        "abbreviation": "goal"
+      },
+      "text": "Even Strength Goal Scored by Wyatt Schingoethe assisted by Iiro Hakkarainen and Tim Washe",
+      "awayScore": 0,
+      "homeScore": 1,
+      "period": {
+        "number": 1,
+        "displayValue": "1st"
+      },
+      "clock": {
+        "displayValue": "1:38"
+      },
+      "scoringPlay": true,
+      "scoreValue": 1,
+      "modified": "2025-04-13T02:18Z",
+      "team": {
+        "id": "2711"
+      },
+      "participants": [
+        {
+          "athlete": {
+            "id": "4697792",
+            "displayName": "Wyatt Schingoethe",
+            "shortName": "W. Schingoethe"
+          },
+          "ytdGoals": 5
+        },
+        {
+          "athlete": {
+            "id": "5275386",
+            "displayName": "Iiro Hakkarainen",
+            "shortName": "I. Hakkarainen"
+          },
+          "ytdAssists": 16
+        },
+        {
+          "athlete": {
+            "id": "4996085",
+            "displayName": "Tim Washe",
+            "shortName": "T. Washe"
+          },
+          "ytdAssists": 21
+        }
+      ],
+      "wallclock": "2025-04-13T02:22:54Z",
+      "shootingPlay": true,
+      "strength": {
+        "id": "701",
+        "text": "Even Strength",
+        "abbreviation": "even-strength"
+      },
+      "shotInfo": {
+        "id": "901",
+        "text": "None",
+        "abbreviation": "regular"
+      }
+    },
+    {
+      "id": "40171764804387",
+      "sequenceNumber": "2",
+      "type": {
+        "id": "505",
+        "text": "Goal",
+        "abbreviation": "goal"
+      },
+      "text": "Even Strength Goal Scored by Cole Eiserman assisted by Devin Kaplan and Kamil Bednarik",
+      "awayScore": 1,
+      "homeScore": 1,
+      "period": {
+        "number": 1,
+        "displayValue": "1st"
+      },
+      "clock": {
+        "displayValue": "7:12"
+      },
+      "scoringPlay": true,
+      "scoreValue": 1,
+      "modified": "2025-04-13T02:18Z",
+      "team": {
+        "id": "104"
+      },
+      "participants": [
+        {
+          "athlete": {
+            "id": "5216888",
+            "displayName": "Cole Eiserman",
+            "shortName": "C. Eiserman"
+          },
+          "ytdGoals": 25
+        },
+        {
+          "athlete": {
+            "id": "5136662",
+            "displayName": "Devin Kaplan",
+            "shortName": "D. Kaplan"
+          },
+          "ytdAssists": 8
+        },
+        {
+          "athlete": {
+            "id": "5216936",
+            "displayName": "Kamil Bednarik",
+            "shortName": "K. Bednarik"
+          },
+          "ytdAssists": 17
+        }
+      ],
+      "wallclock": "2025-04-13T02:22:54Z",
+      "shootingPlay": true,
+      "strength": {
+        "id": "701",
+        "text": "Even Strength",
+        "abbreviation": "even-strength"
+      },
+      "shotInfo": {
+        "id": "901",
+        "text": "None",
+        "abbreviation": "regular"
+      }
+    },
+    {
+      "id": "40171764804388",
+      "sequenceNumber": "1",
+      "type": {
+        "id": "509",
+        "text": "Penalty",
+        "abbreviation": "penalty"
+      },
+      "text": "Penalty to Quinn Hutson 2  minutes for Hooking",
+      "awayScore": 0,
+      "homeScore": 0,
+      "period": {
+        "number": 1,
+        "displayValue": "1st"
+      },
+      "clock": {
+        "displayValue": "9:33"
+      },
+      "scoringPlay": false,
+      "scoreValue": 0,
+      "modified": "2025-04-12T23:51Z",
+      "team": {
+        "id": "104"
+      },
+      "participants": [
+        {
+          "athlete": {
+            "id": "5136660",
+            "displayName": "Quinn Hutson",
+            "shortName": "Q. Hutson"
+          },
+          "ytdGoals": 23
+        }
+      ],
+      "wallclock": "2025-04-13T02:22:54Z",
+      "shootingPlay": true
+    },
+    {
+      "id": "40171764804389",
+      "sequenceNumber": "3",
+      "type": {
+        "id": "505",
+        "text": "Goal",
+        "abbreviation": "goal"
+      },
+      "text": "Even Strength Goal Scored by Cole Crusberg-Roseen",
+      "awayScore": 1,
+      "homeScore": 2,
+      "period": {
+        "number": 1,
+        "displayValue": "1st"
+      },
+      "clock": {
+        "displayValue": "15:01"
+      },
+      "scoringPlay": true,
+      "scoreValue": 1,
+      "modified": "2025-04-13T02:18Z",
+      "team": {
+        "id": "2711"
+      },
+      "participants": [
+        {
+          "athlete": {
+            "id": "5206833",
+            "displayName": "Cole Crusberg-Roseen",
+            "shortName": "C. Crusberg-Roseen"
+          },
+          "ytdGoals": 3
+        }
+      ],
+      "wallclock": "2025-04-13T02:22:54Z",
+      "shootingPlay": true,
+      "strength": {
+        "id": "701",
+        "text": "Even Strength",
+        "abbreviation": "even-strength"
+      },
+      "shotInfo": {
+        "id": "901",
+        "text": "None",
+        "abbreviation": "regular"
+      }
+    },
+    {
+      "id": "40171764804390",
+      "sequenceNumber": "4",
+      "type": {
+        "id": "505",
+        "text": "Goal",
+        "abbreviation": "goal"
+      },
+      "text": "Even Strength Goal Scored by Ty Henricks assisted by Cam Knuble and Garrett Szydlowski",
+      "awayScore": 1,
+      "homeScore": 3,
+      "period": {
+        "number": 2,
+        "displayValue": "2nd"
+      },
+      "clock": {
+        "displayValue": "5:18"
+      },
+      "scoringPlay": true,
+      "scoreValue": 1,
+      "modified": "2025-04-13T02:18Z",
+      "team": {
+        "id": "2711"
+      },
+      "participants": [
+        {
+          "athlete": {
+            "id": "5188380",
+            "displayName": "Ty Henricks",
+            "shortName": "T. Henricks"
+          },
+          "ytdGoals": 8
+        },
+        {
+          "athlete": {
+            "id": "4996087",
+            "displayName": "Cam Knuble",
+            "shortName": "C. Knuble"
+          },
+          "ytdAssists": 10
+        },
+        {
+          "athlete": {
+            "id": "5206837",
+            "displayName": "Garrett Szydlowski",
+            "shortName": "G. Szydlowski"
+          },
+          "ytdAssists": 7
+        }
+      ],
+      "wallclock": "2025-04-13T02:22:54Z",
+      "shootingPlay": true,
+      "strength": {
+        "id": "701",
+        "text": "Even Strength",
+        "abbreviation": "even-strength"
+      },
+      "shotInfo": {
+        "id": "901",
+        "text": "None",
+        "abbreviation": "regular"
+      }
+    },
+    {
+      "id": "40171764804391",
+      "sequenceNumber": "2",
+      "type": {
+        "id": "509",
+        "text": "Penalty",
+        "abbreviation": "penalty"
+      },
+      "text": "Penalty to Brian Kramer 2  minutes for Holding",
+      "awayScore": 0,
+      "homeScore": 0,
+      "period": {
+        "number": 2,
+        "displayValue": "2nd"
+      },
+      "clock": {
+        "displayValue": "10:26"
+      },
+      "scoringPlay": false,
+      "scoreValue": 0,
+      "modified": "2025-04-13T02:22Z",
+      "team": {
+        "id": "2711"
+      },
+      "participants": [
+        {
+          "athlete": {
+            "id": "4997152",
+            "displayName": "Brian Kramer",
+            "shortName": "B. Kramer"
+          },
+          "ytdGoals": 2
+        }
+      ],
+      "wallclock": "2025-04-13T02:22:54Z",
+      "shootingPlay": true
+    },
+    {
+      "id": "40171764804392",
+      "sequenceNumber": "5",
+      "type": {
+        "id": "505",
+        "text": "Goal",
+        "abbreviation": "goal"
+      },
+      "text": "Powerplay Goal Scored by Shane Lachance assisted by Ryan Greene and Cole Hutson",
+      "awayScore": 2,
+      "homeScore": 3,
+      "period": {
+        "number": 2,
+        "displayValue": "2nd"
+      },
+      "clock": {
+        "displayValue": "10:42"
+      },
+      "scoringPlay": true,
+      "scoreValue": 1,
+      "modified": "2025-04-13T02:18Z",
+      "team": {
+        "id": "104"
+      },
+      "participants": [
+        {
+          "athlete": {
+            "id": "5103873",
+            "displayName": "Shane Lachance",
+            "shortName": "S. Lachance"
+          },
+          "ytdGoals": 12
+        },
+        {
+          "athlete": {
+            "id": "5080227",
+            "displayName": "Ryan Greene",
+            "shortName": "R. Greene"
+          },
+          "ytdAssists": 25
+        },
+        {
+          "athlete": {
+            "id": "5216918",
+            "displayName": "Cole Hutson",
+            "shortName": "C. Hutson"
+          },
+          "ytdAssists": 34
+        }
+      ],
+      "wallclock": "2025-04-13T02:22:54Z",
+      "shootingPlay": true,
+      "strength": {
+        "id": "702",
+        "text": "Power Play",
+        "abbreviation": "power-play"
+      },
+      "shotInfo": {
+        "id": "901",
+        "text": "None",
+        "abbreviation": "regular"
+      }
+    },
+    {
+      "id": "40171764804393",
+      "sequenceNumber": "3",
+      "type": {
+        "id": "509",
+        "text": "Penalty",
+        "abbreviation": "penalty"
+      },
+      "text": "Penalty to Ty Henricks 2  minutes for Slashing",
+      "awayScore": 0,
+      "homeScore": 0,
+      "period": {
+        "number": 2,
+        "displayValue": "2nd"
+      },
+      "clock": {
+        "displayValue": "15:40"
+      },
+      "scoringPlay": false,
+      "scoreValue": 0,
+      "modified": "2025-04-13T01:02Z",
+      "team": {
+        "id": "2711"
+      },
+      "participants": [
+        {
+          "athlete": {
+            "id": "5188380",
+            "displayName": "Ty Henricks",
+            "shortName": "T. Henricks"
+          },
+          "ytdGoals": 7
+        }
+      ],
+      "wallclock": "2025-04-13T02:22:54Z",
+      "shootingPlay": true
+    },
+    {
+      "id": "40171764804394",
+      "sequenceNumber": "4",
+      "type": {
+        "id": "509",
+        "text": "Penalty",
+        "abbreviation": "penalty"
+      },
+      "text": "Penalty to Devin Kaplan 2  minutes for Kneeing",
+      "awayScore": 0,
+      "homeScore": 0,
+      "period": {
+        "number": 2,
+        "displayValue": "2nd"
+      },
+      "clock": {
+        "displayValue": "18:14"
+      },
+      "scoringPlay": false,
+      "scoreValue": 0,
+      "modified": "2025-04-13T01:06Z",
+      "team": {
+        "id": "104"
+      },
+      "participants": [
+        {
+          "athlete": {
+            "id": "5136662",
+            "displayName": "Devin Kaplan",
+            "shortName": "D. Kaplan"
+          },
+          "ytdGoals": 10
+        }
+      ],
+      "wallclock": "2025-04-13T02:22:54Z",
+      "shootingPlay": true
+    },
+    {
+      "id": "40171764804395",
+      "sequenceNumber": "6",
+      "type": {
+        "id": "505",
+        "text": "Goal",
+        "abbreviation": "goal"
+      },
+      "text": "Even Strength Goal Scored by Owen Michaels assisted by Joona Vaisanen",
+      "awayScore": 2,
+      "homeScore": 4,
+      "period": {
+        "number": 3,
+        "displayValue": "3rd"
+      },
+      "clock": {
+        "displayValue": "7:16"
+      },
+      "scoringPlay": true,
+      "scoreValue": 1,
+      "modified": "2025-04-13T02:18Z",
+      "team": {
+        "id": "2711"
+      },
+      "participants": [
+        {
+          "athlete": {
+            "id": "5206840",
+            "displayName": "Owen Michaels",
+            "shortName": "O. Michaels"
+          },
+          "ytdGoals": 17
+        },
+        {
+          "athlete": {
+            "id": "5275388",
+            "displayName": "Joona Vaisanen",
+            "shortName": "J. Vaisanen"
+          },
+          "ytdAssists": 22
+        }
+      ],
+      "wallclock": "2025-04-13T02:22:54Z",
+      "shootingPlay": true,
+      "strength": {
+        "id": "701",
+        "text": "Even Strength",
+        "abbreviation": "even-strength"
+      },
+      "shotInfo": {
+        "id": "901",
+        "text": "None",
+        "abbreviation": "regular"
+      }
+    },
+    {
+      "id": "40171764804396",
+      "sequenceNumber": "7",
+      "type": {
+        "id": "505",
+        "text": "Goal",
+        "abbreviation": "goal"
+      },
+      "text": "Even Strength Goal Scored by Iiro Hakkarainen assisted by Wyatt Schingoethe and Tim Washe",
+      "awayScore": 2,
+      "homeScore": 5,
+      "period": {
+        "number": 3,
+        "displayValue": "3rd"
+      },
+      "clock": {
+        "displayValue": "16:02"
+      },
+      "scoringPlay": true,
+      "scoreValue": 1,
+      "modified": "2025-04-13T02:18Z",
+      "team": {
+        "id": "2711"
+      },
+      "participants": [
+        {
+          "athlete": {
+            "id": "5275386",
+            "displayName": "Iiro Hakkarainen",
+            "shortName": "I. Hakkarainen"
+          },
+          "ytdGoals": 13
+        },
+        {
+          "athlete": {
+            "id": "4697792",
+            "displayName": "Wyatt Schingoethe",
+            "shortName": "W. Schingoethe"
+          },
+          "ytdAssists": 6
+        },
+        {
+          "athlete": {
+            "id": "4996085",
+            "displayName": "Tim Washe",
+            "shortName": "T. Washe"
+          },
+          "ytdAssists": 22
+        }
+      ],
+      "wallclock": "2025-04-13T02:22:54Z",
+      "shootingPlay": true,
+      "strength": {
+        "id": "701",
+        "text": "Even Strength",
+        "abbreviation": "even-strength"
+      },
+      "shotInfo": {
+        "id": "901",
+        "text": "None",
+        "abbreviation": "regular"
+      }
+    },
+    {
+      "id": "40171764804397",
+      "sequenceNumber": "8",
+      "type": {
+        "id": "505",
+        "text": "Goal",
+        "abbreviation": "goal"
+      },
+      "text": "Empty Net Goal Scored by Owen Michaels",
+      "awayScore": 2,
+      "homeScore": 6,
+      "period": {
+        "number": 3,
+        "displayValue": "3rd"
+      },
+      "clock": {
+        "displayValue": "17:52"
+      },
+      "scoringPlay": true,
+      "scoreValue": 1,
+      "modified": "2025-04-13T02:18Z",
+      "team": {
+        "id": "2711"
+      },
+      "participants": [
+        {
+          "athlete": {
+            "id": "5206840",
+            "displayName": "Owen Michaels",
+            "shortName": "O. Michaels"
+          },
+          "ytdGoals": 18
+        }
+      ],
+      "wallclock": "2025-04-13T02:22:54Z",
+      "shootingPlay": true,
+      "strength": {
+        "id": "701",
+        "text": "Even Strength",
+        "abbreviation": "even-strength"
+      },
+      "shotInfo": {
+        "id": "903",
+        "text": "Empty Net",
+        "abbreviation": "empty-net"
+      }
+    }
+  ],
+  "videos": [
+    {
+      "id": 44648792,
+      "cerebroId": "67fafb7afd092c19d6696d68",
+      "source": "espn",
+      "headline": "Wyatt Schingoethe stuns BU with early goal",
+      "description": "Wyatt Schingoethe scores early as Western Michigan shocks Boston University.",
+      "lastModified": "2025-04-12T23:57:15Z",
+      "originalPublishDate": "2025-04-12T23:45:32Z",
+      "duration": 28,
+      "timeRestrictions": {
+        "embargoDate": "2025-04-12T23:45:32Z",
+        "expirationDate": "2025-10-31T16:00:00Z"
+      },
+      "deviceRestrictions": {
+        "type": "whitelist",
+        "devices": [
+          "desktop",
+          "ipad",
+          "settop",
+          "handset",
+          "tablet"
+        ]
+      },
+      "thumbnail": "https://a.espncdn.com/media/motion/2025/0412/dm_250412_dm_mhoc_westernmich_goal/dm_250412_dm_mhoc_westernmich_goal.jpg",
+      "links": {
+        "web": {
+          "href": "https://www.espn.com/video/clip?id=44648792",
+          "self": {
+            "href": "https://www.espn.com/video/clip?id=44648792",
+            "dsi": {
+              "href": "https://www.espn.com/video/clip?id=9003d0a6285e7"
+            }
+          },
+          "seo": {
+            "href": "https://www.espn.com/video/clip/_/id/44648792"
+          }
+        },
+        "mobile": {
+          "href": "https://watch.auth.api.espn.com/video/auth/brightcove/aaac8c62-5b3d-4ad7-8284-2c959c078d6f/asset?UMADPARAMreferer=https://www.espn.com/video/clip?id=44648792",
+          "source": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_mhoc_westernmich_goal/dm_250412_dm_mhoc_westernmich_goal.mp4"
+          },
+          "alert": {
+            "href": "https://m.espn.com/general/video/videoAlert?vid=44648792"
+          },
+          "streaming": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/aaac8c62-5b3d-4ad7-8284-2c959c078d6f/asset?UMADPARAMreferer=https://www.espn.com/video/clip?id=44648792"
+          },
+          "progressiveDownload": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/aaac8c62-5b3d-4ad7-8284-2c959c078d6f/asset?UMADPARAMreferer=https://www.espn.com/video/clip?id=44648792"
+          }
+        },
+        "api": {
+          "self": {
+            "href": "https://content.core.api.espn.com/v1/video/clips/44648792"
+          },
+          "artwork": {
+            "href": "https://artwork.api.espn.com/artwork/collections/media/aaac8c62-5b3d-4ad7-8284-2c959c078d6f"
+          }
+        },
+        "source": {
+          "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_mhoc_westernmich_goal/dm_250412_dm_mhoc_westernmich_goal_360p30_1464k.mp4",
+          "mezzanine": {
+            "href": "https://media.video-origin.espn.com/espnvideo/2025/0412/dm_250412_dm_mhoc_westernmich_goal/dm_250412_dm_mhoc_westernmich_goal.mp4"
+          },
+          "flash": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_mhoc_westernmich_goal/dm_250412_dm_mhoc_westernmich_goal.smil"
+          },
+          "hds": {
+            "href": "https://hds.video-cdn.espn.com/z/motion/2025/0412/dm_250412_dm_mhoc_westernmich_goal/dm_250412_dm_mhoc_westernmich_goal_rel.smil/manifest.f4m"
+          },
+          "HLS": {
+            "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2025/0412/dm_250412_dm_mhoc_westernmich_goal/dm_250412_dm_mhoc_westernmich_goal/playlist.m3u8",
+            "HD": {
+              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2025/0412/dm_250412_dm_mhoc_westernmich_goal/dm_250412_dm_mhoc_westernmich_goal/playlist.m3u8"
+            },
+            "cmaf": {
+              "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2025/0412/dm_250412_dm_mhoc_westernmich_goal/dm_250412_dm_mhoc_westernmich_goal/playlist.m3u8",
+              "shield": {
+                "href": "https://watch.auth.api.espn.com/video/auth/media/aaac8c62-5b3d-4ad7-8284-2c959c078d6f/asset"
+              }
+            }
+          },
+          "HD": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_mhoc_westernmich_goal/dm_250412_dm_mhoc_westernmich_goal_720p30_2896k.mp4"
+          },
+          "full": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_mhoc_westernmich_goal/dm_250412_dm_mhoc_westernmich_goal_360p30_1464k.mp4"
+          }
+        },
+        "sportscenter": {
+          "href": "sportscenter://x-callback-url/showVideo?videoID=44648792&videoDSI=9003d0a6285e7"
+        }
+      },
+      "ad": {
+        "sport": "Other",
+        "bundle": "sportscenter"
+      },
+      "tracking": {
+        "sportName": "Other",
+        "leagueName": "No League",
+        "coverageType": "OnePlay",
+        "trackingName": "COM_CHKY On-Play (Wyatt Schingoethe stuns BU with early goal) 2025/4/11",
+        "trackingId": "dm_250412_dm_mhoc_westernmich_goal"
+      }
+    },
+    {
+      "id": 44649386,
+      "cerebroId": "67fb08a066d5825c92b0d3af",
+      "source": "espn",
+      "headline": "Western Michigan extends lead to 3-1 via deflection",
+      "description": "Western Michigan grabs a 3-1 lead over Boston University after a sweet deflection goal from Ty Henricks.",
+      "lastModified": "2025-04-13T00:56:08Z",
+      "originalPublishDate": "2025-04-13T00:40:31Z",
+      "duration": 32,
+      "timeRestrictions": {
+        "embargoDate": "2025-04-13T00:40:31Z",
+        "expirationDate": "2037-04-16T00:40:31Z"
+      },
+      "deviceRestrictions": {
+        "type": "whitelist",
+        "devices": [
+          "desktop",
+          "ipad",
+          "settop",
+          "handset",
+          "tablet"
+        ]
+      },
+      "thumbnail": "https://a.espncdn.com/media/motion/2025/0412/dm_250412_dm_chky_wmu_goal_3_pub2tag/dm_250412_dm_chky_wmu_goal_3_pub2tag.jpg",
+      "links": {
+        "web": {
+          "href": "https://www.espn.com/video/clip?id=44649386",
+          "self": {
+            "href": "https://www.espn.com/video/clip?id=44649386",
+            "dsi": {
+              "href": "https://www.espn.com/video/clip?id=353cab41b2d6e"
+            }
+          },
+          "seo": {
+            "href": "https://www.espn.com/video/clip/_/id/44649386"
+          }
+        },
+        "mobile": {
+          "href": "https://watch.auth.api.espn.com/video/auth/brightcove/e8510cf5-285c-4f61-b296-e10217089a50/asset?UMADPARAMreferer=https://www.espn.com/video/clip?id=44649386",
+          "source": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_wmu_goal_3_pub2tag/dm_250412_dm_chky_wmu_goal_3_pub2tag.mp4"
+          },
+          "alert": {
+            "href": "https://m.espn.com/general/video/videoAlert?vid=44649386"
+          },
+          "streaming": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/e8510cf5-285c-4f61-b296-e10217089a50/asset?UMADPARAMreferer=https://www.espn.com/video/clip?id=44649386"
+          },
+          "progressiveDownload": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/e8510cf5-285c-4f61-b296-e10217089a50/asset?UMADPARAMreferer=https://www.espn.com/video/clip?id=44649386"
+          }
+        },
+        "api": {
+          "self": {
+            "href": "https://content.core.api.espn.com/v1/video/clips/44649386"
+          },
+          "artwork": {
+            "href": "https://artwork.api.espn.com/artwork/collections/media/e8510cf5-285c-4f61-b296-e10217089a50"
+          }
+        },
+        "source": {
+          "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_wmu_goal_3_pub2tag/dm_250412_dm_chky_wmu_goal_3_pub2tag_360p30_1464k.mp4",
+          "mezzanine": {
+            "href": "https://media.video-origin.espn.com/espnvideo/2025/0412/dm_250412_dm_chky_wmu_goal_3_pub2tag/dm_250412_dm_chky_wmu_goal_3_pub2tag.mp4"
+          },
+          "flash": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_wmu_goal_3_pub2tag/dm_250412_dm_chky_wmu_goal_3_pub2tag.smil"
+          },
+          "hds": {
+            "href": "https://hds.video-cdn.espn.com/z/motion/2025/0412/dm_250412_dm_chky_wmu_goal_3_pub2tag/dm_250412_dm_chky_wmu_goal_3_pub2tag_rel.smil/manifest.f4m"
+          },
+          "HLS": {
+            "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2025/0412/dm_250412_dm_chky_wmu_goal_3_pub2tag/dm_250412_dm_chky_wmu_goal_3_pub2tag/playlist.m3u8",
+            "HD": {
+              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2025/0412/dm_250412_dm_chky_wmu_goal_3_pub2tag/dm_250412_dm_chky_wmu_goal_3_pub2tag/playlist.m3u8"
+            },
+            "cmaf": {
+              "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2025/0412/dm_250412_dm_chky_wmu_goal_3_pub2tag/dm_250412_dm_chky_wmu_goal_3_pub2tag/playlist.m3u8",
+              "shield": {
+                "href": "https://watch.auth.api.espn.com/video/auth/media/e8510cf5-285c-4f61-b296-e10217089a50/asset"
+              }
+            }
+          },
+          "HD": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_wmu_goal_3_pub2tag/dm_250412_dm_chky_wmu_goal_3_pub2tag_720p30_2896k.mp4"
+          },
+          "full": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_wmu_goal_3_pub2tag/dm_250412_dm_chky_wmu_goal_3_pub2tag_360p30_1464k.mp4"
+          }
+        },
+        "sportscenter": {
+          "href": "sportscenter://x-callback-url/showVideo?videoID=44649386&videoDSI=353cab41b2d6e"
+        }
+      },
+      "ad": {
+        "sport": "Other",
+        "bundle": "sportscenter"
+      },
+      "tracking": {
+        "sportName": "Other",
+        "leagueName": "No League",
+        "coverageType": "OnePlay",
+        "trackingName": "COM_CHKY One-Play (Western Michigan extends lead to 3-1 via deflection) 2025/4/12 ESHEET",
+        "trackingId": "dm_250412_dm_chky_wmu_goal_3_pub2tag"
+      }
+    },
+    {
+      "id": 44649481,
+      "cerebroId": "67fb0b50103d6244df566c88",
+      "source": "espn",
+      "headline": "Shane Lachance gives Terriers life with 'greasy' goal vs. Western Michigan",
+      "description": "Shane Lachance pulls Boston University within a goal after fighting in the crease for the score in the second period.",
+      "lastModified": "2025-04-13T00:56:24Z",
+      "originalPublishDate": "2025-04-13T00:53:17Z",
+      "duration": 39,
+      "timeRestrictions": {
+        "embargoDate": "2025-04-13T00:53:17Z",
+        "expirationDate": "2037-04-16T00:53:17Z"
+      },
+      "deviceRestrictions": {
+        "type": "whitelist",
+        "devices": [
+          "desktop",
+          "ipad",
+          "settop",
+          "handset",
+          "tablet"
+        ]
+      },
+      "thumbnail": "https://a.espncdn.com/media/motion/2025/0412/dm_250412_dm_chky_boston_u_goal/dm_250412_dm_chky_boston_u_goal.jpg",
+      "links": {
+        "web": {
+          "href": "https://www.espn.com/video/clip?id=44649481",
+          "self": {
+            "href": "https://www.espn.com/video/clip?id=44649481",
+            "dsi": {
+              "href": "https://www.espn.com/video/clip?id=fef215090a8f8"
+            }
+          },
+          "seo": {
+            "href": "https://www.espn.com/video/clip/_/id/44649481"
+          }
+        },
+        "mobile": {
+          "href": "https://watch.auth.api.espn.com/video/auth/brightcove/09b5b048-91d5-420e-9aeb-e5038d09c3ad/asset?UMADPARAMreferer=https://www.espn.com/video/clip?id=44649481",
+          "source": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_boston_u_goal/dm_250412_dm_chky_boston_u_goal.mp4"
+          },
+          "alert": {
+            "href": "https://m.espn.com/general/video/videoAlert?vid=44649481"
+          },
+          "streaming": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/09b5b048-91d5-420e-9aeb-e5038d09c3ad/asset?UMADPARAMreferer=https://www.espn.com/video/clip?id=44649481"
+          },
+          "progressiveDownload": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/09b5b048-91d5-420e-9aeb-e5038d09c3ad/asset?UMADPARAMreferer=https://www.espn.com/video/clip?id=44649481"
+          }
+        },
+        "api": {
+          "self": {
+            "href": "https://content.core.api.espn.com/v1/video/clips/44649481"
+          },
+          "artwork": {
+            "href": "https://artwork.api.espn.com/artwork/collections/media/09b5b048-91d5-420e-9aeb-e5038d09c3ad"
+          }
+        },
+        "source": {
+          "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_boston_u_goal/dm_250412_dm_chky_boston_u_goal_360p30_1464k.mp4",
+          "mezzanine": {
+            "href": "https://media.video-origin.espn.com/espnvideo/2025/0412/dm_250412_dm_chky_boston_u_goal/dm_250412_dm_chky_boston_u_goal.mp4"
+          },
+          "flash": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_boston_u_goal/dm_250412_dm_chky_boston_u_goal.smil"
+          },
+          "hds": {
+            "href": "https://hds.video-cdn.espn.com/z/motion/2025/0412/dm_250412_dm_chky_boston_u_goal/dm_250412_dm_chky_boston_u_goal_rel.smil/manifest.f4m"
+          },
+          "HLS": {
+            "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2025/0412/dm_250412_dm_chky_boston_u_goal/dm_250412_dm_chky_boston_u_goal/playlist.m3u8",
+            "HD": {
+              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2025/0412/dm_250412_dm_chky_boston_u_goal/dm_250412_dm_chky_boston_u_goal/playlist.m3u8"
+            },
+            "cmaf": {
+              "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2025/0412/dm_250412_dm_chky_boston_u_goal/dm_250412_dm_chky_boston_u_goal/playlist.m3u8",
+              "shield": {
+                "href": "https://watch.auth.api.espn.com/video/auth/media/09b5b048-91d5-420e-9aeb-e5038d09c3ad/asset"
+              }
+            }
+          },
+          "HD": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_boston_u_goal/dm_250412_dm_chky_boston_u_goal_720p30_2896k.mp4"
+          },
+          "full": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_boston_u_goal/dm_250412_dm_chky_boston_u_goal_360p30_1464k.mp4"
+          }
+        },
+        "sportscenter": {
+          "href": "sportscenter://x-callback-url/showVideo?videoID=44649481&videoDSI=fef215090a8f8"
+        }
+      },
+      "ad": {
+        "sport": "Other",
+        "bundle": "sportscenter"
+      },
+      "tracking": {
+        "sportName": "Other",
+        "leagueName": "No League",
+        "coverageType": "OnePlay",
+        "trackingName": "COM_CHKY One-Play (Shane Lachance gives Terriers life with 'greasy' goal vs. Western Michigan) 2025/4/12",
+        "trackingId": "dm_250412_dm_chky_boston_u_goal"
+      }
+    },
+    {
+      "id": 44649996,
+      "cerebroId": "67fb16d066d5825c92b0d6da",
+      "source": "espn",
+      "headline": "Owen Michaels nets goal to widen Broncos' lead",
+      "description": "Owen Michaels scores to put Western Michigan's lead back up to two goals.",
+      "lastModified": "2025-04-13T01:45:06Z",
+      "originalPublishDate": "2025-04-13T01:42:17Z",
+      "duration": 41,
+      "timeRestrictions": {
+        "embargoDate": "2025-04-13T01:42:17Z",
+        "expirationDate": "2029-04-16T01:42:17Z"
+      },
+      "deviceRestrictions": {
+        "type": "whitelist",
+        "devices": [
+          "desktop",
+          "ipad",
+          "settop",
+          "handset",
+          "tablet"
+        ]
+      },
+      "thumbnail": "https://a.espncdn.com/media/motion/2025/0412/dm_250412_dm_chky_wmu_goal_4/dm_250412_dm_chky_wmu_goal_4.jpg",
+      "links": {
+        "web": {
+          "href": "https://www.espn.com/video/clip?id=44649996",
+          "self": {
+            "href": "https://www.espn.com/video/clip?id=44649996",
+            "dsi": {
+              "href": "https://www.espn.com/video/clip?id=4011e3aa1d9f2"
+            }
+          },
+          "seo": {
+            "href": "https://www.espn.com/video/clip/_/id/44649996"
+          }
+        },
+        "mobile": {
+          "href": "https://watch.auth.api.espn.com/video/auth/brightcove/c6f3ead9-f484-4091-b37b-fd1a552add78/asset?UMADPARAMreferer=https://www.espn.com/video/clip?id=44649996",
+          "source": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_wmu_goal_4/dm_250412_dm_chky_wmu_goal_4.mp4"
+          },
+          "alert": {
+            "href": "https://m.espn.com/general/video/videoAlert?vid=44649996"
+          },
+          "streaming": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/c6f3ead9-f484-4091-b37b-fd1a552add78/asset?UMADPARAMreferer=https://www.espn.com/video/clip?id=44649996"
+          },
+          "progressiveDownload": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/c6f3ead9-f484-4091-b37b-fd1a552add78/asset?UMADPARAMreferer=https://www.espn.com/video/clip?id=44649996"
+          }
+        },
+        "api": {
+          "self": {
+            "href": "https://content.core.api.espn.com/v1/video/clips/44649996"
+          },
+          "artwork": {
+            "href": "https://artwork.api.espn.com/artwork/collections/media/c6f3ead9-f484-4091-b37b-fd1a552add78"
+          }
+        },
+        "source": {
+          "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_wmu_goal_4/dm_250412_dm_chky_wmu_goal_4_360p30_1464k.mp4",
+          "mezzanine": {
+            "href": "https://media.video-origin.espn.com/espnvideo/2025/0412/dm_250412_dm_chky_wmu_goal_4/dm_250412_dm_chky_wmu_goal_4.mp4"
+          },
+          "flash": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_wmu_goal_4/dm_250412_dm_chky_wmu_goal_4.smil"
+          },
+          "hds": {
+            "href": "https://hds.video-cdn.espn.com/z/motion/2025/0412/dm_250412_dm_chky_wmu_goal_4/dm_250412_dm_chky_wmu_goal_4_rel.smil/manifest.f4m"
+          },
+          "HLS": {
+            "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2025/0412/dm_250412_dm_chky_wmu_goal_4/dm_250412_dm_chky_wmu_goal_4/playlist.m3u8",
+            "HD": {
+              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2025/0412/dm_250412_dm_chky_wmu_goal_4/dm_250412_dm_chky_wmu_goal_4/playlist.m3u8"
+            },
+            "cmaf": {
+              "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2025/0412/dm_250412_dm_chky_wmu_goal_4/dm_250412_dm_chky_wmu_goal_4/playlist.m3u8",
+              "shield": {
+                "href": "https://watch.auth.api.espn.com/video/auth/media/c6f3ead9-f484-4091-b37b-fd1a552add78/asset"
+              }
+            }
+          },
+          "HD": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_wmu_goal_4/dm_250412_dm_chky_wmu_goal_4_720p30_2896k.mp4"
+          },
+          "full": {
+            "href": "https://media.video-cdn.espn.com/motion/2025/0412/dm_250412_dm_chky_wmu_goal_4/dm_250412_dm_chky_wmu_goal_4_360p30_1464k.mp4"
+          }
+        },
+        "sportscenter": {
+          "href": "sportscenter://x-callback-url/showVideo?videoID=44649996&videoDSI=4011e3aa1d9f2"
+        }
+      },
+      "ad": {
+        "sport": "Other",
+        "bundle": "sportscenter"
+      },
+      "tracking": {
+        "sportName": "Other",
+        "leagueName": "No League",
+        "coverageType": "OnePlay",
+        "trackingName": "CHKY_One-Play (Owen Michaels nets goal to widen Broncos' lead) 2025/4/12",
+        "trackingId": "dm_250412_dm_chky_wmu_goal_4"
+      }
+    }
+  ],
+  "wallclockAvailable": true,
+  "meta": {
+    "lastUpdatedAt": "2025-04-13T02:22:54Z",
+    "firstPlayWallClock": "2025-04-13T02:22:54Z",
+    "lastPlayWallClock": "2025-04-13T02:22:54Z",
+    "gameState": "post",
+    "syncUrl": "https://client.espncdn.com/fauxcast/stats/91/401717648/en/us/"
+  }
+}

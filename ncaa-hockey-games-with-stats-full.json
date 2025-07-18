@@ -1,0 +1,373 @@
+{
+  "summary": {
+    "totalGames": 3486,
+    "gamesChecked": 3486,
+    "gamesWithStats": 45,
+    "coveragePercentage": "1.3",
+    "processingTime": "21 seconds",
+    "checkDate": "2025-07-18T16:19:37.879Z"
+  },
+  "seasonBreakdown": {},
+  "games": [
+    {
+      "game_id": 3815292,
+      "external_id": "espn_ncaahockey_401717647",
+      "date": "2025-04-11T01:50:00+00:00",
+      "home_team": 810781,
+      "away_team": 810805,
+      "score": "3-1"
+    },
+    {
+      "game_id": 3815289,
+      "external_id": "espn_ncaahockey_401762386",
+      "date": "2025-03-30T20:30:00+00:00",
+      "home_team": 810813,
+      "away_team": 810805,
+      "score": "2-3"
+    },
+    {
+      "game_id": 3815290,
+      "external_id": "espn_ncaahockey_401762387",
+      "date": "2025-03-30T23:07:00+00:00",
+      "home_team": 810780,
+      "away_team": 810831,
+      "score": "1-3"
+    },
+    {
+      "game_id": 3815288,
+      "external_id": "espn_ncaahockey_401762385",
+      "date": "2025-03-29T22:30:00+00:00",
+      "home_team": 810874,
+      "away_team": 810791,
+      "score": "2-1"
+    },
+    {
+      "game_id": 3815293,
+      "external_id": "espn_ncaahockey_401717648",
+      "date": "2025-04-12T23:30:00+00:00",
+      "home_team": 810874,
+      "away_team": 810781,
+      "score": "6-2"
+    },
+    {
+      "game_id": 3815286,
+      "external_id": "espn_ncaahockey_401762383",
+      "date": "2025-03-29T00:30:00+00:00",
+      "home_team": 810790,
+      "away_team": 810805,
+      "score": "1-5"
+    },
+    {
+      "game_id": 3815284,
+      "external_id": "espn_ncaahockey_401762381",
+      "date": "2025-03-28T21:00:00+00:00",
+      "home_team": 810813,
+      "away_team": 810852,
+      "score": "4-1"
+    },
+    {
+      "game_id": 3815291,
+      "external_id": "espn_ncaahockey_401717627",
+      "date": "2025-04-10T21:00:00+00:00",
+      "home_team": 810874,
+      "away_team": 810831,
+      "score": "3-2"
+    },
+    {
+      "game_id": 3815282,
+      "external_id": "espn_ncaahockey_401762379",
+      "date": "2025-03-28T01:45:00+00:00",
+      "home_team": 810796,
+      "away_team": 810791,
+      "score": "4-5"
+    },
+    {
+      "game_id": 3815281,
+      "external_id": "espn_ncaahockey_401762378",
+      "date": "2025-03-27T21:30:00+00:00",
+      "home_team": 810793,
+      "away_team": 810784,
+      "score": "3-4"
+    },
+    {
+      "game_id": 3815287,
+      "external_id": "espn_ncaahockey_401762384",
+      "date": "2025-03-29T20:00:00+00:00",
+      "home_team": 810781,
+      "away_team": 810784,
+      "score": "3-2"
+    },
+    {
+      "game_id": 3815279,
+      "external_id": "espn_ncaahockey_401762376",
+      "date": "2025-03-27T18:00:00+00:00",
+      "home_team": 810781,
+      "away_team": 810804,
+      "score": "8-3"
+    },
+    {
+      "game_id": 3815280,
+      "external_id": "espn_ncaahockey_401762377",
+      "date": "2025-03-27T21:00:00+00:00",
+      "home_team": 810874,
+      "away_team": 810847,
+      "score": "2-1"
+    },
+    {
+      "game_id": 3815283,
+      "external_id": "espn_ncaahockey_401762380",
+      "date": "2025-03-28T18:00:00+00:00",
+      "home_team": 810780,
+      "away_team": 810823,
+      "score": "3-1"
+    },
+    {
+      "game_id": 3815285,
+      "external_id": "espn_ncaahockey_401762382",
+      "date": "2025-03-28T21:50:00+00:00",
+      "home_team": 810851,
+      "away_team": 810831,
+      "score": "1-5"
+    },
+    {
+      "game_id": 3814120,
+      "external_id": "espn_ncaahockey_401647936",
+      "date": "2024-04-12T01:10:00+00:00",
+      "home_team": 810780,
+      "away_team": 810794,
+      "score": "4-0"
+    },
+    {
+      "game_id": 3814119,
+      "external_id": "espn_ncaahockey_401647915",
+      "date": "2024-04-11T21:00:00+00:00",
+      "home_team": 810781,
+      "away_team": 810831,
+      "score": "1-2"
+    },
+    {
+      "game_id": 3814116,
+      "external_id": "espn_ncaahockey_401647905",
+      "date": "2024-03-30T22:30:00+00:00",
+      "home_team": 810781,
+      "away_team": 810796,
+      "score": "6-3"
+    },
+    {
+      "game_id": 3814113,
+      "external_id": "espn_ncaahockey_401647912",
+      "date": "2024-03-29T21:30:00+00:00",
+      "home_team": 810817,
+      "away_team": 810852,
+      "score": "2-3"
+    },
+    {
+      "game_id": 3814118,
+      "external_id": "espn_ncaahockey_401647911",
+      "date": "2024-03-31T22:30:00+00:00",
+      "home_team": 810793,
+      "away_team": 810794,
+      "score": "2-5"
+    },
+    {
+      "game_id": 3814117,
+      "external_id": "espn_ncaahockey_401647914",
+      "date": "2024-03-31T20:00:00+00:00",
+      "home_team": 810780,
+      "away_team": 810852,
+      "score": "5-4"
+    },
+    {
+      "game_id": 3814107,
+      "external_id": "espn_ncaahockey_401647907",
+      "date": "2024-03-28T18:00:00+00:00",
+      "home_team": 810831,
+      "away_team": 810791,
+      "score": "2-1"
+    },
+    {
+      "game_id": 3814110,
+      "external_id": "espn_ncaahockey_401647903",
+      "date": "2024-03-29T00:30:00+00:00",
+      "home_team": 810796,
+      "away_team": 810850,
+      "score": "3-2"
+    },
+    {
+      "game_id": 3814108,
+      "external_id": "espn_ncaahockey_401647904",
+      "date": "2024-03-28T21:00:00+00:00",
+      "home_team": 810781,
+      "away_team": 810808,
+      "score": "6-3"
+    },
+    {
+      "game_id": 3814121,
+      "external_id": "espn_ncaahockey_401647937",
+      "date": "2024-04-13T22:00:00+00:00",
+      "home_team": 810780,
+      "away_team": 810831,
+      "score": "0-2"
+    },
+    {
+      "game_id": 3814115,
+      "external_id": "espn_ncaahockey_401647908",
+      "date": "2024-03-30T20:00:00+00:00",
+      "home_team": 810831,
+      "away_team": 810784,
+      "score": "2-1"
+    },
+    {
+      "game_id": 3814114,
+      "external_id": "espn_ncaahockey_401647909",
+      "date": "2024-03-30T01:00:00+00:00",
+      "home_team": 810799,
+      "away_team": 810794,
+      "score": "3-4"
+    },
+    {
+      "game_id": 3814112,
+      "external_id": "espn_ncaahockey_401647910",
+      "date": "2024-03-29T21:00:00+00:00",
+      "home_team": 810793,
+      "away_team": 810874,
+      "score": "5-4"
+    },
+    {
+      "game_id": 3814109,
+      "external_id": "espn_ncaahockey_401647906",
+      "date": "2024-03-28T23:00:00+00:00",
+      "home_team": 810790,
+      "away_team": 810784,
+      "score": "1-3"
+    },
+    {
+      "game_id": 3814111,
+      "external_id": "espn_ncaahockey_401647913",
+      "date": "2024-03-29T18:00:00+00:00",
+      "home_team": 810780,
+      "away_team": 810845,
+      "score": "6-1"
+    },
+    {
+      "game_id": 3839954,
+      "external_id": "espn_ncaahockey_501424053",
+      "date": "2022-03-25T01:00:00+00:00",
+      "home_team": 810831,
+      "away_team": 810870,
+      "score": "3-2"
+    },
+    {
+      "game_id": 3839952,
+      "external_id": "espn_ncaahockey_501424054",
+      "date": "2022-03-24T19:00:00+00:00",
+      "home_team": 810795,
+      "away_team": 810845,
+      "score": "3-0"
+    },
+    {
+      "game_id": 3839957,
+      "external_id": "espn_ncaahockey_501424056",
+      "date": "2022-03-25T22:00:00+00:00",
+      "home_team": 810796,
+      "away_team": 810791,
+      "score": "4-3"
+    },
+    {
+      "game_id": 3839956,
+      "external_id": "espn_ncaahockey_501424050",
+      "date": "2022-03-25T19:00:00+00:00",
+      "home_team": 810794,
+      "away_team": 810773,
+      "score": "5-3"
+    },
+    {
+      "game_id": 3839959,
+      "external_id": "espn_ncaahockey_501424851",
+      "date": "2022-03-26T20:00:00+00:00",
+      "home_team": 810831,
+      "away_team": 810795,
+      "score": "2-1"
+    },
+    {
+      "game_id": 3839955,
+      "external_id": "espn_ncaahockey_501424055",
+      "date": "2022-03-25T16:00:00+00:00",
+      "home_team": 810874,
+      "away_team": 810800,
+      "score": "2-1"
+    },
+    {
+      "game_id": 3839961,
+      "external_id": "espn_ncaahockey_501424989",
+      "date": "2022-03-27T20:00:00+00:00",
+      "home_team": 810874,
+      "away_team": 810796,
+      "score": "0-3"
+    },
+    {
+      "game_id": 3839960,
+      "external_id": "espn_ncaahockey_501424789",
+      "date": "2022-03-26T22:30:00+00:00",
+      "home_team": 810847,
+      "away_team": 810802,
+      "score": "1-0"
+    },
+    {
+      "game_id": 3839958,
+      "external_id": "espn_ncaahockey_501424049",
+      "date": "2022-03-26T00:00:00+00:00",
+      "home_team": 810852,
+      "away_team": 810866,
+      "score": "5-4"
+    },
+    {
+      "game_id": 3839953,
+      "external_id": "espn_ncaahockey_501424052",
+      "date": "2022-03-24T22:00:00+00:00",
+      "home_team": 810799,
+      "away_team": 810802,
+      "score": "1-2"
+    },
+    {
+      "game_id": 3839951,
+      "external_id": "espn_ncaahockey_501424051",
+      "date": "2022-03-24T16:00:00+00:00",
+      "home_team": 810847,
+      "away_team": 810786,
+      "score": "4-3"
+    },
+    {
+      "game_id": 3839962,
+      "external_id": "espn_ncaahockey_501425029",
+      "date": "2022-03-27T22:30:00+00:00",
+      "home_team": 810794,
+      "away_team": 810852,
+      "score": "7-4"
+    },
+    {
+      "game_id": 3839965,
+      "external_id": "espn_ncaahockey_501428149",
+      "date": "2022-04-10T00:00:00+00:00",
+      "home_team": 810847,
+      "away_team": 810831,
+      "score": "1-5"
+    },
+    {
+      "game_id": 3839964,
+      "external_id": "espn_ncaahockey_501425569",
+      "date": "2022-04-08T01:10:00+00:00",
+      "home_team": 810847,
+      "away_team": 810796,
+      "score": "5-1"
+    },
+    {
+      "game_id": 3839963,
+      "external_id": "espn_ncaahockey_501425611",
+      "date": "2022-04-07T21:00:00+00:00",
+      "home_team": 810794,
+      "away_team": 810831,
+      "score": "2-3"
+    }
+  ]
+}

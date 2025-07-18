@@ -1,0 +1,5 @@
+-- Step 1: Add columns to teams table
+ALTER TABLE teams ADD COLUMN IF NOT EXISTS parent_org_id INTEGER;
+ALTER TABLE teams ADD COLUMN IF NOT EXISTS league_level VARCHAR(20);
+ALTER TABLE teams ADD COLUMN IF NOT EXISTS milb_league_id INTEGER;
+ALTER TABLE teams ADD COLUMN IF NOT EXISTS milb_division VARCHAR(50);

@@ -192,6 +192,14 @@ npx tsx scripts/count-ncaa-hockey-games-with-stats-turbo.ts  # Check coverage (1
 npx tsx scripts/ncaa-hockey-targeted-collector-v2.ts         # Collect tournament stats
 npx tsx scripts/analyze-ncaa-hockey-stats-structure.ts       # Analyze stat structure
 
+# ⚾ MINOR LEAGUE BASEBALL COLLECTION (2021-2025)
+psql $DATABASE_URL -f scripts/milb-schema.sql               # Create MiLB database schema
+npx tsx scripts/test-milb-api-structure.ts                  # Test MLB Stats API endpoints
+npx tsx scripts/milb-universal-collector.ts                 # Collect all MiLB data (STRICT ORDER!)
+# Collection order: Teams → Games → Players → Stats
+# Covers: Triple-A, Double-A, High-A, Single-A, Rookie
+# ML Enhancement: Weather, park factors, travel metrics, prospect rankings
+
 # 🎯 PATTERN DETECTION SERVICES
 npx tsx scripts/pattern-detection/production-pattern-api-v4.ts    # V4 API with 21.5K games (port 3337)
 npx tsx scripts/pattern-detection/unified-pattern-api.ts          # Unified pattern API (port 3336)
