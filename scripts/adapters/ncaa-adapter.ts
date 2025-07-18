@@ -1,20 +1,32 @@
 /**
  * 🎓 NCAA API Adapter - Transforms ESPN NCAA API responses
- * Supports Football, Basketball, and Baseball
+ * Supports Football, Basketball, Baseball, and Hockey
  */
 
 export default {
-  transformGame: (data: any) => {
+  transformGame: (data: any, sportHint?: string) => {
     // Determine sport type
     let sport = 'NCAA_FB';
-    if (data.sport === 'college-basketball' || data.sport === 'basketball') {
+    
+    // Use sport hint if provided
+    if (sportHint === 'hockey' || sportHint === 'NCAA_HKY') {
+      sport = 'NCAA_HKY';
+    } else if (data.sport === 'college-basketball' || data.sport === 'basketball') {
       sport = 'NCAA_BB';
     } else if (data.sport === 'college-baseball' || data.sport === 'baseball') {
       sport = 'NCAA_BASEBALL';
+    } else if (data.sport === 'college-hockey' || data.sport === 'hockey') {
+      sport = 'NCAA_HKY';
     }
     
     // Handle missing competitions
     const competition = data.competitions?.[0];
+    
+    // Fallback detection based on game structure
+    if (sport === 'NCAA_FB' && competition?.situation?.period !== undefined) {
+      // Hockey has periods, not quarters
+      sport = 'NCAA_HKY';
+    }
     if (!competition || !competition.competitors) {
       return null; // Skip games with no competition data
     }
@@ -42,18 +54,26 @@ export default {
         conference: competition.competitors[0]?.team?.conferenceId,
         attendance: competition.attendance,
         inning: competition.situation?.inning, // For baseball
-        outs: competition.situation?.outs // For baseball
+        outs: competition.situation?.outs, // For baseball
+        period: competition.situation?.period, // For hockey
+        timeRemaining: competition.situation?.displayClock // For hockey/basketball
       }
     };
   },
   
-  transformPlayer: (data: any) => {
+  transformPlayer: (data: any, sportHint?: string) => {
     // Determine sport type
     let sport = 'NCAA_FB';
-    if (data.sport === 'college-basketball' || data.sport === 'basketball') {
+    
+    // Use sport hint if provided
+    if (sportHint === 'hockey' || sportHint === 'NCAA_HKY') {
+      sport = 'NCAA_HKY';
+    } else if (data.sport === 'college-basketball' || data.sport === 'basketball') {
       sport = 'NCAA_BB';
     } else if (data.sport === 'college-baseball' || data.sport === 'baseball') {
       sport = 'NCAA_BASEBALL';
+    } else if (data.sport === 'college-hockey' || data.sport === 'hockey') {
+      sport = 'NCAA_HKY';
     }
     
     return {
@@ -75,13 +95,19 @@ export default {
     };
   },
   
-  transformTeam: (data: any) => {
+  transformTeam: (data: any, sportHint?: string) => {
     // Determine sport type
     let sport = 'NCAA_FB';
-    if (data.sport === 'college-basketball' || data.sport === 'basketball') {
+    
+    // Use sport hint if provided
+    if (sportHint === 'hockey' || sportHint === 'NCAA_HKY') {
+      sport = 'NCAA_HKY';
+    } else if (data.sport === 'college-basketball' || data.sport === 'basketball') {
       sport = 'NCAA_BB';
     } else if (data.sport === 'college-baseball' || data.sport === 'baseball') {
       sport = 'NCAA_BASEBALL';
+    } else if (data.sport === 'college-hockey' || data.sport === 'hockey') {
+      sport = 'NCAA_HKY';
     }
     
     return {
