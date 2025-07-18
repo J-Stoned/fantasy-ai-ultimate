@@ -116,3 +116,4 @@ api-test-results.json
 mlb-player-mappings.json
 nba-player-mappings.json
 nfl-player-mappings.json
+scripts/workers/*-compiled.js
