@@ -1,0 +1,26 @@
+{
+  "generated_at": "2025-07-18T13:56:48.914Z",
+  "total_limitations": 2,
+  "critical_issues": 0,
+  "major_issues": 1,
+  "minor_issues": 1,
+  "limitations": [
+    {
+      "endpoint": "Player Stats",
+      "issue": "Endpoint returns 404 for NCAA players",
+      "testedAt": "2025-07-18T13:56:38.846Z",
+      "severity": "major"
+    },
+    {
+      "endpoint": "Play-by-play",
+      "issue": "No plays data available",
+      "testedAt": "2025-07-18T13:56:39.032Z",
+      "severity": "minor"
+    }
+  ],
+  "summary": {
+    "rosters_available": true,
+    "stats_available": false,
+    "recommended_approach": "Limited data available"
+  }
+}

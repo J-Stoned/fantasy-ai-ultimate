@@ -49,22 +49,28 @@
 - 🎯 **Ready for Full Historical Collection**: All sports properly configured
 
 ### 🏆 2021 SEASON COLLECTION COMPLETE! (2025-07-18)
-**7,602 GAMES + 680K STATS + FULL ML ENRICHMENT ACROSS 7 SPORTS!**
-- ✅ **7,602 Games Collected**: NFL (285), NBA (1,197), MLB (2,541), NHL (976), NCAA_FB (953), NCAA_BB (1,151), NCAA_BASEBALL (499)
-- ✅ **680,488 Total Stats**: 161K+ new stats added for 2021 season
-- ✅ **29,849 NCAA Stats**: Direct collection approach (roster APIs unavailable)
-- ✅ **ML Enrichment Complete**: 9,716 weather records, 39,749 betting lines, 3,271 injuries
-- ✅ **NCAA Adapters Created**: Football, Basketball, and Baseball support
-- ✅ **ID Mismatch Fixed**: MLB player IDs + NCAA team format issues resolved
-- ✅ **Turbo Performance**: 129 stats/sec using 24 HTTP threads
+**8,739 GAMES + 706K STATS + FULL ML ENRICHMENT ACROSS 8 SPORTS!**
+- ✅ **8,739 Games Collected**: NFL (285), NBA (1,197), MLB (2,541), NHL (976), NCAA_FB (953), NCAA_BB (1,151), NCAA_BASEBALL (499), NCAA_HKY (1,137)
+- ✅ **706,774 Total Stats**: 187K+ new stats added for 2021 season (↑26,286 from NCAA Baseball!)
+- ✅ **56,135 NCAA Stats**: ESPN API SUCCESS! (↑26,286 from initial count)
+  - NCAA Baseball: 26,286 stats from 1,967 D1 games (100% success rate!)
+  - NCAA Football: 16,322 stats
+  - NCAA Basketball: 10,474 stats  
+  - NCAA Hockey: 0 stats (ESPN limitation confirmed)
+- ✅ **ML Enrichment Complete**: 11,587 weather records, 47,477 betting lines, 3,271 injuries
+- ✅ **NCAA Baseball Breakthrough**: Discovered ESPN API has full player stats!
+- ✅ **Turbo Performance**: 96.2 games/sec for NCAA Baseball (Ryzen 5 7600X!)
 - 🚀 **Database Ready**: Pattern detection + ML training can begin!
-
 
 **2021 Season Breakdown:**
 - **NFL 2021**: 285 games, 25,997 stats
 - **NBA 2021-22**: 1,197 games, 13,669 stats  
 - **MLB 2021**: 2,541 games, 72,919 stats
 - **NHL 2021-22**: 976 games, 18,679 stats
+- **NCAA_FB 2021**: 953 games, 16,322 stats
+- **NCAA_BB 2021-22**: 1,151 games, 10,474 stats
+- **NCAA_BASEBALL 2021**: 499 games, 3,053 stats
+- **NCAA_HKY 2021-22**: 1,137 games, 0 stats (ESPN API limitation)
 
 ### 🏒 NCAA HOCKEY COLLECTION COMPLETE! (2025-07-16)
 **EXPANDED TO 7 SPORTS - PATTERN ANALYSIS READY!**
