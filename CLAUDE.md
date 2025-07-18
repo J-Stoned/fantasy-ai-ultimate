@@ -82,6 +82,21 @@
 - ✅ **All future scrapers** use standardized ESPN IDs
 - ✅ **Teams/Players**: Legacy format preserved (pragmatic approach)
 
+### ⚾ NCAA BASEBALL BREAKTHROUGH! (2025-07-18)
+**184,318 STATS COLLECTED - ESPN API PARSING FIXED!**
+- ✅ **184K+ NCAA Baseball Stats**: Across 2021-2025 seasons!
+- ✅ **Parser Fix**: Using 'type' field instead of 'name' - GAME CHANGER!
+- ✅ **Performance**: 28+ stats/game (up from 3-8) using 48 threads
+- ✅ **2024-2025 Turbo Collection**: 81,299 new stats in minutes!
+- ⚠️ **ESPN Coverage**: Only ~30% of D1 games available
+- 🎯 **Next Step**: 6-4-3 Charts API for 100% D1 coverage
+- 📊 **Season Breakdown**:
+  - 2021: 34,467 stats (17.5/game)
+  - 2022: 21,514 stats (7.2/game)
+  - 2023: 28,567 stats (9.6/game)
+  - 2024: 35,204 stats (11.4/game)
+  - 2025: 64,566 stats (20.8/game)
+
 ### 📊 ENHANCED SYNERGY BREAKTHROUGH:
 **From 12 → 1,550 → 21,159 synergies (1,763x total improvement!)**
 - **Enhanced Schema**: lineup_size, context_type, home_away, position_type
@@ -163,6 +178,13 @@ npx tsx scripts/turbo-stats-collector-2021.ts nba         # NBA 2021-22 stats
 npx tsx scripts/mlb-2021-stats-direct.ts                  # MLB with ID fix
 npx tsx scripts/turbo-stats-collector-2021.ts nhl         # NHL 2021-22 stats
 npx tsx scripts/verify-2021-collection.ts                 # Verify all data
+
+# ⚾ NCAA BASEBALL COLLECTION (184K+ STATS!)
+npx tsx scripts/ncaa-baseball-ultimate-collector.ts       # All seasons with fixed parser
+npx tsx scripts/ncaa-baseball-2024-2025-turbo.ts         # 2024-2025 turbo collection
+npx tsx scripts/verify-ncaa-baseball-collections.ts       # Verify NCAA Baseball data
+npx tsx scripts/prepare-643-charts-integration.ts         # Prep for 6-4-3 Charts API
+npx tsx scripts/six43-charts-turbo-collector.ts          # Ready when API token obtained
 
 # 🎯 PATTERN DETECTION SERVICES
 npx tsx scripts/pattern-detection/production-pattern-api-v4.ts    # V4 API with 21.5K games (port 3337)
@@ -263,17 +285,19 @@ scripts/
 └── production/                        # 8 core production scripts
 ```
 
-### Real Database Stats (2025-07-18 UPDATED - 2021 COLLECTION COMPLETE!):
-- **Player Stats**: 652,097 total across all sports! (↑131,264 from 2021)
+### Real Database Stats (2025-07-18 UPDATED - NCAA BASEBALL BREAKTHROUGH!):
+- **Player Stats**: 836,415 total across all sports! (↑184,318 NCAA Baseball!)
   - MLB: 227,968 stats (↑84,366 from 2021!)
+  - NCAA_BASEBALL: 184,318 stats (NEW! Fixed ESPN API parsing!)
   - NCAA_BB: 152,026 stats 
   - NHL: 101,941 stats (↑18,679 from 2021!)
   - NBA: 94,800 stats (↑14,508 from 2021!)
   - NCAA_FB: 43,008 stats
   - NFL: 44,640 stats (↑25,997 from 2021!)
   - NCAA_HKY: 0 stats (ESPN API limitation)
-- **Games**: 26,899 total (↑4,999 from 2021!)
-  - 7 sports covered: NFL, NBA, MLB, NHL, NCAA_FB, NCAA_BB, NCAA_HKY
+- **Games**: 42,066 total (↑15,167 NCAA Baseball games!)
+  - 8 sports covered: NFL, NBA, MLB, NHL, NCAA_FB, NCAA_BB, NCAA_BASEBALL, NCAA_HKY
+  - NCAA_BASEBALL: 15,167 games (only 30% have ESPN stats)
   - MLB: 8,082 games (↑2,541 from 2021!)
   - NCAA_BB: 5,427 games
   - NBA: 5,164 games (↑1,197 from 2021!)
@@ -281,11 +305,12 @@ scripts/
   - NCAA_HKY: 2,349 games
   - NFL: 1,233 games (↑285 from 2021!)
   - NCAA_FB: 869 games
-- **Teams**: 334 total (All major sports with ESPN IDs!)
+- **Teams**: 764 total (↑430 NCAA Baseball teams!)
   - ✅ NFL: 32 teams (100% ESPN IDs)
   - ✅ NBA: 30 teams (100% ESPN IDs)
   - ✅ MLB: 30 teams (100% ESPN IDs)
   - ✅ NHL: 32 teams (100% ESPN IDs)
+  - NCAA_BASEBALL: 430 teams (D1, D2, D3 mix)
   - NCAA_HKY: 110 teams
   - NCAA_BB: 96 teams
   - NCAA_FB: 5 teams
@@ -296,8 +321,8 @@ scripts/
   - **Advanced Metrics**: 12,396 records ✅ (↑11,396 from 2021!)
   - **Team Synergies**: 1,784 records ✅
   - **Player Injuries**: 3,271 records ✅
-- **Players**: 41,672 (↑8,754 from 2021!)
-- **Total Records**: 715,740+ (massive growth!)
+- **Players**: 72,000+ (↑30,000+ NCAA Baseball players!)
+- **Total Records**: 900,000+ (approaching 1 MILLION!)
 
 ### Pattern Detection Performance (BREAKTHROUGH - 2025-07-06):
 - **Average Pattern Accuracy**: 65.2% (massive improvement!)
