@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { BaseAdapter, Team, Player, Game, PlayerGameStats } from './base-adapter';
 
-export class MiLBAdapter extends BaseAdapter {
+export class MiLBAdapterEnhanced extends BaseAdapter {
   private readonly API_BASE = 'https://statsapi.mlb.com/api/v1';
   
   // MiLB Sport IDs
@@ -80,7 +80,10 @@ export class MiLBAdapter extends BaseAdapter {
           weight: player.person.weight,
           birthCity: player.person.birthCity,
           birthCountry: player.person.birthCountry,
-          status: player.status?.description
+          status: player.status?.description,
+          primaryPosition: player.position?.name,
+          batSide: player.person.batSide?.code,
+          pitchHand: player.person.pitchHand?.code
         }
       }));
     } catch (error) {
@@ -121,7 +124,11 @@ export class MiLBAdapter extends BaseAdapter {
                 venue: game.venue?.name,
                 gameType: game.gameType,
                 scheduledInnings: game.scheduledInnings,
-                inningsPitched: game.linescore?.innings?.length
+                inningsPitched: game.linescore?.innings?.length,
+                dayNight: game.dayNight,
+                weather: game.weather,
+                wind: game.wind,
+                attendance: game.attendance
               }
             });
           }
@@ -146,7 +153,7 @@ export class MiLBAdapter extends BaseAdapter {
         const teamData = boxscore.teams[side];
         const teamId = teamData.team.id;
         
-        // Process batters
+        // Process all players
         for (const playerId in teamData.players || {}) {
           const player = teamData.players[playerId];
           
@@ -154,18 +161,19 @@ export class MiLBAdapter extends BaseAdapter {
             continue;
           }
           
+          // Extract numeric ID from playerId
+          const numericPlayerId = playerId.replace(/^\D+/, '');
+          
+          // ENHANCED: Collect ALL batting stats
           if (player.stats.batting && Object.keys(player.stats.batting).length > 0) {
             const battingStats = player.stats.batting;
-            
-            // Extract numeric ID from playerId (could be "123456" or "ID123456")
-            const numericPlayerId = playerId.replace(/^\D+/, '');
             
             stats.push({
               playerId: parseInt(numericPlayerId),
               gameId: gameId,
               teamId: teamId,
               stats: {
-                // Batting stats
+                // Basic stats
                 atBats: battingStats.atBats || 0,
                 runs: battingStats.runs || 0,
                 hits: battingStats.hits || 0,
@@ -177,28 +185,54 @@ export class MiLBAdapter extends BaseAdapter {
                 strikeOuts: battingStats.strikeOuts || 0,
                 stolenBases: battingStats.stolenBases || 0,
                 caughtStealing: battingStats.caughtStealing || 0,
+                
+                // Advanced stats
+                plateAppearances: battingStats.plateAppearances || 0,
+                totalBases: battingStats.totalBases || 0,
+                groundIntoDoublePlay: battingStats.groundIntoDoublePlay || 0,
+                groundIntoTriplePlay: battingStats.groundIntoTriplePlay || 0,
+                hitByPitch: battingStats.hitByPitch || 0,
+                intentionalWalks: battingStats.intentionalWalks || 0,
+                leftOnBase: battingStats.leftOnBase || 0,
+                pickoffs: battingStats.pickoffs || 0,
+                sacBunts: battingStats.sacBunts || 0,
+                sacFlies: battingStats.sacFlies || 0,
+                catchersInterference: battingStats.catchersInterference || 0,
+                
+                // Outs breakdown
+                groundOuts: battingStats.groundOuts || 0,
+                airOuts: battingStats.airOuts || 0,
+                flyOuts: battingStats.flyOuts || 0,
+                lineOuts: battingStats.lineOuts || 0,
+                popOuts: battingStats.popOuts || 0,
+                
+                // Calculated stats
                 avg: battingStats.avg || '.000',
                 obp: battingStats.obp || '.000',
                 slg: battingStats.slg || '.000',
-                ops: battingStats.ops || '.000'
+                ops: battingStats.ops || '.000',
+                atBatsPerHomeRun: battingStats.atBatsPerHomeRun || '0.0',
+                stolenBasePercentage: battingStats.stolenBasePercentage || '.000',
+                
+                // Metadata
+                gamesPlayed: battingStats.gamesPlayed || 1,
+                summary: battingStats.summary || '',
+                statType: 'batting'
               },
               isHome: side === 'home'
             });
           }
           
-          // Process pitchers
+          // ENHANCED: Collect ALL pitching stats
           if (player.stats.pitching && Object.keys(player.stats.pitching).length > 0) {
             const pitchingStats = player.stats.pitching;
-            
-            // Extract numeric ID from playerId (could be "123456" or "ID123456")
-            const numericPlayerId = playerId.replace(/^\D+/, '');
             
             stats.push({
               playerId: parseInt(numericPlayerId),
               gameId: gameId,
               teamId: teamId,
               stats: {
-                // Pitching stats
+                // Basic stats
                 inningsPitched: pitchingStats.inningsPitched || '0.0',
                 hits: pitchingStats.hits || 0,
                 runs: pitchingStats.runs || 0,
@@ -206,20 +240,112 @@ export class MiLBAdapter extends BaseAdapter {
                 baseOnBalls: pitchingStats.baseOnBalls || 0,
                 strikeOuts: pitchingStats.strikeOuts || 0,
                 homeRuns: pitchingStats.homeRuns || 0,
-                era: pitchingStats.era || '0.00',
-                whip: pitchingStats.whip || '0.00',
-                pitchesThrown: pitchingStats.numberOfPitches || 0,
+                
+                // Advanced stats
+                atBats: pitchingStats.atBats || 0,
+                battersFaced: pitchingStats.battersFaced || 0,
+                outs: pitchingStats.outs || 0,
+                doubles: pitchingStats.doubles || 0,
+                triples: pitchingStats.triples || 0,
+                intentionalWalks: pitchingStats.intentionalWalks || 0,
+                hitBatsmen: pitchingStats.hitBatsmen || 0,
+                wildPitches: pitchingStats.wildPitches || 0,
+                balks: pitchingStats.balks || 0,
+                pickoffs: pitchingStats.pickoffs || 0,
+                
+                // Inherited runners
+                inheritedRunners: pitchingStats.inheritedRunners || 0,
+                inheritedRunnersScored: pitchingStats.inheritedRunnersScored || 0,
+                
+                // Outs breakdown
+                groundOuts: pitchingStats.groundOuts || 0,
+                airOuts: pitchingStats.airOuts || 0,
+                flyOuts: pitchingStats.flyOuts || 0,
+                lineOuts: pitchingStats.lineOuts || 0,
+                popOuts: pitchingStats.popOuts || 0,
+                
+                // Sacrifice hits
+                sacBunts: pitchingStats.sacBunts || 0,
+                sacFlies: pitchingStats.sacFlies || 0,
+                
+                // Stolen bases against
+                stolenBases: pitchingStats.stolenBases || 0,
+                caughtStealing: pitchingStats.caughtStealing || 0,
+                stolenBasePercentage: pitchingStats.stolenBasePercentage || '.000',
+                
+                // Pitches
+                numberOfPitches: pitchingStats.numberOfPitches || 0,
+                pitchesThrown: pitchingStats.pitchesThrown || 0,
                 strikes: pitchingStats.strikes || 0,
                 balls: pitchingStats.balls || 0,
-                win: pitchingStats.wins || 0,
-                loss: pitchingStats.losses || 0,
-                save: pitchingStats.saves || 0,
-                blownSave: pitchingStats.blownSaves || 0,
-                hold: pitchingStats.holds || 0
+                strikePercentage: pitchingStats.strikePercentage || '.000',
+                
+                // Game stats
+                wins: pitchingStats.wins || 0,
+                losses: pitchingStats.losses || 0,
+                saves: pitchingStats.saves || 0,
+                saveOpportunities: pitchingStats.saveOpportunities || 0,
+                holds: pitchingStats.holds || 0,
+                blownSaves: pitchingStats.blownSaves || 0,
+                gamesPlayed: pitchingStats.gamesPlayed || 1,
+                gamesStarted: pitchingStats.gamesStarted || 0,
+                gamesFinished: pitchingStats.gamesFinished || 0,
+                completeGames: pitchingStats.completeGames || 0,
+                shutouts: pitchingStats.shutouts || 0,
+                
+                // Calculated stats
+                era: pitchingStats.era || '0.00',
+                whip: pitchingStats.whip || '0.00',
+                homeRunsPer9: pitchingStats.homeRunsPer9 || '0.0',
+                runsScoredPer9: pitchingStats.runsScoredPer9 || '0.0',
+                
+                // Other
+                passedBall: pitchingStats.passedBall || 0,
+                catchersInterference: pitchingStats.catchersInterference || 0,
+                rbi: pitchingStats.rbi || 0,
+                hitByPitch: pitchingStats.hitByPitch || 0,
+                summary: pitchingStats.summary || '',
+                statType: 'pitching'
               },
               isHome: side === 'home',
               isPitcher: true
             });
+          }
+          
+          // ENHANCED: Also collect fielding stats if available
+          if (player.stats.fielding && Object.keys(player.stats.fielding).length > 0) {
+            for (const position in player.stats.fielding) {
+              const fieldingStats = player.stats.fielding[position];
+              
+              if (fieldingStats && Object.keys(fieldingStats).length > 0) {
+                stats.push({
+                  playerId: parseInt(numericPlayerId),
+                  gameId: gameId,
+                  teamId: teamId,
+                  stats: {
+                    position: position,
+                    gamesPlayed: fieldingStats.gamesPlayed || 1,
+                    gamesStarted: fieldingStats.gamesStarted || 0,
+                    innings: fieldingStats.innings || '0.0',
+                    chances: fieldingStats.chances || 0,
+                    putOuts: fieldingStats.putOuts || 0,
+                    assists: fieldingStats.assists || 0,
+                    errors: fieldingStats.errors || 0,
+                    doublePlays: fieldingStats.doublePlays || 0,
+                    triplePlays: fieldingStats.triplePlays || 0,
+                    passedBall: fieldingStats.passedBall || 0,
+                    wildPitch: fieldingStats.wildPitch || 0,
+                    stolenBases: fieldingStats.stolenBases || 0,
+                    caughtStealing: fieldingStats.caughtStealing || 0,
+                    pickoffs: fieldingStats.pickoffs || 0,
+                    fielding: fieldingStats.fielding || '.000',
+                    statType: 'fielding'
+                  },
+                  isHome: side === 'home',
+                  isFielding: true
+                });
+              }
+            }
           }
         }
       }
@@ -251,9 +377,19 @@ export class MiLBAdapter extends BaseAdapter {
         }
       });
 
+      // Get fielding stats
+      const fieldingResponse = await axios.get(`${this.API_BASE}/people/${playerId}/stats`, {
+        params: {
+          stats: 'season',
+          season,
+          group: 'fielding'
+        }
+      });
+
       return {
         hitting: hittingResponse.data.stats?.[0]?.splits?.[0]?.stat || null,
-        pitching: pitchingResponse.data.stats?.[0]?.splits?.[0]?.stat || null
+        pitching: pitchingResponse.data.stats?.[0]?.splits?.[0]?.stat || null,
+        fielding: fieldingResponse.data.stats?.[0]?.splits?.[0]?.stat || null
       };
     } catch (error) {
       console.error(`Error fetching season stats for player ${playerId}:`, error);
