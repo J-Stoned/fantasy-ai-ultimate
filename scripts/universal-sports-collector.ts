@@ -65,6 +65,7 @@ class UniversalSportsCollector {
       { sport: 'NHL', year: 2021, regular: { start: '2021-01-13', end: '2021-05-11' }, playoffs: { start: '2021-05-15', end: '2021-07-07' } },
       { sport: 'NCAA_FB', year: 2021, regular: { start: '2021-08-28', end: '2022-01-10' }, playoffs: { start: '2022-01-01', end: '2022-01-10' } },
       { sport: 'NCAA_BB', year: 2021, regular: { start: '2021-11-09', end: '2022-04-04' }, playoffs: { start: '2022-03-15', end: '2022-04-04' } },
+      { sport: 'NCAA_BASEBALL', year: 2021, regular: { start: '2021-02-19', end: '2021-06-30' }, playoffs: { start: '2021-06-04', end: '2021-06-30' } },
       
       // 2022 Seasons
       { sport: 'NFL', year: 2022, regular: { start: '2022-09-08', end: '2023-01-08' }, playoffs: { start: '2023-01-14', end: '2023-02-12' } },
@@ -96,7 +97,8 @@ class UniversalSportsCollector {
       'MLB': 'baseball/mlb',
       'NHL': 'hockey/nhl',
       'NCAA_FB': 'football/college-football',
-      'NCAA_BB': 'basketball/mens-college-basketball'
+      'NCAA_BB': 'basketball/mens-college-basketball',
+      'NCAA_BASEBALL': 'baseball/college-baseball'
     };
     return mapping[sport] || sport.toLowerCase();
   }
@@ -590,7 +592,7 @@ class UniversalSportsCollector {
     // First, we need to get the actual game IDs from the database
     for (const game of games) {
       // Only add weather for outdoor sports
-      if (['NFL', 'MLB', 'NCAA_FB'].includes(game.sport)) {
+      if (['NFL', 'MLB', 'NCAA_FB', 'NCAA_BASEBALL'].includes(game.sport)) {
         // Get the actual game ID from database
         const { data: dbGame } = await supabase
           .from('games')
@@ -830,7 +832,7 @@ async function main() {
     console.log(chalk.white(`  --historical    Collect historical data`));
     console.log(chalk.white(`  --year YYYY     Specify year (2021-2022)`));
     console.log(chalk.white(`  --enrich        Include ML enrichment (weather, betting, etc.)`));
-    console.log(chalk.green(`\nSupported sports: NFL, NBA, MLB, NHL, NCAA_FB, NCAA_BB`));
+    console.log(chalk.green(`\nSupported sports: NFL, NBA, MLB, NHL, NCAA_FB, NCAA_BB, NCAA_BASEBALL`));
     return;
   }
   
@@ -845,8 +847,8 @@ async function main() {
     return;
   }
   
-  if (!['nfl', 'nba', 'mlb', 'nhl', 'ncaa_fb', 'ncaa_bb'].includes(sport.toLowerCase())) {
-    console.error(chalk.red('Invalid sport. Use: NFL, NBA, MLB, NHL, NCAA_FB, NCAA_BB'));
+  if (!['nfl', 'nba', 'mlb', 'nhl', 'ncaa_fb', 'ncaa_bb', 'ncaa_baseball'].includes(sport.toLowerCase())) {
+    console.error(chalk.red('Invalid sport. Use: NFL, NBA, MLB, NHL, NCAA_FB, NCAA_BB, NCAA_BASEBALL'));
     return;
   }
   

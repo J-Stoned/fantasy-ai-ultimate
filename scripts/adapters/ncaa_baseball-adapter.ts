@@ -1,0 +1,1 @@
+ncaa-adapter.ts
