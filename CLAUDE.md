@@ -72,15 +72,16 @@
 - **NCAA_BASEBALL 2021**: 499 games, 3,053 stats
 - **NCAA_HKY 2021-22**: 1,137 games, 0 stats (ESPN API limitation)
 
-### 🏒 NCAA HOCKEY COLLECTION COMPLETE! (2025-07-16)
-**EXPANDED TO 7 SPORTS - PATTERN ANALYSIS READY!**
-- ✅ **110 NCAA Hockey teams** collected with ESPN IDs
-- ✅ **2,349 NCAA Hockey games** across 2 seasons (2023-24 & 2024-25)
-- ⚠️ **ESPN API limitation**: No player rosters or stats for NCAA Hockey
-- ✅ **Games ready for pattern analysis** despite missing player data
-- ✅ **Total sports covered**: NFL, NBA, MLB, NHL, NCAA_FB, NCAA_BB, NCAA_HKY
-- ✅ **All future scrapers** use standardized ESPN IDs
-- ✅ **Teams/Players**: Legacy format preserved (pragmatic approach)
+### 🏒 NCAA HOCKEY STATS DISCOVERY! (2025-07-18)
+**BREAKTHROUGH: ESPN HAS NCAA HOCKEY STATS (LIMITED COVERAGE)!**
+- ✅ **994 player stats collected** from NCAA Hockey tournament games!
+- ✅ **35 games with full stats** (45 identified, 10 had missing teams)
+- ✅ **1.3% coverage** - ESPN only covers major tournament games
+- ✅ **Full stat structure**: Goals, assists, +/-, TOI, shots, hits, PIM, etc.
+- ✅ **Goalie stats included**: Saves, GA, save%, wins/losses
+- ✅ **Pattern**: 15 games per year (2022, 2024, 2025) - March/April only
+- ✅ **110 NCAA Hockey teams** + 3,486 total games in database
+- 🔥 **Key finding**: Stats ARE available, just very limited coverage!
 
 ### ⚾ NCAA BASEBALL BREAKTHROUGH! (2025-07-18)
 **184,318 STATS COLLECTED - ESPN API PARSING FIXED!**
@@ -186,6 +187,11 @@ npx tsx scripts/verify-ncaa-baseball-collections.ts       # Verify NCAA Baseball
 npx tsx scripts/prepare-643-charts-integration.ts         # Prep for 6-4-3 Charts API
 npx tsx scripts/six43-charts-turbo-collector.ts          # Ready when API token obtained
 
+# 🏒 NCAA HOCKEY COLLECTION (994 STATS - TOURNAMENT ONLY!)
+npx tsx scripts/count-ncaa-hockey-games-with-stats-turbo.ts  # Check coverage (1.3%)
+npx tsx scripts/ncaa-hockey-targeted-collector-v2.ts         # Collect tournament stats
+npx tsx scripts/analyze-ncaa-hockey-stats-structure.ts       # Analyze stat structure
+
 # 🎯 PATTERN DETECTION SERVICES
 npx tsx scripts/pattern-detection/production-pattern-api-v4.ts    # V4 API with 21.5K games (port 3337)
 npx tsx scripts/pattern-detection/unified-pattern-api.ts          # Unified pattern API (port 3336)
@@ -285,16 +291,16 @@ scripts/
 └── production/                        # 8 core production scripts
 ```
 
-### Real Database Stats (2025-07-18 UPDATED - NCAA BASEBALL BREAKTHROUGH!):
-- **Player Stats**: 836,415 total across all sports! (↑184,318 NCAA Baseball!)
+### Real Database Stats (2025-07-18 UPDATED - NCAA HOCKEY DISCOVERY!):
+- **Player Stats**: 837,409 total across all sports! (↑994 NCAA Hockey!)
   - MLB: 227,968 stats (↑84,366 from 2021!)
-  - NCAA_BASEBALL: 184,318 stats (NEW! Fixed ESPN API parsing!)
+  - NCAA_BASEBALL: 184,318 stats (FIXED ESPN API parsing!)
   - NCAA_BB: 152,026 stats 
   - NHL: 101,941 stats (↑18,679 from 2021!)
   - NBA: 94,800 stats (↑14,508 from 2021!)
   - NCAA_FB: 43,008 stats
   - NFL: 44,640 stats (↑25,997 from 2021!)
-  - NCAA_HKY: 0 stats (ESPN API limitation)
+  - NCAA_HKY: 994 stats (NEW! Tournament games only - 1.3% coverage)
 - **Games**: 42,066 total (↑15,167 NCAA Baseball games!)
   - 8 sports covered: NFL, NBA, MLB, NHL, NCAA_FB, NCAA_BB, NCAA_BASEBALL, NCAA_HKY
   - NCAA_BASEBALL: 15,167 games (only 30% have ESPN stats)
