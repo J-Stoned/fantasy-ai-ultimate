@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { withAuth, AuthUser } from '../../../../middleware/auth';
+import { logger } from '../../../../../scripts/utils/logger';
 
 // Initialize Supabase client lazily to avoid build-time errors
 function getSupabaseClient() {
@@ -13,9 +15,11 @@ function getSupabaseClient() {
   return createClient(url, key);
 }
 
-export async function GET(request: NextRequest) {
+export const GET = withAuth(async (request: NextRequest, user: AuthUser) => {
   try {
     const supabase = getSupabaseClient();
+    
+    logger.info('Predictions API accessed', { userId: user.id, method: 'GET' });
     const { searchParams } = new URL(request.url);
     const gameId = searchParams.get('game_id');
     const sport = searchParams.get('sport');
@@ -95,6 +99,8 @@ export async function GET(request: NextRequest) {
       createdAt: pred.created_at
     })) || [];
     
+    logger.info('Predictions returned', { userId: user.id, count: predictions.length });
+    
     return NextResponse.json({
       predictions,
       count: predictions.length,
@@ -106,18 +112,20 @@ export async function GET(request: NextRequest) {
     });
     
   } catch (error) {
-    console.error('Predictions API error:', error);
+    logger.error('Predictions API error', error, { userId: user.id });
     return NextResponse.json(
       { error: 'Failed to fetch predictions' },
       { status: 500 }
     );
   }
-}
+}, ['predictions:read']); // Require predictions:read permission
 
 // POST endpoint to track prediction outcomes
-export async function POST(request: NextRequest) {
+export const POST = withAuth(async (request: NextRequest, user: AuthUser) => {
   try {
     const supabase = getSupabaseClient();
+    
+    logger.info('Recording prediction outcome', { userId: user.id, method: 'POST' });
     const body = await request.json();
     const { predictionId, actualOutcome, gameId } = body;
     
@@ -167,6 +175,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
     
+    logger.info('Prediction outcome recorded', { 
+      userId: user.id, 
+      predictionId,
+      correct: isCorrect 
+    });
+    
     return NextResponse.json({
       success: true,
       correct: isCorrect,
@@ -174,10 +188,10 @@ export async function POST(request: NextRequest) {
     });
     
   } catch (error) {
-    console.error('Prediction outcome error:', error);
+    logger.error('Prediction outcome error', error, { userId: user.id });
     return NextResponse.json(
       { error: 'Failed to record outcome' },
       { status: 500 }
     );
   }
-}
+}, ['predictions:write']); // Require predictions:write permission

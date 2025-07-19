@@ -13,6 +13,7 @@ import { ensemblePredictor, GameFeatures } from '../lib/ml/ensemble-predictor';
 import { predictionBroadcaster } from '../lib/realtime/prediction-broadcaster';
 import * as cron from 'node-cron';
 import * as path from 'path';
+import { logger } from '../utils/logger';
 
 config({ path: '.env.local' });
 
@@ -27,18 +28,20 @@ class ProductionPredictionService {
   private startTime = Date.now();
   
   async initialize() {
-    console.log(chalk.bold.cyan('\n🎯 PRODUCTION PREDICTION SERVICE'));
-    console.log(chalk.gray('='.repeat(50)));
+    logger.info('🎯 PRODUCTION PREDICTION SERVICE', { 
+      service: 'production-prediction',
+      action: 'initialize' 
+    });
     
     // Load models - first try ensemble, then fallback to production
-    console.log(chalk.yellow('Loading ML models...'));
+    logger.info('Loading ML models...');
     
     try {
       // First, try to load existing ensemble models
       await ensemblePredictor.loadModels(path.join(process.cwd(), 'models'));
-      console.log(chalk.green('✅ Ensemble models loaded'));
+      logger.info('✅ Ensemble models loaded', { modelType: 'ensemble' });
     } catch (error) {
-      console.log(chalk.yellow('⚠️  Ensemble models not found, training new ensemble...'));
+      logger.warn('⚠️  Ensemble models not found, training new ensemble...', { modelType: 'ensemble' });
       
       // Train ensemble with some sample data (we'll improve this later)
       try {
@@ -48,27 +51,30 @@ class ProductionPredictionService {
         // Try to load the production model as a fallback
         const modelsPath = path.join(process.cwd(), 'models', 'production_ultimate');
         const model = await tf.loadLayersModel(`file://${modelsPath}/model.json`);
-        console.log(chalk.green('✅ Production model loaded as fallback (51.47% accuracy)'));
+        logger.info('✅ Production model loaded as fallback', { 
+          modelType: 'production',
+          accuracy: 51.47
+        });
         
         // Initialize ensemble with just the neural network for now
         (ensemblePredictor as any).neuralNetwork = model;
         (ensemblePredictor as any).isLoaded = true;
         
-        console.log(chalk.yellow('⚠️  Using single model mode (Neural Network only)'));
+        logger.warn('⚠️  Using single model mode (Neural Network only)', { modelType: 'neural_network' });
       } catch (err) {
-        console.log(chalk.red('❌ No models available:', err.message));
+        logger.error('❌ No models available', err, { modelType: 'none' });
         throw new Error('Cannot start prediction service without models');
       }
     }
     
     // Initialize WebSocket broadcaster
-    console.log(chalk.yellow('Connecting to WebSocket broadcaster...'));
+    logger.info('Connecting to WebSocket broadcaster...');
     await predictionBroadcaster.initialize();
     
     if (predictionBroadcaster.isAvailable()) {
-      console.log(chalk.green('✅ WebSocket broadcaster connected'));
+      logger.info('✅ WebSocket broadcaster connected', { websocket: 'connected' });
     } else {
-      console.log(chalk.yellow('⚠️  Running without real-time broadcasts'));
+      logger.warn('⚠️  Running without real-time broadcasts', { websocket: 'unavailable' });
     }
     
     this.isRunning = true;
@@ -90,7 +96,7 @@ class ProductionPredictionService {
       .order('start_time', { ascending: true });
     
     if (error) {
-      console.error(chalk.red('Error fetching games:'), error);
+      logger.error('Error fetching games', error, { method: 'getUpcomingGames' });
       return [];
     }
     
@@ -156,7 +162,7 @@ class ProductionPredictionService {
       
       return features;
     } catch (error) {
-      console.error(chalk.red('Error extracting features:'), error);
+      logger.error('Error extracting features', error, { method: 'extractGameFeatures' });
       return null;
     }
   }
@@ -176,7 +182,7 @@ class ProductionPredictionService {
         .limit(20);
       
       if (error) {
-        console.error(chalk.red(`    Error getting team stats for ${teamId}:`), error);
+        logger.error('Error getting team stats', error, { teamId, method: 'getTeamStats' });
         return this.getDefaultTeamStats();
       }
     
@@ -219,7 +225,7 @@ class ProductionPredictionService {
       awayWinRate: awayGames > 0 ? awayWins / awayGames : 0.5
     };
     } catch (error) {
-      console.error(chalk.red('Error in getTeamStats:'), error);
+      logger.error('Error in getTeamStats', error, { method: 'getTeamStats' });
       return this.getDefaultTeamStats();
     }
   }
