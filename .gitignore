@@ -117,3 +117,26 @@ mlb-player-mappings.json
 nba-player-mappings.json
 nfl-player-mappings.json
 scripts/workers/*-compiled.js
+
+# Test files with potential secrets
+test-*.ts
+test-*.js
+test-*.ps1
+check-*.ts
+clear-*.ts
+scripts/test-*.ts
+
+# Database dumps and backups
+*.sql
+*.dump
+fantasy_backup*
+database_backup*
+
+# Windows PowerShell scripts that might contain passwords
+*.ps1
+
+# Temporary pattern test files
+test-pattern-*
+test-altitude-*
+test-api-*
+test-db-*
