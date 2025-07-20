@@ -68,7 +68,14 @@
     "test:patterns": "tsx scripts/test-pattern-detection.ts",
     "test:ai": "tsx scripts/test-ai-assistant.ts",
     "dev:connected": "tsx scripts/start-connected.ts",
-    "precommit": "npm run security:check && npm run lint && npm run type-check"
+    "precommit": "npm run security:check && npm run lint && npm run type-check",
+    "fantasy:test": "tsx scripts/fantasy-ml/simple-test.ts",
+    "fantasy:fast": "tsx scripts/fantasy-ml/fast-test.ts",
+    "fantasy:ultra": "tsx scripts/fantasy-ml/ultra-fast-test.ts",
+    "fantasy:perf": "tsx scripts/fantasy-ml/performance-comparison.ts",
+    "fantasy:train": "tsx scripts/fantasy-ml/train-models.ts",
+    "fantasy:api": "tsx scripts/fantasy-ml/services/fantasy-api-service.ts",
+    "fantasy:deploy": "tsx scripts/fantasy-ml/deploy-mvp.ts"
   },
   "private": true,
   "devDependencies": {
