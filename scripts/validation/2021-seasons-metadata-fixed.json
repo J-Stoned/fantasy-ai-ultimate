@@ -1,0 +1,169 @@
+{
+  "seasons": {
+    "NFL": {
+      "name": "NFL 2021",
+      "queries": [
+        {
+          "start": "2021-09-01",
+          "end": "2021-12-31",
+          "label": "Regular Season"
+        },
+        {
+          "start": "2022-01-01",
+          "end": "2022-02-15",
+          "label": "Playoffs"
+        }
+      ],
+      "sport": "NFL"
+    },
+    "NBA": {
+      "name": "NBA 2021-22",
+      "queries": [
+        {
+          "start": "2021-10-01",
+          "end": "2021-12-31",
+          "label": "2021 games"
+        },
+        {
+          "start": "2022-01-01",
+          "end": "2022-06-30",
+          "label": "2022 games"
+        }
+      ],
+      "sport": "NBA"
+    },
+    "NHL": {
+      "name": "NHL 2021-22",
+      "queries": [
+        {
+          "start": "2021-10-01",
+          "end": "2021-12-31",
+          "label": "2021 games"
+        },
+        {
+          "start": "2022-01-01",
+          "end": "2022-06-30",
+          "label": "2022 games"
+        }
+      ],
+      "sport": "NHL"
+    },
+    "MLB": {
+      "name": "MLB 2021",
+      "queries": [
+        {
+          "start": "2021-04-01",
+          "end": "2021-11-30",
+          "label": "Full Season"
+        }
+      ],
+      "sport": "MLB"
+    },
+    "NCAA_FB": {
+      "name": "NCAA Football 2021",
+      "queries": [
+        {
+          "start": "2021-08-01",
+          "end": "2021-12-31",
+          "label": "Regular Season"
+        },
+        {
+          "start": "2022-01-01",
+          "end": "2022-01-15",
+          "label": "Bowl Games"
+        }
+      ],
+      "sport": "NCAA_FB"
+    },
+    "NCAA_BB": {
+      "name": "NCAA Basketball 2021-22",
+      "queries": [
+        {
+          "start": "2021-11-01",
+          "end": "2021-12-31",
+          "label": "2021 games"
+        },
+        {
+          "start": "2022-01-01",
+          "end": "2022-04-15",
+          "label": "2022 games"
+        }
+      ],
+      "sport": "NCAA_BB"
+    }
+  },
+  "stats": {
+    "NFL": {
+      "games": 285,
+      "homeWins": 147,
+      "awayWins": 137,
+      "homeWinPct": "51.6",
+      "avgHomeScore": "24.0",
+      "avgAwayScore": "22.1",
+      "gamesWithLines": 284,
+      "bettingPct": "99.6",
+      "totalStats": 16091
+    },
+    "NBA": {
+      "games": 0,
+      "homeWins": 0,
+      "awayWins": 0,
+      "homeWinPct": "0.0",
+      "avgHomeScore": "0.0",
+      "avgAwayScore": "0.0",
+      "gamesWithLines": 0,
+      "bettingPct": "0.0",
+      "totalStats": 0
+    },
+    "NHL": {
+      "games": 0,
+      "homeWins": 0,
+      "awayWins": 0,
+      "homeWinPct": "0.0",
+      "avgHomeScore": "0.0",
+      "avgAwayScore": "0.0",
+      "gamesWithLines": 0,
+      "bettingPct": "0.0",
+      "totalStats": 0
+    },
+    "MLB": {
+      "games": 2104,
+      "homeWins": 1142,
+      "awayWins": 962,
+      "homeWinPct": "54.3",
+      "avgHomeScore": "4.6",
+      "avgAwayScore": "4.4",
+      "gamesWithLines": 1849,
+      "bettingPct": "87.9",
+      "totalStats": 59290
+    },
+    "NCAA_FB": {
+      "games": 947,
+      "homeWins": 584,
+      "awayWins": 363,
+      "homeWinPct": "61.7",
+      "avgHomeScore": "30.8",
+      "avgAwayScore": "24.4",
+      "gamesWithLines": 948,
+      "bettingPct": "100.1",
+      "totalStats": 0
+    },
+    "NCAA_BB": {
+      "games": 1102,
+      "homeWins": 735,
+      "awayWins": 367,
+      "homeWinPct": "66.7",
+      "avgHomeScore": "73.4",
+      "avgAwayScore": "66.3",
+      "gamesWithLines": 1147,
+      "bettingPct": "104.1",
+      "totalStats": 24874
+    }
+  },
+  "totals": {
+    "games": 4438,
+    "stats": 100255,
+    "bettingLines": 4228
+  },
+  "extractedAt": "2025-07-20T05:01:34.286Z"
+}

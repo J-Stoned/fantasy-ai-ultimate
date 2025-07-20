@@ -1,0 +1,102 @@
+{
+  "seasons": {
+    "NFL": {
+      "name": "NFL 2021",
+      "start": "2021-09-09",
+      "end": "2022-02-14",
+      "sport": "NFL"
+    },
+    "NBA": {
+      "name": "NBA 2021-22",
+      "start": "2021-10-19",
+      "end": "2022-06-17",
+      "sport": "NBA"
+    },
+    "NHL": {
+      "name": "NHL 2021-22",
+      "start": "2021-10-12",
+      "end": "2022-06-27",
+      "sport": "NHL"
+    },
+    "MLB": {
+      "name": "MLB 2021",
+      "start": "2021-04-01",
+      "end": "2021-11-03",
+      "sport": "MLB"
+    },
+    "MILB": {
+      "name": "MiLB 2021",
+      "start": "2021-05-04",
+      "end": "2021-09-30",
+      "sport": "MILB"
+    }
+  },
+  "stats": {
+    "NFL": {
+      "games": 0,
+      "homeWins": 0,
+      "awayWins": 0,
+      "homeWinPct": "NaN",
+      "avgHomeScore": "NaN",
+      "avgAwayScore": "NaN",
+      "gamesWithLines": 0,
+      "avgTotal": "NaN",
+      "avgSpread": "NaN",
+      "totalStats": 16091,
+      "uniquePlayers": 1779
+    },
+    "NBA": {
+      "games": 0,
+      "homeWins": 0,
+      "awayWins": 0,
+      "homeWinPct": "NaN",
+      "avgHomeScore": "NaN",
+      "avgAwayScore": "NaN",
+      "gamesWithLines": 0,
+      "avgTotal": "NaN",
+      "avgSpread": "NaN",
+      "totalStats": 0,
+      "uniquePlayers": 0
+    },
+    "NHL": {
+      "games": 0,
+      "homeWins": 0,
+      "awayWins": 0,
+      "homeWinPct": "NaN",
+      "avgHomeScore": "NaN",
+      "avgAwayScore": "NaN",
+      "gamesWithLines": 0,
+      "avgTotal": "NaN",
+      "avgSpread": "NaN",
+      "totalStats": 0,
+      "uniquePlayers": 0
+    },
+    "MLB": {
+      "games": 0,
+      "homeWins": 0,
+      "awayWins": 0,
+      "homeWinPct": "NaN",
+      "avgHomeScore": "NaN",
+      "avgAwayScore": "NaN",
+      "gamesWithLines": 0,
+      "avgTotal": "NaN",
+      "avgSpread": "NaN",
+      "totalStats": 59233,
+      "uniquePlayers": 1466
+    },
+    "MILB": {
+      "games": 357,
+      "homeWins": 190,
+      "awayWins": 167,
+      "homeWinPct": "53.2",
+      "avgHomeScore": "4.6",
+      "avgAwayScore": "4.7",
+      "gamesWithLines": 0,
+      "avgTotal": "NaN",
+      "avgSpread": "NaN",
+      "totalStats": 1870,
+      "uniquePlayers": 200
+    }
+  },
+  "extractedAt": "2025-07-20T04:06:30.724Z"
+}
