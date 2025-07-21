@@ -1,0 +1,906 @@
+{
+  "generated_at": "2025-07-21T06:19:13.762Z",
+  "total_predictions": 16704,
+  "predictions": [
+    {
+      "player_id": "121654379",
+      "player_name": "Christian - P Gordon",
+      "predicted_points": 34.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121657381",
+      "player_name": "Brian - P Holiday",
+      "predicted_points": 33.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121657402",
+      "player_name": "Kevin - P Seitter",
+      "predicted_points": 31.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626558",
+      "player_name": "Zach - P Frey",
+      "predicted_points": 31.3,
+      "floor": 0,
+      "ceiling": 11742446,
+      "confidence": 0.7,
+      "trend": "up"
+    },
+    {
+      "player_id": "121638755",
+      "player_name": "Ethan - P Bosacker",
+      "predicted_points": 31,
+      "floor": 0,
+      "ceiling": 156550,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121625917",
+      "player_name": "Richard Fitts",
+      "predicted_points": 30.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626702",
+      "player_name": "Andy - P Archer",
+      "predicted_points": 30.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.7,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121632165",
+      "player_name": "Ty Fisher",
+      "predicted_points": 30.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626339",
+      "player_name": "Michael - P Frias",
+      "predicted_points": 30,
+      "floor": 0,
+      "ceiling": 151500,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121626835",
+      "player_name": "Zach - P Pettway",
+      "predicted_points": 30,
+      "floor": 0,
+      "ceiling": 151500,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121656168",
+      "player_name": "Chase Burns",
+      "predicted_points": 30,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626545",
+      "player_name": "Dylan Smith",
+      "predicted_points": 29.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121627236",
+      "player_name": "Connor Staine",
+      "predicted_points": 29.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121631711",
+      "player_name": "Ian Cooke",
+      "predicted_points": 29.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121638719",
+      "player_name": "Wyatt - P Hudepohl",
+      "predicted_points": 29.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121623913",
+      "player_name": "Mitch - P Myers",
+      "predicted_points": 29,
+      "floor": 0,
+      "ceiling": 10984833.9,
+      "confidence": 0.7,
+      "trend": "up"
+    },
+    {
+      "player_id": "121637920",
+      "player_name": "Braxton - P Douthit",
+      "predicted_points": 29,
+      "floor": 0,
+      "ceiling": 146450,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121631972",
+      "player_name": "Paul Skenes",
+      "predicted_points": 28.9,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121624109",
+      "player_name": "Dominic Hamel",
+      "predicted_points": 28.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121657198",
+      "player_name": "Khal - P Stephen",
+      "predicted_points": 28.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121632250",
+      "player_name": "Hunter Riggins",
+      "predicted_points": 28,
+      "floor": 0,
+      "ceiling": 141400,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121638676",
+      "player_name": "Rafe Schlesinger",
+      "predicted_points": 28,
+      "floor": 0,
+      "ceiling": 141400,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121623569",
+      "player_name": "Ryan Webb",
+      "predicted_points": 27.6,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "down"
+    },
+    {
+      "player_id": "121654325",
+      "player_name": "Steven Brooks",
+      "predicted_points": 27.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121658276",
+      "player_name": "Michael Yusypchuk",
+      "predicted_points": 27.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121625936",
+      "player_name": "J. Wolf",
+      "predicted_points": 27.2,
+      "floor": 0,
+      "ceiling": 136350.2,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121622242",
+      "player_name": "Zach Barnes",
+      "predicted_points": 27,
+      "floor": 0,
+      "ceiling": 136350,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121625805",
+      "player_name": "Tyler Tuthill",
+      "predicted_points": 27,
+      "floor": 0,
+      "ceiling": 10227259.1,
+      "confidence": 0.7,
+      "trend": "up"
+    },
+    {
+      "player_id": "121627069",
+      "player_name": "Connor Noland",
+      "predicted_points": 27,
+      "floor": 0,
+      "ceiling": 136350,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121638663",
+      "player_name": "Caden - P Grice",
+      "predicted_points": 26.9,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626100",
+      "player_name": "Alex Williams",
+      "predicted_points": 26.8,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.85,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121622732",
+      "player_name": "Kumar Rocker",
+      "predicted_points": 26.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121630250",
+      "player_name": "Cam Schlittler",
+      "predicted_points": 26.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121632273",
+      "player_name": "Carsten - P Finnvold",
+      "predicted_points": 26.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121638907",
+      "player_name": "Justin Storm",
+      "predicted_points": 26.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626586",
+      "player_name": "Ryne - P Moore",
+      "predicted_points": 26,
+      "floor": 0,
+      "ceiling": 131300,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121626657",
+      "player_name": "Matt - P Brooks",
+      "predicted_points": 26,
+      "floor": 0,
+      "ceiling": 131300,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121633697",
+      "player_name": "Chris Clark",
+      "predicted_points": 26,
+      "floor": 0,
+      "ceiling": 131300,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121657196",
+      "player_name": "Xavier - P Kolhosser",
+      "predicted_points": 26,
+      "floor": 0,
+      "ceiling": 131300,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121657646",
+      "player_name": "Liam Doyle",
+      "predicted_points": 25.8,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121630389",
+      "player_name": "Karson Ligon",
+      "predicted_points": 25.7,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121624182",
+      "player_name": "John M. Bertrand",
+      "predicted_points": 25.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626570",
+      "player_name": "Jack - P Leiter",
+      "predicted_points": 25.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121657248",
+      "player_name": "Jack - P Crowder",
+      "predicted_points": 25.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121625102",
+      "player_name": "Austin Love",
+      "predicted_points": 25.3,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.9,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626652",
+      "player_name": "Garrett Irvin",
+      "predicted_points": 25.3,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.8,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121622814",
+      "player_name": "Jack Leiter",
+      "predicted_points": 25.2,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121628462",
+      "player_name": "Dylan - P DeLucia",
+      "predicted_points": 25.2,
+      "floor": 0,
+      "ceiling": 3195349831849846000,
+      "confidence": 0.95,
+      "trend": "down"
+    },
+    {
+      "player_id": "121624434",
+      "player_name": "Andrew Abbott",
+      "predicted_points": 25.1,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "down"
+    },
+    {
+      "player_id": "121628748",
+      "player_name": "Jared Mathewson",
+      "predicted_points": 25,
+      "floor": 0,
+      "ceiling": 126250,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121629899",
+      "player_name": "Q Mathews",
+      "predicted_points": 25,
+      "floor": 0,
+      "ceiling": 126250,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121635150",
+      "player_name": "Hudson Leach",
+      "predicted_points": 25,
+      "floor": 0,
+      "ceiling": 126250,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121657010",
+      "player_name": "Michael Watson",
+      "predicted_points": 25,
+      "floor": 0,
+      "ceiling": 126250,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121626248",
+      "player_name": "Rodney Boone",
+      "predicted_points": 24.8,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.7,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121623326",
+      "player_name": "Braden Olthoff",
+      "predicted_points": 24.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.7,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121624301",
+      "player_name": "Evan Kowalski",
+      "predicted_points": 24.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121628666",
+      "player_name": "Doyle Gehring",
+      "predicted_points": 24.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121632196",
+      "player_name": "Liam - P Sullivan",
+      "predicted_points": 24.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121656140",
+      "player_name": "Braden Davis",
+      "predicted_points": 24.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.8,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121656880",
+      "player_name": "Ryan Andrade",
+      "predicted_points": 24.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121657096",
+      "player_name": "Derek Clark",
+      "predicted_points": 24.5,
+      "floor": 0,
+      "ceiling": 48308048291,
+      "confidence": 0.8,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121657260",
+      "player_name": "RJ - P Sales",
+      "predicted_points": 24.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121657443",
+      "player_name": "Jett - P Lodes",
+      "predicted_points": 24.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121670216",
+      "player_name": "Joseph Dzierwa",
+      "predicted_points": 24.4,
+      "floor": 0,
+      "ceiling": 10568546.7,
+      "confidence": 0.7,
+      "trend": "up"
+    },
+    {
+      "player_id": "121622684",
+      "player_name": "Parker Messick",
+      "predicted_points": 24.1,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "up"
+    },
+    {
+      "player_id": "121630921",
+      "player_name": "Jesse Barron",
+      "predicted_points": 24,
+      "floor": 0,
+      "ceiling": 121200,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121633234",
+      "player_name": "Coleman Picard",
+      "predicted_points": 24,
+      "floor": 0,
+      "ceiling": 121200,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121655864",
+      "player_name": "Braden Osbolt",
+      "predicted_points": 24,
+      "floor": 0,
+      "ceiling": 121200,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121622762",
+      "player_name": "Landon Marceaux",
+      "predicted_points": 23.9,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626643",
+      "player_name": "Gavin - P Williams",
+      "predicted_points": 23.7,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.8,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121632470",
+      "player_name": "Gage Wood",
+      "predicted_points": 23.7,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626782",
+      "player_name": "Trevor - P Martin",
+      "predicted_points": 23.6,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.7,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121632307",
+      "player_name": "Cam Brown",
+      "predicted_points": 23.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121634982",
+      "player_name": "German Fajardo",
+      "predicted_points": 23.4,
+      "floor": 0,
+      "ceiling": 65481547971.1,
+      "confidence": 0.8,
+      "trend": "up"
+    },
+    {
+      "player_id": "121656485",
+      "player_name": "Derek Clark",
+      "predicted_points": 23.4,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121624976",
+      "player_name": "Chris Gonzalez",
+      "predicted_points": 23.2,
+      "floor": 0,
+      "ceiling": 116150.2,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121638695",
+      "player_name": "Brody - P Brecht",
+      "predicted_points": 23.2,
+      "floor": 0,
+      "ceiling": 116150.2,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121632700",
+      "player_name": "Rhett - H Lowder",
+      "predicted_points": 23.1,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121670188",
+      "player_name": "Kade Anderson",
+      "predicted_points": 23.1,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.8,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626934",
+      "player_name": "Robert - P Ahlstrom",
+      "predicted_points": 23,
+      "floor": 0,
+      "ceiling": 116150,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121636389",
+      "player_name": "Braydon Tucker",
+      "predicted_points": 23,
+      "floor": 0,
+      "ceiling": 116150,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121657379",
+      "player_name": "Grant - P Stevens",
+      "predicted_points": 23,
+      "floor": 0,
+      "ceiling": 116150,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121654589",
+      "player_name": "Kade Anderson",
+      "predicted_points": 22.8,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121655674",
+      "player_name": "Aidan Knaak",
+      "predicted_points": 22.8,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626625",
+      "player_name": "Ty - P Madden",
+      "predicted_points": 22.6,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121623362",
+      "player_name": "Colton Gordon",
+      "predicted_points": 22.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626140",
+      "player_name": "Jonathan - P Fincher",
+      "predicted_points": 22.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.7,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121657483",
+      "player_name": "Tyler Bremner",
+      "predicted_points": 22.5,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121625688",
+      "player_name": "John M Bertrand",
+      "predicted_points": 22.4,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121628348",
+      "player_name": "Cade Horton",
+      "predicted_points": 22.4,
+      "floor": 0,
+      "ceiling": 3031849545348032500,
+      "confidence": 0.95,
+      "trend": "down"
+    },
+    {
+      "player_id": "121657334",
+      "player_name": "Jamie Arnold",
+      "predicted_points": 22.4,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626601",
+      "player_name": "Brendan Beck",
+      "predicted_points": 22.3,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121638616",
+      "player_name": "Trent - P Sellers",
+      "predicted_points": 22.2,
+      "floor": 0,
+      "ceiling": 111100.2,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121623211",
+      "player_name": "Dylan Dodd",
+      "predicted_points": 22.1,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.7,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121626073",
+      "player_name": "Will - P Bednar",
+      "predicted_points": 22.1,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121624821",
+      "player_name": "Justin Meis",
+      "predicted_points": 22,
+      "floor": 0,
+      "ceiling": 8333322.3,
+      "confidence": 0.7,
+      "trend": "up"
+    },
+    {
+      "player_id": "121626362",
+      "player_name": "Austin Love",
+      "predicted_points": 22,
+      "floor": 0,
+      "ceiling": 111100,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121628963",
+      "player_name": "Luis Ramirez",
+      "predicted_points": 22,
+      "floor": 0,
+      "ceiling": 111100,
+      "confidence": 0.65,
+      "trend": "up"
+    },
+    {
+      "player_id": "121638735",
+      "player_name": "Chad - P Gartland",
+      "predicted_points": 22,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.65,
+      "trend": "stable"
+    },
+    {
+      "player_id": "121654289",
+      "player_name": "Luke Holman",
+      "predicted_points": 22,
+      "floor": null,
+      "ceiling": null,
+      "confidence": 0.95,
+      "trend": "up"
+    }
+  ]
+}

@@ -6,7 +6,8 @@ import { Button } from '../../components/ui'
 import { Select } from '../../components/ui/select'
 import { Input } from '../../components/ui'
 import { Badge } from '../../components/ui/badge'
-import { fantasyAPI, Lineup, SportType, SpatialProjection } from '../../services/fantasy-api'
+import { fantasyMLAPI, type DFSPlayer, type OptimizedLineup } from '../../services/fantasy-ml-api'
+import type { SportType } from '../../types'
 import { useWebSocket } from '../../hooks/useWebSocket'
 import { WS_CHANNELS } from '../../services/websocket-service'
 import { HeatMap } from '../../components/spatial/HeatMap'
@@ -47,7 +48,7 @@ export default function LineupOptimizerPage() {
   const [format, setFormat] = useState<'season' | 'dfs'>('dfs')
   const [contest, setContest] = useState<'gpp' | 'cash'>('cash')
   const [platform, setPlatform] = useState<'DraftKings' | 'FanDuel'>('DraftKings')
-  const [lineup, setLineup] = useState<Lineup | null>(null)
+  const [lineups, setLineups] = useState<OptimizedLineup[]>([])
   const [isOptimizing, setIsOptimizing] = useState(false)
   const [playerPool, setPlayerPool] = useState<Player[]>([])
   const [lockedPlayers, setLockedPlayers] = useState<Set<string>>(new Set())

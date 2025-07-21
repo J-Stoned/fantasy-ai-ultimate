@@ -10,9 +10,14 @@ import { createClient } from '@supabase/supabase-js';
 import chalk from 'chalk';
 import dotenv from 'dotenv';
 import rateLimit from 'express-rate-limit';
-import { playerPredictor } from '../models/player-performance-predictor';
-import { dfsOptimizer, DFSPlayer, LineupConstraints } from '../models/dfs-lineup-optimizer';
-import { propAnalyzer, PropBet } from '../models/prop-bet-analyzer';
+import { 
+  playerPredictor, 
+  dfsOptimizer, 
+  propAnalyzer,
+  type DFSPlayer, 
+  type LineupConstraints,
+  type PropBet 
+} from '../models';
 import { fantasyDataLoader } from '../data-pipeline/fantasy-data-loader';
 
 dotenv.config({ path: '.env.local' });
