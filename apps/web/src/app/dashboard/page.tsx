@@ -63,57 +63,46 @@ export default async function DashboardPage() {
           <h2 className="text-3xl font-bold text-white mb-4">Dashboard</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <Link 
-              href="/patterns"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 p-6 rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-200 transform hover:scale-105"
+              href="/dfs-optimizer"
+              className="bg-gradient-to-r from-orange-600 to-red-600 p-6 rounded-xl hover:from-orange-700 hover:to-red-700 transition-all duration-200 transform hover:scale-105"
             >
-              <h3 className="text-xl font-semibold text-white mb-2">🎯 Pattern Detection</h3>
-              <p className="text-gray-200">65.2% accuracy patterns from 48K games</p>
-            </Link>
-            
-            <Link 
-              href="/data-hub"
-              className="bg-gradient-to-r from-blue-600 to-cyan-600 p-6 rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 transform hover:scale-105"
-            >
-              <h3 className="text-xl font-semibold text-white mb-2">📊 Data Hub</h3>
-              <p className="text-gray-200">519K+ real player stats</p>
+              <h3 className="text-xl font-semibold text-white mb-2">🚀 DFS Optimizer</h3>
+              <p className="text-gray-200">AI-powered lineup optimization</p>
             </Link>
             
             <Link 
               href="/players"
               className="bg-gradient-to-r from-green-600 to-teal-600 p-6 rounded-xl hover:from-green-700 hover:to-teal-700 transition-all duration-200 transform hover:scale-105"
             >
-              <h3 className="text-xl font-semibold text-white mb-2">Player Database</h3>
-              <p className="text-gray-200">Browse EVERY player from EVERY league</p>
+              <h3 className="text-xl font-semibold text-white mb-2">👥 Player Database</h3>
+              <p className="text-gray-200">1M+ stats from all leagues</p>
             </Link>
             
             <Link 
-              href="/lineup-optimizer"
-              className="bg-gradient-to-r from-orange-600 to-red-600 p-6 rounded-xl hover:from-orange-700 hover:to-red-700 transition-all duration-200 transform hover:scale-105"
+              href="/leagues"
+              className="bg-gradient-to-r from-blue-600 to-cyan-600 p-6 rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 transform hover:scale-105"
             >
-              <h3 className="text-xl font-semibold text-white mb-2">🚀 Lineup Optimizer</h3>
-              <p className="text-gray-200">GPU-powered optimization with patterns</p>
+              <h3 className="text-xl font-semibold text-white mb-2">🏆 My Leagues</h3>
+              <p className="text-gray-200">Manage all your fantasy teams</p>
+            </Link>
+            
+            <Link 
+              href="/trade-analyzer"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 p-6 rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-200 transform hover:scale-105"
+            >
+              <h3 className="text-xl font-semibold text-white mb-2">💱 Trade Analyzer</h3>
+              <p className="text-gray-200">AI-powered trade evaluation</p>
             </Link>
           </div>
           
           {/* Additional Features */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
             <Link 
-              href="/leagues"
-              className="bg-gradient-to-r from-indigo-600 to-cyan-600 p-6 rounded-xl hover:from-indigo-700 hover:to-cyan-700 transition-all duration-200 transform hover:scale-105 relative overflow-hidden"
+              href="/waiver-wire"
+              className="bg-gradient-to-r from-indigo-600 to-cyan-600 p-6 rounded-xl hover:from-indigo-700 hover:to-cyan-700 transition-all duration-200 transform hover:scale-105"
             >
-              <div className="absolute top-2 right-2">
-                <Badge className="bg-yellow-600 text-white text-xs">NEW</Badge>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">🏆 League Manager</h3>
-              <p className="text-gray-200">Import & manage all your fantasy leagues</p>
-            </Link>
-            
-            <Link 
-              href="/ai-assistant"
-              className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-200 transform hover:scale-105"
-            >
-              <h3 className="text-xl font-semibold text-white mb-2">🤖 AI Assistant</h3>
-              <p className="text-gray-200">"Hey Fantasy" voice commands</p>
+              <h3 className="text-xl font-semibold text-white mb-2">📈 Waiver Wire</h3>
+              <p className="text-gray-200">Find breakout players early</p>
             </Link>
             
             <Link 
@@ -166,10 +155,10 @@ export default async function DashboardPage() {
             <div className="text-center py-12">
               <p className="text-gray-300 mb-4">No leagues found in your profile.</p>
               <Link 
-                href="/patterns"
+                href="/dfs-optimizer"
                 className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
               >
-                Explore Pattern Detection
+                Try DFS Optimizer
               </Link>
             </div>
           )}

@@ -14,13 +14,11 @@ export function MobileNav({ user, profile }: MobileNavProps) {
 
   const navItems = [
     { href: '/dashboard', label: 'Dashboard', icon: '🏠' },
-    { href: '/patterns', label: 'Patterns', icon: '🎯' },
-    { href: '/lineup-optimizer', label: 'Lineup', icon: '🚀' },
-    { href: '/spatial-analytics', label: 'Spatial Analytics', icon: '🔮' },
+    { href: '/dfs-optimizer', label: 'DFS Lineup', icon: '🚀' },
+    { href: '/players', label: 'Players', icon: '👥' },
+    { href: '/leagues', label: 'Leagues', icon: '🏆' },
     { href: '/trade-analyzer', label: 'Trades', icon: '💱' },
     { href: '/waiver-wire', label: 'Waivers', icon: '📈' },
-    { href: '/live', label: 'Live', icon: '📡' },
-    { href: '/ai-assistant', label: 'AI Chat', icon: '🤖' },
     { href: '/import-league', label: 'Import', icon: '📥' },
   ]
 

@@ -11,7 +11,7 @@ import { ScrollArea } from '../ui/scroll-area';
 import { PlatformImportWizard } from './PlatformImportWizard';
 import { CrossPlatformTradeAnalyzer } from './CrossPlatformTradeAnalyzer';
 import { LineupOptimizer } from './LineupOptimizer';
-import { PatternAlerts } from './PatternAlerts';
+// import { PatternAlerts } from './PatternAlerts'; // Removed - pattern detection failed
 
 export function UnifiedDashboard() {
   const [showImportWizard, setShowImportWizard] = useState(false);
@@ -201,8 +201,7 @@ export function UnifiedDashboard() {
           
           {/* Right Column - League Details & Actions */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Pattern Alerts */}
-            <PatternAlerts />
+            {/* Pattern Alerts - Removed (pattern detection failed) */}
             
             {/* Main Tabs */}
             <Card className="bg-white/10 backdrop-blur-lg border-white/20">
