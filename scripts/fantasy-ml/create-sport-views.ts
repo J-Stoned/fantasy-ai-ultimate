@@ -5,7 +5,19 @@
  */
 
 import chalk from 'chalk';
-import { pgPool } from './config/database';
+import { Pool } from 'pg';
+import dotenv from 'dotenv';
+import path from 'path';
+
+// Load environment variables from project root
+dotenv.config({ path: path.join(__dirname, '../../.env.local') });
+
+console.log(chalk.gray('Loading from:', path.join(__dirname, '../../.env.local')));
+console.log(chalk.gray('DATABASE_URL_LOCAL exists:', !!process.env.DATABASE_URL_LOCAL));
+
+const pgPool = new Pool({
+  connectionString: process.env.DATABASE_URL_LOCAL || process.env.DATABASE_URL,
+});
 
 async function createSportViews() {
   console.log(chalk.cyan.bold('\n🏆 Creating Sport-Specific Data Views...\n'));
@@ -16,6 +28,15 @@ async function createSportViews() {
     try {
       await client.query('BEGIN');
       
+      // Drop existing views first to avoid column order conflicts
+      console.log(chalk.yellow('🗑️  Dropping existing views if they exist...'));
+      await client.query('DROP VIEW IF EXISTS v_ml_player_features CASCADE');
+      await client.query('DROP VIEW IF EXISTS v_nfl_player_stats CASCADE');
+      await client.query('DROP VIEW IF EXISTS v_nba_player_stats CASCADE');
+      await client.query('DROP VIEW IF EXISTS v_mlb_player_stats CASCADE');
+      await client.query('DROP VIEW IF EXISTS v_nhl_player_stats CASCADE');
+      console.log(chalk.green('✅ Old views dropped'));
+      
       // 1. NFL View
       console.log(chalk.cyan('🏈 Creating NFL view...'));
       await client.query(`
@@ -25,29 +46,33 @@ async function createSportViews() {
           p.name,
           p.position,
           p.team,
-          pgl.game_date::DATE as game_date,
-          pgl.stats::JSONB as stats,
+          COALESCE(t2.abbreviation, t2.name, pgs.opponent_id::TEXT) as opponent,
+          t2.abbreviation as opponent_abbr,
+          pgs.game_date::DATE as game_date,
+          pgs.is_home,
+          pgs.stats::JSONB as stats,
           -- Extract key NFL stats from JSONB
-          (pgl.stats::JSONB->>'passing_yards')::INT as passing_yards,
-          (pgl.stats::JSONB->>'passing_touchdowns')::INT as passing_touchdowns,
-          (pgl.stats::JSONB->>'rushing_yards')::INT as rushing_yards,
-          (pgl.stats::JSONB->>'rushing_touchdowns')::INT as rushing_touchdowns,
-          (pgl.stats::JSONB->>'receptions')::INT as receptions,
-          (pgl.stats::JSONB->>'receiving_yards')::INT as receiving_yards,
-          (pgl.stats::JSONB->>'receiving_touchdowns')::INT as receiving_touchdowns,
-          (pgl.stats::JSONB->>'targets')::INT as targets,
+          (pgs.stats::JSONB->>'passing_yards')::INT as passing_yards,
+          (pgs.stats::JSONB->>'passing_touchdowns')::INT as passing_touchdowns,
+          (pgs.stats::JSONB->>'rushing_yards')::INT as rushing_yards,
+          (pgs.stats::JSONB->>'rushing_touchdowns')::INT as rushing_touchdowns,
+          (pgs.stats::JSONB->>'receptions')::INT as receptions,
+          (pgs.stats::JSONB->>'receiving_yards')::INT as receiving_yards,
+          (pgs.stats::JSONB->>'receiving_touchdowns')::INT as receiving_touchdowns,
+          (pgs.stats::JSONB->>'targets')::INT as targets,
           -- Fantasy points calculation
-          COALESCE((pgl.stats::JSONB->>'passing_yards')::FLOAT * 0.04, 0) +
-          COALESCE((pgl.stats::JSONB->>'passing_touchdowns')::FLOAT * 4, 0) +
-          COALESCE((pgl.stats::JSONB->>'rushing_yards')::FLOAT * 0.1, 0) +
-          COALESCE((pgl.stats::JSONB->>'rushing_touchdowns')::FLOAT * 6, 0) +
-          COALESCE((pgl.stats::JSONB->>'receptions')::FLOAT * 1, 0) + -- PPR
-          COALESCE((pgl.stats::JSONB->>'receiving_yards')::FLOAT * 0.1, 0) +
-          COALESCE((pgl.stats::JSONB->>'receiving_touchdowns')::FLOAT * 6, 0) as calculated_fantasy_points
+          COALESCE((pgs.stats::JSONB->>'passing_yards')::FLOAT * 0.04, 0) +
+          COALESCE((pgs.stats::JSONB->>'passing_touchdowns')::FLOAT * 4, 0) +
+          COALESCE((pgs.stats::JSONB->>'rushing_yards')::FLOAT * 0.1, 0) +
+          COALESCE((pgs.stats::JSONB->>'rushing_touchdowns')::FLOAT * 6, 0) +
+          COALESCE((pgs.stats::JSONB->>'receptions')::FLOAT * 1, 0) + -- PPR
+          COALESCE((pgs.stats::JSONB->>'receiving_yards')::FLOAT * 0.1, 0) +
+          COALESCE((pgs.stats::JSONB->>'receiving_touchdowns')::FLOAT * 6, 0) as calculated_fantasy_points
         FROM players p
-        JOIN player_game_logs pgl ON p.id = pgl.player_id
+        JOIN player_game_stats pgs ON p.id = pgs.player_id
+        LEFT JOIN teams t2 ON pgs.opponent_id = t2.id
         WHERE p.sport = 'NFL'
-        AND pgl.stats IS NOT NULL
+        AND pgs.stats IS NOT NULL
       `);
       console.log(chalk.green('✅ NFL view created'));
       
@@ -60,27 +85,30 @@ async function createSportViews() {
           p.name,
           p.position,
           p.team,
-          pgl.game_date::DATE as game_date,
-          pgl.stats::JSONB as stats,
+          COALESCE(t2.abbreviation, t2.name, pgs.opponent_id::TEXT) as opponent,
+          pgs.game_date::DATE as game_date,
+          pgs.is_home,
+          pgs.stats::JSONB as stats,
           -- Extract key NBA stats
-          (pgl.stats::JSONB->>'points')::INT as points,
-          (pgl.stats::JSONB->>'rebounds')::INT as rebounds,
-          (pgl.stats::JSONB->>'assists')::INT as assists,
-          (pgl.stats::JSONB->>'steals')::INT as steals,
-          (pgl.stats::JSONB->>'blocks')::INT as blocks,
-          (pgl.stats::JSONB->>'turnovers')::INT as turnovers,
-          (pgl.stats::JSONB->>'minutes_played')::FLOAT as minutes_played,
+          (pgs.stats::JSONB->>'points')::INT as points,
+          (pgs.stats::JSONB->>'rebounds')::INT as rebounds,
+          (pgs.stats::JSONB->>'assists')::INT as assists,
+          (pgs.stats::JSONB->>'steals')::INT as steals,
+          (pgs.stats::JSONB->>'blocks')::INT as blocks,
+          (pgs.stats::JSONB->>'turnovers')::INT as turnovers,
+          (pgs.stats::JSONB->>'minutes_played')::FLOAT as minutes_played,
           -- DraftKings fantasy points
-          COALESCE((pgl.stats::JSONB->>'points')::FLOAT * 1, 0) +
-          COALESCE((pgl.stats::JSONB->>'rebounds')::FLOAT * 1.25, 0) +
-          COALESCE((pgl.stats::JSONB->>'assists')::FLOAT * 1.5, 0) +
-          COALESCE((pgl.stats::JSONB->>'steals')::FLOAT * 2, 0) +
-          COALESCE((pgl.stats::JSONB->>'blocks')::FLOAT * 2, 0) +
-          COALESCE((pgl.stats::JSONB->>'turnovers')::FLOAT * -0.5, 0) as dk_fantasy_points
+          COALESCE((pgs.stats::JSONB->>'points')::FLOAT * 1, 0) +
+          COALESCE((pgs.stats::JSONB->>'rebounds')::FLOAT * 1.25, 0) +
+          COALESCE((pgs.stats::JSONB->>'assists')::FLOAT * 1.5, 0) +
+          COALESCE((pgs.stats::JSONB->>'steals')::FLOAT * 2, 0) +
+          COALESCE((pgs.stats::JSONB->>'blocks')::FLOAT * 2, 0) +
+          COALESCE((pgs.stats::JSONB->>'turnovers')::FLOAT * -0.5, 0) as dk_fantasy_points
         FROM players p
-        JOIN player_game_logs pgl ON p.id = pgl.player_id
+        JOIN player_game_stats pgs ON p.id = pgs.player_id
+        LEFT JOIN teams t2 ON pgs.opponent_id = t2.id
         WHERE p.sport IN ('NBA', 'NCAA_BB')
-        AND pgl.stats IS NOT NULL
+        AND pgs.stats IS NOT NULL
       `);
       console.log(chalk.green('✅ NBA/NCAA_BB view created'));
       
@@ -142,30 +170,33 @@ async function createSportViews() {
           p.name,
           p.position,
           p.team,
-          pgl.game_date::DATE as game_date,
-          pgl.stats::JSONB as stats,
+          COALESCE(t2.abbreviation, t2.name, pgs.opponent_id::TEXT) as opponent,
+          pgs.game_date::DATE as game_date,
+          pgs.is_home,
+          pgs.stats::JSONB as stats,
           -- Extract key NHL stats
-          (pgl.stats::JSONB->>'goals')::INT as goals,
-          (pgl.stats::JSONB->>'assists')::INT as assists,
-          (pgl.stats::JSONB->>'shots')::INT as shots,
-          (pgl.stats::JSONB->>'blocked_shots')::INT as blocked_shots,
-          (pgl.stats::JSONB->>'plus_minus')::INT as plus_minus,
-          (pgl.stats::JSONB->>'penalty_minutes')::INT as penalty_minutes,
+          (pgs.stats::JSONB->>'goals')::INT as goals,
+          (pgs.stats::JSONB->>'assists')::INT as assists,
+          (pgs.stats::JSONB->>'shots')::INT as shots,
+          (pgs.stats::JSONB->>'blocked_shots')::INT as blocked_shots,
+          (pgs.stats::JSONB->>'plus_minus')::INT as plus_minus,
+          (pgs.stats::JSONB->>'penalty_minutes')::INT as penalty_minutes,
           -- Goalie stats
-          (pgl.stats::JSONB->>'saves')::INT as saves,
-          (pgl.stats::JSONB->>'goals_against')::INT as goals_against,
-          (pgl.stats::JSONB->>'shots_against')::INT as shots_against,
+          (pgs.stats::JSONB->>'saves')::INT as saves,
+          (pgs.stats::JSONB->>'goals_against')::INT as goals_against,
+          (pgs.stats::JSONB->>'shots_against')::INT as shots_against,
           -- DraftKings fantasy points
-          COALESCE((pgl.stats::JSONB->>'goals')::FLOAT * 3, 0) +
-          COALESCE((pgl.stats::JSONB->>'assists')::FLOAT * 2, 0) +
-          COALESCE((pgl.stats::JSONB->>'shots')::FLOAT * 0.5, 0) +
-          COALESCE((pgl.stats::JSONB->>'blocked_shots')::FLOAT * 0.5, 0) +
-          COALESCE((pgl.stats::JSONB->>'saves')::FLOAT * 0.2, 0) +
-          COALESCE((pgl.stats::JSONB->>'goals_against')::FLOAT * -1, 0) as dk_fantasy_points
+          COALESCE((pgs.stats::JSONB->>'goals')::FLOAT * 3, 0) +
+          COALESCE((pgs.stats::JSONB->>'assists')::FLOAT * 2, 0) +
+          COALESCE((pgs.stats::JSONB->>'shots')::FLOAT * 0.5, 0) +
+          COALESCE((pgs.stats::JSONB->>'blocked_shots')::FLOAT * 0.5, 0) +
+          COALESCE((pgs.stats::JSONB->>'saves')::FLOAT * 0.2, 0) +
+          COALESCE((pgs.stats::JSONB->>'goals_against')::FLOAT * -1, 0) as dk_fantasy_points
         FROM players p
-        JOIN player_game_logs pgl ON p.id = pgl.player_id
+        JOIN player_game_stats pgs ON p.id = pgs.player_id
+        LEFT JOIN teams t2 ON pgs.opponent_id = t2.id
         WHERE p.sport IN ('NHL', 'NCAA_HKY')
-        AND pgl.stats IS NOT NULL
+        AND pgs.stats IS NOT NULL
       `);
       console.log(chalk.green('✅ NHL/NCAA_HKY view created'));
       

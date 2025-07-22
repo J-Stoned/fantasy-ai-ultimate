@@ -1,0 +1,546 @@
+
+🔥🔥🔥 MASTER STATS COLLECTOR - ALL SPORTS 🔥🔥🔥
+
+📊 Target: 110,434 games → 2-3 MILLION player stats
+⚡ Using sport-specific optimized collectors
+⏱️  Expected time: 10-15 minutes total
+
+✅ Database connected via IPv4: 2025-07-22T12:16:41.226Z
+📊 Current stats in database:
+Sport       | Games | Player Stats
+------------|-------|-------------
+NBA         |  2995 |       64,000
+
+Total existing stats: 64,000
+
+🏈 Starting NFL collection...
+
+🔥 BEAST MODE COLLECTION ENGINE 🔥
+  CPU: 12 threads available
+  Workers: 12 parallel workers
+  API Concurrency: 200 calls
+  Batch Size: 10,000 records
+
+
+🏈 NFL STATS COLLECTOR - 1,408 GAMES
+
+⚡ API Concurrency: 100 calls
+⚡ Expected time: 2-3 minutes
+
+📦 Caching NFL players...
+✅ Cached 3522 NFL players
+
+Found 1408 NFL games needing stats
+
+Processing batch 1/15...
+  Inserting 879 records into player_game_stats (1 batches)...
+    Query result: rowCount=879, command=INSERT
+  ✓ Inserted 879 records into player_game_stats (121 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 100/1408 games | 1,000 stats | 51.8 games/sec | ETA: 25s
+Processing batch 2/15...
+  Inserting 868 records into player_game_stats (1 batches)...
+    Query result: rowCount=868, command=INSERT
+  ✓ Inserted 868 records into player_game_stats (132 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 200/1408 games | 2,000 stats | 79.9 games/sec | ETA: 15s
+Processing batch 3/15...
+  Inserting 872 records into player_game_stats (1 batches)...
+    Query result: rowCount=872, command=INSERT
+  ✓ Inserted 872 records into player_game_stats (128 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 300/1408 games | 3,000 stats | 97.3 games/sec | ETA: 11s
+Processing batch 4/15...
+  Inserting 872 records into player_game_stats (1 batches)...
+    Query result: rowCount=872, command=INSERT
+  ✓ Inserted 872 records into player_game_stats (128 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 400/1408 games | 4,000 stats | 105.6 games/sec | ETA: 10s
+Processing batch 5/15...
+  Inserting 869 records into player_game_stats (1 batches)...
+    Query result: rowCount=869, command=INSERT
+  ✓ Inserted 869 records into player_game_stats (131 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 500/1408 games | 5,000 stats | 110.7 games/sec | ETA: 8s
+Processing batch 6/15...
+  Inserting 866 records into player_game_stats (1 batches)...
+    Query result: rowCount=866, command=INSERT
+  ✓ Inserted 866 records into player_game_stats (134 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 600/1408 games | 6,000 stats | 114.9 games/sec | ETA: 7s
+Processing batch 7/15...
+  Inserting 872 records into player_game_stats (1 batches)...
+    Query result: rowCount=872, command=INSERT
+  ✓ Inserted 872 records into player_game_stats (128 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 700/1408 games | 7,000 stats | 120.1 games/sec | ETA: 6s
+Processing batch 8/15...
+  Inserting 880 records into player_game_stats (1 batches)...
+    Query result: rowCount=880, command=INSERT
+  ✓ Inserted 880 records into player_game_stats (120 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 800/1408 games | 8,000 stats | 126.5 games/sec | ETA: 5s
+Processing batch 9/15...
+  Inserting 877 records into player_game_stats (1 batches)...
+    Query result: rowCount=877, command=INSERT
+  ✓ Inserted 877 records into player_game_stats (123 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 900/1408 games | 9,000 stats | 130.8 games/sec | ETA: 4s
+Processing batch 10/15...
+  Inserting 876 records into player_game_stats (1 batches)...
+    Query result: rowCount=876, command=INSERT
+  ✓ Inserted 876 records into player_game_stats (124 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1000/1408 games | 10,000 stats | 133.7 games/sec | ETA: 3s
+Processing batch 11/15...
+  Inserting 873 records into player_game_stats (1 batches)...
+    Query result: rowCount=873, command=INSERT
+  ✓ Inserted 873 records into player_game_stats (127 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1100/1408 games | 11,000 stats | 137.7 games/sec | ETA: 2s
+Processing batch 12/15...
+  Inserting 874 records into player_game_stats (1 batches)...
+    Query result: rowCount=874, command=INSERT
+  ✓ Inserted 874 records into player_game_stats (126 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1200/1408 games | 12,000 stats | 140.9 games/sec | ETA: 1s
+Processing batch 13/15...
+  Inserting 875 records into player_game_stats (1 batches)...
+    Query result: rowCount=875, command=INSERT
+  ✓ Inserted 875 records into player_game_stats (125 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1300/1408 games | 13,000 stats | 144.1 games/sec | ETA: 1s
+Processing batch 14/15...
+  Inserting 874 records into player_game_stats (1 batches)...
+    Query result: rowCount=874, command=INSERT
+  ✓ Inserted 874 records into player_game_stats (126 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1400/1408 games | 14,000 stats | 147.0 games/sec | ETA: 0s
+Processing batch 15/15...
+  Inserting 863 records into player_game_stats (1 batches)...
+    Query result: rowCount=863, command=INSERT
+  ✓ Inserted 863 records into player_game_stats (137 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1408/1408 games | 15,000 stats | 141.8 games/sec | ETA: 0s
+  Inserting 70,462 records into player_game_stats (71 batches)...
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=462, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+  ✓ Inserted 70,462 records into player_game_stats (10682 duplicates removed)
+  💾 Inserted 81144 player stats
+
+✅ NFL STATS COLLECTION COMPLETE!
+⏱️  Time: 10.8s
+📊 Games: 1408
+📈 Stats: 96,144
+⚡ Speed: 130.7 games/sec
+
+
+🏀 Starting NBA collection...
+
+🔥 BEAST MODE COLLECTION ENGINE 🔥
+  CPU: 12 threads available
+  Workers: 12 parallel workers
+  API Concurrency: 200 calls
+  Batch Size: 10,000 records
+
+
+🏀 NBA STATS COLLECTOR - 6,600 GAMES
+
+⚡ API Concurrency: 200 calls
+⚡ Expected time: 2-3 minutes
+
+📦 Caching NBA players...
+✅ Cached 1144 NBA players
+
+Found 3554 NBA games needing stats
+
+Processing batch 1/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 200/3554 games | 2,000 stats | 96.9 games/sec | ETA: 35s
+Processing batch 2/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 400/3554 games | 4,000 stats | 142.0 games/sec | ETA: 22s
+Processing batch 3/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 600/3554 games | 6,000 stats | 166.9 games/sec | ETA: 18s
+Processing batch 4/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 800/3554 games | 8,000 stats | 184.5 games/sec | ETA: 15s
+Processing batch 5/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 1000/3554 games | 10,000 stats | 200.1 games/sec | ETA: 13s
+Processing batch 6/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 1200/3554 games | 12,000 stats | 209.7 games/sec | ETA: 11s
+Processing batch 7/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 1400/3554 games | 14,000 stats | 218.0 games/sec | ETA: 10s
+Processing batch 8/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 1600/3554 games | 16,000 stats | 223.3 games/sec | ETA: 9s
+Processing batch 9/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 1800/3554 games | 18,000 stats | 227.4 games/sec | ETA: 8s
+Processing batch 10/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 2000/3554 games | 20,000 stats | 230.5 games/sec | ETA: 7s
+Processing batch 11/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 2200/3554 games | 22,000 stats | 232.0 games/sec | ETA: 6s
+Processing batch 12/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 2400/3554 games | 24,000 stats | 235.3 games/sec | ETA: 5s
+Processing batch 13/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 2600/3554 games | 26,000 stats | 237.1 games/sec | ETA: 4s
+Processing batch 14/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 2800/3554 games | 28,000 stats | 239.8 games/sec | ETA: 3s
+Processing batch 15/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 3000/3554 games | 30,000 stats | 241.8 games/sec | ETA: 2s
+Processing batch 16/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 3200/3554 games | 32,000 stats | 243.4 games/sec | ETA: 1s
+Processing batch 17/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 3400/3554 games | 34,000 stats | 245.4 games/sec | ETA: 1s
+Processing batch 18/18...
+  Inserting 2,000 records into player_game_stats (1 batches)...
+    Query result: rowCount=2000, command=INSERT
+  ✓ Inserted 2,000 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 2000 player stats
+  Progress: 3554/3554 games | 36,000 stats | 245.7 games/sec | ETA: 0s
+  Inserting 39,314 records into player_game_stats (20 batches)...
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=2000, command=INSERT
+    Query result: rowCount=1314, command=INSERT
+  ✓ Inserted 39,314 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 39314 player stats
+
+✅ NBA STATS COLLECTION COMPLETE!
+⏱️  Time: 15.5s
+📊 Games: 3554
+📈 Stats: 75,314
+⚡ Speed: 229.7 games/sec
+
+
+⚾ Starting MLB collection...
+
+🔥 BEAST MODE COLLECTION ENGINE 🔥
+  CPU: 12 threads available
+  Workers: 12 parallel workers
+  API Concurrency: 200 calls
+  Batch Size: 10,000 records
+
+
+⚾ MLB STATS COLLECTOR - 12,567 GAMES
+
+⚡ API Concurrency: 300 calls
+⚡ Expected time: 3-4 minutes
+
+📦 Caching MLB players...
+✅ Cached 5275 MLB players
+
+Found 12074 MLB games needing stats
+
+Processing batch 1/41...
+  Inserting 4,992 records into player_game_stats (1 batches)...
+    Query result: rowCount=4992, command=INSERT
+  ✓ Inserted 4,992 records into player_game_stats (8 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 300/12074 games | 5,000 stats | 66.4 games/sec | ETA: 177s
+Processing batch 2/41...
+  Inserting 4,982 records into player_game_stats (1 batches)...
+    Query result: rowCount=4982, command=INSERT
+  ✓ Inserted 4,982 records into player_game_stats (18 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 600/12074 games | 10,000 stats | 86.9 games/sec | ETA: 132s
+Processing batch 3/41...
+  Inserting 4,996 records into player_game_stats (1 batches)...
+    Query result: rowCount=4996, command=INSERT
+  ✓ Inserted 4,996 records into player_game_stats (4 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 900/12074 games | 15,000 stats | 99.1 games/sec | ETA: 113s
+Processing batch 4/41...
+  Inserting 4,991 records into player_game_stats (1 batches)...
+    Query result: rowCount=4991, command=INSERT
+  ✓ Inserted 4,991 records into player_game_stats (9 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 1200/12074 games | 20,000 stats | 106.6 games/sec | ETA: 102s
+Processing batch 5/41...
+  Inserting 4,989 records into player_game_stats (1 batches)...
+    Query result: rowCount=4989, command=INSERT
+  ✓ Inserted 4,989 records into player_game_stats (11 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 1500/12074 games | 25,000 stats | 112.1 games/sec | ETA: 94s
+Processing batch 6/41...
+  Inserting 4,990 records into player_game_stats (1 batches)...
+    Query result: rowCount=4990, command=INSERT
+  ✓ Inserted 4,990 records into player_game_stats (10 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 1800/12074 games | 30,000 stats | 83.8 games/sec | ETA: 123s
+Processing batch 7/41...
+  Inserting 4,986 records into player_game_stats (1 batches)...
+    Query result: rowCount=4986, command=INSERT
+  ✓ Inserted 4,986 records into player_game_stats (14 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 2100/12074 games | 35,000 stats | 80.1 games/sec | ETA: 125s
+Processing batch 8/41...
+  Inserting 4,987 records into player_game_stats (1 batches)...
+    Query result: rowCount=4987, command=INSERT
+  ✓ Inserted 4,987 records into player_game_stats (13 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 2400/12074 games | 40,000 stats | 84.7 games/sec | ETA: 114s
+Processing batch 9/41...
+  Inserting 4,992 records into player_game_stats (1 batches)...
+    Query result: rowCount=4992, command=INSERT
+  ✓ Inserted 4,992 records into player_game_stats (8 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 2700/12074 games | 45,000 stats | 87.1 games/sec | ETA: 108s
+Processing batch 10/41...
+  Inserting 4,986 records into player_game_stats (1 batches)...
+    Query result: rowCount=4986, command=INSERT
+  ✓ Inserted 4,986 records into player_game_stats (14 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 3000/12074 games | 50,000 stats | 89.8 games/sec | ETA: 101s
+Processing batch 11/41...
+  Inserting 4,986 records into player_game_stats (1 batches)...
+    Query result: rowCount=4986, command=INSERT
+  ✓ Inserted 4,986 records into player_game_stats (14 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 3300/12074 games | 55,000 stats | 91.9 games/sec | ETA: 95s
+Processing batch 12/41...
+  Inserting 4,983 records into player_game_stats (1 batches)...
+    Query result: rowCount=4983, command=INSERT
+  ✓ Inserted 4,983 records into player_game_stats (17 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 3600/12074 games | 60,000 stats | 94.2 games/sec | ETA: 90s
+Processing batch 13/41...
+  Inserting 4,988 records into player_game_stats (1 batches)...
+    Query result: rowCount=4988, command=INSERT
+  ✓ Inserted 4,988 records into player_game_stats (12 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 3900/12074 games | 65,000 stats | 96.4 games/sec | ETA: 85s
+Processing batch 14/41...
+  Inserting 4,984 records into player_game_stats (1 batches)...
+    Query result: rowCount=4984, command=INSERT
+  ✓ Inserted 4,984 records into player_game_stats (16 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 4200/12074 games | 70,000 stats | 98.4 games/sec | ETA: 80s
+Processing batch 15/41...
+  Inserting 4,988 records into player_game_stats (1 batches)...
+    Query result: rowCount=4988, command=INSERT
+  ✓ Inserted 4,988 records into player_game_stats (12 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 4500/12074 games | 75,000 stats | 100.4 games/sec | ETA: 75s
+Processing batch 16/41...
+  Inserting 4,989 records into player_game_stats (1 batches)...
+    Query result: rowCount=4989, command=INSERT
+  ✓ Inserted 4,989 records into player_game_stats (11 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 4800/12074 games | 80,000 stats | 102.2 games/sec | ETA: 71s
+Processing batch 17/41...
+  Inserting 4,991 records into player_game_stats (1 batches)...
+    Query result: rowCount=4991, command=INSERT
+  ✓ Inserted 4,991 records into player_game_stats (9 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 5100/12074 games | 85,000 stats | 104.0 games/sec | ETA: 67s
+Processing batch 18/41...
+  Inserting 4,989 records into player_game_stats (1 batches)...
+    Query result: rowCount=4989, command=INSERT
+  ✓ Inserted 4,989 records into player_game_stats (11 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 5400/12074 games | 90,000 stats | 105.2 games/sec | ETA: 63s
+Processing batch 19/41...
+  Inserting 4,991 records into player_game_stats (1 batches)...
+    Query result: rowCount=4991, command=INSERT
+  ✓ Inserted 4,991 records into player_game_stats (9 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 5700/12074 games | 95,000 stats | 105.4 games/sec | ETA: 60s
+Processing batch 20/41...
+  Inserting 4,988 records into player_game_stats (1 batches)...
+    Query result: rowCount=4988, command=INSERT
+  ✓ Inserted 4,988 records into player_game_stats (12 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 6000/12074 games | 100,000 stats | 106.6 games/sec | ETA: 57s
+Processing batch 21/41...
+  Inserting 4,982 records into player_game_stats (1 batches)...
+    Query result: rowCount=4982, command=INSERT
+  ✓ Inserted 4,982 records into player_game_stats (18 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 6300/12074 games | 105,000 stats | 107.7 games/sec | ETA: 54s
+Processing batch 22/41...
+  Inserting 4,992 records into player_game_stats (1 batches)...
+    Query result: rowCount=4992, command=INSERT
+  ✓ Inserted 4,992 records into player_game_stats (8 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 6600/12074 games | 110,000 stats | 99.2 games/sec | ETA: 55s
+Processing batch 23/41...
+  Inserting 4,990 records into player_game_stats (1 batches)...
+    Query result: rowCount=4990, command=INSERT
+  ✓ Inserted 4,990 records into player_game_stats (10 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 6900/12074 games | 115,000 stats | 92.8 games/sec | ETA: 56s
+Processing batch 24/41...
+  Inserting 4,981 records into player_game_stats (1 batches)...
+    Query result: rowCount=4981, command=INSERT
+  ✓ Inserted 4,981 records into player_game_stats (19 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 7200/12074 games | 120,000 stats | 89.6 games/sec | ETA: 54s
+Processing batch 25/41...
+  Inserting 4,986 records into player_game_stats (1 batches)...
+    Query result: rowCount=4986, command=INSERT
+  ✓ Inserted 4,986 records into player_game_stats (14 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 7500/12074 games | 125,000 stats | 90.1 games/sec | ETA: 51s
+Processing batch 26/41...
+  Inserting 4,966 records into player_game_stats (1 batches)...
+    Query result: rowCount=4966, command=INSERT
+  ✓ Inserted 4,966 records into player_game_stats (34 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 7800/12074 games | 130,000 stats | 91.1 games/sec | ETA: 47s
+Processing batch 27/41...
+  Inserting 4,976 records into player_game_stats (1 batches)...
+    Query result: rowCount=4976, command=INSERT
+  ✓ Inserted 4,976 records into player_game_stats (24 duplicates removed)
+  💾 Inserted 5000 player stats
+  Progress: 8100/12074 games | 135,000 stats | 89.3 games/sec | ETA: 45s
+Processing batch 28/41...

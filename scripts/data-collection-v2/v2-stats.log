@@ -1,0 +1,36 @@
+
+🔥 BEAST MODE COLLECTION ENGINE 🔥
+  CPU: 12 threads available
+  Workers: 12 parallel workers
+  API Concurrency: 200 calls
+  Batch Size: 10,000 records
+
+
+🚀🚀🚀 ULTRA-FAST STATS COLLECTOR V2 - MAXIMUM PERFORMANCE! 🚀🚀🚀
+
+⚡ CPU: 12 threads (ALL CORES!)
+⚡ Workers: 12 parallel workers
+⚡ API Concurrency: 1000 simultaneous calls
+⚡ Batch Size: 1000 games/batch
+⚡ Pagination: 5000 games/page
+⚡ Target: 500+ games/second
+
+🔧 Initializing 12 worker threads...
+
+📦 Pre-caching all players for speed...
+
+✅ Database connected via IPv4: 2025-07-22T06:05:10.991Z
+✅ Cached 25,588 players
+
+📊 FOUND 110,434 GAMES NEEDING STATS!
+
+
+📄 Processing page 1 (0-5000 of 110434)
+  Processing MILB_A: 4629 games
+  Processing MILB_A_HIGH: 371 games
+Worker 0 error: pLimit is not a function
+Worker 3 error: pLimit is not a function
+Worker 1 error: pLimit is not a function
+Worker 0 error: pLimit is not a function
+Worker 4 error: pLimit is not a function
+Worker 2 error: pLimit is not a function

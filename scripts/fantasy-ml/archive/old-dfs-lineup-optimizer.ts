@@ -1,7 +1,7 @@
 #!/usr/bin/env tsx
 /**
- * 🎯 DFS Lineup Optimizer - FIXED VERSION
- * Ensures no duplicate players in lineups
+ * 🎯 DFS Lineup Optimizer
+ * Builds optimal DraftKings/FanDuel lineups using linear programming + ML insights
  */
 
 import chalk from 'chalk';
@@ -41,7 +41,7 @@ export interface OptimizedLineup {
   correlation_score: number;
 }
 
-export class DFSLineupOptimizerFixed {
+export class DFSLineupOptimizer {
   /**
    * Generate optimal lineups for tournaments
    */
@@ -53,16 +53,12 @@ export class DFSLineupOptimizerFixed {
   ): Promise<OptimizedLineup[]> {
     console.log(chalk.cyan(`🎯 Optimizing ${numLineups} DFS lineups with ${strategy} strategy...`));
     
-    // First, ensure all players have unique IDs
-    const uniquePlayers = this.ensureUniqueIds(players);
-    console.log(chalk.yellow(`Players: ${players.length} total, ${uniquePlayers.length} unique`));
-    
     const lineups: OptimizedLineup[] = [];
     const usedPlayers = new Set<string>();
     
     for (let i = 0; i < numLineups; i++) {
       // Adjust player values based on strategy and previous lineup usage
-      const adjustedPlayers = this.adjustPlayerValues(uniquePlayers, strategy, usedPlayers, i / numLineups);
+      const adjustedPlayers = this.adjustPlayerValues(players, strategy, usedPlayers, i / numLineups);
       
       // Build lineup using dynamic programming approach
       const lineup = this.buildOptimalLineup(adjustedPlayers, constraints);
@@ -83,23 +79,6 @@ export class DFSLineupOptimizerFixed {
     this.displayLineupSummary(lineups);
     
     return lineups;
-  }
-
-  /**
-   * Ensure all players have unique IDs
-   */
-  private ensureUniqueIds(players: DFSPlayer[]): DFSPlayer[] {
-    const seen = new Set<string>();
-    const unique: DFSPlayer[] = [];
-    
-    players.forEach(player => {
-      if (!seen.has(player.id)) {
-        seen.add(player.id);
-        unique.push(player);
-      }
-    });
-    
-    return unique;
   }
 
   /**
@@ -124,7 +103,6 @@ export class DFSLineupOptimizerFixed {
     });
     
     const lineup: DFSPlayer[] = [];
-    const usedIds = new Set<string>(); // Track used player IDs
     let totalSalary = 0;
     
     // Fill required positions
@@ -132,13 +110,9 @@ export class DFSLineupOptimizerFixed {
       const posPlayers = playersByPosition.get(position) || [];
       let added = 0;
       
-      // Create a filtered list excluding already used players
-      const availablePlayers = posPlayers.filter(p => !usedIds.has(p.id));
-      
-      for (const player of availablePlayers) {
-        if (this.isValidSelection(player, lineup, constraints, totalSalary, usedIds)) {
+      for (const player of posPlayers) {
+        if (this.isValidSelection(player, lineup, constraints, totalSalary)) {
           lineup.push(player);
-          usedIds.add(player.id); // Mark as used
           totalSalary += player.salary;
           added++;
           
@@ -147,13 +121,12 @@ export class DFSLineupOptimizerFixed {
       }
       
       if (added < required) {
-        console.log(chalk.yellow(`Warning: Could only fill ${added}/${required} ${position} spots`));
         return null; // Can't fill position requirements
       }
     }
     
     // Optimize by swapping players
-    this.optimizeLineupSwaps(lineup, players, constraints, usedIds);
+    this.optimizeLineupSwaps(lineup, players, constraints);
     
     return this.createLineupObject(lineup);
   }
@@ -165,20 +138,14 @@ export class DFSLineupOptimizerFixed {
     player: DFSPlayer,
     currentLineup: DFSPlayer[],
     constraints: LineupConstraints,
-    currentSalary: number,
-    usedIds: Set<string>
+    currentSalary: number
   ): boolean {
-    // Check if already used (double check)
-    if (usedIds.has(player.id)) {
-      return false;
-    }
-    
     // Check salary cap
     if (currentSalary + player.salary > constraints.salary_cap) {
       return false;
     }
     
-    // Check if player already in lineup (triple check)
+    // Check if player already in lineup
     if (currentLineup.some(p => p.id === player.id)) {
       return false;
     }
@@ -205,8 +172,7 @@ export class DFSLineupOptimizerFixed {
   private optimizeLineupSwaps(
     lineup: DFSPlayer[],
     allPlayers: DFSPlayer[],
-    constraints: LineupConstraints,
-    usedIds: Set<string>
+    constraints: LineupConstraints
   ): void {
     let improved = true;
     
@@ -219,9 +185,7 @@ export class DFSLineupOptimizerFixed {
         
         // Try swapping with other players at same position
         for (const candidate of allPlayers) {
-          if (candidate.position !== position || 
-              candidate.id === currentPlayer.id ||
-              usedIds.has(candidate.id)) {
+          if (candidate.position !== position || candidate.id === currentPlayer.id) {
             continue;
           }
           
@@ -234,9 +198,6 @@ export class DFSLineupOptimizerFixed {
             const correlationBonus = this.calculateCorrelationBonus(candidate, lineup);
             
             if (pointsDiff + correlationBonus > 0) {
-              // Remove old ID and add new one
-              usedIds.delete(currentPlayer.id);
-              usedIds.add(candidate.id);
               lineup[i] = candidate;
               improved = true;
               break;
@@ -410,24 +371,13 @@ export class DFSLineupOptimizerFixed {
     if (lineups.length > 0) {
       console.log(chalk.cyan('\nTop Lineup:'));
       const top = lineups[0];
-      const playerIds = new Set<string>();
-      
       top.players.forEach(p => {
         console.log(`  ${p.position} - ${p.name} (${p.team}) $${p.salary} - ${p.projected_points.toFixed(1)}pts`);
-        playerIds.add(p.id);
       });
-      
       console.log(chalk.green(`Total: $${top.total_salary} - ${top.projected_points.toFixed(1)}pts`));
-      
-      // Verify no duplicates
-      if (playerIds.size === top.players.length) {
-        console.log(chalk.green('✅ No duplicate players'));
-      } else {
-        console.log(chalk.red('❌ Duplicate players detected!'));
-      }
     }
   }
 }
 
 // Export singleton instance
-export const dfsOptimizerFixed = new DFSLineupOptimizerFixed();
+export const dfsOptimizer = new DFSLineupOptimizer();

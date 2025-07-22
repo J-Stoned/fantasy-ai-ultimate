@@ -11,20 +11,22 @@ import chalk from 'chalk';
 // Load environment variables
 dotenv.config({ path: '.env.local' });
 
-// PostgreSQL connection pool
+// PostgreSQL connection pool - prefer local database if available
 export const pgPool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL_LOCAL || process.env.DATABASE_URL,
   max: parseInt(process.env.DATABASE_POOL_MAX || '100'),
   min: parseInt(process.env.DATABASE_POOL_MIN || '10'),
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 5000,
 });
 
-// Supabase client for real-time features
-export const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL as string,
-  process.env.SUPABASE_SERVICE_ROLE_KEY as string
-);
+// Supabase client for real-time features (optional)
+export const supabase = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
+  ? createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.SUPABASE_SERVICE_ROLE_KEY
+    )
+  : null;
 
 // Test database connection
 export async function testDatabaseConnection(): Promise<boolean> {

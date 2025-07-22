@@ -1,0 +1,35 @@
+# Production Fantasy ML Scripts
+
+Replace the fantasy:* scripts in package.json with these:
+
+## Core Scripts
+"fantasy:db": "tsx scripts/fantasy-ml/config/database.ts",
+"fantasy:start-api": "tsx scripts/fantasy-ml/start-fantasy-api.ts",
+"fantasy:pipeline": "tsx scripts/fantasy-ml/run-ml-pipeline.ts",
+"fantasy:deploy": "tsx scripts/fantasy-ml/deploy-mvp.ts",
+
+## Training
+"fantasy:train": "tsx scripts/fantasy-ml/training/sport-trainer-10x.ts",
+"fantasy:train-xgboost": "tsx scripts/fantasy-ml/training/xgboost-historical-trainer.ts",
+"fantasy:train-median": "tsx scripts/fantasy-ml/training/universal-median-trainer.ts",
+
+## Scoring & Calculation
+"fantasy:calculate-points": "tsx scripts/fantasy-ml/scoring/ultra-bulk-fantasy-calculator.ts",
+"fantasy:calculate-chunked": "tsx scripts/fantasy-ml/scoring/chunked-fantasy-calculator.ts",
+
+## Database Management
+"fantasy:create-views": "tsx scripts/fantasy-ml/create-sport-views.ts",
+"fantasy:db-cleanup": "tsx scripts/fantasy-ml/ultimate-db-cleanup.ts",
+"fantasy:remove-duplicates": "tsx scripts/fantasy-ml/database/10x-fast-duplicate-remover.ts",
+
+## Enrichment
+"fantasy:enrich-weather": "tsx scripts/fantasy-ml/enrichment/weather-data-collector.ts",
+"fantasy:enrich-refs": "tsx scripts/fantasy-ml/enrichment/referee-analytics-system.ts",
+"fantasy:enrich-situational": "tsx scripts/fantasy-ml/enrichment/situational-performance-engine.ts",
+"fantasy:enrich-umpires": "tsx scripts/fantasy-ml/enrichment/mlb-umpire-integration.ts",
+
+## Performance Testing
+"fantasy:perf": "tsx scripts/fantasy-ml/performance-comparison.ts",
+
+## Archive Scripts (for reference)
+"fantasy:archive-test": "tsx scripts/fantasy-ml/archive/simple-test.ts",

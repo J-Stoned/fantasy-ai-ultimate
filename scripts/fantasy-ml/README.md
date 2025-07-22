@@ -6,19 +6,19 @@ Multi-sport machine learning system for fantasy sports predictions.
 
 ```bash
 # 1. Test database connection
-npx tsx test-pg-simple.ts
+npm run fantasy:db
 
-# 2. Analyze sports data
-npx tsx check-all-sports-comprehensive.ts
-
-# 3. Create data views
+# 2. Create data views  
 npx tsx create-sport-views.ts
 
-# 4. Test predictions
-npx tsx test-multi-sport-predictor.ts
+# 3. Start Fantasy API
+npm run fantasy:start-api
+
+# 4. Run ML pipeline
+npm run fantasy:pipeline
 
 # 5. Train models
-npx tsx training/sport-trainer.ts
+npx tsx training/sport-trainer-10x.ts
 ```
 
 ## 📊 Sports Coverage
@@ -31,19 +31,19 @@ npx tsx training/sport-trainer.ts
 
 ## 🏗️ Architecture
 
-```
-fantasy-ml/
-├── config/
-│   └── database.ts         # PostgreSQL connection
-├── models/
-│   ├── multi-sport-predictor.ts   # Universal predictor
-│   └── simple-predictor.ts        # Non-TensorFlow predictor
-├── training/
-│   └── sport-trainer.ts    # Sport-aware training
-├── data-pipeline/
-│   └── fantasy-data-loader.ts     # Data loading utilities
-└── [analysis scripts]      # Various analysis tools
-```
+**📁 See [STRUCTURE.md](./STRUCTURE.md) for complete directory organization**
+
+### Production Directories:
+- `/config/` - Database and environment configuration
+- `/models/` - ML models and predictors (10X enhanced)
+- `/services/` - APIs and data services
+- `/enrichment/` - ML feature enrichment (weather, refs, etc.)
+- `/training/` - Model training pipelines
+- `/scoring/` - Fantasy scoring engines (6 platforms)
+- `/database/` - Database optimization tools
+
+### Archived:
+- `/archive/` - Old versions and test files (147 files archived)
 
 ## 🎯 Features
 

@@ -1,0 +1,478 @@
+
+🔥🔥🔥 MASTER STATS COLLECTOR - ALL SPORTS 🔥🔥🔥
+
+📊 Target: 110,434 games → 2-3 MILLION player stats
+⚡ Using sport-specific optimized collectors
+⏱️  Expected time: 10-15 minutes total
+
+✅ Database connected via IPv4: 2025-07-22T06:28:04.415Z
+No existing stats found. Starting fresh collection!
+
+🏈 Starting NFL collection...
+
+🔥 BEAST MODE COLLECTION ENGINE 🔥
+  CPU: 12 threads available
+  Workers: 12 parallel workers
+  API Concurrency: 200 calls
+  Batch Size: 10,000 records
+
+
+🏈 NFL STATS COLLECTOR - 1,408 GAMES
+
+⚡ API Concurrency: 100 calls
+⚡ Expected time: 2-3 minutes
+
+📦 Caching NFL players...
+✅ Cached 3522 NFL players
+
+Found 1408 NFL games needing stats
+
+Processing batch 1/15...
+  💾 Inserted 1000 player stats
+  Progress: 100/1408 games | 1,000 stats | 48.8 games/sec | ETA: 27s
+Processing batch 2/15...
+  💾 Inserted 1000 player stats
+  Progress: 200/1408 games | 2,000 stats | 73.6 games/sec | ETA: 16s
+Processing batch 3/15...
+  💾 Inserted 1000 player stats
+  Progress: 300/1408 games | 3,000 stats | 87.6 games/sec | ETA: 13s
+Processing batch 4/15...
+  💾 Inserted 1000 player stats
+  Progress: 400/1408 games | 4,000 stats | 98.2 games/sec | ETA: 10s
+Processing batch 5/15...
+  💾 Inserted 1000 player stats
+  Progress: 500/1408 games | 5,000 stats | 105.8 games/sec | ETA: 9s
+Processing batch 6/15...
+  💾 Inserted 1000 player stats
+  Progress: 600/1408 games | 6,000 stats | 111.6 games/sec | ETA: 7s
+Processing batch 7/15...
+  💾 Inserted 1000 player stats
+  Progress: 700/1408 games | 7,000 stats | 116.0 games/sec | ETA: 6s
+Processing batch 8/15...
+  💾 Inserted 1000 player stats
+  Progress: 800/1408 games | 8,000 stats | 118.2 games/sec | ETA: 5s
+Processing batch 9/15...
+  💾 Inserted 1000 player stats
+  Progress: 900/1408 games | 9,000 stats | 122.9 games/sec | ETA: 4s
+Processing batch 10/15...
+  💾 Inserted 1000 player stats
+  Progress: 1000/1408 games | 10,000 stats | 75.8 games/sec | ETA: 5s
+Processing batch 11/15...
+  💾 Inserted 1000 player stats
+  Progress: 1100/1408 games | 11,000 stats | 79.4 games/sec | ETA: 4s
+Processing batch 12/15...
+  💾 Inserted 1000 player stats
+  Progress: 1200/1408 games | 12,000 stats | 83.1 games/sec | ETA: 3s
+Processing batch 13/15...
+  💾 Inserted 1000 player stats
+  Progress: 1300/1408 games | 13,000 stats | 86.2 games/sec | ETA: 1s
+Processing batch 14/15...
+  💾 Inserted 1000 player stats
+  Progress: 1400/1408 games | 14,000 stats | 90.0 games/sec | ETA: 0s
+Processing batch 15/15...
+  💾 Inserted 1000 player stats
+  Progress: 1408/1408 games | 15,000 stats | 88.1 games/sec | ETA: 0s
+  💾 Inserted 81144 player stats
+
+✅ NFL STATS COLLECTION COMPLETE!
+⏱️  Time: 16.0s
+📊 Games: 1408
+📈 Stats: 96,144
+⚡ Speed: 88.1 games/sec
+
+
+🏀 Starting NBA collection...
+
+🔥 BEAST MODE COLLECTION ENGINE 🔥
+  CPU: 12 threads available
+  Workers: 12 parallel workers
+  API Concurrency: 200 calls
+  Batch Size: 10,000 records
+
+
+🏀 NBA STATS COLLECTOR - 6,600 GAMES
+
+⚡ API Concurrency: 200 calls
+⚡ Expected time: 2-3 minutes
+
+📦 Caching NBA players...
+✅ Cached 598 NBA players
+
+Found 6549 NBA games needing stats
+
+Processing batch 1/33...
+  💾 Inserted 2000 player stats
+  Progress: 200/6549 games | 2,000 stats | 112.1 games/sec | ETA: 57s
+Processing batch 2/33...
+  💾 Inserted 2000 player stats
+  Progress: 400/6549 games | 4,000 stats | 123.5 games/sec | ETA: 50s
+Processing batch 3/33...
+  💾 Inserted 2000 player stats
+  Progress: 600/6549 games | 6,000 stats | 152.6 games/sec | ETA: 39s
+Processing batch 4/33...
+  💾 Inserted 2000 player stats
+  Progress: 800/6549 games | 8,000 stats | 174.2 games/sec | ETA: 33s
+Processing batch 5/33...
+  💾 Inserted 2000 player stats
+  Progress: 1000/6549 games | 10,000 stats | 189.9 games/sec | ETA: 29s
+Processing batch 6/33...
+  💾 Inserted 2000 player stats
+  Progress: 1200/6549 games | 12,000 stats | 198.8 games/sec | ETA: 27s
+Processing batch 7/33...
+  💾 Inserted 2000 player stats
+  Progress: 1400/6549 games | 14,000 stats | 206.0 games/sec | ETA: 25s
+Processing batch 8/33...
+  💾 Inserted 2000 player stats
+  Progress: 1600/6549 games | 16,000 stats | 214.8 games/sec | ETA: 23s
+Processing batch 9/33...
+  💾 Inserted 2000 player stats
+  Progress: 1800/6549 games | 18,000 stats | 222.1 games/sec | ETA: 21s
+Processing batch 10/33...
+  💾 Inserted 2000 player stats
+  Progress: 2000/6549 games | 20,000 stats | 226.9 games/sec | ETA: 20s
+Processing batch 11/33...
+  💾 Inserted 2000 player stats
+  Progress: 2200/6549 games | 22,000 stats | 231.0 games/sec | ETA: 19s
+Processing batch 12/33...
+  💾 Inserted 2000 player stats
+  Progress: 2400/6549 games | 24,000 stats | 229.8 games/sec | ETA: 18s
+Processing batch 13/33...
+  💾 Inserted 2000 player stats
+  Progress: 2600/6549 games | 26,000 stats | 228.6 games/sec | ETA: 17s
+Processing batch 14/33...
+  💾 Inserted 2000 player stats
+  Progress: 2800/6549 games | 28,000 stats | 227.3 games/sec | ETA: 16s
+Processing batch 15/33...
+  💾 Inserted 2000 player stats
+  Progress: 3000/6549 games | 30,000 stats | 226.2 games/sec | ETA: 16s
+Processing batch 16/33...
+  Failed game 16184: Request failed with status code 502
+  Failed game 15921: Request failed with status code 502
+  💾 Inserted 2000 player stats
+  Progress: 3198/6549 games | 32,000 stats | 225.8 games/sec | ETA: 15s
+Processing batch 17/33...
+  💾 Inserted 2000 player stats
+  Progress: 3398/6549 games | 34,000 stats | 225.2 games/sec | ETA: 14s
+Processing batch 18/33...
+  💾 Inserted 2000 player stats
+  Progress: 3598/6549 games | 36,000 stats | 224.4 games/sec | ETA: 13s
+Processing batch 19/33...
+  💾 Inserted 2000 player stats
+  Progress: 3798/6549 games | 38,000 stats | 223.2 games/sec | ETA: 12s
+Processing batch 20/33...
+  💾 Inserted 2000 player stats
+  Progress: 3998/6549 games | 40,000 stats | 222.9 games/sec | ETA: 11s
+Processing batch 21/33...
+  💾 Inserted 2000 player stats
+  Progress: 4198/6549 games | 42,000 stats | 223.6 games/sec | ETA: 11s
+Processing batch 22/33...
+  💾 Inserted 2000 player stats
+  Progress: 4398/6549 games | 44,000 stats | 223.4 games/sec | ETA: 10s
+Processing batch 23/33...
+  💾 Inserted 2000 player stats
+  Progress: 4598/6549 games | 46,000 stats | 225.1 games/sec | ETA: 9s
+Processing batch 24/33...
+  💾 Inserted 2000 player stats
+  Progress: 4798/6549 games | 48,000 stats | 226.7 games/sec | ETA: 8s
+Processing batch 25/33...
+  💾 Inserted 2000 player stats
+  Progress: 4998/6549 games | 50,000 stats | 227.9 games/sec | ETA: 7s
+Processing batch 26/33...
+  💾 Inserted 2000 player stats
+  Progress: 5198/6549 games | 52,000 stats | 229.7 games/sec | ETA: 6s
+Processing batch 27/33...
+  💾 Inserted 2000 player stats
+  Progress: 5398/6549 games | 54,000 stats | 230.8 games/sec | ETA: 5s
+Processing batch 28/33...
+  💾 Inserted 2000 player stats
+  Progress: 5598/6549 games | 56,000 stats | 230.3 games/sec | ETA: 4s
+Processing batch 29/33...
+  💾 Inserted 2000 player stats
+  Progress: 5798/6549 games | 58,000 stats | 229.4 games/sec | ETA: 3s
+Processing batch 30/33...
+  💾 Inserted 2000 player stats
+  Progress: 5998/6549 games | 60,000 stats | 229.0 games/sec | ETA: 2s
+Processing batch 31/33...
+  💾 Inserted 2000 player stats
+  Progress: 6198/6549 games | 62,000 stats | 220.3 games/sec | ETA: 2s
+Processing batch 32/33...
+  💾 Inserted 2000 player stats
+  Progress: 6398/6549 games | 64,000 stats | 220.1 games/sec | ETA: 1s
+Processing batch 33/33...
+  💾 Inserted 2000 player stats
+  Progress: 6547/6549 games | 66,000 stats | 219.5 games/sec | ETA: 0s
+  💾 Inserted 73281 player stats
+
+✅ NBA STATS COLLECTION COMPLETE!
+⏱️  Time: 29.8s
+📊 Games: 6547
+📈 Stats: 139,281
+⚡ Speed: 219.5 games/sec
+
+
+⚾ Starting MLB collection...
+
+🔥 BEAST MODE COLLECTION ENGINE 🔥
+  CPU: 12 threads available
+  Workers: 12 parallel workers
+  API Concurrency: 200 calls
+  Batch Size: 10,000 records
+
+
+⚾ MLB STATS COLLECTOR - 12,567 GAMES
+
+⚡ API Concurrency: 300 calls
+⚡ Expected time: 3-4 minutes
+
+📦 Caching MLB players...
+✅ Cached 0 MLB players
+
+Found 12074 MLB games needing stats
+
+Processing batch 1/41...
+  💾 Inserted 5000 player stats
+  Progress: 300/12074 games | 5,000 stats | 70.0 games/sec | ETA: 168s
+Processing batch 2/41...
+  💾 Inserted 5000 player stats
+  Progress: 600/12074 games | 10,000 stats | 97.6 games/sec | ETA: 118s
+Processing batch 3/41...
+  💾 Inserted 5000 player stats
+  Progress: 900/12074 games | 15,000 stats | 66.2 games/sec | ETA: 169s
+Processing batch 4/41...
+  💾 Inserted 5000 player stats
+  Progress: 1200/12074 games | 20,000 stats | 67.2 games/sec | ETA: 162s
+Processing batch 5/41...
+  💾 Inserted 5000 player stats
+  Progress: 1500/12074 games | 25,000 stats | 63.3 games/sec | ETA: 167s
+Processing batch 6/41...
+  💾 Inserted 5000 player stats
+  Progress: 1800/12074 games | 30,000 stats | 66.2 games/sec | ETA: 155s
+Processing batch 7/41...
+  💾 Inserted 5000 player stats
+  Progress: 2100/12074 games | 35,000 stats | 70.1 games/sec | ETA: 142s
+Processing batch 8/41...
+  💾 Inserted 5000 player stats
+  Progress: 2400/12074 games | 40,000 stats | 75.7 games/sec | ETA: 128s
+Processing batch 9/41...
+  💾 Inserted 5000 player stats
+  Progress: 2700/12074 games | 45,000 stats | 67.5 games/sec | ETA: 139s
+Processing batch 10/41...
+  💾 Inserted 5000 player stats
+  Progress: 3000/12074 games | 50,000 stats | 65.4 games/sec | ETA: 139s
+Processing batch 11/41...
+  💾 Inserted 5000 player stats
+  Progress: 3300/12074 games | 55,000 stats | 69.3 games/sec | ETA: 127s
+Processing batch 12/41...
+  💾 Inserted 5000 player stats
+  Progress: 3600/12074 games | 60,000 stats | 72.8 games/sec | ETA: 116s
+Processing batch 13/41...
+  💾 Inserted 5000 player stats
+  Progress: 3900/12074 games | 65,000 stats | 76.0 games/sec | ETA: 107s
+Processing batch 14/41...
+  💾 Inserted 5000 player stats
+  Progress: 4200/12074 games | 70,000 stats | 74.1 games/sec | ETA: 106s
+Processing batch 15/41...
+  💾 Inserted 5000 player stats
+  Progress: 4500/12074 games | 75,000 stats | 76.3 games/sec | ETA: 99s
+Processing batch 16/41...
+  💾 Inserted 5000 player stats
+  Progress: 4800/12074 games | 80,000 stats | 78.5 games/sec | ETA: 93s
+Processing batch 17/41...
+  💾 Inserted 5000 player stats
+  Progress: 5100/12074 games | 85,000 stats | 81.1 games/sec | ETA: 86s
+Processing batch 18/41...
+  💾 Inserted 5000 player stats
+  Progress: 5400/12074 games | 90,000 stats | 83.2 games/sec | ETA: 80s
+Processing batch 19/41...
+  💾 Inserted 5000 player stats
+  Progress: 5700/12074 games | 95,000 stats | 80.1 games/sec | ETA: 80s
+Processing batch 20/41...
+  💾 Inserted 5000 player stats
+  Progress: 6000/12074 games | 100,000 stats | 78.1 games/sec | ETA: 78s
+Processing batch 21/41...
+  💾 Inserted 5000 player stats
+  Progress: 6300/12074 games | 105,000 stats | 80.1 games/sec | ETA: 72s
+Processing batch 22/41...
+  💾 Inserted 5000 player stats
+  Progress: 6600/12074 games | 110,000 stats | 81.9 games/sec | ETA: 67s
+Processing batch 23/41...
+  💾 Inserted 5000 player stats
+  Progress: 6900/12074 games | 115,000 stats | 83.7 games/sec | ETA: 62s
+Processing batch 24/41...
+  💾 Inserted 5000 player stats
+  Progress: 7200/12074 games | 120,000 stats | 85.5 games/sec | ETA: 57s
+Processing batch 25/41...
+  💾 Inserted 5000 player stats
+  Progress: 7500/12074 games | 125,000 stats | 87.2 games/sec | ETA: 52s
+Processing batch 26/41...
+  💾 Inserted 5000 player stats
+  Progress: 7800/12074 games | 130,000 stats | 88.9 games/sec | ETA: 48s
+Processing batch 27/41...
+  💾 Inserted 5000 player stats
+  Progress: 8100/12074 games | 135,000 stats | 89.4 games/sec | ETA: 44s
+Processing batch 28/41...
+  💾 Inserted 5000 player stats
+  Progress: 8400/12074 games | 140,000 stats | 90.3 games/sec | ETA: 41s
+Processing batch 29/41...
+  💾 Inserted 5000 player stats
+  Progress: 8700/12074 games | 145,000 stats | 91.7 games/sec | ETA: 37s
+Processing batch 30/41...
+  💾 Inserted 5000 player stats
+  Progress: 9000/12074 games | 150,000 stats | 92.9 games/sec | ETA: 33s
+Processing batch 31/41...
+  💾 Inserted 5000 player stats
+  Progress: 9300/12074 games | 155,000 stats | 94.3 games/sec | ETA: 29s
+Processing batch 32/41...
+  💾 Inserted 5000 player stats
+  Progress: 9600/12074 games | 160,000 stats | 95.6 games/sec | ETA: 26s
+Processing batch 33/41...
+  💾 Inserted 5000 player stats
+  Progress: 9900/12074 games | 165,000 stats | 92.6 games/sec | ETA: 23s
+Processing batch 34/41...
+  💾 Inserted 5000 player stats
+  Progress: 10200/12074 games | 170,000 stats | 87.7 games/sec | ETA: 21s
+Processing batch 35/41...
+  💾 Inserted 5000 player stats
+  Progress: 10500/12074 games | 175,000 stats | 84.0 games/sec | ETA: 19s
+Processing batch 36/41...
+  💾 Inserted 5000 player stats
+  Progress: 10800/12074 games | 180,000 stats | 84.3 games/sec | ETA: 15s
+Processing batch 37/41...
+  💾 Inserted 5000 player stats
+  Progress: 11100/12074 games | 185,000 stats | 83.3 games/sec | ETA: 12s
+Processing batch 38/41...
+  💾 Inserted 5000 player stats
+  Progress: 11400/12074 games | 190,000 stats | 83.3 games/sec | ETA: 8s
+Processing batch 39/41...
+  💾 Inserted 5000 player stats
+  Progress: 11700/12074 games | 195,000 stats | 84.3 games/sec | ETA: 4s
+Processing batch 40/41...
+  💾 Inserted 5000 player stats
+  Progress: 12000/12074 games | 200,000 stats | 85.4 games/sec | ETA: 1s
+Processing batch 41/41...
+  💾 Inserted 5000 player stats
+  Progress: 12074/12074 games | 205,000 stats | 85.5 games/sec | ETA: 0s
+  💾 Inserted 188947 player stats
+
+✅ MLB STATS COLLECTION COMPLETE!
+⏱️  Time: 141.2s
+📊 Games: 12074
+📈 Stats: 393,947
+⚡ Speed: 85.5 games/sec
+
+
+🏒 Starting NHL collection...
+
+🔥 BEAST MODE COLLECTION ENGINE 🔥
+  CPU: 12 threads available
+  Workers: 12 parallel workers
+  API Concurrency: 200 calls
+  Batch Size: 10,000 records
+
+
+🏒 NHL STATS COLLECTOR - 6,591 GAMES
+
+⚡ API Concurrency: 200 calls
+⚡ Expected time: 2-3 minutes
+
+📦 Caching NHL players...
+✅ Cached 1 NHL players
+
+Found 6435 NHL games needing stats
+
+Processing batch 1/33...
+  Progress: 200/6435 games | 0 stats | 56.9 games/sec | ETA: 110s
+Processing batch 2/33...
+  Progress: 400/6435 games | 0 stats | 87.1 games/sec | ETA: 69s
+Processing batch 3/33...
+  Progress: 600/6435 games | 0 stats | 103.9 games/sec | ETA: 56s
+Processing batch 4/33...
+  Progress: 800/6435 games | 0 stats | 115.4 games/sec | ETA: 49s
+Processing batch 5/33...
+  💾 Inserted 2000 player stats
+  Progress: 1000/6435 games | 2,000 stats | 122.3 games/sec | ETA: 44s
+Processing batch 6/33...
+  Progress: 1200/6435 games | 2,000 stats | 123.3 games/sec | ETA: 42s
+Processing batch 7/33...
+  Progress: 1400/6435 games | 2,000 stats | 116.3 games/sec | ETA: 43s
+Processing batch 8/33...
+  Progress: 1600/6435 games | 2,000 stats | 112.9 games/sec | ETA: 43s
+Processing batch 9/33...
+  Progress: 1800/6435 games | 2,000 stats | 114.6 games/sec | ETA: 40s
+Processing batch 10/33...
+  💾 Inserted 2000 player stats
+  Progress: 2000/6435 games | 4,000 stats | 117.4 games/sec | ETA: 38s
+Processing batch 11/33...
+  Progress: 2200/6435 games | 4,000 stats | 120.6 games/sec | ETA: 35s
+Processing batch 12/33...
+  Progress: 2400/6435 games | 4,000 stats | 121.9 games/sec | ETA: 33s
+Processing batch 13/33...
+  Progress: 2600/6435 games | 4,000 stats | 123.2 games/sec | ETA: 31s
+Processing batch 14/33...
+  Progress: 2800/6435 games | 4,000 stats | 123.6 games/sec | ETA: 29s
+Processing batch 15/33...
+  💾 Inserted 2000 player stats
+  Progress: 3000/6435 games | 6,000 stats | 121.5 games/sec | ETA: 28s
+Processing batch 16/33...
+  Progress: 3200/6435 games | 6,000 stats | 120.8 games/sec | ETA: 27s
+Processing batch 17/33...
+  Progress: 3400/6435 games | 6,000 stats | 120.8 games/sec | ETA: 25s
+Processing batch 18/33...
+  Progress: 3600/6435 games | 6,000 stats | 121.0 games/sec | ETA: 23s
+Processing batch 19/33...
+  💾 Inserted 2000 player stats
+  Progress: 3800/6435 games | 8,000 stats | 121.7 games/sec | ETA: 22s
+Processing batch 20/33...
+  Progress: 4000/6435 games | 8,000 stats | 122.0 games/sec | ETA: 20s
+Processing batch 21/33...
+  Progress: 4200/6435 games | 8,000 stats | 121.2 games/sec | ETA: 18s
+Processing batch 22/33...
+  Progress: 4400/6435 games | 8,000 stats | 119.5 games/sec | ETA: 17s
+Processing batch 23/33...
+  Progress: 4600/6435 games | 8,000 stats | 119.9 games/sec | ETA: 15s
+Processing batch 24/33...
+  💾 Inserted 2000 player stats
+  Progress: 4800/6435 games | 10,000 stats | 120.5 games/sec | ETA: 14s
+Processing batch 25/33...
+  Progress: 5000/6435 games | 10,000 stats | 117.5 games/sec | ETA: 12s
+Processing batch 26/33...
+  Progress: 5200/6435 games | 10,000 stats | 118.1 games/sec | ETA: 10s
+Processing batch 27/33...
+  Progress: 5400/6435 games | 10,000 stats | 118.9 games/sec | ETA: 9s
+Processing batch 28/33...
+  Progress: 5600/6435 games | 10,000 stats | 117.5 games/sec | ETA: 7s
+Processing batch 29/33...
+  💾 Inserted 2000 player stats
+  Progress: 5800/6435 games | 12,000 stats | 116.3 games/sec | ETA: 5s
+Processing batch 30/33...
+  Progress: 6000/6435 games | 12,000 stats | 116.3 games/sec | ETA: 4s
+Processing batch 31/33...
+  Progress: 6200/6435 games | 12,000 stats | 116.8 games/sec | ETA: 2s
+Processing batch 32/33...
+  Progress: 6400/6435 games | 12,000 stats | 117.2 games/sec | ETA: 0s
+Processing batch 33/33...
+  Progress: 6435/6435 games | 12,000 stats | 116.5 games/sec | ETA: 0s
+  💾 Inserted 1786 player stats
+
+✅ NHL STATS COLLECTION COMPLETE!
+⏱️  Time: 55.2s
+📊 Games: 6435
+📈 Stats: 13,786
+⚡ Speed: 116.5 games/sec
+
+
+
+🏆 FINAL COLLECTION SUMMARY:
+
+Sport       | Games  | Player Stats | Unique Players
+------------|--------|--------------|---------------
+
+TOTALS      |      0 |            0 |              0
+
+✅ COLLECTION COMPLETE!
+⏱️  Total time: 4.0 minutes
+📊 Total stats collected: 0
+⚡ Average speed: 0.0 games/second
+
+
+📋 Sample collected stats:

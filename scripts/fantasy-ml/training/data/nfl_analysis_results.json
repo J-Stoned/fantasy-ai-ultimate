@@ -1,0 +1,8 @@
+{
+  "total_samples": 2163,
+  "target_mean": 0.5450762829403606,
+  "target_std": 3.0393585201292392,
+  "median_last_3_accuracy": 96.53259361997226,
+  "ordering_issues": 0,
+  "suspicious_features": []
+}

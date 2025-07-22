@@ -1,33 +1,111 @@
 version: '3.8'
 
 services:
-  ml-trainer:
+  # 🔥 ULTIMATE GPU ML PREDICTION SERVER - NO CORNERS CUT! 🚀
+  fantasy-ml-gpu:
     build:
       context: .
       dockerfile: Dockerfile.ml-gpu
-    image: fantasy-ai/ml-gpu:latest
+      args:
+        BUILDKIT_INLINE_CACHE: 1
+    image: fantasy-ai/ml-gpu-ultimate:latest
+    container_name: fantasy-ml-gpu-ultimate
     deploy:
       resources:
         reservations:
           devices:
             - driver: nvidia
               count: 1
-              capabilities: [gpu]
+              capabilities: [gpu, compute, utility]
+        limits:
+          # RTX 4060 optimization - reserve resources
+          memory: 16G
+          cpus: '6.0'  # Ryzen 5 7600X optimization
     environment:
+      # GPU Environment - RTX 4060 Optimized
       - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility,graphics
       - CUDA_VISIBLE_DEVICES=0
       - TF_FORCE_GPU_ALLOW_GROWTH=true
+      - XGB_USE_CUDA=1
+      - NVIDIA_TF32_OVERRIDE=1
+      - CUDA_DEVICE_ORDER=PCI_BUS_ID
+      # Python Environment
+      - PYTHONUNBUFFERED=1
+      - LOG_LEVEL=INFO
+      # Database Connection (WSL2 → Windows PostgreSQL)
+      - DB_HOST=host.docker.internal
+      - DB_PORT=5432
+      - DB_NAME=fantasy_dev
+      - DB_USER=dev_user
+      - DB_PASSWORD=dev_password
+      # Performance Optimization
+      - OMP_NUM_THREADS=6
+      - MKL_NUM_THREADS=6
     volumes:
-      - ./models:/app/models
-      - ./logs:/app/logs
-      - ./.env.local:/app/.env.local:ro
-    command: npx tsx scripts/train-ml-ultimate.ts
+      # Model persistence
+      - ./scripts/fantasy-ml/python-backend/models:/app/python-backend/models
+      - ./scripts/fantasy-ml/python-backend/data:/app/python-backend/data
+      - ./scripts/fantasy-ml/python-backend/logs:/app/python-backend/logs
+      # Configuration
+      - ./scripts/fantasy-ml/python-backend/.env:/app/python-backend/.env:ro
+      # Source code for development
+      - ./scripts/fantasy-ml/python-backend:/app/python-backend:rw
+    ports:
+      - "8000:8000"  # FastAPI ML Server
+      - "8001:8001"  # Optional secondary service
+    networks:
+      - fantasy-ml-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    restart: unless-stopped
+    command: ["/app/start-ml-services.sh"]
     
-  ml-trainer-aggressive:
-    extends: ml-trainer
-    command: npx tsx scripts/train-ml-aggressive.ts
+  # 🧠 ML MODEL TRAINER - GPU ACCELERATED
+  ml-trainer-nfl:
+    extends: fantasy-ml-gpu
+    container_name: fantasy-ml-trainer-nfl
+    command: ["python3", "python-backend/train_nfl.py"]
+    profiles: ["training"]
     
-  ml-trainer-supreme:
-    extends: ml-trainer
-    command: npx tsx scripts/train-ml-supreme.ts
+  # 🚀 MONTE CARLO SIMULATION ENGINE
+  ml-simulator:
+    extends: fantasy-ml-gpu
+    container_name: fantasy-ml-simulator
+    command: ["python3", "python-backend/models/monte_carlo_engine.py"]
+    profiles: ["simulation"]
+    
+  # 🎯 LINEUP OPTIMIZER
+  ml-optimizer:
+    extends: fantasy-ml-gpu
+    container_name: fantasy-ml-optimizer
+    command: ["python3", "python-backend/models/leverage_optimizer.py"]
+    profiles: ["optimization"]
+
+  # 📊 DEVELOPMENT & TESTING
+  ml-dev:
+    extends: fantasy-ml-gpu
+    container_name: fantasy-ml-dev
+    command: ["bash"]
+    stdin_open: true
+    tty: true
+    profiles: ["dev"]
+    
+networks:
+  fantasy-ml-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+          
+volumes:
+  ml-models:
+    driver: local
+  ml-cache:
+    driver: local
+  ml-logs:
+    driver: local

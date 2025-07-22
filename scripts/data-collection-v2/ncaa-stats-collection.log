@@ -1,0 +1,477 @@
+
+🎓🎓🎓 MASTER NCAA STATS COLLECTOR - ALL SPORTS 🎓🎓🎓
+
+📊 Target: 13,725 games → ~200,000 player stats
+⚡ Using sport-specific optimized collectors
+⏱️  Expected time: 5-10 minutes total
+
+✅ Database connected via IPv4: 2025-07-22T12:30:19.538Z
+📊 Current stats in database:
+No NCAA stats collected yet
+
+🏀 Starting NCAA Basketball collection...
+
+🔥 BEAST MODE COLLECTION ENGINE 🔥
+  CPU: 12 threads available
+  Workers: 12 parallel workers
+  API Concurrency: 200 calls
+  Batch Size: 10,000 records
+
+
+🏀 NCAA BASKETBALL STATS COLLECTOR - 2,931 GAMES
+
+⚡ API Concurrency: 150 calls
+⚡ Expected time: 1-2 minutes
+
+📦 Caching NCAAB players...
+✅ Cached 5563 NCAAB players
+
+Found 2927 NCAAB games needing stats
+
+Processing batch 1/20...
+  Progress: 150/2927 games | 0 stats | 41.1 games/sec | ETA: 68s
+Processing batch 2/20...
+  Progress: 300/2927 games | 0 stats | 63.7 games/sec | ETA: 41s
+Processing batch 3/20...
+  Progress: 450/2927 games | 0 stats | 81.3 games/sec | ETA: 30s
+Processing batch 4/20...
+  Progress: 600/2927 games | 0 stats | 95.7 games/sec | ETA: 24s
+Processing batch 5/20...
+  Failed game 43051: Request failed with status code 502
+  Progress: 749/2927 games | 0 stats | 96.9 games/sec | ETA: 22s
+Processing batch 6/20...
+  Progress: 899/2927 games | 0 stats | 87.1 games/sec | ETA: 23s
+Processing batch 7/20...
+  Progress: 1049/2927 games | 0 stats | 92.9 games/sec | ETA: 20s
+Processing batch 8/20...
+  Progress: 1199/2927 games | 0 stats | 96.1 games/sec | ETA: 18s
+Processing batch 9/20...
+  Progress: 1349/2927 games | 0 stats | 101.2 games/sec | ETA: 16s
+Processing batch 10/20...
+  Progress: 1499/2927 games | 0 stats | 106.2 games/sec | ETA: 13s
+Processing batch 11/20...
+  Progress: 1649/2927 games | 0 stats | 94.5 games/sec | ETA: 14s
+Processing batch 12/20...
+  Failed game 36807: Request failed with status code 504
+  Failed game 36684: Request failed with status code 504
+  Failed game 36549: Request failed with status code 504
+  Failed game 1935: Request failed with status code 504
+  Failed game 1961: Request failed with status code 504
+  Failed game 36553: Request failed with status code 504
+  Failed game 1955: Request failed with status code 504
+  Failed game 1957: Request failed with status code 504
+  Failed game 36527: Request failed with status code 504
+  Failed game 1956: Request failed with status code 504
+  Failed game 36688: Request failed with status code 504
+  Failed game 36658: Request failed with status code 504
+  Failed game 36543: Request failed with status code 504
+  Failed game 36739: Request failed with status code 504
+  Failed game 36541: Request failed with status code 504
+  Failed game 36547: Request failed with status code 504
+  Failed game 36783: Request failed with status code 504
+  Failed game 36802: Request failed with status code 504
+  Failed game 1930: Request failed with status code 504
+  Failed game 36653: Request failed with status code 504
+  Failed game 1933: Request failed with status code 504
+  Progress: 1778/2927 games | 0 stats | 78.3 games/sec | ETA: 15s
+Processing batch 13/20...
+  Failed game 1914: Request failed with status code 504
+  Progress: 1927/2927 games | 0 stats | 68.0 games/sec | ETA: 15s
+Processing batch 14/20...
+  Progress: 2077/2927 games | 0 stats | 68.5 games/sec | ETA: 12s
+Processing batch 15/20...
+  Progress: 2227/2927 games | 0 stats | 71.6 games/sec | ETA: 10s
+Processing batch 16/20...
+  Progress: 2377/2927 games | 0 stats | 74.6 games/sec | ETA: 7s
+Processing batch 17/20...
+  Progress: 2527/2927 games | 0 stats | 77.4 games/sec | ETA: 5s
+Processing batch 18/20...
+  Progress: 2677/2927 games | 0 stats | 80.1 games/sec | ETA: 3s
+Processing batch 19/20...
+  Progress: 2827/2927 games | 0 stats | 82.7 games/sec | ETA: 1s
+Processing batch 20/20...
+  Progress: 2904/2927 games | 0 stats | 82.9 games/sec | ETA: 0s
+
+✅ NCAAB STATS COLLECTION COMPLETE!
+⏱️  Time: 35.0s
+📊 Games: 2904
+📈 Stats: 0
+⚡ Speed: 82.9 games/sec
+
+🏈 Starting NCAA Football collection...
+
+🔥 BEAST MODE COLLECTION ENGINE 🔥
+  CPU: 12 threads available
+  Workers: 12 parallel workers
+  API Concurrency: 200 calls
+  Batch Size: 10,000 records
+
+
+🏈 NCAA FOOTBALL STATS COLLECTOR - 2,129 GAMES
+
+⚡ API Concurrency: 100 calls
+⚡ Expected time: 1-2 minutes
+
+📦 Caching NCAAF players...
+✅ Cached 1 NCAAF players
+
+Found 2127 NCAAF games needing stats
+
+Processing batch 1/22...
+  Inserting 987 records into player_game_stats (1 batches)...
+    Query result: rowCount=987, command=INSERT
+  ✓ Inserted 987 records into player_game_stats (13 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 100/2127 games | 1,000 stats | 73.3 games/sec | ETA: 28s
+Processing batch 2/22...
+  Inserting 981 records into player_game_stats (1 batches)...
+    Query result: rowCount=981, command=INSERT
+  ✓ Inserted 981 records into player_game_stats (19 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 200/2127 games | 2,000 stats | 90.9 games/sec | ETA: 21s
+Processing batch 3/22...
+  Inserting 993 records into player_game_stats (1 batches)...
+    Query result: rowCount=993, command=INSERT
+  ✓ Inserted 993 records into player_game_stats (7 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 300/2127 games | 3,000 stats | 99.4 games/sec | ETA: 18s
+Processing batch 4/22...
+  Inserting 986 records into player_game_stats (1 batches)...
+    Query result: rowCount=986, command=INSERT
+  ✓ Inserted 986 records into player_game_stats (14 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 400/2127 games | 4,000 stats | 100.4 games/sec | ETA: 17s
+Processing batch 5/22...
+  Inserting 990 records into player_game_stats (1 batches)...
+    Query result: rowCount=990, command=INSERT
+  ✓ Inserted 990 records into player_game_stats (10 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 500/2127 games | 5,000 stats | 104.0 games/sec | ETA: 16s
+Processing batch 6/22...
+  Inserting 991 records into player_game_stats (1 batches)...
+    Query result: rowCount=991, command=INSERT
+  ✓ Inserted 991 records into player_game_stats (9 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 600/2127 games | 6,000 stats | 106.8 games/sec | ETA: 14s
+Processing batch 7/22...
+  Inserting 990 records into player_game_stats (1 batches)...
+    Query result: rowCount=990, command=INSERT
+  ✓ Inserted 990 records into player_game_stats (10 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 700/2127 games | 7,000 stats | 109.2 games/sec | ETA: 13s
+Processing batch 8/22...
+  Inserting 987 records into player_game_stats (1 batches)...
+    Query result: rowCount=987, command=INSERT
+  ✓ Inserted 987 records into player_game_stats (13 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 800/2127 games | 8,000 stats | 99.4 games/sec | ETA: 13s
+Processing batch 9/22...
+  Inserting 991 records into player_game_stats (1 batches)...
+    Query result: rowCount=991, command=INSERT
+  ✓ Inserted 991 records into player_game_stats (9 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 900/2127 games | 9,000 stats | 99.4 games/sec | ETA: 12s
+Processing batch 10/22...
+  Inserting 991 records into player_game_stats (1 batches)...
+    Query result: rowCount=991, command=INSERT
+  ✓ Inserted 991 records into player_game_stats (9 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1000/2127 games | 10,000 stats | 101.0 games/sec | ETA: 11s
+Processing batch 11/22...
+  Inserting 988 records into player_game_stats (1 batches)...
+    Query result: rowCount=988, command=INSERT
+  ✓ Inserted 988 records into player_game_stats (12 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1100/2127 games | 11,000 stats | 101.9 games/sec | ETA: 10s
+Processing batch 12/22...
+  Inserting 991 records into player_game_stats (1 batches)...
+    Query result: rowCount=991, command=INSERT
+  ✓ Inserted 991 records into player_game_stats (9 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1200/2127 games | 12,000 stats | 102.2 games/sec | ETA: 9s
+Processing batch 13/22...
+  Inserting 996 records into player_game_stats (1 batches)...
+    Query result: rowCount=996, command=INSERT
+  ✓ Inserted 996 records into player_game_stats (4 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1300/2127 games | 13,000 stats | 102.5 games/sec | ETA: 8s
+Processing batch 14/22...
+  Inserting 985 records into player_game_stats (1 batches)...
+    Query result: rowCount=985, command=INSERT
+  ✓ Inserted 985 records into player_game_stats (15 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1400/2127 games | 14,000 stats | 102.2 games/sec | ETA: 7s
+Processing batch 15/22...
+  Inserting 992 records into player_game_stats (1 batches)...
+    Query result: rowCount=992, command=INSERT
+  ✓ Inserted 992 records into player_game_stats (8 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1500/2127 games | 15,000 stats | 98.6 games/sec | ETA: 6s
+Processing batch 16/22...
+  Inserting 988 records into player_game_stats (1 batches)...
+    Query result: rowCount=988, command=INSERT
+  ✓ Inserted 988 records into player_game_stats (12 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1600/2127 games | 16,000 stats | 98.9 games/sec | ETA: 5s
+Processing batch 17/22...
+  Inserting 992 records into player_game_stats (1 batches)...
+    Query result: rowCount=992, command=INSERT
+  ✓ Inserted 992 records into player_game_stats (8 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1700/2127 games | 17,000 stats | 97.7 games/sec | ETA: 4s
+Processing batch 18/22...
+  Inserting 991 records into player_game_stats (1 batches)...
+    Query result: rowCount=991, command=INSERT
+  ✓ Inserted 991 records into player_game_stats (9 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1800/2127 games | 18,000 stats | 96.8 games/sec | ETA: 3s
+Processing batch 19/22...
+  Inserting 987 records into player_game_stats (1 batches)...
+    Query result: rowCount=987, command=INSERT
+  ✓ Inserted 987 records into player_game_stats (13 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 1900/2127 games | 19,000 stats | 97.1 games/sec | ETA: 2s
+Processing batch 20/22...
+  Inserting 992 records into player_game_stats (1 batches)...
+    Query result: rowCount=992, command=INSERT
+  ✓ Inserted 992 records into player_game_stats (8 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 2000/2127 games | 20,000 stats | 96.4 games/sec | ETA: 1s
+Processing batch 21/22...
+  Inserting 989 records into player_game_stats (1 batches)...
+    Query result: rowCount=989, command=INSERT
+  ✓ Inserted 989 records into player_game_stats (11 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 2100/2127 games | 21,000 stats | 96.1 games/sec | ETA: 0s
+Processing batch 22/22...
+  Inserting 989 records into player_game_stats (1 batches)...
+    Query result: rowCount=989, command=INSERT
+  ✓ Inserted 989 records into player_game_stats (11 duplicates removed)
+  💾 Inserted 1000 player stats
+  Progress: 2127/2127 games | 22,000 stats | 95.0 games/sec | ETA: 0s
+  Inserting 51,598 records into player_game_stats (52 batches)...
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=598, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+    Query result: rowCount=1000, command=INSERT
+  ✓ Inserted 51,598 records into player_game_stats (457 duplicates removed)
+  💾 Inserted 52055 player stats
+
+✅ NCAAF STATS COLLECTION COMPLETE!
+⏱️  Time: 23.3s
+📊 Games: 2127
+📈 Stats: 74,055
+⚡ Speed: 91.4 games/sec
+
+⚾ Starting NCAA Baseball collection...
+
+🔥 BEAST MODE COLLECTION ENGINE 🔥
+  CPU: 12 threads available
+  Workers: 12 parallel workers
+  API Concurrency: 200 calls
+  Batch Size: 10,000 records
+
+
+⚾ NCAA BASEBALL STATS COLLECTOR - 6,344 GAMES
+
+⚡ API Concurrency: 200 calls
+⚡ Expected time: 2-3 minutes
+
+📦 Caching NCAA Baseball players...
+✅ Cached 16924 NCAA Baseball players
+
+Found 6064 NCAA Baseball games needing stats
+
+Processing batch 1/31...
+  Progress: 200/6064 games | 0 stats | 103.0 games/sec | ETA: 57s
+Processing batch 2/31...
+  Progress: 400/6064 games | 0 stats | 147.1 games/sec | ETA: 39s
+Processing batch 3/31...
+  Progress: 600/6064 games | 0 stats | 168.3 games/sec | ETA: 32s
+Processing batch 4/31...
+  Progress: 800/6064 games | 0 stats | 172.7 games/sec | ETA: 30s
+Processing batch 5/31...
+  Progress: 1000/6064 games | 0 stats | 178.7 games/sec | ETA: 28s
+Processing batch 6/31...
+  Progress: 1200/6064 games | 0 stats | 174.2 games/sec | ETA: 28s
+Processing batch 7/31...
+  Progress: 1400/6064 games | 0 stats | 173.7 games/sec | ETA: 27s
+Processing batch 8/31...
+  Progress: 1600/6064 games | 0 stats | 175.3 games/sec | ETA: 25s
+Processing batch 9/31...
+  Progress: 1800/6064 games | 0 stats | 176.1 games/sec | ETA: 24s
+Processing batch 10/31...
+  Progress: 2000/6064 games | 0 stats | 179.1 games/sec | ETA: 23s
+Processing batch 11/31...
+  Progress: 2200/6064 games | 0 stats | 175.9 games/sec | ETA: 22s
+Processing batch 12/31...
+  Progress: 2400/6064 games | 0 stats | 175.9 games/sec | ETA: 21s
+Processing batch 13/31...
+  Progress: 2600/6064 games | 0 stats | 175.8 games/sec | ETA: 20s
+Processing batch 14/31...
+  Progress: 2800/6064 games | 0 stats | 173.2 games/sec | ETA: 19s
+Processing batch 15/31...
+  Progress: 3000/6064 games | 0 stats | 170.3 games/sec | ETA: 18s
+Processing batch 16/31...
+  Progress: 3200/6064 games | 0 stats | 161.4 games/sec | ETA: 18s
+Processing batch 17/31...
+  Progress: 3400/6064 games | 0 stats | 163.9 games/sec | ETA: 16s
+Processing batch 18/31...
+  Progress: 3600/6064 games | 0 stats | 166.8 games/sec | ETA: 15s
+Processing batch 19/31...
+  Progress: 3800/6064 games | 0 stats | 166.5 games/sec | ETA: 14s
+Processing batch 20/31...
+  Progress: 4000/6064 games | 0 stats | 165.2 games/sec | ETA: 12s
+Processing batch 21/31...
+  Progress: 4200/6064 games | 0 stats | 161.5 games/sec | ETA: 12s
+Processing batch 22/31...
+  Progress: 4400/6064 games | 0 stats | 159.4 games/sec | ETA: 10s
+Processing batch 23/31...
+  Progress: 4600/6064 games | 0 stats | 157.6 games/sec | ETA: 9s
+Processing batch 24/31...
+  Progress: 4800/6064 games | 0 stats | 156.4 games/sec | ETA: 8s
+Processing batch 25/31...
+  Progress: 5000/6064 games | 0 stats | 154.8 games/sec | ETA: 7s
+Processing batch 26/31...
+  Progress: 5200/6064 games | 0 stats | 155.1 games/sec | ETA: 6s
+Processing batch 27/31...
+  Progress: 5400/6064 games | 0 stats | 152.8 games/sec | ETA: 4s
+Processing batch 28/31...
+  Progress: 5600/6064 games | 0 stats | 151.5 games/sec | ETA: 3s
+Processing batch 29/31...
+  Progress: 5800/6064 games | 0 stats | 148.7 games/sec | ETA: 2s
+Processing batch 30/31...
+  Progress: 6000/6064 games | 0 stats | 147.6 games/sec | ETA: 0s
+Processing batch 31/31...
+  Progress: 6064/6064 games | 0 stats | 146.6 games/sec | ETA: 0s
+
+✅ NCAA BASEBALL STATS COLLECTION COMPLETE!
+⏱️  Time: 41.4s
+📊 Games: 6064
+📈 Stats: 0
+⚡ Speed: 146.6 games/sec
+
+🏒 Starting NCAA Hockey collection...
+
+🔥 BEAST MODE COLLECTION ENGINE 🔥
+  CPU: 12 threads available
+  Workers: 12 parallel workers
+  API Concurrency: 200 calls
+  Batch Size: 10,000 records
+
+
+🏒 NCAA HOCKEY STATS COLLECTOR - 2,321 GAMES
+
+⚡ API Concurrency: 150 calls
+⚡ Expected time: 1-2 minutes
+
+📦 Caching NCAA Hockey players...
+✅ Cached 782 NCAA Hockey players
+
+Found 2314 NCAA Hockey games needing stats
+
+Processing batch 1/16...
+  Progress: 150/2314 games | 0 stats | 208.3 games/sec | ETA: 10s
+Processing batch 2/16...
+  Progress: 300/2314 games | 0 stats | 267.9 games/sec | ETA: 8s
+Processing batch 3/16...
+  Progress: 450/2314 games | 0 stats | 295.3 games/sec | ETA: 6s
+Processing batch 4/16...
+  Progress: 600/2314 games | 0 stats | 315.3 games/sec | ETA: 5s
+Processing batch 5/16...
+  Progress: 750/2314 games | 0 stats | 326.1 games/sec | ETA: 5s
+Processing batch 6/16...
+  Progress: 900/2314 games | 0 stats | 334.6 games/sec | ETA: 4s
+Processing batch 7/16...
+  Progress: 1050/2314 games | 0 stats | 335.2 games/sec | ETA: 4s
+Processing batch 8/16...
+  Progress: 1200/2314 games | 0 stats | 272.0 games/sec | ETA: 4s
+Processing batch 9/16...
+  Progress: 1350/2314 games | 0 stats | 239.0 games/sec | ETA: 4s
+Processing batch 10/16...
+  Progress: 1500/2314 games | 0 stats | 226.2 games/sec | ETA: 4s
+Processing batch 11/16...
+  Progress: 1650/2314 games | 0 stats | 217.5 games/sec | ETA: 3s
+Processing batch 12/16...
+  Progress: 1800/2314 games | 0 stats | 215.6 games/sec | ETA: 2s
+Processing batch 13/16...
+  Progress: 1950/2314 games | 0 stats | 215.0 games/sec | ETA: 2s
+Processing batch 14/16...
+  Progress: 2100/2314 games | 0 stats | 215.9 games/sec | ETA: 1s
+Processing batch 15/16...
+  Progress: 2250/2314 games | 0 stats | 212.5 games/sec | ETA: 0s
+Processing batch 16/16...
+  Progress: 2314/2314 games | 0 stats | 209.9 games/sec | ETA: 0s
+  Inserting 30 records into player_game_stats (1 batches)...
+    Query result: rowCount=30, command=INSERT
+  ✓ Inserted 30 records into player_game_stats (0 duplicates removed)
+  💾 Inserted 30 player stats
+
+✅ NCAA HOCKEY STATS COLLECTION COMPLETE!
+⏱️  Time: 11.0s
+📊 Games: 2314
+📈 Stats: 30
+⚡ Speed: 209.6 games/sec
+
+
+✅ ALL NCAA STATS COLLECTION COMPLETE!
+
+📊 Final NCAA Stats Summary:
+Sport          | Games | Stats   | Players
+---------------|-------|---------|--------
+NCAAF          |  2127 |  73,358 |   12212
+NCAA_HOCKEY    |    15 |      30 |      16
+---------------|-------|---------|--------
+TOTAL          |  2142 |  73,388 |   12228
+
+⏱️  Total time: 110.9s
+⚡ Average speed: 661 stats/sec
+
