@@ -13,9 +13,9 @@
  */
 
 import chalk from 'chalk';
-import { NFLEliteMedianPredictor, createNFLEliteMedianPredictor } from './nfl-predictor-elite-median';
-import { XGBoostEnsemblePredictor, createXGBoostEnsemblePredictor } from './xgboost-ensemble-predictor';
-import { LSTMTemporalPredictor, createLSTMTemporalPredictor } from './lstm-temporal-predictor';
+import { NFLEliteMedianPredictor, createNFLEliteMedianPredictor } from './nfl-predictor-elite-median-mock';
+import { XGBoostEnsemblePredictor, createXGBoostEnsemblePredictor } from './xgboost-ensemble-predictor-mock';
+import { LSTMTemporalPredictor, createLSTMTemporalPredictor } from './lstm-temporal-predictor-mock';
 import { RealtimeLineupScraper } from '../../services/realtime-lineup-scraper';
 import { LiveWeatherService } from '../../services/live-weather-integration';
 import { InjuryMonitoringSystem } from '../../services/injury-monitoring-system';
@@ -640,13 +640,59 @@ export class UltimateEnsembleBrain {
   
   // Helper methods
   private calculateWeatherAdjustment(weather: any, position: string): number {
-    // TODO: Implement weather adjustment logic
-    return 0;
+    if (!weather || weather.isDome) return 0;
+    
+    let adjustment = 0;
+    
+    // Wind adjustments
+    if (weather.windSpeed > 20) {
+      adjustment -= position === 'QB' ? 2.0 : position === 'WR' ? 1.5 : 0.5;
+    } else if (weather.windSpeed > 15) {
+      adjustment -= position === 'QB' ? 1.0 : position === 'WR' ? 0.8 : 0.3;
+    }
+    
+    // Temperature adjustments
+    if (weather.temperature < 32) {
+      adjustment -= position === 'QB' ? 1.5 : 0.8;
+    } else if (weather.temperature > 85) {
+      adjustment -= 0.5;
+    }
+    
+    // Precipitation adjustments
+    if (weather.condition === 'rain') {
+      adjustment -= position === 'QB' ? 1.2 : position === 'WR' ? 1.0 : 0.3;
+    } else if (weather.condition === 'snow') {
+      adjustment -= position === 'QB' ? 2.0 : position === 'WR' ? 1.5 : 0.5;
+    }
+    
+    return adjustment;
   }
   
   private calculateInjuryAdjustment(injuries: any): number {
-    // TODO: Implement injury adjustment logic
-    return 0;
+    if (!injuries) return 0;
+    
+    // Base adjustment on injury risk and fantasy impact
+    let adjustment = 0;
+    
+    // Status-based adjustments
+    switch (injuries.status) {
+      case 'out':
+        adjustment = -100; // Player is out
+        break;
+      case 'doubtful':
+        adjustment = -injuries.fantasyImpact * 15; // Significant reduction
+        break;
+      case 'questionable':
+        adjustment = -injuries.fantasyImpact * 8; // Moderate reduction
+        break;
+      case 'probable':
+        adjustment = -injuries.fantasyImpact * 3; // Small reduction
+        break;
+      default:
+        adjustment = -injuries.risk * 2; // Minimal risk adjustment
+    }
+    
+    return adjustment;
   }
   
   private calculatePredictionVariance(predictions: any): number {

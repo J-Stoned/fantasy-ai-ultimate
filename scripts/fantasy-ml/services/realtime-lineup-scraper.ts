@@ -574,6 +574,31 @@ export class RealtimeLineupScraper extends EventEmitter {
   }
   
   /**
+   * MOCK: Check last minute changes for a specific player
+   */
+  async checkLastMinuteChanges(playerId: string): Promise<{
+    isOut: boolean;
+    isDoubtful: boolean;
+    isQuestionable: boolean;
+    status: string;
+    source: string;
+    lastUpdate: Date;
+  }> {
+    // Mock realistic lineup status for testing
+    const mockStatuses = ['healthy', 'questionable', 'doubtful', 'out'];
+    const status = mockStatuses[Math.floor(Math.random() * mockStatuses.length)];
+    
+    return {
+      isOut: status === 'out',
+      isDoubtful: status === 'doubtful',
+      isQuestionable: status === 'questionable',
+      status,
+      source: 'Mock NFL Official',
+      lastUpdate: new Date()
+    };
+  }
+
+  /**
    * Get recent lineup changes
    */
   async getRecentChanges(sport?: string, minutesBack: number = 60): Promise<LineupChange[]> {

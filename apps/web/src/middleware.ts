@@ -1,5 +1,6 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
+import { createAdminMiddleware } from './lib/middleware/admin-auth'
 
 // Generate CSRF token using Web Crypto API (Edge Runtime compatible)
 function generateCSRFToken(): string {
@@ -14,7 +15,33 @@ function verifyCSRFToken(token: string | null, sessionToken: string | null): boo
   return token === sessionToken
 }
 
+// Create admin middleware instance
+const adminMiddleware = createAdminMiddleware();
+
 export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // ==================== ADMIN ROUTES ====================
+  if (pathname.startsWith('/admin')) {
+    // Skip middleware for admin login and public routes
+    if (pathname === '/admin/login' || 
+        pathname.startsWith('/admin/public') ||
+        pathname.startsWith('/admin/_next') ||
+        pathname.startsWith('/admin/api/auth/login')) {
+      return NextResponse.next();
+    }
+
+    // Apply admin authentication middleware
+    return adminMiddleware(request);
+  }
+
+  // ==================== API ROUTES ====================
+  if (pathname.startsWith('/api/admin')) {
+    // Admin API routes require admin authentication
+    return adminMiddleware(request);
+  }
+
+  // ==================== USER ROUTES (EXISTING LOGIC) ====================
   let response = NextResponse.next({
     request: {
       headers: request.headers,

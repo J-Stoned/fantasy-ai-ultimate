@@ -409,6 +409,47 @@ export class LiveWeatherService extends EventEmitter {
   }
   
   /**
+   * MOCK: Get current weather conditions for stadium
+   */
+  async getCurrentConditions(stadium: string): Promise<{
+    temperature: number;
+    windSpeed: number;
+    windDirection: string;
+    precipitation: number;
+    condition: string;
+    isDome: boolean;
+  }> {
+    // Mock weather conditions for testing
+    const venues = NFL_VENUES[stadium];
+    const isDome = venues?.isDome || false;
+    
+    // Perfect conditions in domes
+    if (isDome) {
+      return {
+        temperature: 72,
+        windSpeed: 0,
+        windDirection: 'N/A',
+        precipitation: 0,
+        condition: 'clear',
+        isDome: true
+      };
+    }
+    
+    // Random outdoor conditions for testing
+    const conditions = ['clear', 'cloudy', 'wind', 'rain', 'snow'];
+    const condition = conditions[Math.floor(Math.random() * conditions.length)];
+    
+    return {
+      temperature: 32 + Math.random() * 50, // 32-82°F
+      windSpeed: condition === 'wind' ? 15 + Math.random() * 15 : Math.random() * 10,
+      windDirection: ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'][Math.floor(Math.random() * 8)],
+      precipitation: condition === 'rain' || condition === 'snow' ? 50 + Math.random() * 50 : Math.random() * 20,
+      condition,
+      isDome: false
+    };
+  }
+
+  /**
    * Get weather impact for a specific game
    */
   async getGameWeatherImpact(gameId: string): Promise<WeatherImpact | null> {

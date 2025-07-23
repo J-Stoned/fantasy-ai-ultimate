@@ -580,8 +580,61 @@ export class InjuryMonitoringSystem extends EventEmitter {
   }
   
   /**
-   * Get current injury report for a player
+   * MOCK: Get latest injury report for a player
    */
+  async getLatestInjuryReport(playerId: string): Promise<{
+    risk: number;
+    status: string;
+    injuryType?: string;
+    timeline?: string;
+    fantasyImpact: number;
+    confidence: number;
+  }> {
+    // Mock injury data for testing
+    const statuses = ['healthy', 'probable', 'questionable', 'doubtful', 'out'];
+    const status = statuses[Math.floor(Math.random() * statuses.length)];
+    
+    const injuryTypes = ['hamstring', 'ankle', 'knee', 'shoulder', 'concussion', 'rest'];
+    const injuryType = status !== 'healthy' ? injuryTypes[Math.floor(Math.random() * injuryTypes.length)] : undefined;
+    
+    let risk = 0;
+    let fantasyImpact = 0;
+    
+    switch (status) {
+      case 'out':
+        risk = 1.0;
+        fantasyImpact = 1.0;
+        break;
+      case 'doubtful':
+        risk = 0.8;
+        fantasyImpact = 0.7;
+        break;
+      case 'questionable':
+        risk = 0.4;
+        fantasyImpact = 0.3;
+        break;
+      case 'probable':
+        risk = 0.2;
+        fantasyImpact = 0.1;
+        break;
+      default:
+        risk = 0.05;
+        fantasyImpact = 0.0;
+    }
+    
+    return {
+      risk,
+      status,
+      injuryType,
+      timeline: status !== 'healthy' ? 'day-to-day' : undefined,
+      fantasyImpact,
+      confidence: 0.8
+    };
+  }
+
+  /**
+   * Get current injury report for a player
+   */ 
   async getPlayerInjuryStatus(playerId: string): Promise<InjuryReport | null> {
     const query = `
       SELECT * FROM injury_reports

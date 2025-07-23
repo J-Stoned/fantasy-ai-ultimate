@@ -153,6 +153,39 @@ export class OwnershipProjectionEngine extends EventEmitter {
   }
   
   /**
+   * MOCK: Project player ownership with mock data
+   */
+  async projectPlayerOwnership(
+    playerId: string,
+    sport: string,
+    slate: string,
+    contestType: 'GPP' | 'CASH'
+  ): Promise<{
+    projected_ownership: number;
+    leverage_score: number;
+    chalk_score: number;
+    confidence: number;
+  }> {
+    // Mock ownership projection for testing
+    const baseOwnership = 0.05 + Math.random() * 0.3; // 5-35%
+    
+    // Adjust for contest type
+    const ownership = contestType === 'CASH' ? 
+      Math.min(0.4, baseOwnership * 1.2) : // Cash games more concentrated
+      baseOwnership; // GPP more spread out
+      
+    const leverageScore = (1.5 + Math.random() * 2.0) / Math.max(0.01, ownership);
+    const chalkScore = ownership > 0.25 ? ownership / 0.3 : 0;
+    
+    return {
+      projected_ownership: ownership,
+      leverage_score: leverageScore,
+      chalk_score: chalkScore,
+      confidence: 0.7 + Math.random() * 0.2
+    };
+  }
+
+  /**
    * Project individual player ownership
    */
   private async projectPlayerOwnership(
@@ -683,6 +716,11 @@ export class OwnershipProjectionEngine extends EventEmitter {
     return Math.random();
   }
   
+  private async getProjectionConsensus(playerId: string): Promise<number> {
+    // Would check how much projection sources agree
+    return 0.5 + Math.random() * 0.4; // 50-90% consensus
+  }
+  
   private async getDFSNetworkExposure(playerId: string): Promise<number> {
     // Would check DFS content sites
     return Math.random();
@@ -693,9 +731,14 @@ export class OwnershipProjectionEngine extends EventEmitter {
     return { total: 48, spread: -3 };
   }
   
-  private isPrimeTime(gameTime: Date): boolean {
-    const hour = gameTime.getHours();
-    return hour >= 20 || (hour === 13 && gameTime.getDay() === 0); // SNF, MNF, or Sunday 1pm
+  private isPrimeTime(gameTime: Date | string | undefined): boolean {
+    if (!gameTime) return false;
+    
+    const date = gameTime instanceof Date ? gameTime : new Date(gameTime);
+    if (isNaN(date.getTime())) return false;
+    
+    const hour = date.getHours();
+    return hour >= 20 || (hour === 13 && date.getDay() === 0); // SNF, MNF, or Sunday 1pm
   }
   
   private async isRevengeGame(player: any): Promise<boolean> {
