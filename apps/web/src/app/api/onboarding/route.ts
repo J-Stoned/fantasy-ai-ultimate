@@ -68,8 +68,8 @@ export async function POST(request: Request) {
       sportsCount: selectedSports.length,
       bankroll: initialBankroll,
       riskTolerance,
-      timestamp: new Date( }).toISOString()
-    })
+      timestamp: new Date().toISOString()
+    }})
 
     // Calculate initial recommendations based on their preferences
     const recommendations = generateInitialRecommendations(onboardingData)

@@ -201,7 +201,7 @@ export async function POST(request: NextRequest) {
         ]
       )
     } catch (error) {
-      logger.warn('Failed to save optimization metadata:'error)
+      logger.warn('Failed to save optimization metadata:', error)
     }
 
     // Broadcast optimization complete via WebSocket
