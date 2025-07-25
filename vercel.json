@@ -1,15 +1,17 @@
 {
-  "buildCommand": "npx nx build web --prod",
-  "installCommand": "npm install --legacy-peer-deps",
-  "outputDirectory": "apps/web/.next",
   "framework": "nextjs",
-  "ignoreCommand": "git diff HEAD^ HEAD --quiet .",
+  "buildCommand": "cd apps/web && npm run build",
+  "installCommand": "npm install --legacy-peer-deps",
+  "devCommand": "cd apps/web && npm run dev",
+  "outputDirectory": "apps/web/.next",
+  "root": "apps/web",
   "functions": {
-    "apps/web/pages/api/**/*.ts": {
+    "app/api/**/*.ts": {
       "maxDuration": 30
     }
   },
   "env": {
-    "NODE_OPTIONS": "--max-old-space-size=4096"
+    "NODE_OPTIONS": "--max-old-space-size=4096",
+    "SKIP_ENV_VALIDATION": "true"
   }
 }
