@@ -8,20 +8,6 @@
   "env": {
     "NODE_ENV": "production"
   },
-  "functions": {
-    "apps/web/src/app/api/**/*.ts": {
-      "maxDuration": 30
-    },
-    "apps/web/src/app/api/ml/**/*.ts": {
-      "maxDuration": 60
-    },
-    "apps/web/src/app/api/lineup-builder/**/*.ts": {
-      "maxDuration": 45
-    },
-    "apps/web/src/app/api/predictions/**/*.ts": {
-      "maxDuration": 30
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
