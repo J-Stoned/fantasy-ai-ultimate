@@ -40,11 +40,11 @@ export async function POST(request: Request) {
     logger.info('Saving user preferences:', { data: {
       userId: preferences.userId,
       sportsCount: preferences.sports.length,
-      teamsCount: Object.keys(preferences.favoriteTeams }).length,
+      teamsCount: Object.keys(preferences.favoriteTeams).length,
       playersCount: preferences.followingPlayers.length,
       platform: preferences.platform,
       timestamp: preferences.updatedAt
-    })
+    }})
 
     // Set preferences cookie for session persistence
     const cookieStore = cookies()

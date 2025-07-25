@@ -111,7 +111,7 @@ export async function POST(request: Request) {
       hasImportedLeagues: completionData.importData.importedLeagues.length > 0,
       completionTime: completionData.completionMetrics.totalTime,
       timestamp: completionData.completionMetrics.completedAt
-    })
+    }})
 
     // Generate comprehensive post-onboarding recommendations
     const recommendations = generateCompletionRecommendations(completionData)
