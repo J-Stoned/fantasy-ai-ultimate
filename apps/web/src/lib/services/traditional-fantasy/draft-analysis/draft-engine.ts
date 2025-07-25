@@ -24,6 +24,7 @@ import { PlayerValuator } from './player-valuator';
 import { ScarcityModel } from './scarcity-model';
 import { RecommendationEngine } from './recommendation-engine';
 import { DraftTracker } from './draft-tracker';
+import { logger } from '../../../logging/logger';
 
 export class DraftEngine {
   private playerValuator: PlayerValuator;
@@ -75,13 +76,13 @@ export class DraftEngine {
    * Initialize player values using ML valuation
    */
   private initializePlayerValues(): void {
-    console.log('Calculating player values using ML model...');
+    logger.info('Calculating player values using ML model...');
     const startTime = Date.now();
     
     this.playerValuator.calculateVORP();
     
     const duration = Date.now() - startTime;
-    console.log(`Player valuation complete in ${duration}ms`);
+    logger.info('Player valuation complete in ${duration}ms');
   }
 
   /**
@@ -570,18 +571,18 @@ export class DraftEngine {
    * Generate final draft analysis
    */
   private generateFinalAnalysis(): void {
-    console.log('Draft complete! Generating final analysis...');
+    logger.info('Draft complete! Generating final analysis...');
     
     const draftState = this.draftTracker.getState();
     
     // Analyze all teams
     for (const teamId of draftState.teams.keys()) {
       const analysis = this.getTeamAnalysis(teamId);
-      console.log(`Team ${teamId} Analysis:`, analysis);
+      logger.info('Team ${teamId} Analysis:', { data: analysis });
     }
 
     // Log performance metrics
-    console.log('Performance Metrics:', this.performanceMetrics);
+    logger.info('Performance Metrics:', { data: this.performanceMetrics });
   }
 
   /**

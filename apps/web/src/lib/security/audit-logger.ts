@@ -9,6 +9,7 @@ import { Redis } from 'ioredis';
 import { AdminSession } from '../middleware/admin-auth';
 import { adminDatabase } from '../database/admin-database';
 import { EventEmitter } from 'events';
+import { logger } from '../logging/logger';
 
 // Audit Event Types
 export type AuditEventType = 
@@ -277,7 +278,7 @@ export class SecurityAuditLogger extends EventEmitter {
     this.initializeDefaultAlertRules();
     this.startPeriodicFlush();
     
-    console.log('[AuditLogger] Security audit logging system initialized');
+    logger.info('[AuditLogger] Security audit logging system initialized');
   }
 
   /**
@@ -384,7 +385,7 @@ export class SecurityAuditLogger extends EventEmitter {
       return eventId;
       
     } catch (error) {
-      console.error('[AuditLogger] Failed to log audit event:', error);
+      logger.error('[AuditLogger] Failed to log audit event:', { error: error });
       // Fallback: at least log to console for critical events
       if (HIGH_RISK_EVENTS.has(eventType)) {
         console.error(`[CRITICAL AUDIT] ${eventType}: ${JSON.stringify(details)}`);
@@ -600,7 +601,7 @@ export class SecurityAuditLogger extends EventEmitter {
       };
       
     } catch (error) {
-      console.error('[AuditLogger] Query error:', error);
+      logger.error('[AuditLogger] Query error:', { error: error });
       throw new Error('Failed to query audit events');
     }
   }
@@ -660,7 +661,7 @@ export class SecurityAuditLogger extends EventEmitter {
       return report;
       
     } catch (error) {
-      console.error('[AuditLogger] Report generation error:', error);
+      logger.error('[AuditLogger] Report generation error:', { error: error });
       throw new Error('Failed to generate audit report');
     }
   }
@@ -854,7 +855,7 @@ export class SecurityAuditLogger extends EventEmitter {
       await this.redis.ltrim('audit_events:recent', 0, 999); // Keep last 1000
       
     } catch (error) {
-      console.error('[AuditLogger] Failed to flush event:', error);
+      logger.error('[AuditLogger] Failed to flush event:', { error: error });
     }
   }
 
@@ -870,10 +871,10 @@ export class SecurityAuditLogger extends EventEmitter {
         await this.flushEvent(event);
       }
       
-      console.log(`[AuditLogger] Flushed ${events.length} audit events`);
+      logger.info('[AuditLogger] Flushed ${events.length} audit events');
       
     } catch (error) {
-      console.error('[AuditLogger] Failed to flush event queue:', error);
+      logger.error('[AuditLogger] Failed to flush event queue:', { error: error });
       // Re-queue failed events
       this.eventQueue.unshift(...events);
     }
@@ -945,7 +946,7 @@ export class SecurityAuditLogger extends EventEmitter {
           await this.triggerAlert(rule, event);
         }
       } catch (error) {
-        console.error(`[AuditLogger] Rule evaluation error for ${rule.id}:`, error);
+        logger.error('[AuditLogger] Rule evaluation error for ${rule.id}:', { error: error });
       }
     }
   }
@@ -1060,11 +1061,11 @@ export class SecurityAuditLogger extends EventEmitter {
       try {
         await this.executeAlertAction(action, rule, event);
       } catch (error) {
-        console.error(`[AuditLogger] Alert action error:`, error);
+        logger.error('[AuditLogger] Alert action error:', { error: error });
       }
     }
     
-    console.log(`[AuditLogger] Alert triggered: ${rule.name} for event ${event.id}`);
+    logger.info('[AuditLogger] Alert triggered: ${rule.name} for event ${event.id}');
   }
 
   private async executeAlertAction(
@@ -1142,7 +1143,7 @@ export class SecurityAuditLogger extends EventEmitter {
    * Clean shutdown with event queue flush
    */
   async shutdown(): Promise<void> {
-    console.log('[AuditLogger] Shutting down audit logger...');
+    logger.info('[AuditLogger] Shutting down audit logger...');
     
     if (this.flushTimer) {
       clearInterval(this.flushTimer);
@@ -1153,7 +1154,7 @@ export class SecurityAuditLogger extends EventEmitter {
     
     await this.redis.quit();
     
-    console.log('[AuditLogger] Audit logger shutdown complete');
+    logger.info('[AuditLogger] Audit logger shutdown complete');
   }
 }
 

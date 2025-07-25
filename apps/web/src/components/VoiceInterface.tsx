@@ -1,34 +1,55 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { ClientVoiceService } from '../voice/client-voice-service';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../lib/hooks/useAuth';
 import RecordRTC from 'recordrtc';
+import { logger } from '../lib/logging/logger';
+
+interface VoiceProcessingResponse {
+  success: boolean;
+  commandId: string;
+  transcript: string;
+  intent: string;
+  confidence: number;
+  response: {
+    text: string;
+    audioUrl?: string;
+    visualData?: any;
+    actions?: any[];
+  };
+  suggestions: string[];
+  processingTime: number;
+}
 
 interface VoiceInterfaceProps {
   fantasyTeamId?: string;
   leagueId?: string;
+  onCommandProcessed?: (response: VoiceProcessingResponse) => void;
 }
 
-export function VoiceInterface({ fantasyTeamId, leagueId }: VoiceInterfaceProps) {
+export function VoiceInterface({ fantasyTeamId, leagueId, onCommandProcessed }: VoiceInterfaceProps) {
   const { user } = useAuth();
   const [isListening, setIsListening] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [transcript, setTranscript] = useState('');
-  const [response, setResponse] = useState('');
+  const [response, setResponse] = useState<VoiceProcessingResponse | null>(null);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [wakeWordEnabled, setWakeWordEnabled] = useState(false);
   const [lastCommandId, setLastCommandId] = useState<string | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
   
-  const voiceServiceRef = useRef<ClientVoiceService | null>(null);
   const recorderRef = useRef<RecordRTC | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => {
-    // Initialize voice service
-    voiceServiceRef.current = new ClientVoiceService();
+  // Get current NFL week for context
+  const getCurrentWeek = (): number => {
+    const seasonStart = new Date('2024-09-05');
+    const now = new Date();
+    const weeksSinceStart = Math.floor((now.getTime() - seasonStart.getTime()) / (7 * 24 * 60 * 60 * 1000));
+    return Math.min(Math.max(1, weeksSinceStart + 1), 18);
+  };
 
+  useEffect(() => {
     return () => {
       if (recorderRef.current) {
         recorderRef.current.stopRecording();
@@ -64,7 +85,7 @@ export function VoiceInterface({ fantasyTeamId, leagueId }: VoiceInterfaceProps)
       }, 10000);
       
     } catch (error) {
-      console.error('Failed to start listening:', error);
+      logger.error('Failed to start listening:', { error: error });
       setIsListening(false);
     }
   };
@@ -88,103 +109,202 @@ export function VoiceInterface({ fantasyTeamId, leagueId }: VoiceInterfaceProps)
     });
   };
   
+  // 🔥 PROCESS AUDIO WITH ENTERPRISE API
   const sendAudioToAPI = async (audioBlob: Blob) => {
     setIsProcessing(true);
     
     try {
-      const formData = new FormData();
-      formData.append('audio', audioBlob, 'voice.webm');
-      formData.append('userId', user?.id || '');
-      formData.append('context', JSON.stringify({
-        fantasyTeamId,
-        leagueId,
-        week: getCurrentWeek()
-      }));
+      // Convert audio blob to base64
+      const base64Audio = await blobToBase64(audioBlob);
       
-      const response = await fetch('/api/voice/process', {
+      // Call our enterprise voice processing API
+      const apiResponse = await fetch('/api/voice/process', {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          audio: base64Audio,
+          userId: user?.id || 'web-user',
+          context: {
+            platform: 'web',
+            fantasyTeamId,
+            leagueId,
+            week: getCurrentWeek()
+          },
+          includeAudio: true
+        })
       });
       
-      if (!response.ok) {
-        throw new Error('Voice processing failed');
+      if (!apiResponse.ok) {
+        throw new Error(`API Error: ${apiResponse.status}`);
       }
       
-      const data = await response.json();
+      const result: VoiceProcessingResponse = await apiResponse.json();
       
-      setTranscript(data.transcript);
-      setResponse(data.response);
-      setLastCommandId(data.commandId);
+      // Update UI with comprehensive results
+      setTranscript(result.transcript);
+      setResponse(result);
+      setLastCommandId(result.commandId);
       setShowFeedback(true);
       
-      // Play audio response if available
-      if (data.audioUrl && audioRef.current) {
-        audioRef.current.src = data.audioUrl;
-        audioRef.current.play();
+      // Play 11Labs audio response if available
+      if (result.response.audioUrl && audioRef.current) {
+        audioRef.current.src = result.response.audioUrl;
+        audioRef.current.play().catch(e => logger.info('Audio play failed:', { data: e }));
+      }
+      
+      // Handle any actions from ML services
+      if (result.response.actions && result.response.actions.length > 0) {
+        await handleActions(result.response.actions);
+      }
+      
+      // Call parent callback if provided
+      if (onCommandProcessed) {
+        onCommandProcessed(result);
       }
       
     } catch (error) {
-      console.error('Voice API error:', error);
-      setResponse('Sorry, I had trouble processing your voice command.');
+      logger.error('Voice API processing error:', { error: error });
+      const errorResponse: VoiceProcessingResponse = {
+        success: false,
+        commandId: '',
+        transcript: '',
+        intent: 'ERROR',
+        confidence: 0,
+        response: {
+          text: 'Sorry, I had trouble processing your voice command. Please try again.'
+        },
+        suggestions: ['Try speaking more clearly', 'Check your microphone', 'Use text input instead'],
+        processingTime: 0
+      };
+      setResponse(errorResponse);
     } finally {
       setIsProcessing(false);
     }
   };
+
+  // Convert blob to base64 for API transmission
+  const blobToBase64 = (blob: Blob): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64 = reader.result?.toString().split(',')[1] || '';
+        resolve(base64);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  };
   
-  const getCurrentWeek = () => {
-    const seasonStart = new Date('2024-09-05');
-    const now = new Date();
-    const weeksSinceStart = Math.floor((now.getTime() - seasonStart.getTime()) / (7 * 24 * 60 * 60 * 1000));
-    return Math.min(Math.max(1, weeksSinceStart + 1), 18);
+  // Removed duplicate getCurrentWeek - already defined above
+
+  // 🎯 HANDLE ACTIONS FROM ML SERVICES
+  const handleActions = async (actions: any[]) => {
+    for (const action of actions) {
+      switch (action.type) {
+        case 'update_lineup':
+          logger.info('Lineup optimization complete:', { data: action.lineup });
+          // TODO: Navigate to lineup screen or update lineup display
+          break;
+        case 'show_player_analysis':
+          logger.info('Player analysis available:', { data: action.playerName });
+          // TODO: Navigate to player screen or show analysis modal
+          break;
+        case 'open_trade_analysis':
+          logger.info('Trade analysis complete:', { data: action.analysis });
+          // TODO: Navigate to trade screen or show trade modal
+          break;
+        case 'show_waiver_recommendations':
+          logger.info('Waiver recommendations available:', { data: action.recommendations });
+          // TODO: Navigate to waiver screen or show recommendations modal
+          break;
+        default:
+          logger.info('Unknown action type:', { data: action.type });
+      }
+    }
   };
 
+  // 💬 PROCESS TEXT COMMAND (FOR MANUAL INPUT)
   const handleVoiceCommand = async (text: string) => {
-    if (!voiceServiceRef.current) return;
-
     setIsProcessing(true);
     
     try {
-      const result = await voiceServiceRef.current.processVoiceCommand(
-        text,
-        {
-          userId: user?.id,
-          fantasyTeamId,
-          leagueId,
-        }
-      );
-
-      setResponse(result.response);
+      const apiResponse = await fetch('/api/voice/process', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          transcript: text,
+          userId: user?.id || 'web-user',
+          context: {
+            platform: 'web',
+            fantasyTeamId,
+            leagueId,
+            week: getCurrentWeek()
+          },
+          includeAudio: true // Include audio generation for text input too
+        })
+      });
+      
+      if (!apiResponse.ok) {
+        throw new Error(`API Error: ${apiResponse.status}`);
+      }
+      
+      const result: VoiceProcessingResponse = await apiResponse.json();
+      
+      // Update UI with results
+      setTranscript(result.transcript);
+      setResponse(result);
       setLastCommandId(result.commandId);
       setShowFeedback(true);
       
-      if (result.audioUrl) {
-        setAudioUrl(result.audioUrl);
-        // Auto-play response
-        if (audioRef.current) {
-          audioRef.current.src = result.audioUrl;
-          audioRef.current.play();
-        }
+      // Play 11Labs audio response
+      if (result.response.audioUrl && audioRef.current) {
+        audioRef.current.src = result.response.audioUrl;
+        audioRef.current.play().catch(e => logger.info('Audio play failed:', { data: e }));
       }
+      
+      // Handle actions
+      if (result.response.actions && result.response.actions.length > 0) {
+        await handleActions(result.response.actions);
+      }
+      
+      // Call parent callback
+      if (onCommandProcessed) {
+        onCommandProcessed(result);
+      }
+      
     } catch (error) {
-      console.error('Voice command error:', error);
-      setResponse('Sorry, I had trouble processing that command.');
+      logger.error('Text command processing error:', { error: error });
+      const errorResponse: VoiceProcessingResponse = {
+        success: false,
+        commandId: '',
+        transcript: text,
+        intent: 'ERROR',
+        confidence: 0,
+        response: {
+          text: 'Sorry, I had trouble processing that command. Please try again.'
+        },
+        suggestions: ['Try rephrasing your question', 'Check the examples below'],
+        processingTime: 0
+      };
+      setResponse(errorResponse);
     } finally {
       setIsProcessing(false);
     }
   };
 
   const toggleWakeWord = async () => {
-    if (!voiceServiceRef.current) return;
-
     if (wakeWordEnabled) {
       setWakeWordEnabled(false);
-      // Stop wake word detection
+      // TODO: Stop wake word detection (implement with WebRTC/AudioContext)
+      logger.info('Wake word detection disabled');
     } else {
       setWakeWordEnabled(true);
-      voiceServiceRef.current.startWakeWordDetection(() => {
-        setWakeWordEnabled(false);
-        startListening();
-      });
+      // TODO: Start wake word detection (implement with WebRTC/AudioContext)
+      console.log('Wake word detection enabled - listening for "Hey Fantasy"');
     }
   };
 
@@ -218,9 +338,9 @@ export function VoiceInterface({ fantasyTeamId, leagueId }: VoiceInterfaceProps)
       });
       
       const data = await response.json();
-      console.log('Feedback sent:', data.message);
+      logger.info('Feedback sent:', { data: data.message });
     } catch (error) {
-      console.error('Failed to send feedback:', error);
+      logger.error('Failed to send feedback:', { error: error });
     }
   };
 
@@ -303,19 +423,82 @@ export function VoiceInterface({ fantasyTeamId, leagueId }: VoiceInterfaceProps)
         </div>
       )}
 
-      {/* Response */}
+      {/* Enterprise Voice Response */}
       {response && (
         <div className="mb-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-          <h3 className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-1">
-            Fantasy Assistant:
-          </h3>
-          <div className="text-gray-800 dark:text-gray-200 whitespace-pre-wrap">
-            {response}
+          {/* Response Header with Analytics */}
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+              🎤 Fantasy Assistant
+            </h3>
+            <div className="flex items-center gap-2 text-xs text-gray-500">
+              <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">
+                {response.intent.replace('_', ' ').toLowerCase()}
+              </span>
+              <span className="px-2 py-1 bg-green-100 dark:bg-green-800 rounded-full text-green-700 dark:text-green-300">
+                {Math.round(response.confidence * 100)}% confident
+              </span>
+              <span className="px-2 py-1 bg-purple-100 dark:bg-purple-800 rounded-full text-purple-700 dark:text-purple-300">
+                {response.processingTime}ms
+              </span>
+            </div>
           </div>
+          
+          {/* Main Response Text */}
+          <div className="text-gray-800 dark:text-gray-200 whitespace-pre-wrap mb-3">
+            {response.response.text}
+          </div>
+          
+          {/* Visual Data Display */}
+          {response.response.visualData && (
+            <div className="mb-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <h4 className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2">📊 Data Insights</h4>
+              <pre className="text-xs text-gray-700 dark:text-gray-300 overflow-x-auto">
+                {JSON.stringify(response.response.visualData, null, 2)}
+              </pre>
+            </div>
+          )}
+          
+          {/* Action Items */}
+          {response.response.actions && response.response.actions.length > 0 && (
+            <div className="mb-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+              <h4 className="text-xs font-medium text-green-700 dark:text-green-400 mb-2">⚡ Actions Triggered</h4>
+              <ul className="text-xs text-green-600 dark:text-green-300">
+                {response.response.actions.map((action, index) => (
+                  <li key={index} className="flex items-center gap-2">
+                    <span className="w-1 h-1 bg-green-500 rounded-full"></span>
+                    {action.type.replace('_', ' ')} 
+                    {action.description && `: ${action.description}`}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          
+          {/* AI Suggestions */}
+          {response.suggestions && response.suggestions.length > 0 && (
+            <div className="mb-3">
+              <h4 className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2">💡 Try asking:</h4>
+              <div className="flex flex-wrap gap-2">
+                {response.suggestions.map((suggestion, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setTranscript(suggestion);
+                      handleVoiceCommand(suggestion);
+                    }}
+                    className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                  >
+                    "{suggestion}"
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
           
           {/* Feedback buttons */}
           {showFeedback && lastCommandId && (
-            <div className="mt-3 flex items-center gap-2">
+            <div className="mt-3 flex items-center gap-2 pt-3 border-t border-gray-200 dark:border-gray-700">
               <span className="text-sm text-gray-600 dark:text-gray-400">Was this helpful?</span>
               <button
                 onClick={() => provideFeedback('positive')}

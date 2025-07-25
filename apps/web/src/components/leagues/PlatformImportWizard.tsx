@@ -8,6 +8,7 @@ import { Input } from '../ui/input';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Progress } from '../ui/progress';
+import { logger } from '../../lib/logging/logger';
 
 interface PlatformConfig {
   id: FantasyPlatform;
@@ -159,7 +160,7 @@ export function PlatformImportWizard({ onClose }: PlatformImportWizardProps) {
       
       await importLeagues(selectedPlatform);
     } catch (error) {
-      console.error('Import failed:', error);
+      logger.error('Import failed:', { error: error });
     }
   };
   

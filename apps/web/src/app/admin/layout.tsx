@@ -5,16 +5,23 @@
  * Built with enterprise-grade security and real-time monitoring.
  */
 
+'use client';
+
+import { useState, useEffect } from 'react';
 import { AdminNavigation } from '../../components/admin/AdminNavigation';
 import { AdminSecurityProvider } from '../../components/admin/AdminSecurityProvider';
 import { AdminWebSocketProvider } from '../../components/admin/AdminWebSocketProvider';
-import { AdminSession, AdminAuthService, ADMIN_ROLES } from '../../lib/middleware/admin-auth';
+import { AdminSession, ADMIN_ROLES } from '../../lib/middleware/admin-auth';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
 }
 
-export default async function AdminLayout({ children }: AdminLayoutProps) {
+export default function AdminLayout({ children }: AdminLayoutProps) {
+  // State for hydration-safe time display
+  const [currentTime, setCurrentTime] = useState('');
+  const [isClient, setIsClient] = useState(false);
+
   // For demo purposes, create a mock admin session
   // In production, this would validate actual session from middleware/cookies
   const adminSession: AdminSession = {
@@ -24,6 +31,19 @@ export default async function AdminLayout({ children }: AdminLayoutProps) {
     lastActivity: new Date().toISOString(),
     sessionToken: 'demo_session_token'
   };
+
+  // Prevent hydration mismatch by only showing time on client
+  useEffect(() => {
+    setIsClient(true);
+    const updateTime = () => {
+      setCurrentTime(new Date().toLocaleTimeString());
+    };
+    
+    updateTime(); // Set initial time
+    const interval = setInterval(updateTime, 1000); // Update every second
+    
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <AdminSecurityProvider session={adminSession}>
@@ -44,7 +64,7 @@ export default async function AdminLayout({ children }: AdminLayoutProps) {
                       <span className="text-green-400 text-sm font-medium">System Secure</span>
                     </div>
                     <div className="text-gray-400 text-sm">
-                      Session: {adminSession.role.name} | Last Activity: {new Date(adminSession.lastActivity).toLocaleTimeString()}
+                      Session: {adminSession.role.name} | Last Activity: {isClient ? currentTime : '--:--:--'}
                     </div>
                   </div>
                   

@@ -18,6 +18,7 @@ import {
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { LineChart } from 'react-native-chart-kit';
+import { PlayerAvatar } from '../components/avatars/PlayerAvatar';
 
 const { width } = Dimensions.get('window');
 
@@ -361,8 +362,19 @@ export default function PlayerDetailScreen() {
       {/* Player Header */}
       <View style={styles.header}>
         <View style={styles.playerBasicInfo}>
-          <View style={styles.playerNumber}>
-            <Text style={styles.numberText}>{playerData.number}</Text>
+          {/* 🔥 ENTERPRISE AVATAR SYSTEM - DETAILED VIEW */}
+          <View style={styles.avatarSection}>
+            <PlayerAvatar
+              playerId={playerData.id}
+              size={80}
+              quality="high"
+              showBadge={true}
+              showStats={true}
+              animate={true}
+            />
+            <View style={styles.jerseyNumber}>
+              <Text style={styles.numberText}>#{playerData.number}</Text>
+            </View>
           </View>
           <View style={styles.playerDetails}>
             <Text style={styles.playerName}>{playerData.name}</Text>
@@ -463,18 +475,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 16,
   },
-  playerNumber: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: '#374151',
-    justifyContent: 'center',
+  avatarSection: {
     alignItems: 'center',
     marginRight: 16,
   },
+  jerseyNumber: {
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    borderRadius: 12,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    marginTop: 4,
+  },
   numberText: {
     color: 'white',
-    fontSize: 24,
+    fontSize: 12,
     fontWeight: 'bold',
   },
   playerDetails: {

@@ -17,14 +17,24 @@ import {
   InjuryStatus,
   TeamStanding,
   ScoringSystem,
-  RosterPosition
+  RosterPosition,
+  LeagueSettings,
+  RawLeagueData,
+  RawTeamData,
+  RawRosterData,
+  RawPlayerData,
+  RawInjuryData,
+  RawDraftData,
+  RawTransactionData,
+  RawMatchupData,
+  RawPositionData
 } from './types';
 
 export class DataNormalizer {
   /**
    * Normalize league data from any platform
    */
-  async normalizeLeague(league: any, platform: FantasyPlatform): Promise<League> {
+  async normalizeLeague(league: RawLeagueData, platform: FantasyPlatform): Promise<League> {
     // League data should already be in normalized format from API clients
     // This method ensures consistency and adds any missing fields
     
@@ -34,7 +44,7 @@ export class DataNormalizer {
       platformLeagueId: league.platformLeagueId || league.league_id || league.id,
       name: league.name || 'Unnamed League',
       season: league.season || new Date().getFullYear(),
-      sport: league.sport || this.detectSport(league),
+      sport: (league.sport as SportType) || this.detectSport(league),
       isActive: league.isActive ?? true,
       settings: await this.normalizeLeagueSettings(league.settings, platform),
       teams: league.teams || [],
@@ -52,24 +62,24 @@ export class DataNormalizer {
   /**
    * Normalize league settings
    */
-  private async normalizeLeagueSettings(settings: any, platform: FantasyPlatform): Promise<any> {
+  private async normalizeLeagueSettings(settings: Record<string, unknown> | undefined, platform: FantasyPlatform): Promise<LeagueSettings> {
     return {
-      scoringSystem: settings.scoringSystem || { type: 'points', scoringItems: [] },
-      rosterPositions: this.normalizeRosterPositions(settings.rosterPositions || []),
-      waiverType: settings.waiverType || 'standard',
-      tradeDeadline: settings.tradeDeadline,
-      playoffStartWeek: settings.playoffStartWeek,
-      maxTeams: settings.maxTeams || 10,
-      draftType: settings.draftType || 'snake',
-      scoringPeriod: settings.scoringPeriod || 'weekly',
-      categories: settings.categories
+      scoringSystem: (settings?.scoringSystem as ScoringSystem) || { type: 'points', scoringItems: [] },
+      rosterPositions: this.normalizeRosterPositions((settings?.rosterPositions as RawPositionData[]) || []),
+      waiverType: (settings?.waiverType as 'standard' | 'faab' | 'continuous' | 'none') || 'standard',
+      tradeDeadline: settings?.tradeDeadline as Date | undefined,
+      playoffStartWeek: settings?.playoffStartWeek as number | undefined,
+      maxTeams: (settings?.maxTeams as number) || 10,
+      draftType: (settings?.draftType as 'snake' | 'auction' | 'linear' | 'keeper' | 'dynasty') || 'snake',
+      scoringPeriod: (settings?.scoringPeriod as 'weekly' | 'daily') || 'weekly',
+      categories: settings?.categories as string[] | undefined
     };
   }
 
   /**
    * Normalize roster positions
    */
-  private normalizeRosterPositions(positions: any[]): RosterPosition[] {
+  private normalizeRosterPositions(positions: RawPositionData[]): RosterPosition[] {
     return positions.map(pos => ({
       position: pos.position || pos.name,
       abbreviation: pos.abbreviation || pos.position || pos.name,
@@ -83,7 +93,7 @@ export class DataNormalizer {
   /**
    * Normalize team data
    */
-  async normalizeTeam(team: any, platform: FantasyPlatform): Promise<Team> {
+  async normalizeTeam(team: RawTeamData, platform: FantasyPlatform): Promise<Team> {
     const normalized: Team = {
       id: team.id || this.generateTeamId(platform, team),
       platformTeamId: team.platformTeamId || team.team_id || team.id,
@@ -120,11 +130,11 @@ export class DataNormalizer {
   /**
    * Normalize roster data
    */
-  async normalizeRoster(roster: any, platform: FantasyPlatform): Promise<Roster> {
+  async normalizeRoster(roster: RawRosterData, platform: FantasyPlatform): Promise<Roster> {
     const normalized: Roster = {
       teamId: roster.teamId || roster.team_id,
       players: await Promise.all(
-        (roster.players || []).map((player: any) => 
+        (roster.players || []).map((player: RawPlayerData) => 
           this.normalizePlayer(player, platform)
         )
       ),
@@ -152,7 +162,7 @@ export class DataNormalizer {
   /**
    * Normalize player data
    */
-  async normalizePlayer(player: any, platform: FantasyPlatform): Promise<RosterPlayer> {
+  async normalizePlayer(player: RawPlayerData, platform: FantasyPlatform): Promise<RosterPlayer> {
     const normalized: RosterPlayer = {
       id: player.id || this.generatePlayerId(platform, player),
       platformPlayerId: player.platformPlayerId || player.player_id || player.id,
@@ -178,7 +188,7 @@ export class DataNormalizer {
   /**
    * Normalize injury status
    */
-  private async normalizeInjuryStatus(player: any): Promise<InjuryStatus | undefined> {
+  private async normalizeInjuryStatus(player: RawPlayerData): Promise<InjuryStatus | undefined> {
     if (!player.injury && !player.injuryStatus) {
       return undefined;
     }
@@ -214,7 +224,7 @@ export class DataNormalizer {
   /**
    * Normalize player stats
    */
-  private async normalizePlayerStats(player: any): Promise<PlayerStats | undefined> {
+  private async normalizePlayerStats(player: RawPlayerData): Promise<PlayerStats | undefined> {
     if (!player.stats && !player.statistics) {
       return undefined;
     }
@@ -231,20 +241,20 @@ export class DataNormalizer {
   /**
    * Normalize draft info
    */
-  async normalizeDraftInfo(draft: any, platform: FantasyPlatform): Promise<DraftInfo> {
+  async normalizeDraftInfo(draft: RawDraftData, platform: FantasyPlatform): Promise<DraftInfo> {
     const normalized: DraftInfo = {
       id: draft.id || this.generateDraftId(platform, draft),
       leagueId: draft.leagueId || draft.league_id,
-      type: draft.type || 'snake',
-      status: draft.status || 'post_draft',
+      type: (draft.type as 'snake' | 'auction' | 'linear' | 'keeper' | 'dynasty') || 'snake',
+      status: (draft.status as 'pre_draft' | 'drafting' | 'post_draft' | 'paused') || 'post_draft',
       startTime: draft.startTime ? new Date(draft.startTime) : new Date(),
-      picks: draft.picks || [],
+      picks: (draft.picks || []) as DraftPick[],
       rounds: draft.rounds || 15,
       secondsPerPick: draft.secondsPerPick
     };
 
     // Ensure picks are properly formatted
-    normalized.picks = normalized.picks.map((pick: any) => ({
+    normalized.picks = normalized.picks.map((pick: DraftPick) => ({
       round: pick.round || 1,
       pick: pick.pick || 1,
       overallPick: pick.overallPick || ((pick.round - 1) * 10 + pick.pick),
@@ -263,14 +273,14 @@ export class DataNormalizer {
   /**
    * Normalize transaction data
    */
-  async normalizeTransaction(transaction: any, platform: FantasyPlatform): Promise<Transaction> {
+  async normalizeTransaction(transaction: RawTransactionData, platform: FantasyPlatform): Promise<Transaction> {
     const normalized: Transaction = {
       id: transaction.id || this.generateTransactionId(platform, transaction),
       leagueId: transaction.leagueId || transaction.league_id,
-      type: transaction.type || 'freeagent',
-      status: transaction.status || 'executed',
+      type: (transaction.type as 'waiver' | 'trade' | 'freeagent' | 'drop') || 'freeagent',
+      status: (transaction.status as 'pending' | 'approved' | 'rejected' | 'executed' | 'cancelled') || 'executed',
       teams: transaction.teams || [],
-      players: transaction.players || [],
+      players: (transaction.players || []) as TransactionPlayer[],
       proposedDate: transaction.proposedDate ? new Date(transaction.proposedDate) : new Date(),
       processedDate: transaction.processedDate ? new Date(transaction.processedDate) : undefined,
       effectiveDate: transaction.effectiveDate ? new Date(transaction.effectiveDate) : undefined,
@@ -279,7 +289,7 @@ export class DataNormalizer {
     };
 
     // Ensure players are properly formatted
-    normalized.players = normalized.players.map((player: any) => ({
+    normalized.players = normalized.players.map((player: TransactionPlayer) => ({
       playerId: player.playerId || player.player_id,
       playerName: player.playerName || player.player_name || '',
       action: player.action || 'add',
@@ -293,7 +303,7 @@ export class DataNormalizer {
   /**
    * Normalize matchup data
    */
-  async normalizeMatchup(matchup: any, platform: FantasyPlatform): Promise<Matchup> {
+  async normalizeMatchup(matchup: RawMatchupData, platform: FantasyPlatform): Promise<Matchup> {
     const normalized: Matchup = {
       id: matchup.id || this.generateMatchupId(platform, matchup),
       leagueId: matchup.leagueId || matchup.league_id,
@@ -305,7 +315,7 @@ export class DataNormalizer {
       team1Projection: matchup.team1Projection ?? matchup.homeProjection ?? 0,
       team2Projection: matchup.team2Projection ?? matchup.awayProjection ?? 0,
       winnerId: matchup.winnerId || matchup.winner_id,
-      status: matchup.status || 'scheduled',
+      status: (matchup.status as 'scheduled' | 'in_progress' | 'final') || 'scheduled',
       startDate: matchup.startDate ? new Date(matchup.startDate) : new Date(),
       endDate: matchup.endDate ? new Date(matchup.endDate) : new Date(),
       isPlayoffs: matchup.isPlayoffs || false,
@@ -318,34 +328,34 @@ export class DataNormalizer {
   /**
    * Generate consistent IDs
    */
-  private generateLeagueId(platform: FantasyPlatform, league: any): string {
+  private generateLeagueId(platform: FantasyPlatform, league: RawLeagueData): string {
     return `${platform}_${league.platformLeagueId || league.league_id || league.id}`;
   }
 
-  private generateTeamId(platform: FantasyPlatform, team: any): string {
+  private generateTeamId(platform: FantasyPlatform, team: RawTeamData): string {
     return `${platform}_${team.platformTeamId || team.team_id || team.id}`;
   }
 
-  private generatePlayerId(platform: FantasyPlatform, player: any): string {
+  private generatePlayerId(platform: FantasyPlatform, player: RawPlayerData): string {
     return `${platform}_${player.platformPlayerId || player.player_id || player.id}`;
   }
 
-  private generateDraftId(platform: FantasyPlatform, draft: any): string {
+  private generateDraftId(platform: FantasyPlatform, draft: RawDraftData): string {
     return `${platform}_draft_${draft.leagueId || draft.league_id}`;
   }
 
-  private generateTransactionId(platform: FantasyPlatform, transaction: any): string {
+  private generateTransactionId(platform: FantasyPlatform, transaction: RawTransactionData): string {
     return `${platform}_trans_${transaction.transaction_id || Date.now()}`;
   }
 
-  private generateMatchupId(platform: FantasyPlatform, matchup: any): string {
+  private generateMatchupId(platform: FantasyPlatform, matchup: RawMatchupData): string {
     return `${platform}_${matchup.leagueId}_w${matchup.week}_${matchup.matchup_id || Date.now()}`;
   }
 
   /**
    * Detect sport from league data
    */
-  private detectSport(league: any): SportType {
+  private detectSport(league: RawLeagueData): SportType {
     // Try to detect from various fields
     const sportIndicators = [
       league.sport,
@@ -373,7 +383,7 @@ export class DataNormalizer {
   /**
    * Merge platform-specific data with normalized data
    */
-  async mergeWithPlatformData(normalized: any, platformData: any): Promise<any> {
+  async mergeWithPlatformData<T>(normalized: T, platformData: Partial<T>): Promise<T & { platformSpecific: Partial<T> }> {
     // This allows platforms to add custom fields while maintaining normalized structure
     return {
       ...normalized,
@@ -384,29 +394,35 @@ export class DataNormalizer {
   /**
    * Validate normalized data
    */
-  async validateNormalizedData(data: any, type: string): Promise<boolean> {
+  async validateNormalizedData(data: unknown, type: string): Promise<boolean> {
     // Basic validation to ensure required fields are present
+    if (!data || typeof data !== 'object') {
+      return false;
+    }
+    
+    const obj = data as Record<string, unknown>;
+    
     switch (type) {
       case 'league':
-        return !!(data.id && data.platform && data.name && data.sport);
+        return !!(obj.id && obj.platform && obj.name && obj.sport);
       
       case 'team':
-        return !!(data.id && data.leagueId && data.name);
+        return !!(obj.id && obj.leagueId && obj.name);
       
       case 'player':
-        return !!(data.id && data.name && data.position);
+        return !!(obj.id && obj.name && obj.position);
       
       case 'roster':
-        return !!(data.teamId && Array.isArray(data.players));
+        return !!(obj.teamId && Array.isArray(obj.players));
       
       case 'draft':
-        return !!(data.id && data.leagueId && Array.isArray(data.picks));
+        return !!(obj.id && obj.leagueId && Array.isArray(obj.picks));
       
       case 'transaction':
-        return !!(data.id && data.leagueId && data.type);
+        return !!(obj.id && obj.leagueId && obj.type);
       
       case 'matchup':
-        return !!(data.id && data.leagueId && data.team1Id && data.team2Id);
+        return !!(obj.id && obj.leagueId && obj.team1Id && obj.team2Id);
       
       default:
         return false;
@@ -416,9 +432,9 @@ export class DataNormalizer {
   /**
    * Clean and sanitize data
    */
-  async sanitizeData(data: any): Promise<any> {
+  async sanitizeData<T extends Record<string, unknown>>(data: T): Promise<T> {
     // Remove null/undefined values and clean strings
-    const cleaned: any = {};
+    const cleaned = {} as T;
     
     for (const [key, value] of Object.entries(data)) {
       if (value !== null && value !== undefined) {

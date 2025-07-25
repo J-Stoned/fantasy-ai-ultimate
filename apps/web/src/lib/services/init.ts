@@ -4,14 +4,38 @@
  */
 
 import { Pool } from 'pg';
-import { ModelLoaderService } from '../../../../../scripts/fantasy-ml/services/model-loader';
-import { PredictionService } from '../../../../../scripts/fantasy-ml/services/prediction-service';
-import { MLDFSOptimizer } from '../../../../../scripts/fantasy-ml/services/ml-dfs-optimizer';
-import { GPUOptimizerService } from '../../../../../scripts/fantasy-ml/services/gpu-optimizer-service';
-import { InjuryService } from '../../../../../scripts/fantasy-ml/services/injury-service';
-import { WeatherService } from '../../../../../scripts/fantasy-ml/services/weather-service';
-import { VegasService } from '../../../../../scripts/fantasy-ml/services/vegas-service';
-import { CacheService } from '../../../../../scripts/fantasy-ml/services/cache-service';
+import { logger } from '../logging/logger';
+
+// Dynamic imports to prevent client-side bundling
+let ModelLoaderService: any;
+let PredictionService: any;
+let MLDFSOptimizer: any;
+let GPUOptimizerService: any;
+let InjuryService: any;
+let WeatherService: any;
+let VegasService: any;
+let CacheService: any;
+
+// Only import on server side
+if (typeof window === 'undefined') {
+  try {
+    ModelLoaderService = require('../../../../../scripts/fantasy-ml/services/model-loader').ModelLoaderService;
+    PredictionService = require('../../../../../scripts/fantasy-ml/services/prediction-service').PredictionService;
+    MLDFSOptimizer = require('../../../../../scripts/fantasy-ml/services/ml-dfs-optimizer').MLDFSOptimizer;
+    GPUOptimizerService = require('../../../../../scripts/fantasy-ml/services/gpu-optimizer-service').GPUOptimizerService;
+    InjuryService = require('../../../../../scripts/fantasy-ml/services/injury-service').InjuryService;
+    WeatherService = require('../../../../../scripts/fantasy-ml/services/weather-service').WeatherService;
+    VegasService = require('../../../../../scripts/fantasy-ml/services/vegas-service').VegasService;
+    CacheService = require('../../../../../scripts/fantasy-ml/services/cache-service').CacheService;
+  } catch (error) {
+    logger.warn('Failed to load ML services, using mocks:'error.message);
+    // Use mock GPU service if real one fails
+    GPUOptimizerService = require('./gpu-mock').GPUOptimizerService;
+  }
+} else {
+  // Use mock GPU service on client side
+  GPUOptimizerService = require('./gpu-mock').GPUOptimizerService;
+}
 
 export interface Services {
   pool: Pool;
@@ -35,7 +59,13 @@ class ServiceManager {
   async initialize(): Promise<void> {
     if (this.initialized) return;
     
-    console.log('🚀 Initializing Fantasy AI Services...');
+    // Skip initialization on client side
+    if (typeof window !== 'undefined') {
+      logger.info('⚠️ Skipping service initialization on client side');
+      return;
+    }
+    
+    logger.info('🚀 Initializing Fantasy AI Services...');
     
     // Database connection
     const pool = new Pool({
@@ -52,9 +82,9 @@ class ServiceManager {
     // Test database connection
     try {
       await pool.query('SELECT 1');
-      console.log('✅ Database connected');
+      logger.info('✅ Database connected');
     } catch (error) {
-      console.error('❌ Database connection failed:', error);
+      logger.error('❌ Database connection failed:', { error: error });
       throw error;
     }
     
@@ -98,7 +128,7 @@ class ServiceManager {
     };
     
     this.initialized = true;
-    console.log('✅ All services initialized successfully');
+    logger.info('✅ All services initialized successfully');
   }
 
   /**
@@ -112,13 +142,52 @@ class ServiceManager {
   }
 
   /**
+   * Get health check status
+   */
+  async getHealthCheck(): Promise<any> {
+    const health = {
+      services: [],
+      database: false,
+      cache: true
+    };
+
+    if (!this.services) {
+      return health;
+    }
+
+    try {
+      // Check database
+      await this.services.pool.query('SELECT 1');
+      health.database = true;
+      health.services.push({ name: 'database', status: 'ok' });
+    } catch (error) {
+      health.services.push({ name: 'database', status: 'error', error: error.message });
+    }
+
+    // Check other services
+    if (this.services.modelLoader) {
+      health.services.push({ name: 'modelLoader', status: 'ok' });
+    }
+    if (this.services.predictionService) {
+      health.services.push({ name: 'predictionService', status: 'ok' });
+    }
+    if (this.services.gpu) {
+      health.services.push({ name: 'gpu', status: 'ok' });
+    }
+
+    return health;
+  }
+
+  /**
    * Cleanup services
    */
   async cleanup(): Promise<void> {
     if (this.services) {
       await this.services.pool.end();
-      this.services.gpu.dispose();
-      console.log('🧹 Services cleaned up');
+      if (this.services.gpu && this.services.gpu.dispose) {
+        this.services.gpu.dispose();
+      }
+      logger.info('🧹 Services cleaned up');
     }
   }
 }

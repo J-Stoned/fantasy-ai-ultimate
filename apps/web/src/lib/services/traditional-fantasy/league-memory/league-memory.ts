@@ -22,6 +22,7 @@ import { PredictionEngine } from './prediction-engine';
 import { InsightGenerator } from './insight-generator';
 import { PerformanceTracker } from './performance-tracker';
 import { MemoryOptimizer } from './memory-optimizer';
+import { logger } from '../../../logging/logger';
 
 export class LeagueMemorySystem {
   private persistence: DataPersistence;
@@ -404,7 +405,7 @@ export class LeagueMemorySystem {
         await this.initialize();
       }
     } catch (error) {
-      console.error('Failed to import memory:', error);
+      logger.error('Failed to import memory:', { error: error });
       throw new Error('Invalid memory data format');
     }
   }

@@ -12,6 +12,9 @@ import { useWebSocket } from '../../hooks/useWebSocket'
 import { WS_CHANNELS } from '../../services/websocket-service'
 import { HeatMap } from '../../components/spatial/HeatMap'
 import { PitchControl } from '../../components/spatial/PitchControl'
+import { PlayerAvatar } from '@/components/avatars/PlayerAvatar'
+import { Star, TrendingUp, Lock, X } from 'lucide-react'
+import { logger } from '../../lib/logging/logger';
 
 interface Player {
   id: string
@@ -67,7 +70,7 @@ export default function LineupOptimizerPage() {
   
   // Subscribe to lineup updates
   useWebSocket(WS_CHANNELS.LINEUP_CHANGES, (update) => {
-    console.log('Lineup update:', update)
+    logger.info('Lineup update:', { data: update })
     // Handle real-time lineup changes
   })
   
@@ -110,7 +113,7 @@ export default function LineupOptimizerPage() {
         setPlayerPool([])
       }
     } catch (error) {
-      console.error('Failed to load players:', error)
+      logger.error('Failed to load players:', { error: error })
       setPlayerPool([])
     }
   }
@@ -143,7 +146,7 @@ export default function LineupOptimizerPage() {
             const spatial = await fantasyAPI.getSpatialProjection(player.playerId)
             return { playerId: player.playerId, spatial }
           } catch (error) {
-            console.error(`Failed to get spatial data for ${player.playerName}:`, error)
+            logger.error('Failed to get spatial data for ${player.playerName}:', { error: error })
             return null
           }
         })
@@ -158,7 +161,7 @@ export default function LineupOptimizerPage() {
         setSpatialData(newSpatialData)
       }
     } catch (error) {
-      console.error('Optimization failed:', error)
+      logger.error('Optimization failed:', { error: error })
       // Don't use mock lineup - show error state
       setLineup(null)
     } finally {
@@ -201,7 +204,7 @@ export default function LineupOptimizerPage() {
         }
       }
     } catch (error) {
-      console.error('Failed to check Yahoo connection:', error)
+      logger.error('Failed to check Yahoo connection:', { error: error })
     }
   }
   
@@ -216,7 +219,7 @@ export default function LineupOptimizerPage() {
         }
       }
     } catch (error) {
-      console.error('Failed to load Yahoo leagues:', error)
+      logger.error('Failed to load Yahoo leagues:', { error: error })
     }
   }
   
@@ -455,22 +458,34 @@ export default function LineupOptimizerPage() {
                   } transition-all`}
                 >
                   <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <span className="text-white font-medium">{player.name}</span>
-                      <Badge variant="secondary" size="sm">
-                        {player.position}
-                      </Badge>
-                      <span className="text-xs text-gray-500">{player.team}</span>
-                      {player.patternBoost && (
-                        <Badge variant="success" size="sm">
-                          +{player.patternBoost}
-                        </Badge>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-4 mt-1 text-sm text-gray-400">
-                      <span>{player.projection} pts</span>
-                      {player.salary && <span>${player.salary}</span>}
-                      {player.ownership && <span>{player.ownership}% owned</span>}
+                    <div className="flex items-center gap-3">
+                      <PlayerAvatar
+                        playerId={player.id}
+                        size={48}
+                        showBadge={false}
+                      />
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-white font-medium">{player.name}</span>
+                          <Badge variant="secondary" size="sm">
+                            {player.position}
+                          </Badge>
+                          <span className="text-xs text-gray-500">{player.team}</span>
+                          {player.projection >= 25 && (
+                            <TrendingUp className="w-4 h-4 text-green-400" />
+                          )}
+                          {player.patternBoost && (
+                            <Badge variant="success" size="sm">
+                              +{player.patternBoost}
+                            </Badge>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-4 mt-1 text-sm text-gray-400">
+                          <span>{player.projection} pts</span>
+                          {player.salary && <span>${player.salary}</span>}
+                          {player.ownership && <span>{player.ownership}% owned</span>}
+                        </div>
+                      </div>
                     </div>
                   </div>
                   
@@ -481,14 +496,14 @@ export default function LineupOptimizerPage() {
                       onClick={() => togglePlayerLock(player.id)}
                       disabled={excludedPlayers.has(player.id)}
                     >
-                      🔒
+                      <Lock className="w-4 h-4" />
                     </Button>
                     <Button
                       variant={excludedPlayers.has(player.id) ? 'danger' : 'ghost'}
                       size="sm"
                       onClick={() => togglePlayerExclude(player.id)}
                     >
-                      ❌
+                      <X className="w-4 h-4" />
                     </Button>
                   </div>
                 </div>
@@ -521,15 +536,25 @@ export default function LineupOptimizerPage() {
                         }`}
                         onClick={() => setSelectedPlayer(player.playerId === selectedPlayer ? null : player.playerId)}
                       >
-                        <div className="flex items-center gap-2">
-                          <Badge variant="secondary">{player.position}</Badge>
-                          <span className="text-white font-medium">{player.playerName}</span>
-                          <span className="text-xs text-gray-500">{player.team}</span>
-                          {player.patternBoost && (
-                            <Badge variant="success" size="sm">
-                            +{player.patternBoost}
-                          </Badge>
-                        )}
+                        <div className="flex items-center gap-3">
+                          <PlayerAvatar
+                            playerId={player.playerId}
+                            size={48}
+                            showBadge={true}
+                          />
+                          <div className="flex items-center gap-2">
+                            <Badge variant="secondary">{player.position}</Badge>
+                            <span className="text-white font-medium">{player.playerName}</span>
+                            <span className="text-xs text-gray-500">{player.team}</span>
+                            {player.projection >= 25 && (
+                              <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                            )}
+                            {player.patternBoost && (
+                              <Badge variant="success" size="sm">
+                              +{player.patternBoost}
+                            </Badge>
+                          )}
+                        </div>
                       </div>
                       <div className="text-right">
                         <div className="text-white">

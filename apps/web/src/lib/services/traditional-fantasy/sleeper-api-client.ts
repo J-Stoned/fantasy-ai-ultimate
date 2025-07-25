@@ -25,6 +25,7 @@ import {
   WaiverType
 } from './types';
 import { AuthManager } from './auth-manager';
+import { logger } from '../../logging/logger';
 
 export class SleeperApiClient implements PlatformApiClient {
   private readonly baseUrl = 'https://api.sleeper.app/v1';
@@ -59,7 +60,7 @@ export class SleeperApiClient implements PlatformApiClient {
         }
       }
     } catch (error) {
-      console.warn('Failed to load Sleeper players data:', error);
+      logger.warn('Failed to load Sleeper players data:'error);
     }
   }
 
@@ -99,7 +100,7 @@ export class SleeperApiClient implements PlatformApiClient {
       // Sleeper primarily supports NFL, but check for other sports
       // Note: Sleeper's API structure may vary for other sports
     } catch (error) {
-      console.error('Failed to fetch leagues:', error);
+      logger.error('Failed to fetch leagues:', { error: error });
     }
 
     return leagues;
@@ -136,7 +137,7 @@ export class SleeperApiClient implements PlatformApiClient {
         league.settings.maxTeams = rosters.length;
       }
     } catch (error) {
-      console.warn('Failed to fetch rosters for team count:', error);
+      logger.warn('Failed to fetch rosters for team count:'error);
     }
 
     return league;
@@ -243,7 +244,7 @@ export class SleeperApiClient implements PlatformApiClient {
           transactions.push(...parsed);
         }
       } catch (error) {
-        console.warn(`Failed to fetch transactions for week ${week}:`, error);
+        logger.warn('Failed to fetch transactions for week ${week}:'error);
       }
     }
 

@@ -4,6 +4,7 @@
  */
 
 import { Pool, PoolClient } from 'pg';
+import { logger } from '../logging/logger';
 
 export interface QueryResult<T> {
   rows: T[];
@@ -36,9 +37,9 @@ class DatabaseService {
     try {
       await this.pool.query('SELECT 1');
       this.initialized = true;
-      console.log('✅ Database service initialized');
+      logger.info('✅ Database service initialized');
     } catch (error) {
-      console.error('❌ Database initialization failed:', error);
+      logger.error('❌ Database initialization failed:', { error: error });
       throw error;
     }
   }
@@ -115,7 +116,7 @@ class DatabaseService {
    */
   async cleanup(): Promise<void> {
     await this.pool.end();
-    console.log('🧹 Database connections closed');
+    logger.info('🧹 Database connections closed');
   }
 }
 

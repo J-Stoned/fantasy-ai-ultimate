@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { database } from '@/lib/services/database'
 import { cache } from '@/lib/services/cache'
-import { services } from '@/lib/services/init'
+import { logger } from '../../../lib/logging/logger';
 
 export const dynamic = 'force-dynamic'
 
@@ -55,7 +55,7 @@ async function getStats() {
 
     return stats
   } catch (error) {
-    console.error('Error fetching stats:', error)
+    logger.error('Error fetching stats:', { error: error })
     return {
       players: 0,
       teams: 0,
@@ -67,16 +67,33 @@ async function getStats() {
 }
 
 export async function GET() {
-  // Get comprehensive health check from all services
-  const healthCheck = await services.getHealthCheck()
+  // Simple health check without ML services
   const stats = await getStats()
+  
+  // Check database and cache health
+  let dbHealthy = false
+  let cacheHealthy = false
+  
+  try {
+    await database.query('SELECT 1', [], 'read')
+    dbHealthy = true
+  } catch (error) {
+    logger.error('Database health check failed:', { error: error })
+  }
+  
+  try {
+    await cache.ping()
+    cacheHealthy = true
+  } catch (error) {
+    logger.error('Cache health check failed:', { error: error })
+  }
   
   // Determine overall health status
   let overallStatus: 'healthy' | 'degraded' | 'unhealthy' = 'healthy'
   
-  if (!healthCheck.database || !healthCheck.cache) {
+  if (!dbHealthy || !cacheHealthy) {
     overallStatus = 'unhealthy'
-  } else if (healthCheck.services.some(s => s.status === 'error')) {
+  } else if (!dbHealthy && !cacheHealthy) {
     overallStatus = 'degraded'
   }
   
@@ -85,10 +102,14 @@ export async function GET() {
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
     stats,
-    services: healthCheck.services,
-    database: healthCheck.database,
+    services: [
+      { name: 'web', status: 'ok' },
+      { name: 'database', status: dbHealthy ? 'ok' : 'error' },
+      { name: 'cache', status: cacheHealthy ? 'ok' : 'error' }
+    ],
+    database: dbHealthy,
     cache: {
-      connected: healthCheck.cache,
+      connected: cacheHealthy,
       stats: cache.getStats()
     },
     version: '2.0.0' // Upgraded with production infrastructure!

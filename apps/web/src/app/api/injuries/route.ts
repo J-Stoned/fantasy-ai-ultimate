@@ -5,6 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { services } from '@/lib/services/init'
+import { logger } from '../../../lib/logging/logger';
 
 // GET endpoint - retrieve injury data
 export async function GET(request: NextRequest) {
@@ -81,7 +82,7 @@ export async function GET(request: NextRequest) {
     }
     
   } catch (error: any) {
-    console.error('Injury API error:', error)
+    logger.error('Injury API error:', { error: error })
     return NextResponse.json(
       { error: 'Failed to retrieve injury data', details: error.message },
       { status: 500 }
@@ -139,7 +140,7 @@ export async function POST(request: NextRequest) {
     })
     
   } catch (error: any) {
-    console.error('Injury update error:', error)
+    logger.error('Injury update error:', { error: error })
     return NextResponse.json(
       { error: 'Failed to update injury status', details: error.message },
       { status: 500 }

@@ -1,4 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { LeagueDatabaseService } from '../../../../lib/services/league-database-service';
+import type { 
+  YahooApiResponse, 
+  YahooGame, 
+  YahooLeagueWrapper,
+  ESPNLeague,
+  ESPNTeam,
+  SleeperLeague,
+  SleeperUser
+} from '../../../../types/external-apis';
+import type { League } from '../../../../types/api';
+import { logger } from '../../../../../lib/logging/logger';
 
 // Platform-specific API endpoints
 const PLATFORM_APIS = {
@@ -14,6 +26,8 @@ export async function GET(
   req: NextRequest,
   { params }: { params: { platform: string } }
 ) {
+  const dbService = new LeagueDatabaseService();
+  
   try {
     const platform = params.platform;
     const authHeader = req.headers.get('authorization');
@@ -28,7 +42,7 @@ export async function GET(
     const token = authHeader.replace('Bearer ', '');
     
     // Platform-specific league fetching
-    let leagues = [];
+    let leagues: Partial<League>[] = [];
     
     switch (platform) {
       case 'yahoo':
@@ -56,9 +70,43 @@ export async function GET(
         );
     }
     
-    return NextResponse.json(leagues);
+    // Save leagues to database
+    const savedLeagues = [];
+    for (const league of leagues) {
+      try {
+        const dbLeague = {
+          id: `${platform}_${league.id}`,
+          platform_id: String(league.id),
+          platform,
+          name: league.name,
+          sport: league.sport,
+          season: String(league.season),
+          team_count: league.teamCount || 12,
+          scoring_type: league.scoringType || 'standard',
+          is_active: league.isActive !== false,
+          my_team_id: league.myTeamId,
+          my_team_name: league.myTeamName,
+          current_standing: league.currentStanding,
+          settings: league.settings || {},
+          last_synced: new Date()
+        };
+        
+        const saved = await dbService.saveLeague(dbLeague);
+        savedLeagues.push({
+          ...league,
+          id: saved.id,
+          lastSynced: saved.last_synced
+        });
+      } catch (dbError) {
+        logger.warn(`Failed to save league ${league.id}:`, dbError);
+        // Still return the league even if DB save fails
+        savedLeagues.push(league);
+      }
+    }
+    
+    return NextResponse.json(savedLeagues);
   } catch (error) {
-    console.error(`Error fetching ${params.platform} leagues:`, error);
+    logger.error('Error fetching ${params.platform} leagues:', { error: error });
     return NextResponse.json(
       { error: 'Failed to fetch leagues' },
       { status: 500 }
@@ -66,7 +114,7 @@ export async function GET(
   }
 }
 
-async function fetchYahooLeagues(token: string) {
+async function fetchYahooLeagues(token: string): Promise<Partial<League>[]> {
   try {
     // Yahoo uses XML responses, so we need to parse them
     const response = await fetch(
@@ -82,16 +130,16 @@ async function fetchYahooLeagues(token: string) {
       throw new Error('Yahoo API request failed');
     }
     
-    const data = await response.json();
+    const data: YahooApiResponse = await response.json();
     
     // Parse Yahoo's nested response structure
     const leagues = [];
     const games = data.fantasy_content?.users?.[0]?.user?.[1]?.games;
     
     if (games) {
-      Object.values(games).forEach((game: any) => {
+      Object.values(games).forEach((game: YahooGame) => {
         if (game.leagues) {
-          Object.values(game.leagues).forEach((league: any) => {
+          Object.values(game.leagues).forEach((league: YahooLeagueWrapper) => {
             if (league.league) {
               leagues.push({
                 id: league.league[0].league_key,
@@ -113,12 +161,12 @@ async function fetchYahooLeagues(token: string) {
     
     return leagues;
   } catch (error) {
-    console.error('Yahoo leagues fetch error:', error);
+    logger.error('Yahoo leagues fetch error:', { error: error });
     throw error;
   }
 }
 
-async function fetchESPNLeagues(token: string) {
+async function fetchESPNLeagues(token: string): Promise<Partial<League>[]> {
   try {
     // ESPN uses cookies for auth, token would be the swid cookie value
     const response = await fetch(
@@ -134,9 +182,9 @@ async function fetchESPNLeagues(token: string) {
       throw new Error('ESPN API request failed');
     }
     
-    const data = await response.json();
+    const data: ESPNLeague[] = await response.json();
     
-    return data.map((league: any) => ({
+    return data.map((league: ESPNLeague) => ({
       id: league.id,
       name: league.settings.name,
       sport: 'nfl', // ESPN endpoint is sport-specific
@@ -144,15 +192,15 @@ async function fetchESPNLeagues(token: string) {
       teamCount: league.settings.size,
       scoringType: league.settings.scoringType,
       isActive: true,
-      myTeamId: league.teams?.find((t: any) => t.owners?.includes(token))?.id,
+      myTeamId: league.teams?.find((t: ESPNTeam) => t.owners?.includes(token))?.id,
     }));
   } catch (error) {
-    console.error('ESPN leagues fetch error:', error);
+    logger.error('ESPN leagues fetch error:', { error: error });
     throw error;
   }
 }
 
-async function fetchSleeperLeagues(username: string) {
+async function fetchSleeperLeagues(username: string): Promise<Partial<League>[]> {
   try {
     // Sleeper uses username-based API
     const userResponse = await fetch(
@@ -163,7 +211,7 @@ async function fetchSleeperLeagues(username: string) {
       throw new Error('Sleeper user fetch failed');
     }
     
-    const user = await userResponse.json();
+    const user: SleeperUser = await userResponse.json();
     
     // Get user's leagues
     const leaguesResponse = await fetch(
@@ -174,9 +222,9 @@ async function fetchSleeperLeagues(username: string) {
       throw new Error('Sleeper leagues fetch failed');
     }
     
-    const leagues = await leaguesResponse.json();
+    const leagues: SleeperLeague[] = await leaguesResponse.json();
     
-    return leagues.map((league: any) => ({
+    return leagues.map((league: SleeperLeague) => ({
       id: league.league_id,
       name: league.name,
       sport: league.sport,
@@ -187,12 +235,12 @@ async function fetchSleeperLeagues(username: string) {
       myTeamId: league.roster_id,
     }));
   } catch (error) {
-    console.error('Sleeper leagues fetch error:', error);
+    logger.error('Sleeper leagues fetch error:', { error: error });
     throw error;
   }
 }
 
-async function fetchCBSLeagues(token: string) {
+async function fetchCBSLeagues(token: string): Promise<Partial<League>[]> {
   // CBS implementation would go here
   // This is a placeholder as CBS API details vary
   return [
@@ -208,7 +256,7 @@ async function fetchCBSLeagues(token: string) {
   ];
 }
 
-async function fetchDraftKingsContests(token: string) {
+async function fetchDraftKingsContests(token: string): Promise<Partial<League>[]> {
   // DraftKings DFS contests
   return [
     {
@@ -226,7 +274,7 @@ async function fetchDraftKingsContests(token: string) {
   ];
 }
 
-async function fetchFanDuelContests(token: string) {
+async function fetchFanDuelContests(token: string): Promise<Partial<League>[]> {
   // FanDuel DFS contests
   return [
     {

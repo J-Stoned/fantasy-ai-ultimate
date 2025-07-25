@@ -5,6 +5,7 @@
 
 import { io, Socket } from 'socket.io-client';
 import * as React from 'react';
+import { logger } from '../lib/logging/logger';
 
 export interface PatternAlert {
   opportunity: {
@@ -70,7 +71,7 @@ class PatternWebSocketClient {
     });
 
     this.socket.on('connect', () => {
-      console.log('🔌 Connected to Pattern WebSocket Server');
+      logger.info('🔌 Connected to Pattern WebSocket Server');
       this.reconnectAttempts = 0;
       
       // Authenticate if credentials provided
@@ -84,12 +85,12 @@ class PatternWebSocketClient {
     });
 
     this.socket.on('disconnect', (reason) => {
-      console.log('🔌 Disconnected:', reason);
+      logger.info('🔌 Disconnected:', { data: reason });
       this.reconnectAttempts++;
     });
 
     this.socket.on('error', (error) => {
-      console.error('WebSocket error:', error);
+      logger.error('WebSocket error:', { error: error });
     });
 
     // Pattern alerts
@@ -128,11 +129,11 @@ class PatternWebSocketClient {
     
     this.socket.once('authenticated', (response) => {
       if (response.success) {
-        console.log('✅ Authenticated with WebSocket server');
+        logger.info('✅ Authenticated with WebSocket server');
         // Subscribe to user-specific channel
         this.subscribe(`users:${userId}`);
       } else {
-        console.error('❌ Authentication failed:', response.error);
+        logger.error('❌ Authentication failed:', { error: response.error });
       }
     });
   }

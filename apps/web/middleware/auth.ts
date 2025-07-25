@@ -11,7 +11,11 @@ import jwt from 'jsonwebtoken';
 import { logger } from '../../../scripts/utils/logger';
 
 // Environment configuration
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
+// SECURITY: JWT secret must be set in production!
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET && process.env.NODE_ENV === 'production') {
+  throw new Error('JWT_SECRET environment variable is required in production');
+}
 const API_KEY_HEADER = 'x-api-key';
 const AUTH_HEADER = 'authorization';
 
@@ -52,6 +56,10 @@ export interface AuthUser {
  */
 async function verifyJWT(token: string): Promise<AuthUser | null> {
   try {
+    if (!JWT_SECRET) {
+      logger.error('JWT_SECRET not configured');
+      return null;
+    }
     const decoded = jwt.verify(token, JWT_SECRET) as any;
     
     // Verify user still exists and is active
@@ -235,6 +243,9 @@ export function withAuth(
  * Generate JWT token for user
  */
 export function generateToken(userId: string, expiresIn = '24h'): string {
+  if (!JWT_SECRET) {
+    throw new Error('JWT_SECRET not configured - cannot generate tokens');
+  }
   return jwt.sign({ userId }, JWT_SECRET, { expiresIn });
 }
 

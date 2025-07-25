@@ -20,9 +20,28 @@ import {
   RosterPlayer,
   TransactionPlayer,
   TeamStanding,
-  ScoringItem
+  ScoringItem,
+  WaiverType
 } from './types';
 import { AuthManager } from './auth-manager';
+import {
+import { logger } from '../../logging/logger';
+  ESPNApiResponse,
+  ESPNLeagueSettings,
+  ESPNTeamData,
+  ESPNMatchup,
+  ESPNDraftDetail,
+  ESPNTopic,
+  ESPNMessage,
+  ESPNScoringItem,
+  ESPNRosterEntry,
+  ESPNPlayerData,
+  ESPNMember,
+  ESPNPositionInfo,
+  ESPNDraftPick,
+  ESPNMatchupTeam,
+  ESPNTeamRecord
+} from '../../../types/external-apis';
 
 export class ESPNApiClient implements PlatformApiClient {
   private readonly baseUrl = 'https://fantasy.espn.com/apis/v3/games';
@@ -73,7 +92,7 @@ export class ESPNApiClient implements PlatformApiClient {
           leagues.push(...sportLeagues);
         }
       } catch (error) {
-        console.warn(`Failed to fetch ${sport} leagues:`, error);
+        logger.warn('Failed to fetch ${sport} leagues:'error);
       }
     }
 
@@ -291,18 +310,18 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Parse leagues from ESPN response
    */
-  private parseLeagues(data: any, sport: SportType): League[] {
+  private parseLeagues(data: ESPNApiResponse[] | unknown, sport: SportType): League[] {
     if (!Array.isArray(data)) {
       return [];
     }
 
-    return data.map(leagueData => this.parseLeague(leagueData, sport));
+    return data.map((leagueData: ESPNApiResponse) => this.parseLeague(leagueData, sport));
   }
 
   /**
    * Parse single league data
    */
-  private parseLeague(data: any, sport: SportType): League {
+  private parseLeague(data: ESPNApiResponse, sport: SportType): League {
     const settings = data.settings;
     
     return {
@@ -339,7 +358,7 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Determine scoring type from settings
    */
-  private determineScoringType(settings: any): string {
+  private determineScoringType(settings: ESPNLeagueSettings): string {
     if (settings.scoringType === 'H2H_POINTS') {
       return 'h2h_points';
     } else if (settings.scoringType === 'H2H_CATEGORY') {
@@ -353,12 +372,12 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Parse scoring items
    */
-  private parseScoringItems(scoringSettings: any): ScoringItem[] {
+  private parseScoringItems(scoringSettings: { scoringItems?: ESPNScoringItem[] } | undefined): ScoringItem[] {
     if (!scoringSettings?.scoringItems) {
       return [];
     }
 
-    return scoringSettings.scoringItems.map((item: any) => ({
+    return scoringSettings.scoringItems.map((item: ESPNScoringItem) => ({
       statId: String(item.statId),
       statName: this.getStatName(item.statId),
       points: item.pointsOverrides?.[0]?.points || item.points || 0,
@@ -389,7 +408,7 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Parse roster positions
    */
-  private parseRosterPositions(rosterSettings: any): any[] {
+  private parseRosterPositions(rosterSettings: { lineupSlotCounts?: Record<string, number> } | undefined): RosterPosition[] {
     if (!rosterSettings?.lineupSlotCounts) {
       return [];
     }
@@ -410,8 +429,8 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Get position info from ESPN slot ID
    */
-  private getPositionFromSlotId(slotId: number): any {
-    const positionMap: Record<number, any> = {
+  private getPositionFromSlotId(slotId: number): ESPNPositionInfo {
+    const positionMap: Record<number, ESPNPositionInfo> = {
       0: { name: 'QB', abbrev: 'QB', isActive: true, isFlex: false, eligible: ['QB'] },
       2: { name: 'RB', abbrev: 'RB', isActive: true, isFlex: false, eligible: ['RB'] },
       4: { name: 'WR', abbrev: 'WR', isActive: true, isFlex: false, eligible: ['WR'] },
@@ -436,7 +455,7 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Parse waiver type
    */
-  private parseWaiverType(acquisitionSettings: any): any {
+  private parseWaiverType(acquisitionSettings: { acquisitionType?: string; isUsingAcquisitionBudget?: boolean } | undefined): WaiverType {
     if (acquisitionSettings?.acquisitionType === 'WAIVERS_TRADITIONAL') {
       return 'standard';
     } else if (acquisitionSettings?.acquisitionType === 'WAIVERS_CONTINUOUS') {
@@ -450,7 +469,7 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Get playoff weeks
    */
-  private getPlayoffWeeks(scheduleSettings: any): number[] {
+  private getPlayoffWeeks(scheduleSettings: { playoffMatchupPeriodCount?: number; matchupPeriodCount?: number } | undefined): number[] {
     if (!scheduleSettings?.playoffMatchupPeriodCount || !scheduleSettings?.matchupPeriodCount) {
       return [];
     }
@@ -468,12 +487,12 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Parse teams data
    */
-  private parseTeams(data: any): Team[] {
+  private parseTeams(data: ESPNApiResponse): Team[] {
     if (!data.teams) {
       return [];
     }
 
-    return data.teams.map((teamData: any) => ({
+    return data.teams.map((teamData: ESPNTeamData) => ({
       id: `espn_${teamData.id}`,
       platformTeamId: String(teamData.id),
       leagueId: String(data.id),
@@ -481,7 +500,7 @@ export class ESPNApiClient implements PlatformApiClient {
       abbreviation: teamData.abbrev,
       logoUrl: teamData.logo,
       ownerId: teamData.primaryOwner,
-      ownerName: data.members?.find((m: any) => m.id === teamData.primaryOwner)?.displayName || '',
+      ownerName: data.members?.find((m: ESPNMember) => m.id === teamData.primaryOwner)?.displayName || '','
       standing: this.parseStanding(teamData),
       roster: { teamId: `espn_${teamData.id}`, players: [] },
       draftGrade: teamData.draftDayProjectedRank ? String(teamData.draftDayProjectedRank) : undefined,
@@ -493,7 +512,7 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Parse team standing
    */
-  private parseStanding(teamData: any): TeamStanding {
+  private parseStanding(teamData: ESPNTeamData): TeamStanding {
     const record = teamData.record?.overall || {};
     
     return {
@@ -511,12 +530,12 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Parse rosters data
    */
-  private parseRosters(data: any): Roster[] {
+  private parseRosters(data: ESPNApiResponse): Roster[] {
     if (!data.teams) {
       return [];
     }
 
-    return data.teams.map((teamData: any) => {
+    return data.teams.map((teamData: ESPNTeamData) => {
       const roster: Roster = {
         teamId: String(teamData.id),
         players: [],
@@ -526,7 +545,7 @@ export class ESPNApiClient implements PlatformApiClient {
       };
 
       if (teamData.roster?.entries) {
-        teamData.roster.entries.forEach((entry: any) => {
+        teamData.roster.entries.forEach((entry: ESPNRosterEntry) => {
           const player = this.parsePlayer(entry, data.players);
           roster.players.push(player);
 
@@ -548,7 +567,7 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Parse player data
    */
-  private parsePlayer(entry: any, playersPool: any[]): RosterPlayer {
+  private parsePlayer(entry: ESPNRosterEntry, playersPool: ESPNPlayerData[] | undefined): RosterPlayer {
     const playerData = playersPool?.find(p => p.id === entry.playerId) || {};
     const player = playerData.player || {};
     
@@ -654,7 +673,7 @@ export class ESPNApiClient implements PlatformApiClient {
    * Map ESPN injury status
    */
   private mapInjuryStatus(status: string): 'healthy' | 'questionable' | 'doubtful' | 'out' | 'ir' {
-    const statusMap: Record<string, any> = {
+    const statusMap: Record<string, 'healthy' | 'questionable' | 'doubtful' | 'out' | 'ir'> = {
       'ACTIVE': 'healthy',
       'QUESTIONABLE': 'questionable',
       'DOUBTFUL': 'doubtful',
@@ -670,7 +689,7 @@ export class ESPNApiClient implements PlatformApiClient {
    * Map acquisition type
    */
   private mapAcquisitionType(type: string): 'draft' | 'waiver' | 'trade' | 'freeagent' {
-    const typeMap: Record<string, any> = {
+    const typeMap: Record<string, 'draft' | 'waiver' | 'trade' | 'freeagent'> = {
       'DRAFT': 'draft',
       'ADD': 'freeagent',
       'WAIVER': 'waiver',
@@ -683,12 +702,12 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Parse draft data
    */
-  private parseDraftData(data: any, leagueId: string): DraftInfo {
+  private parseDraftData(data: ESPNApiResponse, leagueId: string): DraftInfo {
     const draft = data.draftDetail || {};
     const picks: DraftPick[] = [];
 
     if (draft.picks) {
-      draft.picks.forEach((pick: any) => {
+      draft.picks.forEach((pick: ESPNDraftPick) => {
         picks.push({
           round: pick.roundId,
           pick: pick.roundPickNumber,
@@ -718,15 +737,15 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Parse transactions
    */
-  private parseTransactions(data: any, leagueId: string): Transaction[] {
+  private parseTransactions(data: ESPNApiResponse, leagueId: string): Transaction[] {
     if (!data.topics) {
       return [];
     }
 
     const transactions: Transaction[] = [];
 
-    data.topics.forEach((topic: any) => {
-      topic.messages.forEach((message: any) => {
+    data.topics.forEach((topic: ESPNTopic) => {
+      topic.messages?.forEach((message: ESPNMessage) => {
         if (message.messageTypeId === 178 || message.messageTypeId === 180) { // Transaction messages
           const transaction: Transaction = {
             id: `espn_${topic.id}_${message.id}`,
@@ -782,7 +801,7 @@ export class ESPNApiClient implements PlatformApiClient {
    * Map topic type to transaction type
    */
   private mapTopicToTransactionType(topicType: string): 'waiver' | 'trade' | 'freeagent' | 'drop' {
-    const typeMap: Record<string, any> = {
+    const typeMap: Record<string, 'waiver' | 'trade' | 'freeagent' | 'drop'> = {
       'WAIVER': 'waiver',
       'TRADE': 'trade',
       'FREEAGENT': 'freeagent',
@@ -795,14 +814,14 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Parse matchups
    */
-  private parseMatchups(data: any, leagueId: string, week: number): Matchup[] {
+  private parseMatchups(data: ESPNApiResponse, leagueId: string, week: number): Matchup[] {
     const matchups: Matchup[] = [];
     const schedule = data.schedule || [];
 
     // Filter for the specific week
-    const weekMatchups = schedule.filter((m: any) => m.matchupPeriodId === week);
+    const weekMatchups = schedule.filter((m: ESPNMatchup) => m.matchupPeriodId === week);
 
-    weekMatchups.forEach((matchupData: any, index: number) => {
+    weekMatchups.forEach((matchupData: ESPNMatchup, index: number) => {
       // Skip bye weeks
       if (!matchupData.away) {
         return;
@@ -836,7 +855,7 @@ export class ESPNApiClient implements PlatformApiClient {
   /**
    * Get matchup status
    */
-  private getMatchupStatus(matchupData: any): 'scheduled' | 'in_progress' | 'final' {
+  private getMatchupStatus(matchupData: ESPNMatchup): 'scheduled' | 'in_progress' | 'final' {
     if (matchupData.winner) {
       return 'final';
     } else if (matchupData.home.totalPointsLive || matchupData.away.totalPointsLive) {

@@ -1,0 +1,111 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/
+
+# Testing
+__tests__/
+e2e/
+coverage/
+.nyc_output/
+test-results/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+jest.config.js
+playwright.config.ts
+
+# Development files
+*.log
+*.pid
+.env.local
+.env.development
+.env.test
+*.dev.ts
+*.dev.tsx
+
+# Scripts
+scripts/
+mcp-*.ts
+
+# Documentation
+*.md
+docs/
+
+# Large files
+*.mp4
+*.mov
+*.avi
+*.zip
+*.tar
+*.gz
+
+# ML Models (will be generated on server)
+models/
+*.h5
+*.pb
+*.pth
+*.onnx
+
+# Temporary files
+tmp/
+temp/
+.cache/
+.turbo/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+.next/cache/
+*.tsbuildinfo
+dist/
+build/
+
+# Database
+*.sql
+*.db
+*.sqlite
+
+# Monitoring and logs
+logs/
+*.log.*
+server.log
+dev.log
+error.log
+access.log
+
+# Test data
+fixtures/
+mock-data/
+test-data/
+
+# Bundle analyzer
+.next/analyze/
+.next/server/analyze/
+.next/static/chunks/
+
+# Source maps in production
+*.map
+
+# Storybook
+.storybook/
+storybook-static/
+
+# Other
+.git/
+.gitignore
+.eslintrc*
+.prettierrc*
+CONTRIBUTING.md
+CHANGELOG.md
+LICENSE

@@ -8,6 +8,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
+import { logger } from '../../lib/logging/logger';
 
 interface SystemUpdate {
   type: 'ml_training' | 'gpu_monitor' | 'dfs_trading' | 'system_alert';
@@ -33,7 +34,7 @@ export function AdminWebSocketProvider({ children }: AdminWebSocketProviderProps
 
   useEffect(() => {
     // Simulate WebSocket connection
-    console.log('🔌 Connecting to Admin WebSocket...');
+    logger.info('🔌 Connecting to Admin WebSocket...');
     setIsConnected(true);
 
     // Simulate real-time updates
@@ -76,12 +77,12 @@ export function AdminWebSocketProvider({ children }: AdminWebSocketProviderProps
     return () => {
       clearInterval(interval);
       setIsConnected(false);
-      console.log('🔌 Admin WebSocket disconnected');
+      logger.info('🔌 Admin WebSocket disconnected');
     };
   }, []);
 
   const sendCommand = (command: string, data?: any) => {
-    console.log(`📤 Sending admin command: ${command}`, data);
+    logger.info('📤 Sending admin command: ${command}', { data: data });
     
     // Simulate command acknowledgment
     setTimeout(() => {

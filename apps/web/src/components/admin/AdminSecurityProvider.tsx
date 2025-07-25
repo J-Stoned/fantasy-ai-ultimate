@@ -8,6 +8,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
+import { logger } from '../../lib/logging/logger';
 
 interface AdminSession {
   userId: string;
@@ -44,13 +45,13 @@ export function AdminSecurityProvider({ children, session }: AdminSecurityProvid
 
   const refreshSession = () => {
     // In production, this would refresh the session from the server
-    console.log('🔄 Refreshing admin session...');
+    logger.info('🔄 Refreshing admin session...');
   };
 
   useEffect(() => {
     // Session timeout monitoring
     const timeout = setTimeout(() => {
-      console.log('⚠️ Session timeout warning');
+      logger.info('⚠️ Session timeout warning');
     }, 30 * 60 * 1000); // 30 minutes
 
     return () => clearTimeout(timeout);

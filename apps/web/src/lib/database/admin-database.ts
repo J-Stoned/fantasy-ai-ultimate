@@ -8,6 +8,16 @@
 import { Pool, PoolClient, QueryResult } from 'pg';
 import { Redis } from 'ioredis';
 import { AdminSession } from '../middleware/admin-auth';
+import type {
+import { logger } from '../logging/logger';
+  MLHyperparameters,
+  MLValidationMetrics,
+  MLCustomMetrics,
+  DFSLineup,
+  DFSOwnershipProjections,
+  AlertData,
+  AdminQueryFilters
+} from '../../types/admin-database';
 
 // Database Configuration
 export interface AdminDatabaseConfig {
@@ -29,7 +39,7 @@ export interface MLTrainingJob {
   modelType: string;
   sport?: string;
   datasetSize: number;
-  hyperparameters: Record<string, any>;
+  hyperparameters: MLHyperparameters;
   status: 'QUEUED' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'CANCELLED';
   startedBy: string;
   startedAt: Date;
@@ -39,7 +49,7 @@ export interface MLTrainingJob {
   memoryPeakGb?: number;
   finalAccuracy?: number;
   finalLoss?: number;
-  validationMetrics?: Record<string, any>;
+  validationMetrics?: MLValidationMetrics;
   modelArtifactPath?: string;
   logsPath?: string;
   errorMessage?: string;
@@ -58,7 +68,7 @@ export interface MLTrainingMetric {
   gpuUtilization: number;
   memoryUsageGb: number;
   trainingSpeed: number;
-  customMetrics?: Record<string, any>;
+  customMetrics?: MLCustomMetrics;
   timestamp: Date;
 }
 
@@ -74,8 +84,8 @@ export interface DFSContestEntry {
   totalEntries?: number;
   prizePool?: number;
   strategyId?: string;
-  lineup: Record<string, any>;
-  ownershipProjections?: Record<string, any>;
+  lineup: DFSLineup;
+  ownershipProjections?: DFSOwnershipProjections;
   projectedScore: number;
   actualScore?: number;
   finalRank?: number;
@@ -103,7 +113,7 @@ export interface AdminAlert {
   severity: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
   title: string;
   message: string;
-  data?: Record<string, any>;
+  data?: AlertData;
   triggeredAt: Date;
   acknowledgedAt?: Date;
   acknowledgedBy?: string;
@@ -118,7 +128,7 @@ export interface QueryOptions {
   offset?: number;
   orderBy?: string;
   orderDirection?: 'ASC' | 'DESC';
-  filters?: Record<string, any>;
+  filters?: AdminQueryFilters;
 }
 
 export interface PaginatedResult<T> {
@@ -158,20 +168,20 @@ export class AdminDatabaseService {
     this.redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379');
     
     this.setupEventHandlers();
-    console.log('[AdminDB] Database service initialized');
+    logger.info('[AdminDB] Database service initialized');
   }
 
   private setupEventHandlers(): void {
     this.pool.on('connect', (client) => {
-      console.log('[AdminDB] Client connected to database');
+      logger.info('[AdminDB] Client connected to database');
     });
     
     this.pool.on('error', (err) => {
-      console.error('[AdminDB] Database error:', err);
+      logger.error('[AdminDB] Database error:', { error: err });
     });
     
     this.pool.on('remove', () => {
-      console.log('[AdminDB] Client removed from pool');
+      logger.info('[AdminDB] Client removed from pool');
     });
   }
 
@@ -210,7 +220,7 @@ export class AdminDatabaseService {
       // Cache job info for real-time updates
       await this.redis.setex(`ml_job:${jobId}`, 3600, JSON.stringify(job));
       
-      console.log(`[AdminDB] Created ML training job: ${jobId}`);
+      logger.info('[AdminDB] Created ML training job: ${jobId}');
       return jobId;
       
     } finally {
@@ -277,7 +287,7 @@ export class AdminDatabaseService {
         JSON.stringify(latestMetric)
       );
       
-      console.log(`[AdminDB] Logged ${metrics.length} ML training metrics`);
+      logger.info('[AdminDB] Logged ${metrics.length} ML training metrics');
       
     } catch (error) {
       await client.query('ROLLBACK');
@@ -299,7 +309,7 @@ export class AdminDatabaseService {
     const client = await this.getClient();
     try {
       const setClauses: string[] = ['status = $2'];
-      const values: any[] = [jobId, status];
+      const values: (string | number | Date | undefined)[] = [jobId, status];
       let paramIndex = 3;
       
       if (updates.completedAt) {
@@ -348,7 +358,7 @@ export class AdminDatabaseService {
       // Update cache
       await this.redis.del(`ml_job:${jobId}`);
       
-      console.log(`[AdminDB] Updated ML job ${jobId} status to ${status}`);
+      logger.info('[AdminDB] Updated ML job ${jobId} status to ${status}');
       
     } finally {
       client.release();
@@ -389,7 +399,7 @@ export class AdminDatabaseService {
     const client = await this.getClient();
     try {
       let whereClause = '1=1';
-      const values: any[] = [];
+      const values: (string | number | Date | undefined)[] = [];
       let paramIndex = 1;
       
       if (options.dateFrom) {
@@ -507,7 +517,7 @@ export class AdminDatabaseService {
       const result = await client.query(query, values);
       const entryId = result.rows[0].id;
       
-      console.log(`[AdminDB] Created DFS contest entry: ${entryId}`);
+      logger.info('[AdminDB] Created DFS contest entry: ${entryId}');
       return entryId;
       
     } finally {
@@ -526,7 +536,7 @@ export class AdminDatabaseService {
     const client = await this.getClient();
     try {
       const setClauses: string[] = [];
-      const values: any[] = [entryId];
+      const values: (string | number | Date | undefined)[] = [entryId];
       let paramIndex = 2;
       
       if (updates.actualScore !== undefined) {
@@ -569,7 +579,7 @@ export class AdminDatabaseService {
       
       await client.query(query, values);
       
-      console.log(`[AdminDB] Updated DFS contest entry: ${entryId}`);
+      logger.info('[AdminDB] Updated DFS contest entry: ${entryId}');
       
     } finally {
       client.release();
@@ -614,7 +624,7 @@ export class AdminDatabaseService {
     const client = await this.getClient();
     try {
       let whereClause = "status = 'COMPLETED'";
-      const values: any[] = [];
+      const values: (string | number | Date | undefined)[] = [];
       let paramIndex = 1;
       
       if (options.dateFrom) {
@@ -751,7 +761,7 @@ export class AdminDatabaseService {
         await client.query(query, values);
       }
       
-      console.log(`[AdminDB] Logged ${metrics.length} system metrics`);
+      logger.info('[AdminDB] Logged ${metrics.length} system metrics');
       
     } finally {
       client.release();
@@ -794,7 +804,7 @@ export class AdminDatabaseService {
       }));
       await this.redis.ltrim('admin_alerts:recent', 0, 99); // Keep last 100
       
-      console.log(`[AdminDB] Created admin alert: ${alertId}`);
+      logger.info('[AdminDB] Created admin alert: ${alertId}');
       return alertId;
       
     } finally {
@@ -817,7 +827,7 @@ export class AdminDatabaseService {
       
       await client.query(query, [alertId, acknowledgedBy]);
       
-      console.log(`[AdminDB] Acknowledged alert ${alertId} by ${acknowledgedBy}`);
+      logger.info('[AdminDB] Acknowledged alert ${alertId} by ${acknowledgedBy}');
       
     } finally {
       client.release();
@@ -835,7 +845,7 @@ export class AdminDatabaseService {
       const client = await this.pool.connect();
       return client;
     } catch (error) {
-      console.error('[AdminDB] Failed to get database client:', error);
+      logger.error('[AdminDB] Failed to get database client:', { error: error });
       throw new Error('Database connection failed');
     }
   }
@@ -847,7 +857,7 @@ export class AdminDatabaseService {
   async executePaginatedQuery<T>(
     baseQuery: string,
     countQuery: string,
-    values: any[],
+    values: (string | number | Date | Record<string, unknown> | undefined)[],
     options: QueryOptions = {}
   ): Promise<PaginatedResult<T>> {
     const client = await this.getClient();
@@ -926,7 +936,7 @@ export class AdminDatabaseService {
         metricsDeleted: metricsResult.rowCount || 0
       };
       
-      console.log('[AdminDB] Cleanup completed:', cleanup);
+      logger.info('[AdminDB] Cleanup completed:', { data: cleanup });
       return cleanup;
       
     } finally {
@@ -981,14 +991,14 @@ export class AdminDatabaseService {
    * Close all connections gracefully
    */
   async shutdown(): Promise<void> {
-    console.log('[AdminDB] Shutting down database service...');
+    logger.info('[AdminDB] Shutting down database service...');
     
     try {
       await this.pool.end();
       await this.redis.quit();
-      console.log('[AdminDB] Database service shut down complete');
+      logger.info('[AdminDB] Database service shut down complete');
     } catch (error) {
-      console.error('[AdminDB] Shutdown error:', error);
+      logger.error('[AdminDB] Shutdown error:', { error: error });
     }
   }
 }

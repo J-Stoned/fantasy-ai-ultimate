@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
+import { logger } from '../lib/logging/logger';
 
 export type FantasyPlatform = 'espn' | 'yahoo' | 'cbs' | 'sleeper' | 'draftkings' | 'fanduel';
 export type AuthStatus = 'disconnected' | 'connecting' | 'connected' | 'error';
@@ -30,7 +31,7 @@ interface ImportedLeague {
   myTeamName?: string;
   currentStanding?: number;
   roster?: ImportedPlayer[];
-  settings?: Record<string, any>;
+  settings?: Record<string, unknown>;
   lastSynced?: Date;
 }
 
@@ -314,19 +315,51 @@ const useLeagueStore = create<LeagueStore>()(
             });
           });
         } catch (error) {
-          console.error('Failed to refresh league:', error);
+          logger.error('Failed to refresh league:', { error: error });
         }
       },
       
       syncAllLeagues: async () => {
-        const leagues = Array.from(get().leagues.values());
-        const connectedPlatforms = get().getConnectedPlatforms();
-        
-        for (const platform of connectedPlatforms) {
-          const platformLeagues = leagues.filter(l => l.platform === platform);
-          if (platformLeagues.length > 0) {
-            await get().importLeagues(platform);
+        try {
+          // Fetch leagues from database
+          const response = await fetch('/api/leagues');
+          if (response.ok) {
+            const { leagues: dbLeagues } = await response.json();
+            
+            set((state) => {
+              state.leagues.clear();
+              dbLeagues.forEach((league: ImportedLeague) => {
+                state.leagues.set(league.id, {
+                  id: league.id,
+                  platformId: league.platformId,
+                  platform: league.platform,
+                  name: league.name,
+                  sport: league.sport,
+                  season: league.season,
+                  teamCount: league.teamCount,
+                  scoringType: league.scoringType,
+                  isActive: league.isActive,
+                  myTeamId: league.myTeamId,
+                  myTeamName: league.myTeamName,
+                  currentStanding: league.currentStanding,
+                  settings: league.settings,
+                  lastSynced: league.lastSynced ? new Date(league.lastSynced) : undefined
+                });
+              });
+            });
           }
+          
+          // Also sync with connected platforms
+          const connectedPlatforms = get().getConnectedPlatforms();
+          for (const platform of connectedPlatforms) {
+            try {
+              await get().importLeagues(platform);
+            } catch (error) {
+              logger.warn(`Failed to sync ${platform}:`, error);
+            }
+          }
+        } catch (error) {
+          logger.error('Failed to sync leagues:', { error: error });
         }
       },
       

@@ -266,9 +266,175 @@ export interface ApiResponse<T> {
 export interface ApiError {
   code: string;
   message: string;
-  details?: any;
+  details?: unknown;
   retryable?: boolean;
   retryAfter?: number;
+}
+
+// Raw Platform Data Types for normalization
+export interface RawLeagueData {
+  id?: string;
+  league_id?: string;
+  platformLeagueId?: string;
+  name?: string;
+  season?: number | string;
+  sport?: string;
+  isActive?: boolean;
+  settings?: Record<string, unknown>;
+  teams?: RawTeamData[];
+  draftInfo?: unknown;
+  currentWeek?: number;
+  totalWeeks?: number;
+  playoffWeeks?: number[];
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+}
+
+export interface RawTeamData {
+  id?: string;
+  team_id?: string;
+  platformTeamId?: string;
+  leagueId?: string;
+  league_id?: string;
+  name?: string;
+  teamName?: string;
+  abbreviation?: string;
+  abbrev?: string;
+  logoUrl?: string;
+  logo?: string;
+  avatar?: string;
+  ownerId?: string;
+  owner_id?: string;
+  userId?: string;
+  ownerName?: string;
+  owner_name?: string;
+  userName?: string;
+  standing?: TeamStanding;
+  roster?: RawRosterData;
+  draftGrade?: string;
+  projectedRank?: number;
+  currentRank?: number;
+}
+
+export interface RawRosterData {
+  teamId?: string;
+  team_id?: string;
+  players?: RawPlayerData[];
+  startingLineup?: string[];
+  benchPlayers?: string[];
+  injuredReserve?: string[];
+}
+
+export interface RawPlayerData {
+  id?: string;
+  player_id?: string;
+  platformPlayerId?: string;
+  name?: string;
+  playerName?: string;
+  fullName?: string;
+  position?: string;
+  primaryPosition?: string;
+  eligiblePositions?: string[];
+  team?: string;
+  proTeam?: string;
+  nflTeam?: string;
+  status?: PlayerStatus;
+  injury?: RawInjuryData;
+  injuryStatus?: InjuryStatus | RawInjuryData;
+  stats?: PlayerStats;
+  projectedStats?: PlayerStats;
+  acquisitionInfo?: AcquisitionInfo;
+  imageUrl?: string;
+  photo?: string;
+  headshot?: string;
+}
+
+export interface RawInjuryData {
+  status?: string;
+  designation?: string;
+  description?: string;
+  details?: string;
+  bodyPart?: string;
+  returnDate?: Date | string;
+}
+
+export interface RawDraftData {
+  id?: string;
+  draft_id?: string;
+  leagueId?: string;
+  league_id?: string;
+  type?: string;
+  status?: string;
+  startTime?: Date | string;
+  start_time?: Date | string;
+  picks?: unknown[];
+  rounds?: number;
+  secondsPerPick?: number;
+  seconds_per_pick?: number;
+}
+
+export interface RawTransactionData {
+  id?: string;
+  transaction_id?: string;
+  leagueId?: string;
+  league_id?: string;
+  type?: string;
+  status?: string;
+  teams?: string[];
+  players?: unknown[];
+  proposedDate?: Date | string;
+  proposed_date?: Date | string;
+  processedDate?: Date | string;
+  processed_date?: Date | string;
+  effectiveDate?: Date | string;
+  effective_date?: Date | string;
+  bidAmount?: number;
+  bid_amount?: number;
+  priority?: number;
+}
+
+export interface RawMatchupData {
+  id?: string;
+  matchup_id?: string;
+  leagueId?: string;
+  league_id?: string;
+  week?: number;
+  team1Id?: string;
+  team1_id?: string;
+  team2Id?: string;
+  team2_id?: string;
+  team1Score?: number;
+  team1_score?: number;
+  team2Score?: number;
+  team2_score?: number;
+  team1Projection?: number;
+  team1_projection?: number;
+  team2Projection?: number;
+  team2_projection?: number;
+  winnerId?: string;
+  winner_id?: string;
+  status?: string;
+  startDate?: Date | string;
+  start_date?: Date | string;
+  endDate?: Date | string;
+  end_date?: Date | string;
+  isPlayoffs?: boolean;
+  is_playoffs?: boolean;
+  isConsolation?: boolean;
+  is_consolation?: boolean;
+}
+
+export interface RawPositionData {
+  position?: string;
+  name?: string;
+  abbreviation?: string;
+  count?: number;
+  isActive?: boolean;
+  is_active?: boolean;
+  isFlex?: boolean;
+  is_flex?: boolean;
+  eligiblePositions?: string[];
+  eligible_positions?: string[];
 }
 
 export interface ResponseMetadata {

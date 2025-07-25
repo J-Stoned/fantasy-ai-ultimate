@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { supabase } from '../../../../lib/supabase/client-browser'
+import { createBrowserSupabaseClient } from '../../lib/supabase/client-browser'
+import { PlayerAvatar } from '@/components/avatars/PlayerAvatar'
+import { Star, TrendingUp } from 'lucide-react'
 
 type Player = {
   id: string
@@ -13,6 +15,8 @@ type Player = {
   currentLeague?: { name: string }
   jerseyNumber?: string
   status?: string
+  rating?: number
+  fantasyPoints?: number
 }
 
 export default function PlayersPage() {
@@ -152,7 +156,7 @@ export default function PlayersPage() {
                 <thead className="bg-white/5">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                      Name
+                      Player
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
                       Position
@@ -166,42 +170,77 @@ export default function PlayersPage() {
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
                       Status
                     </th>
+                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-300 uppercase tracking-wider">
+                      Rating
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/10">
-                  {players.map((player) => (
-                    <tr key={player.id} className="hover:bg-white/5 transition-colors">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <Link 
-                          href={`/player/${player.id}`}
-                          className="text-white hover:text-purple-300 transition-colors"
-                        >
-                          {player.firstName} {player.lastName}
-                          {player.jerseyNumber && (
-                            <span className="text-gray-400 ml-2">#{player.jerseyNumber}</span>
-                          )}
-                        </Link>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-gray-300">
-                        {player.position?.join(', ') || '-'}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-gray-300">
-                        {player.currentTeam?.name || '-'}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-gray-300">
-                        {player.currentLeague?.name || '-'}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`px-2 py-1 text-xs rounded-full ${
-                          player.status === 'active' 
-                            ? 'bg-green-500/20 text-green-300' 
-                            : 'bg-gray-500/20 text-gray-300'
-                        }`}>
-                          {player.status || 'Unknown'}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
+                  {players.map((player) => {
+                    // Generate mock rating for demo (in real app from DB)
+                    const mockRating = Math.floor(Math.random() * 40) + 60; // 60-99
+                    
+                    return (
+                      <tr key={player.id} className="hover:bg-white/5 transition-colors">
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="flex items-center gap-3">
+                            <PlayerAvatar
+                              playerId={player.id}
+                              size={48}
+                              showBadge={mockRating >= 90}
+                            />
+                            <Link 
+                              href={`/player/${player.id}`}
+                              className="text-white hover:text-purple-300 transition-colors"
+                            >
+                              <div className="flex items-center gap-2">
+                                <span>{player.firstName} {player.lastName}</span>
+                                {player.jerseyNumber && (
+                                  <span className="text-gray-400">#{player.jerseyNumber}</span>
+                                )}
+                                {mockRating >= 95 && (
+                                  <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                                )}
+                              </div>
+                            </Link>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-gray-300">
+                          {player.position?.join(', ') || '-'}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-gray-300">
+                          {player.currentTeam?.name || '-'}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-gray-300">
+                          {player.currentLeague?.name || '-'}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <span className={`px-2 py-1 text-xs rounded-full ${
+                            player.status === 'active' 
+                              ? 'bg-green-500/20 text-green-300' 
+                              : 'bg-gray-500/20 text-gray-300'
+                          }`}>
+                            {player.status || 'Unknown'}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                          <div className="flex items-center justify-center gap-1">
+                            <span className={`text-lg font-bold ${
+                              mockRating >= 90 ? 'text-yellow-400' :
+                              mockRating >= 80 ? 'text-green-400' :
+                              mockRating >= 70 ? 'text-blue-400' :
+                              'text-gray-400'
+                            }`}>
+                              {mockRating}
+                            </span>
+                            {player.fantasyPoints && player.fantasyPoints > 20 && (
+                              <TrendingUp className="w-4 h-4 text-green-400" />
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
 

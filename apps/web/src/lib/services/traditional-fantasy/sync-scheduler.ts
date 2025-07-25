@@ -5,6 +5,7 @@
 
 import { EventEmitter } from 'events';
 import {
+import { logger } from '../../logging/logger';
   SyncConfig,
   SyncStatus,
   SyncType,
@@ -298,7 +299,7 @@ export class SyncScheduler extends EventEmitter {
 
       // Check if we should retry
       if (this.shouldRetry(scheduledSync)) {
-        console.log(`Scheduling retry ${scheduledSync.retryCount} for league ${config.leagueId}`);
+        logger.info('Scheduling retry ${scheduledSync.retryCount} for league ${config.leagueId}');
       } else {
         console.error(`Max retries reached for league ${config.leagueId}`);
         // Cancel sync after max retries
@@ -367,7 +368,7 @@ export class SyncScheduler extends EventEmitter {
    */
   private async syncRosterData(config: SyncConfig): Promise<any> {
     // Placeholder for roster sync logic
-    console.log(`Syncing roster data for league ${config.leagueId}`);
+    logger.info('Syncing roster data for league ${config.leagueId}');
     return { updated: true, timestamp: new Date() };
   }
 
@@ -376,7 +377,7 @@ export class SyncScheduler extends EventEmitter {
    */
   private async syncStandingsData(config: SyncConfig): Promise<any> {
     // Placeholder for standings sync logic
-    console.log(`Syncing standings data for league ${config.leagueId}`);
+    logger.info('Syncing standings data for league ${config.leagueId}');
     return { updated: true, timestamp: new Date() };
   }
 
@@ -385,7 +386,7 @@ export class SyncScheduler extends EventEmitter {
    */
   private async syncMatchupData(config: SyncConfig): Promise<any> {
     // Placeholder for matchup sync logic
-    console.log(`Syncing matchup data for league ${config.leagueId}`);
+    logger.info('Syncing matchup data for league ${config.leagueId}');
     return { updated: true, timestamp: new Date() };
   }
 
@@ -394,7 +395,7 @@ export class SyncScheduler extends EventEmitter {
    */
   private async syncTransactionData(config: SyncConfig): Promise<any> {
     // Placeholder for transaction sync logic
-    console.log(`Syncing transaction data for league ${config.leagueId}`);
+    logger.info('Syncing transaction data for league ${config.leagueId}');
     return { updated: true, timestamp: new Date() };
   }
 
@@ -403,7 +404,7 @@ export class SyncScheduler extends EventEmitter {
    */
   private async syncStatsData(config: SyncConfig): Promise<any> {
     // Placeholder for stats sync logic
-    console.log(`Syncing stats data for league ${config.leagueId}`);
+    logger.info('Syncing stats data for league ${config.leagueId}');
     return { updated: true, timestamp: new Date() };
   }
 

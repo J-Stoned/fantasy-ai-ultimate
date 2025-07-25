@@ -1,41 +1,73 @@
 /**
  * 💾 Cache Service
- * In-memory caching with Redis-ready interface
+ * High-performance caching with Redis-ready interface and query optimization
  */
+
+import { queryMonitor } from './query-monitor';
+import { logger } from '../logging/logger';
 
 export interface CacheOptions {
   ttl?: number; // Time to live in seconds
   tags?: string[]; // Cache tags for invalidation
+  compress?: boolean; // Compress large values
 }
 
 interface CacheEntry {
   value: any;
   expiresAt: number;
   tags: string[];
+  hits: number;
+  lastAccessed: number;
+  size: number;
+}
+
+interface CacheStats {
+  totalEntries: number;
+  validEntries: number;
+  expiredEntries: number;
+  tags: number;
+  totalSize: number;
+  hitRate: number;
+  avgHitsPerEntry: number;
 }
 
 class CacheService {
   private cache: Map<string, CacheEntry> = new Map();
   private tagIndex: Map<string, Set<string>> = new Map();
+  private hits = 0;
+  private misses = 0;
+  private maxCacheSize = 100 * 1024 * 1024; // 100MB default
 
   /**
-   * Get cached value
+   * Get cached value with metrics tracking
    */
   async get<T>(key: string): Promise<T | null> {
     const entry = this.cache.get(key);
     
-    if (!entry) return null;
+    if (!entry) {
+      this.misses++;
+      queryMonitor.logCacheAccess(false);
+      return null;
+    }
     
     if (Date.now() > entry.expiresAt) {
       this.delete(key);
+      this.misses++;
+      queryMonitor.logCacheAccess(false);
       return null;
     }
+    
+    // Update hit stats
+    this.hits++;
+    entry.hits++;
+    entry.lastAccessed = Date.now();
+    queryMonitor.logCacheAccess(true);
     
     return entry.value as T;
   }
 
   /**
-   * Set cached value
+   * Set cached value with size tracking
    */
   async set(
     key: string,
@@ -44,11 +76,20 @@ class CacheService {
   ): Promise<void> {
     const ttl = options.ttl || 3600; // Default 1 hour
     const tags = options.tags || [];
+    const size = this.estimateSize(value);
+    
+    // Check cache size limit
+    if (this.getCurrentCacheSize() + size > this.maxCacheSize) {
+      await this.evictLRU();
+    }
     
     const entry: CacheEntry = {
       value,
       expiresAt: Date.now() + (ttl * 1000),
-      tags
+      tags,
+      hits: 0,
+      lastAccessed: Date.now(),
+      size
     };
     
     this.cache.set(key, entry);
@@ -102,11 +143,13 @@ class CacheService {
   }
 
   /**
-   * Get cache statistics
+   * Get enhanced cache statistics
    */
-  getStats() {
+  getStats(): CacheStats {
     let validCount = 0;
     let expiredCount = 0;
+    let totalSize = 0;
+    let totalHits = 0;
     const now = Date.now();
     
     this.cache.forEach(entry => {
@@ -115,14 +158,67 @@ class CacheService {
       } else {
         validCount++;
       }
+      totalSize += entry.size;
+      totalHits += entry.hits;
     });
+    
+    const totalRequests = this.hits + this.misses;
+    const hitRate = totalRequests > 0 ? (this.hits / totalRequests) * 100 : 0;
+    const avgHitsPerEntry = this.cache.size > 0 ? totalHits / this.cache.size : 0;
     
     return {
       totalEntries: this.cache.size,
       validEntries: validCount,
       expiredEntries: expiredCount,
-      tags: this.tagIndex.size
+      tags: this.tagIndex.size,
+      totalSize,
+      hitRate,
+      avgHitsPerEntry
     };
+  }
+
+  /**
+   * Estimate size of cached value
+   */
+  private estimateSize(value: any): number {
+    if (typeof value === 'string') {
+      return value.length * 2; // 2 bytes per char
+    }
+    if (typeof value === 'object') {
+      return JSON.stringify(value).length * 2;
+    }
+    return 8; // Default for numbers, booleans
+  }
+
+  /**
+   * Get current cache size in bytes
+   */
+  private getCurrentCacheSize(): number {
+    let totalSize = 0;
+    this.cache.forEach(entry => {
+      totalSize += entry.size;
+    });
+    return totalSize;
+  }
+
+  /**
+   * Evict least recently used entries
+   */
+  private async evictLRU(): Promise<void> {
+    const entries = Array.from(this.cache.entries())
+      .sort((a, b) => a[1].lastAccessed - b[1].lastAccessed);
+    
+    const targetSize = this.maxCacheSize * 0.8; // Free up to 80% capacity
+    let currentSize = this.getCurrentCacheSize();
+    
+    for (const [key, entry] of entries) {
+      if (currentSize <= targetSize) break;
+      
+      currentSize -= entry.size;
+      await this.delete(key);
+    }
+    
+    logger.info('🧹 Evicted entries to free cache space');
   }
 
   /**
@@ -186,7 +282,7 @@ class CacheService {
       keysToDelete.forEach(key => this.delete(key));
       
       if (keysToDelete.length > 0) {
-        console.log(`🧹 Cleaned ${keysToDelete.length} expired cache entries`);
+        logger.info('🧹 Cleaned ${keysToDelete.length} expired cache entries');
       }
     }, intervalMs);
   }

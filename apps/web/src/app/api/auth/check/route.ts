@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
+import { logger } from '../../../../lib/logging/logger';
 
 export async function POST(request: NextRequest) {
   try {
@@ -50,7 +51,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ hasAuth: true })
     
   } catch (error: any) {
-    console.error('Auth check error:', error)
+    logger.error('Auth check error:', { error: error })
     return NextResponse.json(
       { hasAuth: false, error: error.message },
       { status: 500 }

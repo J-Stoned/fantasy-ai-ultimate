@@ -1,6 +1,7 @@
 // Real-Time Draft State Management
 
 import {
+import { logger } from '../../../logging/logger';
   DraftState,
   DraftPick,
   TeamState,
@@ -172,7 +173,7 @@ export class DraftTracker {
   private validatePick(playerId: string, teamId: string): boolean {
     // Check if player is available
     if (!this.draftState.availablePlayers.has(playerId)) {
-      console.error('Player not available:', playerId);
+      logger.error('Player not available:', { error: playerId });
       return false;
     }
 
@@ -197,7 +198,7 @@ export class DraftTracker {
 
     const requirements = this.draftState.leagueSettings.rosterRequirements[player.position];
     if (requirements && positionCount >= requirements.max) {
-      console.error('Position limit reached:', player.position);
+      logger.error('Position limit reached:', { error: player.position });
       return false;
     }
 

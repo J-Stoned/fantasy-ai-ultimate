@@ -25,6 +25,7 @@ import {
   TeamStanding
 } from './types';
 import { AuthManager } from './auth-manager';
+import { logger } from '../../logging/logger';
 
 export class YahooApiClient implements PlatformApiClient {
   private readonly baseUrl = 'https://fantasysports.yahooapis.com/fantasy/v2';
@@ -77,7 +78,7 @@ export class YahooApiClient implements PlatformApiClient {
           const sportLeagues = await this.getLeaguesForSport(credentials, sport, currentYear);
           leagues.push(...sportLeagues);
         } catch (error) {
-          console.warn(`Failed to fetch ${sport} leagues:`, error);
+          logger.warn('Failed to fetch ${sport} leagues:'error);
         }
       }
 

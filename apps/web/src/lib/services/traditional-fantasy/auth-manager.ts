@@ -11,6 +11,7 @@ import {
   ApiResponse
 } from './types';
 import { createHash, randomBytes } from 'crypto';
+import { logger } from '../../logging/logger';
 
 export class AuthManager {
   private credentials: Map<string, AuthCredentials> = new Map();
@@ -245,7 +246,7 @@ export class AuthManager {
     // In production, encrypt and store in secure storage
     if (process.env.NODE_ENV === 'production') {
       // TODO: Implement secure storage (e.g., encrypted database, key vault)
-      console.log('Storing credentials securely...');
+      logger.info('Storing credentials securely...');
     }
   }
 
@@ -288,7 +289,7 @@ export class AuthManager {
     // Remove from secure storage
     if (process.env.NODE_ENV === 'production') {
       // TODO: Implement secure storage removal
-      console.log('Removing credentials from secure storage...');
+      logger.info('Removing credentials from secure storage...');
     }
   }
 
@@ -372,7 +373,7 @@ export class AuthManager {
     
     if (refreshTime > 0) {
       const timer = setTimeout(async () => {
-        console.log(`Refreshing token for ${credentials.platform} user ${credentials.userId}`);
+        logger.info('Refreshing token for ${credentials.platform} user ${credentials.userId}');
         await this.refreshAccessToken(credentials);
       }, refreshTime);
 

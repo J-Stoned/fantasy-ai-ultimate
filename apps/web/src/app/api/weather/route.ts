@@ -5,6 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { services } from '@/lib/services/init'
+import { logger } from '../../../lib/logging/logger';
 
 // GET endpoint - retrieve weather data
 export async function GET(request: NextRequest) {
@@ -101,7 +102,7 @@ export async function GET(request: NextRequest) {
     }
     
   } catch (error: any) {
-    console.error('Weather API error:', error)
+    logger.error('Weather API error:', { error: error })
     return NextResponse.json(
       { error: 'Failed to retrieve weather data', details: error.message },
       { status: 500 }
@@ -180,7 +181,7 @@ export async function POST(request: NextRequest) {
     })
     
   } catch (error: any) {
-    console.error('Weather update error:', error)
+    logger.error('Weather update error:', { error: error })
     return NextResponse.json(
       { error: 'Failed to update weather data', details: error.message },
       { status: 500 }

@@ -1,0 +1,38 @@
+
+> @fantasy-ai/web@1.0.0 dev
+> next dev
+
+   ▲ Next.js 15.2.5
+   - Local:        http://localhost:3000
+   - Network:      http://10.255.255.254:3000
+   - Environments: .env.development.local, .env.local, .env
+
+ ✓ Starting...
+ ✓ Ready in 22.6s
+ ○ Compiling / ...
+ ✓ Compiled / in 2.3s (751 modules)
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <... asChild={true} variant="outline" className=... onClick={function onClick} children=...>
+                                                              ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>) {
+  digest: '1011380068'
+}
+ GET / 200 in 4238ms
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <... asChild={true} variant="outline" className=... onClick={function onClick} children=...>
+                                                              ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>) {
+  digest: '1011380068'
+}
+ HEAD / 200 in 525ms
+[?25h

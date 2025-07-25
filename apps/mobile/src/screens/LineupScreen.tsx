@@ -25,6 +25,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { mobileOptimizer } from '../features/optimizer/MobileGPUOptimizer';
 import { db } from '../api/supabase';
 import { Lineup3D } from '../features/visualization/Lineup3D';
+import { MemoizedPlayerAvatar } from '../components/avatars/PlayerAvatar';
 
 interface Player {
   id: string;
@@ -354,6 +355,18 @@ export default function LineupScreen() {
         
         {player ? (
           <View style={styles.playerInfo}>
+            {/* 🔥 ENTERPRISE AVATAR SYSTEM - LINEUP VIEW */}
+            <View style={styles.lineupAvatarContainer}>
+              <MemoizedPlayerAvatar
+                playerId={player.id}
+                size={48}
+                quality="medium"
+                showBadge={true}
+                showStats={false}
+                animate={false}
+              />
+            </View>
+            
             <View style={styles.playerMain}>
               <Text style={styles.playerName}>{player.name}</Text>
               <View style={styles.playerDetails}>
@@ -399,6 +412,18 @@ export default function LineupScreen() {
           onLongPress={drag}
           disabled={isActive}
         >
+          {/* 🔥 ENTERPRISE AVATAR SYSTEM - BENCH VIEW */}
+          <View style={styles.benchAvatarContainer}>
+            <MemoizedPlayerAvatar
+              playerId={item.id}
+              size={40}
+              quality="medium"
+              showBadge={false}
+              showStats={false}
+              animate={false}
+            />
+          </View>
+          
           <View style={styles.benchPlayerInfo}>
             <Text style={styles.benchPlayerName}>{item.name}</Text>
             <Text style={styles.benchPlayerDetails}>
@@ -595,6 +620,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 12,
   },
+  lineupAvatarContainer: {
+    marginRight: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   playerMain: {
     flex: 1,
   },
@@ -651,6 +681,11 @@ const styles = StyleSheet.create({
   dragging: {
     opacity: 0.7,
     transform: [{ scale: 1.02 }],
+  },
+  benchAvatarContainer: {
+    marginRight: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   benchPlayerInfo: {
     flex: 1,

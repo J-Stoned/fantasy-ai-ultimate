@@ -1,3 +1,5 @@
+import { logger } from './logging/logger';
+
 /**
  * Redis Client with Fallback
  * 
@@ -17,7 +19,7 @@ class RedisClient {
   constructor() {
     // In production, you'd connect to Redis here
     // For now, we'll use in-memory cache
-    console.log('Redis client initialized (using in-memory cache)');
+    logger.info('Redis client initialized (using in-memory cache)');
   }
 
   async get(key: string): Promise<string | null> {
@@ -95,7 +97,7 @@ if (process.env.REDIS_URL && typeof window === 'undefined') {
     const client = new Redis(process.env.REDIS_URL);
     
     client.on('connect', () => {
-      console.log('Connected to Redis');
+      logger.info('Connected to Redis');
       // Replace methods with real Redis client
       (redis as any).get = client.get.bind(client);
       (redis as any).set = client.set.bind(client);
@@ -108,9 +110,9 @@ if (process.env.REDIS_URL && typeof window === 'undefined') {
     });
     
     client.on('error', (err) => {
-      console.warn('Redis connection error, falling back to memory cache:', err.message);
+      logger.warn('Redis connection error, falling back to memory cache:'err.message);
     });
   }).catch(() => {
-    console.log('Redis not available, using in-memory cache');
+    logger.info('Redis not available, using in-memory cache');
   });
 }

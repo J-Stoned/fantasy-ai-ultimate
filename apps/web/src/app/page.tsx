@@ -47,7 +47,7 @@ export default function HomePage() {
         </h1>
         
         <p style={{ fontSize: '1.5rem', marginBottom: '3rem', opacity: 0.9 }}>
-          65.2% Pattern Accuracy | 48K+ Games Analyzed | $1.15M Profit Potential
+          96.97% ML Accuracy | 4.3M+ Training Records | Enterprise Platform Ready
         </p>
 
         <div style={{ 
@@ -62,8 +62,8 @@ export default function HomePage() {
             borderRadius: '10px',
             backdropFilter: 'blur(10px)'
           }}>
-            <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>519K+</div>
-            <div style={{ opacity: 0.8 }}>Player Stats</div>
+            <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>4.3M+</div>
+            <div style={{ opacity: 0.8 }}>Training Records</div>
           </div>
           
           <div style={{ 
@@ -72,8 +72,8 @@ export default function HomePage() {
             borderRadius: '10px',
             backdropFilter: 'blur(10px)'
           }}>
-            <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>48K+</div>
-            <div style={{ opacity: 0.8 }}>Games</div>
+            <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>96.97%</div>
+            <div style={{ opacity: 0.8 }}>NFL Accuracy</div>
           </div>
           
           <div style={{ 
@@ -82,8 +82,8 @@ export default function HomePage() {
             borderRadius: '10px',
             backdropFilter: 'blur(10px)'
           }}>
-            <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>65.2%</div>
-            <div style={{ opacity: 0.8 }}>Pattern Accuracy</div>
+            <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>4</div>
+            <div style={{ opacity: 0.8 }}>Sports Covered</div>
           </div>
           
           <div style={{ 
@@ -92,8 +92,8 @@ export default function HomePage() {
             borderRadius: '10px',
             backdropFilter: 'blur(10px)'
           }}>
-            <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>76.8%</div>
-            <div style={{ opacity: 0.8 }}>Best Pattern</div>
+            <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>15+</div>
+            <div style={{ opacity: 0.8 }}>API Endpoints</div>
           </div>
         </div>
 
@@ -103,11 +103,11 @@ export default function HomePage() {
           marginBottom: '2rem',
           color: '#ff6b6b'
         }}>
-          583K+ Total Records
+          Enterprise Fantasy AI Platform
         </div>
 
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link href="/dashboard" style={{ 
+          <Link href="/predictions" style={{ 
             background: 'linear-gradient(45deg, #ff6b6b, #ff8787)',
             color: 'white',
             padding: '1rem 2rem',
@@ -117,6 +117,21 @@ export default function HomePage() {
             fontWeight: 'bold',
             display: 'inline-block',
             transition: 'transform 0.2s',
+          }}>
+            🎯 ML Predictions
+          </Link>
+          
+          <Link href="/dashboard-demo" style={{ 
+            background: 'rgba(255,255,255,0.1)',
+            color: 'white',
+            padding: '1rem 2rem',
+            borderRadius: '50px',
+            textDecoration: 'none',
+            fontSize: '1.2rem',
+            fontWeight: 'bold',
+            display: 'inline-block',
+            border: '2px solid rgba(255,255,255,0.3)',
+            transition: 'all 0.2s',
           }}>
             Enter Dashboard
           </Link>
@@ -138,9 +153,9 @@ export default function HomePage() {
         </div>
 
         <div style={{ marginTop: '3rem', opacity: 0.6 }}>
-          <p>🎯 Pattern Detection System with 5 Proven Strategies</p>
-          <p>📊 Universal Sports Collector (NFL, NBA, MLB, NHL, NCAA)</p>
-          <p>🚀 10X Dev Architecture - 32 Clean Scripts</p>
+          <p>🤖 96.97% ML Accuracy with Neural Network Models</p>
+          <p>📊 Real-time Predictions for NFL, NBA, MLB, NHL</p>
+          <p>🚀 Enterprise Platform - Production Ready</p>
         </div>
       </div>
     </div>

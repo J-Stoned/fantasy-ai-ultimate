@@ -10,6 +10,7 @@
 import { useState } from 'react';
 import { Card } from '../../ui/card';
 import { Button } from '../../ui/button';
+import { logger } from '../../../lib/logging/logger';
 
 interface QuickAction {
   id: string;
@@ -31,7 +32,7 @@ export function MLTrainingControls() {
 
   const handleStartTraining = () => {
     setIsTraining(true);
-    console.log('🚀 Starting training job...');
+    logger.info('🚀 Starting training job...');
     // Simulate training completion
     setTimeout(() => {
       setIsTraining(false);
@@ -41,7 +42,7 @@ export function MLTrainingControls() {
   const handleEmergencyStop = () => {
     setEmergencyStop(true);
     setIsTraining(false);
-    console.log('🛑 Emergency stop activated!');
+    logger.info('🛑 Emergency stop activated!');
     setTimeout(() => {
       setEmergencyStop(false);
     }, 3000);
@@ -63,7 +64,7 @@ export function MLTrainingControls() {
       description: 'Optimize RTX 4060 performance for current workload',
       icon: '⚡',
       color: 'from-blue-500 to-cyan-500',
-      action: () => console.log('🎮 Optimizing GPU...'),
+      action: () => logger.info('🎮 Optimizing GPU...'),
       disabled: false
     },
     {
@@ -72,7 +73,7 @@ export function MLTrainingControls() {
       description: 'Run comprehensive validation on all active models',
       icon: '✅',
       color: 'from-green-500 to-emerald-500',
-      action: () => console.log('🔍 Validating models...'),
+      action: () => logger.info('🔍 Validating models...'),
       disabled: false
     },
     {
@@ -81,7 +82,7 @@ export function MLTrainingControls() {
       description: 'Export trained models for production deployment',
       icon: '📦',
       color: 'from-orange-500 to-red-500',
-      action: () => console.log('📦 Exporting models...'),
+      action: () => logger.info('📦 Exporting models...'),
       disabled: false
     }
   ];
@@ -157,7 +158,7 @@ export function MLTrainingControls() {
           </Button>
 
           <Button
-            onClick={() => console.log('🔄 Restarting services...')}
+            onClick={() => logger.info('🔄 Restarting services...')}
             className="h-16 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold transition-all duration-200"
           >
             <div className="flex items-center space-x-2">

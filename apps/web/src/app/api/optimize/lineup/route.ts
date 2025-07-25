@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { database } from '@/lib/services/database'
 import { services } from '@/lib/services/init'
 import type { MLOptimizationOptions } from '../../../../../../../scripts/fantasy-ml/services/ml-dfs-optimizer'
+import { logger } from '../../../../lib/logging/logger';
 
 interface OptimizationRequest {
   sport: string
@@ -97,7 +98,7 @@ export async function POST(request: NextRequest) {
     const cached = await cacheService.get<EnhancedLineup[]>('lineups', cacheKey)
     
     if (cached && cached.length >= num_lineups) {
-      console.log('📦 Returning cached lineups')
+      logger.info('📦 Returning cached lineups')
       return NextResponse.json({
         lineups: cached.slice(0, num_lineups),
         cached: true,
@@ -137,14 +138,14 @@ export async function POST(request: NextRequest) {
     // Start optimization timer
     const startTime = performance.now()
 
-    console.log(`🧠 Running ML optimization for ${sport} on ${game_date}`)
-    console.log(`📊 Strategy: ${strategy}, Contest: ${contest_type}`)
+    logger.info('🧠 Running ML optimization for ${sport} on ${game_date}')
+    logger.info('📊 Strategy: ${strategy}, Contest: ${contest_type}')
 
     // Run ML-powered optimization
     const optimizedLineups = await mlOptimizer.optimizeLineups(optimizationOptions)
 
     const processingTime = performance.now() - startTime
-    console.log(`⚡ Optimization completed in ${processingTime.toFixed(0)}ms`)
+    logger.info('⚡ Optimization completed in ${processingTime.toFixed(0)}ms')
 
     // Format lineups for response
     const formattedLineups = optimizedLineups.map(lineup => ({
@@ -200,7 +201,7 @@ export async function POST(request: NextRequest) {
         ]
       )
     } catch (error) {
-      console.warn('Failed to save optimization metadata:', error)
+      logger.warn('Failed to save optimization metadata:'error)
     }
 
     // Broadcast optimization complete via WebSocket
@@ -230,7 +231,7 @@ export async function POST(request: NextRequest) {
     })
 
   } catch (error: any) {
-    console.error('Lineup optimization error:', error)
+    logger.error('Lineup optimization error:', { error: error })
     return NextResponse.json(
       { error: 'Failed to optimize lineups', details: error.message },
       { status: 500 }
@@ -290,7 +291,7 @@ export async function GET(request: NextRequest) {
     })
 
   } catch (error: any) {
-    console.error('GET endpoint error:', error)
+    logger.error('GET endpoint error:', { error: error })
     return NextResponse.json(
       { error: 'Service error', details: error.message },
       { status: 500 }

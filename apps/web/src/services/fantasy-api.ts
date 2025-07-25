@@ -4,6 +4,7 @@
  */
 
 import { API_CONFIG, ENDPOINTS, LineupConfig, PlayerProjection, SportType } from './api-config'
+import { logger } from '../lib/logging/logger';
 
 export interface Lineup {
   players: Array<{
@@ -162,7 +163,7 @@ class FantasyAPI {
       
       return await response.json()
     } catch (error) {
-      console.error('Error optimizing lineup:', error)
+      logger.error('Error optimizing lineup:', { error: error })
       throw error
     }
   }
@@ -184,7 +185,7 @@ class FantasyAPI {
       
       return await response.json()
     } catch (error) {
-      console.error('Error analyzing trade:', error)
+      logger.error('Error analyzing trade:', { error: error })
       throw error
     }
   }
@@ -218,7 +219,7 @@ class FantasyAPI {
       
       return await response.json()
     } catch (error) {
-      console.error('Error fetching waiver targets:', error)
+      logger.error('Error fetching waiver targets:', { error: error })
       throw error
     }
   }
@@ -246,7 +247,7 @@ class FantasyAPI {
       
       return await response.json()
     } catch (error) {
-      console.error('Error fetching player projection:', error)
+      logger.error('Error fetching player projection:', { error: error })
       throw error
     }
   }
@@ -268,7 +269,7 @@ class FantasyAPI {
       
       return await response.json()
     } catch (error) {
-      console.error('Error fetching insights:', error)
+      logger.error('Error fetching insights:', { error: error })
       throw error
     }
   }
@@ -290,7 +291,7 @@ class FantasyAPI {
       
       return await response.json()
     } catch (error) {
-      console.error('Error processing voice command:', error)
+      logger.error('Error processing voice command:', { error: error })
       throw error
     }
   }
@@ -308,7 +309,7 @@ class FantasyAPI {
       
       return await response.json()
     } catch (error) {
-      console.error('Error getting spatial projection:', error)
+      logger.error('Error getting spatial projection:', { error: error })
       throw error
     }
   }
@@ -327,7 +328,7 @@ class FantasyAPI {
       
       return await response.json()
     } catch (error) {
-      console.error('Error getting pitch control:', error)
+      logger.error('Error getting pitch control:', { error: error })
       throw error
     }
   }
@@ -345,7 +346,7 @@ class FantasyAPI {
       
       return await response.json()
     } catch (error) {
-      console.error('Error getting movement patterns:', error)
+      logger.error('Error getting movement patterns:', { error: error })
       throw error
     }
   }
@@ -374,7 +375,7 @@ class FantasyAPI {
       
       return await response.json()
     } catch (error) {
-      console.error('Error optimizing with spatial:', error)
+      logger.error('Error optimizing with spatial:', { error: error })
       throw error
     }
   }

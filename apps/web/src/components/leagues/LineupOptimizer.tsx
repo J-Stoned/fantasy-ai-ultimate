@@ -11,6 +11,7 @@ import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Progress } from '../ui/progress';
+import { logger } from '../../lib/logging/logger';
 
 interface LineupSlot {
   position: string;
@@ -113,7 +114,7 @@ export function LineupOptimizer({ leagueId }: LineupOptimizerProps) {
         setAiRecommendations(data.recommendations || []);
       }
     } catch (error) {
-      console.error('Optimization failed:', error);
+      logger.error('Optimization failed:', { error: error });
     } finally {
       setOptimizing(false);
     }
@@ -141,7 +142,7 @@ export function LineupOptimizer({ leagueId }: LineupOptimizerProps) {
     for (const targetLeague of sameLeagues) {
       if (targetLeague.id !== leagueId) {
         // Map players to target league's roster
-        console.log(`Applying lineup to ${targetLeague.name}`);
+        logger.info('Applying lineup to ${targetLeague.name}');
       }
     }
   };

@@ -9,6 +9,7 @@ import { WebSocket, WebSocketServer } from 'ws';
 import { EventEmitter } from 'events';
 import { Redis } from 'ioredis';
 import { adminAuth, AdminSession, AdminSection } from '../middleware/admin-auth';
+import { logger } from '../logging/logger';
 
 // Admin WebSocket Message Types
 export interface AdminWebSocketMessage {
@@ -126,7 +127,7 @@ export class AdminWebSocketServer extends EventEmitter {
     this.startMetricsCollection();
     this.startHeartbeat();
     
-    console.log(`🚀 Admin WebSocket Server started on port ${port}`);
+    logger.info('🚀 Admin WebSocket Server started on port ${port}');
   }
 
   /**
@@ -136,7 +137,7 @@ export class AdminWebSocketServer extends EventEmitter {
   private setupWebSocketServer(): void {
     this.wss.on('connection', async (ws, request) => {
       try {
-        console.log('[AdminWS] New connection attempt');
+        logger.info('[AdminWS] New connection attempt');
         
         // Extract session token from query or headers
         const url = new URL(request.url!, `http://${request.headers.host}`);
@@ -195,10 +196,10 @@ export class AdminWebSocketServer extends EventEmitter {
         ws.on('error', (error) => this.handleClientError(clientId, error));
         ws.on('pong', () => this.handlePong(clientId));
         
-        console.log(`[AdminWS] Client ${clientId} connected (${session.email})`);
+        logger.info('[AdminWS] Client ${clientId} connected (${session.email})');
         
       } catch (error) {
-        console.error('[AdminWS] Connection error:', error);
+        logger.error('[AdminWS] Connection error:', { error: error });
         ws.close(1011, 'Server error');
       }
     });
@@ -246,7 +247,7 @@ export class AdminWebSocketServer extends EventEmitter {
       }
       
     } catch (error) {
-      console.error('[AdminWS] Message handling error:', error);
+      logger.error('[AdminWS] Message handling error:', { error: error });
       this.sendError(client, 'Invalid message format');
     }
   }
@@ -301,10 +302,10 @@ export class AdminWebSocketServer extends EventEmitter {
       // Send initial channel data
       await this.sendInitialChannelData(client, channel);
       
-      console.log(`[AdminWS] Client ${client.id} subscribed to ${channel}`);
+      logger.info('[AdminWS] Client ${client.id} subscribed to ${channel}');
       
     } catch (error) {
-      console.error('[AdminWS] Subscribe error:', error);
+      logger.error('[AdminWS] Subscribe error:', { error: error });
       this.sendError(client, 'Subscription failed');
     }
   }
@@ -440,7 +441,7 @@ export class AdminWebSocketServer extends EventEmitter {
         });
       }
     } catch (error) {
-      console.error('[AdminWS] Redis message error:', error);
+      logger.error('[AdminWS] Redis message error:', { error: error });
     }
   }
 
@@ -470,7 +471,7 @@ export class AdminWebSocketServer extends EventEmitter {
         }
         
       } catch (error) {
-        console.error('[AdminWS] Metrics collection error:', error);
+        logger.error('[AdminWS] Metrics collection error:', { error: error });
       }
     }, 5000); // Collect every 5 seconds
   }
@@ -492,7 +493,7 @@ export class AdminWebSocketServer extends EventEmitter {
         }
       };
     } catch (error) {
-      console.error('[AdminWS] ML metrics error:', error);
+      logger.error('[AdminWS] ML metrics error:', { error: error });
       return null;
     }
   }
@@ -514,7 +515,7 @@ export class AdminWebSocketServer extends EventEmitter {
         }
       };
     } catch (error) {
-      console.error('[AdminWS] DFS metrics error:', error);
+      logger.error('[AdminWS] DFS metrics error:', { error: error });
       return null;
     }
   }
@@ -538,7 +539,7 @@ export class AdminWebSocketServer extends EventEmitter {
         }
       };
     } catch (error) {
-      console.error('[AdminWS] System metrics error:', error);
+      logger.error('[AdminWS] System metrics error:', { error: error });
       return null;
     }
   }
@@ -580,7 +581,7 @@ export class AdminWebSocketServer extends EventEmitter {
       try {
         client.ws.send(JSON.stringify(message));
       } catch (error) {
-        console.error('[AdminWS] Send error:', error);
+        logger.error('[AdminWS] Send error:', { error: error });
       }
     }
   }
@@ -693,12 +694,12 @@ export class AdminWebSocketServer extends EventEmitter {
       }
       
       this.clients.delete(clientId);
-      console.log(`[AdminWS] Client ${clientId} disconnected`);
+      logger.info('[AdminWS] Client ${clientId} disconnected');
     }
   }
 
   private handleClientError(clientId: string, error: Error): void {
-    console.error(`[AdminWS] Client ${clientId} error:`, error);
+    logger.error('[AdminWS] Client ${clientId} error:', { error: error });
     this.handleClientDisconnect(clientId);
   }
 
@@ -725,7 +726,7 @@ export class AdminWebSocketServer extends EventEmitter {
         });
       }
     } catch (error) {
-      console.error('[AdminWS] Initial data error:', error);
+      logger.error('[AdminWS] Initial data error:', { error: error });
     }
   }
 
@@ -765,7 +766,7 @@ export class AdminWebSocketServer extends EventEmitter {
    * Clean up resources and connections
    */
   public async shutdown(): Promise<void> {
-    console.log('[AdminWS] Shutting down admin WebSocket server...');
+    logger.info('[AdminWS] Shutting down admin WebSocket server...');
     
     if (this.metricsInterval) {
       clearInterval(this.metricsInterval);
@@ -787,7 +788,7 @@ export class AdminWebSocketServer extends EventEmitter {
     await this.redis.quit();
     await this.redisSubscriber.quit();
     
-    console.log('[AdminWS] Admin WebSocket server shut down complete');
+    logger.info('[AdminWS] Admin WebSocket server shut down complete');
   }
 }
 

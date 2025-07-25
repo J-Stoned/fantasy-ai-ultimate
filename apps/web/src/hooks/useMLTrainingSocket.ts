@@ -8,6 +8,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { logger } from '../lib/logging/logger';
 
 export interface MLTrainingUpdate {
   type: 'training_progress' | 'gpu_metrics' | 'model_accuracy' | 'system_alert';
@@ -56,7 +57,7 @@ export function useMLTrainingSocket() {
 
   // Simulate WebSocket connection and real-time updates
   useEffect(() => {
-    console.log('🔌 Connecting to ML Training WebSocket...');
+    logger.info('🔌 Connecting to ML Training WebSocket...');
     setIsConnected(true);
 
     const interval = setInterval(() => {
@@ -117,12 +118,12 @@ export function useMLTrainingSocket() {
     return () => {
       clearInterval(interval);
       setIsConnected(false);
-      console.log('🔌 ML Training WebSocket disconnected');
+      logger.info('🔌 ML Training WebSocket disconnected');
     };
   }, []);
 
   const sendCommand = useCallback((command: string, data?: any) => {
-    console.log(`📤 Sending ML command: ${command}`, data);
+    logger.info('📤 Sending ML command: ${command}', { data: data });
     
     // Simulate command responses
     setTimeout(() => {

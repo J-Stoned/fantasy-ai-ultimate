@@ -225,3 +225,30 @@ export interface KeeperEngineConfig {
   positionPriority: Record<string, number>;
   leagueSpecificFactors: any;
 }
+
+// Additional types for UI components
+export interface DynastyRoster {
+  players: DynastyAsset[];
+  picks: DraftPickValue[];
+  totalValue: number;
+  composition: {
+    QB: number;
+    RB: number;
+    WR: number;
+    TE: number;
+  };
+}
+
+export interface RosterAnalysis {
+  overallGrade: string;
+  strengths: string[];
+  weaknesses: string[];
+  recommendations: string[];
+  ageAnalysis: {
+    average: number;
+    distribution: Record<string, number>;
+  };
+  positionDepth: Record<string, number>;
+  injuryRisk: number;
+  futureOutlook: string;
+}

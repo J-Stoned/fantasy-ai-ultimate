@@ -18,6 +18,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { MemoizedPlayerAvatar } from '../components/avatars/PlayerAvatar';
 
 interface Player {
   id: string;
@@ -224,6 +225,19 @@ export default function PlayersScreen() {
     >
       <View style={styles.playerRank}>
         <Text style={styles.rankText}>{item.rank}</Text>
+      </View>
+
+      {/* 🔥 ENTERPRISE AVATAR SYSTEM - 85K+ PLAYERS */}
+      <View style={styles.avatarContainer}>
+        <MemoizedPlayerAvatar
+          playerId={item.id}
+          size={56}
+          quality="medium"
+          showBadge={true}
+          showStats={false}
+          animate={true}
+          onPress={() => navigation.navigate('PlayerDetail', { playerId: item.id } as never)}
+        />
       </View>
 
       <View style={styles.playerInfo}>
@@ -481,9 +495,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
+  avatarContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 8,
+    marginRight: 8,
+  },
   playerInfo: {
     flex: 1,
-    marginLeft: 12,
+    marginLeft: 4,
   },
   playerHeader: {
     flexDirection: 'row',

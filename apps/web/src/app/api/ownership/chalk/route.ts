@@ -11,6 +11,7 @@ import { VegasService } from '@/scripts/fantasy-ml/services/vegas-service';
 import { WeatherService } from '@/scripts/fantasy-ml/services/weather-service';
 import { InjuryService } from '@/scripts/fantasy-ml/services/injury-service';
 import { cacheService } from '@/scripts/fantasy-ml/services/cache-service';
+import { logger } from '../../../../lib/logging/logger';
 
 // Initialize database pool
 const pgPool = new Pool({
@@ -53,7 +54,7 @@ async function initializeServices() {
     
     servicesInitialized = true;
   } catch (error) {
-    console.error('Failed to initialize services:', error);
+    logger.error('Failed to initialize services:', { error: error });
     throw error;
   }
 }
@@ -136,7 +137,7 @@ export async function GET(request: NextRequest) {
     });
     
   } catch (error) {
-    console.error('Chalk API error:', error);
+    logger.error('Chalk API error:', { error: error });
     return NextResponse.json(
       { 
         success: false, 

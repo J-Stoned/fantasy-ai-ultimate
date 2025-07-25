@@ -11,6 +11,7 @@ import { ScrollArea } from '../ui/scroll-area';
 import { PlatformImportWizard } from './PlatformImportWizard';
 import { CrossPlatformTradeAnalyzer } from './CrossPlatformTradeAnalyzer';
 import { LineupOptimizer } from './LineupOptimizer';
+import { logger } from '../../lib/logging/logger';
 // import { PatternAlerts } from './PatternAlerts'; // Removed - pattern detection failed
 
 export function UnifiedDashboard() {
@@ -354,7 +355,7 @@ function AIInsights({ leagueId }: { leagueId: string }) {
       const data = await response.json();
       setInsights(data.insights || []);
     } catch (error) {
-      console.error('Failed to fetch insights:', error);
+      logger.error('Failed to fetch insights:', { error: error });
     } finally {
       setLoading(false);
     }

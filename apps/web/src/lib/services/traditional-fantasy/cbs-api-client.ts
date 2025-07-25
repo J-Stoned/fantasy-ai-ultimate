@@ -25,6 +25,7 @@ import {
   WaiverType
 } from './types';
 import { AuthManager } from './auth-manager';
+import { logger } from '../../logging/logger';
 
 export class CBSApiClient implements PlatformApiClient {
   private readonly baseUrl = 'https://api.cbssports.com/fantasy';
@@ -86,7 +87,7 @@ export class CBSApiClient implements PlatformApiClient {
           leagues.push(...sportLeagues);
         }
       } catch (error) {
-        console.warn(`Failed to fetch ${sport} leagues:`, error);
+        logger.warn('Failed to fetch ${sport} leagues:'error);
       }
     }
 
@@ -143,7 +144,7 @@ export class CBSApiClient implements PlatformApiClient {
         const roster = this.parseRoster(data.body.roster, team.platformTeamId);
         rosters.push(roster);
       } catch (error) {
-        console.warn(`Failed to fetch roster for team ${team.id}:`, error);
+        logger.warn('Failed to fetch roster for team ${team.id}:'error);
       }
     }
 

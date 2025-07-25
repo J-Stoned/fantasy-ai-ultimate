@@ -27,10 +27,13 @@ import {
   Info,
   Sparkles,
   Percent,
-  Calculator
+  Calculator,
+  Loader2,
+  RefreshCw
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import CountUp from 'react-countup';
+import { logger } from '../../lib/logging/logger';
 
 interface Contest {
   id: string;
@@ -43,7 +46,7 @@ interface Contest {
   entries: number;
   maxEntries: number;
   maxEntriesPerUser: number;
-  startTime: Date;
+  startTime: Date | string;
   overlay: number;
   expectedValue: number;
   projectedROI: number;
@@ -62,47 +65,24 @@ interface FilterState {
   showRecommended: boolean;
 }
 
-const generateMockContests = (): Contest[] => {
-  const sports = ['NFL', 'NBA', 'MLB', 'NHL', 'PGA', 'UFC'];
-  const types: Contest['type'][] = ['GPP', '50/50', 'H2H', 'Tournament', 'Satellite', 'Multiplier'];
-  
-  return Array.from({ length: 50 }, (_, i) => {
-    const sport = sports[Math.floor(Math.random() * sports.length)];
-    const type = types[Math.floor(Math.random() * types.length)];
-    const entryFee = [1, 3, 5, 10, 20, 50, 100, 250, 500][Math.floor(Math.random() * 9)];
-    const guaranteedPrizePool = entryFee * (100 + Math.floor(Math.random() * 900));
-    const maxEntries = [100, 500, 1000, 5000, 10000, 50000, 100000][Math.floor(Math.random() * 7)];
-    const entries = Math.floor(maxEntries * (0.3 + Math.random() * 0.6));
-    const currentPrizePool = entries * entryFee;
-    const overlay = Math.max(0, (guaranteedPrizePool - currentPrizePool) / guaranteedPrizePool * 100);
-    
-    return {
-      id: `contest-${i}`,
-      name: `${sport} ${type === 'GPP' ? 'Millionaire Maker' : type} ${entryFee >= 100 ? 'High Roller' : ''}`.trim(),
-      sport,
-      type,
-      entryFee,
-      prizePool: currentPrizePool,
-      guaranteedPrizePool,
-      entries,
-      maxEntries,
-      maxEntriesPerUser: type === 'GPP' ? 150 : type === '50/50' ? 1 : 3,
-      startTime: new Date(Date.now() + Math.random() * 86400000),
-      overlay,
-      expectedValue: overlay > 5 ? entryFee * (1 + overlay / 100) * 0.8 : entryFee * 0.95,
-      projectedROI: overlay > 5 ? 15 + Math.random() * 25 : -5 + Math.random() * 15,
-      sharpRatio: 0.5 + Math.random() * 2.5,
-      entryVelocity: 10 + Math.random() * 90,
-      featured: Math.random() > 0.9,
-      recommended: overlay > 5 || Math.random() > 0.8
-    };
-  });
-};
+interface ContestStats {
+  totalContests: number;
+  totalPrizePool: number;
+  positiveEVCount: number;
+  highOverlayCount: number;
+  featuredCount: number;
+  recommendedCount: number;
+  avgOverlay: number;
+  avgROI: number;
+}
 
 export const ContestBrowser: React.FC = () => {
-  const [contests] = useState<Contest[]>(generateMockContests());
+  const [contests, setContests] = useState<Contest[]>([]);
+  const [stats, setStats] = useState<ContestStats | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedContest, setSelectedContest] = useState<Contest | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [filters, setFilters] = useState<FilterState>({
     sport: 'all',
     type: 'all',
@@ -111,6 +91,58 @@ export const ContestBrowser: React.FC = () => {
     minOverlay: 0,
     showRecommended: false
   });
+
+  // Fetch contests from API
+  const fetchContests = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+
+      const params = new URLSearchParams({
+        sport: filters.sport,
+        type: filters.type,
+        minFee: filters.minFee.toString(),
+        maxFee: filters.maxFee.toString(),
+        minOverlay: filters.minOverlay.toString(),
+        recommended: filters.showRecommended.toString(),
+        search: searchTerm,
+        sortBy: 'overlay',
+        limit: '100'
+      });
+
+      const response = await fetch(`/api/contests?${params}`);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to fetch contests');
+      }
+
+      // Convert date strings to Date objects
+      const contestsWithDates = data.contests.map((contest: Contest) => ({
+        ...contest,
+        startTime: new Date(contest.startTime)
+      }));
+
+      setContests(contestsWithDates);
+      setStats(data.stats);
+    } catch (err) {
+      logger.error('Error fetching contests:', { error: err });
+      setError(err instanceof Error ? err.message : 'Failed to load contests');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Fetch contests on mount and when filters change
+  useEffect(() => {
+    fetchContests();
+  }, [filters, searchTerm]);
+
+  // Auto-refresh every 30 seconds
+  useEffect(() => {
+    const interval = setInterval(fetchContests, 30000);
+    return () => clearInterval(interval);
+  }, [filters, searchTerm]);
 
   const filteredContests = useMemo(() => {
     return contests.filter(contest => {
@@ -165,7 +197,8 @@ export const ContestBrowser: React.FC = () => {
 
   const ContestCard: React.FC<{ contest: Contest; index: number }> = ({ contest, index }) => {
     const fillPercent = (contest.entries / contest.maxEntries) * 100;
-    const timeUntilStart = contest.startTime.getTime() - Date.now();
+    const startTime = contest.startTime instanceof Date ? contest.startTime : new Date(contest.startTime);
+    const timeUntilStart = startTime.getTime() - Date.now();
     const hoursUntilStart = Math.floor(timeUntilStart / 3600000);
     const minutesUntilStart = Math.floor((timeUntilStart % 3600000) / 60000);
 
@@ -288,13 +321,53 @@ export const ContestBrowser: React.FC = () => {
     );
   };
 
+  // Loading state
+  if (isLoading && contests.length === 0) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="text-center space-y-4">
+          <Loader2 className="w-12 h-12 animate-spin text-blue-500 mx-auto" />
+          <p className="text-gray-400 text-lg">Loading contests...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error && contests.length === 0) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="text-center space-y-4 max-w-md">
+          <div className="text-red-500 text-6xl mb-4">⚠️</div>
+          <h2 className="text-2xl font-bold text-white">Failed to load contests</h2>
+          <p className="text-gray-400">{error}</p>
+          <Button onClick={fetchContests} className="bg-blue-600 hover:bg-blue-700">
+            <RefreshCw className="w-4 h-4 mr-2" />
+            Try Again
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       {/* Header */}
       <Card className="bg-gray-900 border-gray-800 p-6">
         <div className="flex flex-col lg:flex-row gap-4">
           <div className="flex-1">
-            <h2 className="text-2xl font-bold mb-2">Contest Browser</h2>
+            <div className="flex items-center gap-3 mb-2">
+              <h2 className="text-2xl font-bold">Contest Browser</h2>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={fetchContests}
+                disabled={isLoading}
+                className="border-gray-700"
+              >
+                <RefreshCw className={cn("w-4 h-4", isLoading && "animate-spin")} />
+              </Button>
+            </div>
             <p className="text-gray-400">Find optimal contests with advanced EV calculations</p>
           </div>
           
@@ -307,10 +380,11 @@ export const ContestBrowser: React.FC = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10 bg-gray-800 border-gray-700"
+                disabled={isLoading}
               />
             </div>
             
-            <Select value={filters.sport} onValueChange={(value) => setFilters({ ...filters, sport: value })}>
+            <Select value={filters.sport} onValueChange={(value) => setFilters({ ...filters, sport: value })} disabled={isLoading}>
               <SelectTrigger className="w-[140px] bg-gray-800 border-gray-700">
                 <SelectValue placeholder="Sport" />
               </SelectTrigger>
@@ -325,7 +399,7 @@ export const ContestBrowser: React.FC = () => {
               </SelectContent>
             </Select>
 
-            <Select value={filters.type} onValueChange={(value) => setFilters({ ...filters, type: value })}>
+            <Select value={filters.type} onValueChange={(value) => setFilters({ ...filters, type: value })} disabled={isLoading}>
               <SelectTrigger className="w-[140px] bg-gray-800 border-gray-700">
                 <SelectValue placeholder="Type" />
               </SelectTrigger>
@@ -348,6 +422,7 @@ export const ContestBrowser: React.FC = () => {
                 filters.showRecommended && "bg-green-500/20 border-green-500"
               )}
               onClick={() => setFilters({ ...filters, showRecommended: !filters.showRecommended })}
+              disabled={isLoading}
             >
               <Sparkles className="w-4 h-4" />
             </Button>
@@ -358,25 +433,25 @@ export const ContestBrowser: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
           <div className="text-center">
             <div className="text-3xl font-bold text-green-500">
-              {sortedContests.filter(c => c.overlay > 5).length}
+              {stats?.positiveEVCount || 0}
             </div>
             <div className="text-sm text-gray-400">+EV Contests</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-blue-500">
-              ${sortedContests.reduce((sum, c) => sum + c.guaranteedPrizePool, 0).toLocaleString()}
+              ${(stats?.totalPrizePool || 0).toLocaleString()}
             </div>
             <div className="text-sm text-gray-400">Total GPP</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-yellow-500">
-              {sortedContests.filter(c => c.overlay > 10).length}
+              {stats?.highOverlayCount || 0}
             </div>
             <div className="text-sm text-gray-400">High Overlay</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-500">
-              {sortedContests.filter(c => c.featured).length}
+              {stats?.featuredCount || 0}
             </div>
             <div className="text-sm text-gray-400">Featured</div>
           </div>

@@ -7,6 +7,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { useAuth } from './useAuth';
+import { logger } from '../logging/logger';
 
 export interface WebSocketMessage {
   type: string;
@@ -69,7 +70,7 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
         userId: user?.id
       }));
     } else {
-      console.warn('WebSocket not connected');
+      logger.warn('WebSocket not connected');
     }
   }, [user]);
 
@@ -122,7 +123,7 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
       wsRef.current = new WebSocket(wsUrl.toString());
       
       wsRef.current.onopen = () => {
-        console.log('WebSocket connected');
+        logger.info('WebSocket connected');
         setState(prev => ({
           ...prev,
           isConnected: true,
@@ -165,12 +166,12 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
             console.debug('Heartbeat received');
           }
         } catch (error) {
-          console.error('Failed to parse WebSocket message:', error);
+          logger.error('Failed to parse WebSocket message:', { error: error });
         }
       };
       
       wsRef.current.onerror = (error) => {
-        console.error('WebSocket error:', error);
+        logger.error('WebSocket error:', { error: error });
         setState(prev => ({
           ...prev,
           error: 'Connection error'
@@ -178,7 +179,7 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
       };
       
       wsRef.current.onclose = () => {
-        console.log('WebSocket disconnected');
+        logger.info('WebSocket disconnected');
         setState(prev => ({
           ...prev,
           isConnected: false
@@ -193,7 +194,7 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
         if (reconnectAttemptsRef.current < maxReconnectAttempts) {
           reconnectAttemptsRef.current++;
           reconnectTimeoutRef.current = setTimeout(() => {
-            console.log(`Reconnecting... (attempt ${reconnectAttemptsRef.current})`);
+            logger.info('Reconnecting... (attempt ${reconnectAttemptsRef.current})');
             connect();
           }, reconnectInterval);
         } else {
@@ -205,7 +206,7 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
       };
       
     } catch (error) {
-      console.error('Failed to create WebSocket:', error);
+      logger.error('Failed to create WebSocket:', { error: error });
       setState(prev => ({
         ...prev,
         error: 'Failed to connect'

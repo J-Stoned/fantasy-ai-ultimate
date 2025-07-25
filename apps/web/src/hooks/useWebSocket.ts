@@ -6,6 +6,7 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { WEBSOCKET_CONFIG, getWebSocketUrl } from '@/lib/config/websocket.config';
+import { logger } from '../lib/logging/logger';
 
 export interface WebSocketMessage {
   type: string;
@@ -35,7 +36,7 @@ export function useWebSocket(channels: string[] = WEBSOCKET_CONFIG.defaultChanne
     if (socketRef.current?.connected) return;
     
     const wsUrl = getWebSocketUrl();
-    console.log('🔌 Connecting to WebSocket:', wsUrl);
+    logger.info('🔌 Connecting to WebSocket:', { data: wsUrl });
     
     try {
       const socket = io(wsUrl, {
@@ -47,7 +48,7 @@ export function useWebSocket(channels: string[] = WEBSOCKET_CONFIG.defaultChanne
       
       // Connection events
       socket.on('connect', () => {
-        console.log('✅ WebSocket connected');
+        logger.info('✅ WebSocket connected');
         setState(prev => ({
           ...prev,
           isConnected: true,
@@ -58,12 +59,12 @@ export function useWebSocket(channels: string[] = WEBSOCKET_CONFIG.defaultChanne
         // Subscribe to channels
         channels.forEach(channel => {
           socket.emit('subscribe', { channel });
-          console.log(`📡 Subscribed to channel: ${channel}`);
+          logger.info('📡 Subscribed to channel: ${channel}');
         });
       });
       
       socket.on('disconnect', (reason) => {
-        console.log('❌ WebSocket disconnected:', reason);
+        logger.info('❌ WebSocket disconnected:', { data: reason });
         setState(prev => ({
           ...prev,
           isConnected: false
@@ -71,7 +72,7 @@ export function useWebSocket(channels: string[] = WEBSOCKET_CONFIG.defaultChanne
       });
       
       socket.on('connect_error', (error) => {
-        console.error('🚨 WebSocket connection error:', error.message);
+        logger.error('🚨 WebSocket connection error:', { error: error.message });
         setState(prev => ({
           ...prev,
           error: error.message,
@@ -84,7 +85,7 @@ export function useWebSocket(channels: string[] = WEBSOCKET_CONFIG.defaultChanne
         if (['connect', 'disconnect', 'error', 'reconnect'].includes(eventName)) return;
         
         socket.on(eventName, (data) => {
-          console.log(`📨 Received ${eventName}:`, data);
+          logger.info('📨 Received ${eventName}:', { data: data });
           
           const message: WebSocketMessage = {
             type: eventName,
@@ -107,7 +108,7 @@ export function useWebSocket(channels: string[] = WEBSOCKET_CONFIG.defaultChanne
       
       // Generic message handler
       socket.on('message', (data) => {
-        console.log('📨 Received message:', data);
+        logger.info('📨 Received message:', { data: data });
         
         const message: WebSocketMessage = {
           type: data.type || 'message',
@@ -130,7 +131,7 @@ export function useWebSocket(channels: string[] = WEBSOCKET_CONFIG.defaultChanne
       socketRef.current = socket;
       
     } catch (err) {
-      console.error('Failed to create WebSocket:', err);
+      logger.error('Failed to create WebSocket:', { error: err });
       setState(prev => ({
         ...prev,
         error: 'Failed to connect'
@@ -149,7 +150,7 @@ export function useWebSocket(channels: string[] = WEBSOCKET_CONFIG.defaultChanne
     if (socketRef.current?.connected) {
       socketRef.current.emit(event, data);
     } else {
-      console.warn('WebSocket not connected');
+      logger.warn('WebSocket not connected');
     }
   }, []);
   

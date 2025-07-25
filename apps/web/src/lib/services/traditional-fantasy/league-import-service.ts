@@ -23,6 +23,7 @@ import { CBSApiClient } from './cbs-api-client';
 import { SleeperApiClient } from './sleeper-api-client';
 import { DataNormalizer } from './data-normalizer';
 import { SyncScheduler } from './sync-scheduler';
+import { logger } from '../../logging/logger';
 
 export class LeagueImportService {
   private authManager: AuthManager;
@@ -160,7 +161,7 @@ export class LeagueImportService {
           // Update progress
           this.updateImportProgress(importId, progress);
         } catch (error) {
-          console.error(`Failed to import league ${league.name}:`, error);
+          logger.error('Failed to import league ${league.name}:', { error: error });
           progress.errors.push({
             leagueId: league.platformLeagueId,
             leagueName: league.name,
@@ -216,7 +217,7 @@ export class LeagueImportService {
           league.platform
         );
       } catch (error) {
-        console.warn('Draft data not available:', error);
+        logger.warn('Draft data not available:'error);
       }
     }
 
@@ -228,7 +229,7 @@ export class LeagueImportService {
         // Store transactions separately as they can be numerous
         await this.storeTransactions(normalizedLeague.id, transactions);
       } catch (error) {
-        console.warn('Transactions not available:', error);
+        logger.warn('Transactions not available:'error);
       }
     }
 
@@ -270,7 +271,7 @@ export class LeagueImportService {
         // Store as historical data linked to main league
         await this.storeHistoricalLeague(normalizedLeagueId, season, normalizedHistorical);
       } catch (error) {
-        console.warn(`Failed to import season ${season}:`, error);
+        logger.warn('Failed to import season ${season}:'error);
       }
     }
   }
@@ -506,7 +507,7 @@ export class LeagueImportService {
    * Handle sync completion
    */
   private handleSyncComplete(event: SyncCompleteEvent): void {
-    console.log(`Sync completed for league ${event.leagueId}`);
+    logger.info('Sync completed for league ${event.leagueId}');
     // Update league data with synced information
     this.updateLeagueData(event.leagueId, event.syncedData);
   }
@@ -515,7 +516,7 @@ export class LeagueImportService {
    * Handle sync errors
    */
   private handleSyncError(event: SyncErrorEvent): void {
-    console.error(`Sync error for league ${event.leagueId}:`, event.error);
+    logger.error('Sync error for league ${event.leagueId}:', { error: event.error });
     // Implement error recovery logic
   }
 
@@ -530,12 +531,12 @@ export class LeagueImportService {
   // Storage methods (would integrate with your database)
   private async storeLeague(league: League): Promise<void> {
     // Store in database
-    console.log('Storing league:', league.id);
+    logger.info('Storing league:', { data: league.id });
   }
 
   private async storeTransactions(leagueId: string, transactions: any[]): Promise<void> {
     // Store transactions
-    console.log(`Storing ${transactions.length} transactions for league ${leagueId}`);
+    logger.info('Storing ${transactions.length} transactions for league ${leagueId}');
   }
 
   private async storeHistoricalLeague(
@@ -544,18 +545,18 @@ export class LeagueImportService {
     data: any
   ): Promise<void> {
     // Store historical data
-    console.log(`Storing historical data for league ${leagueId}, season ${season}`);
+    logger.info('Storing historical data for league ${leagueId}, season ${season}');
   }
 
   private async loadLeague(leagueId: string): Promise<League | null> {
     // Load from database
-    console.log('Loading league:', leagueId);
+    logger.info('Loading league:', { data: leagueId });
     return null;
   }
 
   private async updateLeagueData(leagueId: string, data: any): Promise<void> {
     // Update league data
-    console.log('Updating league data:', leagueId);
+    logger.info('Updating league data:', { data: leagueId });
   }
 
   private async prepareExportData(league: League, config: ExportConfig): Promise<any> {

@@ -9,7 +9,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { AdminAuthService } from '../../../lib/middleware/admin-auth';
+import { logger } from '../../../lib/logging/logger';
 
 interface LoginForm {
   email: string;
@@ -66,43 +66,83 @@ export default function AdminLogin() {
 
     setState(prev => ({ ...prev, isLoading: true, error: null }));
 
+    const loginUrl = '/api/admin/login-test';
+    logger.info('[Admin Login] Attempting login to:', { data: loginUrl });
+    logger.info('[Admin Login] Form data:', { data: { email: form.email, hasPassword: !!form.password, hasMFA: !!form.mfaToken } });
+
     try {
-      const response = await fetch('/api/admin/auth/login', {
+      const requestBody = {
+        email: form.email,
+        password: form.password,
+        mfaToken: form.mfaToken,
+        clientInfo: {
+          userAgent: navigator.userAgent,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          language: navigator.language
+        }
+      };
+
+      logger.info('[Admin Login] Sending request...');
+      const response = await fetch(loginUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          email: form.email,
-          password: form.password,
-          mfaToken: form.mfaToken,
-          clientInfo: {
-            userAgent: navigator.userAgent,
-            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-            language: navigator.language
-          }
-        }),
+        body: JSON.stringify(requestBody),
       });
 
-      const data = await response.json();
+      logger.info('[Admin Login] Response status:', { data: response.status });
+      logger.info('[Admin Login] Response headers:', { data: response.headers });
 
-      if (response.ok) {
-        if (data.requiresMFA) {
-          setState(prev => ({ 
-            ...prev, 
-            requiresMFA: true, 
-            isLoading: false,
-            error: null 
-          }));
-        } else {
-          // Successful login - redirect to admin dashboard
-          localStorage.setItem('admin_session_token', data.sessionToken);
-          router.push('/admin');
-        }
+      // Check if response is ok before trying to parse JSON
+      if (!response.ok) {
+        logger.error('[Admin Login] Response not OK:', { error: response.status, statusText: response.statusText });
+        const text = await response.text();
+        logger.error('[Admin Login] Response body:', { error: text });
+        
+        setState(prev => ({ 
+          ...prev, 
+          error: `Server error: ${response.status} ${response.statusText}`,
+          isLoading: false
+        }));
+        return;
+      }
+
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        logger.error('[Admin Login] Invalid content type:', { error: contentType });
+        const text = await response.text();
+        logger.error('[Admin Login] Response text:', { error: text });
+        
+        setState(prev => ({ 
+          ...prev, 
+          error: 'Invalid server response (not JSON)',
+          isLoading: false
+        }));
+        return;
+      }
+
+      const data = await response.json();
+      logger.info('[Admin Login] Response data:', { data: data });
+
+      if (data.requiresMFA) {
+        logger.info('[Admin Login] MFA required');
+        setState(prev => ({ 
+          ...prev, 
+          requiresMFA: true, 
+          isLoading: false,
+          error: null 
+        }));
+      } else if (data.success) {
+        // Successful login - redirect to admin dashboard
+        logger.info('[Admin Login] Login successful, redirecting...');
+        localStorage.setItem('admin_session_token', data.sessionToken);
+        router.push('/admin');
       } else {
         const newAttempts = state.attempts + 1;
         const isLocked = newAttempts >= 5;
         
+        logger.error('[Admin Login] Login failed:', { error: data.error });
         setState(prev => ({ 
           ...prev, 
           error: data.error || 'Login failed',
@@ -113,9 +153,15 @@ export default function AdminLogin() {
         }));
       }
     } catch (error) {
+      logger.error('[Admin Login] Fetch error:', { error: error });
+      logger.error('[Admin Login] Error details:', { error: {
+        message: error instanceof Error ? error.message : 'Unknown error',
+        stack: error instanceof Error ? error.stack : undefined
+      } });
+      
       setState(prev => ({ 
         ...prev, 
-        error: 'Network error. Please try again.',
+        error: `Network error: ${error instanceof Error ? error.message : 'Unknown error'}`,
         isLoading: false
       }));
     }
@@ -265,7 +311,7 @@ export default function AdminLogin() {
                     maxLength={6}
                     pattern="[0-9]{6}"
                     className="w-full px-4 py-3 pl-10 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent font-mono text-center text-xl tracking-widest"
-                    placeholder="123456"
+                    placeholder="******"
                   />
                   <svg className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />

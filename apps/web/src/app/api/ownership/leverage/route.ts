@@ -12,6 +12,7 @@ import { InjuryService } from '@/scripts/fantasy-ml/services/injury-service';
 import { PredictionService } from '@/scripts/fantasy-ml/services/prediction-service';
 import { ModelLoaderService } from '@/scripts/fantasy-ml/services/model-loader';
 import { cacheService } from '@/scripts/fantasy-ml/services/cache-service';
+import { logger } from '../../../../lib/logging/logger';
 
 // Initialize database pool
 const pgPool = new Pool({
@@ -54,7 +55,7 @@ async function initializeServices() {
     
     servicesInitialized = true;
   } catch (error) {
-    console.error('Failed to initialize services:', error);
+    logger.error('Failed to initialize services:', { error: error });
     throw error;
   }
 }
@@ -136,7 +137,7 @@ export async function GET(request: NextRequest) {
     });
     
   } catch (error) {
-    console.error('Leverage API error:', error);
+    logger.error('Leverage API error:', { error: error });
     return NextResponse.json(
       { 
         success: false, 

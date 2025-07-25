@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { PlayerAvatar } from '@/components/avatars/PlayerAvatar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -53,6 +54,7 @@ import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, us
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { logger } from '../../lib/logging/logger';
 
 // Types
 interface Player {
@@ -139,14 +141,22 @@ function SortablePlayer({ player, onRemove, isLocked }: { player: Player; onRemo
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3" {...(isLocked ? {} : { ...attributes, ...listeners })}>
-          <Badge variant={player.position === 'QB' ? 'default' : 'secondary'}>
-            {player.position}
-          </Badge>
-          <div>
-            <p className="font-medium">{player.name}</p>
-            <p className="text-sm text-gray-500">
-              {player.team} vs {player.opponent}
-            </p>
+          <PlayerAvatar 
+            playerId={player.player_id}
+            size={48}
+            showBadge={false}
+            animate={true}
+          />
+          <div className="flex items-center space-x-2">
+            <Badge variant={player.position === 'QB' ? 'default' : 'secondary'}>
+              {player.position}
+            </Badge>
+            <div>
+              <p className="font-medium">{player.name}</p>
+              <p className="text-sm text-gray-500">
+                {player.team} vs {player.opponent}
+              </p>
+            </div>
           </div>
         </div>
         
@@ -308,7 +318,7 @@ export default function UltimateLineupBuilder() {
         setOwnershipData(data.data);
       }
     } catch (error) {
-      console.error('Failed to load ownership data:', error);
+      logger.error('Failed to load ownership data:', { error: error });
     }
   };
   
@@ -836,11 +846,18 @@ export default function UltimateLineupBuilder() {
                         key={player.player_id}
                         className="flex items-center justify-between p-2 bg-green-50 dark:bg-green-900/20 rounded-lg"
                       >
-                        <div>
-                          <p className="font-medium">{player.name}</p>
-                          <p className="text-sm text-gray-500">
-                            {player.position} - {player.team}
-                          </p>
+                        <div className="flex items-center gap-3">
+                          <PlayerAvatar
+                            playerId={player.player_id}
+                            size={40}
+                            showBadge={false}
+                          />
+                          <div>
+                            <p className="font-medium">{player.name}</p>
+                            <p className="text-sm text-gray-500">
+                              {player.position} - {player.team}
+                            </p>
+                          </div>
                         </div>
                         <div className="text-right">
                           <Badge variant="default">
@@ -870,11 +887,18 @@ export default function UltimateLineupBuilder() {
                         key={player.player_id}
                         className="flex items-center justify-between p-2 bg-red-50 dark:bg-red-900/20 rounded-lg"
                       >
-                        <div>
-                          <p className="font-medium">{player.name}</p>
-                          <p className="text-sm text-gray-500">
-                            {player.position} - {player.team}
-                          </p>
+                        <div className="flex items-center gap-3">
+                          <PlayerAvatar
+                            playerId={player.player_id}
+                            size={40}
+                            showBadge={false}
+                          />
+                          <div>
+                            <p className="font-medium">{player.name}</p>
+                            <p className="text-sm text-gray-500">
+                              {player.position} - {player.team}
+                            </p>
+                          </div>
                         </div>
                         <div className="text-right">
                           <Badge variant="destructive">

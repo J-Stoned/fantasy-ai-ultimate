@@ -8,6 +8,7 @@
 
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
+import { logger } from '../../lib/logging/logger';
 
 export function AdminQuickActions() {
   const quickActions = [
@@ -16,28 +17,28 @@ export function AdminQuickActions() {
       description: 'Start new model training',
       icon: '🚀',
       color: 'from-blue-600 to-cyan-600',
-      action: () => console.log('🚀 Launching ML training...')
+      action: () => logger.info('🚀 Launching ML training...')
     },
     {
       title: 'Optimize GPU',
       description: 'RTX 4060 optimization',
       icon: '⚡',
       color: 'from-purple-600 to-pink-600',
-      action: () => console.log('⚡ Optimizing GPU...')
+      action: () => logger.info('⚡ Optimizing GPU...')
     },
     {
       title: 'Deploy Models',
       description: 'Push to production',
       icon: '📦',
       color: 'from-green-600 to-emerald-600',
-      action: () => console.log('📦 Deploying models...')
+      action: () => logger.info('📦 Deploying models...')
     },
     {
       title: 'System Health',
       description: 'Full system check',
       icon: '🔍',
       color: 'from-orange-600 to-red-600',
-      action: () => console.log('🔍 Running system check...')
+      action: () => logger.info('🔍 Running system check...')
     }
   ];
 

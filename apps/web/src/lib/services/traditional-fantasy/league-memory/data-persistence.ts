@@ -1,6 +1,7 @@
 // Data Persistence - Cross-season storage and retrieval
 
 import { LeagueMemory, SeasonMemory, Transaction, Trade, DraftResult, WaiverClaim, LineupDecision, ChatMessage } from './types';
+import { logger } from '../../../logging/logger';
 
 export class DataPersistence {
   private storageKey: string;
@@ -27,7 +28,7 @@ export class DataPersistence {
       // Update cache
       this.cache.set(this.storageKey, memory);
     } catch (error) {
-      console.error('Failed to save league memory:', error);
+      logger.error('Failed to save league memory:', { error: error });
       // Fallback to localStorage with compression
       this.saveToLocalStorage(memory);
     }
@@ -52,7 +53,7 @@ export class DataPersistence {
       // Fallback to localStorage
       return this.loadFromLocalStorage();
     } catch (error) {
-      console.error('Failed to load league memory:', error);
+      logger.error('Failed to load league memory:', { error: error });
       return null;
     }
   }
@@ -311,7 +312,7 @@ export class DataPersistence {
       const compressed = this.compressMemory(memory);
       localStorage.setItem(this.storageKey, JSON.stringify(compressed));
     } catch (error) {
-      console.error('Failed to save to localStorage:', error);
+      logger.error('Failed to save to localStorage:', { error: error });
       // Clear old data and try again
       this.clearOldData();
       localStorage.setItem(this.storageKey, JSON.stringify(this.compressMemory(memory)));
@@ -326,7 +327,7 @@ export class DataPersistence {
       }
       return null;
     } catch (error) {
-      console.error('Failed to load from localStorage:', error);
+      logger.error('Failed to load from localStorage:', { error: error });
       return null;
     }
   }
@@ -367,7 +368,7 @@ export class DataPersistence {
     try {
       localStorage.setItem(key, JSON.stringify(seasons));
     } catch (error) {
-      console.error('Failed to save archive:', error);
+      logger.error('Failed to save archive:', { error: error });
     }
   }
 

@@ -4,6 +4,7 @@
  */
 
 import { API_CONFIG, WS_CHANNELS } from './api-config'
+import { logger } from '../lib/logging/logger';
 
 export type WebSocketCallback = (data: any) => void
 
@@ -36,13 +37,13 @@ class WebSocketService {
     }
 
     this.isConnecting = true
-    console.log('Connecting to WebSocket...')
+    logger.info('Connecting to WebSocket...')
 
     try {
       this.ws = new WebSocket(API_CONFIG.WEBSOCKET_URL)
 
       this.ws.onopen = () => {
-        console.log('WebSocket connected')
+        logger.info('WebSocket connected')
         this.isConnecting = false
         this.flushMessageQueue()
         
@@ -57,23 +58,23 @@ class WebSocketService {
           const message: WebSocketMessage = JSON.parse(event.data)
           this.handleMessage(message)
         } catch (error) {
-          console.error('Error parsing WebSocket message:', error)
+          logger.error('Error parsing WebSocket message:', { error: error })
         }
       }
 
       this.ws.onerror = (error) => {
-        console.error('WebSocket error:', error)
+        logger.error('WebSocket error:', { error: error })
         this.isConnecting = false
       }
 
       this.ws.onclose = () => {
-        console.log('WebSocket disconnected')
+        logger.info('WebSocket disconnected')
         this.isConnecting = false
         this.ws = null
         this.scheduleReconnect()
       }
     } catch (error) {
-      console.error('Error creating WebSocket:', error)
+      logger.error('Error creating WebSocket:', { error: error })
       this.isConnecting = false
       this.scheduleReconnect()
     }
@@ -161,7 +162,7 @@ class WebSocketService {
         try {
           callback(message.data)
         } catch (error) {
-          console.error('Error in WebSocket callback:', error)
+          logger.error('Error in WebSocket callback:', { error: error })
         }
       })
     }
@@ -199,7 +200,7 @@ class WebSocketService {
       return
     }
 
-    console.log(`Reconnecting in ${API_CONFIG.WEBSOCKET_RECONNECT_DELAY}ms...`)
+    logger.info('Reconnecting in ${API_CONFIG.WEBSOCKET_RECONNECT_DELAY}ms...')
     this.reconnectTimer = setTimeout(() => {
       this.reconnectTimer = null
       this.connect()

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { logger } from '../../../../../lib/logging/logger';
 
 const YAHOO_CLIENT_ID = process.env.YAHOO_CLIENT_ID || '';
 const YAHOO_CLIENT_SECRET = process.env.YAHOO_CLIENT_SECRET || '';
@@ -30,7 +31,7 @@ export async function GET(req: NextRequest) {
     
     return response;
   } catch (error) {
-    console.error('Yahoo OAuth error:', error);
+    logger.error('Yahoo OAuth error:', { error: error });
     return NextResponse.redirect('/dashboard?error=yahoo_auth_failed');
   }
 }
@@ -62,7 +63,7 @@ export async function POST(req: NextRequest) {
     
     if (!tokenResponse.ok) {
       const error = await tokenResponse.text();
-      console.error('Yahoo token exchange failed:', error);
+      logger.error('Yahoo token exchange failed:', { error: error });
       return NextResponse.json(
         { error: 'Failed to exchange token' },
         { status: 500 }
@@ -95,7 +96,7 @@ export async function POST(req: NextRequest) {
       userId: userInfo.sub,
     });
   } catch (error) {
-    console.error('Yahoo token exchange error:', error);
+    logger.error('Yahoo token exchange error:', { error: error });
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

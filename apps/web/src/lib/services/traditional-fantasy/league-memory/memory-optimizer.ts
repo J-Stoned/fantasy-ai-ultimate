@@ -1,6 +1,7 @@
 // Memory Optimizer - Efficient data storage and retrieval optimization
 
 import {
+import { logger } from '../../../logging/logger';
   LeagueMemory,
   SeasonMemory,
   Transaction,
@@ -382,7 +383,7 @@ export class MemoryOptimizer {
     for (const [key, value] of this.indices.playerIndex) {
       if (value.size > 1000) {
         // In a real implementation, would use more efficient data structure
-        console.log(`Large index for player ${key}: ${value.size} entries`);
+        logger.info('Large index for player ${key}: ${value.size} entries');
       }
     }
   }

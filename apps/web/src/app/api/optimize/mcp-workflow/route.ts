@@ -6,6 +6,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Pool } from 'pg';
 import MCPDFSOptimizerWorkflow from '@/scripts/fantasy-ml/mcp-dfs-optimizer-workflow';
+import { logger } from '../../../../lib/logging/logger';
 
 // Initialize database pool
 const pgPool = new Pool({
@@ -98,7 +99,7 @@ export async function POST(request: NextRequest) {
       await workflow.dispose();
       
     } catch (error) {
-      console.error('MCP workflow error:', error);
+      logger.error('MCP workflow error:', { error: error });
       await writer.write(
         encoder.encode(JSON.stringify({ 
           error: error instanceof Error ? error.message : 'Optimization failed' 
