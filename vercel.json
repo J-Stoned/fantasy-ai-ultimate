@@ -4,9 +4,8 @@
   "installCommand": "npm install --legacy-peer-deps",
   "devCommand": "cd apps/web && npm run dev",
   "outputDirectory": "apps/web/.next",
-  "root": "apps/web",
   "functions": {
-    "app/api/**/*.ts": {
+    "apps/web/app/api/**/*.ts": {
       "maxDuration": 30
     }
   },
