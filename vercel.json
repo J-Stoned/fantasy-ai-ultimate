@@ -2,7 +2,7 @@
   "version": 2,
   "buildCommand": "cd apps/web && npm run build",
   "outputDirectory": "apps/web/.next", 
-  "installCommand": "npm ci",
+  "installCommand": "npm install",
   "framework": "nextjs",
   "regions": ["iad1"],
   "env": {
