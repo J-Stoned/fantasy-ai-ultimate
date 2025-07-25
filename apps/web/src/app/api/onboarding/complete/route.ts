@@ -106,7 +106,7 @@ export async function POST(request: Request) {
       platform: completionData.platform,
       experienceLevel: completionData.experienceLevel,
       sportsCount: completionData.selectedSports.length,
-      teamsCount: Object.keys(completionData.favoriteTeams }).length,
+      teamsCount: Object.keys(completionData.favoriteTeams).length,
       playersCount: completionData.followingPlayers.length,
       hasImportedLeagues: completionData.importData.importedLeagues.length > 0,
       completionTime: completionData.completionMetrics.totalTime,

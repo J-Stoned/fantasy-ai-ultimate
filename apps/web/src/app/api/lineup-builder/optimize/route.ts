@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { dfsOptimizerFixed } from '../../../../../scripts/fantasy-ml/models/dfs-lineup-optimizer';
+import { dfsOptimizerFixed } from '../../../../scripts/fantasy-ml/models/dfs-lineup-optimizer';
 import { logger } from '../../../../lib/logging/logger';
 
 interface OptimizationRequest {
