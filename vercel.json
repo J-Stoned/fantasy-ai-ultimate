@@ -3,14 +3,5 @@
   "buildCommand": "cd apps/web && npm run build",
   "installCommand": "npm install --legacy-peer-deps",
   "devCommand": "cd apps/web && npm run dev",
-  "outputDirectory": "apps/web/.next",
-  "functions": {
-    "apps/web/app/api/**/*.ts": {
-      "maxDuration": 30
-    }
-  },
-  "env": {
-    "NODE_OPTIONS": "--max-old-space-size=4096",
-    "SKIP_ENV_VALIDATION": "true"
-  }
+  "outputDirectory": "apps/web/.next"
 }
