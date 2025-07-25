@@ -50,6 +50,7 @@ docs
 
 # Scripts and development files
 scripts
+!apps/web/src/scripts
 **/*.config.js
 **/*.config.ts
 !**/next.config.js
@@ -86,7 +87,6 @@ temp
 # Other apps in monorepo
 apps/mobile
 apps/web/apps
-apps/web/scripts
 libs/**/src/**/*.spec.*
 libs/**/src/**/*.test.*
 
@@ -95,7 +95,6 @@ libs/**/src/**/*.test.*
 **/tfjs*
 **/@tensorflow*
 **/ml-*
-**/fantasy-ml
 **/python-backend
 **/*.py
 **/*.ipynb

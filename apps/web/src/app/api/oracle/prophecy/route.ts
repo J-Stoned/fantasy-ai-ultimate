@@ -7,7 +7,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getOracleService } from '@/lib/services/ai/oracle-service';
-import { pool } from '@/lib/db';
+import { pool } from '@/lib/services/database';
 import { validateRequest } from '@/lib/utils/validation';
 import { z } from 'zod';
 import { logger } from '../../../../lib/logging/logger';
