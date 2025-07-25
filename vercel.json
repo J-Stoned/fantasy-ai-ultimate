@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next", 
-  "installCommand": "npm install",
+  "buildCommand": "cd apps/web && npm install && npm run build",
+  "outputDirectory": "apps/web/.next", 
+  "installCommand": "echo 'Skipping root install'",
   "framework": "nextjs",
   "regions": ["iad1"],
   "env": {
