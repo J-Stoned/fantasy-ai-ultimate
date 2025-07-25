@@ -1,12 +1,15 @@
 {
-  "buildCommand": "cd apps/web && npm run build",
-  "installCommand": "npm install",
+  "buildCommand": "npx nx build web --prod",
+  "installCommand": "npm install --legacy-peer-deps",
   "outputDirectory": "apps/web/.next",
   "framework": "nextjs",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
+  "ignoreCommand": "git diff HEAD^ HEAD --quiet .",
+  "functions": {
+    "apps/web/pages/api/**/*.ts": {
+      "maxDuration": 30
     }
-  ]
+  },
+  "env": {
+    "NODE_OPTIONS": "--max-old-space-size=4096"
+  }
 }

@@ -1,26 +1,26 @@
 # Dependencies
 node_modules
 **/node_modules
+**/.nx
 
 # Testing
 coverage
-.nyc_output
 **/__tests__
-**/*.test.ts
-**/*.test.tsx
-**/*.spec.ts
-**/*.spec.tsx
-playwright-report
-test-results
+**/*.test.*
+**/*.spec.*
+**/test-*
+**/tests
+playwright*
+jest*
+vitest*
+*.snap
 
 # Development
-.env
-.env.*
+.env*
 !.env.example
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+logs
+*.local
 
 # IDE
 .vscode
@@ -28,6 +28,7 @@ yarn-error.log*
 *.swp
 *.swo
 *~
+.fleet
 
 # OS
 .DS_Store
@@ -38,44 +39,94 @@ Thumbs.db
 **/dist
 **/build
 **/.turbo
+.nx
+nx-cloud.env
 
 # Documentation
 docs
 *.md
 !README.md
+*.pdf
 
-# Scripts and configs
+# Scripts and development files
 scripts
-playwright.config.ts
-jest.config.js
-jest.setup.ts
+**/*.config.js
+**/*.config.ts
+!**/next.config.js
+!**/tailwind.config.js
+!**/postcss.config.js
 
-# Large files
+# Large and unnecessary files
 *.mp4
 *.mov
 *.avi
 *.zip
 *.tar
 *.gz
-
-# Database dumps
 *.sql
 *.dump
+*.png
+*.jpg
+*.jpeg
+*.gif
+!public/**/*
 
 # Temporary files
 tmp
 temp
 .cache
+*.tmp
+*.temp
 
 # Git
 .git
 .gitignore
+.gitattributes
 
-# Other apps in monorepo (if not needed)
+# Other apps in monorepo
 apps/mobile
 apps/web/apps
+apps/web/scripts
+libs/**/src/**/*.spec.*
+libs/**/src/**/*.test.*
 
-# Heavy development dependencies
-apps/web/scripts/fantasy-ml
-apps/web/scripts/test-*
-apps/web/scripts/e2e-*
+# Heavy dependencies and ML
+**/tensorflow*
+**/tfjs*
+**/@tensorflow*
+**/ml-*
+**/fantasy-ml
+**/python-backend
+**/*.py
+**/*.ipynb
+
+# Database and backups
+*.backup
+*.bak
+migrations
+seeds
+
+# Nx workspace files
+workspace.json
+project.json
+.nxignore
+migrations.json
+
+# Development tools
+.husky
+.github
+.gitlab
+.circleci
+
+# Package manager files
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+!apps/web/package-lock.json
+
+# Misc heavy folders
+public/videos
+public/downloads
+static
+assets/*.zip
+assets/*.tar
