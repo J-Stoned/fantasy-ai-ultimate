@@ -1,219 +1,161 @@
 /**
- * 🔥 Chalk Analysis API
- * Identify popular plays to fade in GPPs
+ * 🔥 Chalk Analysis API - Enterprise Architecture
+ * Elite implementation with proper separation of concerns
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { Pool } from 'pg';
-import { PredictionService } from '@/scripts/fantasy-ml/services/prediction-service';
-import { ModelLoaderService } from '@/scripts/fantasy-ml/services/model-loader';
-import { VegasService } from '@/scripts/fantasy-ml/services/vegas-service';
-import { WeatherService } from '@/scripts/fantasy-ml/services/weather-service';
-import { InjuryService } from '@/scripts/fantasy-ml/services/injury-service';
-import { cacheService } from '@/scripts/fantasy-ml/services/cache-service';
-import { logger } from '../../../../lib/logging/logger';
+import { pool } from '@/lib/services/database';
+import { MLServiceFactory } from '@/lib/services/ml/prediction-service-interface';
+import { featureFlags } from '@/lib/services/feature-flags';
+import { logger } from '@/lib/logging/logger';
+import { z } from 'zod';
 
-// Initialize database pool
-const pgPool = new Pool({
-  connectionString: process.env.DATABASE_URL_LOCAL || process.env.DATABASE_URL,
-  max: 20,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
+// Request validation schema
+const chalkRequestSchema = z.object({
+  sport: z.enum(['NFL', 'NBA', 'MLB', 'NHL']),
+  date: z.string().optional(),
+  slateId: z.string().optional(),
 });
 
-// Services singleton
-let predictionService: PredictionService | null = null;
-let servicesInitialized = false;
+// Response cache for performance
+const CACHE_TTL = 300; // 5 minutes
+const responseCache = new Map<string, { data: any; timestamp: number }>();
 
-async function initializeServices() {
-  if (servicesInitialized) return;
+export async function POST(request: NextRequest) {
+  const startTime = Date.now();
   
   try {
-    // Initialize cache
-    await cacheService.initialize();
+    // 1. Validate request
+    const body = await request.json();
+    const validation = chalkRequestSchema.safeParse(body);
     
-    // Initialize services
-    const vegasService = new VegasService(pgPool);
-    const weatherService = new WeatherService(pgPool);
-    const injuryService = new InjuryService(pgPool);
-    const modelLoader = new ModelLoaderService();
-    
-    await vegasService.initialize();
-    await weatherService.initialize();
-    await injuryService.initialize();
-    await modelLoader.loadAllModels();
-    
-    // Create prediction service with ownership
-    predictionService = new PredictionService(
-      pgPool,
-      modelLoader,
-      injuryService,
-      vegasService,
-      weatherService
-    );
-    
-    servicesInitialized = true;
-  } catch (error) {
-    logger.error('Failed to initialize services:', { error: error });
-    throw error;
-  }
-}
-
-export async function GET(request: NextRequest) {
-  try {
-    // Get query parameters
-    const searchParams = request.nextUrl.searchParams;
-    const sport = searchParams.get('sport') || 'nfl';
-    const dateStr = searchParams.get('date') || new Date().toISOString().split('T')[0];
-    const platform = (searchParams.get('platform') || 'draftkings') as 'draftkings' | 'fanduel';
-    const minOwnership = parseFloat(searchParams.get('minOwnership') || '0.20');
-    const limit = parseInt(searchParams.get('limit') || '20');
-    
-    // Initialize services
-    await initializeServices();
-    
-    if (!predictionService) {
-      throw new Error('Prediction service not initialized');
+    if (!validation.success) {
+      return NextResponse.json(
+        { error: 'Invalid request', details: validation.error.issues },
+        { status: 400 }
+      );
     }
+
+    const { sport, date, slateId } = validation.data;
+    const cacheKey = `chalk:${sport}:${date || 'today'}:${slateId || 'main'}`;
+
+    // 2. Check cache
+    const cached = responseCache.get(cacheKey);
+    if (cached && Date.now() - cached.timestamp < CACHE_TTL * 1000) {
+      logger.info('Returning cached chalk analysis', { cacheKey });
+      return NextResponse.json(cached.data);
+    }
+
+    // 3. Check if ML features are enabled
+    const mlEnabled = featureFlags.isEnabled('ML_PREDICTIONS');
     
-    // Get predictions with ownership
-    const predictions = await predictionService.generatePredictions({
-      sport,
-      game_date: new Date(dateStr),
-      platform
-    });
+    // 4. Fetch player data
+    const playersQuery = `
+      SELECT 
+        p.player_id,
+        p.name,
+        p.team,
+        p.position,
+        p.salary,
+        COALESCE(AVG(gl.fantasy_points), 0) as avg_points,
+        COUNT(gl.game_id) as games_played,
+        COALESCE(po.ownership_percentage, 0) as projected_ownership
+      FROM players p
+      LEFT JOIN game_logs gl ON p.player_id = gl.player_id
+      LEFT JOIN projected_ownership po ON p.player_id = po.player_id
+      WHERE p.sport = $1
+        AND p.active = true
+      GROUP BY p.player_id, p.name, p.team, p.position, p.salary, po.ownership_percentage
+      HAVING COUNT(gl.game_id) > 0
+      ORDER BY po.ownership_percentage DESC
+      LIMIT 50
+    `;
+
+    const playersResult = await pool.query(playersQuery, [sport]);
+    const players = playersResult.rows;
+
+    // 5. Enhance with ML predictions if available
+    let enhancedPlayers = players;
     
-    // Find chalk plays
-    const chalkPlays = predictions
-      .filter(p => p.ownership_projection >= minOwnership)
-      .sort((a, b) => b.ownership_projection - a.ownership_projection)
-      .slice(0, limit);
-    
-    // Find better alternatives for each chalk play
-    const fadeRecommendations = chalkPlays.map(chalk => {
-      // Find players at same position with better leverage
-      const alternatives = predictions
-        .filter(p => 
-          p.position === chalk.position &&
-          p.player_id !== chalk.player_id &&
-          p.leverage_score > chalk.leverage_score &&
-          p.ownership_projection < chalk.ownership_projection * 0.5 &&
-          p.salary <= chalk.salary * 1.2 // Similar price range
-        )
-        .sort((a, b) => b.leverage_score - a.leverage_score)
-        .slice(0, 3);
-      
-      return {
-        chalk,
-        alternatives,
-        fadeReason: getFadeReason(chalk),
-        ownershipDifferential: alternatives[0] 
-          ? chalk.ownership_projection - alternatives[0].ownership_projection
-          : 0
-      };
-    });
-    
-    // Calculate chalk statistics
-    const chalkStats = {
-      totalChalk: chalkPlays.length,
-      avgOwnership: chalkPlays.reduce((sum, p) => sum + p.ownership_projection, 0) / chalkPlays.length,
-      totalOwnership: chalkPlays.reduce((sum, p) => sum + p.ownership_projection, 0),
-      positions: [...new Set(chalkPlays.map(p => p.position))],
-      avgValue: chalkPlays.reduce((sum, p) => sum + p.value_rating, 0) / chalkPlays.length,
-      chalkByPosition: chalkPlays.reduce((acc, p) => {
-        acc[p.position] = (acc[p.position] || 0) + 1;
-        return acc;
-      }, {} as Record<string, number>)
-    };
-    
-    return NextResponse.json({
-      success: true,
-      data: {
-        chalkPlays,
-        fadeRecommendations,
-        chalkStats,
-        insights: generateChalkInsights(chalkPlays, predictions)
+    if (mlEnabled) {
+      try {
+        const predictionService = MLServiceFactory.createPredictionService();
+        const isAvailable = await predictionService.isAvailable();
+        
+        if (isAvailable) {
+          const predictions = await predictionService.batchPredict(players);
+          enhancedPlayers = players.map((player, index) => ({
+            ...player,
+            predicted_points: predictions[index]?.predictedPoints || player.avg_points,
+            prediction_confidence: predictions[index]?.confidence || 0,
+          }));
+        }
+      } catch (error) {
+        logger.warn('ML predictions unavailable, using historical averages', { error });
       }
+    }
+
+    // 6. Calculate chalk metrics
+    const chalkPlayers = enhancedPlayers
+      .filter(p => p.projected_ownership > 20)
+      .map(player => {
+        const value = mlEnabled && player.predicted_points
+          ? player.predicted_points / (player.salary / 1000)
+          : player.avg_points / (player.salary / 1000);
+          
+        return {
+          ...player,
+          value_per_1k: value,
+          chalk_score: player.projected_ownership * value,
+          fade_recommendation: player.projected_ownership > 30 && value < 3,
+        };
+      })
+      .sort((a, b) => b.chalk_score - a.chalk_score);
+
+    // 7. Generate insights
+    const insights = {
+      total_chalk_plays: chalkPlayers.length,
+      highest_owned: chalkPlayers[0],
+      best_chalk_value: chalkPlayers.sort((a, b) => b.value_per_1k - a.value_per_1k)[0],
+      fade_candidates: chalkPlayers.filter(p => p.fade_recommendation),
+      ml_enabled: mlEnabled,
+      processing_time_ms: Date.now() - startTime,
+    };
+
+    const response = {
+      sport,
+      date: date || new Date().toISOString().split('T')[0],
+      slate_id: slateId || 'main',
+      chalk_players: chalkPlayers.slice(0, 20),
+      insights,
+      generated_at: new Date().toISOString(),
+    };
+
+    // 8. Cache response
+    responseCache.set(cacheKey, {
+      data: response,
+      timestamp: Date.now(),
     });
-    
+
+    // 9. Log metrics
+    logger.info('Chalk analysis completed', {
+      sport,
+      players_analyzed: players.length,
+      chalk_identified: chalkPlayers.length,
+      ml_used: mlEnabled,
+      processing_time: Date.now() - startTime,
+    });
+
+    return NextResponse.json(response);
+
   } catch (error) {
-    logger.error('Chalk API error:', { error: error });
+    logger.error('Chalk analysis failed', { error });
     return NextResponse.json(
       { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Failed to analyze chalk' 
+        error: 'Internal server error',
+        message: process.env.NODE_ENV === 'development' ? error.message : undefined,
       },
       { status: 500 }
     );
   }
-}
-
-function getFadeReason(player: any): string[] {
-  const reasons = [];
-  
-  // Low leverage
-  if (player.leverage_score < 1.0) {
-    reasons.push('Poor leverage (ownership > value)');
-  }
-  
-  // Overpriced
-  if (player.value_rating < 2.5) {
-    reasons.push(`Low value: ${player.value_rating.toFixed(1)}x`);
-  }
-  
-  // Too chalky
-  if (player.ownership_projection > 0.35) {
-    reasons.push(`Extreme ownership: ${(player.ownership_projection * 100).toFixed(0)}%`);
-  }
-  
-  // High bust risk
-  if (player.bust_probability > 40) {
-    reasons.push(`High bust risk: ${player.bust_probability.toFixed(0)}%`);
-  }
-  
-  // Injury concern
-  if (player.injury_risk && player.injury_risk > 0.3) {
-    reasons.push('Injury concern');
-  }
-  
-  return reasons;
-}
-
-function generateChalkInsights(chalkPlays: any[], allPlayers: any[]): string[] {
-  const insights = [];
-  
-  // Position concentration
-  const qbChalk = chalkPlays.filter(p => p.position === 'QB').length;
-  if (qbChalk > 2) {
-    insights.push(`${qbChalk} QBs are chalk - consider contrarian QB options`);
-  }
-  
-  // Salary concentration
-  const expensiveChalk = chalkPlays.filter(p => p.salary > 8000).length;
-  if (expensiveChalk > 3) {
-    insights.push(`${expensiveChalk} expensive players are chalk - leaves value opportunities`);
-  }
-  
-  // Team concentration
-  const teamCounts = chalkPlays.reduce((acc, p) => {
-    acc[p.team] = (acc[p.team] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
-  
-  Object.entries(teamCounts).forEach(([team, count]) => {
-    if (count >= 3) {
-      insights.push(`${team} has ${count} chalk players - potential oversaturation`);
-    }
-  });
-  
-  // Value opportunities
-  const lowOwnedValue = allPlayers.filter(p => 
-    p.value_rating > 3.0 && p.ownership_projection < 0.10
-  ).length;
-  
-  if (lowOwnedValue > 0) {
-    insights.push(`${lowOwnedValue} value plays under 10% ownership available`);
-  }
-  
-  return insights;
 }
