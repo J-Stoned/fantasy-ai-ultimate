@@ -1,38 +1,54 @@
 # Dependencies
-node_modules/
-.pnpm-store/
-.npm/
-.yarn/
+node_modules
+**/node_modules
 
 # Testing
-__tests__/
-e2e/
-coverage/
-.nyc_output/
-test-results/
-*.test.ts
-*.test.tsx
-*.spec.ts
-*.spec.tsx
-jest.config.js
-playwright.config.ts
+coverage
+.nyc_output
+**/__tests__
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+playwright-report
+test-results
 
-# Development files
+# Development
+.env
+.env.*
+!.env.example
 *.log
-*.pid
-.env.local
-.env.development
-.env.test
-*.dev.ts
-*.dev.tsx
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Scripts
-scripts/
-mcp-*.ts
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build outputs
+.next
+**/dist
+**/build
+**/.turbo
 
 # Documentation
+docs
 *.md
-docs/
+!README.md
+
+# Scripts and configs
+scripts
+playwright.config.ts
+jest.config.js
+jest.setup.ts
 
 # Large files
 *.mp4
@@ -42,70 +58,24 @@ docs/
 *.tar
 *.gz
 
-# ML Models (will be generated on server)
-models/
-*.h5
-*.pb
-*.pth
-*.onnx
+# Database dumps
+*.sql
+*.dump
 
 # Temporary files
-tmp/
-temp/
-.cache/
-.turbo/
+tmp
+temp
+.cache
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Build artifacts
-.next/cache/
-*.tsbuildinfo
-dist/
-build/
-
-# Database
-*.sql
-*.db
-*.sqlite
-
-# Monitoring and logs
-logs/
-*.log.*
-server.log
-dev.log
-error.log
-access.log
-
-# Test data
-fixtures/
-mock-data/
-test-data/
-
-# Bundle analyzer
-.next/analyze/
-.next/server/analyze/
-.next/static/chunks/
-
-# Source maps in production
-*.map
-
-# Storybook
-.storybook/
-storybook-static/
-
-# Other
-.git/
+# Git
+.git
 .gitignore
-.eslintrc*
-.prettierrc*
-CONTRIBUTING.md
-CHANGELOG.md
-LICENSE
+
+# Other apps in monorepo (if not needed)
+apps/mobile
+apps/web/apps
+
+# Heavy development dependencies
+apps/web/scripts/fantasy-ml
+apps/web/scripts/test-*
+apps/web/scripts/e2e-*
