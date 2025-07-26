@@ -388,7 +388,7 @@ export class SecurityAuditLogger extends EventEmitter {
       logger.error('[AuditLogger] Failed to log audit event:', { error: error });
       // Fallback: at least log to console for critical events
       if (HIGH_RISK_EVENTS.has(eventType)) {
-        console.error(`[CRITICAL AUDIT] ${eventType}: ${JSON.stringify(details)}`);
+        }`);
       }
       return '';
     }

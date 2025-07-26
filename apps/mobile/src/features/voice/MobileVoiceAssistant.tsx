@@ -107,8 +107,7 @@ export const MobileVoiceAssistant: React.FC<MobileVoiceAssistantProps> = ({
         );
       }
     } catch (error) {
-      console.error('Permission error:', error);
-    }
+      }
   };
 
   const startListening = async () => {
@@ -141,7 +140,6 @@ export const MobileVoiceAssistant: React.FC<MobileVoiceAssistantProps> = ({
         }
       }, 5000);
     } catch (error) {
-      console.error('Failed to start recording:', error);
       Alert.alert('Error', 'Failed to start voice recording');
       setIsListening(false);
     }
@@ -165,7 +163,6 @@ export const MobileVoiceAssistant: React.FC<MobileVoiceAssistantProps> = ({
 
       setIsProcessing(false);
     } catch (error) {
-      console.error('Failed to stop recording:', error);
       setIsProcessing(false);
     }
   };
@@ -232,7 +229,6 @@ export const MobileVoiceAssistant: React.FC<MobileVoiceAssistantProps> = ({
       await storeCommandAnalytics(result);
       
     } catch (error) {
-      console.error('Voice API processing error:', error);
       Alert.alert('Voice Error', 'Failed to process your voice command. Please try again.');
       await speak("Sorry, I had trouble processing your voice command. Please try again.");
     }
@@ -274,8 +270,7 @@ export const MobileVoiceAssistant: React.FC<MobileVoiceAssistantProps> = ({
           // navigation.navigate('Waivers', { recommendations: action.recommendations });
           break;
         default:
-          console.log('Unknown action type:', action.type);
-      }
+          }
     }
   };
 
@@ -311,7 +306,6 @@ export const MobileVoiceAssistant: React.FC<MobileVoiceAssistantProps> = ({
 
       await Speech.speak(text, speechConfig);
     } catch (error) {
-      console.error('Enhanced speech error:', error);
       // Fallback to regular speech
       await speak(text);
     }
@@ -340,8 +334,7 @@ export const MobileVoiceAssistant: React.FC<MobileVoiceAssistantProps> = ({
       await AsyncStorage.setItem('voiceAnalytics', JSON.stringify(recent));
       
     } catch (error) {
-      console.error('Error storing analytics:', error);
-    }
+      }
   };
 
   // 📱 PROVIDE FEEDBACK TO API
@@ -371,8 +364,7 @@ export const MobileVoiceAssistant: React.FC<MobileVoiceAssistantProps> = ({
         await speak(feedback === 'positive' ? 'Thanks for the feedback!' : 'Thanks, I\'ll try to do better next time.');
       }
     } catch (error) {
-      console.error('Failed to send feedback:', error);
-    }
+      }
   };
 
   // 💬 PROCESS TEXT COMMAND (FOR MANUAL INPUT)
@@ -432,7 +424,6 @@ export const MobileVoiceAssistant: React.FC<MobileVoiceAssistantProps> = ({
       await storeCommandAnalytics(result);
       
     } catch (error) {
-      console.error('Text command processing error:', error);
       await speak("Sorry, I had trouble processing that command. Please try again.");
     } finally {
       setIsProcessing(false);
@@ -447,8 +438,7 @@ export const MobileVoiceAssistant: React.FC<MobileVoiceAssistantProps> = ({
         rate: Platform.OS === 'ios' ? 0.95 : 1,
       });
     } catch (error) {
-      console.error('Speech error:', error);
-    }
+      }
   };
 
   return (

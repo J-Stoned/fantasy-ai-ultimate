@@ -56,11 +56,19 @@
   function createImportButton() {
     const button = document.createElement('button');
     button.id = BUTTON_ID;
-    button.innerHTML = `
-      <span class="fai-icon">🚀</span>
-      <span class="fai-text">Import to Fantasy AI</span>
-    `;
     button.className = 'fantasy-ai-import-button';
+    
+    // Create elements safely without innerHTML
+    const iconSpan = document.createElement('span');
+    iconSpan.className = 'fai-icon';
+    iconSpan.textContent = '🚀';
+    
+    const textSpan = document.createElement('span');
+    textSpan.className = 'fai-text';
+    textSpan.textContent = 'Import to Fantasy AI';
+    
+    button.appendChild(iconSpan);
+    button.appendChild(textSpan);
     
     // Add loading state
     button.dataset.state = 'ready';

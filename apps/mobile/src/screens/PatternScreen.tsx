@@ -53,7 +53,6 @@ export function PatternScreen() {
       const ws = new WebSocket('ws://localhost:8088');
       
       ws.onopen = () => {
-        console.log('Mobile connected to pattern stream');
         setConnected(true);
       };
 
@@ -66,7 +65,6 @@ export function PatternScreen() {
       };
 
       ws.onerror = (error) => {
-        console.error('WebSocket error:', error);
         setConnected(false);
       };
 
@@ -78,7 +76,6 @@ export function PatternScreen() {
 
       setWsConnection(ws);
     } catch (error) {
-      console.error('Failed to connect:', error);
       setConnected(false);
     }
   };
@@ -101,7 +98,6 @@ export function PatternScreen() {
         setLoading(false);
       }
     } catch (error) {
-      console.error('Failed to load stats:', error);
       setLoading(false);
     }
   };

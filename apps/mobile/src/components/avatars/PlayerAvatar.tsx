@@ -94,7 +94,6 @@ export function PlayerAvatar({
       setAvatarData(playerId, avatarProfile);
       
     } catch (err) {
-      console.error('PlayerAvatar fetch error:', err);
       setError(err instanceof Error ? err.message : 'Failed to load player data');
     } finally {
       setLoading(false);

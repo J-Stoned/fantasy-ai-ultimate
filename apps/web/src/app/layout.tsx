@@ -1,6 +1,7 @@
 'use client';
 
 import './global.css';
+import { APIServicesProvider } from '@/components/providers/APIServicesProvider';
 
 export default function RootLayout({
   children,
@@ -18,9 +19,11 @@ export default function RootLayout({
         <meta name="description" content="AI-powered fantasy sports platform for every player, every league" />
       </head>
       <body className="antialiased">
-        <main>
-          {children}
-        </main>
+        <APIServicesProvider>
+          <main>
+            {children}
+          </main>
+        </APIServicesProvider>
       </body>
     </html>
   );

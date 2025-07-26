@@ -304,8 +304,7 @@ export function VoiceInterface({ fantasyTeamId, leagueId, onCommandProcessed }: 
     } else {
       setWakeWordEnabled(true);
       // TODO: Start wake word detection (implement with WebRTC/AudioContext)
-      console.log('Wake word detection enabled - listening for "Hey Fantasy"');
-    }
+      }
   };
 
   const handleTextInput = (e: React.FormEvent<HTMLFormElement>) => {

@@ -1,10 +1,11 @@
 /**
  * 📊 Database Service
- * Handles all database operations with connection pooling
+ * Handles all database operations using centralized connection manager
  */
 
-import { Pool, PoolClient } from 'pg';
+import { PoolClient } from 'pg';
 import { logger } from '../logging/logger';
+import { db, dbConnectionManager } from '../database/connection-manager';
 
 export interface QueryResult<T> {
   rows: T[];
@@ -12,21 +13,7 @@ export interface QueryResult<T> {
 }
 
 class DatabaseService {
-  private pool: Pool;
   private initialized: boolean = false;
-
-  constructor() {
-    this.pool = new Pool({
-      host: process.env.DB_HOST || 'localhost',
-      port: parseInt(process.env.DB_PORT || '5432'),
-      database: process.env.DB_NAME || 'fantasy_ai_local',
-      user: process.env.DB_USER || 'postgres',
-      password: process.env.DB_PASSWORD || 'postgres',
-      max: 20,
-      idleTimeoutMillis: 30000,
-      connectionTimeoutMillis: 2000,
-    });
-  }
 
   /**
    * Initialize database connection
@@ -35,9 +22,14 @@ class DatabaseService {
     if (this.initialized) return;
     
     try {
-      await this.pool.query('SELECT 1');
-      this.initialized = true;
-      logger.info('✅ Database service initialized');
+      // Connection manager handles pool creation
+      const isHealthy = await dbConnectionManager.healthCheck();
+      if (isHealthy) {
+        this.initialized = true;
+        logger.info('✅ Database service initialized');
+      } else {
+        throw new Error('Database health check failed');
+      }
     } catch (error) {
       logger.error('❌ Database initialization failed:', { error: error });
       throw error;
@@ -52,8 +44,7 @@ class DatabaseService {
     params?: any[],
     mode: 'read' | 'write' = 'read'
   ): Promise<T[]> {
-    const result = await this.pool.query(text, params);
-    return result.rows;
+    return db.query<T>(text, params);
   }
 
   /**
@@ -64,8 +55,7 @@ class DatabaseService {
     params?: any[],
     mode: 'read' | 'write' = 'read'
   ): Promise<T | null> {
-    const result = await this.pool.query(text, params);
-    return result.rows[0] || null;
+    return db.queryOne<T>(text, params);
   }
 
   /**
@@ -75,8 +65,7 @@ class DatabaseService {
     text: string,
     params?: any[]
   ): Promise<number> {
-    const result = await this.pool.query(text, params);
-    return result.rowCount || 0;
+    return db.execute(text, params);
   }
 
   /**
@@ -85,37 +74,21 @@ class DatabaseService {
   async transaction<T>(
     callback: (client: PoolClient) => Promise<T>
   ): Promise<T> {
-    const client = await this.pool.connect();
-    
-    try {
-      await client.query('BEGIN');
-      const result = await callback(client);
-      await client.query('COMMIT');
-      return result;
-    } catch (error) {
-      await client.query('ROLLBACK');
-      throw error;
-    } finally {
-      client.release();
-    }
+    return db.transaction(callback);
   }
 
   /**
    * Get pool statistics
    */
-  getPoolStats() {
-    return {
-      totalCount: this.pool.totalCount,
-      idleCount: this.pool.idleCount,
-      waitingCount: this.pool.waitingCount
-    };
+  async getPoolStats() {
+    return db.getStats();
   }
 
   /**
    * Cleanup
    */
   async cleanup(): Promise<void> {
-    await this.pool.end();
+    await dbConnectionManager.close();
     logger.info('🧹 Database connections closed');
   }
 }

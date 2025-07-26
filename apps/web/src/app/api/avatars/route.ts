@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { playerDataService } from '@/lib/database/player-data-service';
 import { createClient } from '@/lib/supabase/server';
 import { z } from 'zod';
 import { logger } from '../../../lib/logging/logger';
@@ -26,49 +27,186 @@ const BulkAvatarGenerationSchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const supabase = await createClient();
     const { searchParams } = new URL(request.url);
     
     const playerId = searchParams.get('playerId');
-    const tier = searchParams.get('tier');
-    const sport = searchParams.get('sport');
+    const tiers = searchParams.get('tier')?.split(',');
+    const sport = searchParams.get('sport')?.toUpperCase();
+    const positions = searchParams.get('positions')?.split(',');
     const limit = parseInt(searchParams.get('limit') || '50');
+    const includeStats = searchParams.get('includeStats') === 'true';
     
-    // Build query
-    let query = supabase
-      .from('player_avatars_view')
-      .select('*');
+    logger.info('Avatar API request', { 
+      playerId, 
+      tiers, 
+      sport, 
+      positions, 
+      limit, 
+      includeStats 
+    });
     
+    // If requesting specific player
     if (playerId) {
-      query = query.eq('id', playerId);
+      const { data: player, error } = await playerDataService.getPlayerById(
+        parseInt(playerId), 
+        { include_stats: includeStats }
+      );
+      
+      if (error) {
+        return NextResponse.json({ error: error }, { status: 400 });
+      }
+      
+      if (!player) {
+        return NextResponse.json({ error: 'Player not found' }, { status: 404 });
+      }
+      
+      const avatarData = {
+        id: player.id,
+        name: player.name,
+        position: player.position,
+        team: player.team_abbreviation || player.team,
+        sport: player.sport,
+        
+        // Avatar system data
+        avatarTier: player.avatar_tier || 'practice',
+        avatar2dUrl: player.avatar_2d_url,
+        avatar3dUrl: player.avatar_3d_url,
+        avatarPhotoUrl: player.avatar_photo_url,
+        imageUrl: player.image_url,
+        overallRating: player.overall_rating,
+        avatarMetadata: player.avatar_metadata,
+        
+        // Performance data for avatar tier calculation
+        avgFantasyPoints: player.season_stats?.avg_fantasy_points,
+        consistency: player.season_stats?.consistency_score,
+        trending: player.trending,
+        
+        // Player metadata
+        age: player.age,
+        college: player.college,
+        jerseyNumber: player.jersey_number,
+        draftYear: player.draft_year,
+        draftRound: player.draft_round
+      };
+      
+      return NextResponse.json({ 
+        avatar: avatarData,
+        success: true
+      });
     }
     
-    if (tier) {
-      query = query.eq('avatar_tier', tier);
-    }
-    
-    if (sport) {
-      // You'd need to join with teams table for sport filtering
-      query = query.eq('sport', sport);
-    }
-    
-    query = query.limit(limit);
-    
-    const { data, error } = await query;
+    // Get players based on filters
+    const { data: players, error } = await playerDataService.getPlayers({
+      sport,
+      positions,
+      avatar_tiers: tiers,
+      include_stats: includeStats,
+      limit
+    });
     
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: error }, { status: 400 });
     }
     
+    if (!players || players.length === 0) {
+      return NextResponse.json({ 
+        avatars: [],
+        count: 0,
+        message: 'No players found with specified criteria'
+      });
+    }
+    
+    // Transform to avatar format
+    const avatars = players.map(player => ({
+      id: player.id,
+      name: player.name,
+      position: player.position,
+      team: player.team_abbreviation || player.team,
+      sport: player.sport,
+      
+      // Avatar system data
+      avatarTier: player.avatar_tier || 'practice',
+      avatar2dUrl: player.avatar_2d_url,
+      avatar3dUrl: player.avatar_3d_url,
+      avatarPhotoUrl: player.avatar_photo_url,
+      imageUrl: player.image_url,
+      overallRating: player.overall_rating,
+      avatarMetadata: player.avatar_metadata,
+      
+      // Performance-based avatar info
+      avgFantasyPoints: player.season_stats?.avg_fantasy_points || 0,
+      consistency: player.season_stats?.consistency_score || 0,
+      trending: player.trending || 'stable',
+      gamesPlayed: player.season_stats?.games_played || 0,
+      
+      // Player metadata
+      age: player.age,
+      college: player.college,
+      jerseyNumber: player.jersey_number,
+      draftYear: player.draft_year,
+      draftRound: player.draft_round,
+      
+      // Avatar quality indicators
+      hasAvatars: {
+        has2D: !!player.avatar_2d_url,
+        has3D: !!player.avatar_3d_url,
+        hasPhoto: !!player.avatar_photo_url || !!player.image_url,
+        completeness: [
+          !!player.avatar_2d_url,
+          !!player.avatar_3d_url,
+          !!(player.avatar_photo_url || player.image_url)
+        ].filter(Boolean).length / 3
+      }
+    }));
+    
+    // Sort by avatar tier priority and overall rating
+    const tierOrder = { 'star': 4, 'starter': 3, 'bench': 2, 'practice': 1 };
+    avatars.sort((a, b) => {
+      const tierDiff = (tierOrder[b.avatarTier as keyof typeof tierOrder] || 0) - 
+                      (tierOrder[a.avatarTier as keyof typeof tierOrder] || 0);
+      if (tierDiff !== 0) return tierDiff;
+      return (b.overallRating || 0) - (a.overallRating || 0);
+    });
+    
+    // Calculate aggregate stats
+    const tierCounts = avatars.reduce((counts, avatar) => {
+      counts[avatar.avatarTier] = (counts[avatar.avatarTier] || 0) + 1;
+      return counts;
+    }, {} as Record<string, number>);
+    
+    const avgCompleteness = avatars.reduce((sum, a) => sum + a.hasAvatars.completeness, 0) / avatars.length;
+    
+    logger.info('Avatar API response', {
+      totalAvatars: avatars.length,
+      tierCounts,
+      avgCompleteness: Number(avgCompleteness.toFixed(2)),
+      sport,
+      filters: { tiers, positions }
+    });
+    
     return NextResponse.json({ 
-      avatars: data,
-      count: data?.length || 0
+      avatars,
+      count: avatars.length,
+      metadata: {
+        sport,
+        tierCounts,
+        avgCompleteness: Number(avgCompleteness.toFixed(2)),
+        filters: {
+          tiers,
+          positions,
+          sport
+        },
+        dataSource: '1.57M game stats dataset'
+      }
     });
     
   } catch (error) {
-    logger.error('Avatar fetch error:', { error: error });
+    logger.error('Avatar fetch error:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch avatars' },
+      { 
+        error: 'Failed to fetch avatars',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      },
       { status: 500 }
     );
   }

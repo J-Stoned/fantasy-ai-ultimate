@@ -59,7 +59,7 @@ export function useWebSocket(channels: string[] = WEBSOCKET_CONFIG.defaultChanne
         // Subscribe to channels
         channels.forEach(channel => {
           socket.emit('subscribe', { channel });
-          logger.info('📡 Subscribed to channel: ${channel}');
+          logger.info('📡 Subscribed to channel', { channel });
         });
       });
       
@@ -85,7 +85,7 @@ export function useWebSocket(channels: string[] = WEBSOCKET_CONFIG.defaultChanne
         if (['connect', 'disconnect', 'error', 'reconnect'].includes(eventName)) return;
         
         socket.on(eventName, (data) => {
-          logger.info('📨 Received ${eventName}:', { data: data });
+          logger.info('📨 Received event', { eventName, data });
           
           const message: WebSocketMessage = {
             type: eventName,
@@ -175,12 +175,21 @@ export function useWebSocket(channels: string[] = WEBSOCKET_CONFIG.defaultChanne
   }, []);
   
   useEffect(() => {
-    connect();
+    const socket = socketRef.current;
+    if (!socket) {
+      connect();
+    }
     
     return () => {
-      disconnect();
+      if (socketRef.current) {
+        // Remove all event listeners to prevent memory leaks
+        socketRef.current.removeAllListeners();
+        socketRef.current.disconnect();
+        socketRef.current = null;
+      }
+      messageHandlersRef.current.clear();
     };
-  }, [connect, disconnect]);
+  }, []); // Empty deps to avoid circular dependency
   
   return {
     ...state,

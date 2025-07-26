@@ -97,7 +97,6 @@ export default function HomeScreen() {
         setRefreshing(false);
       }, 1000);
     } catch (error) {
-      console.error('Failed to load dashboard:', error);
       setLoading(false);
       setRefreshing(false);
     }

@@ -8,6 +8,8 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { playerDataService } from '@/lib/database/player-data-service';
+import { gameStatsService } from '@/lib/database/game-stats-service';
 import { 
   LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, 
   Tooltip, ResponsiveContainer, Area, AreaChart, PieChart, Pie, Cell,
@@ -20,7 +22,7 @@ import {
   Bell, Filter, Search, ArrowUp, ArrowDown,
   PlayCircle, PauseCircle, RefreshCw, BarChart3,
   PieChart as PieChartIcon, LineChart as LineChartIcon,
-  Crosshair, Calculator, Percent
+  Crosshair, Calculator, Percent, X
 } from 'lucide-react';
 
 // Enhanced interfaces for professional trading
@@ -137,6 +139,11 @@ interface TradeLineupPlayer {
   weatherImpact: number;
   injuryRisk: number;
   value: number; // points per $1000
+  // ELITE: Real data from 1.57M game stats! 🔥
+  realSeasonAvg?: number;
+  realLast5Avg?: number;
+  realConsistency?: number;
+  realTrend?: 'up' | 'down' | 'stable';
 }
 
 interface AdvancedOwnership {
@@ -405,6 +412,65 @@ const portfolioAllocation = [
   { name: 'Reserve', value: 5000, percentage: 5, color: '#6B7280' }
 ];
 
+// Load real player data from 1.57M game stats database
+async function loadRealPlayerData(players: TradeLineupPlayer[]): Promise<TradeLineupPlayer[]> {
+  const enrichedPlayers = await Promise.all(
+    players.map(async (player) => {
+      try {
+        // Search for the player in our database
+        const searchResults = await playerDataService.searchPlayers({
+          name: player.name,
+          sport: 'NFL', // Default to NFL, could be dynamic
+          limit: 1
+        });
+
+        if (searchResults && searchResults.length > 0) {
+          const realPlayer = searchResults[0];
+          
+          // Get recent games for trend analysis
+          const { data: recentGames } = await gameStatsService.getPlayerGameLogs(
+            realPlayer.id,
+            { limit: 5 }
+          );
+
+          if (recentGames && recentGames.length > 0) {
+            const last5Avg = recentGames.reduce((sum, g) => sum + (g.fantasy_points || 0), 0) / recentGames.length;
+            const seasonAvg = realPlayer.season_stats?.fantasy_points_avg || 0;
+            
+            // Calculate consistency
+            const points = recentGames.map(g => g.fantasy_points || 0);
+            const variance = points.reduce((sum, p) => sum + Math.pow(p - last5Avg, 2), 0) / points.length;
+            const consistency = 100 - Math.min(100, (Math.sqrt(variance) / last5Avg) * 100);
+            
+            // Determine trend
+            let trend: 'up' | 'down' | 'stable' = 'stable';
+            if (last5Avg > seasonAvg * 1.1) trend = 'up';
+            else if (last5Avg < seasonAvg * 0.9) trend = 'down';
+
+            return {
+              ...player,
+              realSeasonAvg: seasonAvg,
+              realLast5Avg: last5Avg,
+              realConsistency: consistency,
+              realTrend: trend,
+              // Update projections based on real data
+              projectedPoints: last5Avg * 1.05, // Slight boost for recent form
+              ceiling: last5Avg * 1.5,
+              floor: last5Avg * 0.6
+            };
+          }
+        }
+      } catch (error) {
+        console.error(`Error loading data for ${player.name}:`, error);
+      }
+      
+      return player;
+    })
+  );
+
+  return enrichedPlayers;
+}
+
 export default function AdvancedTradingTerminal() {
   const [metrics, setMetrics] = useState<RealTimeMetrics>(generateRealTimeMetrics());
   const [contests, setContests] = useState<ContestIntelligence[]>(generateContestIntelligence());
@@ -415,6 +481,33 @@ export default function AdvancedTradingTerminal() {
   const [refreshRate, setRefreshRate] = useState<number>(2000); // ms
   const [sortBy, setSortBy] = useState<string>('edgeScore');
   const [filterSport, setFilterSport] = useState<string>('ALL');
+  const [realDataLoaded, setRealDataLoaded] = useState(false);
+  const [selectedLineup, setSelectedLineup] = useState<TradePosition | null>(null);
+  const [showLineupModal, setShowLineupModal] = useState(false);
+
+  // Load real player data on mount
+  useEffect(() => {
+    const loadRealData = async () => {
+      if (!realDataLoaded) {
+        // Enrich all positions with real player data
+        const enrichedPositions = await Promise.all(
+          positions.map(async (position) => {
+            if (position.lineup && position.lineup.length > 0) {
+              const enrichedLineup = await loadRealPlayerData(position.lineup);
+              return { ...position, lineup: enrichedLineup };
+            }
+            return position;
+          })
+        );
+        
+        setPositions(enrichedPositions);
+        setRealDataLoaded(true);
+        console.log('🔥 Loaded real player data from 1.57M game stats database!');
+      }
+    };
+
+    loadRealData();
+  }, []);
 
   // Real-time updates
   useEffect(() => {
@@ -1186,7 +1279,15 @@ export default function AdvancedTradingTerminal() {
                       </div>
                       
                       <div className="flex gap-2">
-                        <Button size="sm" variant="outline" className="h-6 text-xs">
+                        <Button 
+                          size="sm" 
+                          variant="outline" 
+                          className="h-6 text-xs"
+                          onClick={() => {
+                            setSelectedLineup(position);
+                            setShowLineupModal(true);
+                          }}
+                        >
                           VIEW LINEUP
                         </Button>
                         <Button size="sm" variant="outline" className="h-6 text-xs">
@@ -1614,6 +1715,141 @@ export default function AdvancedTradingTerminal() {
           </div>
         </div>
       </div>
+
+      {/* Lineup Modal - Show Real Player Data */}
+      {showLineupModal && selectedLineup && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 border border-green-800 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            <div className="p-6 border-b border-gray-800">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-2xl font-bold text-green-400">{selectedLineup.contestName} Lineup</h2>
+                  <p className="text-gray-400 mt-1">
+                    {selectedLineup.platform} • {selectedLineup.sport} • {selectedLineup.entries}x @ {formatCurrency(selectedLineup.entryFee)}
+                  </p>
+                </div>
+                <Button 
+                  variant="ghost" 
+                  size="icon"
+                  onClick={() => setShowLineupModal(false)}
+                >
+                  <X className="h-5 w-5" />
+                </Button>
+              </div>
+            </div>
+            
+            <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+              {selectedLineup.lineup && selectedLineup.lineup.length > 0 ? (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-7 gap-2 text-sm font-semibold text-gray-400 pb-2 border-b border-gray-800">
+                    <div>Position</div>
+                    <div className="col-span-2">Player</div>
+                    <div className="text-right">Salary</div>
+                    <div className="text-right">Season Avg</div>
+                    <div className="text-right">Last 5 Avg</div>
+                    <div className="text-center">Trend</div>
+                  </div>
+                  
+                  {selectedLineup.lineup.map((player, idx) => (
+                    <div key={idx} className="grid grid-cols-7 gap-2 items-center py-3 border-b border-gray-800 hover:bg-gray-800/50 transition-colors">
+                      <div className="font-semibold text-gray-300">{player.position}</div>
+                      <div className="col-span-2">
+                        <div className="font-semibold text-white">{player.name}</div>
+                        <div className="text-sm text-gray-400">{player.team} vs {player.opponent}</div>
+                      </div>
+                      <div className="text-right text-gray-300">{formatCurrency(player.salary)}</div>
+                      <div className="text-right">
+                        {player.realSeasonAvg ? (
+                          <span className="text-green-400 font-semibold">{player.realSeasonAvg.toFixed(1)}</span>
+                        ) : (
+                          <span className="text-gray-500">-</span>
+                        )}
+                      </div>
+                      <div className="text-right">
+                        {player.realLast5Avg ? (
+                          <span className="text-blue-400 font-semibold">{player.realLast5Avg.toFixed(1)}</span>
+                        ) : (
+                          <span className="text-gray-500">-</span>
+                        )}
+                      </div>
+                      <div className="text-center">
+                        {player.realTrend ? (
+                          <Badge variant={
+                            player.realTrend === 'up' ? 'default' : 
+                            player.realTrend === 'down' ? 'destructive' : 
+                            'secondary'
+                          }>
+                            {player.realTrend === 'up' ? '↑' : player.realTrend === 'down' ? '↓' : '→'}
+                          </Badge>
+                        ) : (
+                          <Badge variant="outline">-</Badge>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                  
+                  <div className="mt-6 p-4 bg-gray-800 rounded-lg">
+                    <div className="grid grid-cols-3 gap-4 text-sm">
+                      <div>
+                        <div className="text-gray-400 mb-1">Total Salary Used</div>
+                        <div className="text-xl font-bold text-white">
+                          {formatCurrency(selectedLineup.lineup.reduce((sum, p) => sum + p.salary, 0))}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-gray-400 mb-1">Avg Season Points</div>
+                        <div className="text-xl font-bold text-green-400">
+                          {selectedLineup.lineup.filter(p => p.realSeasonAvg).length > 0 ? 
+                            selectedLineup.lineup.reduce((sum, p) => sum + (p.realSeasonAvg || 0), 0).toFixed(1) :
+                            '-'
+                          }
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-gray-400 mb-1">Avg Last 5 Games</div>
+                        <div className="text-xl font-bold text-blue-400">
+                          {selectedLineup.lineup.filter(p => p.realLast5Avg).length > 0 ? 
+                            selectedLineup.lineup.reduce((sum, p) => sum + (p.realLast5Avg || 0), 0).toFixed(1) :
+                            '-'
+                          }
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {selectedLineup.lineup.filter(p => p.realConsistency).length > 0 && (
+                      <div className="mt-4 pt-4 border-t border-gray-700">
+                        <div className="text-gray-400 mb-2">Player Consistency Scores</div>
+                        <div className="space-y-2">
+                          {selectedLineup.lineup.filter(p => p.realConsistency).map((player, idx) => (
+                            <div key={idx} className="flex items-center justify-between">
+                              <span className="text-sm text-gray-300">{player.name}</span>
+                              <div className="flex items-center gap-2">
+                                <div className="w-32 bg-gray-700 rounded-full h-2">
+                                  <div 
+                                    className="bg-green-500 h-2 rounded-full" 
+                                    style={{ width: `${player.realConsistency}%` }}
+                                  />
+                                </div>
+                                <span className="text-sm text-gray-400 w-10 text-right">
+                                  {player.realConsistency}%
+                                </span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <div className="text-center py-12 text-gray-400">
+                  No lineup data available
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

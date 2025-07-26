@@ -61,7 +61,11 @@ class PatternWebSocketClient {
    * Connect to WebSocket server
    */
   connect(userId?: string, apiKey?: string) {
-    const wsUrl = process.env.NEXT_PUBLIC_WEBSOCKET_URL || 'http://localhost:3338';
+    const wsUrl = process.env.NEXT_PUBLIC_WEBSOCKET_URL || (
+      typeof window !== 'undefined' && process.env.NODE_ENV === 'production' 
+        ? `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/ws`
+        : 'http://localhost:3338'
+    );
     
     this.socket = io(wsUrl, {
       transports: ['websocket'],

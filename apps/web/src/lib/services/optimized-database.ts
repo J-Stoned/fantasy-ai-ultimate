@@ -124,8 +124,12 @@ export class OptimizedDatabaseService {
         ).join(', ');
         
         const flatValues = batch.flat();
+        // Escape table and column names to prevent SQL injection
+        const escapedTable = `"${table.replace(/"/g, '""')}"`;
+        const escapedColumns = columns.map(col => `"${col.replace(/"/g, '""')}"`);
+        
         const query = `
-          INSERT INTO ${table} (${columns.join(', ')})
+          INSERT INTO ${escapedTable} (${escapedColumns.join(', ')})
           VALUES ${placeholders}
           ${options.onConflict || ''}
         `;
@@ -233,9 +237,13 @@ export class OptimizedDatabaseService {
     if (items.length === 0) return new Map();
     
     const ids = items.map(item => item.id);
+    // Escape table and column names to prevent SQL injection
+    const escapedRelation = `"${relation.replace(/"/g, '""')}"`;
+    const escapedForeignKey = `"${foreignKey.replace(/"/g, '""')}"`;
+    
     const query = `
-      SELECT * FROM ${relation}
-      WHERE ${foreignKey} = ANY($1)
+      SELECT * FROM ${escapedRelation}
+      WHERE ${escapedForeignKey} = ANY($1)
     `;
     
     const relations = await this.query(query, [ids], { cache: true });

@@ -141,7 +141,6 @@ export default function PlayerDetailScreen() {
         setLoading(false);
       }, 1000);
     } catch (error) {
-      console.error('Failed to load player data:', error);
       setLoading(false);
     }
   };

@@ -75,7 +75,6 @@ class PatternService {
       
       throw new Error('Failed to fetch stats');
     } catch (error) {
-      console.error('Pattern stats error:', error);
       // Return mock data for development
       return {
         totalGames: 5542,
@@ -105,7 +104,6 @@ class PatternService {
       const data = await response.json();
       return data;
     } catch (error) {
-      console.error('Voice command error:', error);
       return {
         success: false,
         command,
@@ -134,7 +132,6 @@ class PatternService {
       // Parse response and generate lineup
       return this.generateLineupFromResponse(result);
     } catch (error) {
-      console.error('Lineup generation error:', error);
       return this.getMockLineup(format);
     }
   }
@@ -164,8 +161,7 @@ class PatternService {
       this.wsConnection = new WebSocket(WS_BASE);
       
       this.wsConnection.onopen = () => {
-        console.log('Mobile connected to pattern stream');
-      };
+        };
       
       this.wsConnection.onmessage = (event) => {
         try {
@@ -174,16 +170,13 @@ class PatternService {
             this.wsCallbacks.forEach(callback => callback(data.alert));
           }
         } catch (error) {
-          console.error('WebSocket message error:', error);
-        }
+          }
       };
       
       this.wsConnection.onerror = (error) => {
-        console.error('WebSocket error:', error);
-      };
+        };
       
       this.wsConnection.onclose = () => {
-        console.log('WebSocket closed, reconnecting...');
         setTimeout(() => {
           if (this.wsCallbacks.size > 0) {
             this.initializeWebSocket();
@@ -191,8 +184,7 @@ class PatternService {
         }, 5000);
       };
     } catch (error) {
-      console.error('WebSocket initialization error:', error);
-    }
+      }
   }
   
   private generateLineupFromResponse(response: VoiceCommandResponse): FantasyLineup {

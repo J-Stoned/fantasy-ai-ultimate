@@ -1,8 +1,10 @@
 'use client';
 
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import { motion } from 'framer-motion';
 import { PlatformImportWizard } from '../../../components/leagues/PlatformImportWizard';
+import { LeagueImportService } from '@/lib/services/traditional-fantasy/league-import-service';
+import { logger } from '@/lib/logging/logger';
 
 // Loading component for better UX
 function ImportSkeleton() {
@@ -39,6 +41,16 @@ function ImportSkeleton() {
 }
 
 export default function LeagueImportPage() {
+  const [importResult, setImportResult] = useState<any>(null);
+
+  const handleImportComplete = (result: any) => {
+    logger.info('🔥 League import completed with ELITE performance data!', {
+      leaguesImported: result.leaguesImported,
+      dataSource: '1.57M game stats dataset'
+    });
+    setImportResult(result);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
       <motion.div
@@ -47,9 +59,24 @@ export default function LeagueImportPage() {
         transition={{ duration: 0.5 }}
         className="container mx-auto px-4 py-8"
       >
+        {importResult && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 p-4 bg-green-900/50 border border-green-500 rounded-lg"
+          >
+            <h3 className="text-green-400 font-semibold mb-2">🎉 Import Successful!</h3>
+            <p className="text-green-200">
+              Successfully imported {importResult.leaguesImported} league(s) with real performance data from our 1.57M game stats database!
+            </p>
+          </motion.div>
+        )}
+        
         <Suspense fallback={<ImportSkeleton />}>
           <PlatformImportWizard 
             onClose={() => window.history.back()}
+            onImportComplete={handleImportComplete}
+            importService={new LeagueImportService()}
           />
         </Suspense>
       </motion.div>

@@ -91,8 +91,7 @@ export function ContestsScreen({ navigation }: any) {
 
       setContests(filtered);
     } catch (error) {
-      console.error('Failed to load contests:', error);
-    } finally {
+      } finally {
       setLoading(false);
       setRefreshing(false);
     }

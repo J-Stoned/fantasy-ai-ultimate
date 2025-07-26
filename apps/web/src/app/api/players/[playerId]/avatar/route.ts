@@ -76,7 +76,10 @@ export async function GET(
 
     // 🏆 LOG STAR PLAYER REQUESTS (FOR ANALYTICS)
     if (player.avatar_tier === 'star') {
-      logger.info('⭐ Star player avatar requested: ${player.firstname} ${player.lastname} (${player.sport_id})');
+      logger.info('⭐ Star player avatar requested', {
+        player: `${player.firstname} ${player.lastname}`,
+        sport: player.sport_id
+      });
     }
 
     return NextResponse.json(avatarData);
@@ -112,7 +115,20 @@ export async function POST(request: NextRequest) {
     }
 
     // 🚀 BATCH QUERY WITH IN CLAUSE FOR MAXIMUM SPEED
-    const placeholders = playerIds.map((_, index) => `$${index + 1}`).join(',');
+    // Validate all player IDs are valid before querying
+    const validPlayerIds = playerIds.filter(id => {
+      // Ensure ID is a string and matches expected format
+      return typeof id === 'string' && /^[a-zA-Z0-9_-]+$/.test(id);
+    });
+
+    if (validPlayerIds.length === 0) {
+      return NextResponse.json(
+        { error: 'No valid player IDs provided' },
+        { status: 400 }
+      );
+    }
+
+    const placeholders = validPlayerIds.map((_, index) => `$${index + 1}`).join(',');
     const query = `
       SELECT 
         id,
@@ -129,7 +145,7 @@ export async function POST(request: NextRequest) {
         avatar_photo_url,
         avatar_metadata
       FROM players 
-      WHERE id IN (${placeholders})
+      WHERE id = ANY($1::text[])
       ORDER BY 
         CASE avatar_tier
           WHEN 'star' THEN 1
@@ -139,7 +155,7 @@ export async function POST(request: NextRequest) {
         overall_rating DESC
     `;
 
-    const result = await pool.query(query, playerIds);
+    const result = await pool.query(query, [validPlayerIds]);
 
     // 🎯 FORMAT DATA FOR MOBILE CONSUMPTION
     const avatarData = result.rows.map(player => ({
@@ -164,7 +180,12 @@ export async function POST(request: NextRequest) {
       return acc;
     }, {} as Record<string, number>);
 
-    logger.info('🔥 Batch avatar request: ${avatarData.length} players (⭐${tierCounts.star || 0} 🏃${tierCounts.starter || 0} 🏃‍♂️${tierCounts.bench || 0})');
+    logger.info('🔥 Batch avatar request', {
+      totalPlayers: avatarData.length,
+      starPlayers: tierCounts.star || 0,
+      starterPlayers: tierCounts.starter || 0,
+      benchPlayers: tierCounts.bench || 0
+    });
 
     return NextResponse.json({
       players: avatarData,

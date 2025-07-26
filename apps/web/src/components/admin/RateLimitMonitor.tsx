@@ -11,7 +11,6 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { 
-import { logger } from '../../lib/logging/logger';
   Shield, 
   Activity, 
   AlertTriangle, 
@@ -21,6 +20,7 @@ import { logger } from '../../lib/logging/logger';
   TrendingUp,
   RefreshCw
 } from 'lucide-react';
+import { logger } from '../../lib/logging/logger';
 
 interface RateLimitStats {
   totalRequests: number;

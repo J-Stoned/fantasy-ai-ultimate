@@ -1,24 +1,56 @@
 version: '3.8'
 
 services:
-  # PostgreSQL Database (Supabase local)
+  # PostgreSQL Database (Production-ready with external access)
   postgres:
     image: postgres:15-alpine
     container_name: fantasy-postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      POSTGRES_DB: fantasy_ai_ultimate
+      POSTGRES_USER: ${DB_USER:-fantasy_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-fantasy_password}
+      POSTGRES_DB: ${DB_NAME:-fantasy_ai}
+      # Production security settings
+      POSTGRES_INITDB_ARGS: "--auth-host=md5 --auth-local=trust"
+      # SSL Configuration
+      POSTGRES_SSL_MODE: ${POSTGRES_SSL_MODE:-prefer}
+      # Connection limits
+      POSTGRES_MAX_CONNECTIONS: ${POSTGRES_MAX_CONNECTIONS:-200}
+      # Performance tuning
+      POSTGRES_SHARED_BUFFERS: ${POSTGRES_SHARED_BUFFERS:-256MB}
+      POSTGRES_EFFECTIVE_CACHE_SIZE: ${POSTGRES_EFFECTIVE_CACHE_SIZE:-1GB}
+      POSTGRES_WORK_MEM: ${POSTGRES_WORK_MEM:-4MB}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./supabase/migrations:/docker-entrypoint-initdb.d
+      - ./database/init:/docker-entrypoint-initdb.d
+      - ./database/ssl:/var/lib/postgresql/ssl
     ports:
-      - "5432:5432"
+      - "${DB_PORT:-5432}:5432"
+    command: |
+      postgres
+      -c ssl=on
+      -c ssl_cert_file=/var/lib/postgresql/ssl/server.crt
+      -c ssl_key_file=/var/lib/postgresql/ssl/server.key
+      -c ssl_ca_file=/var/lib/postgresql/ssl/ca.crt
+      -c max_connections=200
+      -c shared_buffers=256MB
+      -c effective_cache_size=1GB
+      -c work_mem=4MB
+      -c maintenance_work_mem=64MB
+      -c checkpoint_completion_target=0.7
+      -c wal_buffers=16MB
+      -c default_statistics_target=100
+      -c random_page_cost=1.1
+      -c effective_io_concurrency=200
+      -c listen_addresses='*'
+      -c logging_collector=on
+      -c log_statement=all
+      -c log_duration=on
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-fantasy_user} -d ${DB_NAME:-fantasy_ai}"]
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
 
   # Redis Cache
   redis:
@@ -49,11 +81,39 @@ services:
         condition: service_healthy
     environment:
       NODE_ENV: production
-      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:-postgres}@postgres:5432/fantasy_ai_ultimate
+      # Database configuration
+      DATABASE_URL: postgresql://${DB_USER:-fantasy_user}:${DB_PASSWORD:-fantasy_password}@postgres:5432/${DB_NAME:-fantasy_ai}?sslmode=require
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-fantasy_ai}
+      DB_USER: ${DB_USER:-fantasy_user}
+      DB_PASSWORD: ${DB_PASSWORD:-fantasy_password}
+      # Redis configuration
       REDIS_URL: redis://redis:6379
+      # API Keys and Services
       NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
       SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+      # Google Services
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      GOOGLE_ANALYTICS_ID: ${GOOGLE_ANALYTICS_ID}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      # 11Labs Voice
+      ELEVENLABS_API_KEY: ${ELEVENLABS_API_KEY}
+      # Firebase FCM
+      FIREBASE_PROJECT_ID: ${FIREBASE_PROJECT_ID}
+      FIREBASE_PRIVATE_KEY: ${FIREBASE_PRIVATE_KEY}
+      FIREBASE_CLIENT_EMAIL: ${FIREBASE_CLIENT_EMAIL}
+      # Cloudflare CDN
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
+      CLOUDFLARE_ZONE_ID: ${CLOUDFLARE_ZONE_ID}
+      # Security
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      NEXTAUTH_URL: ${NEXTAUTH_URL}
+      # Performance
+      MAX_POOL_SIZE: ${MAX_POOL_SIZE:-5}
+      QUERY_TIMEOUT: ${QUERY_TIMEOUT:-15000}
     ports:
       - "3000:3000"
     restart: unless-stopped

@@ -5,6 +5,7 @@
 
 import { sql } from '@vercel/postgres';
 import { logger } from '../logging/logger';
+import { playerDataService } from '../database/player-data-service';
 
 export interface DatabaseLeague {
   id: string;
@@ -191,6 +192,122 @@ export class LeagueDatabaseService {
     } catch (error) {
       logger.error('Error getting players:', { error: error });
       throw new Error('Failed to get players from database');
+    }
+  }
+
+  /**
+   * Get enriched league players with real game stats, avatars, and performance data
+   */
+  async getEnrichedLeaguePlayers(leagueId: string): Promise<any[]> {
+    try {
+      // Get basic league players
+      const leaguePlayers = await this.getLeaguePlayers(leagueId);
+      
+      if (leaguePlayers.length === 0) {
+        return [];
+      }
+      
+      // Enrich each player with real data from our 1.57M game stats
+      const enrichedPlayers = await Promise.all(
+        leaguePlayers.map(async (leaguePlayer) => {
+          try {
+            // Try to find matching player in our main database by name
+            const { data: realPlayers } = await playerDataService.getPlayers({
+              search_term: leaguePlayer.name,
+              limit: 1,
+              include_stats: true
+            });
+            
+            const realPlayer = realPlayers?.[0];
+            
+            if (realPlayer) {
+              // Merge league data with real player data
+              return {
+                // League-specific data
+                id: leaguePlayer.id,
+                platformId: leaguePlayer.platform_id,
+                leagueId: leaguePlayer.league_id,
+                teamId: leaguePlayer.team_id,
+                
+                // Enhanced player data from our database
+                name: realPlayer.name,
+                position: realPlayer.position,
+                team: realPlayer.team_abbreviation || leaguePlayer.team,
+                sport: realPlayer.sport,
+                
+                // Performance data from 1.57M game stats
+                overallRating: realPlayer.overall_rating,
+                avatarTier: realPlayer.avatar_tier || 'practice',
+                avgFantasyPoints: realPlayer.season_stats?.avg_fantasy_points || leaguePlayer.projected_points,
+                consistency: realPlayer.season_stats?.consistency_score,
+                trending: realPlayer.trending || 'stable',
+                
+                // Avatar system
+                avatar2dUrl: realPlayer.avatar_2d_url,
+                avatar3dUrl: realPlayer.avatar_3d_url,
+                avatarPhotoUrl: realPlayer.avatar_photo_url,
+                imageUrl: realPlayer.image_url || leaguePlayer.image_url,
+                
+                // DFS data
+                dkPoints: realPlayer.season_stats?.avg_dk_points,
+                fdPoints: realPlayer.season_stats?.avg_fd_points,
+                yahooPoints: realPlayer.season_stats?.avg_yahoo_points,
+                
+                // Player metadata
+                age: realPlayer.age,
+                college: realPlayer.college,
+                jerseyNumber: realPlayer.jersey_number,
+                draftYear: realPlayer.draft_year,
+                
+                // League-specific projections
+                projectedPoints: leaguePlayer.projected_points,
+                seasonPoints: leaguePlayer.season_points,
+                injuryStatus: leaguePlayer.injury_status,
+                
+                // Data source indicators
+                hasRealData: true,
+                dataSource: '1.57M game stats dataset'
+              };
+            } else {
+              // Fallback to league data only
+              return {
+                ...leaguePlayer,
+                hasRealData: false,
+                dataSource: 'platform import only',
+                avatarTier: 'practice',
+                trending: 'stable'
+              };
+            }
+          } catch (error) {
+            logger.warn(`Failed to enrich player ${leaguePlayer.name}:`, error);
+            return {
+              ...leaguePlayer,
+              hasRealData: false,
+              dataSource: 'platform import only',
+              avatarTier: 'practice',
+              trending: 'stable'
+            };
+          }
+        })
+      );
+      
+      // Sort by performance (real data first, then by projected points)
+      enrichedPlayers.sort((a, b) => {
+        if (a.hasRealData && !b.hasRealData) return -1;
+        if (!a.hasRealData && b.hasRealData) return 1;
+        
+        const aPoints = a.avgFantasyPoints || a.projectedPoints || 0;
+        const bPoints = b.avgFantasyPoints || b.projectedPoints || 0;
+        return bPoints - aPoints;
+      });
+      
+      logger.info(`Enriched ${enrichedPlayers.filter(p => p.hasRealData).length}/${enrichedPlayers.length} league players with real data`);
+      
+      return enrichedPlayers;
+      
+    } catch (error) {
+      logger.error('Error getting enriched league players:', { error: error });
+      throw new Error('Failed to get enriched league players');
     }
   }
 

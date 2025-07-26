@@ -89,11 +89,9 @@ function extractIdentifier(req: NextRequest): {
   if (authHeader?.startsWith('Bearer ')) {
     try {
       const token = authHeader.substring(7);
-      // Decode JWT to get user ID (simplified - use proper JWT verification)
-      const payload = JSON.parse(
-        Buffer.from(token.split('.')[1], 'base64').toString()
-      );
-      userId = payload.sub || payload.userId;
+      // Use proper JWT verification
+      const { extractUserIdFromJWT } = await import('@/lib/auth/jwt-verify');
+      userId = await extractUserIdFromJWT(token);
     } catch (error) {
       // Invalid token, ignore
     }
@@ -207,11 +205,6 @@ export async function rateLimitMiddleware(
       if (result.retryAfter) {
         headers.set(RATE_LIMIT_HEADERS['Retry-After'], result.retryAfter.toString());
       }
-      
-      console.warn(
-        `Rate limit exceeded: ${identifier.ip} - ${category}/${tier} - ` +
-        `${identifier.userId || identifier.apiKey || 'anonymous'}`
-      );
       
       return NextResponse.json(
         ERROR_RESPONSES.rateLimitExceeded,

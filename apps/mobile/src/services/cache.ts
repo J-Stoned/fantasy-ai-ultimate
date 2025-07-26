@@ -263,8 +263,7 @@ export class CacheService extends EventEmitter {
         )
       );
     } catch (error) {
-      console.error('Failed to persist cache:', error);
-    }
+      }
   }
 
   // Load persisted cache
@@ -285,8 +284,7 @@ export class CacheService extends EventEmitter {
         })
       );
     } catch (error) {
-      console.error('Failed to load persisted cache:', error);
-    }
+      }
   }
 
   // Storage helpers
@@ -297,8 +295,7 @@ export class CacheService extends EventEmitter {
         JSON.stringify(entry)
       );
     } catch (error) {
-      console.error(`Failed to save cache entry ${key}:`, error);
-    }
+      }
   }
 
   private async loadFromStorage(key: string): Promise<CacheEntry | null> {
@@ -306,7 +303,6 @@ export class CacheService extends EventEmitter {
       const data = await AsyncStorage.getItem(`cache_${key}`);
       return data ? JSON.parse(data) : null;
     } catch (error) {
-      console.error(`Failed to load cache entry ${key}:`, error);
       return null;
     }
   }
@@ -315,8 +311,7 @@ export class CacheService extends EventEmitter {
     try {
       await AsyncStorage.removeItem(`cache_${key}`);
     } catch (error) {
-      console.error(`Failed to remove cache entry ${key}:`, error);
-    }
+      }
   }
 
   // Offline sync

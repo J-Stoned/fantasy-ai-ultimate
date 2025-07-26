@@ -5,14 +5,17 @@
 
 import { EventEmitter } from 'events';
 import {
-import { logger } from '../../logging/logger';
   SyncConfig,
   SyncStatus,
   SyncType,
   FantasyPlatform,
   RetryConfig,
-  ApiResponse
+  ApiResponse,
+  Roster
 } from './types';
+import { logger } from '../../logging/logger';
+import { playerDataService } from '../../database/player-data-service';
+import { gameStatsService } from '../../database/game-stats-service';
 
 interface ScheduledSync {
   config: SyncConfig;
@@ -301,7 +304,6 @@ export class SyncScheduler extends EventEmitter {
       if (this.shouldRetry(scheduledSync)) {
         logger.info('Scheduling retry ${scheduledSync.retryCount} for league ${config.leagueId}');
       } else {
-        console.error(`Max retries reached for league ${config.leagueId}`);
         // Cancel sync after max retries
         this.cancelSync(config.leagueId);
       }
@@ -555,6 +557,150 @@ export class SyncScheduler extends EventEmitter {
   public setMaxConcurrentSyncs(max: number): void {
     this.maxConcurrentSyncs = Math.max(1, max);
     this.processSyncQueue();
+  }
+
+  /**
+   * ELITE: Sync roster enrichment data from 1.57M game stats! 🔥
+   */
+  public async syncRosterEnrichment(leagueId: string, rosters: Roster[]): Promise<void> {
+    logger.info('🔥 Syncing roster enrichment data from 1.57M game stats', {
+      leagueId,
+      rosterCount: rosters.length,
+      dataSource: '1.57M game stats dataset'
+    });
+
+    try {
+      for (const roster of rosters) {
+        const playersNeedingUpdate = roster.players.filter(player => {
+          // Update if no real data or data is older than 24 hours
+          if (!player.realPerformanceData) return true;
+          
+          const lastUpdated = new Date(player.realPerformanceData.lastUpdated);
+          const hoursSinceUpdate = (Date.now() - lastUpdated.getTime()) / (1000 * 60 * 60);
+          return hoursSinceUpdate > 24;
+        });
+
+        if (playersNeedingUpdate.length === 0) continue;
+
+        logger.info(`Updating ${playersNeedingUpdate.length} players for roster ${roster.teamId}`);
+
+        // Update each player's real performance data
+        for (const player of playersNeedingUpdate) {
+          if (!player.realPlayerId) continue;
+
+          try {
+            // Get updated stats from our Elite database
+            const { data: realPlayer, error } = await playerDataService.getPlayerById(
+              player.realPlayerId,
+              {
+                include_stats: true,
+                include_recent_games: true
+              }
+            );
+
+            if (!error && realPlayer) {
+              // Update performance data
+              player.realPerformanceData = {
+                seasonStats: realPlayer.season_stats,
+                recentGames: realPlayer.recent_games,
+                overallRating: realPlayer.overall_rating,
+                injuryHistory: realPlayer.injury_history,
+                consistencyScore: realPlayer.season_stats?.consistency_score || 50,
+                avgFantasyPoints: realPlayer.season_stats?.avg_fantasy_points || 0,
+                gamesPlayed: realPlayer.season_stats?.games_played || 0,
+                lastUpdated: new Date()
+              };
+
+              // Update injury status
+              if (realPlayer.injury_status) {
+                player.injuryStatus = {
+                  status: this.mapInjuryStatus(realPlayer.injury_status),
+                  description: realPlayer.injury_notes || player.injuryStatus?.description
+                };
+              }
+
+              logger.info(`✅ Updated ${player.name} with latest performance data`, {
+                avgPoints: realPlayer.season_stats?.avg_fantasy_points,
+                gamesPlayed: realPlayer.season_stats?.games_played,
+                lastGame: realPlayer.recent_games?.[0]?.game_date
+              });
+            }
+          } catch (error) {
+            logger.error(`Failed to update player ${player.name}:`, error);
+          }
+        }
+
+        // Recalculate team analytics with updated data
+        const teamStats = this.calculateTeamStatsFromRealData(roster.players);
+        roster.teamAnalytics = teamStats;
+      }
+
+      logger.info('🚀 Roster enrichment sync complete', {
+        leagueId,
+        totalRostersUpdated: rosters.length
+      });
+
+    } catch (error) {
+      logger.error('Error syncing roster enrichment data:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Map injury status to our standard format
+   */
+  private mapInjuryStatus(status: string): 'healthy' | 'questionable' | 'doubtful' | 'out' | 'ir' {
+    const normalized = status.toLowerCase();
+    
+    if (normalized.includes('question') || normalized === 'q') {
+      return 'questionable';
+    } else if (normalized.includes('doubt') || normalized === 'd') {
+      return 'doubtful';
+    } else if (normalized.includes('out') || normalized === 'o') {
+      return 'out';
+    } else if (normalized.includes('ir') || normalized.includes('injured')) {
+      return 'ir';
+    }
+    
+    return 'healthy';
+  }
+
+  /**
+   * Calculate team statistics from real player data
+   */
+  private calculateTeamStatsFromRealData(players: any[]): any {
+    const playersWithRealData = players.filter(p => p.realPerformanceData);
+    
+    if (playersWithRealData.length === 0) {
+      return {
+        avgOverallRating: 0,
+        projectedWeeklyPoints: 0,
+        avgConsistency: 0,
+        injuryRisk: 0,
+        strengthOfRoster: 0
+      };
+    }
+
+    const totalRating = playersWithRealData.reduce((sum, p) => sum + (p.realPerformanceData!.overallRating || 65), 0);
+    const totalPoints = playersWithRealData.reduce((sum, p) => sum + (p.realPerformanceData!.avgFantasyPoints || 0), 0);
+    const totalConsistency = playersWithRealData.reduce((sum, p) => sum + (p.realPerformanceData!.consistencyScore || 50), 0);
+    
+    const totalGamesPlayed = playersWithRealData.reduce((sum, p) => sum + (p.realPerformanceData!.gamesPlayed || 0), 0);
+    const totalPossibleGames = playersWithRealData.length * 17;
+    const injuryRisk = 100 - (totalGamesPlayed / totalPossibleGames * 100);
+
+    const avgRating = totalRating / playersWithRealData.length;
+    const strengthOfRoster = Math.min(100, Math.max(0, (avgRating - 50) * 2));
+
+    return {
+      avgOverallRating: Math.round(avgRating),
+      projectedWeeklyPoints: Math.round(totalPoints * 10) / 10,
+      avgConsistency: Math.round(totalConsistency / playersWithRealData.length),
+      injuryRisk: Math.round(injuryRisk),
+      strengthOfRoster: Math.round(strengthOfRoster),
+      matchedPlayerCount: playersWithRealData.length,
+      totalPlayerCount: players.length
+    };
   }
 }
 

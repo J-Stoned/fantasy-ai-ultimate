@@ -111,7 +111,6 @@ export function useOptimizedAvatar(
       
       loadedRef.current = true;
     } catch (err) {
-      console.error('Avatar loading error:', err);
       setError(err as Error);
     } finally {
       setLoading(false);
@@ -223,7 +222,7 @@ export function useOptimizedAvatars(
               .then(optimized => {
                 optimizedUrls.set(id, optimized);
               })
-              .catch(err => console.error(`Image optimization failed for ${id}:`, err));
+              .catch(err => );
             
             imagePromises.push(promise);
           }
@@ -236,7 +235,6 @@ export function useOptimizedAvatars(
       setLoadingProgress(100);
       loadedRef.current = true;
     } catch (err) {
-      console.error('Batch avatar loading error:', err);
       setError(err as Error);
     } finally {
       setLoading(false);

@@ -1,6 +1,6 @@
 export const config = {
   redis: {
-    host: process.env.REDIS_HOST || 'localhost',
+    host: process.env.REDIS_HOST || (process.env.NODE_ENV === 'production' ? undefined : 'localhost'),
     port: parseInt(process.env.REDIS_PORT || '6379'),
     password: process.env.REDIS_PASSWORD,
     db: parseInt(process.env.REDIS_DB || '0'),
@@ -48,7 +48,7 @@ export const config = {
     },
   },
   api: {
-    baseUrl: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000',
+    baseUrl: process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined' && process.env.NODE_ENV === 'production' ? `${window.location.protocol}//${window.location.host}` : 'http://localhost:3000'),
     timeout: parseInt(process.env.API_TIMEOUT || '30000'),
   },
   features: {

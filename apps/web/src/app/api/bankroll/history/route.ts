@@ -175,6 +175,9 @@ async function getBankrollHistory(period: number, granularity: string) {
 
 async function getPerformanceMetrics(period: number) {
   try {
+    // Validate period to prevent SQL injection
+    const validPeriod = Math.max(1, Math.min(365, Math.floor(period)));
+    
     const result = await pool.query(`
       WITH daily_returns AS (
         SELECT 
@@ -182,7 +185,7 @@ async function getPerformanceMetrics(period: number) {
           FIRST_VALUE(bankroll) OVER (PARTITION BY DATE(timestamp) ORDER BY timestamp ASC) as start_bankroll,
           LAST_VALUE(bankroll) OVER (PARTITION BY DATE(timestamp) ORDER BY timestamp ASC RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) as end_bankroll
         FROM bankroll_history
-        WHERE timestamp > CURRENT_DATE - INTERVAL '${period} days'
+        WHERE timestamp > CURRENT_DATE - INTERVAL $1
       ),
       unique_daily_returns AS (
         SELECT DISTINCT 
@@ -205,7 +208,7 @@ async function getPerformanceMetrics(period: number) {
           MAX(pnl) as best_result,
           MIN(pnl) as worst_result
         FROM contest_results
-        WHERE created_at > CURRENT_DATE - INTERVAL '${period} days'
+        WHERE created_at > CURRENT_DATE - INTERVAL $1
       ),
       drawdown_calc AS (
         SELECT 
@@ -215,7 +218,7 @@ async function getPerformanceMetrics(period: number) {
           (MAX(bankroll) OVER (ORDER BY timestamp ROWS UNBOUNDED PRECEDING) - bankroll) / 
             NULLIF(MAX(bankroll) OVER (ORDER BY timestamp ROWS UNBOUNDED PRECEDING), 0) as drawdown_pct
         FROM bankroll_history
-        WHERE timestamp > CURRENT_DATE - INTERVAL '${period} days'
+        WHERE timestamp > CURRENT_DATE - INTERVAL $1
       )
       SELECT 
         -- Returns metrics
@@ -239,10 +242,10 @@ async function getPerformanceMetrics(period: number) {
         
         -- Current bankroll
         (SELECT bankroll FROM bankroll_history ORDER BY timestamp DESC LIMIT 1) as current_bankroll,
-        (SELECT bankroll FROM bankroll_history WHERE timestamp > CURRENT_DATE - INTERVAL '${period} days' ORDER BY timestamp ASC LIMIT 1) as starting_bankroll
+        (SELECT bankroll FROM bankroll_history WHERE timestamp > CURRENT_DATE - INTERVAL $1 ORDER BY timestamp ASC LIMIT 1) as starting_bankroll
         
       FROM contest_stats cs
-    `);
+    `, [`${validPeriod} days`, `${validPeriod} days`, `${validPeriod} days`, `${validPeriod} days`]);
     
     const data = result.rows[0] || {};
     

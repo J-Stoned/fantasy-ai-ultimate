@@ -35,7 +35,7 @@ export class MobileGPUOptimizer {
     // Wait for TensorFlow.js to initialize
     await tf.ready();
     this.isReady = true;
-    console.log('GPU Optimizer ready. Backend:', tf.getBackend());
+    );
   }
 
   async optimizeLineup(

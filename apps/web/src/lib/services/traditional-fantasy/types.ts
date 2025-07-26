@@ -122,6 +122,17 @@ export interface Roster {
   startingLineup?: string[]; // Player IDs
   benchPlayers?: string[]; // Player IDs
   injuredReserve?: string[]; // Player IDs
+  
+  // ELITE: Team analytics from real performance data! 🔥
+  teamAnalytics?: {
+    avgOverallRating: number;
+    projectedWeeklyPoints: number;
+    avgConsistency: number;
+    injuryRisk: number;
+    strengthOfRoster: number;
+    matchedPlayerCount: number;
+    totalPlayerCount: number;
+  };
 }
 
 export interface RosterPlayer {
@@ -137,6 +148,19 @@ export interface RosterPlayer {
   projectedStats?: PlayerStats;
   acquisitionInfo?: AcquisitionInfo;
   imageUrl?: string;
+  
+  // ELITE: Real performance data from 1.57M game stats! 🔥
+  realPlayerId?: number;
+  realPerformanceData?: {
+    seasonStats?: any;
+    recentGames?: any[];
+    overallRating?: number;
+    injuryHistory?: any[];
+    consistencyScore: number;
+    avgFantasyPoints: number;
+    gamesPlayed: number;
+    lastUpdated: Date;
+  };
 }
 
 export interface PlayerStatus {

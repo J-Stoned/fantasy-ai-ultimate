@@ -9,16 +9,22 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { CDNPerformanceWidget } from '@/components/cdn/CDNPerformanceWidget';
+import { APIServicesStatus } from '@/components/providers/APIServicesProvider';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 export default function AdminDashboard() {
   const router = useRouter();
+  const analytics = useAnalytics();
   const [stats, setStats] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
     fetchRealStats();
-  }, []);
+    // Track admin dashboard view
+    analytics.trackPageView('/admin');
+  }, [analytics]);
 
   const fetchRealStats = async () => {
     try {
@@ -191,6 +197,20 @@ export default function AdminDashboard() {
               </div>
             </div>
           )}
+
+          {/* API Integrations Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* CDN Performance */}
+            <CDNPerformanceWidget className="h-full" />
+            
+            {/* API Services Status */}
+            <div className="bg-black/40 backdrop-blur-lg rounded-xl p-6 border border-white/10">
+              <h2 className="text-xl font-semibold text-white mb-4">
+                🔌 API Services Status
+              </h2>
+              <APIServicesStatus />
+            </div>
+          </div>
 
           {/* Available Services */}
           <div className="bg-black/40 backdrop-blur-lg rounded-xl p-6 border border-white/10">

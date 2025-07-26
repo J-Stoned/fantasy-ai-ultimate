@@ -49,6 +49,7 @@ export class RealtimeWebSocketServer {
   private redisSub: Redis;
   private clients: Map<string, Set<AuthenticatedWebSocket>>;
   private channels: Map<string, Set<string>>; // channel -> Set of userIds
+  private heartbeatInterval?: NodeJS.Timeout;
 
   constructor(port: number = 3001) {
     // Create HTTP server
@@ -94,8 +95,8 @@ export class RealtimeWebSocketServer {
     // Start server
     server.listen(port, () => {
       logger.info('WebSocket server listening on port ${port}');
-      logger.info('🔮 Oracle WebSocket ready at ws://localhost:${port}/ws/oracle');
-      logger.info('🎭 Debate WebSocket ready at ws://localhost:${port}/ws/debates');
+      logger.info(`🔮 Oracle WebSocket ready at ws://${process.env.HOST || 'localhost'}:${port}/ws/oracle`);
+      logger.info(`🎭 Debate WebSocket ready at ws://${process.env.HOST || 'localhost'}:${port}/ws/debates`);
     });
   }
 
@@ -312,7 +313,7 @@ export class RealtimeWebSocketServer {
         break;
         
       default:
-        logger.warn('Unknown message type:'message.type);
+        logger.warn('Unknown message type', { type: message.type });
     }
   }
 
@@ -390,7 +391,7 @@ export class RealtimeWebSocketServer {
   }
 
   private startHeartbeat() {
-    const interval = setInterval(() => {
+    this.heartbeatInterval = setInterval(() => {
       this.wss.clients.forEach((ws) => {
         const authWs = ws as AuthenticatedWebSocket;
         if (authWs.isAlive === false) {
@@ -402,10 +403,6 @@ export class RealtimeWebSocketServer {
         authWs.ping();
       });
     }, 30000); // 30 seconds
-
-    this.wss.on('close', () => {
-      clearInterval(interval);
-    });
   }
 
   // Public methods for external use
@@ -424,6 +421,11 @@ export class RealtimeWebSocketServer {
   }
 
   public async close() {
+    // Clear heartbeat interval
+    if (this.heartbeatInterval) {
+      clearInterval(this.heartbeatInterval);
+    }
+    
     // Close all connections
     this.wss.clients.forEach((ws) => {
       ws.close(1000, 'Server shutting down');

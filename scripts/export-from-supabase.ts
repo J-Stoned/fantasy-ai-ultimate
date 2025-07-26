@@ -1,170 +1,276 @@
-#!/usr/bin/env tsx
 /**
- * Export database from Supabase to SQL file
+ * Export data from Supabase to local PostgreSQL
+ * Elite implementation with proper SQL injection prevention
  */
 
 import { Pool } from 'pg';
-import fs from 'fs';
+import * as fs from 'fs';
+import * as path from 'path';
 import chalk from 'chalk';
+import dotenv from 'dotenv';
 
-// Supabase connection - Force IPv4
-const sourcePool = new Pool({
-  host: 'db.pvekvqiqrrpugfmpgaup.supabase.co',
-  port: 6543,
-  database: 'postgres',
-  user: 'postgres',
-  password: 'IL36Z9I7tV2629Lr',
-  ssl: { rejectUnauthorized: false }
-});
+// Load environment variables
+dotenv.config({ path: '.env.local' });
 
-async function exportDatabase() {
-  console.log(chalk.blue('🚀 Exporting database from Supabase...'));
-  
-  try {
-    // Test connection
-    const test = await sourcePool.query('SELECT COUNT(*) as count FROM games');
-    console.log(chalk.green(`✅ Connected to Supabase - Found ${test.rows[0].count} games`));
-    
-    // Critical tables to export
-    const tables = [
-      'teams',
-      'players', 
-      'games',
-      'player_game_logs',
-      'player_stats',
-      'enhanced_synergies',
-      'betting_lines',
-      'weather_data',
-      'player_injuries'
-    ];
-    
-    let exportSQL = `-- Fantasy AI Database Export from Supabase
--- Generated on ${new Date().toISOString()}
--- Total games: ${test.rows[0].count}
+// Whitelist of allowed table names to prevent SQL injection
+const ALLOWED_TABLES = [
+  'achievements',
+  'daily_challenges',
+  'daily_fantasy_scores',
+  'dfs_ownership',
+  'game_logs',
+  'injuries', 
+  'leagues',
+  'lineup_events',
+  'player_news',
+  'player_projections',
+  'player_stats',
+  'players',
+  'rosters',
+  'teams',
+  'trades',
+  'users',
+  'waiver_wires'
+];
+
+interface ExportOptions {
+  tables?: string[];
+  outputFile?: string;
+}
+
+class DatabaseExporter {
+  private sourcePool: Pool;
+  private exportSQL: string = '';
+
+  constructor() {
+    // Source database (Supabase)
+    this.sourcePool = new Pool({
+      connectionString: process.env.SUPABASE_CONNECTION_STRING || process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }
+    });
+  }
+
+  /**
+   * Validate table name against whitelist
+   */
+  private validateTableName(tableName: string): boolean {
+    return ALLOWED_TABLES.includes(tableName);
+  }
+
+  /**
+   * Escape identifier for PostgreSQL
+   */
+  private escapeIdentifier(identifier: string): string {
+    // PostgreSQL identifier escaping
+    return `"${identifier.replace(/"/g, '""')}"`;
+  }
+
+  /**
+   * Export specific tables or all tables
+   */
+  async export(options: ExportOptions = {}): Promise<void> {
+    const startTime = Date.now();
+    console.log(chalk.blue('\n🚀 Starting Supabase Export\n'));
+
+    try {
+      // Get list of tables to export
+      const tablesToExport = options.tables || ALLOWED_TABLES;
+      
+      // Validate all table names
+      for (const table of tablesToExport) {
+        if (!this.validateTableName(table)) {
+          throw new Error(`Invalid table name: ${table}`);
+        }
+      }
+
+      // Add header
+      this.exportSQL = `-- Supabase Data Export
+-- Generated: ${new Date().toISOString()}
+-- Tables: ${tablesToExport.join(', ')}
+
+BEGIN;
 
 `;
-    
-    // Get table counts
-    console.log(chalk.yellow('\n📊 Table Overview:'));
-    for (const table of tables) {
-      try {
-        const count = await sourcePool.query(`SELECT COUNT(*) as c FROM ${table}`);
-        console.log(chalk.gray(`  ${table}: ${count.rows[0].c} rows`));
-      } catch (e) {
-        console.log(chalk.red(`  ${table}: ERROR - ${e.message}`));
+
+      // Export each table
+      for (const tableName of tablesToExport) {
+        await this.exportTable(tableName);
       }
+
+      // Add footer
+      this.exportSQL += '\nCOMMIT;\n';
+
+      // Write to file
+      const outputFile = options.outputFile || `supabase-export-${Date.now()}.sql`;
+      const outputPath = path.join(process.cwd(), outputFile);
+      
+      fs.writeFileSync(outputPath, this.exportSQL);
+      
+      const duration = ((Date.now() - startTime) / 1000).toFixed(2);
+      console.log(chalk.green(`\n✅ Export completed in ${duration}s`));
+      console.log(chalk.blue(`📁 Output file: ${outputPath}`));
+      
+    } catch (error) {
+      console.error(chalk.red('\n❌ Export failed:'), error);
+      throw error;
+    } finally {
+      await this.sourcePool.end();
     }
+  }
+
+  /**
+   * Export a single table with proper parameterization
+   */
+  private async exportTable(tableName: string): Promise<void> {
+    console.log(chalk.yellow(`\nExporting table: ${tableName}`));
     
-    console.log(chalk.yellow('\n📦 Exporting data...'));
-    
-    // Export each table's structure and data
-    for (const tablename of tables) {
-      try {
-        console.log(chalk.blue(`\nExporting ${tablename}...`));
+    try {
+      // Get row count using parameterized query
+      const countQuery = `SELECT COUNT(*) FROM ${this.escapeIdentifier(tableName)}`;
+      const countResult = await this.sourcePool.query(countQuery);
+      const rowCount = parseInt(countResult.rows[0].count);
+      
+      if (rowCount === 0) {
+        console.log(chalk.gray(`  No data to export`));
+        return;
+      }
+
+      console.log(chalk.gray(`  Exporting ${rowCount} rows...`));
+      
+      // Export data in batches
+      const batchSize = 1000;
+      let exported = 0;
+      
+      for (let offset = 0; offset < rowCount; offset += batchSize) {
+        // Use proper query with LIMIT and OFFSET
+        const dataQuery = `
+          SELECT * FROM ${this.escapeIdentifier(tableName)}
+          ORDER BY 1  -- Order by first column for consistent results
+          LIMIT $1 OFFSET $2
+        `;
         
-        // Get CREATE TABLE statement
-        const createStmt = await sourcePool.query(`
-          SELECT 
-            'CREATE TABLE IF NOT EXISTS ' || tablename || ' (' || 
-            string_agg(
-              column_name || ' ' || 
-              data_type || 
-              CASE WHEN character_maximum_length IS NOT NULL 
-                THEN '(' || character_maximum_length || ')' 
-                ELSE '' 
-              END ||
-              CASE WHEN is_nullable = 'NO' THEN ' NOT NULL' ELSE '' END ||
-              CASE WHEN column_default IS NOT NULL THEN ' DEFAULT ' || column_default ELSE '' END,
-              ', '
-            ) || ');' as create_sql
-          FROM information_schema.columns
-          WHERE table_schema = 'public' AND table_name = $1
-          GROUP BY tablename
-        `, [tablename]);
+        const rows = await this.sourcePool.query(dataQuery, [batchSize, offset]);
         
-        if (createStmt.rows[0]) {
-          exportSQL += `\n-- Table: ${tablename}\n`;
-          exportSQL += `DROP TABLE IF EXISTS ${tablename} CASCADE;\n`;
-          exportSQL += createStmt.rows[0].create_sql + '\n\n';
-        }
-        
-        // Get row count
-        const countResult = await sourcePool.query(`SELECT COUNT(*) as count FROM ${tablename}`);
-        const rowCount = parseInt(countResult.rows[0].count);
-        
-        if (rowCount > 0) {
-          console.log(chalk.gray(`  Exporting ${rowCount} rows...`));
+        if (rows.rows.length > 0) {
+          const columns = Object.keys(rows.rows[0]);
           
-          // Export data in batches
-          const batchSize = 1000;
-          let exported = 0;
-          
-          for (let offset = 0; offset < rowCount; offset += batchSize) {
-            const rows = await sourcePool.query(`
-              SELECT * FROM ${tablename}
-              LIMIT ${batchSize} OFFSET ${offset}
-            `);
-            
-            if (rows.rows.length > 0) {
-              const columns = Object.keys(rows.rows[0]);
-              
-              // Start of INSERT
-              if (offset === 0) {
-                exportSQL += `-- Data for ${tablename}\n`;
-                exportSQL += `INSERT INTO ${tablename} (${columns.map(c => `"${c}"`).join(', ')}) VALUES\n`;
-              }
-              
-              rows.rows.forEach((row, i) => {
-                const values = columns.map(col => {
-                  const val = row[col];
-                  if (val === null) return 'NULL';
-                  if (typeof val === 'number') return val;
-                  if (typeof val === 'boolean') return val;
-                  if (val instanceof Date) return `'${val.toISOString()}'`;
-                  if (typeof val === 'object') return `'${JSON.stringify(val).replace(/'/g, "''")}'::json`;
-                  return `'${String(val).replace(/'/g, "''")}'`;
-                });
-                
-                const isLast = offset + i + 1 >= rowCount;
-                exportSQL += `(${values.join(', ')})${isLast ? ';' : ','}\n`;
-              });
-              
-              exported += rows.rows.length;
-              process.stdout.write(`\r  Exported ${exported}/${rowCount} rows`);
-            }
+          // Start of INSERT
+          if (offset === 0) {
+            this.exportSQL += `-- Data for ${tableName}\n`;
+            this.exportSQL += `INSERT INTO ${this.escapeIdentifier(tableName)} (`;
+            this.exportSQL += columns.map(c => this.escapeIdentifier(c)).join(', ');
+            this.exportSQL += `) VALUES\n`;
           }
           
-          console.log(chalk.green(`\n  ✅ Exported ${exported} rows`));
-          exportSQL += '\n';
+          // Add row data
+          rows.rows.forEach((row, index) => {
+            const isLastRow = offset + index === rowCount - 1;
+            const values = columns.map(col => this.formatValue(row[col]));
+            
+            this.exportSQL += `(${values.join(', ')})`;
+            this.exportSQL += isLastRow ? ';\n\n' : ',\n';
+          });
+          
+          exported += rows.rows.length;
+          
+          // Progress update
+          if (exported % 5000 === 0) {
+            console.log(chalk.gray(`    Exported ${exported}/${rowCount} rows...`));
+          }
         }
-        
-      } catch (error) {
-        console.error(chalk.red(`  ❌ Error exporting ${tablename}:`), error.message);
       }
+      
+      console.log(chalk.green(`  ✅ Exported ${exported} rows`));
+      
+    } catch (error) {
+      console.error(chalk.red(`  ❌ Failed to export ${tableName}:`), error);
+      throw error;
+    }
+  }
+
+  /**
+   * Format value for SQL with proper escaping
+   */
+  private formatValue(value: any): string {
+    if (value === null || value === undefined) {
+      return 'NULL';
     }
     
-    // Add indexes
-    exportSQL += `\n-- Indexes for performance\n`;
-    exportSQL += `CREATE INDEX IF NOT EXISTS idx_games_start_time ON games(start_time);\n`;
-    exportSQL += `CREATE INDEX IF NOT EXISTS idx_games_status ON games(status);\n`;
-    exportSQL += `CREATE INDEX IF NOT EXISTS idx_player_game_logs_game_id ON player_game_logs(game_id);\n`;
-    exportSQL += `CREATE INDEX IF NOT EXISTS idx_player_game_logs_player_id ON player_game_logs(player_id);\n`;
+    if (typeof value === 'string') {
+      // Escape single quotes by doubling them
+      return `'${value.replace(/'/g, "''")}'`;
+    }
     
-    // Write to file
-    const filename = 'supabase_export.sql';
-    fs.writeFileSync(filename, exportSQL);
+    if (typeof value === 'boolean') {
+      return value ? 'TRUE' : 'FALSE';
+    }
     
-    const stats = fs.statSync(filename);
-    console.log(chalk.green(`\n\n✅ Export complete!`));
-    console.log(chalk.blue(`📁 File: ${filename}`));
-    console.log(chalk.blue(`📊 Size: ${(stats.size / 1024 / 1024).toFixed(2)} MB`));
-    console.log(chalk.yellow(`\n📝 Next step: Import this file into Windows PostgreSQL`));
+    if (value instanceof Date) {
+      return `'${value.toISOString()}'`;
+    }
     
-  } catch (error) {
-    console.error(chalk.red('❌ Export failed:'), error);
-  } finally {
-    await sourcePool.end();
+    if (typeof value === 'object') {
+      // JSON data - escape single quotes in JSON string
+      return `'${JSON.stringify(value).replace(/'/g, "''")}'::jsonb`;
+    }
+    
+    // Numbers and other types
+    return String(value);
   }
 }
 
-exportDatabase().catch(console.error);
+// Main execution
+async function main() {
+  const exporter = new DatabaseExporter();
+  
+  // Parse command line arguments
+  const args = process.argv.slice(2);
+  const options: ExportOptions = {};
+  
+  // Check for specific tables
+  const tableIndex = args.indexOf('--tables');
+  if (tableIndex !== -1 && args[tableIndex + 1]) {
+    options.tables = args[tableIndex + 1].split(',');
+  }
+  
+  // Check for output file
+  const outputIndex = args.indexOf('--output');
+  if (outputIndex !== -1 && args[outputIndex + 1]) {
+    options.outputFile = args[outputIndex + 1];
+  }
+  
+  // Show help if requested
+  if (args.includes('--help')) {
+    console.log(`
+Usage: tsx scripts/export-from-supabase.ts [options]
+
+Options:
+  --tables <table1,table2>  Comma-separated list of tables to export
+  --output <filename>       Output SQL file name
+  --help                    Show this help message
+
+Examples:
+  # Export all tables
+  tsx scripts/export-from-supabase.ts
+  
+  # Export specific tables
+  tsx scripts/export-from-supabase.ts --tables players,teams,game_logs
+  
+  # Export to specific file
+  tsx scripts/export-from-supabase.ts --output backup.sql
+`);
+    process.exit(0);
+  }
+  
+  await exporter.export(options);
+}
+
+// Run if called directly
+if (require.main === module) {
+  main().catch(error => {
+    console.error(error);
+    process.exit(1);
+  });
+}
+
+export { DatabaseExporter };

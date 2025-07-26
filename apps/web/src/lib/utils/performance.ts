@@ -29,8 +29,7 @@ export function usePerformanceMonitor(componentName: string) {
       const renderTime = performance.now() - renderStartTime.current;
       
       if (renderTime > 16) {
-        console.warn(
-          `⚠️ Slow render detected in ${componentName}: ${renderTime.toFixed(2)}ms (target: <16ms)`
+        }ms (target: <16ms)`
         );
       }
       
@@ -117,8 +116,7 @@ export function useDebouncedCallback<T extends (...args: any[]) => any>(
         const duration = performance.now() - start;
         
         if (duration > 16) {
-          console.warn(
-            `⚠️ Slow callback execution: ${duration.toFixed(2)}ms`
+          }ms`
           );
         }
       }, delay);
@@ -158,8 +156,7 @@ export function createSelector<T, R>(
     lastComputeTime = performance.now() - start;
     
     if (lastComputeTime > 5) {
-      console.warn(
-        `⚠️ Slow selector computation: ${lastComputeTime.toFixed(2)}ms`
+      }ms`
       );
     }
     
@@ -283,8 +280,7 @@ export function profileComponent(
   };
   
   if (actualDuration > 16) {
-    console.warn(
-      `⚠️ Slow ${phase} in ${id}: ${actualDuration.toFixed(2)}ms (base: ${baseDuration.toFixed(2)}ms)`
+    }ms (base: ${baseDuration.toFixed(2)}ms)`
     );
   }
   
@@ -316,8 +312,7 @@ export function lazyWithPreload<T extends React.ComponentType<any>>(
     const loadTime = performance.now() - start;
     
     if (loadTime > 1000) {
-      console.warn(
-        `⚠️ Slow module load: ${loadTime.toFixed(2)}ms`
+      }ms`
       );
     }
     

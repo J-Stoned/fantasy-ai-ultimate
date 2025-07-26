@@ -100,8 +100,7 @@ export function useLazyState<T>(
     const duration = performance.now() - start;
     
     if (duration > 10) {
-      console.warn(
-        `⚠️ Slow state initialization: ${duration.toFixed(2)}ms`
+      }ms`
       );
     }
     
@@ -276,7 +275,6 @@ export function useLocalStorageState<T>(
       const item = window.localStorage.getItem(key);
       return item ? deserialize(item) : initialValue;
     } catch (error) {
-      console.error(`Error reading localStorage key "${key}":`, error);
       return initialValue;
     }
   });
@@ -292,8 +290,7 @@ export function useLocalStorageState<T>(
         return nextValue;
       });
     } catch (error) {
-      console.error(`Error setting localStorage key "${key}":`, error);
-    }
+      }
   }, [key, serialize]);
 
   // Listen for changes in other tabs
@@ -303,8 +300,7 @@ export function useLocalStorageState<T>(
         try {
           setState(deserialize(e.newValue));
         } catch (error) {
-          console.error(`Error parsing localStorage change for key "${key}":`, error);
-        }
+          }
       }
     };
 

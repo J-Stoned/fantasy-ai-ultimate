@@ -58,7 +58,6 @@ export class SecurityService {
       
       return result.success;
     } catch (error) {
-      console.error('Biometric auth error:', error);
       return false;
     }
   }
@@ -96,8 +95,7 @@ export class SecurityService {
 
   private handleSessionExpired() {
     // Session expired on server
-    console.log('Session expired, please log in again');
-  }
+    }
 
   // Track user activity for security
   trackActivity(action: string) {
@@ -116,7 +114,6 @@ export class SecurityService {
     
     // Check for rapid actions (potential bot/abuse)
     if (recentActions.length > 100) {
-      console.warn('Suspicious activity detected: Rapid actions');
       // Could implement additional security measures
     }
   }
@@ -153,7 +150,6 @@ export class SecurityService {
       );
       return digest;
     } catch (error) {
-      console.error('Encryption error:', error);
       throw error;
     }
   }
@@ -264,8 +260,7 @@ export function withSecurity<T extends object>(
       // Perform security checks
       security.performSecurityChecks().then(({ isSecure, issues }) => {
         if (!isSecure) {
-          console.warn('Security issues detected:', issues);
-        }
+          }
       });
     }, []);
 

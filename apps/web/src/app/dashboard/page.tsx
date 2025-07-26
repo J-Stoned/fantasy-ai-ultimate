@@ -5,6 +5,8 @@ import { MobileNav } from '../../components/layout/MobileNav'
 import { Badge } from '../../components/ui/badge'
 import { TopPlayersWidget } from '../../components/dashboard/TopPlayersWidget'
 import { VoiceAssistantWrapper } from '../../components/dashboard/VoiceAssistantWrapper'
+import { NotificationPermissionBanner } from '../../components/notifications/NotificationPermissionBanner'
+import { AIAssistantChat } from '../../components/chat/AIAssistantChat'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -60,6 +62,8 @@ export default async function DashboardPage() {
       </nav>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Notification Permission Banner */}
+        <NotificationPermissionBanner />
         {/* Quick Actions */}
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-white mb-4">Dashboard</h2>
@@ -267,6 +271,16 @@ export default async function DashboardPage() {
         <VoiceAssistantWrapper 
           fantasyTeamId={leagues?.[0]?.id} 
           leagueId={leagues?.[0]?.id}
+        />
+        
+        {/* 🤖 AI CHAT ASSISTANT */}
+        <AIAssistantChat 
+          fantasyContext={{
+            sport: 'nfl',
+            teamId: leagues?.[0]?.id,
+            leagueId: leagues?.[0]?.id,
+            week: new Date().getMonth() >= 8 ? Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 8, 5).getTime()) / (7 * 24 * 60 * 60 * 1000)) + 1 : 1
+          }}
         />
       </main>
     </div>

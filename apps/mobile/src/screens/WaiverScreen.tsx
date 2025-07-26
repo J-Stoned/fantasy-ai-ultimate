@@ -128,7 +128,6 @@ export default function WaiverScreen() {
         setLoading(false);
       }, 1000);
     } catch (error) {
-      console.error('Failed to load waiver data:', error);
       setLoading(false);
     }
   };

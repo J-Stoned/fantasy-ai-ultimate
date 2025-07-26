@@ -338,8 +338,7 @@ export class SleeperApiClient implements PlatformApiClient {
     const response = await fetch(url, { headers });
 
     if (!response.ok && response.status !== 404) {
-      console.error(`Sleeper API error: ${response.status} ${response.statusText}`);
-    }
+      }
 
     return response;
   }

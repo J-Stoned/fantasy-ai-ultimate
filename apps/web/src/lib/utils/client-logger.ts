@@ -31,26 +31,22 @@ export function createComponentLogger(componentName: string) {
   return {
     debug: (...args: any[]) => {
       if (shouldLog('debug')) {
-        console.debug(prefix, ...args);
-      }
+        }
     },
     
     info: (...args: any[]) => {
       if (shouldLog('info')) {
-        console.info(prefix, ...args);
-      }
+        }
     },
     
     warn: (...args: any[]) => {
       if (shouldLog('warn')) {
-        console.warn(prefix, ...args);
-      }
+        }
     },
     
     error: (...args: any[]) => {
       if (shouldLog('error')) {
-        console.error(prefix, ...args);
-      }
+        }
     }
   };
 }

@@ -26,9 +26,7 @@ export async function initializeServices() {
     await realtime.initialize();
     await mcp.initialize();
     
-    console.log('✅ All services initialized successfully!');
-  } catch (error) {
-    console.error('❌ Service initialization failed:', error);
+    } catch (error) {
     throw error;
   }
 }

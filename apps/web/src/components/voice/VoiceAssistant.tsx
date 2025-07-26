@@ -61,7 +61,9 @@ export function VoiceAssistant({ className }: VoiceAssistantProps) {
     // Note: responseGeneratorRef would need ML and Player services injected
     
     // Connect to 11Labs
-    elevenLabsRef.current.connect().catch(console.error);
+    elevenLabsRef.current.connect().catch((err) => {
+      logger.error('Failed to connect to ElevenLabs:', { error: err });
+    });
     
     // Set up audio events
     elevenLabsRef.current.on('audioChunk', () => {

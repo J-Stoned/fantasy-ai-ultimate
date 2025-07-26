@@ -19,15 +19,13 @@ export const App = () => {
   useEffect(() => {
     // Temporarily skip service initialization for Expo Go
     // TODO: Re-enable after basic app works
-    console.log('Skipping service initialization for now...');
     setServicesReady(true);
     
     // Original code - will re-enable systematically
     // initializeServices()
     //   .then(() => setServicesReady(true))
     //   .catch((err) => {
-    //     console.error('Failed to initialize services:', err);
-    //     setError('Failed to initialize app services');
+    //     //     setError('Failed to initialize app services');
     //   });
   }, []);
 

@@ -3,7 +3,11 @@
  * Connects web UI to ML predictions and optimization
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_FANTASY_API_URL || 'http://localhost:3338';
+const API_BASE_URL = process.env.NEXT_PUBLIC_FANTASY_API_URL || (
+  typeof window !== 'undefined' && process.env.NODE_ENV === 'production'
+    ? `${window.location.protocol}//${window.location.host}/api`
+    : 'http://localhost:3338'
+);
 
 export interface PlayerPrediction {
   player_id: string;

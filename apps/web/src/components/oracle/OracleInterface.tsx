@@ -83,7 +83,10 @@ export function OracleInterface({
       audioRef.current.src = response.audioUrl;
       audioRef.current.play()
         .then(() => setIsSpeaking(true))
-        .catch(console.error);
+        .catch(() => {
+          // Audio playback failed, silently ignore
+          setIsSpeaking(false);
+        });
     }
     
     // Handle actions

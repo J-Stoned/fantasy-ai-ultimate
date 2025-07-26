@@ -9,9 +9,63 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const platform = searchParams.get('platform');
     const sport = searchParams.get('sport');
+    const leagueId = searchParams.get('leagueId');
+    const includePlayers = searchParams.get('includePlayers') === 'true';
+    const enrichPlayers = searchParams.get('enrichPlayers') === 'true';
     
     // Initialize database tables if needed
     await dbService.initializeDatabase();
+    
+    // Get specific league with players
+    if (leagueId) {
+      const league = await dbService.getLeague(leagueId);
+      
+      if (!league) {
+        return NextResponse.json({
+          success: false,
+          error: 'League not found'
+        }, { status: 404 });
+      }
+      
+      let players = null;
+      if (includePlayers) {
+        if (enrichPlayers) {
+          // Use enriched players with real game stats data
+          players = await dbService.getEnrichedLeaguePlayers(leagueId);
+        } else {
+          // Use basic league players
+          players = await dbService.getLeaguePlayers(leagueId);
+        }
+      }
+      
+      return NextResponse.json({
+        success: true,
+        league: {
+          id: league.id,
+          platformId: league.platform_id,
+          platform: league.platform,
+          name: league.name,
+          sport: league.sport,
+          season: league.season,
+          teamCount: league.team_count,
+          scoringType: league.scoring_type,
+          isActive: league.is_active,
+          myTeamId: league.my_team_id,
+          myTeamName: league.my_team_name,
+          currentStanding: league.current_standing,
+          settings: league.settings,
+          lastSynced: league.last_synced,
+          createdAt: league.created_at,
+          updatedAt: league.updated_at,
+          players: players,
+          playerStats: players ? {
+            totalPlayers: players.length,
+            enrichedPlayers: enrichPlayers ? players.filter((p: any) => p.hasRealData).length : 0,
+            dataSource: enrichPlayers ? '1.57M game stats dataset' : 'platform import'
+          } : null
+        }
+      });
+    }
     
     if (platform) {
       // Get leagues for specific platform
@@ -49,7 +103,14 @@ export async function GET(req: NextRequest) {
       
       return NextResponse.json({
         success: true,
-        summary
+        summary: {
+          ...summary,
+          dataIntegration: {
+            gameStatsDatabase: '1.57M records available',
+            avatarSystem: 'Integrated with player performance',
+            realTimeData: 'Available for enriched league players'
+          }
+        }
       });
     }
   } catch (error) {

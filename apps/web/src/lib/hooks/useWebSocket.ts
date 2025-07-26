@@ -163,8 +163,7 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
           
           // Handle pong messages
           if (message.type === 'pong') {
-            console.debug('Heartbeat received');
-          }
+            }
         } catch (error) {
           logger.error('Failed to parse WebSocket message:', { error: error });
         }
@@ -194,7 +193,7 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
         if (reconnectAttemptsRef.current < maxReconnectAttempts) {
           reconnectAttemptsRef.current++;
           reconnectTimeoutRef.current = setTimeout(() => {
-            logger.info('Reconnecting... (attempt ${reconnectAttemptsRef.current})');
+            logger.info('Reconnecting...', { attempt: reconnectAttemptsRef.current });
             connect();
           }, reconnectInterval);
         } else {
@@ -212,7 +211,7 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
         error: 'Failed to connect'
       }));
     }
-  }, [url, user, subscribedChannels, sendMessage, heartbeatInterval, reconnectInterval, maxReconnectAttempts]);
+  }, [url, user?.id, heartbeatInterval, reconnectInterval, maxReconnectAttempts]);
 
   /**
    * Disconnect from WebSocket server
@@ -237,9 +236,19 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
     }
     
     return () => {
-      disconnect();
+      // Clean up on unmount
+      if (reconnectTimeoutRef.current) {
+        clearTimeout(reconnectTimeoutRef.current);
+      }
+      if (heartbeatIntervalRef.current) {
+        clearInterval(heartbeatIntervalRef.current);
+      }
+      if (wsRef.current) {
+        wsRef.current.close();
+        wsRef.current = null;
+      }
     };
-  }, [autoConnect, connect, disconnect]);
+  }, [autoConnect]); // Remove connect/disconnect from deps to avoid circular dependency
 
   return {
     state,
@@ -304,7 +313,10 @@ export function useMLPredictions() {
   
   useEffect(() => {
     if (lastMessage?.type === 'ml_prediction' && lastMessage.channel === 'ml:predictions') {
-      setPredictions(prev => [...prev, lastMessage.data].slice(-50)); // Keep last 50
+      setPredictions(prev => {
+        const newPredictions = [...prev, lastMessage.data];
+        return newPredictions.slice(-50); // Keep last 50 to prevent memory leak
+      });
     }
   }, [lastMessage]);
   

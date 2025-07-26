@@ -75,8 +75,7 @@ export class MCPOrchestrationService extends EventEmitter {
       });
       this.emit('servers-updated', Array.from(this.servers.values()));
     } catch (error) {
-      console.error('Failed to discover MCP servers:', error);
-    }
+      }
   }
 
   // Health monitoring
@@ -312,8 +311,7 @@ export class MCPOrchestrationService extends EventEmitter {
         workflows.forEach((w: MCPWorkflow) => this.workflows.set(w.id, w));
       }
     } catch (error) {
-      console.error('Failed to load workflows:', error);
-    }
+      }
   }
 
   // Get server capabilities

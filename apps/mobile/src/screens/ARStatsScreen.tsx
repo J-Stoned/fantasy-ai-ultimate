@@ -64,8 +64,7 @@ export function ARStatsScreen() {
         // For demo, we'll simulate detection
         simulatePlayerDetection();
       } catch (error) {
-        console.error('Frame processing error:', error);
-      }
+        }
     }
 
     setIsProcessing(false);

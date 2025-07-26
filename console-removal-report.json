@@ -1,0 +1,192 @@
+{
+  "timestamp": "2025-07-25T17:16:35.722Z",
+  "filesProcessed": 516,
+  "filesModified": 46,
+  "totalStatementsRemoved": 128,
+  "modifiedFiles": [
+    {
+      "path": "./apps/web/src/components/VoiceInterface.tsx",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/web/src/lib/utils/performance.ts",
+      "removedCount": 5
+    },
+    {
+      "path": "./apps/web/src/lib/utils/client-logger.ts",
+      "removedCount": 4
+    },
+    {
+      "path": "./apps/web/src/lib/services/feature-flags.ts",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/web/src/lib/security/audit-logger.ts",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/web/src/lib/middleware/rate-limit.ts",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/web/src/lib/hooks/useWebSocket.ts",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/web/src/lib/hooks/useOptimizedState.ts",
+      "removedCount": 4
+    },
+    {
+      "path": "./apps/web/src/lib/di/setup.ts",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/web/src/lib/di/DIProvider.tsx",
+      "removedCount": 2
+    },
+    {
+      "path": "./apps/web/src/lib/database/monitor-connections.ts",
+      "removedCount": 21
+    },
+    {
+      "path": "./apps/web/src/hooks/trading/useRealTimeMetrics.ts",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/web/src/app/draft/page.tsx",
+      "removedCount": 4
+    },
+    {
+      "path": "./apps/web/src/lib/services/traditional-fantasy/sync-scheduler.ts",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/web/src/lib/services/traditional-fantasy/sleeper-api-client.ts",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/web/src/lib/services/ml/tensorflow-compatibility.ts",
+      "removedCount": 2
+    },
+    {
+      "path": "./apps/web/src/lib/services/traditional-fantasy/draft-analysis/draft-tracker.ts",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/web/src/app/api/admin/auth/login/route.ts",
+      "removedCount": 2
+    },
+    {
+      "path": "./apps/web/src/app/api/admin/auth/change-password/route.ts",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/mobile/src/hooks/useOptimizedAvatar.ts",
+      "removedCount": 3
+    },
+    {
+      "path": "./apps/mobile/src/screens/WaiverScreen.tsx",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/mobile/src/screens/VoiceAssistantScreen.tsx",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/mobile/src/screens/PredictionsScreen.tsx",
+      "removedCount": 3
+    },
+    {
+      "path": "./apps/mobile/src/screens/PlayersScreen.tsx",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/mobile/src/screens/PlayerDetailScreen.tsx",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/mobile/src/screens/PatternScreen.tsx",
+      "removedCount": 4
+    },
+    {
+      "path": "./apps/mobile/src/screens/MyLeaguesScreen.tsx",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/mobile/src/screens/MatchupsScreen.tsx",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/mobile/src/screens/LineupScreen.tsx",
+      "removedCount": 4
+    },
+    {
+      "path": "./apps/mobile/src/screens/LeagueDetailScreen.tsx",
+      "removedCount": 2
+    },
+    {
+      "path": "./apps/mobile/src/screens/HomeScreen.tsx",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/mobile/src/screens/ContestsScreen.tsx",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/mobile/src/screens/ARStatsScreen.tsx",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/mobile/src/services/security.ts",
+      "removedCount": 5
+    },
+    {
+      "path": "./apps/mobile/src/services/patternService.ts",
+      "removedCount": 8
+    },
+    {
+      "path": "./apps/mobile/src/services/mcp.ts",
+      "removedCount": 2
+    },
+    {
+      "path": "./apps/mobile/src/services/index.ts",
+      "removedCount": 2
+    },
+    {
+      "path": "./apps/mobile/src/services/cache.ts",
+      "removedCount": 5
+    },
+    {
+      "path": "./apps/mobile/src/services/avatar-performance.ts",
+      "removedCount": 6
+    },
+    {
+      "path": "./apps/mobile/src/services/api.ts",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/mobile/src/services/ai-agents.ts",
+      "removedCount": 4
+    },
+    {
+      "path": "./apps/mobile/src/app/App.tsx",
+      "removedCount": 2
+    },
+    {
+      "path": "./apps/mobile/src/api/supabase.ts",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/mobile/src/features/voice/MobileVoiceAssistant.tsx",
+      "removedCount": 10
+    },
+    {
+      "path": "./apps/mobile/src/features/optimizer/MobileGPUOptimizer.ts",
+      "removedCount": 1
+    },
+    {
+      "path": "./apps/mobile/src/components/avatars/PlayerAvatar.tsx",
+      "removedCount": 1
+    }
+  ]
+}

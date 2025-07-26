@@ -14,7 +14,7 @@ import { withValidation, adminLoginSchema, clientInfoSchema } from '@/lib/valida
 import { logger } from '../../../../../lib/logging/logger';
 
 // Log to ensure file is loading
-logger.info('[ADMIN AUTH API] Route file loaded');
+// Route file loaded
 
 // Admin credentials from environment variables
 // SECURITY: Never hard-code credentials! Always use environment variables
@@ -28,12 +28,34 @@ const ADMIN_CREDENTIALS = {
 
 // Validate environment variables on startup
 if (!ADMIN_CREDENTIALS.email || !ADMIN_CREDENTIALS.passwordHash) {
-  console.error('[ADMIN AUTH] CRITICAL: Admin credentials not configured in environment variables!');
-  console.error('[ADMIN AUTH] Please set ADMIN_EMAIL, ADMIN_PASSWORD_HASH, and ADMIN_MFA_SECRET');
+  throw new Error('Admin credentials not configured. Please set ADMIN_EMAIL and ADMIN_PASSWORD_HASH environment variables.');
 }
 
-// Track login attempts for security
+// Track login attempts for security with automatic cleanup
 const loginAttempts = new Map<string, { count: number; lastAttempt: Date }>();
+const MAX_LOGIN_TRACKING_SIZE = 10000;
+const LOGIN_ATTEMPT_RETENTION_MS = 24 * 60 * 60 * 1000; // 24 hours
+
+// Cleanup old login attempts periodically
+if (typeof global !== 'undefined' && !global.loginAttemptsCleanupInterval) {
+  global.loginAttemptsCleanupInterval = setInterval(() => {
+    const now = Date.now();
+    for (const [key, data] of loginAttempts.entries()) {
+      if (now - data.lastAttempt.getTime() > LOGIN_ATTEMPT_RETENTION_MS) {
+        loginAttempts.delete(key);
+      }
+    }
+    // Also limit map size
+    if (loginAttempts.size > MAX_LOGIN_TRACKING_SIZE) {
+      // Remove oldest entries
+      const entries = Array.from(loginAttempts.entries())
+        .sort((a, b) => a[1].lastAttempt.getTime() - b[1].lastAttempt.getTime());
+      entries.slice(0, entries.length - MAX_LOGIN_TRACKING_SIZE + 1000).forEach(([key]) => {
+        loginAttempts.delete(key);
+      });
+    }
+  }, 60 * 60 * 1000); // Every hour
+}
 
 // Type is now inferred from the Zod schema
 type LoginRequest = {
@@ -52,17 +74,22 @@ export const POST = withValidation(adminLoginSchema.extend({
   mfaToken: adminLoginSchema.shape.email.optional(), // Reuse email validation for MFA token
   clientInfo: clientInfoSchema.partial().optional()
 }), async (request: NextRequest, body) => {
-  logger.info('[ADMIN AUTH API] Login endpoint hit');
-  logger.info('[ADMIN AUTH API] Request method:', { data: request.method });
-  logger.info('[ADMIN AUTH API] Request URL:', { data: request.url });
+  // Log only in development
+  if (process.env.NODE_ENV === 'development') {
+    logger.info('[ADMIN AUTH API] Login endpoint hit');
+    logger.info('[ADMIN AUTH API] Request method:', { data: request.method });
+    logger.info('[ADMIN AUTH API] Request URL:', { data: request.url });
+  }
   
   try {
     // Body is already validated and typed
-    logger.info('[ADMIN AUTH API] Request body received:', { data: { 
-      email: body.email, 
-      hasPassword: !!body.password,
-      hasMFA: !!body.mfaToken 
-    } });
+    if (process.env.NODE_ENV === 'development') {
+      logger.info('[ADMIN AUTH API] Request body received:', { data: { 
+        email: body.email, 
+        hasPassword: !!body.password,
+        hasMFA: !!body.mfaToken 
+      } });
+    }
     
     const clientIp = request.headers.get('x-forwarded-for') || 
                      request.headers.get('x-real-ip') || 

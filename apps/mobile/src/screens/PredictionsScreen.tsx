@@ -107,8 +107,7 @@ export default function PredictionsScreen() {
               };
             }
           } catch (error) {
-            console.warn('ML API error for player:', player.id, error);
-          }
+            }
           return null;
         })
       );
@@ -166,7 +165,6 @@ export default function PredictionsScreen() {
           }
         }
       } catch (error) {
-        console.warn('Could not fetch model info:', error);
         // Fallback to basic info
         setModelInfo({
           version: 2,
@@ -179,8 +177,7 @@ export default function PredictionsScreen() {
         });
       }
     } catch (error) {
-      console.error('Error loading predictions:', error);
-    } finally {
+      } finally {
       setLoading(false);
       setRefreshing(false);
     }

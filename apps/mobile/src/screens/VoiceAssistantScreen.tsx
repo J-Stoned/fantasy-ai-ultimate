@@ -114,7 +114,6 @@ export default function VoiceAssistantScreen() {
         });
       }
     } catch (error) {
-      console.error('Voice processing error:', error);
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: "Sorry, I couldn't process that. Please try again.",

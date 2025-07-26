@@ -68,7 +68,7 @@ async function initializeOptimizations() {
       {
         name: 'Player listing',
         query: 'SELECT * FROM fantasy_players WHERE league_id = $1 LIMIT 20',
-        params: ['test-league-id']
+        params: [process.env.DEFAULT_LEAGUE_ID || 'default-league']
       },
       {
         name: 'Contest listing',
@@ -85,7 +85,7 @@ async function initializeOptimizations() {
           ORDER BY ps.avg_points DESC 
           LIMIT 20
         `,
-        params: ['test-league-id']
+        params: [process.env.DEFAULT_LEAGUE_ID || 'default-league']
       }
     ];
 

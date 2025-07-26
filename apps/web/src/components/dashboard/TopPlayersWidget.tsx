@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { TrendingUp, TrendingDown, Star, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useCDN } from '@/hooks/useCDN';
 
 interface TopPlayer {
   id: string;
@@ -17,28 +18,72 @@ interface TopPlayer {
   trend: 'up' | 'down' | 'stable';
   fantasyPoints: number;
   change: number;
+  imageUrl?: string; // Optional player image URL
 }
 
 // Mock data - in real app this would come from API
 const mockTopPlayers: TopPlayer[] = [
-  { id: 'mahomes-15', name: 'Patrick Mahomes', position: 'QB', team: 'KC', rating: 98, trend: 'up', fantasyPoints: 28.5, change: 3.2 },
-  { id: 'mccaffrey-22', name: 'Christian McCaffrey', position: 'RB', team: 'SF', rating: 97, trend: 'stable', fantasyPoints: 26.3, change: 0.5 },
-  { id: 'jefferson-18', name: 'Justin Jefferson', position: 'WR', team: 'MIN', rating: 96, trend: 'up', fantasyPoints: 24.8, change: 2.1 },
-  { id: 'kelce-87', name: 'Travis Kelce', position: 'TE', team: 'KC', rating: 95, trend: 'down', fantasyPoints: 18.2, change: -1.3 },
-  { id: 'hill-10', name: 'Tyreek Hill', position: 'WR', team: 'MIA', rating: 94, trend: 'up', fantasyPoints: 23.5, change: 4.2 },
+  { id: 'mahomes-15', name: 'Patrick Mahomes', position: 'QB', team: 'KC', rating: 98, trend: 'up', fantasyPoints: 28.5, change: 3.2, imageUrl: '/images/players/mahomes.jpg' },
+  { id: 'mccaffrey-22', name: 'Christian McCaffrey', position: 'RB', team: 'SF', rating: 97, trend: 'stable', fantasyPoints: 26.3, change: 0.5, imageUrl: '/images/players/mccaffrey.jpg' },
+  { id: 'jefferson-18', name: 'Justin Jefferson', position: 'WR', team: 'MIN', rating: 96, trend: 'up', fantasyPoints: 24.8, change: 2.1, imageUrl: '/images/players/jefferson.jpg' },
+  { id: 'kelce-87', name: 'Travis Kelce', position: 'TE', team: 'KC', rating: 95, trend: 'down', fantasyPoints: 18.2, change: -1.3, imageUrl: '/images/players/kelce.jpg' },
+  { id: 'hill-10', name: 'Tyreek Hill', position: 'WR', team: 'MIA', rating: 94, trend: 'up', fantasyPoints: 23.5, change: 4.2, imageUrl: '/images/players/hill.jpg' },
 ];
 
 export function TopPlayersWidget() {
   const [players, setPlayers] = useState<TopPlayer[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const cdn = useCDN();
 
   useEffect(() => {
-    // Simulate API call
-    setTimeout(() => {
-      setPlayers(mockTopPlayers);
-      setLoading(false);
-    }, 1000);
-  }, []);
+    const fetchTopPlayers = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        // Fetch real data from our API
+        const response = await fetch('/api/players/top-performers');
+        const result = await response.json();
+        
+        if (!result.success) {
+          throw new Error(result.error || 'Failed to fetch players');
+        }
+        
+        // Process players with CDN optimization
+        const playersWithCDN = result.data.map((player: TopPlayer) => ({
+          ...player,
+          // Optimize player images through CDN if they exist
+          imageUrl: player.imageUrl ? cdn.getOptimizedImage(player.imageUrl, {
+            width: 128, // 2x size for retina displays
+            height: 128,
+            format: 'webp',
+            quality: 85
+          }) : undefined
+        }));
+        
+        setPlayers(playersWithCDN);
+      } catch (err) {
+        console.error('Error fetching top players:', err);
+        setError('Failed to load top players');
+        // Fallback to mock data if API fails
+        const fallbackPlayers = mockTopPlayers.map(player => ({
+          ...player,
+          imageUrl: player.imageUrl ? cdn.getOptimizedImage(player.imageUrl, {
+            width: 128,
+            height: 128,
+            format: 'webp',
+            quality: 85
+          }) : undefined
+        }));
+        setPlayers(fallbackPlayers);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchTopPlayers();
+  }, [cdn]);
 
   return (
     <Card className="bg-white/10 backdrop-blur-lg border-white/20">
@@ -52,6 +97,12 @@ export function TopPlayersWidget() {
         </CardDescription>
       </CardHeader>
       <CardContent>
+        {error && (
+          <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+            <p className="text-sm text-red-400">{error}</p>
+          </div>
+        )}
+        
         {loading ? (
           <div className="space-y-4">
             {[...Array(5)].map((_, i) => (
@@ -80,6 +131,8 @@ export function TopPlayersWidget() {
                     size={64}
                     showBadge={true}
                     animate={true}
+                    imageUrl={player.imageUrl} // Pass CDN-optimized URL
+                    priority={index < 3} // Prioritize loading for top 3 players
                   />
                   {player.rating >= 95 && (
                     <Star className="absolute -top-1 -right-1 w-4 h-4 text-yellow-400 fill-yellow-400" />

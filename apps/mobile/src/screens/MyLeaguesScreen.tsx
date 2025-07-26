@@ -114,7 +114,6 @@ export default function MyLeaguesScreen() {
         setRefreshing(false);
       }, 1000);
     } catch (error) {
-      console.error('Failed to load leagues:', error);
       Alert.alert('Error', 'Failed to load leagues');
       setRefreshing(false);
     }

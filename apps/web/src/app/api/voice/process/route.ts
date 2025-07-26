@@ -6,6 +6,7 @@ import { PlayerAnalysisService } from '@/lib/services/player-analysis-service';
 import { LineupOptimizationService } from '@/lib/services/lineup-optimization-service';
 import { pool } from '@/lib/db';
 import { logger } from '../../../../lib/logging/logger';
+import { geminiService } from '@/lib/services/ai/gemini-service';
 
 // 🔥 ENTERPRISE VOICE PROCESSING API - ML + 11LABS INTEGRATION
 
@@ -96,7 +97,7 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
 
-    // 🧠 PROCESS VOICE COMMAND WITH ML INTELLIGENCE
+    // 🧠 PROCESS VOICE COMMAND WITH ML INTELLIGENCE + GEMINI AI
     const commandAnalysis = await voiceProcessor.processCommand(finalTranscript, {
       userId,
       platform: context?.platform || 'web',
@@ -106,6 +107,25 @@ export async function POST(request: NextRequest) {
         currentWeek: context?.week || getCurrentNFLWeek()
       }
     });
+
+    // Enhance intent detection with Gemini AI if confidence is low
+    if (commandAnalysis.confidence < 0.7) {
+      try {
+        const geminiIntent = await geminiService.analyzeIntent(finalTranscript, {
+          sport: 'nfl',
+          context: 'fantasy_football',
+          week: context?.week || getCurrentNFLWeek()
+        });
+        
+        if (geminiIntent.confidence > commandAnalysis.confidence) {
+          commandAnalysis.intent = geminiIntent.intent;
+          commandAnalysis.confidence = geminiIntent.confidence;
+          commandAnalysis.entities = { ...commandAnalysis.entities, ...geminiIntent.entities };
+        }
+      } catch (error) {
+        logger.warn('Gemini intent enhancement failed, using original analysis', { error });
+      }
+    }
 
     const commandId = generateCommandId();
     let responseText = '';
@@ -229,42 +249,54 @@ export async function POST(request: NextRequest) {
 
       case 'GENERAL_ADVICE':
       default:
-        // 🤖 FALLBACK TO GPT-4 FOR GENERAL FANTASY ADVICE
-        const gptResponse = await fetch('https://api.openai.com/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            model: 'gpt-4-turbo-preview',
-            messages: [
-              {
-                role: 'system',
-                content: `You are Marcus "The Fixer" Rodriguez, a fantasy football expert. Provide helpful, confident advice. Current week: ${getCurrentNFLWeek()}`
-              },
-              {
-                role: 'user',
-                content: finalTranscript
-              }
-            ],
-            max_tokens: 200,
-            temperature: 0.7
-          })
-        });
+        // 🤖 USE GEMINI AI FOR INTELLIGENT FANTASY ADVICE
+        try {
+          // First, try to get specific fantasy insights using Gemini
+          const fantasyContext = {
+            sport: 'nfl',
+            week: context?.week || getCurrentNFLWeek(),
+            fantasyTeamId: context?.fantasyTeamId,
+            leagueId: context?.leagueId,
+            playerData: await getRecentPlayerData(userId)
+          };
 
-        if (gptResponse.ok) {
-          const gptData = await gptResponse.json();
-          responseText = gptData.choices[0].message.content;
-        } else {
-          responseText = "I couldn't process that request right now. Try asking about specific players or lineup optimization.";
+          // Get AI-powered advice with context
+          const geminiResponse = await geminiService.getLineupAdvice(
+            finalTranscript,
+            fantasyContext
+          );
+
+          responseText = geminiResponse.advice;
+          visualData = geminiResponse.data;
+          
+          // If advice includes specific player recommendations, add actions
+          if (geminiResponse.playerRecommendations) {
+            actions = geminiResponse.playerRecommendations.map((rec: any) => ({
+              type: 'player_recommendation',
+              player: rec.name,
+              action: rec.action,
+              confidence: rec.confidence
+            }));
+          }
+
+          // Generate contextual suggestions based on the advice
+          suggestions = geminiResponse.followUpQuestions || [
+            'Who should I start this week?',
+            'Show me the best waiver wire pickups',
+            'Optimize my lineup for this week'
+          ];
+
+        } catch (geminiError) {
+          logger.error('Gemini AI processing error:', { error: geminiError });
+          
+          // Fallback to basic response
+          responseText = "I'm having trouble accessing my advanced analytics right now. Try asking about specific players or lineup optimization.";
+          suggestions = [
+            'Who should I start this week?',
+            'Show me the best waiver wire pickups',
+            'Optimize my lineup for this week'
+          ];
         }
-
-        suggestions = [
-          'Who should I start this week?',
-          'Show me the best waiver wire pickups',
-          'Optimize my lineup for this week'
-        ];
         break;
     }
 
@@ -380,6 +412,25 @@ async function saveAudioFile(path: string, buffer: Buffer): Promise<void> {
   // In production, implement proper storage (S3, etc.)
   // For now, this is a placeholder
   logger.info('Audio file would be saved to: ${path}');
+}
+
+async function getRecentPlayerData(userId: string): Promise<any> {
+  try {
+    // Get user's recent player interactions for context
+    const result = await pool.query(`
+      SELECT DISTINCT p.name, p.position, p.team
+      FROM player_interactions pi
+      JOIN players p ON pi.player_id = p.id
+      WHERE pi.user_id = $1
+      ORDER BY pi.created_at DESC
+      LIMIT 10
+    `, [userId]);
+    
+    return result.rows;
+  } catch (error) {
+    logger.error('Error fetching recent player data:', { error });
+    return [];
+  }
 }
 
 async function logVoiceCommand(logData: any): Promise<void> {

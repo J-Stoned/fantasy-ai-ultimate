@@ -1,10 +1,11 @@
 'use client';
 
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useAvatarStore } from '@/lib/stores/avatar-store';
 import { useUserStore } from '@/lib/stores/user-store';
 import { Avatar2D } from './Avatar2D';
 import { Skeleton } from '@/components/ui/skeleton';
+import { playerDataService } from '@/lib/database/player-data-service';
 
 // 2025 Best Practice: Lazy load 3D component only when needed
 const Avatar3D = lazy(() => import('./Avatar3D').then(m => ({ default: m.Avatar3D })));
@@ -19,6 +20,7 @@ interface PlayerAvatarProps {
   onClick?: () => void;
   className?: string;
   priority?: boolean;
+  imageUrl?: string; // CDN-optimized image URL
 }
 
 export function PlayerAvatar({
@@ -30,10 +32,38 @@ export function PlayerAvatar({
   force2D = false,
   onClick,
   className = '',
-  priority = false
+  priority = false,
+  imageUrl
 }: PlayerAvatarProps) {
   const avatar = useAvatarStore(state => state.avatars.get(playerId));
   const subscriptionTier = useUserStore(state => state.user?.subscription.tier || 'free');
+  const [realPlayerData, setRealPlayerData] = useState<any>(null);
+  const [isLoadingRealData, setIsLoadingRealData] = useState(false);
+  
+  // 🔥 ELITE: Load real player data from 1.57M game stats database!
+  useEffect(() => {
+    const loadRealPlayerData = async () => {
+      if (!imageUrl && playerId && !isLoadingRealData) {
+        setIsLoadingRealData(true);
+        try {
+          const playerIdNum = parseInt(playerId);
+          if (!isNaN(playerIdNum)) {
+            const { data } = await playerDataService.getPlayerById(playerIdNum);
+            if (data) {
+              setRealPlayerData(data);
+              console.log(`🔥 Loaded real player data for ${data.name} from 1.57M game stats!`);
+            }
+          }
+        } catch (error) {
+          console.error('Error loading real player data:', error);
+        } finally {
+          setIsLoadingRealData(false);
+        }
+      }
+    };
+    
+    loadRealPlayerData();
+  }, [playerId, imageUrl, isLoadingRealData]);
   
   // Determine if we should render 3D
   const should3D = 
@@ -72,6 +102,7 @@ export function PlayerAvatar({
           animate={animate}
           onClick={onClick}
           className={className}
+          playerData={realPlayerData} // 🔥 Pass real player data for enhanced 3D rendering!
         />
       </Suspense>
     );
@@ -88,6 +119,7 @@ export function PlayerAvatar({
       onClick={onClick}
       className={className}
       priority={priority}
+      imageUrl={imageUrl || realPlayerData?.avatar_url} // 🔥 Use real player image from database!
     />
   );
 }

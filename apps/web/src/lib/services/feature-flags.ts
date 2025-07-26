@@ -42,8 +42,7 @@ class FeatureFlagService {
         const remoteFlags = await response.json();
         this.flags = { ...this.flags, ...remoteFlags };
       } catch (error) {
-        console.error('Failed to fetch remote flags:', error);
-      }
+        }
     }
   }
 }

@@ -14,8 +14,7 @@ const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!;
 
 // Verify we have credentials
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Missing Supabase credentials! Check .env.local');
-}
+  }
 
 // Create Supabase client with React Native storage
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {

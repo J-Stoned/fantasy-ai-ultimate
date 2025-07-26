@@ -126,13 +126,20 @@ class Logger {
     if (this.config.pretty && typeof window === 'undefined') {
       const color = colors[entry.level];
       const prefix = `${color}[${entry.level.toUpperCase()}]${reset}`;
-      console.log(`${prefix} ${entry.timestamp} - ${entry.message}`);
+      // In development, write to stdout without using console
+      if (process.stdout) {
+        process.stdout.write(`${prefix} ${entry.timestamp} - ${entry.message}\n`);
+      }
       if (entry.metadata && Object.keys(entry.metadata).length > 0) {
-        console.log('  Metadata:', JSON.stringify(entry.metadata, null, 2));
+        if (process.stdout) {
+          process.stdout.write(`  Metadata: ${JSON.stringify(entry.metadata, null, 2)}\n`);
+        }
       }
     } else {
       // JSON output for production or browser
-      console.log(JSON.stringify(entry));
+      if (process.stdout) {
+        process.stdout.write(`${JSON.stringify(entry)}\n`);
+      }
     }
   }
 
@@ -174,7 +181,13 @@ class Logger {
       }
     } catch (error) {
       // Fail silently to avoid infinite loops
-      console.error('File logging failed:', error);
+      // Log error internally without console
+      this.errorBuffer.push({
+        level: 'error',
+        message: 'File logging failed',
+        context: { error: error instanceof Error ? error.message : String(error) },
+        timestamp: new Date().toISOString(),
+      });
     }
   }
 
@@ -216,15 +229,24 @@ class Logger {
           });
 
           if (!response.ok) {
-            console.error('Remote logging failed:', response.status, response.statusText);
+            // Log error internally without console
+            if (process.stderr) {
+              process.stderr.write(`Remote logging failed: ${response.status} ${response.statusText}\n`);
+            }
           }
         } catch (error) {
           // Silently fail to avoid infinite loops
-          console.error('Remote logging error:', error);
+          // Log error internally without console
+          if (process.stderr) {
+            process.stderr.write(`Remote logging error: ${error instanceof Error ? error.message : String(error)}\n`);
+          }
         }
       });
     } catch (error) {
-      console.error('Remote logging setup failed:', error);
+      // Log error internally without console
+      if (process.stderr) {
+        process.stderr.write(`Remote logging setup failed: ${error instanceof Error ? error.message : String(error)}\n`);
+      }
     }
   }
 

@@ -24,6 +24,8 @@ import { SleeperApiClient } from './sleeper-api-client';
 import { DataNormalizer } from './data-normalizer';
 import { SyncScheduler } from './sync-scheduler';
 import { logger } from '../../logging/logger';
+import { playerDataService } from '../../database/player-data-service';
+import { gameStatsService } from '../../database/game-stats-service';
 
 export class LeagueImportService {
   private authManager: AuthManager;
@@ -204,6 +206,9 @@ export class LeagueImportService {
           roster,
           league.platform
         );
+        
+        // ELITE ENHANCEMENT: Enrich roster with real performance data from 1.57M game stats! 🔥
+        await this.enrichRosterWithRealData(normalizedLeague.teams[i].roster, league.sport);
       }
     }
 
@@ -592,6 +597,268 @@ export class LeagueImportService {
       filename: `league_export_${Date.now()}.xlsx`,
       size: 0
     };
+  }
+
+  /**
+   * ELITE: Enrich roster with real performance data from 1.57M game stats! 🔥
+   */
+  private async enrichRosterWithRealData(roster: Roster, sport: SportType): Promise<void> {
+    logger.info('🔥 Enriching imported roster with REAL performance data from 1.57M game stats', {
+      playerCount: roster.players.length,
+      sport,
+      dataSource: '1.57M game stats dataset'
+    });
+
+    try {
+      // Match each imported player to our real database
+      const enrichedPlayers = await Promise.all(
+        roster.players.map(async (importedPlayer) => {
+          try {
+            // Find matching player in our Elite database
+            const realPlayer = await this.findMatchingPlayer(importedPlayer, sport);
+            
+            if (realPlayer) {
+              // Enrich imported player with real performance data
+              importedPlayer.realPlayerId = realPlayer.id;
+              importedPlayer.realPerformanceData = {
+                seasonStats: realPlayer.season_stats,
+                recentGames: realPlayer.recent_games,
+                overallRating: realPlayer.overall_rating,
+                injuryHistory: realPlayer.injury_history,
+                consistencyScore: realPlayer.season_stats?.consistency_score || 50,
+                avgFantasyPoints: realPlayer.season_stats?.avg_fantasy_points || 0,
+                gamesPlayed: realPlayer.season_stats?.games_played || 0,
+                lastUpdated: new Date()
+              };
+
+              // Update injury status with real data if available
+              if (realPlayer.injury_status) {
+                importedPlayer.injuryStatus = {
+                  status: this.mapInjuryStatus(realPlayer.injury_status),
+                  description: realPlayer.injury_notes || importedPlayer.injuryStatus?.description
+                };
+              }
+
+              logger.info(`✅ Matched ${importedPlayer.name} to real player ID ${realPlayer.id}`, {
+                avgPoints: realPlayer.season_stats?.avg_fantasy_points,
+                gamesPlayed: realPlayer.season_stats?.games_played,
+                overallRating: realPlayer.overall_rating
+              });
+            } else {
+              logger.warn(`❌ No match found for ${importedPlayer.name} (${importedPlayer.team})`);
+            }
+          } catch (error) {
+            logger.error(`Failed to enrich player ${importedPlayer.name}:`, error);
+          }
+
+          return importedPlayer;
+        })
+      );
+
+      // Calculate team analytics based on real data
+      const teamStats = this.calculateTeamStatsFromRealData(enrichedPlayers);
+      roster.teamAnalytics = teamStats;
+
+      logger.info('🚀 Roster enrichment complete', {
+        totalPlayers: roster.players.length,
+        matchedPlayers: enrichedPlayers.filter(p => p.realPlayerId).length,
+        avgTeamRating: teamStats.avgOverallRating,
+        projectedTeamPoints: teamStats.projectedWeeklyPoints
+      });
+
+    } catch (error) {
+      logger.error('Error enriching roster with real data:', error);
+    }
+  }
+
+  /**
+   * Find matching player in our Elite database using fuzzy matching
+   */
+  private async findMatchingPlayer(importedPlayer: RosterPlayer, sport: SportType): Promise<any> {
+    // Clean player name for better matching
+    const cleanName = importedPlayer.name
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s]/g, '') // Remove special characters
+      .replace(/\s+jr$/i, '') // Remove Jr suffix
+      .replace(/\s+sr$/i, '') // Remove Sr suffix
+      .replace(/\s+ii+$/i, ''); // Remove II, III suffixes
+
+    // Try exact match first
+    let matches = await playerDataService.searchPlayers({
+      name: cleanName,
+      sport: sport.toUpperCase(),
+      team: importedPlayer.team,
+      position: importedPlayer.position,
+      limit: 5
+    });
+
+    if (!matches || matches.length === 0) {
+      // Try without team (player might have been traded)
+      matches = await playerDataService.searchPlayers({
+        name: cleanName,
+        sport: sport.toUpperCase(),
+        position: importedPlayer.position,
+        limit: 10
+      });
+    }
+
+    if (!matches || matches.length === 0) {
+      // Try last name only match
+      const nameParts = importedPlayer.name.split(' ');
+      if (nameParts.length > 1) {
+        const lastName = nameParts[nameParts.length - 1];
+        matches = await playerDataService.searchPlayers({
+          name: lastName.toLowerCase(),
+          sport: sport.toUpperCase(),
+          position: importedPlayer.position,
+          limit: 15
+        });
+      }
+    }
+
+    // Score matches and pick best one
+    if (matches && matches.length > 0) {
+      const scoredMatches = matches.map(match => {
+        let score = 0;
+        
+        // Name similarity
+        const matchName = match.name.toLowerCase().replace(/[^a-z0-9\s]/g, '');
+        if (matchName === cleanName) {
+          score += 100;
+        } else if (matchName.includes(cleanName) || cleanName.includes(matchName)) {
+          score += 50;
+        } else {
+          // Calculate Levenshtein distance for fuzzy matching
+          score += Math.max(0, 30 - this.levenshteinDistance(cleanName, matchName));
+        }
+
+        // Team match
+        if (match.team === importedPlayer.team || match.team_abbreviation === importedPlayer.team) {
+          score += 30;
+        }
+
+        // Position match
+        if (match.position === importedPlayer.position) {
+          score += 20;
+        }
+
+        // Active player bonus
+        if (match.is_active) {
+          score += 10;
+        }
+
+        return { match, score };
+      });
+
+      // Sort by score and return best match if score is high enough
+      scoredMatches.sort((a, b) => b.score - a.score);
+      
+      if (scoredMatches[0].score >= 50) {
+        const bestMatch = scoredMatches[0].match;
+        
+        // Get full player data with stats
+        const { data: fullPlayer } = await playerDataService.getPlayerById(bestMatch.id, {
+          include_stats: true,
+          include_recent_games: true
+        });
+
+        return fullPlayer;
+      }
+    }
+
+    return null;
+  }
+
+  /**
+   * Calculate Levenshtein distance for fuzzy string matching
+   */
+  private levenshteinDistance(str1: string, str2: string): number {
+    const matrix = [];
+    
+    for (let i = 0; i <= str2.length; i++) {
+      matrix[i] = [i];
+    }
+    
+    for (let j = 0; j <= str1.length; j++) {
+      matrix[0][j] = j;
+    }
+    
+    for (let i = 1; i <= str2.length; i++) {
+      for (let j = 1; j <= str1.length; j++) {
+        if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+          matrix[i][j] = matrix[i - 1][j - 1];
+        } else {
+          matrix[i][j] = Math.min(
+            matrix[i - 1][j - 1] + 1,
+            matrix[i][j - 1] + 1,
+            matrix[i - 1][j] + 1
+          );
+        }
+      }
+    }
+    
+    return matrix[str2.length][str1.length];
+  }
+
+  /**
+   * Calculate team statistics from real player data
+   */
+  private calculateTeamStatsFromRealData(players: RosterPlayer[]): any {
+    const playersWithRealData = players.filter(p => p.realPerformanceData);
+    
+    if (playersWithRealData.length === 0) {
+      return {
+        avgOverallRating: 0,
+        projectedWeeklyPoints: 0,
+        avgConsistency: 0,
+        injuryRisk: 0,
+        strengthOfRoster: 0
+      };
+    }
+
+    // Calculate averages and projections
+    const totalRating = playersWithRealData.reduce((sum, p) => sum + (p.realPerformanceData!.overallRating || 65), 0);
+    const totalPoints = playersWithRealData.reduce((sum, p) => sum + (p.realPerformanceData!.avgFantasyPoints || 0), 0);
+    const totalConsistency = playersWithRealData.reduce((sum, p) => sum + (p.realPerformanceData!.consistencyScore || 50), 0);
+    
+    // Calculate injury risk based on games missed
+    const totalGamesPlayed = playersWithRealData.reduce((sum, p) => sum + (p.realPerformanceData!.gamesPlayed || 0), 0);
+    const totalPossibleGames = playersWithRealData.length * 17; // Assuming 17 game season
+    const injuryRisk = 100 - (totalGamesPlayed / totalPossibleGames * 100);
+
+    // Calculate strength of roster (0-100 scale)
+    const avgRating = totalRating / playersWithRealData.length;
+    const strengthOfRoster = Math.min(100, Math.max(0, (avgRating - 50) * 2));
+
+    return {
+      avgOverallRating: Math.round(avgRating),
+      projectedWeeklyPoints: Math.round(totalPoints * 10) / 10,
+      avgConsistency: Math.round(totalConsistency / playersWithRealData.length),
+      injuryRisk: Math.round(injuryRisk),
+      strengthOfRoster: Math.round(strengthOfRoster),
+      matchedPlayerCount: playersWithRealData.length,
+      totalPlayerCount: players.length
+    };
+  }
+
+  /**
+   * Map injury status to our standard format
+   */
+  private mapInjuryStatus(status: string): 'healthy' | 'questionable' | 'doubtful' | 'out' | 'ir' {
+    const normalized = status.toLowerCase();
+    
+    if (normalized.includes('question') || normalized === 'q') {
+      return 'questionable';
+    } else if (normalized.includes('doubt') || normalized === 'd') {
+      return 'doubtful';
+    } else if (normalized.includes('out') || normalized === 'o') {
+      return 'out';
+    } else if (normalized.includes('ir') || normalized.includes('injured')) {
+      return 'ir';
+    }
+    
+    return 'healthy';
   }
 }
 

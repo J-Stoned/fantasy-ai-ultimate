@@ -5,14 +5,14 @@
 
 export const API_CONFIG = {
   // Pattern Detection Services
-  PATTERN_API_V4: process.env.NEXT_PUBLIC_PATTERN_API_V4_URL || 'http://localhost:3336', // Using unified API
-  UNIFIED_PATTERN_API: process.env.NEXT_PUBLIC_UNIFIED_PATTERN_API_URL || 'http://localhost:3336',
+  PATTERN_API_V4: process.env.NEXT_PUBLIC_PATTERN_API_V4_URL || (typeof window !== 'undefined' && process.env.NODE_ENV === 'production' ? `${window.location.protocol}//${window.location.host}/api/pattern` : 'http://localhost:3336'), // Using unified API
+  UNIFIED_PATTERN_API: process.env.NEXT_PUBLIC_UNIFIED_PATTERN_API_URL || (typeof window !== 'undefined' && process.env.NODE_ENV === 'production' ? `${window.location.protocol}//${window.location.host}/api/unified` : 'http://localhost:3336'),
   
   // Fantasy Services
-  FANTASY_PATTERN_API: process.env.NEXT_PUBLIC_FANTASY_PATTERN_API_URL || 'http://localhost:3340',
+  FANTASY_PATTERN_API: process.env.NEXT_PUBLIC_FANTASY_PATTERN_API_URL || (typeof window !== 'undefined' && process.env.NODE_ENV === 'production' ? `${window.location.protocol}//${window.location.host}/api/fantasy` : 'http://localhost:3340'),
   
   // WebSocket Services
-  WEBSOCKET_URL: process.env.NEXT_PUBLIC_WEBSOCKET_URL || 'ws://localhost:3000',
+  WEBSOCKET_URL: process.env.NEXT_PUBLIC_WEBSOCKET_URL || (typeof window !== 'undefined' && process.env.NODE_ENV === 'production' ? `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/ws` : 'ws://localhost:3000'),
   
   // API Keys (for pattern licensing platform)
   PATTERN_API_KEY: process.env.NEXT_PUBLIC_PATTERN_API_KEY || '',

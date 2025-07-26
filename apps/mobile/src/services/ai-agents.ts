@@ -80,7 +80,6 @@ export class AIAgentService {
       this.setCache(cacheKey, response);
       return response;
     } catch (error) {
-      console.error('Player analysis failed:', error);
       throw error;
     }
   }
@@ -95,7 +94,6 @@ export class AIAgentService {
     try {
       return await fantasyAPI.agents.suggestTrades(params.leagueId);
     } catch (error) {
-      console.error('Trade analysis failed:', error);
       throw error;
     }
   }
@@ -109,7 +107,6 @@ export class AIAgentService {
     try {
       return await fantasyAPI.agents.getDraftAdvice(params.draftId);
     } catch (error) {
-      console.error('Draft advice failed:', error);
       throw error;
     }
   }
@@ -130,7 +127,6 @@ export class AIAgentService {
       );
       return response;
     } catch (error) {
-      console.error('Agent workflow failed:', error);
       throw error;
     }
   }

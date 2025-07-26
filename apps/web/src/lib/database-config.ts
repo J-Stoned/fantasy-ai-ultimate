@@ -17,7 +17,8 @@ export function getDatabaseUrl(): string {
   if (!dbUrl && process.env.NODE_ENV !== 'production') {
     logger.warn('[DATABASE] No DATABASE_URL configured, using development placeholder');
     logger.warn('[DATABASE] Please set DATABASE_URL_LOCAL in your .env file');
-    return 'postgresql://user:password@localhost:5432/fantasy_ml';
+    // Return empty string - the calling code should handle this case
+    return '';
   }
   
   return dbUrl || '';

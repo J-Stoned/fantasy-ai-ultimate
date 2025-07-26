@@ -174,7 +174,6 @@ export default function MatchupsScreen() {
         setRefreshing(false);
       }, 1000);
     } catch (error) {
-      console.error('Failed to load matchups:', error);
       setLoading(false);
       setRefreshing(false);
     }

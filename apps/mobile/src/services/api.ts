@@ -136,7 +136,6 @@ class SecureAPIClient {
 
       return this.handleResponse<T>(response);
     } catch (error) {
-      console.error(`API Error [${endpoint}]:`, error);
       throw error;
     }
   }

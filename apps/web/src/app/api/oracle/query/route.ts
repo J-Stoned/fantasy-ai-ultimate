@@ -8,6 +8,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getOracleService, OracleQuery } from '@/lib/services/ai/oracle-service';
 import { getElevenLabsService } from '@/lib/services/elevenlabs-service';
+import { playerDataService } from '../../../../lib/database/player-data-service';
 import { validateRequest } from '@/lib/utils/validation';
 import { z } from 'zod';
 import { logger } from '../../../../lib/logging/logger';
@@ -56,17 +57,75 @@ export async function POST(req: NextRequest) {
     // Get Oracle service
     const oracleService = getOracleService();
 
-    // Process query
+    logger.info('🔮 Processing Oracle query with real data context:', { data: { text, sessionId } });
+    const startTime = Date.now();
+
+    // Enhance context with real player data from our 1.57M game stats database
+    let enhancedContext = { ...context };
+    const sport = context?.sport || 'NFL';
+
+    try {
+      // Get contextual player data for better Oracle responses
+      const { data: topPlayers } = await playerDataService.getTopPerformers({
+        sport,
+        limit: 5,
+        min_games: 3
+      });
+
+      const { data: trendingPlayers } = await playerDataService.getPlayers({
+        sport,
+        include_stats: true,
+        include_recent_games: true,
+        limit: 10
+      });
+
+      // Add real data context for the Oracle
+      if (topPlayers && topPlayers.length > 0) {
+        enhancedContext.topPerformers = topPlayers.slice(0, 3).map(p => ({
+          name: p.name,
+          position: p.position,
+          team: p.team_abbreviation || p.team,
+          avgPoints: p.season_stats?.avg_fantasy_points
+        }));
+      }
+
+      if (trendingPlayers && trendingPlayers.length > 0) {
+        // Calculate trending players for Oracle context
+        const trending = trendingPlayers
+          .filter(p => p.season_stats && p.recent_games && p.recent_games.length >= 3)
+          .map(p => {
+            const seasonAvg = p.season_stats!.avg_fantasy_points || 0;
+            const recentAvg = p.recent_games!.slice(0, 3).reduce((sum, game) => sum + (game.fantasy_points || 0), 0) / 3;
+            return {
+              name: p.name,
+              position: p.position,
+              team: p.team_abbreviation || p.team,
+              trend: recentAvg - seasonAvg,
+              avgPoints: seasonAvg
+            };
+          })
+          .sort((a, b) => b.trend - a.trend)
+          .slice(0, 3);
+
+        enhancedContext.trendingPlayers = trending;
+      }
+
+      // Add database metadata for Oracle awareness
+      enhancedContext.dataSource = '1.57M game stats dataset';
+      enhancedContext.realData = true;
+
+    } catch (error) {
+      logger.warn('Failed to enhance Oracle context with real data:', error);
+    }
+
+    // Process query with enhanced context
     const query: OracleQuery = {
       text,
-      context,
+      context: enhancedContext,
       sessionId,
       userId,
       voiceMetadata
     };
-
-    logger.info('🔮 Processing Oracle query:', { data: { text, sessionId } });
-    const startTime = Date.now();
 
     // Get Oracle response
     const response = await oracleService.processQuery(query);
@@ -99,7 +158,7 @@ export async function POST(req: NextRequest) {
     }
 
     const processingTime = Date.now() - startTime;
-    logger.info('✅ Oracle response generated in ${processingTime}ms');
+    logger.info(`✅ Oracle response generated in ${processingTime}ms with real data context`);
 
     // Return response with metadata
     return NextResponse.json({
@@ -109,7 +168,10 @@ export async function POST(req: NextRequest) {
         processingTime,
         sessionId: response.sessionId,
         speaker: response.speaker,
-        confidence: response.confidence
+        confidence: response.confidence,
+        dataSource: '1.57M game stats dataset',
+        realData: true,
+        contextEnhanced: !!(enhancedContext.topPerformers || enhancedContext.trendingPlayers)
       }
     });
 

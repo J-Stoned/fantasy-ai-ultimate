@@ -127,8 +127,6 @@ export async function POST(request: NextRequest) {
     logger.info('[ADMIN AUTH] New password hash:', { data: hashResult.hash });
     logger.info('[ADMIN AUTH] To update environment variable, set:');
     logger.info(`ADMIN_PASSWORD_HASH="${hashResult.hash}"`);
-    console.log('ADMIN_PASSWORD_IS_SHA256="false"');
-
     // If requested, invalidate all sessions
     if (invalidateSessions) {
       // In a real application, you would clear all sessions from your session store

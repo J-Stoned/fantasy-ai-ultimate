@@ -97,8 +97,7 @@ class AvatarPerformanceService {
     // Load performance patterns from storage
     await this.loadPerformancePatterns();
     
-    console.log('🔥 Avatar Performance System initialized');
-  }
+    }
 
   // 🚀 MAIN API METHODS
 
@@ -345,7 +344,6 @@ class AvatarPerformanceService {
       return results;
 
     } catch (error) {
-      console.error('Batch fetch failed:', error);
       return new Map();
     }
   }
@@ -364,8 +362,7 @@ class AvatarPerformanceService {
         
         this.enforcePrefetchCacheLimit();
       } catch (error) {
-        console.error('Background prefetch failed:', error);
-      }
+        }
     }, 0);
   }
 
@@ -495,8 +492,7 @@ class AvatarPerformanceService {
         this.prefetchPatterns = new Map(parsed);
       }
     } catch (error) {
-      console.error('Failed to load performance patterns:', error);
-    }
+      }
   }
 
   private async savePerformancePatterns(): Promise<void> {
@@ -504,8 +500,7 @@ class AvatarPerformanceService {
       const patterns = Array.from(this.prefetchPatterns.entries());
       await AsyncStorage.setItem('avatar_prefetch_patterns', JSON.stringify(patterns));
     } catch (error) {
-      console.error('Failed to save performance patterns:', error);
-    }
+      }
   }
 
   // 🧹 CLEANUP
@@ -521,8 +516,7 @@ class AvatarPerformanceService {
     await cache.invalidate('avatars', true);
     await AsyncStorage.removeItem('avatar_prefetch_patterns');
     
-    console.log('🧹 Avatar caches cleared');
-  }
+    }
 
   destroy(): void {
     if (this.batchTimer) {

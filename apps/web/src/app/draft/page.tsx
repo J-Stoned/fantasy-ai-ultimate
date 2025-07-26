@@ -123,8 +123,7 @@ export default function DraftPage() {
       toast.success('Draft initialized successfully!');
     } catch (error) {
       toast.error('Failed to start draft');
-      console.error(error);
-    } finally {
+      } finally {
       setLoading(false);
     }
   }, []);
@@ -200,8 +199,7 @@ export default function DraftPage() {
       ]);
     } catch (error) {
       toast.error('Failed to make pick');
-      console.error(error);
-    }
+      }
   }, [draftState, fetchRecommendations, fetchTeamAnalysis]);
 
   // Toggle pause
@@ -232,8 +230,7 @@ export default function DraftPage() {
       toast.success('Draft exported successfully!');
     } catch (error) {
       toast.error('Failed to export draft');
-      console.error(error);
-    }
+      }
   }, [draftState]);
 
   // Mock draft
@@ -259,8 +256,7 @@ export default function DraftPage() {
       toast.success('Mock draft started!');
     } catch (error) {
       toast.error('Failed to run mock draft');
-      console.error(error);
-    } finally {
+      } finally {
       setLoading(false);
     }
   }, []);

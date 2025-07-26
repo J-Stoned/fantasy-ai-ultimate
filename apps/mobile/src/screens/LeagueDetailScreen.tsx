@@ -127,7 +127,6 @@ export default function LeagueDetailScreen() {
         setRefreshing(false);
       }, 1000);
     } catch (error) {
-      console.error('Failed to load league details:', error);
       setLoading(false);
       setRefreshing(false);
     }
@@ -150,7 +149,7 @@ export default function LeagueDetailScreen() {
         <TouchableOpacity
           key={team.id}
           style={styles.teamRow}
-          onPress={() => console.log('Navigate to team', team.id)}
+          onPress={() => }
         >
           <View style={styles.rankBadge}>
             <Text style={styles.rankText}>{team.rank}</Text>
