@@ -2,8 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { TradeCalculator } from '@/lib/services/traditional-fantasy/draft-analysis/trade-calculator';
 import { PlayerValuator } from '@/lib/services/traditional-fantasy/draft-analysis/player-valuator';
 import { withValidation, tradeProposalSchema, uuidSchema, z } from '@/lib/validation';
-import type { 
+import { playerDataService } from '@/lib/database/player-data-service';
+import { gameStatsService } from '@/lib/database/game-stats-service';
 import { logger } from '../../../../lib/logging/logger';
+import type { 
   Player, 
   PlayerProjection, 
   LeagueSettings, 
@@ -57,30 +59,105 @@ export const POST = withValidation(tradeAnalysisSchema, async (request: NextRequ
       leagueSettings
     } = body;
 
-    // Mock player data for demonstration
-    // In production, this would fetch from your database
-    const mockPlayers = new Map();
-    const mockProjections = new Map();
+    // 🔥 FETCH REAL PLAYER DATA FROM 1.3M GAME LOGS DATABASE!
+    const realPlayers = new Map();
+    const realProjections = new Map();
     
-    // Add mock data for players involved in trade
-    [...playersGiving, ...playersReceiving].forEach((playerId) => {
-      mockPlayers.set(playerId, {
-        id: playerId,
-        name: `Player ${playerId}`,
-        position: ['QB', 'RB', 'WR', 'TE'][Math.floor(Math.random() * 4)],
-        team: ['KC', 'BUF', 'SF', 'DAL'][Math.floor(Math.random() * 4)],
-        injuryStatus: Math.random() > 0.8 ? 'Questionable' : null
-      });
-      
-      mockProjections.set(playerId, {
-        playerId,
-        projectedPoints: 10 + Math.random() * 20,
-        ceiling: 20 + Math.random() * 30,
-        floor: 5 + Math.random() * 10,
-        consistency: 0.5 + Math.random() * 0.5,
-        upside: Math.random()
-      });
-    });
+    // Fetch all players involved in the trade
+    const allPlayerIds = [...playersGiving, ...playersReceiving];
+    logger.info('🔥 Trade Analyzer fetching REAL player data for trade analysis!', { playerIds: allPlayerIds });
+    
+    for (const playerId of allPlayerIds) {
+      try {
+        // Get real player data from our massive database
+        const { data: playerData } = await playerDataService.getPlayerById(parseInt(playerId));
+        
+        if (playerData) {
+          realPlayers.set(playerId, {
+            id: playerId,
+            name: playerData.name,
+            position: playerData.position,
+            team: playerData.team || 'FA',
+            injuryStatus: playerData.injury_status || null
+          });
+          
+          // Get recent performance for projections
+          const { data: recentGames } = await gameStatsService.getPlayerGameLogs(parseInt(playerId), {
+            limit: 5,
+            sortBy: 'game_date',
+            sortOrder: 'desc'
+          });
+          
+          // Calculate real projections based on recent performance
+          const recentPoints = recentGames?.map(g => g.fantasy_points || 0) || [];
+          const avgPoints = recentPoints.length > 0 
+            ? recentPoints.reduce((a, b) => a + b, 0) / recentPoints.length 
+            : 15; // Default if no recent games
+          
+          const maxPoints = Math.max(...recentPoints, avgPoints * 1.5);
+          const minPoints = Math.min(...recentPoints, avgPoints * 0.5);
+          
+          // Calculate consistency (lower std dev = higher consistency)
+          const variance = recentPoints.length > 1
+            ? recentPoints.reduce((sum, points) => sum + Math.pow(points - avgPoints, 2), 0) / recentPoints.length
+            : 0;
+          const consistency = variance > 0 ? Math.max(0.3, 1 - (Math.sqrt(variance) / avgPoints)) : 0.7;
+          
+          realProjections.set(playerId, {
+            playerId,
+            projectedPoints: avgPoints,
+            ceiling: maxPoints,
+            floor: minPoints,
+            consistency: consistency,
+            upside: (maxPoints - avgPoints) / avgPoints // Upside potential
+          });
+          
+          logger.info(`✅ Loaded real data for ${playerData.name}:`, {
+            avgPoints: avgPoints.toFixed(1),
+            recentGames: recentPoints.length,
+            consistency: (consistency * 100).toFixed(1) + '%'
+          });
+        } else {
+          // Fallback for players not found
+          logger.warn(`Player not found in database: ${playerId}, using defaults`);
+          realPlayers.set(playerId, {
+            id: playerId,
+            name: `Player ${playerId}`,
+            position: 'FLEX',
+            team: 'FA',
+            injuryStatus: null
+          });
+          
+          realProjections.set(playerId, {
+            playerId,
+            projectedPoints: 10,
+            ceiling: 15,
+            floor: 5,
+            consistency: 0.5,
+            upside: 0.5
+          });
+        }
+      } catch (error) {
+        logger.error(`Error fetching player ${playerId}:`, error);
+        // Use basic fallback data
+        realPlayers.set(playerId, {
+          id: playerId,
+          name: `Player ${playerId}`,
+          position: 'FLEX',
+          team: 'FA',
+          injuryStatus: null
+        });
+        
+        realProjections.set(playerId, {
+          playerId,
+          projectedPoints: 10,
+          ceiling: 15,
+          floor: 5,
+          consistency: 0.5,
+          upside: 0.5
+        });
+      }
+    }
 
     // Default league settings if not provided
     const settings = leagueSettings || {
@@ -99,9 +176,11 @@ export const POST = withValidation(tradeAnalysisSchema, async (request: NextRequ
       keeperRules: { enabled: false }
     };
 
-    // Create valuator and calculator instances
-    const valuator = new PlayerValuator(mockPlayers, mockProjections, settings);
-    const calculator = new TradeCalculator(mockPlayers, mockProjections, valuator, settings);
+    // Create valuator and calculator instances with REAL DATA
+    const valuator = new PlayerValuator(realPlayers, realProjections, settings);
+    const calculator = new TradeCalculator(realPlayers, realProjections, valuator, settings);
+    
+    logger.info('🔥 Trade Calculator using REAL player data from 1.3M game logs!');
 
     // Create trade proposal
     const tradeProposal = {
@@ -194,40 +273,62 @@ export const POST = withValidation(tradeAnalysisSchema, async (request: NextRequ
 export async function GET(request: NextRequest) {
   // Return available players for trade building
   try {
-    // In production, fetch from database
-    const mockAvailablePlayers = [
-      {
-        id: '1',
-        name: 'Christian McCaffrey',
-        position: 'RB',
-        team: 'SF',
-        value: 95,
-        projectedPoints: 22.5,
-        platforms: ['ESPN', 'Yahoo', 'Sleeper']
-      },
-      {
-        id: '2',
-        name: 'Justin Jefferson',
-        position: 'WR',
-        team: 'MIN',
-        value: 92,
-        projectedPoints: 19.8,
-        platforms: ['ESPN', 'Yahoo']
-      },
-      {
-        id: '3',
-        name: 'Josh Allen',
-        position: 'QB',
-        team: 'BUF',
-        value: 88,
-        projectedPoints: 24.2,
-        platforms: ['ESPN', 'Sleeper']
-      }
-    ];
+    const searchParams = request.nextUrl.searchParams;
+    const sport = searchParams.get('sport')?.toUpperCase() || 'NFL';
+    const position = searchParams.get('position');
+    const limit = parseInt(searchParams.get('limit') || '50');
+    
+    // 🔥 FETCH REAL PLAYERS FROM 1.3M GAME LOGS DATABASE!
+    logger.info('🔥 Fetching REAL available players for trade builder from database!');
+    
+    const { data: players, error } = await playerDataService.getPlayers({
+      sport,
+      positions: position ? [position] : undefined,
+      limit,
+      include_stats: true,
+      sort_by: 'fantasy_points_avg',
+      sort_order: 'desc'
+    });
+    
+    if (error) {
+      logger.error('Error fetching players:', error);
+      throw error;
+    }
+    
+    // Transform to include trade values and projections
+    const availablePlayers = (players || []).map(player => {
+      // Calculate trade value based on recent performance
+      const fantasyAvg = player.season_stats?.fantasy_points_avg || 10;
+      const gamesPlayed = player.season_stats?.games_played || 0;
+      const consistency = player.season_stats?.consistency_score || 50;
+      
+      // Trade value formula: avg points * consistency * games played factor
+      const tradeValue = Math.round(
+        fantasyAvg * (consistency / 100) * Math.min(1, gamesPlayed / 10)
+      );
+      
+      return {
+        id: player.id.toString(),
+        name: player.name,
+        position: player.position,
+        team: player.team || 'FA',
+        value: Math.min(100, Math.max(0, tradeValue)), // Cap at 0-100
+        projectedPoints: fantasyAvg,
+        avgPoints: fantasyAvg,
+        gamesPlayed: gamesPlayed,
+        consistency: consistency,
+        injuryStatus: player.injury_status,
+        platforms: ['ESPN', 'Yahoo', 'Sleeper'] // All platforms supported
+      };
+    });
+    
+    logger.info(`✅ Loaded ${availablePlayers.length} real players for trade builder`);
 
     return NextResponse.json({
       success: true,
-      players: mockAvailablePlayers
+      players: availablePlayers,
+      totalPlayers: availablePlayers.length,
+      message: `Real player data from ${sport} with 1.3M+ game logs!`
     });
 
   } catch (error) {

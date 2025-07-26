@@ -5,11 +5,11 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { Pool } from 'pg';
-import { OwnershipEngineV2 } from '@/scripts/fantasy-ml/services/ownership-engine-v2';
-import { VegasService } from '@/scripts/fantasy-ml/services/vegas-service';
-import { WeatherService } from '@/scripts/fantasy-ml/services/weather-service';
-import { InjuryService } from '@/scripts/fantasy-ml/services/injury-service';
-import { cacheService } from '@/scripts/fantasy-ml/services/cache-service';
+import OwnershipEngineV2 from '@/lib/services/ownership-engine-v2';
+import { VegasService } from '@/lib/services/vegas-service';
+import { WeatherService } from '@/lib/services/weather-service';
+import { InjuryService } from '@/lib/services/injury-service';
+import { cacheService } from '@/lib/services/cache-service';
 import { logger } from '../../../lib/logging/logger';
 
 // Initialize database pool
@@ -28,60 +28,76 @@ async function initializeServices() {
   if (servicesInitialized) return;
   
   try {
-    // Initialize cache
-    await cacheService.initialize();
+    logger.info('🔍 [ELITE DEBUG] Starting service initialization...');
     
-    // Initialize services
+    // Initialize services one by one with precise error tracking
+    logger.info('🔍 [ELITE DEBUG] Initializing VegasService...');
     const vegasService = new VegasService(pgPool);
-    const weatherService = new WeatherService(pgPool);
-    const injuryService = new InjuryService(pgPool);
-    
     await vegasService.initialize();
-    await weatherService.initialize();
-    await injuryService.initialize();
+    logger.info('✅ [ELITE DEBUG] VegasService initialized successfully');
     
-    // Create ownership engine
+    logger.info('🔍 [ELITE DEBUG] Initializing WeatherService...');
+    const weatherService = new WeatherService(pgPool);
+    await weatherService.initialize();
+    logger.info('✅ [ELITE DEBUG] WeatherService initialized successfully');
+    
+    logger.info('🔍 [ELITE DEBUG] Initializing InjuryService...');
+    const injuryService = new InjuryService(pgPool);
+    await injuryService.initialize();
+    logger.info('✅ [ELITE DEBUG] InjuryService initialized successfully');
+    
+    logger.info('🔍 [ELITE DEBUG] Creating OwnershipEngineV2...');
     ownershipEngine = new OwnershipEngineV2(
       pgPool,
       vegasService,
       injuryService,
       weatherService
     );
+    logger.info('✅ [ELITE DEBUG] OwnershipEngineV2 created successfully');
     
     servicesInitialized = true;
+    logger.info('🎉 [ELITE DEBUG] All services initialized successfully');
   } catch (error) {
-    logger.error('Failed to initialize services:', { error: error });
+    logger.error('❌ [ELITE DEBUG] Service initialization failed:', { 
+      error: error.message,
+      stack: error.stack,
+      sqlState: error.code,
+      sqlMessage: error.detail || error.hint
+    });
     throw error;
   }
 }
 
 export async function GET(request: NextRequest) {
   try {
-    // Get query parameters
-    const searchParams = request.nextUrl.searchParams;
-    const sport = searchParams.get('sport') || 'nfl';
-    const slate = searchParams.get('slate') || 'main';
-    const dateStr = searchParams.get('date') || new Date().toISOString().split('T')[0];
-    const contestType = (searchParams.get('contestType') || 'GPP') as 'GPP' | 'CASH';
-    const limit = parseInt(searchParams.get('limit') || '50');
+    console.log('🔍 [ELITE DEBUG] Starting ownership projection engine...');
     
-    // Parse date
-    const gameDate = new Date(dateStr);
-    
-    // Initialize services if needed
+    // Initialize services
     await initializeServices();
     
     if (!ownershipEngine) {
       throw new Error('Ownership engine not initialized');
     }
     
-    // Get ownership projections
+    // Get query parameters
+    const { searchParams } = new URL(request.url);
+    const sport = searchParams.get('sport') || 'nfl';
+    const slate = searchParams.get('slate') || 'main';
+    const gameDate = new Date(searchParams.get('gameDate') || new Date());
+    const contestType = (searchParams.get('contestType') as 'GPP' | 'CASH') || 'GPP';
+    const limit = parseInt(searchParams.get('limit') || '50');
+    
+    console.log(`🧠 [ELITE DEBUG] Getting ownership projections for ${sport} ${slate}...`);
+    
+    // Get projections
     const projections = await ownershipEngine.projectSlateOwnership(
       sport,
       slate,
       gameDate,
       contestType
     );
+    
+    console.log(`✅ [ELITE DEBUG] Generated ${projections.length} ownership projections`);
     
     // Get top leverage plays
     const leveragePlays = projections

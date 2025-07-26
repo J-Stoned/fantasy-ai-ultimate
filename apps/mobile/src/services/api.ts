@@ -270,6 +270,123 @@ export const fantasyAPI = {
     getHistory: (limit?: number) => 
       api.get(`/api/v2/predictions/history${limit ? `?limit=${limit}` : ''}`),
   },
+
+  // Players API (Using 1.3M game logs!)
+  players: {
+    // Get players with filters
+    getPlayers: (params?: {
+      sport?: string;
+      position?: string;
+      team?: string;
+      search?: string;
+      limit?: number;
+      includeStats?: boolean;
+      includeRecent?: boolean;
+    }) => {
+      const queryParams = new URLSearchParams();
+      if (params?.sport) queryParams.append('sport', params.sport);
+      if (params?.position) queryParams.append('position', params.position);
+      if (params?.team) queryParams.append('team', params.team);
+      if (params?.search) queryParams.append('search', params.search);
+      if (params?.limit) queryParams.append('limit', params.limit.toString());
+      if (params?.includeStats !== undefined) queryParams.append('includeStats', params.includeStats.toString());
+      if (params?.includeRecent !== undefined) queryParams.append('includeRecent', params.includeRecent.toString());
+      return api.get(`/api/players?${queryParams.toString()}`);
+    },
+    
+    // Get player avatar info
+    getPlayerAvatar: (playerId: string) =>
+      api.get(`/api/players/${playerId}/avatar`),
+    
+    // Get player predictions
+    getPlayerPredictions: (sport: string = 'NFL') =>
+      api.get(`/api/predictions/players?sport=${sport}`),
+    
+    // Get trending players
+    getTrending: () =>
+      api.get('/api/predictions/trending'),
+    
+    // Get breakout candidates
+    getBreakouts: () =>
+      api.get('/api/predictions/breakouts'),
+  },
+
+  // Game Stats (1.3M logs database!)
+  gameStats: {
+    // Get player game logs
+    getPlayerGameLogs: (playerId: number, options?: {
+      limit?: number;
+      offset?: number;
+      season?: number;
+      sortBy?: string;
+      sortOrder?: 'asc' | 'desc';
+    }) => {
+      const queryParams = new URLSearchParams();
+      if (options?.limit) queryParams.append('limit', options.limit.toString());
+      if (options?.offset) queryParams.append('offset', options.offset.toString());
+      if (options?.season) queryParams.append('season', options.season.toString());
+      if (options?.sortBy) queryParams.append('sortBy', options.sortBy);
+      if (options?.sortOrder) queryParams.append('sortOrder', options.sortOrder);
+      return api.get(`/api/game-stats/player/${playerId}?${queryParams.toString()}`);
+    },
+    
+    // Get recent game logs
+    getRecentGameLogs: (params?: {
+      sport?: string;
+      limit?: number;
+      daysBack?: number;
+    }) => {
+      const queryParams = new URLSearchParams();
+      if (params?.sport) queryParams.append('sport', params.sport);
+      if (params?.limit) queryParams.append('limit', params.limit.toString());
+      if (params?.daysBack) queryParams.append('daysBack', params.daysBack.toString());
+      return api.get(`/api/game-stats/recent?${queryParams.toString()}`);
+    },
+  },
+
+  // DFS Features
+  dfs: {
+    // Get contests
+    getContests: () => api.get('/api/contests'),
+    
+    // Get optimal contests
+    getOptimalContests: (params: any) =>
+      api.post('/api/contests/optimal', params),
+    
+    // Get ownership data
+    getOwnership: (sport: string = 'NFL') =>
+      api.get(`/api/ownership?sport=${sport}`),
+    
+    // Build lineup
+    buildLineup: (sport: string, params: any) =>
+      api.post(`/api/lineup-builder/optimize?sport=${sport}`, params),
+    
+    // Get player pool for lineup builder
+    getLineupPlayers: (sport: string) =>
+      api.get(`/api/lineup-builder/players?sport=${sport}`),
+  },
+
+  // Traditional Fantasy Features
+  fantasy: {
+    // Waiver wire
+    getWaiverClaims: (leagueId: string, userId: string) =>
+      api.get(`/api/waivers/claims?leagueId=${leagueId}&userId=${userId}`),
+    
+    submitWaiverClaim: (claim: any) =>
+      api.post('/api/waivers/submit', claim),
+    
+    // Roster management
+    getDropCandidates: (leagueId: string, userId: string) =>
+      api.get(`/api/roster/drop-candidates?leagueId=${leagueId}&userId=${userId}`),
+    
+    // Trade analysis
+    analyzeTrade: (trade: any) =>
+      api.post('/api/trades/analyze', trade),
+    
+    // Dynasty features
+    getDynastyAssets: (leagueId: string) =>
+      api.get(`/api/dynasty/assets?leagueId=${leagueId}`),
+  },
 };
 
 /**

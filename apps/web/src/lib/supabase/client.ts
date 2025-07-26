@@ -33,3 +33,10 @@ export const createBrowserClient = (url: string, key: string) => {
 export const createServerClient = (url: string, key: string, options: any) => {
   return createBrowserClient(url, key);
 };
+
+// Create a default supabase instance for backward compatibility
+// This connects to your LOCAL database with 1.3M game logs!
+export const supabase = createBrowserClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL || 'http://localhost:5432',
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'local-key'
+);

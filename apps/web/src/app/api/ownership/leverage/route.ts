@@ -5,13 +5,13 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { Pool } from 'pg';
-import { OwnershipEngineV2 } from '@/scripts/fantasy-ml/services/ownership-engine-v2';
-import { VegasService } from '@/scripts/fantasy-ml/services/vegas-service';
-import { WeatherService } from '@/scripts/fantasy-ml/services/weather-service';
-import { InjuryService } from '@/scripts/fantasy-ml/services/injury-service';
-import { PredictionService } from '@/scripts/fantasy-ml/services/prediction-service';
-import { ModelLoaderService } from '@/scripts/fantasy-ml/services/model-loader';
-import { cacheService } from '@/scripts/fantasy-ml/services/cache-service';
+import OwnershipEngineV2 from '@/lib/services/ownership-engine-v2';
+import { VegasService } from '@/lib/services/vegas-service';
+import { WeatherService } from '@/lib/services/weather-service';
+import { InjuryService } from '@/lib/services/injury-service';
+import { PredictionService } from '../../../../../../scripts/domains/ml/services/prediction-service';
+import { ModelLoaderService } from '../../../../../../scripts/domains/ml/services/model-loader';
+import { cacheService } from '@/lib/services/cache-service';
 import { logger } from '../../../../lib/logging/logger';
 
 // Initialize database pool

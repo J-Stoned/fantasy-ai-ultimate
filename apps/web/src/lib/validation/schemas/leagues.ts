@@ -16,7 +16,7 @@ export const leagueSettingsSchema = z.object({
 });
 
 export const createLeagueSchema = z.object({
-  name: safeStringSchema(100).min(1, 'League name is required'),
+  name: safeStringSchema(100).refine(val => val.length >= 1, 'League name is required'),
   description: safeTextSchema(1000).optional(),
   sport: sportSchema,
   platform: platformSchema,
@@ -38,7 +38,7 @@ export const updateLeagueSchema = createLeagueSchema.partial().extend({
 
 export const joinLeagueSchema = z.object({
   leagueId: uuidSchema,
-  teamName: safeStringSchema(50).min(1, 'Team name is required'),
+  teamName: safeStringSchema(50).refine(val => val.length >= 1, 'Team name is required'),
   password: z.string().max(128).optional(),
 });
 

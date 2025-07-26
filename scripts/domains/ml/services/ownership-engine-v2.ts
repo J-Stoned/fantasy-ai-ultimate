@@ -264,7 +264,7 @@ export class OwnershipEngineV2 extends EventEmitter {
     // Get from ownership_factors table
     const factorsQuery = await this.pool.query(`
       SELECT * FROM ownership_factors
-      WHERE player_id = $1 AND game_date = $2
+      WHERE player_id = $1::text AND game_date = $2
     `, [player.id, gameDate]);
     
     const dbFactors = factorsQuery.rows[0] || {};
@@ -274,7 +274,7 @@ export class OwnershipEngineV2 extends EventEmitter {
     const vegasData = vegasLine || { total: 45, spread: 0 };
     
     // Get injury data
-    const injuryData = this.injuryService.getPlayerStatus(player.id);
+    const injuryData = this.injuryService.getPlayerInjuryStatus(player.id);
     const injuryOpp = await this.getInjuryOpportunity(player);
     
     // Get weather impact
@@ -321,7 +321,7 @@ export class OwnershipEngineV2 extends EventEmitter {
     const result = await this.pool.query(`
       SELECT game_date, fantasy_points
       FROM game_logs
-      WHERE player_id = $1
+      WHERE player_id = $1::text
       ORDER BY game_date DESC
       LIMIT $2
     `, [playerId, count]);
@@ -336,7 +336,7 @@ export class OwnershipEngineV2 extends EventEmitter {
     const result = await this.pool.query(`
       SELECT AVG(fantasy_points) as avg_points
       FROM game_logs
-      WHERE player_id = $1
+      WHERE player_id = $1::text
         AND game_date >= CURRENT_DATE - INTERVAL '90 days'
     `, [playerId]);
     
@@ -360,7 +360,7 @@ export class OwnershipEngineV2 extends EventEmitter {
       SELECT EXISTS(
         SELECT 1
         FROM player_narratives
-        WHERE player_id = $1
+        WHERE player_id = $1::text
           AND game_date = $2
           AND narrative_type = 'revenge_game'
       ) as is_revenge
@@ -383,7 +383,7 @@ export class OwnershipEngineV2 extends EventEmitter {
           ELSE false
         END as near_milestone
       FROM player_career_stats
-      WHERE player_id = $1
+      WHERE player_id = $1::text
     `, [player.id]);
     
     return result.rows[0]?.near_milestone || false;
@@ -416,7 +416,7 @@ export class OwnershipEngineV2 extends EventEmitter {
     const result = await this.pool.query(`
       SELECT AVG(actual_ownership) as avg_ownership
       FROM historical_ownership
-      WHERE player_id = $1
+      WHERE player_id = $1::text
         AND contest_date > CURRENT_DATE - INTERVAL '30 days'
     `, [playerId]);
     
@@ -431,12 +431,12 @@ export class OwnershipEngineV2 extends EventEmitter {
       WITH current_salary AS (
         SELECT salary
         FROM player_salaries
-        WHERE player_id = $1 AND game_date = $2
+        WHERE player_id = $1::text AND game_date = $2
       ),
       previous_salary AS (
         SELECT salary
         FROM player_salaries
-        WHERE player_id = $1 AND game_date < $2
+        WHERE player_id = $1::text AND game_date < $2
         ORDER BY game_date DESC
         LIMIT 1
       )

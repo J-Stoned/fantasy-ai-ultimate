@@ -4,6 +4,7 @@ import { cache } from '@/lib/services/cache'
 import { logger } from '../../../lib/logging/logger';
 
 export const dynamic = 'force-dynamic'
+export const runtime = 'edge'
 
 interface HealthStatus {
   status: 'healthy' | 'degraded' | 'unhealthy'

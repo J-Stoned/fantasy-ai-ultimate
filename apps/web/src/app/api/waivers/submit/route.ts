@@ -1,11 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@/lib/supabase/server';
 import { logger } from '../../../../lib/logging/logger';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
 
 /**
  * POST /api/waivers/submit
@@ -43,6 +38,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if user has enough budget
+    const supabase = await createClient();
     const { data: userBudget, error: budgetError } = await supabase
       .from('league_members')
       .select('faab_budget, faab_spent')

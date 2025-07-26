@@ -7,6 +7,8 @@ import { LineupOptimizationService } from '@/lib/services/lineup-optimization-se
 import { pool } from '@/lib/db';
 import { logger } from '../../../../lib/logging/logger';
 import { geminiService } from '@/lib/services/ai/gemini-service';
+import { playerDataService } from '@/lib/database/player-data-service';
+import { gameStatsService } from '@/lib/database/game-stats-service';
 
 // 🔥 ENTERPRISE VOICE PROCESSING API - ML + 11LABS INTEGRATION
 
@@ -138,20 +140,118 @@ export async function POST(request: NextRequest) {
       case 'PLAYER_ANALYSIS':
         const playerName = commandAnalysis.entities.playerName;
         if (playerName) {
-          const analysis = await playerAnalysis.analyzePlayer(playerName, {
-            includeProjections: true,
-            includeInjuryStatus: true,
-            includeMatchupAnalysis: true,
-            currentWeek: context?.week || getCurrentNFLWeek()
-          });
-          
-          responseText = formatPlayerAnalysisResponse(analysis);
-          visualData = analysis.chartData;
-          suggestions = [
-            `Compare ${playerName} to similar players`,
-            `Show ${playerName}'s weekly projections`,
-            `Should I trade ${playerName}?`
-          ];
+          try {
+            // 🔥 ELITE: Search for player in our REAL 1.57M game stats database!
+            const searchResults = await playerDataService.searchPlayers({
+              query: playerName,
+              limit: 1
+            });
+            
+            if (searchResults && searchResults.length > 0) {
+              const realPlayer = searchResults[0];
+              
+              // Get detailed stats from our massive game logs database
+              const [gameStats, playerTrends] = await Promise.all([
+                gameStatsService.getPlayerGameLogs(realPlayer.id, {
+                  limit: 10,
+                  sortBy: 'game_date',
+                  sortOrder: 'desc'
+                }),
+                playerDataService.getPlayerTrends(realPlayer.id)
+              ]);
+              
+              // Build comprehensive analysis from REAL data
+              const analysis = {
+                player: {
+                  name: realPlayer.name,
+                  position: realPlayer.position,
+                  team: realPlayer.team || 'FA',
+                  rating: realPlayer.overall_rating
+                },
+                injuryStatus: realPlayer.injury_status || 'healthy',
+                projectedPoints: playerTrends.projections.nextGame,
+                seasonAverage: realPlayer.season_stats?.fantasy_points_avg || 0,
+                recentForm: playerTrends.shortTerm.averagePoints,
+                consistency: playerTrends.shortTerm.consistency,
+                trend: playerTrends.shortTerm.direction,
+                keyInsights: [
+                  `Averaging ${Math.round(realPlayer.season_stats?.fantasy_points_avg || 0)} fantasy points per game`,
+                  `Recent form: ${playerTrends.shortTerm.direction === 'up' ? '📈 Trending up' : playerTrends.shortTerm.direction === 'down' ? '📉 Trending down' : '➡️ Stable'}`,
+                  `Consistency score: ${Math.round(playerTrends.shortTerm.consistency)}%`,
+                  gameStats.data && gameStats.data.length > 0 ? 
+                    `Last game: ${Math.round(gameStats.data[0].fantasy_points || 0)} points` : 
+                    'No recent games'
+                ],
+                recommendation: playerTrends.shortTerm.direction === 'up' && playerTrends.shortTerm.consistency > 70 ?
+                  'Strong start candidate' : 
+                  playerTrends.shortTerm.direction === 'down' ? 
+                  'Consider benching or trading' : 
+                  'Solid option with moderate risk',
+                chartData: {
+                  recentGames: gameStats.data?.slice(0, 5).map(g => ({
+                    date: g.game_date,
+                    points: g.fantasy_points || 0,
+                    opponent: g.opponent
+                  })) || []
+                }
+              };
+              
+              // Use AI service for enhanced analysis
+              const aiAnalysis = await playerAnalysis.analyzePlayer(playerName, {
+                includeProjections: true,
+                includeInjuryStatus: true,
+                includeMatchupAnalysis: true,
+                currentWeek: context?.week || getCurrentNFLWeek()
+              });
+              
+              // Merge real data with AI insights
+              analysis.keyInsights.push(...(aiAnalysis.keyInsights || []));
+              
+              responseText = formatPlayerAnalysisResponse(analysis);
+              visualData = analysis.chartData;
+              suggestions = [
+                `Compare ${realPlayer.name} to similar ${realPlayer.position}s`,
+                `Show ${realPlayer.name}'s last 5 games`,
+                `Should I trade ${realPlayer.name}?`,
+                `${realPlayer.name}'s matchup outlook`
+              ];
+              
+              logger.info(`🔥 Voice Assistant analyzed ${realPlayer.name} using REAL data from 1.57M game stats!`);
+            } else {
+              // Fallback to AI-only analysis if player not found
+              const analysis = await playerAnalysis.analyzePlayer(playerName, {
+                includeProjections: true,
+                includeInjuryStatus: true,
+                includeMatchupAnalysis: true,
+                currentWeek: context?.week || getCurrentNFLWeek()
+              });
+              
+              responseText = formatPlayerAnalysisResponse(analysis);
+              visualData = analysis.chartData;
+              suggestions = [
+                `Compare ${playerName} to similar players`,
+                `Show ${playerName}'s weekly projections`,
+                `Should I trade ${playerName}?`
+              ];
+            }
+          } catch (error) {
+            logger.error('Error in real player analysis:', { error, playerName });
+            // Fallback to original AI analysis
+            const analysis = await playerAnalysis.analyzePlayer(playerName, {
+              includeProjections: true,
+              includeInjuryStatus: true,
+              includeMatchupAnalysis: true,
+              currentWeek: context?.week || getCurrentNFLWeek()
+            });
+            
+            responseText = formatPlayerAnalysisResponse(analysis);
+            visualData = analysis.chartData;
+            suggestions = [
+              `Compare ${playerName} to similar players`,
+              `Show ${playerName}'s weekly projections`,
+              `Should I trade ${playerName}?`
+            ];
+          }
         }
         break;
 
@@ -199,33 +299,153 @@ export async function POST(request: NextRequest) {
 
       case 'WAIVER_WIRE':
         const position = commandAnalysis.entities.position;
-        const waiverRecommendations = await mlService.getWaiverWireRecommendations({
-          position,
-          teamId: context?.fantasyTeamId,
-          leagueId: context?.leagueId,
-          currentWeek: context?.week || getCurrentNFLWeek(),
-          maxRecommendations: 5
-        });
         
-        responseText = formatWaiverWireResponse(waiverRecommendations);
-        visualData = waiverRecommendations.projectionsChart;
-        suggestions = [
-          `Show more ${position} options`,
-          'What about players returning from injury?',
-          'Should I use my #1 waiver priority?'
-        ];
+        try {
+          // 🔥 ELITE: Get waiver recommendations enhanced with REAL player data!
+          const [waiverRecommendations, topPerformers] = await Promise.all([
+            mlService.getWaiverWireRecommendations({
+              position,
+              teamId: context?.fantasyTeamId,
+              leagueId: context?.leagueId,
+              currentWeek: context?.week || getCurrentNFLWeek(),
+              maxRecommendations: 5
+            }),
+            // Get top available players from our real database
+            playerDataService.searchPlayers({
+              position,
+              available: true,
+              sortBy: 'points',
+              limit: 10
+            })
+          ]);
+          
+          // Enhance recommendations with real player data
+          if (waiverRecommendations.players && topPerformers.length > 0) {
+            for (const rec of waiverRecommendations.players) {
+              const realPlayer = topPerformers.find(p => 
+                p.name.toLowerCase().includes(rec.name.toLowerCase()) ||
+                rec.name.toLowerCase().includes(p.name.toLowerCase())
+              );
+              
+              if (realPlayer) {
+                // Enhance with real stats
+                rec.seasonAverage = realPlayer.season_stats?.fantasy_points_avg || rec.projectedPoints;
+                rec.recentGames = realPlayer.season_stats?.games_played || 0;
+                rec.consistency = realPlayer.season_stats?.consistency_rating || 50;
+                rec.actualOwnership = realPlayer.ownership?.percentage || rec.ownershipPercentage;
+                
+                logger.info(`🔥 Enhanced waiver recommendation for ${rec.name} with real data!`);
+              }
+            }
+          }
+          
+          responseText = formatWaiverWireResponse(waiverRecommendations);
+          visualData = waiverRecommendations.projectionsChart;
+          suggestions = [
+            `Show more ${position} options`,
+            'What about players returning from injury?',
+            'Should I use my #1 waiver priority?',
+            `Top available ${position}s by recent performance`
+          ];
+        } catch (error) {
+          logger.error('Error enhancing waiver recommendations:', { error });
+          // Fallback to ML-only recommendations
+          const waiverRecommendations = await mlService.getWaiverWireRecommendations({
+            position,
+            teamId: context?.fantasyTeamId,
+            leagueId: context?.leagueId,
+            currentWeek: context?.week || getCurrentNFLWeek(),
+            maxRecommendations: 5
+          });
+          
+          responseText = formatWaiverWireResponse(waiverRecommendations);
+          visualData = waiverRecommendations.projectionsChart;
+          suggestions = [
+            `Show more ${position} options`,
+            'What about players returning from injury?',
+            'Should I use my #1 waiver priority?'
+          ];
+        }
         break;
 
       case 'INJURY_UPDATE':
         const playerForInjury = commandAnalysis.entities.playerName;
         if (playerForInjury) {
-          const injuryStatus = await mlService.getInjuryStatus(playerForInjury);
-          responseText = formatInjuryStatusResponse(injuryStatus);
-          suggestions = [
-            `Who should I start instead of ${playerForInjury}?`,
-            `Best waiver wire replacements for ${playerForInjury}`,
-            'Show me all injury updates this week'
-          ];
+          try {
+            // 🔥 ELITE: Check real injury status from our database!
+            const searchResults = await playerDataService.searchPlayers({
+              query: playerForInjury,
+              limit: 1
+            });
+            
+            if (searchResults && searchResults.length > 0) {
+              const realPlayer = searchResults[0];
+              
+              // Get recent game logs to check for missed games
+              const gameStats = await gameStatsService.getPlayerGameLogs(realPlayer.id, {
+                limit: 5,
+                sortBy: 'game_date',
+                sortOrder: 'desc'
+              });
+              
+              // Check if player has missed recent games
+              const gamesPlayed = realPlayer.season_stats?.games_played || 0;
+              const expectedGames = getCurrentNFLWeek() - 1; // Approximate
+              const missedGames = Math.max(0, expectedGames - gamesPlayed);
+              
+              const injuryStatus = {
+                playerName: realPlayer.name,
+                status: realPlayer.injury_status || 'Healthy',
+                details: realPlayer.injury_notes || (missedGames > 0 ? 
+                  `Has missed ${missedGames} games this season` : 
+                  'No injury designation'),
+                fantasyImpact: missedGames > 2 ? 'HIGH RISK - Extended absence' :
+                              missedGames > 0 ? 'MODERATE RISK - Recent missed time' :
+                              'LOW RISK - Playing regularly',
+                expectedReturn: realPlayer.injury_status === 'OUT' ? 'Unknown' :
+                               realPlayer.injury_status === 'QUESTIONABLE' ? 'Game-time decision' :
+                               'Expected to play',
+                recentPerformance: gameStats.data && gameStats.data.length > 0 ?
+                  `Last game: ${Math.round(gameStats.data[0].fantasy_points || 0)} points` :
+                  'No recent games'
+              };
+              
+              // Also get ML injury analysis for additional context
+              const mlInjuryStatus = await mlService.getInjuryStatus(playerForInjury);
+              if (mlInjuryStatus.details) {
+                injuryStatus.details += `. ${mlInjuryStatus.details}`;
+              }
+              
+              responseText = formatInjuryStatusResponse(injuryStatus);
+              suggestions = [
+                `Who should I start instead of ${realPlayer.name}?`,
+                `Best ${realPlayer.position} replacements`,
+                'Show me all injury updates this week',
+                `${realPlayer.name}'s injury history`
+              ];
+              
+              logger.info(`🔥 Voice Assistant checked injury status for ${realPlayer.name} using real data!`);
+            } else {
+              // Fallback to ML-only analysis
+              const injuryStatus = await mlService.getInjuryStatus(playerForInjury);
+              responseText = formatInjuryStatusResponse(injuryStatus);
+              suggestions = [
+                `Who should I start instead of ${playerForInjury}?`,
+                `Best waiver wire replacements for ${playerForInjury}`,
+                'Show me all injury updates this week'
+              ];
+            }
+          } catch (error) {
+            logger.error('Error checking injury status:', { error, playerForInjury });
+            // Fallback to ML-only analysis
+            const injuryStatus = await mlService.getInjuryStatus(playerForInjury);
+            responseText = formatInjuryStatusResponse(injuryStatus);
+            suggestions = [
+              `Who should I start instead of ${playerForInjury}?`,
+              `Best waiver wire replacements for ${playerForInjury}`,
+              'Show me all injury updates this week'
+            ];
+          }
         }
         break;
 
@@ -416,15 +636,43 @@ async function saveAudioFile(path: string, buffer: Buffer): Promise<void> {
 
 async function getRecentPlayerData(userId: string): Promise<any> {
   try {
-    // Get user's recent player interactions for context
+    // 🔥 ELITE: Get user's recent player interactions with REAL stats!
     const result = await pool.query(`
-      SELECT DISTINCT p.name, p.position, p.team
+      SELECT DISTINCT p.id, p.name, p.position, p.team
       FROM player_interactions pi
       JOIN players p ON pi.player_id = p.id
       WHERE pi.user_id = $1
       ORDER BY pi.created_at DESC
       LIMIT 10
     `, [userId]);
+    
+    if (result.rows.length > 0) {
+      // Enhance with real player data
+      const enhancedPlayers = await Promise.all(
+        result.rows.map(async (player) => {
+          try {
+            const { data } = await playerDataService.getPlayerById(player.id);
+            if (data) {
+              return {
+                id: player.id,
+                name: data.name,
+                position: data.position,
+                team: data.team || player.team,
+                seasonAverage: data.season_stats?.fantasy_points_avg || 0,
+                recentTrend: data.injury_status || 'healthy',
+                gamesPlayed: data.season_stats?.games_played || 0
+              };
+            }
+          } catch (e) {
+            // Fallback to basic data
+          }
+          return player;
+        })
+      );
+      
+      logger.info(`🔥 Enhanced ${enhancedPlayers.length} recent players with real stats for voice context!`);
+      return enhancedPlayers;
+    }
     
     return result.rows;
   } catch (error) {
@@ -459,7 +707,13 @@ async function logVoiceCommand(logData: any): Promise<void> {
 
 function formatPlayerAnalysisResponse(analysis: any): string {
   const player = analysis.player;
-  return `${player.name} is currently ${analysis.injuryStatus || 'healthy'} and projected for ${analysis.projectedPoints} points this week. 
+  const seasonAvg = analysis.seasonAverage ? `Season average: ${analysis.seasonAverage.toFixed(1)} points. ` : '';
+  const recentForm = analysis.recentForm ? `Recent form: ${analysis.recentForm.toFixed(1)} points over last 3 games. ` : '';
+  const consistency = analysis.consistency ? `Consistency: ${Math.round(analysis.consistency)}%. ` : '';
+  
+  return `${player.name} (${player.position}${player.team ? ', ' + player.team : ''}) is currently ${analysis.injuryStatus || 'healthy'} and projected for ${analysis.projectedPoints.toFixed(1)} points this week. 
+  
+${seasonAvg}${recentForm}${consistency}
   
 Key insights: ${analysis.keyInsights.join('. ')}
   
@@ -488,22 +742,29 @@ ${analysis.reasoning}`;
 
 function formatWaiverWireResponse(recommendations: any): string {
   const topPick = recommendations.players[0];
+  const seasonAvg = topPick.seasonAverage ? `Season average: ${topPick.seasonAverage.toFixed(1)} points` : '';
+  const consistency = topPick.consistency ? ` (${Math.round(topPick.consistency)}% consistent)` : '';
+  const ownership = topPick.actualOwnership || topPick.ownershipPercentage;
+  
   return `Best waiver wire pickup: ${topPick.name} (${topPick.position})
 
 Projected: ${topPick.projectedPoints} points this week
-Ownership: ${topPick.ownershipPercentage}%
+${seasonAvg}${consistency}
+Ownership: ${ownership}%
 Priority level: ${topPick.priorityLevel}
 
 Other options: ${recommendations.players.slice(1, 3).map((p: any) => p.name).join(', ')}`;
 }
 
 function formatInjuryStatusResponse(status: any): string {
+  const recentPerf = status.recentPerformance ? `\n\n${status.recentPerformance}` : '';
+  
   return `${status.playerName} injury status: ${status.status}
 
 ${status.details}
 
 Fantasy impact: ${status.fantasyImpact}
-Expected return: ${status.expectedReturn || 'Unknown'}`;
+Expected return: ${status.expectedReturn || 'Unknown'}${recentPerf}`;
 }
 
 function formatMatchupAnalysisResponse(analysis: any): string {

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { playerDataService } from '@/lib/database/player-data-service';
+import { localPlayerDataService } from '@/lib/database/player-data-service-local';
 import { logger } from '../../../lib/logging/logger';
 
 export async function GET(request: NextRequest) {
@@ -25,8 +25,8 @@ export async function GET(request: NextRequest) {
       includeRecent 
     });
     
-    // Use our enhanced player data service
-    const { data: players, error } = await playerDataService.getPlayers({
+    // Use our local database player data service
+    const { data: players, error } = await localPlayerDataService.getPlayers({
       sport,
       positions,
       teams: team ? [team] : undefined,

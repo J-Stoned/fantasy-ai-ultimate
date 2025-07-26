@@ -140,3 +140,4 @@ test-pattern-*
 test-altitude-*
 test-api-*
 test-db-*
+.mcp/

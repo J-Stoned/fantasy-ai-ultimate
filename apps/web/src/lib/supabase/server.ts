@@ -6,25 +6,23 @@
 import { cookies } from 'next/headers';
 import { Pool } from 'pg';
 import { logger } from '../logging/logger';
+import { databaseConfig, getDatabaseUrl } from '../config/database';
 
-// Enterprise-grade connection pool with environment-based configuration
+// 🔥 LOCAL DOCKER DATABASE CONNECTION POOL
 let pool: Pool | null = null;
 
 function getPool(): Pool {
   if (!pool) {
     const isProduction = process.env.NODE_ENV === 'production';
     
-    // Production-ready configuration
+    // Use local Docker database configuration
     const config = {
-      // Use connection string if available (production), fallback to individual params (development)
-      connectionString: process.env.DATABASE_URL,
-      
-      // Fallback configuration for development
-      host: process.env.DB_HOST || 'localhost',
-      port: parseInt(process.env.DB_PORT || '5432'),
-      database: process.env.DB_NAME || 'fantasy_ai',
-      user: process.env.DB_USER || 'fantasy_user',
-      password: process.env.DB_PASSWORD || 'fantasy_password',
+      // Local Docker configuration (hardcoded to avoid IPv6 issues)
+      host: 'localhost',
+      port: 5432,
+      database: 'fantasy_ai',
+      user: 'fantasy_user',
+      password: 'fantasy_password',
       
       // Production-optimized connection pool settings
       max: isProduction ? 5 : 20, // Smaller pool for serverless
@@ -32,11 +30,8 @@ function getPool(): Pool {
       idleTimeoutMillis: isProduction ? 10000 : 30000, // Faster cleanup in serverless
       connectionTimeoutMillis: isProduction ? 10000 : 5000,
       
-      // SSL configuration for production
-      ssl: isProduction ? {
-        rejectUnauthorized: false, // Allow self-signed certificates
-        sslmode: 'require'
-      } : undefined,
+      // No SSL for local Docker database
+      ssl: false,
       
       // Query timeout for serverless
       query_timeout: isProduction ? 15000 : 30000,
@@ -96,6 +91,31 @@ function getPool(): Pool {
   return pool;
 }
 
+// Log database connection info on startup
+let hasLoggedDatabaseInfo = false;
+async function logDatabaseInfo() {
+  if (hasLoggedDatabaseInfo || process.env.NODE_ENV === 'test') return;
+  
+  try {
+    const pool = getPool();
+    const { rows: [gameLogCount] } = await pool.query('SELECT COUNT(*) as count FROM player_game_logs');
+    const { rows: [playerCount] } = await pool.query('SELECT COUNT(*) as count FROM players');
+    
+    logger.info('🔥 DATABASE CONNECTION ESTABLISHED', {
+      database: databaseConfig.database,
+      host: databaseConfig.host,
+      gameLogs: parseInt(gameLogCount.count).toLocaleString(),
+      players: parseInt(playerCount.count).toLocaleString(),
+      message: 'Using LOCAL Docker database with 1.3M+ game logs!'
+    });
+    
+    console.log(`🔥 Connected to ${databaseConfig.database} - ${parseInt(gameLogCount.count).toLocaleString()} game logs, ${parseInt(playerCount.count).toLocaleString()} players`);
+    hasLoggedDatabaseInfo = true;
+  } catch (error) {
+    logger.error('Failed to get database info:', error);
+  }
+}
+
 export interface SupabaseClient {
   from: (table: string) => any;
   auth: {
@@ -111,8 +131,13 @@ interface QueryBuilder {
   eq: (field: string, value: any) => QueryBuilder;
   in: (field: string, values: any[]) => QueryBuilder;
   gte: (field: string, value: any) => QueryBuilder;
+  contains: (field: string, values: any[]) => QueryBuilder;
+  not: (field: string, operator: string, value: any) => QueryBuilder;
+  is: (field: string, value: any) => QueryBuilder;
+  or: (conditions: string) => QueryBuilder;
   order: (field: string, options?: { ascending?: boolean; nullsFirst?: boolean }) => QueryBuilder;
   limit: (count: number) => QueryBuilder;
+  range: (from: number, to: number) => QueryBuilder;
   single: () => Promise<{ data: any; error: any }>;
   then: (callback: (result: { data: any[]; error: any }) => any) => Promise<any>;
 }
@@ -203,6 +228,55 @@ class PostgreSQLQueryBuilder implements QueryBuilder {
     return this;
   }
 
+  contains(field: string, values: any[]): QueryBuilder {
+    // For PostgreSQL arrays, use the @> operator
+    this.whereConditions.push(`${field} @> $${this.paramCounter}::text[]`);
+    this.params.push(values);
+    this.paramCounter++;
+    return this;
+  }
+
+  not(field: string, operator: string, value: any): QueryBuilder {
+    if (operator === 'is' && value === null) {
+      this.whereConditions.push(`${field} IS NOT NULL`);
+    } else {
+      this.whereConditions.push(`${field} != $${this.paramCounter}`);
+      this.params.push(value);
+      this.paramCounter++;
+    }
+    return this;
+  }
+
+  is(field: string, value: any): QueryBuilder {
+    if (value === null) {
+      this.whereConditions.push(`${field} IS NULL`);
+    } else {
+      this.whereConditions.push(`${field} = $${this.paramCounter}`);
+      this.params.push(value);
+      this.paramCounter++;
+    }
+    return this;
+  }
+
+  or(conditions: string): QueryBuilder {
+    // Simple OR implementation for player name searches
+    const fields = conditions.split(',').map(cond => {
+      const [field, pattern] = cond.split('.');
+      const operator = pattern.includes('ilike') ? 'ILIKE' : '=';
+      const value = pattern.replace(/.*%(.*)%.*/, '%$1%');
+      this.params.push(value);
+      return `${field} ${operator} $${this.paramCounter++}`;
+    });
+    this.whereConditions.push(`(${fields.join(' OR ')})`);
+    return this;
+  }
+
+  range(from: number, to: number): QueryBuilder {
+    this.limitCount = to - from + 1;
+    this.whereConditions.push(`ROW_NUMBER() OVER () >= ${from}`);
+    return this;
+  }
+
   order(field: string, options?: { ascending?: boolean; nullsFirst?: boolean }): QueryBuilder {
     const direction = options?.ascending === false ? 'DESC' : 'ASC';
     const nulls = options?.nullsFirst === false ? 'NULLS LAST' : 'NULLS FIRST';
@@ -258,6 +332,8 @@ class PostgreSQLQueryBuilder implements QueryBuilder {
 
 // PostgreSQL Database Client
 export const createClient = async (): Promise<SupabaseClient> => {
+  // Log database info on first connection
+  logDatabaseInfo();
   // Access cookies for potential session handling
   const cookieStore = await cookies();
   

@@ -343,7 +343,7 @@ export class MultiAgentSystem extends EventEmitter {
       }
     });
 
-    logger.info('🤖 Initialized', { data: this.agents.size, 'AI agents (including Fantasy Oracle })');
+    logger.info('🤖 Initialized AI agents (including Fantasy Oracle)', { agentCount: this.agents.size });
   }
 
   /**

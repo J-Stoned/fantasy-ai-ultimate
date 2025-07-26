@@ -413,3 +413,6 @@ export const config = {
     '/((?!_next/static|_next/image|favicon.ico|public).*)',
   ],
 }
+
+// Export runtime for Edge compatibility
+export const runtime = 'edge'

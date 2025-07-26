@@ -173,9 +173,52 @@ const nextConfig = {
     return config;
   },
   
-  // Security headers for production
+  // Security headers and caching strategy for 2025
   async headers() {
     return [
+      // Static assets - aggressive caching
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+        ],
+      },
+      // Images - long-term caching with revalidation
+      {
+        source: '/:path*.(jpg|jpeg|png|gif|svg|webp|avif|ico)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+        ],
+      },
+      // Fonts - long-term caching
+      {
+        source: '/:path*.(woff|woff2|ttf|otf|eot)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+        ],
+      },
+      // HTML pages - short caching with revalidation
       {
         source: '/:path*',
         headers: [
@@ -201,26 +244,64 @@ const nextConfig = {
           },
           {
             key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin'
+            value: 'strict-origin-when-cross-origin'
           },
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
           },
-          // Cache static assets
+          // Pages - balanced caching
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'public, max-age=300, s-maxage=31536000, stale-while-revalidate=86400',
           },
         ],
       },
-      // API routes - no caching for real-time data
+      // API routes - strategic caching
+      {
+        source: '/api/health',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=60, s-maxage=60',
+          },
+        ],
+      },
+      {
+        source: '/api/rate-limits',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=300, s-maxage=300',
+          },
+        ],
+      },
+      {
+        source: '/api/cache',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=60, s-maxage=60',
+          },
+        ],
+      },
+      // Real-time API routes - no caching
+      {
+        source: '/api/(predictions|ownership|ml)/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, no-cache, must-revalidate',
+          },
+        ],
+      },
+      // Default API routes - minimal caching
       {
         source: '/api/:path*',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'no-store, no-cache, must-revalidate, proxy-revalidate',
+            value: 'private, max-age=0, must-revalidate',
           },
         ],
       },

@@ -6,10 +6,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Pool } from 'pg';
 import { databaseConfig } from '@/lib/database-config';
-import OwnershipEngineV2 from '../../../../../scripts/fantasy-ml/services/ownership-engine-v2';
-import { VegasService } from '../../../../../scripts/fantasy-ml/services/vegas-service';
-import { InjuryService } from '../../../../../scripts/fantasy-ml/services/injury-service';
-import { WeatherService } from '../../../../../scripts/fantasy-ml/services/weather-service';
+import OwnershipEngineV2 from '@/lib/services/ownership-engine-v2';
+import { VegasService } from '@/lib/services/vegas-service';
+import { InjuryService } from '@/lib/services/injury-service';
+import { WeatherService } from '@/lib/services/weather-service';
 import { redisCluster, CacheKeys, CacheTTL } from '@/lib/services/redis-cluster';
 import { jobs } from '@/lib/services/queue-service';
 import { logger } from '../../../../lib/logging/logger';
