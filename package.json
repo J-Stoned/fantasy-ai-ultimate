@@ -267,7 +267,6 @@
     "munkres-js": "^1.2.2",
     "next": "~15.2.4",
     "node-cron": "^4.1.1",
-    "onnxruntime-node": "latest",
     "openai": "^5.8.2",
     "p-limit": "^6.2.0",
     "pg": "^8.16.3",
@@ -303,5 +302,8 @@
     "ws": "^8.18.3",
     "zod": "^3.25.67",
     "zustand": "^4.5.0"
+  },
+  "optionalDependencies": {
+    "onnxruntime-node": "latest"
   }
 }
