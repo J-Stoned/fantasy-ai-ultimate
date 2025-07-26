@@ -414,5 +414,5 @@ export const config = {
   ],
 }
 
-// Export runtime for Edge compatibility
-export const runtime = 'edge'
+// Export runtime for Edge compatibility (experimental in Next.js 15)
+export const runtime = 'experimental-edge'

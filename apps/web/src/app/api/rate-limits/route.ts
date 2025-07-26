@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
  * Provides current rate limit status and configuration
  */
 
-export const runtime = 'edge'
+export const runtime = 'experimental-edge'
 
 const RATE_LIMIT_TIERS = {
   free: {
