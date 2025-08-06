@@ -15,8 +15,8 @@ export async function GET(request: NextRequest) {
     // Get Yahoo connection details
     const { data: connection, error } = await supabase
       .from('platform_connections')
-      .select('platform, isActive, lastSyncAt, tokenExpiresAt, createdAt')
-      .eq('userId', user.id)
+      .select('platform, is_active, last_sync_at, token_expires_at, created_at') // Fixed: use token_expires_at
+      .eq('user_id', user.id)
       .eq('platform', 'yahoo')
       .single()
 
@@ -28,14 +28,14 @@ export async function GET(request: NextRequest) {
     }
 
     // Check if token is expired
-    const tokenExpired = connection.tokenExpiresAt && 
-      new Date(connection.tokenExpiresAt) < new Date()
+    const tokenExpired = connection.token_expires_at && // Fixed: use token_expires_at
+      new Date(connection.token_expires_at) < new Date()
 
     return NextResponse.json({
       connected: true,
       connection: {
         ...connection,
-        isActive: connection.isActive && !tokenExpired,
+        is_active: connection.is_active && !tokenExpired,
         tokenExpired
       }
     })

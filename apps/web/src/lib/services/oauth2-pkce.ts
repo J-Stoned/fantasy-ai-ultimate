@@ -204,18 +204,26 @@ export class OAuth2PKCEService {
     provider: string,
     tokenData: any
   ): Promise<void> {
-    const { error } = await supabase.from('oauth_tokens').upsert({
+    const expiresAt = tokenData.expires_in 
+      ? new Date(Date.now() + tokenData.expires_in * 1000).toISOString()
+      : new Date(Date.now() + 3600 * 1000).toISOString(); // Default 1 hour
+
+    const { error } = await supabase.from('platform_connections').upsert({
       user_id: userId,
-      provider,
+      platform: provider,
       access_token: tokenData.access_token,
-      refresh_token: tokenData.refresh_token,
-      expires_at: new Date(Date.now() + tokenData.expires_in * 1000).toISOString(),
+      refresh_token: tokenData.refresh_token || null,
+      token_expires_at: expiresAt, // Fixed: use token_expires_at instead of expires_at
+      is_active: true,
       updated_at: new Date().toISOString(),
     });
 
     if (error) {
+      console.error(`Failed to store tokens for ${provider}:`, error);
       throw new Error(`Failed to store tokens: ${error.message}`);
     }
+
+    console.log(`Successfully stored tokens for ${provider} user ${userId}`);
   }
 
   /**
@@ -232,15 +240,23 @@ export class OAuth2PKCEService {
 
     // Get refresh token from database
     const { data: tokenData, error } = await supabase
-      .from('oauth_tokens')
-      .select('refresh_token')
+      .from('platform_connections')
+      .select('refresh_token, access_token')
       .eq('user_id', userId)
-      .eq('provider', providerName)
+      .eq('platform', providerName)
       .single();
 
-    if (error || !tokenData?.refresh_token) {
-      throw new Error('No refresh token available');
+    if (error) {
+      console.error(`Database error fetching refresh token for ${providerName}:`, error);
+      throw new Error(`Database error: ${error.message}`);
     }
+
+    if (!tokenData?.refresh_token) {
+      console.error(`No refresh token available for ${providerName} user ${userId}`);
+      throw new Error('No refresh token available - user needs to re-authenticate');
+    }
+
+    console.log(`Refreshing ${providerName} token for user ${userId}`);
 
     const params = new URLSearchParams({
       grant_type: 'refresh_token',
@@ -248,25 +264,61 @@ export class OAuth2PKCEService {
       client_id: provider.clientId,
     });
 
-    const response = await fetch(provider.tokenUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: params.toString(),
-    });
-
-    if (!response.ok) {
-      const error = await response.text();
-      throw new Error(`Token refresh failed: ${error}`);
+    // Add client secret for Yahoo (required)
+    if (providerName === 'yahoo') {
+      params.append('client_secret', process.env.YAHOO_CLIENT_SECRET || '');
     }
 
-    const data = await response.json();
+    try {
+      const response = await fetch(provider.tokenUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json',
+          ...(providerName === 'yahoo' ? {
+            'Authorization': `Basic ${Buffer.from(`${provider.clientId}:${process.env.YAHOO_CLIENT_SECRET}`).toString('base64')}`
+          } : {})
+        },
+        body: params.toString(),
+      });
 
-    // Update tokens in database
-    await this.storeTokens(userId, providerName, data);
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error(`Token refresh failed for ${providerName}:`, {
+          status: response.status,
+          statusText: response.statusText,
+          error: errorText
+        });
+        
+        // If refresh token is invalid, user needs to re-authenticate
+        if (response.status === 400 || response.status === 401) {
+          // Mark connection as inactive
+          await supabase
+            .from('platform_connections')
+            .update({ 
+              is_active: false,
+              updated_at: new Date().toISOString()
+            })
+            .eq('user_id', userId)
+            .eq('platform', providerName);
+            
+          throw new Error('Refresh token expired - user needs to re-authenticate');
+        }
+        
+        throw new Error(`Token refresh failed: ${response.status} ${response.statusText}`);
+      }
 
-    return data.access_token;
+      const data = await response.json();
+      console.log(`Successfully refreshed ${providerName} token for user ${userId}`);
+
+      // Update tokens in database
+      await this.storeTokens(userId, providerName, data);
+
+      return data.access_token;
+    } catch (fetchError: any) {
+      console.error(`Network error during token refresh for ${providerName}:`, fetchError);
+      throw new Error(`Token refresh failed: ${fetchError.message}`);
+    }
   }
 
   /**
@@ -277,26 +329,39 @@ export class OAuth2PKCEService {
     provider: string
   ): Promise<string> {
     const { data: tokenData, error } = await supabase
-      .from('oauth_tokens')
-      .select('access_token, expires_at')
+      .from('platform_connections')
+      .select('access_token, token_expires_at, refresh_token, is_active') // Fixed: use token_expires_at
       .eq('user_id', userId)
-      .eq('provider', provider)
+      .eq('platform', provider)
       .single();
 
     if (error || !tokenData) {
-      throw new Error('No tokens found');
+      console.error(`No tokens found for ${provider} user ${userId}:`, error);
+      throw new Error('No tokens found - user needs to authenticate');
+    }
+
+    if (!tokenData.is_active) {
+      console.error(`Connection inactive for ${provider} user ${userId}`);
+      throw new Error('Connection is inactive - user needs to re-authenticate');
     }
 
     // Check if token is expired
-    const expiresAt = new Date(tokenData.expires_at);
+    const expiresAt = new Date(tokenData.token_expires_at); // Fixed: use token_expires_at
     const now = new Date();
     const bufferTime = 5 * 60 * 1000; // 5 minutes buffer
 
     if (expiresAt.getTime() - now.getTime() < bufferTime) {
+      console.log(`Token expired for ${provider} user ${userId}, attempting refresh...`);
       // Token is expired or about to expire, refresh it
-      return await this.refreshAccessToken(userId, provider);
+      try {
+        return await this.refreshAccessToken(userId, provider);
+      } catch (refreshError) {
+        console.error(`Token refresh failed for ${provider} user ${userId}:`, refreshError);
+        throw refreshError;
+      }
     }
 
+    console.log(`Using valid token for ${provider} user ${userId}`);
     return tokenData.access_token;
   }
 
@@ -304,16 +369,22 @@ export class OAuth2PKCEService {
    * Revoke tokens
    */
   static async revokeTokens(userId: string, provider: string): Promise<void> {
-    // Delete tokens from database
+    // Mark connection as inactive instead of deleting
     const { error } = await supabase
-      .from('oauth_tokens')
-      .delete()
+      .from('platform_connections')
+      .update({
+        is_active: false,
+        updated_at: new Date().toISOString()
+      })
       .eq('user_id', userId)
-      .eq('provider', provider);
+      .eq('platform', provider);
 
     if (error) {
+      console.error(`Failed to revoke tokens for ${provider}:`, error);
       throw new Error(`Failed to revoke tokens: ${error.message}`);
     }
+
+    console.log(`Successfully revoked tokens for ${provider} user ${userId}`);
 
     // Note: Some providers have specific revocation endpoints
     // This would need to be implemented per-provider
