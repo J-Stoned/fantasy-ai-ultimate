@@ -29,7 +29,8 @@ export function usePerformanceMonitor(componentName: string) {
       const renderTime = performance.now() - renderStartTime.current;
       
       if (renderTime > 16) {
-        }ms (target: <16ms)`
+        console.warn(
+          `[Performance] ${componentName} render took ${renderTime.toFixed(2)}ms (target: <16ms)`
         );
       }
       
@@ -116,7 +117,8 @@ export function useDebouncedCallback<T extends (...args: any[]) => any>(
         const duration = performance.now() - start;
         
         if (duration > 16) {
-          }ms`
+          console.warn(
+            `[Performance] Debounced callback for ${callback.name} took ${duration.toFixed(2)}ms`
           );
         }
       }, delay);
@@ -156,7 +158,8 @@ export function createSelector<T, R>(
     lastComputeTime = performance.now() - start;
     
     if (lastComputeTime > 5) {
-      }ms`
+      console.warn(
+        `[Performance] Selector for ${selector.name} took ${lastComputeTime.toFixed(2)}ms`
       );
     }
     
@@ -280,7 +283,8 @@ export function profileComponent(
   };
   
   if (actualDuration > 16) {
-    }ms (base: ${baseDuration.toFixed(2)}ms)`
+    console.warn(
+      `[Performance] Profiled component ${id} took ${actualDuration.toFixed(2)}ms (base: ${baseDuration.toFixed(2)}ms)`
     );
   }
   
@@ -312,7 +316,8 @@ export function lazyWithPreload<T extends React.ComponentType<any>>(
     const loadTime = performance.now() - start;
     
     if (loadTime > 1000) {
-      }ms`
+      console.warn(
+        `[Performance] Lazy loading for ${importFn.name} took ${loadTime.toFixed(2)}ms`
       );
     }
     
